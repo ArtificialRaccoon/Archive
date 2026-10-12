@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/platform-specifics/windows-specifics/windows-integration-routines/win_get_window by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:28:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>win_get_window</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">Windows specifics</a></h2><ul>
+<li><a href="../joy_type_.html" >JOY_TYPE_Windows</a></li><li><a href="../gfx_.html" >GFX_Windows</a></li><li><a href="../digi_.html" >DIGI_Windows</a></li><li><a href="../midi_.html" >MIDI_Windows</a></li><li><strong>win_get_window</strong></li><li><a href="win_set_window.html" >win_set_window</a></li><li><a href="win_set_wnd_create_proc.html" >win_set_wnd_create_proc</a></li><li><a href="win_get_dc.html" >win_get_dc</a></li><li><a href="win_release_dc.html" >win_release_dc</a></li><li><a href="../gdi-routines/set_gdi_color_format.html" >set_gdi_color_format</a></li><li><a href="../gdi-routines/set_palette_to_hdc.html" >set_palette_to_hdc</a></li><li><a href="../gdi-routines/convert_palette_to_hpalette.html" >convert_palette_to_hpalette</a></li><li><a href="../gdi-routines/convert_hpalette_to_palette.html" >convert_hpalette_to_palette</a></li><li><a href="../gdi-routines/convert_bitmap_to_hbitmap.html" >convert_bitmap_to_hbitmap</a></li><li><a href="../gdi-routines/convert_hbitmap_to_bitmap.html" >convert_hbitmap_to_bitmap</a></li><li><a href="../gdi-routines/draw_to_hdc.html" >draw_to_hdc</a></li><li><a href="../gdi-routines/blit_to_hdc.html" >blit_to_hdc</a></li><li><a href="../gdi-routines/stretch_blit_to_hdc.html" >stretch_blit_to_hdc</a></li><li><a href="../gdi-routines/blit_from_hdc.html" >blit_from_hdc</a></li><li><a href="../gdi-routines/stretch_blit_from_hdc.html" >stretch_blit_from_hdc</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>win_get_window</h1>
+
+<div class="shortdesc">
+Retrieves a handle to the window used by Allegro.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+HWND <a href="../../../index.html" target="_blank"><span class="a">win_get_window</span></a><span class="k2">(</span><span class="k1">void</span><span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Retrieves a handle to the window used by Allegro. Note that Allegro
+   uses an underlying window even though you don't set any graphics mode,
+   unless you have installed the neutral system driver (SYSTEM_NONE).
+
+</div>
+
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591885">
+		<a href="https://www.allegro.cc/forums/thread/591885">Resuming a full screen Allegro program in windows</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/679024" style="color: black;">1</a> </span>
+	</li><li id="t-591447">
+		<a href="https://www.allegro.cc/forums/thread/591447">al_set_debug_file [submitting idea and code]</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/673120" style="color: black;">1</a> </span>
+	</li><li id="t-591409">
+		<a href="https://www.allegro.cc/forums/thread/591409">Icons</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/672831" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/673129" style="color: black;">2</a> </span>
+	</li><li id="t-591273">
+		<a href="https://www.allegro.cc/forums/thread/591273">Can&#39;t load_bitmap after GetOpenFileName</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/670162" style="color: black;">1</a> </span>
+	</li><li id="t-590933">
+		<a href="https://www.allegro.cc/forums/thread/590933">Making The Cursor Vanish</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/664362" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/664381" style="color: black;">2</a> </span>
+	</li><li id="t-590865">
+		<a href="https://www.allegro.cc/forums/thread/590865">Quick Question: HINSTANCE of Allegro</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/663235" style="color: black;">1</a> </span>
+	</li><li id="t-590017">
+		<a href="https://www.allegro.cc/forums/thread/590017">Simulating print Screen functions</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/649174" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/MachineBall">Machine Ball</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/Cylu">Cylu</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/Molefest">Molefest</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/LiquidWar5">Liquid War 5</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/StarControlTimeWarp">Star Control: TimeWarp</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/TetrisUnlimited">Tetris Unlimited</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/TW-Light">TW-Light</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/MonsterMash">Monster Mash!</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/EXA-Graphiceditor">EXA-Graphic editor</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,371,067</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.010535</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/platform-specifics/windows-specifics/windows-integration-routines/win_get_window by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:28:50 GMT -->
+</html>

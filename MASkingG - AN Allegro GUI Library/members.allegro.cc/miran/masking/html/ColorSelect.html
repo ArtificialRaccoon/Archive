@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/ColorSelect.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC ColorSelect</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">ColorSelect</A></H2></H2><BLOCKQUOTE> The standard color selector dialog.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>ColorSelect
+- <A HREF="Window.html">Window</A>
+- <A HREF="Dialog.html">Dialog</A>
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.9.2">ColorSelect</A></B>(const char* <!1><A HREF="Window.html#DOC.111.1">title</A> = "<!1><A HREF="Widget.html#DOC.110.90">Select</A> color", <!1><A HREF="Color.html">Color</A> c = 0)
+<DD><I> Color selector constructor.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   <!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.9.3">Popup</A></B>(<!1><A HREF="Dialog.html">Dialog</A>* p, int <!1><A HREF="Widget.html#DOC.110.67">x</A> = MAXINT, int <!1><A HREF="Widget.html#DOC.110.68">y</A> = MAXINT)
+<DD><I> Pops up a colour selector at the given position.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.9.4">HandleEvent</A></B>(<!1><A HREF="Widget.html">Widget</A> &amp;obj, int msg, int arg1=0, int arg2=0)
+<DD><I> Handles events such as slider moves</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.9.1">MsgInitSkin</A></B>()
+<DD><I> Initializes the colour preview and the slider labels with the proper values</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+The standard color selector dialog.
+ColorSelect is a simple dialog for selecting a color either by defining
+it with three RGB sliders or three HSV sliders. This dialog isn't exactly
+pretty so if you have a better one for the same purpose, contributions
+are always welcome :)</BLOCKQUOTE>
+<DL>
+
+<A NAME="MsgInitSkin"></A>
+<A NAME="DOC.9.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgInitSkin()</B></TT>
+<DD>
+Initializes the colour preview and the slider labels with the proper values
+<DL><DT><DD></DL><P>
+<A NAME="ColorSelect"></A>
+<A NAME="DOC.9.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> ColorSelect(const char* <!1><A HREF="Window.html#DOC.111.1">title</A> = "<!1><A HREF="Widget.html#DOC.110.90">Select</A> color", <!1><A HREF="Color.html">Color</A> c = 0)</B></TT>
+<DD>
+Color selector constructor. You can pass the dialog's title and initial colour.
+<DL><DT><DD></DL><P>
+<A NAME="Popup"></A>
+<A NAME="DOC.9.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   <!1><A HREF="Color.html">Color</A> Popup(<!1><A HREF="Dialog.html">Dialog</A>* p, int <!1><A HREF="Widget.html#DOC.110.67">x</A> = MAXINT, int <!1><A HREF="Widget.html#DOC.110.68">y</A> = MAXINT)</B></TT>
+<DD>
+Pops up a colour selector at the given position. Returns the selected colour or
+-1 if the dialog was canceled or escaped.
+<DL><DT><DD></DL><P>
+<A NAME="HandleEvent"></A>
+<A NAME="DOC.9.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void HandleEvent(<!1><A HREF="Widget.html">Widget</A> &amp;obj, int msg, int arg1=0, int arg2=0)</B></TT>
+<DD>
+Handles events such as slider moves
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/ColorSelect.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+</html>

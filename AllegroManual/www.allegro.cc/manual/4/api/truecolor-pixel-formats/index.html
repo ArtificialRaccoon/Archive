@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/truecolor-pixel-formats/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:48:50 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Truecolor pixel formats</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">API</a></h2><ul>
+<li><a href="../using-allegro/index.html" >Using Allegro</a></li><li><a href="../structures-and-types-defined-by-allegro/index.html" >Structures and types defined by Allegro</a></li><li><a href="../unicode-routines/index.html" >Unicode routines</a></li><li><a href="../configuration-routines/index.html" >Configuration routines</a></li><li><a href="../mouse-routines/index.html" >Mouse routines</a></li><li><a href="../timer-routines/index.html" >Timer routines</a></li><li><a href="../keyboard-routines/index.html" >Keyboard routines</a></li><li><a href="../joystick-routines/index.html" >Joystick routines</a></li><li><a href="../graphics-modes/index.html" >Graphics modes</a></li><li><a href="../bitmap-objects/index.html" >Bitmap objects</a></li><li><a href="../loading-image-files/index.html" >Loading image files</a></li><li><a href="../palette-routines/index.html" >Palette routines</a></li><li><strong>Truecolor pixel formats</strong></li><li><a href="../drawing-primitives/index.html" >Drawing primitives</a></li><li><a href="../blitting-and-sprites/index.html" >Blitting and sprites</a></li><li><a href="../rle-sprites/index.html" >RLE sprites</a></li><li><a href="../compiled-sprites/index.html" >Compiled sprites</a></li><li><a href="../fonts/index.html" >Fonts</a></li><li><a href="../text-output/index.html" >Text output</a></li><li><a href="../polygon-rendering/index.html" >Polygon rendering</a></li><li><a href="../transparency-and-patterned-drawing/index.html" >Transparency and patterned drawing</a></li><li><a href="../converting-between-color-formats/index.html" >Converting between color formats</a></li><li><a href="../direct-access-to-video-memory/index.html" >Direct access to video memory</a></li><li><a href="../flic-routines/index.html" >FLIC routines</a></li><li><a href="../sound-init-routines/index.html" >Sound init routines</a></li><li><a href="../mixer-routines/index.html" >Mixer routines</a></li><li><a href="../digital-sample-routines/index.html" >Digital sample routines</a></li><li><a href="../music-routines-(midi)/index.html" >Music routines (MIDI)</a></li><li><a href="../audio-stream-routines/index.html" >Audio stream routines</a></li><li><a href="../recording-routines/index.html" >Recording routines</a></li><li><a href="../file-and-compression-routines/index.html" >File and compression routines</a></li><li><a href="../datafile-routines/index.html" >Datafile routines</a></li><li><a href="../fixed-point-math-routines/index.html" >Fixed point math routines</a></li><li><a href="../3d-math-routines/index.html" >3D math routines</a></li><li><a href="../quaternion-math-routines/index.html" >Quaternion math routines</a></li><li><a href="../gui-routines/index.html" >GUI routines</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>Truecolor pixel formats</h1>
+
+In a truecolor video mode the red, green, and blue components for each pixel
+are packed directly into the color value, rather than using a palette lookup
+table. In a 15-bit mode there are 5 bits for each color, in 16-bit modes
+there are 5 bits each of red and blue and six bits of green, and both 24 and
+32-bit modes use 8 bits for each color (the 32-bit pixels simply have an
+extra padding byte to align the data nicely). The layout of these components
+can vary depending on your hardware, but will generally either be RGB or
+BGR. Since the layout is not known until you select the video mode you will
+be using, you must call set_gfx_mode() before using any of the following
+routines!
+
+<ul>
+	<li><a href="makecol8.html">makecol8</a></li>
+	<li><a href="makecol15.html">makecol15</a></li>
+	<li><a href="makecol16.html">makecol16</a></li>
+	<li><a href="makecol24.html">makecol24</a></li>
+	<li><a href="makecol32.html">makecol32</a> - Converts an RGB value into a display dependent pixel format.</li>
+	<li><a href="makeacol32.html">makeacol32</a> - Converts an RGBA color into a 32-bit display pixel format.</li>
+	<li><a href="makecol.html">makecol</a> - Converts an RGB value into the current pixel format.</li>
+	<li><a href="makecol_depth.html">makecol_depth</a> - Converts an RGB value into the specified pixel format.</li>
+	<li><a href="makeacol.html">makeacol</a></li>
+	<li><a href="makeacol_depth.html">makeacol_depth</a> - Converts RGBA colors into display dependent pixel formats.</li>
+	<li><a href="makecol15_dither.html">makecol15_dither</a></li>
+	<li><a href="makecol16_dither.html">makecol16_dither</a> - Calculates a dithered 15 or 16-bit RGB value.</li>
+	<li><a href="getr8.html">getr8</a></li>
+	<li><a href="getg8.html">getg8</a></li>
+	<li><a href="getb8.html">getb8</a></li>
+	<li><a href="getr15.html">getr15</a></li>
+	<li><a href="getg15.html">getg15</a></li>
+	<li><a href="getb15.html">getb15</a></li>
+	<li><a href="getr16.html">getr16</a></li>
+	<li><a href="getg16.html">getg16</a></li>
+	<li><a href="getb16.html">getb16</a></li>
+	<li><a href="getr24.html">getr24</a></li>
+	<li><a href="getg24.html">getg24</a></li>
+	<li><a href="getb24.html">getb24</a></li>
+	<li><a href="getr32.html">getr32</a></li>
+	<li><a href="getg32.html">getg32</a></li>
+	<li><a href="getb32.html">getb32</a> - Extract a color component from the specified pixel format.</li>
+	<li><a href="geta32.html">geta32</a> - Extract the alpha component form a 32-bit pixel format color.</li>
+	<li><a href="getr.html">getr</a></li>
+	<li><a href="getg.html">getg</a></li>
+	<li><a href="getb.html">getb</a></li>
+	<li><a href="geta.html">geta</a> - Extract a color component from the current pixel format.</li>
+	<li><a href="getr_depth.html">getr_depth</a></li>
+	<li><a href="getg_depth.html">getg_depth</a></li>
+	<li><a href="getb_depth.html">getb_depth</a></li>
+	<li><a href="geta_depth.html">geta_depth</a> - Extract a color component from a color in a specified pixel format.</li>
+	<li><a href="palette_color.html">palette_color</a> - Maps palette indexes into the current pixel format colors.</li>
+	<li><a href="mask_color_8.html">MASK_COLOR_8</a></li>
+	<li><a href="mask_color_15.html">MASK_COLOR_15</a></li>
+	<li><a href="mask_color_16.html">MASK_COLOR_16</a></li>
+	<li><a href="mask_color_24.html">MASK_COLOR_24</a></li>
+	<li><a href="mask_color_32.html">MASK_COLOR_32</a> - Constant representing the mask value in sprites.</li>
+</ul>
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,166</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>58.418197</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/truecolor-pixel-formats/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:49:17 GMT -->
+</html>

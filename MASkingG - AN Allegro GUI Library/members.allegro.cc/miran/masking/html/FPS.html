@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/FPS.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC FPS</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">FPS</A></H2></H2><BLOCKQUOTE> A simple widget that displays the current redraw frame rate.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>FPS
+- <A HREF="Label.html">Label</A>
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.55.4">FPS</A></B>()
+<DD><I> default constructor</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.55.5">~FPS</A></B>()
+<DD><I> destructor</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.55.6">Get</A></B>()
+<DD><I> Returns the current FPS (stands for 'Frames Per Second').</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.55.1">MsgTick</A></B>()
+<DD><I> Records a MSG_TICK message and makes sure the widget is redrawn in every frame</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.55.2">MsgInitSkin</A></B>()
+<DD><I> Initializes the text and sets the text background colour to the default skin background colour</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.55.3">Draw</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)
+<DD><I> Renders the frame rate as text</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+A simple widget that displays the current redraw frame rate. The frame rate is
+measured by the globalFpsCounter object.
+
+<P></BLOCKQUOTE>
+<DL>
+
+<A NAME="MsgTick"></A>
+<A NAME="DOC.55.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgTick()</B></TT>
+<DD>
+Records a MSG_TICK message and makes sure the widget is redrawn in every frame
+<DL><DT><DD></DL><P>
+<A NAME="MsgInitSkin"></A>
+<A NAME="DOC.55.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgInitSkin()</B></TT>
+<DD>
+Initializes the text and sets the text background colour to the default skin background colour
+<DL><DT><DD></DL><P>
+<A NAME="Draw"></A>
+<A NAME="DOC.55.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Draw(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)</B></TT>
+<DD>
+Renders the frame rate as text
+<DL><DT><DD></DL><P>
+<A NAME="FPS"></A>
+<A NAME="DOC.55.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> FPS()</B></TT>
+<DD>
+default constructor
+<DL><DT><DD></DL><P>
+<A NAME="~FPS"></A>
+<A NAME="DOC.55.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> ~FPS()</B></TT>
+<DD>
+destructor
+<DL><DT><DD></DL><P>
+<A NAME="Get"></A>
+<A NAME="DOC.55.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int Get()</B></TT>
+<DD>
+Returns the current FPS (stands for 'Frames Per Second'). Actually the frame rate is a
+running average over the last second.
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DT><B>See Also:</B><DD><!1><A HREF="CFPS.html">CFPS</A><BR><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/FPS.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+</html>

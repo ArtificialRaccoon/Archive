@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/timer-routines/install_int_ex by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:16:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>install_int_ex</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Timer routines</a></h2><ul>
+<li><a href="install_timer.html" style="font-weight: bold">install_timer</a></li><li><a href="remove_timer.html" >remove_timer</a></li><li><a href="install_int.html" style="font-weight: bold">install_int</a></li><li><strong>install_int_ex</strong></li><li><a href="lock_variable.html" style="font-weight: bold">LOCK_VARIABLE</a></li><li><a href="lock_function.html" style="font-weight: bold">LOCK_FUNCTION</a></li><li><a href="end_of_function.html" style="font-weight: bold">END_OF_FUNCTION</a></li><li><a href="remove_int.html" style="font-weight: bold">remove_int</a></li><li><a href="install_param_int.html" >install_param_int</a></li><li><a href="install_param_int_ex.html" >install_param_int_ex</a></li><li><a href="remove_param_int.html" >remove_param_int</a></li><li><a href="retrace_count.html" >retrace_count</a></li><li><a href="rest.html" style="font-weight: bold">rest</a></li><li><a href="rest_callback.html" >rest_callback</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>install_int_ex</h1>
+
+<div class="shortdesc">
+Adds or modifies a timer.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">int</span> <a href="../../index.html" target="_blank"><span class="a">install_int_ex</span></a><span class="k2">(</span><span class="k1">void</span> <span class="k2">(</span><span class="k3">*</span>proc<span class="k2">)</span><span class="k2">(</span><span class="k2">)</span>, <span class="k1">int</span> speed<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Adds a function to the list of user timer handlers or, if it is already
+   installed, retroactively adjusts its speed (i.e makes as though the speed
+   change occured precisely at the last tick). The speed is given in hardware
+   clock ticks, of which there are 1193181 a second. You can convert from
+   other time formats to hardware clock ticks with the macros:
+<pre class="text">
+      SECS_TO_TIMER(secs)  - give the number of seconds between
+			     each tick
+      MSEC_TO_TIMER(msec)  - give the number of milliseconds
+			     between ticks
+      BPS_TO_TIMER(bps)    - give the number of ticks each second
+      BPM_TO_TIMER(bpm)    - give the number of ticks per minute
+</pre>
+   There can only be sixteen timers in use at a time, and some other parts of
+   Allegro (the GUI code, the mouse pointer display routines, rest(), the FLI
+   player, and the MIDI player) need to install handlers of their own, so you
+   should avoid using too many at the same time. If you call this routine
+   without having first installed the timer module, install_timer() will be
+   called automatically.<br /><br />
+
+   Your function will be called by the Allegro interrupt handler and not
+   directly by the processor, so it can be a normal C function and does not
+   need a special wrapper. You should be aware, however, that it will be
+   called in an interrupt context, which imposes a lot of restrictions on
+   what you can do in it. It should not use large amounts of stack, it must
+   not make any calls to the operating system, use C library functions, or
+   contain any floating point code, and it must execute very quickly. Don't
+   try to do lots of complicated code in a timer handler: as a general rule
+   you should just set some flags and respond to these later in your main
+   control loop.<br /><br />
+
+   In a DOS protected mode environment like DJGPP, memory is virtualised and
+   can be swapped to disk. Due to the non-reentrancy of DOS, if a disk swap
+   occurs inside an interrupt handler the system will die a painful death,
+   so you need to make sure you lock all the memory (both code and data)
+   that is touched inside timer routines. Allegro will lock everything it
+   uses, but you are responsible for locking your handler functions. The
+   macros LOCK_VARIABLE (variable), END_OF_FUNCTION (function_name),
+   END_OF_STATIC_FUNCTION (function_name), and LOCK_FUNCTION (function_name)
+   can be used to simplify this task. For example, if you want an interrupt
+   handler that increments a counter variable, you should write:
+<pre class="code">      <span class="k1">volatile</span> <span class="k1">int</span> counter<span class="k2">;</span><br /><br />
+
+      <span class="k1">void</span> my_timer_handler<span class="k2">(</span><span class="k2">)</span>
+      <span class="k2">{</span>
+	 counter<span class="k3">+</span><span class="k3">+</span><span class="k2">;</span>
+      <span class="k2">}</span><br /><br />
+
+      <a href="../../index.html" target="_blank"><span class="a">END_OF_FUNCTION</span></a><span class="k2">(</span>my_timer_handler<span class="k2">)</span></pre>
+   and in your initialisation code you should lock the memory:
+<pre class="code">      <a href="../../index.html" target="_blank"><span class="a">LOCK_VARIABLE</span></a><span class="k2">(</span>counter<span class="k2">)</span><span class="k2">;</span>
+      <a href="../../index.html" target="_blank"><span class="a">LOCK_FUNCTION</span></a><span class="k2">(</span>my_timer_handler<span class="k2">)</span><span class="k2">;</span></pre>
+   Obviously this can get awkward if you use complicated data structures and
+   call other functions from within your handler, so you should try to keep
+   your interrupt routines as simple as possible.
+
+</div>
+
+<div class="retval">
+Returns zero on success, or a negative number if there is no room to add
+   a new user timer.
+
+</div>
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">install_timer</a></li>
+	<li><a href="../../index.html">remove_int</a></li>
+	<li><a href="../../index.html">install_int</a></li>
+	<li><a href="../../index.html">install_param_int_ex</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../index.html">excamera</a></li>
+	<li><a href="../../index.html">exsprite</a></li>
+	<li><a href="../../index.html">extimer</a></li>
+	<li><a href="../../index.html">exunicod</a></li>
+	<li><a href="../../index.html">exupdate</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591879">
+		<a href="https://www.allegro.cc/forums/thread/591879">Game completely screwed up.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/678937" style="color: black;">1</a> </span>
+	</li><li id="t-591874">
+		<a href="https://www.allegro.cc/forums/thread/591874">Keyboard not responding to Input</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/678913" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/678942" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/678948" style="color: black;">3</a> </span>
+	</li><li id="t-591840">
+		<a href="https://www.allegro.cc/forums/thread/591840">Animation works right in two arrays, but not this one?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/678462" style="color: black;">1</a> </span>
+	</li><li id="t-591808">
+		<a href="https://www.allegro.cc/forums/thread/591808">60Hz with Allegro?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/678015" style="color: black;">1</a> </span>
+	</li><li id="t-591672">
+		<a href="https://www.allegro.cc/forums/thread/591672">Can&#39;t get my buffer to work</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/677063" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/677242" style="color: black;">2</a> </span>
+	</li><li id="t-591587">
+		<a href="https://www.allegro.cc/forums/thread/591587">circle - circle collision</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/675258" style="color: black;">1</a> </span>
+	</li><li id="t-591494">
+		<a href="https://www.allegro.cc/forums/thread/591494">Using timers</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/673828" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/673889" style="color: black;">2</a> </span>
+	</li><li id="t-591493">
+		<a href="https://www.allegro.cc/forums/thread/591493">Transition effects</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/673904" style="color: black;">1</a> </span>
+	</li><li id="t-591490">
+		<a href="https://www.allegro.cc/forums/thread/591490">Crashes because of class</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/673795" style="color: black;">1</a> </span>
+	</li><li id="t-591478">
+		<a href="https://www.allegro.cc/forums/thread/591478">Serious problem</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/673537" style="color: black;">1</a> </span>
+	</li><li id="t-591310">
+		<a href="https://www.allegro.cc/forums/thread/591310">Different Speeds</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/670707" style="color: black;">1</a> </span>
+	</li><li id="t-591130">
+		<a href="https://www.allegro.cc/forums/thread/591130">Very slow while drawing to screen</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/667615" style="color: black;">1</a> </span>
+	</li><li id="t-591065">
+		<a href="https://www.allegro.cc/forums/thread/591065">Problem creating a bitmap, and a class</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/666582" style="color: black;">1</a> </span>
+	</li><li id="t-590954">
+		<a href="https://www.allegro.cc/forums/thread/590954">Hanging application</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/665196" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/665362" style="color: black;">2</a> </span>
+	</li><li id="t-590932">
+		<a href="https://www.allegro.cc/forums/thread/590932">The age-old 100% CPU usage problem - but still no solution</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/664631" style="color: black;">1</a> </span>
+	</li><li id="t-590785">
+		<a href="https://www.allegro.cc/forums/thread/590785">Performance issues (Windows)</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/661784" style="color: black;">1</a> </span>
+	</li><li id="t-590753">
+		<a href="https://www.allegro.cc/forums/thread/590753">Is drawing to the buffer still part of game logic?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/661161" style="color: black;">1</a> </span>
+	</li><li id="t-590712">
+		<a href="https://www.allegro.cc/forums/thread/590712">Crazy fast...why?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/660502" style="color: black;">1</a> </span>
+	</li><li id="t-590643">
+		<a href="https://www.allegro.cc/forums/thread/590643">I can only get like 85 FPS</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/659558" style="color: black;">1</a> </span>
+	</li><li id="t-590641">
+		<a href="https://www.allegro.cc/forums/thread/590641">Proper FPS counter increment</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/659498" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/659709" style="color: black;">2</a> </span>
+	</li><li id="t-590548">
+		<a href="https://www.allegro.cc/forums/thread/590548">[MinorHack] The saga continues</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/658754" style="color: black;">1</a> </span>
+	</li><li id="t-590546">
+		<a href="https://www.allegro.cc/forums/thread/590546">allegro performance problems</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/659861" style="color: black;">1</a> </span>
+	</li><li id="t-590529">
+		<a href="https://www.allegro.cc/forums/thread/590529">My stupid compiler error</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/657773" style="color: black;">1</a> </span>
+	</li><li id="t-590331">
+		<a href="https://www.allegro.cc/forums/thread/590331">Matching bullet start x,y with point on sprite that gets rotated</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/654295" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/654474" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/654553" style="color: black;">3</a> </span>
+	</li><li id="t-590292">
+		<a href="https://www.allegro.cc/forums/thread/590292">What&#39;s going on here ?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/653779" style="color: black;">1</a> </span>
+	</li><li id="t-590267">
+		<a href="https://www.allegro.cc/forums/thread/590267">Timer</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/653478" style="color: black;">1</a> </span>
+	</li><li id="t-590186">
+		<a href="https://www.allegro.cc/forums/thread/590186">Vector questions</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/652435" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/652539" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/652762" style="color: black;">3</a> </span>
+	</li><li id="t-590176">
+		<a href="https://www.allegro.cc/forums/thread/590176">load_bitmap trouble</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/652262" style="color: black;">1</a> </span>
+	</li><li id="t-590090">
+		<a href="https://www.allegro.cc/forums/thread/590090">[MinorHack] This Saturday?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/651259" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/651264" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/651282" style="color: black;">3</a> <a href="https://www.allegro.cc/forums/post/651306" style="color: black;">4</a> </span>
+	</li><li id="t-590045">
+		<a href="https://www.allegro.cc/forums/thread/590045">Example I don&#39;t get</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/649715" style="color: black;">1</a> </span>
+	</li><li id="t-589993">
+		<a href="https://www.allegro.cc/forums/thread/589993">How to smooth graphics</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/648859" style="color: black;">1</a> </span>
+	</li><li id="t-589971">
+		<a href="https://www.allegro.cc/forums/thread/589971">Save: SAVE: I CAN&#39;T SAVE!</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/648537" style="color: black;">1</a> </span>
+	</li><li id="t-589969">
+		<a href="https://www.allegro.cc/forums/thread/589969">Game Engine that conserves CPU</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/648521" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/648663" style="color: black;">2</a> </span>
+	</li><li id="t-589943">
+		<a href="https://www.allegro.cc/forums/thread/589943">network gaming</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/648339" style="color: black;">1</a> </span>
+	</li><li id="t-589766">
+		<a href="https://www.allegro.cc/forums/thread/589766">Help with keyboard and graphics.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/645550" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/645619" style="color: black;">2</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/FruitLand">Fruit Land</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/ImpossibleCastle">Impossible Castle</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/WormHole">WormHole</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/BamboozleMachinae">Bamboozle Machinae</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/BeatlesFreaks">Beatles Freaks</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/CariesField">Caries Field</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/carterrain">carterrain</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/Duel">Duel</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/Escultor">Escultor</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/FantasticVacation">Fantastic Vacation</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,398</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.049225</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/timer-routines/install_int_ex by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:16:13 GMT -->
+</html>

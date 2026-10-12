@@ -1,0 +1,4 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+www.allegro.cc	TRUE	/	FALSE	1999999999	s	4576b01bb88bc4899a87cf3ae167df48
+

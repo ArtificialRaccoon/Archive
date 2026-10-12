@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/miscellaneous/abi-compatibility-information/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:02:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>ABI compatibility information</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">Miscellaneous</a></h2><ul>
+<li><a href="../reducing-your-executable-size/index.html" >Reducing your executable size</a></li><li><a href="../debugging/index.html" >Debugging</a></li><li><a href="../makefile-targets/index.html" >Makefile targets</a></li><li><a href="../available-allegro-examples/index.html" >Available Allegro examples</a></li><li><a href="../changes-since-previous-versions/index.html" >Changes since previous versions</a></li><li><a href="../contributors--the-hall-of-fame/index.html" >Contributors: The Hall of Fame</a></li><li><a href="../frequently-asked-questions-(faq)/index.html" >Frequently asked questions (FAQ)</a></li><li><a href="../common-mistakes/index.html" >Common mistakes</a></li><li><a href="../help--what-to-do-when-your-allegro-program-doesnt-work/index.html" >Help: what to do when your Allegro program doesn't work</a></li><li><a href="../api-compatibility-information/index.html" >API compatibility information</a></li><li><strong>ABI compatibility information</strong></li><li><a href="../the-allegro-hackers-guide/index.html" >The Allegro hacker's guide</a></li><li><a href="../allegro-const-correctness/index.html" >Allegro `const'-correctness</a></li><li><a href="../packfile-format-information/index.html" >Packfile format information</a></li><li><a href="../datafile-format-information/index.html" >Datafile format information</a></li><li><a href="../license-and-disclaimer/index.html" >License and Disclaimer</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>ABI compatibility information</h1>
+
+<h2>Introduction</h2>
+Once Allegro 4.2 is released, we plan to maintain backward compatibility
+   at the Application Binary Interface level for the subsequent releases of
+   the 4.2.x series. For example, that means you will be able to use an
+   executable compiled using version 4.2.0 with version 4.2.5 or 4.2.41 of
+   the dynamically linked library.<br /><br />
+
+   However, there are some guidelines (rules) you should (must) follow,
+   otherwise things will not work, and you will get angry emails from
+   users and from us.<br /><br />
+
+   Note: ABI compatibility will only be _actively_ maintained for:
+<ul>
+<li>Windows on x86
+<li>Linux on x86
+<li>Linux on x86-64
+<li>MacOS X on PowerPC
+</ul><br /><br />
+
+   We will not be maintaining "forwards compatibility", meaning that
+   programs compiled with a newer release of Allegro may not necessarily
+   run on a target system which has an older release of Allegro installed.
+   You would have to upgrade the Allegro DLL on the target system.  While
+   we will try to minimise these kinds of forced upgrades, it should give
+   us more flexibility within the stable series.
+
+<h2>Windows notes</h2>
+If you don't need a modified version of Allegro then just link your
+   program against an officially blessed non-WIP, non-CVS, non-dodgy
+   version. Don't disable any features (eg. colour depths, drivers) in
+   the DLL.<br /><br />
+
+   If you require a modified version of Allegro, then please either
+   statically link, or pick a non-standard name for the Allegro DLL.
+   For example, don't distribute a modified version of Allegro under a
+   name such as all42.dll or alleg42.dll. Instead, call it something
+   like alcustom.dll. Even better, statically link.<br /><br />
+
+   For the people who use vanilla Allegro, we will provide a set of
+   "reference" DLLs. If your binary works with those then everything is
+   fine. If you want to distribute Allegro DLLs with your program
+   (usually a good idea), we recommend you distribute our DLLs instead
+   of ones you compiled yourself.
+
+<h2>Linux on x86 notes</h2>
+To make sure an Allegro binary compiled on your machine will work on
+   another machine, do not disable any "features" with `configure'. Your
+   copy of Allegro must have assembly routines, threads, modules, all
+   colour depths and X11 support enabled, amongst other things. If in
+   doubt, leave it at the default setting.<br /><br />
+
+   When you are ready to distribute your binary, run "ldd &lt;mybinary&gt;".
+   It should say something like:<br /><br />
+
+      liballeg.so.4.2 =&gt; /usr/local/lib/liballeg.so.4.2 (0xdeadbeaf)<br /><br />
+
+   It should NOT say:<br /><br />
+
+      liballeg.so.4.2.0 =&gt; /usr/local/lib/liballeg.so.4.2.0 (0xdeadbeaf)<br /><br />
+
+   If you see the latter, that would mean users with later versions of
+   Allegro would not be able to run your binary.<br /><br />
+
+   See also the Windows section if you need to use a modified version of
+   Allegro.<br /><br />
+
+   For people packaging Allegro for redistribution: Drivers that are
+   built as dynamically loaded modules may be disabled or left out, but
+   all others should be left in. Examples of drivers that are _not_
+   dynamically loaded include: OSS digital sound and OSS MIDI. In
+   short, if a program built against a copy of default-options Allegro
+   will work with your final library it should be fine.
+
+<h2>Linux on x86-64 notes</h2>
+The situation is basically the same as for Linux on x86, however
+   your copy of Allegro must NOT have assembly routines enabled (it
+   wouldn't work anyhow).
+
+<h2>MacOS X notes</h2>
+On OSX there are two 'styles' of linking - Unix style and Mac style.
+   For the Unix style linking, you would use `allegro-config --libs`
+   on the link line. For versioning, follow the advice given in the
+   'Linux on x86' section above, using the command otool -L instead
+   of ldd.<br /><br />
+
+   For example, otool -L &lt;mybinary&gt; should give<br /><br />
+
+      liballeg-4.2.dylib (compatibility version 4.2.0, current version 4.2.0)<br /><br />
+
+   For the Mac style, use `allegro-config --frameworks` on the link
+   line, or add Allegro.framework to your project if you are using
+   XCode. In this case, the versioning is done inside the framework
+   itself.<br /><br />
+
+   Apple recommends that an application should be entirely self-
+   contained. To achieve this in Allegro, static-link the executable
+   and use fixbundle to bind all its resources together. In this
+   way, you will not need to worry about incompatible versions of
+   the library. This is useful if you are distributing an application.<br /><br />
+
+   There is a known compatibility problem when using gcc 4 on MacOS X 10.4
+   that prevents binaries from working on older versions of MacOS X. While it
+   is anticipated that a future update from Apple will fix this problem, you
+   can use gcc 3 to work around it.
+
+<h2>Final notes</h2>
+Providing source is still better than not providing source. Binaries
+   are good, however, if your code sucks and only you (with the help of
+   witchcraft) can compile it.<br /><br />
+
+   If you provided binaries in the past using WIP versions of Allegro,
+   we politely request that you recompile your program using a stable
+   version of Allegro.
+
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,198</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.008338</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/miscellaneous/abi-compatibility-information/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:02:26 GMT -->
+</html>

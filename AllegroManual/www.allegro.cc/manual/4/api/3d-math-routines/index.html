@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/3d-math-routines/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:54:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>3D math routines</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">API</a></h2><ul>
+<li><a href="../using-allegro/index.html" >Using Allegro</a></li><li><a href="../structures-and-types-defined-by-allegro/index.html" >Structures and types defined by Allegro</a></li><li><a href="../unicode-routines/index.html" >Unicode routines</a></li><li><a href="../configuration-routines/index.html" >Configuration routines</a></li><li><a href="../mouse-routines/index.html" >Mouse routines</a></li><li><a href="../timer-routines/index.html" >Timer routines</a></li><li><a href="../keyboard-routines/index.html" >Keyboard routines</a></li><li><a href="../joystick-routines/index.html" >Joystick routines</a></li><li><a href="../graphics-modes/index.html" >Graphics modes</a></li><li><a href="../bitmap-objects/index.html" >Bitmap objects</a></li><li><a href="../loading-image-files/index.html" >Loading image files</a></li><li><a href="../palette-routines/index.html" >Palette routines</a></li><li><a href="../truecolor-pixel-formats/index.html" >Truecolor pixel formats</a></li><li><a href="../drawing-primitives/index.html" >Drawing primitives</a></li><li><a href="../blitting-and-sprites/index.html" >Blitting and sprites</a></li><li><a href="../rle-sprites/index.html" >RLE sprites</a></li><li><a href="../compiled-sprites/index.html" >Compiled sprites</a></li><li><a href="../fonts/index.html" >Fonts</a></li><li><a href="../text-output/index.html" >Text output</a></li><li><a href="../polygon-rendering/index.html" >Polygon rendering</a></li><li><a href="../transparency-and-patterned-drawing/index.html" >Transparency and patterned drawing</a></li><li><a href="../converting-between-color-formats/index.html" >Converting between color formats</a></li><li><a href="../direct-access-to-video-memory/index.html" >Direct access to video memory</a></li><li><a href="../flic-routines/index.html" >FLIC routines</a></li><li><a href="../sound-init-routines/index.html" >Sound init routines</a></li><li><a href="../mixer-routines/index.html" >Mixer routines</a></li><li><a href="../digital-sample-routines/index.html" >Digital sample routines</a></li><li><a href="../music-routines-(midi)/index.html" >Music routines (MIDI)</a></li><li><a href="../audio-stream-routines/index.html" >Audio stream routines</a></li><li><a href="../recording-routines/index.html" >Recording routines</a></li><li><a href="../file-and-compression-routines/index.html" >File and compression routines</a></li><li><a href="../datafile-routines/index.html" >Datafile routines</a></li><li><a href="../fixed-point-math-routines/index.html" >Fixed point math routines</a></li><li><strong>3D math routines</strong></li><li><a href="../quaternion-math-routines/index.html" >Quaternion math routines</a></li><li><a href="../gui-routines/index.html" >GUI routines</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>3D math routines</h1>
+
+Allegro contains some 3d helper functions for manipulating vectors,
+constructing and using transformation matrices, and doing perspective
+projections from 3d space onto the screen. It is not, and never will be, a
+fully fledged 3d library (the goal is to supply generic support routines,
+not shrink-wrapped graphics code :-) but these functions may be useful for
+developing your own 3d code.<br /><br />
+
+Allegro uses a right-handed coordinate system, i.e. if you point the thumb
+of your right hand along the x axis, and the index finger along the y axis,
+your middle finger points in the direction of the z axis.<br /><br />
+
+Allegro's world coordinate system typically has the positive x axis right,
+the positive y axis up, and the positive z axis out of the screen.  What
+all this means is this: Assume, the viewer is located at the origin (0/0/0)
+in world space, looks along the negative z axis (0/0/-1), and is oriented
+so up is along the positive y axis (0/1/0). Then something located at
+(100/200/-300) will be 100 to the right, 200 above, and 300 in front of the
+viewer. Just like in OpenGL. (Of course, both OpenGL and Allegro allow to
+use a different system.) Here's a short piece of code demonstrating the
+transformation pipeline of a point from world space to the screen.<br /><br />
+
+<pre class="code">   <span class="c">/* First, set up the projection viewport. */</span>
+   <a href="../../index.html" target="_blank"><span class="a">set_projection_viewport</span></a> <span class="k2">(</span><span class="n">0</span>, <span class="n">0</span>, SCREEN_W, SCREEN_H<span class="k2">)</span><span class="k2">;</span><br /><br />
+
+   <span class="c">/* Next, get a camera matrix, depending on the
+    * current viewer position and orientation.
+    */</span>
+   <a href="../../index.html" target="_blank"><span class="a">get_camera_matrix_f</span></a> <span class="k2">(</span><span class="k3">&amp;</span>m,
+      <span class="n">0</span>, <span class="n">0</span>, <span class="n">0</span>,  <span class="c">/* Viewer position, in this case, 0/0/0. */</span>
+      <span class="n">0</span>, <span class="n">0</span>, <span class="k3">-</span><span class="n">1</span>, <span class="c">/* Viewer direction, in this case along negative z. */</span>
+      <span class="n">0</span>, <span class="n">1</span>, <span class="n">0</span>,  <span class="c">/* Up vector, in this case positive y. */</span>
+      <span class="n">32</span>,       <span class="c">/* The FOV, here 45°. */</span>
+      <span class="k2">(</span><span class="k1">float</span><span class="k2">)</span>SCREEN_W <span class="k3">/</span> <span class="k2">(</span><span class="k1">float</span><span class="k2">)</span>SCREEN_H<span class="k2">)</span><span class="k2">)</span><span class="k2">;</span> <span class="c">/* Aspect ratio. */</span><br /><br />
+
+   <span class="c">/* Applying the matrix transforms the point 100/200/-300
+    * from world space into camera space. The transformation
+    * moves and rotates the point so it is relative to the
+    * camera, scales it according to the FOV and aspect
+    * parameters, and also flips up and front direction -
+    * ready to project the point to the viewport.
+    */</span>
+   <a href="../../index.html" target="_blank"><span class="a">apply_matrix_f</span></a> <span class="k2">(</span><span class="k3">&amp;</span>m, <span class="n">100</span>, <span class="n">200</span>, <span class="k3">-</span><span class="n">300</span>, <span class="k3">&amp;</span>x, <span class="k3">&amp;</span>y, <span class="k3">&amp;</span>z<span class="k2">)</span><span class="k2">;</span><br /><br />
+
+   <span class="c">/* Finally, the point is projected from
+    * camera space to the screen.
+    */</span>
+   <a href="../../index.html" target="_blank"><span class="a">persp_project_f</span></a> <span class="k2">(</span>cx, cy, cz, <span class="k3">&amp;</span>sx, <span class="k3">&amp;</span>sy<span class="k2">)</span><span class="k2">;</span></pre><br /><br />
+
+For more details, look at the function descriptions of
+set_projection_viewport(), get_camera_matrix(), and persp_project(), as well
+as the relevant example programs.<br /><br />
+
+All the 3d math functions are available in two versions: one which uses
+fixed point arithmetic, and another which uses floating point. The syntax
+for these is identical, but the floating point functions and structures are
+postfixed with '_f', eg. the fixed point function cross_product() has a
+floating point equivalent cross_product_f(). If you are programming in C++,
+Allegro also overloads these functions for use with the 'fix' class.<br /><br />
+
+3d transformations are accomplished by the use of a modelling matrix. This
+is a 4x4 array of numbers that can be multiplied with a 3d point to produce
+a different 3d point. By putting the right values into the matrix, it can be
+made to do various operations like translation, rotation, and scaling. The
+clever bit is that you can multiply two matrices together to produce a third
+matrix, and this will have the same effect on points as applying the
+original two matrices one after the other. For example, if you have one
+matrix that rotates a point and another that shifts it sideways, you can
+combine them to produce a matrix that will do the rotation and the shift in
+a single step. You can build up extremely complex transformations in this
+way, while only ever having to multiply each point by a single matrix.<br /><br />
+
+Allegro actually cheats in the way it implements the matrix structure.
+Rotation and scaling of a 3d point can be done with a simple 3x3 matrix, but
+in order to translate it and project it onto the screen, the matrix must be
+extended to 4x4, and the point extended into 4d space by the addition of an
+extra coordinate, w=1. This is a bad thing in terms of efficiency, but
+fortunately an optimisation is possible. Given the 4x4 matrix:
+<pre class="text">
+   ( a, b, c, d )
+   ( e, f, g, h )
+   ( i, j, k, l )
+   ( m, n, o, p )
+</pre>
+a pattern can be observed in which parts of it do what. The top left 3x3
+grid implements rotation and scaling. The three values in the top right
+column (d, h, and l) implement translation, and as long as the matrix is
+only used for affine transformations, m, n and o will always be zero and p
+will always be 1. If you don't know what affine means, read Foley &amp; Van
+Damme: basically it covers scaling, translation, and rotation, but not
+projection. Since Allegro uses a separate function for projection, the
+matrix functions only need to support affine transformations, which means
+that there is no need to store the bottom row of the matrix. Allegro
+implicitly assumes that it contains (0,0,0,1), and optimises the matrix
+manipulation functions accordingly. Read chapter "Structures and types
+defined by Allegro" for an internal view of the MATRIX/_f structures.
+
+<ul>
+	<li><a href="identity_matrix.html">identity_matrix</a></li>
+	<li><a href="identity_matrix_f.html">identity_matrix_f</a> - Global containing the identity matrix.</li>
+	<li><a href="get_translation_matrix.html">get_translation_matrix</a></li>
+	<li><a href="get_translation_matrix_f.html">get_translation_matrix_f</a> - Constructs a translation matrix.</li>
+	<li><a href="get_scaling_matrix.html">get_scaling_matrix</a></li>
+	<li><a href="get_scaling_matrix_f.html">get_scaling_matrix_f</a> - Constructs a scaling matrix.</li>
+	<li><a href="get_x_rotate_matrix.html">get_x_rotate_matrix</a></li>
+	<li><a href="get_x_rotate_matrix_f.html">get_x_rotate_matrix_f</a> - Construct X axis rotation matrices.</li>
+	<li><a href="get_y_rotate_matrix.html">get_y_rotate_matrix</a></li>
+	<li><a href="get_y_rotate_matrix_f.html">get_y_rotate_matrix_f</a> - Construct Y axis rotation matrices.</li>
+	<li><a href="get_z_rotate_matrix.html">get_z_rotate_matrix</a></li>
+	<li><a href="get_z_rotate_matrix_f.html">get_z_rotate_matrix_f</a> - Construct Z axis rotation matrices.</li>
+	<li><a href="get_rotation_matrix.html">get_rotation_matrix</a></li>
+	<li><a href="get_rotation_matrix_f.html">get_rotation_matrix_f</a> - Constructs X, Y, Z rotation matrices.</li>
+	<li><a href="get_align_matrix.html">get_align_matrix</a> - Rotates a matrix to align it along specified coordinate vectors.</li>
+	<li><a href="get_align_matrix_f.html">get_align_matrix_f</a> - Floating point version of get_align_matrix().</li>
+	<li><a href="get_vector_rotation_matrix.html">get_vector_rotation_matrix</a></li>
+	<li><a href="get_vector_rotation_matrix_f.html">get_vector_rotation_matrix_f</a> - Constructs X, Y, Z rotation matrices with an angle.</li>
+	<li><a href="get_transformation_matrix.html">get_transformation_matrix</a> - Constructs X, Y, Z rotation matrices with an angle and scaling.</li>
+	<li><a href="get_transformation_matrix_f.html">get_transformation_matrix_f</a> - Floating point version of get_transformation_matrix().</li>
+	<li><a href="get_camera_matrix.html">get_camera_matrix</a> - Constructs a camera matrix for perspective projection.</li>
+	<li><a href="get_camera_matrix_f.html">get_camera_matrix_f</a> - Floating point version of get_camera_matrix().</li>
+	<li><a href="qtranslate_matrix.html">qtranslate_matrix</a></li>
+	<li><a href="qtranslate_matrix_f.html">qtranslate_matrix_f</a> - Optimised routine for translating an already generated matrix.</li>
+	<li><a href="qscale_matrix.html">qscale_matrix</a></li>
+	<li><a href="qscale_matrix_f.html">qscale_matrix_f</a> - Optimised routine for scaling an already generated matrix.</li>
+	<li><a href="matrix_mul.html">matrix_mul</a></li>
+	<li><a href="matrix_mul_f.html">matrix_mul_f</a> - Multiplies two matrices.</li>
+	<li><a href="vector_length.html">vector_length</a></li>
+	<li><a href="vector_length_f.html">vector_length_f</a> - Calculates the length of a vector.</li>
+	<li><a href="normalize_vector.html">normalize_vector</a></li>
+	<li><a href="normalize_vector_f.html">normalize_vector_f</a> - Converts the vector to a unit vector.</li>
+	<li><a href="dot_product.html">dot_product</a></li>
+	<li><a href="dot_product_f.html">dot_product_f</a> - Calculates the dot product.</li>
+	<li><a href="cross_product.html">cross_product</a></li>
+	<li><a href="cross_product_f.html">cross_product_f</a> - Calculates the cross product.</li>
+	<li><a href="polygon_z_normal.html">polygon_z_normal</a></li>
+	<li><a href="polygon_z_normal_f.html">polygon_z_normal_f</a> - Finds the Z component of the normal vector to three vertices.</li>
+	<li><a href="apply_matrix.html">apply_matrix</a></li>
+	<li><a href="apply_matrix_f.html">apply_matrix_f</a> - Multiplies a point by a transformation matrix.</li>
+	<li><a href="set_projection_viewport.html">set_projection_viewport</a> - Sets the viewport used to scale the output of persp_project().</li>
+	<li><a href="persp_project.html">persp_project</a></li>
+	<li><a href="persp_project_f.html">persp_project_f</a> - Projects a 3d point into 2d screen space.</li>
+</ul>
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,179</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.694314</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/3d-math-routines/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:56:59 GMT -->
+</html>

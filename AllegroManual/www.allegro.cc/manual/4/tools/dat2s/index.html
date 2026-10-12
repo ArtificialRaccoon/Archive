@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/tools/dat2s/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:02:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>dat2s - Compile datafiles into assembler code</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">Tools</a></h2><ul>
+<li><a href="../makedoc/index.html" >makedoc - Generate documentation in various formats</a></li><li><a href="../grabber/index.html" >grabber - Create datafiles</a></li><li><a href="../dat/index.html" >dat - Manipulate datafiles from the commandline</a></li><li><strong>dat2s - Compile datafiles into assembler code</strong></li><li><a href="../dat2c/index.html" >dat2c - Compile datafiles into C code</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>dat2s - Compile datafiles into assembler code</h1>
+
+<h2>Compiling Datafiles to Assembler</h2>
+The utility dat2s can be used to convert a datafile into an asm (.s) source
+file, which can then be assembled and linked into your program. This avoids
+the need for a separate datafile to accompany your program, and means the
+data will automatically be loaded into memory at startup. You should be
+aware, though, that large datafiles can take a long time to compile, and
+that it is not possible to compress data which is compiled in this way.<br /><br />
+
+The simplest way to invoke dat2s is with the command:<br /><br />
+
+   dat2s filename.dat -o output.s<br /><br />
+
+The resulting asm file can then be assembled with the command:<br /><br />
+
+   gcc -c output.s<br /><br />
+
+This will produce an object module called output.o, which can be linked into
+your program, for example:<br /><br />
+
+   gcc myprog.c -o myprog.exe output.o -lalleg<br /><br />
+
+Your program can then access the contents of the datafile as simple global
+variables. Definitions for these variables can be obtained by telling dat2s
+to output a header file as well as the asm file, with the '-h' option. You
+can also use '-p' to set a prefix string for all the object names. For
+example, when applied to the datafile:<br /><br />
+
+   "BMP"  - A_BITMAP
+   "BMP"  - ANOTHER_BITMAP
+   "SAMP" - EXPLODE
+   "PAL"  - SOME_COLORS
+   "FONT" - THE_FONT<br /><br />
+
+the command:<br /><br />
+
+   dat2s filename.dat -o output.s -h output.h -p item<br /><br />
+
+produces the header:<br /><br />
+
+   extern BITMAP item_a_bitmap;
+   extern BITMAP item_another_bitmap;
+   extern SAMPLE item_explode;
+   extern PALETTE item_some_colors;
+   extern FONT item_the_font;
+   extern DATAFILE item_data[];<br /><br />
+
+You can refer to these objects directly, for example:<br /><br />
+
+   blit(&amp;item_a_bitmap, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);<br /><br />
+
+Alternatively, you can use the datafile array for compatibility with code
+that was originally written for separately loaded datafiles, with the
+standard syntax item_data[index].dat.<br /><br />
+
+If your datafile contains truecolor images, be sure to call fixup_datafile()
+after you have set the graphics mode. You must also call fixup_datafile()
+if your platform does not support constructors (currently any non GCC-based
+platform).<br /><br />
+
+Note that compiled sprites are not supported and will cause dat2s to
+abort whenever it encounters one of them. However you can use the '-S'
+option to instruct dat2s to convert them to regular BITMAP objects.<br /><br />
+
+Note that datafiles compiled by dat2s must not be appended to shared objects,
+only to standalone executables. Use dat2c for this purpose.
+
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,210</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.007209</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/tools/dat2s/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:02:26 GMT -->
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/ListItemFile.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC ListItemFile</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">ListItemFile</A></H2></H2><BLOCKQUOTE> Internal helper widget for the FileSelector.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>ListItemFile
+- <A HREF="ListItemString.html">ListItemString</A>
+- <A HREF="ListItem.html">ListItem</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>struct  al_ffblk <B><A HREF="#DOC.50.3">*file</A></B>
+<DD><I> The underlying al_ffblk struct describing the file (name, attributes)</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.50.1">ListItemFile</A></B>(const struct al_ffblk* info)
+<DD><I> Constructor for making a list item from an allegro al_ffblk struct</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.50.2">Draw</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>, <!1><A HREF="Bitmap.html">Bitmap</A> &amp;skinBitmap, int state)
+<DD><I> Draws the list item with an appropriate icon</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+Internal helper widget for the FileSelector.
+
+<P>Draws a fileselector's file list entry with an appropriate icon indicating
+wether a file is actually a file or a directory.
+
+<P></BLOCKQUOTE>
+<DL>
+
+<A NAME="ListItemFile"></A>
+<A NAME="DOC.50.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> ListItemFile(const struct al_ffblk* info)</B></TT>
+<DD>
+Constructor for making a list item from an allegro al_ffblk struct
+<DL><DT><DD></DL><P>
+<A NAME="Draw"></A>
+<A NAME="DOC.50.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Draw(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>, <!1><A HREF="Bitmap.html">Bitmap</A> &amp;skinBitmap, int state)</B></TT>
+<DD>
+Draws the list item with an appropriate icon
+<DL><DT><DD></DL><P>
+<A NAME="*file"></A>
+<A NAME="DOC.50.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>struct  al_ffblk *file</B></TT>
+<DD>
+The underlying al_ffblk struct describing the file (name, attributes)
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DT><B>See Also:</B><DD><!1><A HREF="FileSelect.html">FileSelect</A><BR><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/ListItemFile.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+</html>

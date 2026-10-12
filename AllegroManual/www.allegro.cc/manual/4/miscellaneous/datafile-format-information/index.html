@@ -1,0 +1,333 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/miscellaneous/datafile-format-information/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:02:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Datafile format information</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">Miscellaneous</a></h2><ul>
+<li><a href="../reducing-your-executable-size/index.html" >Reducing your executable size</a></li><li><a href="../debugging/index.html" >Debugging</a></li><li><a href="../makefile-targets/index.html" >Makefile targets</a></li><li><a href="../available-allegro-examples/index.html" >Available Allegro examples</a></li><li><a href="../changes-since-previous-versions/index.html" >Changes since previous versions</a></li><li><a href="../contributors--the-hall-of-fame/index.html" >Contributors: The Hall of Fame</a></li><li><a href="../frequently-asked-questions-(faq)/index.html" >Frequently asked questions (FAQ)</a></li><li><a href="../common-mistakes/index.html" >Common mistakes</a></li><li><a href="../help--what-to-do-when-your-allegro-program-doesnt-work/index.html" >Help: what to do when your Allegro program doesn't work</a></li><li><a href="../api-compatibility-information/index.html" >API compatibility information</a></li><li><a href="../abi-compatibility-information/index.html" >ABI compatibility information</a></li><li><a href="../the-allegro-hackers-guide/index.html" >The Allegro hacker's guide</a></li><li><a href="../allegro-const-correctness/index.html" >Allegro `const'-correctness</a></li><li><a href="../packfile-format-information/index.html" >Packfile format information</a></li><li><strong>Datafile format information</strong></li><li><a href="../license-and-disclaimer/index.html" >License and Disclaimer</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>Datafile format information</h1>
+
+<h2>Contents</h2>
+<h2>Introduction</h2>
+An Allegro datafile is a bit like a zip file in that it consists of lots of
+different pieces of data stuck together one after another, and optionally
+compressed. This means that your game doesn't have to clutter up the disk
+with hundreds of tiny files, and it makes programming easier because you can
+load everything with a single function call at program startup. Another
+benefit is that the LZSS file compression algorithm works much better with
+one large file than with many small ones.<br /><br />
+
+Datafiles have the extension .dat, and can be created and edited with the
+graphical grabber program or the command line dat utility. They can be
+stored as separate files and loaded into memory by the load_datafile()
+function, or you can use dat2s to convert them into asm code which can then
+be linked directly into your executable.
+
+<h2>Objects</h2>
+Each datafile contains a number of objects, of varying types. Object types
+are represented by 32 bit integer ID's, which are interpreted as four
+character ASCII strings. These ID's can be constructed with the DAT_ID()
+macro, for example a DATA object is represented by DAT_ID('D','A','T','A'),
+or you can use the predefined DAT_* constants for the standard data types:<br /><br />
+
+<ul><li>
+DAT_FILE - "FILE"<br>
+   A datafile, which contains a list of other objects. Datafile objects
+   can be nested inside other datafiles, allowing you to create
+   hierarchical structures of any depth.<br /><br />
+
+<li>DAT_DATA - "DATA"<br>
+   A block of binary data. Allegro treats all unknown types as binary
+   data objects, so you don't need to use this ID: you can create custom
+   object formats using whatever ID's you like.<br /><br />
+
+<li>DAT_FONT - "FONT"<br>
+   A font.<br /><br />
+
+<li>DAT_SAMPLE - "SAMP"<br>
+   A digital sound sample.<br /><br />
+
+<li>DAT_MIDI - "MIDI"<br>
+   A MIDI file.<br /><br />
+
+<li>DAT_PATCH - "PAT "<br>
+   A Gravis patch (MIDI instrument).<br /><br />
+
+<li>DAT_FLI - "FLIC"<br>
+   An FLI or FLC animation.<br /><br />
+
+<li>DAT_BITMAP - "BMP "<br>
+   A bitmap.<br /><br />
+
+<li>DAT_RLE_SPRITE - "RLE "<br>
+   A run length encoded sprite.<br /><br />
+
+<li>DAT_C_SPRITE - "CMP "<br>
+   A compiled sprite.<br /><br />
+
+<li>DAT_XC_SPRITE - "XCMP"<br>
+   A mode-X compiled sprite.<br /><br />
+
+<li>DAT_PALETTE - "PAL "<br>
+   A 256 color palette.<br /><br />
+
+<li>DAT_PROPERTY - "prop"<br>
+   An object property (see below). You will never directly encounter this
+   object type, but you should be aware that it is treated specially by
+   the datafile code.<br /><br />
+
+<li>DAT_INFO - "info"<br>
+   The grabber utility uses this object to store information about the
+   datafile. Like property objects, you ought never to encounter it, but
+   you should avoid using the ID for any custom object formats you create.<br /><br />
+
+<li>DAT_END - -1<br>
+   Special marker used to indicate the end of a datafile.
+</ul>
+
+<h2>Properties</h2>
+Each object can have any number of properties attached to it. These are
+ASCII strings describing attributes of the object, such as its name and
+where it came from. Like the objects themselves, properties are identified
+by 32 bit integer ID's which are constructed from four character strings by
+the DAT_ID() macro. Allegro defines the standard properties:<br /><br />
+
+<ul><li>
+"NAME"<br>
+   The name of the object.
+<li>
+"ORIG"<br>
+   The object's origin, ie. the name of the file from which it was
+   grabbed.
+<li>
+"DATE"<br>
+   A timestamp, used by the update command in the grabber and dat
+   utilities. This is the modification time of the file from which the
+   object was grabbed, in "m-dd-yyyy, hh:mm" format.
+<li>
+"XPOS"<br>
+   For bitmap objects which were grabbed from part of a larger image, the
+   x position of the origin within the parent bitmap.
+<li>
+"YPOS"<br>
+   For bitmap objects which were grabbed from part of a larger image, the
+   y position of the origin within the parent bitmap.
+<li>
+"XSIZ"<br>
+   For bitmap objects which were grabbed from part of a larger image, the
+   width of the selected region.
+<li>
+"YSIZ"<br>
+   For bitmap objects which were grabbed from part of a larger image, the
+   height of the selected region.
+<li>
+"XCRP"<br>
+   For autocropped bitmap objects, the amount of cropping on the left of
+   the image.
+<li>
+"YCRP"<br>
+   For autocropped bitmap objects, the amount of cropping at the top of
+   the image.
+</ul><br /><br />
+
+You can use whatever other ID's you like to store custom information about
+your objects (the grabber internally use some other properties stored in a
+hidden DAT_INFO object, so they won't conflict with yours).
+
+<h2>File format specification</h2>
+In case anyone wants to do some serious hackery, and for my own future
+reference, here are some details of the innards of the datafile format.<br /><br />
+
+Note that this is different to the datafile format used by Allegro versions
+2.1 and earlier. Allegro can still load files from the old format, but it
+was much less flexible and didn't support nice things like object
+properties, so you should load any old files into the grabber and save them
+out again to convert to the new format.<br /><br />
+
+Nb. if all you want to do is write a utility that manipulates datafiles in
+some way, the easiest approach is probably to use the helper functions in
+datedit.c, which are currently shared by the dat, dat2s, and grabber
+programs. These functions handle loading, saving, inserting and deleting
+objects, and modifying the contents of datafiles in various ways, but life
+is too short for me to bother documenting them all here. Look at the
+source...<br /><br />
+
+Anyway. All numbers are stored in big-endian (Motorola) format. All text is
+stored in UTF-8 encoding. A datafile begins with one of the 32 bit values
+F_PACK_MAGIC or F_NOPACK_MAGIC, which are defined in allegro.h. If it starts
+with F_PACK_MAGIC the rest of the file is compressed with the LZSS
+algorithm, otherwise it is uncompressed. This magic number and optional
+decompression can be handled automatically by using the packfile functions
+and opening the file in F_READ_PACKED mode. After this comes the 32 bit
+value DAT_MAGIC, followed by the number of objects in the root datafile (not
+including objects nested inside child datafiles), followed by each of those
+objects in turn.<br /><br />
+
+Each object is in the format:<br /><br />
+
+<pre class="text">
+   OBJECT =
+      var    - &lt;property list&gt;      - any properties relating to the object
+      32 bit - &lt;type ID&gt;            - object type ID
+      32 bit - &lt;compressed size&gt;    - size of the raw data in the file
+      32 bit - &lt;uncompressed size&gt;  - see below
+      var    - &lt;data&gt;               - the contents of the object
+</pre><br /><br />
+
+The property list can contain zero or more object properties, in the form:<br /><br />
+
+<pre class="text">
+   PROPERTY =
+      32 bit - &lt;magic&gt;              - "prop"
+      32 bit - &lt;type ID&gt;            - property type ID
+      32 bit - &lt;size&gt;               - size of the property string, in bytes
+      var    - &lt;data&gt;               - property string, _not_ null-terminated
+</pre><br /><br />
+
+If the uncompressed size field in an object is positive, the contents of the
+object are not compressed (ie. the raw and compressed sizes should be the
+same). If the uncompressed size is negative, the object is LZSS compressed,
+and will expand into -&lt;uncompressed size&gt; bytes of data. The easiest way to
+handle this is to use the pack_fopen_chunk() function to read both the raw
+and compressed sizes and the contents of the object.<br /><br />
+
+The contents of an object vary depending on the type. Allegro defines the
+standard types:<br /><br />
+
+<pre class="text">
+   DAT_FILE =
+      32 bit - &lt;object count&gt;       - number of objects in the sub-file
+      var    - &lt;object list&gt;        - objects in the same format as above<br /><br />
+
+   DAT_FONT =
+      16 bit - &lt;font size&gt;          - 8, 16, -1, or 0<br /><br />
+
+      if font size == 8 {           - obsolete as of version 3.9.x!
+	 unsigned char[95][8]       - 8x8 bit-packed font data
+      }<br /><br />
+
+      if font size == 16 {          - obsolete as of version 3.9.x!
+	 unsigned char[95][16]      - 8x16 bit-packed font data
+      }<br /><br />
+
+      if font size == -1 {          - obsolete as of version 3.9.x!
+	 95x {
+	    16 bit - &lt;width&gt;        - character width
+	    16 bit - &lt;height&gt;       - character height
+	    var    - &lt;data&gt;         - character data (8 bit pixels)
+	 }
+      }<br /><br />
+
+      if font size == 0 {           - new format introduced in version 3.9.x
+	 16 bit - &lt;ranges&gt;          - number of character ranges
+	 for each range {
+	    8 bit  - &lt;mono&gt;         - 1 or 8 bit format flag
+	    32 bit - &lt;start&gt;        - first character in range
+	    32 bit - &lt;end&gt;          - last character in range (inclusive)
+	    for each character {
+	       16 bit - &lt;width&gt;     - character width
+	       16 bit - &lt;height&gt;    - character height
+	       var    - &lt;data&gt;      - character data
+	    }
+	 }
+      }<br /><br />
+
+   DAT_SAMP =
+      16 bit - &lt;bits&gt;               - sample bits (negative for stereo)
+      16 bit - &lt;freq&gt;               - sample frequency
+      32 bit - &lt;length&gt;             - sample length
+      var    - &lt;data&gt;               - sample data<br /><br />
+
+   DAT_MIDI =
+      16 bit - &lt;divisions&gt;          - MIDI beat divisions
+      32x {
+	 32 bit - &lt;length&gt;          - track length, in bytes
+	 var    - &lt;data&gt;            - MIDI track data
+      }<br /><br />
+
+   DAT_FLI =
+      var - &lt;data&gt;                  - FLI or FLC animation, standard format<br /><br />
+
+   DAT_BITMAP =
+   DAT_C_SPRITE =
+   DAT_XC_SPRITE =
+      16 bit - &lt;bits&gt;               - bitmap color depth
+      16 bit - &lt;width&gt;              - bitmap width
+      16 bit - &lt;height&gt;             - bitmap height
+      var    - &lt;data&gt;               - bitmap data<br /><br />
+
+      Valid color depths are 8, 15, 16, 24, 32, and -32. Both 15 and 16 bit
+      images are stored in 5.6.5 RGB format, and 24 and 32 bit images as
+      8.8.8 RGB. The special -32 flag indicates that the data is in true 32
+      bit RGBA format.<br /><br />
+
+   DAT_RLE_SPRITE =
+      16 bit - &lt;bits&gt;               - sprite color depth
+      16 bit - &lt;width&gt;              - sprite width
+      16 bit - &lt;height&gt;             - sprite height
+      32 bit - &lt;size&gt;               - data size, in bytes
+      var    - &lt;data&gt;               - RLE compressed sprite data<br /><br />
+
+      Valid color depths are 8, 15, 16, 24, 32. and -32. Both 15 and 16 bit
+      images are stored in 5.6.5 RGB format with 16 bit skip counts and EOL
+      markers, and 24 and 32 bit images as 8.8.8 RGB. with 32 bit skip
+      counts and markers. The special -32 flag indicates that the data is in
+      true 32 bit RGBA format.<br /><br />
+
+   DAT_PALETTE =
+      256 x {
+	 8 bit - &lt;red&gt;              - red component, 0-63
+	 8 bit - &lt;green&gt;            - green component, 0-63
+	 8 bit - &lt;blue&gt;             - blue component, 0-63
+	 8 bit - &lt;pad&gt;              - alignment padding
+      }
+</pre><br /><br />
+
+I think that covers everything.
+
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,203</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.007608</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/miscellaneous/datafile-format-information/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:02:26 GMT -->
+</html>

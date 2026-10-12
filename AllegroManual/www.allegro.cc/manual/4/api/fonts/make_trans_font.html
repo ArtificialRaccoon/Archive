@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/fonts/make_trans_font by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:22:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>make_trans_font</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Fonts</a></h2><ul>
+<li><a href="register_font_file_type.html" >register_font_file_type</a></li><li><a href="load_font.html" >load_font</a></li><li><a href="destroy_font.html" >destroy_font</a></li><li><strong>make_trans_font</strong></li><li><a href="is_color_font.html" >is_color_font</a></li><li><a href="is_mono_font.html" >is_mono_font</a></li><li><a href="is_compatible_font.html" >is_compatible_font</a></li><li><a href="get_font_ranges.html" >get_font_ranges</a></li><li><a href="get_font_range_begin.html" >get_font_range_begin</a></li><li><a href="get_font_range_end.html" >get_font_range_end</a></li><li><a href="extract_font_range.html" >extract_font_range</a></li><li><a href="transpose_font.html" >transpose_font</a></li><li><a href="merge_fonts.html" >merge_fonts</a></li><li><a href="load_dat_font.html" >load_dat_font</a></li><li><a href="load_bios_font.html" >load_bios_font</a></li><li><a href="load_grx_font.html" >load_grx_font</a></li><li><a href="load_grx_or_bios_font.html" >load_grx_or_bios_font</a></li><li><a href="load_bitmap_font.html" >load_bitmap_font</a></li><li><a href="grab_font_from_bitmap.html" >grab_font_from_bitmap</a></li><li><a href="load_txt_font.html" >load_txt_font</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>make_trans_font</h1>
+
+<div class="shortdesc">
+Makes a font use transparency.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">void</span> <a href="../../index.html" target="_blank"><span class="a">make_trans_font</span></a><span class="k2">(</span><a href="../../index.html" target="_blank"><span class="a">FONT</span></a> <span class="k3">*</span>f<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+This function converts a font to use transparency for drawing. That is, each
+   glyph in the font will be drawn with draw_trans_sprite, so you can use the
+   same blenders as with draw_trans_sprite to draw the font. One common use of
+   this is to load a bitmap font with an alpha channel, and therefore get
+   anti-aliased text output by using Allegro's alpha blender. Here's an example
+   how to do that:<br /><br />
+
+   <pre class="code">   <a href="../../index.html" target="_blank"><span class="a">FONT</span></a> <span class="k3">*</span>f <span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">load_font</span></a><span class="k2">(</span><span class="s">"alphafont.tga"</span>, NULL, NULL<span class="k2">)</span><span class="k2">;</span>
+   <a href="../../index.html" target="_blank"><span class="a">make_trans_font</span></a><span class="k2">(</span>f<span class="k2">)</span><span class="k2">;</span>
+   <a href="../../index.html" target="_blank"><span class="a">set_alpha_blender</span></a><span class="k2">(</span><span class="k2">)</span><span class="k2">;</span>
+   <a href="../../index.html" target="_blank"><span class="a">textprintf_centre_ex</span></a><span class="k2">(</span><a href="../../index.html" target="_blank"><span class="a">screen</span></a>, f, <span class="n">320</span>, <span class="n">240</span>, <span class="k3">-</span><span class="n">1</span>, <span class="k3">-</span><span class="n">1</span>, <span class="s">"Anti-aliased Font!"</span><span class="k2">)</span><span class="k2">;</span></pre>
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">set_alpha_blender</a></li>
+	<li><a href="../../index.html">load_font</a></li>
+	<li><a href="../../index.html">draw_trans_sprite</a></li>
+</ul>
+</div>
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,645</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.010261</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/fonts/make_trans_font by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:22:55 GMT -->
+</html>

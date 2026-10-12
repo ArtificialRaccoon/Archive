@@ -1,0 +1,773 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/ListBoxEx.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC ListBoxEx</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">ListBoxEx</A></H2></H2><BLOCKQUOTE> The ListBoxEx widget.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>ListBoxEx
+- <A HREF="ScrollBox.html">ScrollBox</A>
+- <A HREF="CompoundWidget.html">CompoundWidget</A>
+- <A HREF="Dialog.html">Dialog</A>
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.27">SetHeader</A></B>(<!1><A HREF="Header.html">Header</A>* <!1><A HREF="ListBoxEx.html#DOC.69.6">header</A>)
+<DD><I> Sets a custom header object.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   <!1><A HREF="Header.html">Header</A>* <B><A HREF="#DOC.69.28">GetHeader</A></B>()
+<DD><I> Returns a pointer to the header object.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   int <B><A HREF="#DOC.69.29">InsertColumn</A></B>(const char* titleText, int index=-1, int align=0, int colWidth=-1)
+<DD><I> Adds a new column to the listbox.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.30">DeleteColumn</A></B>(int index)
+<DD><I> Deletes the specified column</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   int <B><A HREF="#DOC.69.31">GetColumnCount</A></B>()
+<DD><I> Returns the number of columns in the listbox</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.32">SetColumnTitle</A></B>(int index, const char* <!1><A HREF="Column.html#DOC.69.1.1">title</A>)
+<DD><I> Sets the title for the specified column</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   const char* <B><A HREF="#DOC.69.33">GetColumnTitle</A></B>(int index)
+<DD><I> Retreives the title of the specified column</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.34">SetColumnWidth</A></B>(int index, int <!1><A HREF="Column.html#DOC.69.1.2">width</A>)
+<DD><I> Sets the width of the specified column.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   int <B><A HREF="#DOC.69.35">GetColumnWidth</A></B>(int index)
+<DD><I> Retreives the width of the specified column.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   int <B><A HREF="#DOC.69.36">InsertItem</A></B>(<!1><A HREF="Item.html">Item</A>* item, int index=-1)
+<DD><I> Adds a new item to the list.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   int <B><A HREF="#DOC.69.37">InsertItem</A></B>(const char* item, int index=-1)
+<DD><I> Adds an item with the specified text in the first column</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.38">DeleteItem</A></B>(int index)
+<DD><I> Removes the specified item from the list</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.39">DeleteAllItems</A></B>()
+<DD><I> Clears the list of all items</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.40">SetItem</A></B>(int row, int column, const char* str)
+<DD><I> Shortcut for setting the text at the specified row and column.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   const char* <B><A HREF="#DOC.69.41">GetItem</A></B>(int row, int <!1><A HREF="Color.html#DOC.8.1">col</A>)
+<DD><I> Retreives the text at the specified row and column.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   <!1><A HREF="Item.html">Item</A>* <B><A HREF="#DOC.69.42">GetItem</A></B>(int row)
+<DD><I> Retreives the item at the specified row.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   int <B><A HREF="#DOC.69.43">GetItemCount</A></B>()
+<DD><I> Returns number of items (rows) in the list</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.69.44">ScrollToItem</A></B>(int index, bool force=false)
+<DD><I> Scrolls the listbox if necessary so that the item with the specified index becomes visible.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.45">SetHeaderVisibility</A></B>(bool on)
+<DD><I> Overrides the automatically determined header visibility status.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.69.46">GetHeaderVisibility</A></B>()
+<DD><I> Returns user's header visibility setting</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.47">EnableMultiSelect</A></B>(bool on=true)
+<DD><I> Enables or disables multiselect mode.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.69.48">IsMultiSelectEnabled</A></B>()
+<DD><I> Returns the value of the multiSelect variable</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   int <B><A HREF="#DOC.69.49">GetSelectedCount</A></B>()
+<DD><I> Counts the number of selected items</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.69.50">IsSelected</A></B>(int index)
+<DD><I> Returns true if the specified item is selected, false otherwise.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.51">Select</A></B>(int index)
+<DD><I> Selects the item at the specified index.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.52">Deselect</A></B>(int index)
+<DD><I> Deselects the item at the specified index if it is not deselected already.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   <!1><A HREF="Item.html">Item</A>* <B><A HREF="#DOC.69.53">GetSelectedItem</A></B>()
+<DD><I> Returns a pointer to the selected item.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   int <B><A HREF="#DOC.69.54">GetSelectedIndex</A></B>()
+<DD><I> Returns the index of the selected item.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   int <B><A HREF="#DOC.69.55">GetMouseRowIndex</A></B>()
+<DD><I> Returns the index of the item (row) the mouse cursor is on top of.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   int <B><A HREF="#DOC.69.56">GetMouseColumnIndex</A></B>()
+<DD><I> Returns the index of the item (column) the mouse cursor is on top of.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.57">Toggle</A></B>(int index)
+<DD><I> Toggles the state of the specified item.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.58">DeselectAllItems</A></B>()
+<DD><I> Deselects all previously selected items.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   int <B><A HREF="#DOC.69.59">GetFirstSelectedIndex</A></B>()
+<DD><I> Returns the index of the first selected item or -1 if no items are selected</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   int <B><A HREF="#DOC.69.60">GetNextSelectedIndex</A></B>()
+<DD><I> Returns the next selected item or -1 if no more items are selected.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.61">EnableSingleClick</A></B>(bool on=true)
+<DD><I> Sets the value of the singleClick variable</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.69.62">IsSingleClickEnabled</A></B>()
+<DD><I> Gets the value of the singleClick variable</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.63">Sort</A></B>(int column=0, int order=1)
+<DD><I> Sorts the list.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.64">EnableAutosort</A></B>(bool on=true)
+<DD><I> Enables or disables automatic list sorting.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.69.65">IsAutosortEnabled</A></B>()
+<DD><I> Returns the status of autosorting</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.69.66">EnableColumnResizing</A></B>(bool on=true)
+<DD><I> Enables or disables column resizing</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.69.67">IsColumnResizingEnabled</A></B>()
+<DD><I> Checks whether column resizing is enabled or not</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.69.68">EnableGridLines</A></B>(bool on=true)
+<DD><I> Turns gridlines between cells of the list on or off</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.69.69">AreGridLinesEnabled</A></B>()
+<DD><I> Checks whether gridlines are turned on or off</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.69.70">HandleEvent</A></B>(<!1><A HREF="Widget.html">Widget</A> &amp;obj, int msg, int arg1=0, int arg2=0)
+<DD><I> Event handler.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Public Members</H3><DD><DT>
+class  MASKING_DLL_DECLSPEC <B><A HREF="Column.html">Column</A></B>
+<DD><I> Represents one column item.</I>
+<DT>
+class  MASKING_DLL_DECLSPEC <B><A HREF="Header.html">Header</A></B>: public <!1><A HREF="Button.html">Button</A>
+<DD><I> The listbox header widget.</I>
+<DT>
+class  MASKING_DLL_DECLSPEC <B><A HREF="Item.html">Item</A></B>
+<DD><I> Represent one listbox item (one row of values)</I>
+<DT>
+class  MASKING_DLL_DECLSPEC <B><A HREF="InputHandler.html">InputHandler</A></B>: public <!1><A HREF="Widget.html">Widget</A>
+<DD><I> Invisible helper widget the listbox uses for getting input (keyboard, mouse).</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>std::vector&lt;<!1><A HREF="Column.html">Column</A>&gt;  <B><A HREF="#DOC.69.5">columns</A></B>
+<DD><I> the array of column headers</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Header.html">Header</A>* <B><A HREF="#DOC.69.6">header</A></B>
+<DD><I> Pointer to a header widget used for renering column headers.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Header.html">Header</A> <B><A HREF="#DOC.69.7">ownHeader</A></B>
+<DD><I> The listbox's own default header widget.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>std::vector&lt;<!1><A HREF="Item.html">Item</A> *&gt;  <B><A HREF="#DOC.69.8">items</A></B>
+<DD><I> The array of listbox items.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="InputHandler.html">InputHandler</A> <B><A HREF="#DOC.69.9">inputHandler</A></B>
+<DD><I> The invisible input helper widget</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.69.10">focusedItem</A></B>
+<DD><I> The index of the item the mouse is currently hovering over.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.69.11">selectedItem</A></B>
+<DD><I> The currently selected item.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.69.12">showHeader</A></B>
+<DD><I> True if header should be shown, false otherwise.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.69.13">multiSelect</A></B>
+<DD><I> True if the list is in multiselect mode, false otherwise.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.69.14">singleClick</A></B>
+<DD><I> Defines how many clicks are necessary to activate an item.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.69.15">iterationIndex</A></B>
+<DD><I> Temporary variable used for iterating through the selected items of the list with GetFirstSelectedIndex() and GetNextSelectedIndex()</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.69.16">autoSort</A></B>
+<DD><I> True if clicking on a header column should sort the list, false otherwise.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.69.17">columnResizing</A></B>
+<DD><I> True if column resizing is enabled, false otherwise.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.69.18">gridLines</A></B>
+<DD><I> True if gridlines should be drawn between cells of the listbox.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.69.19">UpdateSize</A></B>()
+<DD><I> Called after every change in listbox geometry to update the size and position of the headers widget and the fake input handler</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.69.20">DrawClientArea</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;dest, int xofst, int yofst)
+<DD><I> Draws the contents of the listbox (ie.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.21">UpdateScrollers</A></B>()
+<DD><I> Called on every geometry change as well as every time the contents of the listbox have been modified (ie.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.22">OnMousemove</A></B>()
+<DD><I> Called on every mouse move.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.23">OnChar</A></B>(int c)
+<DD><I> Called on every key press while the list has input.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.24">OnLPress</A></B>()
+<DD><I> Called whenever the left mouse button is clicked on the list.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.25">OnWheel</A></B>(int <!1><A HREF="Mouse.html#DOC.77.19">z</A>)
+<DD><I> Called on every mouse wheel scroll event while the list has input focus.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.26">OnDClick</A></B>()
+<DD><I> Called when an item is double clicked.</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+The ListBoxEx widget.
+A ListBoxEx is a widget for displaying lists of items. It provides many modes
+of operation. By default it behaves like a plain single column list box like
+the one found in the default Allegro GUI. But it can also accept an arbitrary
+number of column that can be interactively resized. It can behave as a normal
+single select list where only one item at a time is selected, or as a multi
+select list where any number of items can be selected. Column headers can be
+forcefully turned off if required. Clicking a column header automatically
+sorts the list lexicographically according to the selected column. Both the
+item and the header classes can be easily extended to support custom look,
+feel and behaviour.
+
+<P>ListBoxEx sends MSG_SCROLL to the parent dialog whenever the selection
+changes with the index of the selected item as the first argument to the
+HandleEvent() function. When an item is double clicked (or single clicked
+if the single click option is turned on), or the enter or space keys are
+pressed, MSG_ACTIVATE is sent with the index of the item that was activated
+as the first argument. MSG_ACTIVATE can be overridden with a custom
+message with the Wiget::SetCallback() function.</BLOCKQUOTE>
+<DL>
+
+<A NAME="columns"></A>
+<A NAME="DOC.69.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>std::vector&lt;<!1><A HREF="Column.html">Column</A>&gt;  columns</B></TT>
+<DD>
+the array of column headers
+<DL><DT><DD></DL><P>
+<A NAME="header"></A>
+<A NAME="DOC.69.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Header.html">Header</A>* header</B></TT>
+<DD>
+Pointer to a header widget used for renering column headers. Users may override this
+with their own custom header widget (for example one that draws some fancy icons or
+something) which is the reason why a pointer is stored.
+<DL><DT><DD></DL><P>
+<A NAME="ownHeader"></A>
+<A NAME="DOC.69.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Header.html">Header</A> ownHeader</B></TT>
+<DD>
+The listbox's own default header widget. Used by default in case the user doesn't
+supply their own header object (i.e. almost always).
+<DL><DT><DD></DL><P>
+<A NAME="items"></A>
+<A NAME="DOC.69.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>std::vector&lt;<!1><A HREF="Item.html">Item</A> *&gt;  items</B></TT>
+<DD>
+The array of listbox items. Pointers are used because the users may derive their own
+special item classes from the default one to implement some custome behaviour.
+<DL><DT><DD></DL><P>
+<A NAME="inputHandler"></A>
+<A NAME="DOC.69.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="InputHandler.html">InputHandler</A> inputHandler</B></TT>
+<DD>
+The invisible input helper widget
+<DL><DT><DD></DL><P>
+<A NAME="focusedItem"></A>
+<A NAME="DOC.69.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int focusedItem</B></TT>
+<DD>
+The index of the item the mouse is currently hovering over. This is also used when
+browsing the listbox with the keyboard. In single select mode the focused item is
+always immediately selected.
+<DL><DT><DD></DL><P>
+<A NAME="selectedItem"></A>
+<A NAME="DOC.69.11"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int selectedItem</B></TT>
+<DD>
+The currently selected item. Only relevant in single select mode.
+<DL><DT><DD></DL><P>
+<A NAME="showHeader"></A>
+<A NAME="DOC.69.12"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool showHeader</B></TT>
+<DD>
+True if header should be shown, false otherwise. This is determined automatically
+from the list contents, but can be overridden by the user. Lists with one column
+and no column title automatically hide the header, in all other cases the header
+is automatically turned on.
+<DL><DT><DD></DL><P>
+<A NAME="multiSelect"></A>
+<A NAME="DOC.69.13"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool multiSelect</B></TT>
+<DD>
+True if the list is in multiselect mode, false otherwise. When in multiselect
+mode any item can be selected or deselected independantly of all other items.
+In single select mode exactly one items is always selected (except when the
+list is empty of course). Default is false.
+<DL><DT><DD></DL><P>
+<A NAME="singleClick"></A>
+<A NAME="DOC.69.14"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool singleClick</B></TT>
+<DD>
+Defines how many clicks are necessary to activate an item. If true, one click
+activates, otherwise a double click is required. The first is useful for drop
+down lists while the other is usually better for normal lists. The default is
+false.
+<DL><DT><DD></DL><P>
+<A NAME="iterationIndex"></A>
+<A NAME="DOC.69.15"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int iterationIndex</B></TT>
+<DD>
+Temporary variable used for iterating through the selected items of the list
+with GetFirstSelectedIndex() and GetNextSelectedIndex()
+<DL><DT><DD></DL><P>
+<A NAME="autoSort"></A>
+<A NAME="DOC.69.16"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool autoSort</B></TT>
+<DD>
+True if clicking on a header column should sort the list, false otherwise.
+Default is false.
+<DL><DT><DD></DL><P>
+<A NAME="columnResizing"></A>
+<A NAME="DOC.69.17"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool columnResizing</B></TT>
+<DD>
+True if column resizing is enabled, false otherwise. Default is true.
+<DL><DT><DD></DL><P>
+<A NAME="gridLines"></A>
+<A NAME="DOC.69.18"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool gridLines</B></TT>
+<DD>
+True if gridlines should be drawn between cells of the listbox. Default is false.
+<DL><DT><DD></DL><P>
+<A NAME="UpdateSize"></A>
+<A NAME="DOC.69.19"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void UpdateSize()</B></TT>
+<DD>
+Called after every change in listbox geometry to update the size and position of
+the headers widget and the fake input handler
+<DL><DT><DD></DL><P>
+<A NAME="DrawClientArea"></A>
+<A NAME="DOC.69.20"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void DrawClientArea(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;dest, int xofst, int yofst)</B></TT>
+<DD>
+Draws the contents of the listbox (ie. the list items) with the current scroll offset.
+<DL><DT><DD></DL><P>
+<A NAME="UpdateScrollers"></A>
+<A NAME="DOC.69.21"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void UpdateScrollers()</B></TT>
+<DD>
+Called on every geometry change as well as every time the contents of the listbox
+have been modified (ie. items or columns added or removed) to update the scrollers.
+<DL><DT><DD></DL><P>
+<A NAME="OnMousemove"></A>
+<A NAME="DOC.69.22"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void OnMousemove()</B></TT>
+<DD>
+Called on every mouse move. Handles changing focus item on mouse moves.
+<DL><DT><DD></DL><P>
+<A NAME="OnChar"></A>
+<A NAME="DOC.69.23"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void OnChar(int c)</B></TT>
+<DD>
+Called on every key press while the list has input. Handles switching focus
+and/or selection between items and activates items on enter or space.
+Overload this to implement some custom behaviour, like for example a listbox
+that allows editing of the items or something similar.
+<DL><DT><DD></DL><P>
+<A NAME="OnLPress"></A>
+<A NAME="DOC.69.24"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void OnLPress()</B></TT>
+<DD>
+Called whenever the left mouse button is clicked on the list. Handles changing
+item selection status with the mouse.
+<DL><DT><DD></DL><P>
+<A NAME="OnWheel"></A>
+<A NAME="DOC.69.25"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void OnWheel(int <!1><A HREF="Mouse.html#DOC.77.19">z</A>)</B></TT>
+<DD>
+Called on every mouse wheel scroll event while the list has input focus. Handles
+scrolling the list with the mouse wheel.
+<DL><DT><DD></DL><P>
+<A NAME="OnDClick"></A>
+<A NAME="DOC.69.26"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void OnDClick()</B></TT>
+<DD>
+Called when an item is double clicked. Handles item activation on double clicks
+in case single click mode is not enabled.
+<DL><DT><DD></DL><P>
+<A NAME="SetHeader"></A>
+<A NAME="DOC.69.27"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetHeader(<!1><A HREF="Header.html">Header</A>* <!1><A HREF="ListBoxEx.html#DOC.69.6">header</A>)</B></TT>
+<DD>
+Sets a custom header object. If you derive a custom header class from Header, create
+a new instance and pass the pointer to it to this function. The listbox then owns
+this object so you must not attempt to delete it yourself, it will be done automatically
+for you.
+
+<P>
+<DL><DT><DT><B>See Also:</B><DD><!1><A HREF="Header.html">Header</A><BR><DD></DL><P>
+<A NAME="GetHeader"></A>
+<A NAME="DOC.69.28"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   <!1><A HREF="Header.html">Header</A>* GetHeader()</B></TT>
+<DD>
+Returns a pointer to the header object. Useful for manipulating custom headers.
+You probably shouldn't call any methods the Header inherits from the button class
+otherwise logic and appearance of the listbox might get messed up. Typically you
+will only need to call this function to opbtain a pointer to a custom header
+object, so you can for example feed it some additional data.
+
+<P>
+<DL><DT><DT><B>See Also:</B><DD><!1><A HREF="Header.html">Header</A><BR><DD></DL><P>
+<A NAME="InsertColumn"></A>
+<A NAME="DOC.69.29"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   int InsertColumn(const char* titleText, int index=-1, int align=0, int colWidth=-1)</B></TT>
+<DD>
+Adds a new column to the listbox.
+
+<P>
+<DL><DT><DT><B>Parameters:</B><DD><B>titleText</B> -  the column <!1><A HREF="Column.html#DOC.69.1.1">title</A>
+<BR><B>index</B> -  the position where you want to add the new column; if negative the column will be added to the end of the column <!1><A HREF="ListBox.html#DOC.73.3">list</A>
+<BR><B>align</B> -  <!1><A HREF="Column.html#DOC.69.1.3">alignment</A> of the column title: 0 is left, 1 is right and 2 is centre <!1><A HREF="Column.html#DOC.69.1.3">alignment</A>
+<BR><B>colWidth</B> -  <!1><A HREF="Column.html#DOC.69.1.2">width</A> of the column; if -1 the most appropriate <!1><A HREF="Column.html#DOC.69.1.2">width</A> will be calculated automatically
+<BR><DT><B>Returns:</B><DD>  Index of the position where the column was actually added or -1 on failure (e.g. invalid index).<BR><DD></DL><P>
+<A NAME="DeleteColumn"></A>
+<A NAME="DOC.69.30"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void DeleteColumn(int index)</B></TT>
+<DD>
+Deletes the specified column
+<DL><DT><DD></DL><P>
+<A NAME="GetColumnCount"></A>
+<A NAME="DOC.69.31"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   int GetColumnCount()</B></TT>
+<DD>
+Returns the number of columns in the listbox
+<DL><DT><DD></DL><P>
+<A NAME="SetColumnTitle"></A>
+<A NAME="DOC.69.32"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetColumnTitle(int index, const char* <!1><A HREF="Column.html#DOC.69.1.1">title</A>)</B></TT>
+<DD>
+Sets the title for the specified column
+<DL><DT><DD></DL><P>
+<A NAME="GetColumnTitle"></A>
+<A NAME="DOC.69.33"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   const char* GetColumnTitle(int index)</B></TT>
+<DD>
+Retreives the title of the specified column
+<DL><DT><DD></DL><P>
+<A NAME="SetColumnWidth"></A>
+<A NAME="DOC.69.34"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetColumnWidth(int index, int <!1><A HREF="Column.html#DOC.69.1.2">width</A>)</B></TT>
+<DD>
+Sets the width of the specified column. Width may be -1 to allow the listbox
+to determine the actual width of the item automatically.
+<DL><DT><DD></DL><P>
+<A NAME="GetColumnWidth"></A>
+<A NAME="DOC.69.35"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   int GetColumnWidth(int index)</B></TT>
+<DD>
+Retreives the width of the specified column. Returns -1 if the index is invalid.
+<DL><DT><DD></DL><P>
+<A NAME="InsertItem"></A>
+<A NAME="DOC.69.36"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   int InsertItem(<!1><A HREF="Item.html">Item</A>* item, int index=-1)</B></TT>
+<DD>
+Adds a new item to the list. The item is added at the specified index or at
+the end of the list if index is a negative number. After adding an item, the
+listbox owns it, so you must not attempt to delete it.
+
+<P>Note: If a column hadn't been added to the listbox yet, one will be created automatically.
+
+<P>
+<DL><DT><DT><B>Returns:</B><DD>  The index of item where it was actually added to the list or -1 on failure.
+<BR><DT><B>See Also:</B><DD><!1><A HREF="Item.html">Item</A><BR><DD></DL><P>
+<A NAME="InsertItem"></A>
+<A NAME="DOC.69.37"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   int InsertItem(const char* item, int index=-1)</B></TT>
+<DD>
+Adds an item with the specified text in the first column
+<DL><DT><DD></DL><P>
+<A NAME="DeleteItem"></A>
+<A NAME="DOC.69.38"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void DeleteItem(int index)</B></TT>
+<DD>
+Removes the specified item from the list
+<DL><DT><DD></DL><P>
+<A NAME="DeleteAllItems"></A>
+<A NAME="DOC.69.39"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void DeleteAllItems()</B></TT>
+<DD>
+Clears the list of all items
+<DL><DT><DD></DL><P>
+<A NAME="SetItem"></A>
+<A NAME="DOC.69.40"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetItem(int row, int column, const char* str)</B></TT>
+<DD>
+Shortcut for setting the text at the specified row and column. If the specified
+column doesn't exist yet, enough columns are added to the list so that this
+function may succeed.
+
+<P>
+<DL><DT><DT><B>Parameters:</B><DD><B>row</B> -  index of the item you want to change
+<BR><B>column</B> -  index of the column you want to change
+<BR><B>str</B> -  the new item <!1><A HREF="Tooltip.html#DOC.106.6">text</A><BR><DD></DL><P>
+<A NAME="GetItem"></A>
+<A NAME="DOC.69.41"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   const char* GetItem(int row, int <!1><A HREF="Color.html#DOC.8.1">col</A>)</B></TT>
+<DD>
+Retreives the text at the specified row and column. Returns NULL if the
+given coordinates are invalid.
+<DL><DT><DD></DL><P>
+<A NAME="GetItem"></A>
+<A NAME="DOC.69.42"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   <!1><A HREF="Item.html">Item</A>* GetItem(int row)</B></TT>
+<DD>
+Retreives the item at the specified row. Returns NULL if the row is invalid.
+<DL><DT><DD></DL><P>
+<A NAME="GetItemCount"></A>
+<A NAME="DOC.69.43"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   int GetItemCount()</B></TT>
+<DD>
+Returns number of items (rows) in the list
+<DL><DT><DD></DL><P>
+<A NAME="ScrollToItem"></A>
+<A NAME="DOC.69.44"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool ScrollToItem(int index, bool force=false)</B></TT>
+<DD>
+Scrolls the listbox if necessary so that the item with the specified index
+becomes visible. If force is true, the function scrolls regardless of the
+previous status, else it scrolls only if necessary. Returns true if any
+scrolling was actually done, otherwise returns false.
+<DL><DT><DD></DL><P>
+<A NAME="SetHeaderVisibility"></A>
+<A NAME="DOC.69.45"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetHeaderVisibility(bool on)</B></TT>
+<DD>
+Overrides the automatically determined header visibility status. Pass false
+to turn the heaer off on multicolumn lists.
+<DL><DT><DD></DL><P>
+<A NAME="GetHeaderVisibility"></A>
+<A NAME="DOC.69.46"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool GetHeaderVisibility()</B></TT>
+<DD>
+Returns user's header visibility setting
+<DL><DT><DD></DL><P>
+<A NAME="EnableMultiSelect"></A>
+<A NAME="DOC.69.47"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void EnableMultiSelect(bool on=true)</B></TT>
+<DD>
+Enables or disables multiselect mode. If multiselect mode is turned off while
+more than one item is selected, all items are deselected except for the first
+one that was selected. If none were selected, the first one is selected after
+calling this function.
+<DL><DT><DD></DL><P>
+<A NAME="IsMultiSelectEnabled"></A>
+<A NAME="DOC.69.48"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool IsMultiSelectEnabled()</B></TT>
+<DD>
+Returns the value of the multiSelect variable
+<DL><DT><DD></DL><P>
+<A NAME="GetSelectedCount"></A>
+<A NAME="DOC.69.49"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   int GetSelectedCount()</B></TT>
+<DD>
+Counts the number of selected items
+<DL><DT><DD></DL><P>
+<A NAME="IsSelected"></A>
+<A NAME="DOC.69.50"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool IsSelected(int index)</B></TT>
+<DD>
+Returns true if the specified item is selected, false otherwise. If index
+is invalid, returns false.
+<DL><DT><DD></DL><P>
+<A NAME="Select"></A>
+<A NAME="DOC.69.51"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Select(int index)</B></TT>
+<DD>
+Selects the item at the specified index. In single select mode the previously
+selected item is deselected.
+<DL><DT><DD></DL><P>
+<A NAME="Deselect"></A>
+<A NAME="DOC.69.52"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Deselect(int index)</B></TT>
+<DD>
+Deselects the item at the specified index if it is not deselected already.
+In single select mode, this function does nothing.
+<DL><DT><DD></DL><P>
+<A NAME="GetSelectedItem"></A>
+<A NAME="DOC.69.53"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   <!1><A HREF="Item.html">Item</A>* GetSelectedItem()</B></TT>
+<DD>
+Returns a pointer to the selected item. In multiselect mode the first
+selected item is returned, or NULL if no items are selected.
+<DL><DT><DD></DL><P>
+<A NAME="GetSelectedIndex"></A>
+<A NAME="DOC.69.54"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   int GetSelectedIndex()</B></TT>
+<DD>
+Returns the index of the selected item. This function is equivalent to
+GetFirstSelectedIndex().
+<DL><DT><DD></DL><P>
+<A NAME="GetMouseRowIndex"></A>
+<A NAME="DOC.69.55"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   int GetMouseRowIndex()</B></TT>
+<DD>
+Returns the index of the item (row) the mouse cursor is on top of. Returns -1
+if the mouse is not top of a list item.
+<DL><DT><DD></DL><P>
+<A NAME="GetMouseColumnIndex"></A>
+<A NAME="DOC.69.56"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   int GetMouseColumnIndex()</B></TT>
+<DD>
+Returns the index of the item (column) the mouse cursor is on top of. Returns -1
+if the mouse is not top of a list item.
+<DL><DT><DD></DL><P>
+<A NAME="Toggle"></A>
+<A NAME="DOC.69.57"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Toggle(int index)</B></TT>
+<DD>
+Toggles the state of the specified item.
+In multiselect mode selects the item at the specified index if it was
+previously not selected or deselects it if it was. Has no meaning in
+single select mode.
+<DL><DT><DD></DL><P>
+<A NAME="DeselectAllItems"></A>
+<A NAME="DOC.69.58"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void DeselectAllItems()</B></TT>
+<DD>
+Deselects all previously selected items. Only relevant in multiselect mode.
+<DL><DT><DD></DL><P>
+<A NAME="GetFirstSelectedIndex"></A>
+<A NAME="DOC.69.59"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   int GetFirstSelectedIndex()</B></TT>
+<DD>
+Returns the index of the first selected item or -1 if no items are selected
+<DL><DT><DD></DL><P>
+<A NAME="GetNextSelectedIndex"></A>
+<A NAME="DOC.69.60"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   int GetNextSelectedIndex()</B></TT>
+<DD>
+Returns the next selected item or -1 if no more items are selected. This
+function is used to iterate through the selected items of the list. To
+initialize the iteration first call GetFirstSelectedIndex() then this
+function until it returns -1.
+<DL><DT><DD></DL><P>
+<A NAME="EnableSingleClick"></A>
+<A NAME="DOC.69.61"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void EnableSingleClick(bool on=true)</B></TT>
+<DD>
+Sets the value of the singleClick variable
+<DL><DT><DD></DL><P>
+<A NAME="IsSingleClickEnabled"></A>
+<A NAME="DOC.69.62"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool IsSingleClickEnabled()</B></TT>
+<DD>
+Gets the value of the singleClick variable
+<DL><DT><DD></DL><P>
+<A NAME="Sort"></A>
+<A NAME="DOC.69.63"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Sort(int column=0, int order=1)</B></TT>
+<DD>
+Sorts the list.
+The list is sorted in either ascending or descending order according to
+the specified column and order.
+
+<P>
+<DL><DT><DT><B>Parameters:</B><DD><B>column</B> -  The index of the column used for sorting.
+<BR><B>order</B> -  Order of sorting. Positive values (typically 1) select ascending order, negative values (typically -1) select descending order.
+Sorting requires being able to compare items. For that the less than
+operator of the <!1><A HREF="Item.html">Item</A> class is used. The default implementation sorts the
+<!1><A HREF="ListBoxEx.html#DOC.69.8">items</A> lexicographically. To implement custom sorting (e.g. by numerical
+values, dates, etc) simply overload 	the less than operator in your
+custom item class.
+<BR><DT><B>See Also:</B><DD><!1><A HREF="Item.html">Item</A><BR><DD></DL><P>
+<A NAME="EnableAutosort"></A>
+<A NAME="DOC.69.64"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void EnableAutosort(bool on=true)</B></TT>
+<DD>
+Enables or disables automatic list sorting. When automatic sorting is on,
+the list is automatically sorted when a column header is clicked.
+Explicitely calling Sort() still sorts the list even when autosorting is
+disabled. By default autosorting is disabled.
+<DL><DT><DD></DL><P>
+<A NAME="IsAutosortEnabled"></A>
+<A NAME="DOC.69.65"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool IsAutosortEnabled()</B></TT>
+<DD>
+Returns the status of autosorting
+<DL><DT><DD></DL><P>
+<A NAME="EnableColumnResizing"></A>
+<A NAME="DOC.69.66"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void EnableColumnResizing(bool on=true)</B></TT>
+<DD>
+Enables or disables column resizing
+<DL><DT><DD></DL><P>
+<A NAME="IsColumnResizingEnabled"></A>
+<A NAME="DOC.69.67"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool IsColumnResizingEnabled()</B></TT>
+<DD>
+Checks whether column resizing is enabled or not
+<DL><DT><DD></DL><P>
+<A NAME="EnableGridLines"></A>
+<A NAME="DOC.69.68"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void EnableGridLines(bool on=true)</B></TT>
+<DD>
+Turns gridlines between cells of the list on or off
+<DL><DT><DD></DL><P>
+<A NAME="AreGridLinesEnabled"></A>
+<A NAME="DOC.69.69"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool AreGridLinesEnabled()</B></TT>
+<DD>
+Checks whether gridlines are turned on or off
+<DL><DT><DD></DL><P>
+<A NAME="HandleEvent"></A>
+<A NAME="DOC.69.70"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void HandleEvent(<!1><A HREF="Widget.html">Widget</A> &amp;obj, int msg, int arg1=0, int arg2=0)</B></TT>
+<DD>
+Event handler. Basicalyl jsut maps messages from the input handler to the OnSomething() functions.
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DT><B>Friends:</B><DD>  class <!1><A HREF="Item.html">ListBoxEx::Item</A><BR><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/ListBoxEx.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+</html>

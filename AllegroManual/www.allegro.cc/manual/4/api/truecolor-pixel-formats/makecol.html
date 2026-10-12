@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/truecolor-pixel-formats/makecol by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:21:24 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>makecol</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Truecolor pixel formats</a></h2><ul>
+<li><a href="makecol8.html" >makecol8</a></li><li><a href="makecol15.html" >makecol15</a></li><li><a href="makecol16.html" >makecol16</a></li><li><a href="makecol24.html" >makecol24</a></li><li><a href="makecol32.html" >makecol32</a></li><li><a href="makeacol32.html" >makeacol32</a></li><li><strong>makecol</strong></li><li><a href="makecol_depth.html" >makecol_depth</a></li><li><a href="makeacol.html" >makeacol</a></li><li><a href="makeacol_depth.html" >makeacol_depth</a></li><li><a href="makecol15_dither.html" >makecol15_dither</a></li><li><a href="makecol16_dither.html" >makecol16_dither</a></li><li><a href="getr8.html" >getr8</a></li><li><a href="getg8.html" >getg8</a></li><li><a href="getb8.html" >getb8</a></li><li><a href="getr15.html" >getr15</a></li><li><a href="getg15.html" >getg15</a></li><li><a href="getb15.html" >getb15</a></li><li><a href="getr16.html" >getr16</a></li><li><a href="getg16.html" >getg16</a></li><li><a href="getb16.html" >getb16</a></li><li><a href="getr24.html" >getr24</a></li><li><a href="getg24.html" >getg24</a></li><li><a href="getb24.html" >getb24</a></li><li><a href="getr32.html" >getr32</a></li><li><a href="getg32.html" >getg32</a></li><li><a href="getb32.html" >getb32</a></li><li><a href="geta32.html" >geta32</a></li><li><a href="getr.html" style="font-weight: bold">getr</a></li><li><a href="getg.html" style="font-weight: bold">getg</a></li><li><a href="getb.html" style="font-weight: bold">getb</a></li><li><a href="geta.html" >geta</a></li><li><a href="getr_depth.html" >getr_depth</a></li><li><a href="getg_depth.html" >getg_depth</a></li><li><a href="getb_depth.html" >getb_depth</a></li><li><a href="geta_depth.html" >geta_depth</a></li><li><a href="palette_color.html" >palette_color</a></li><li><a href="mask_color_8.html" >MASK_COLOR_8</a></li><li><a href="mask_color_15.html" >MASK_COLOR_15</a></li><li><a href="mask_color_16.html" >MASK_COLOR_16</a></li><li><a href="mask_color_24.html" >MASK_COLOR_24</a></li><li><a href="mask_color_32.html" >MASK_COLOR_32</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>makecol</h1>
+
+<div class="shortdesc">
+Converts an RGB value into the current pixel format.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">int</span> <a href="../../index.html" target="_blank"><span class="a">makecol</span></a><span class="k2">(</span><span class="k1">int</span> r, <span class="k1">int</span> g, <span class="k1">int</span> b<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Converts colors from a hardware independent format (red, green, and blue
+   values ranging 0-255) to the pixel format required by the current video
+   mode, calling the preceding 8, 15, 16, 24, or 32-bit makecol functions as
+   appropriate. Example:
+<pre class="code">      <span class="c">/* Regardless of color depth, this will look green. */</span>
+      <span class="k1">int</span> green_color <span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">makecol</span></a><span class="k2">(</span><span class="n">0</span>, <span class="n">255</span>, <span class="n">0</span><span class="k2">)</span><span class="k2">;</span></pre>
+
+</div>
+
+<div class="retval">
+Returns the requested RGB triplet in the current color depth.
+
+</div>
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">makeacol</a></li>
+	<li><a href="../../index.html">makecol8</a></li>
+	<li><a href="../../index.html">makecol_depth</a></li>
+	<li><a href="../../index.html">makecol15_dither</a></li>
+	<li><a href="../../index.html">rgb_map</a></li>
+	<li><a href="../../index.html">set_color_depth</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../index.html">Available Allegro examples</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591882">
+		<a href="https://www.allegro.cc/forums/thread/591882">I&#39;m getting crazy with the fixed type!!!</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/678954" style="color: black;">1</a> </span>
+	</li><li id="t-591879">
+		<a href="https://www.allegro.cc/forums/thread/591879">Game completely screwed up.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/678937" style="color: black;">1</a> </span>
+	</li><li id="t-591874">
+		<a href="https://www.allegro.cc/forums/thread/591874">Keyboard not responding to Input</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/678913" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/678942" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/678948" style="color: black;">3</a> <a href="https://www.allegro.cc/forums/post/678950" style="color: black;">4</a> </span>
+	</li><li id="t-591840">
+		<a href="https://www.allegro.cc/forums/thread/591840">Animation works right in two arrays, but not this one?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/678462" style="color: black;">1</a> </span>
+	</li><li id="t-591835">
+		<a href="https://www.allegro.cc/forums/thread/591835">mouse won&#39;t appear</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/678423" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/678441" style="color: black;">2</a> </span>
+	</li><li id="t-591833">
+		<a href="https://www.allegro.cc/forums/thread/591833">allegro newbie, need help on my frst program</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/678395" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/678397" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/678408" style="color: black;">3</a> </span>
+	</li><li id="t-591830">
+		<a href="https://www.allegro.cc/forums/thread/591830">&quot;screen&quot; makes my programs crash</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/678361" style="color: black;">1</a> </span>
+	</li><li id="t-591827">
+		<a href="https://www.allegro.cc/forums/thread/591827">Program crashes when it encounters &quot;screen&quot;</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/678329" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/678330" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/678331" style="color: black;">3</a> </span>
+	</li><li id="t-591826">
+		<a href="https://www.allegro.cc/forums/thread/591826">Allegro Mouse</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/678322" style="color: black;">1</a> </span>
+	</li><li id="t-591824">
+		<a href="https://www.allegro.cc/forums/thread/591824">reading text file</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/678398" style="color: black;">1</a> </span>
+	</li><li id="t-591706">
+		<a href="https://www.allegro.cc/forums/thread/591706">BITMAP* Comparison</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/676682" style="color: black;">1</a> </span>
+	</li><li id="t-591687">
+		<a href="https://www.allegro.cc/forums/thread/591687">sliding puck - air hockey game</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/676421" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/676502" style="color: black;">2</a> </span>
+	</li><li id="t-591672">
+		<a href="https://www.allegro.cc/forums/thread/591672">Can&#39;t get my buffer to work</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/676211" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/676390" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/677061" style="color: black;">3</a> <a href="https://www.allegro.cc/forums/post/677242" style="color: black;">4</a> </span>
+	</li><li id="t-591659">
+		<a href="https://www.allegro.cc/forums/thread/591659">How to make balls coming from the top?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/676013" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/676021" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/676022" style="color: black;">3</a> <a href="https://www.allegro.cc/forums/post/676025" style="color: black;">4</a> </span>
+	</li><li id="t-591645">
+		<a href="https://www.allegro.cc/forums/thread/591645">just another getpixel question</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/675903" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/676087" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/676353" style="color: black;">3</a> </span>
+	</li><li id="t-591636">
+		<a href="https://www.allegro.cc/forums/thread/591636">Printing tex on top of a bitmap image??</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/675814" style="color: black;">1</a> </span>
+	</li><li id="t-591620">
+		<a href="https://www.allegro.cc/forums/thread/591620">textprintf_ex &#39;problem&#39;</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/675539" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/675540" style="color: black;">2</a> </span>
+	</li><li id="t-591592">
+		<a href="https://www.allegro.cc/forums/thread/591592">Allegro TODO</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/676194" style="color: black;">1</a> </span>
+	</li><li id="t-591587">
+		<a href="https://www.allegro.cc/forums/thread/591587">circle - circle collision</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/675258" style="color: black;">1</a> </span>
+	</li><li id="t-591568">
+		<a href="https://www.allegro.cc/forums/thread/591568">Displaying fonts</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/674836" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/674841" style="color: black;">2</a> </span>
+	</li><li id="t-591546">
+		<a href="https://www.allegro.cc/forums/thread/591546">Help with file I/O</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/674634" style="color: black;">1</a> </span>
+	</li><li id="t-591536">
+		<a href="https://www.allegro.cc/forums/thread/591536">Float is being odd</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/674368" style="color: black;">1</a> </span>
+	</li><li id="t-591513">
+		<a href="https://www.allegro.cc/forums/thread/591513">Randomly generated terrain</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/674024" style="color: black;">1</a> </span>
+	</li><li id="t-591502">
+		<a href="https://www.allegro.cc/forums/thread/591502">Function to make blackness transparent</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/673872" style="color: black;">1</a> </span>
+	</li><li id="t-591486">
+		<a href="https://www.allegro.cc/forums/thread/591486">Mouse help!!!</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/673729" style="color: black;">1</a> </span>
+	</li><li id="t-591480">
+		<a href="https://www.allegro.cc/forums/thread/591480">Class not working</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/673626" style="color: black;">1</a> </span>
+	</li><li id="t-591434">
+		<a href="https://www.allegro.cc/forums/thread/591434">set mouse rate</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/672880" style="color: black;">1</a> </span>
+	</li><li id="t-591420">
+		<a href="https://www.allegro.cc/forums/thread/591420">Collision Detection</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/672704" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/674725" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/674749" style="color: black;">3</a> <a href="https://www.allegro.cc/forums/post/674898" style="color: black;">4</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/20Lines">20 Lines</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/RainSimulationDemo">Rain Simulation Demo</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/Firakuga">Firakuga</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/ImpossibleCastle">Impossible Castle</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/WormHole">WormHole</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/BamboozleMachinae">Bamboozle Machinae</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/BeatlesFreaks">Beatles Freaks</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/CariesField">Caries Field</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/carterrain">carterrain</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/DECATHLON">DECATHLON</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,542</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.014800</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/truecolor-pixel-formats/makecol by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:21:24 GMT -->
+</html>

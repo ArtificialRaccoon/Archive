@@ -1,0 +1,127 @@
+<html>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/todo.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head><title>Todo list</title></head><body>
+<h1><a name="todo">A short list of things waiting to be done</a></h1>
+
+<p>MASkinG has not yet reached version 1.0 and is still pretty much a work in
+   progress. This means that quite a few planned features haven't been yet
+   implemented, some have not been tested and still have bugs and new
+   features are being added all the time. What follows is an incomplete list of
+   things that are scheduled for implementation or are only halfway completed
+   or simply don't work properly yet. If you have anything to add to this
+   list or if you would even like to implement something yourself, your
+   contribution will be greatly appreciated.
+
+<br><br>
+<p><b>TODO:</b><br><br>
+<table width="96%" align="center"><tr><td>
+<li>Implement subbitmaps with negative offsets. Because the canvas bitmaps
+	for the widgets are implemented as subbitmaps of the screen bitmap,
+	no widget can be placed to the left of the left edge of the screen or
+	above the top edge. Subbitmaps with negative offsets can be made
+	simply by deriving a class from Bitmap and overloading all the drawing
+	primitives to calculate the actual coordinates from the offset and
+	requested drawing coordinates.<br>
+	Perhaps also clip the widget drawing canvas to the parent dialog so
+	that the widget won't "stick" out when it isn't completely contained
+	in the dialog.<br>
+	Also the way widgets are positioned will have to be changed because right
+	now, positioning a widget with negative	coordinates is used to align
+	it relative to the right and bottom edge of the dialog.</li>
+<br>
+<li>Completely modularize the library. All platform specific functions and
+	functions specific to Allegro should be completely separated from the
+	core library and abstracted into easily interchangable modules. This will
+	allow the library to become a wrapper for an arbitrary low level
+	implementation of platform dependant functionalities (i.e. Allegro).
+	Modules that need to be abstracted are: graphics system driver, all
+	input drivers (keyboard, mouse, joystick), sound system driver, content
+	data handlers (bitmaps, samples, music, fonts, 3D objects, etc.),
+	datafile handlers (Allegro datafiles, zips, etc.), file I/O, config
+	files, strings, data structures (vectors, lists, etc.) and perhaps
+	some others.</li>
+<br>
+<li>Implement simple scripting capabilities. It should be possible to create
+	a dialog by reading in its description from a simple script file
+	similar to a resource script in Windows. In the script it should be
+	possible to add any of the built in widgets, set their geometry,
+	keyboard shortuct, flags and other widget specific properties such
+	as text, range of values (for sliders for examples, ID of the
+	message the widget should respond with and so on. For this last thing
+	to work it will also be necessary to add the possibility to assign
+	a message ID to any widget that can be activated (like buttons for
+	example). The widget will then respond to being clicked (or whatever)
+	with this message ID or with MSG_ACTIVATE as it is in the current
+	release if no special ID is set. This will allow to easily map several
+	widgets to the same message, for example one might have a menu entry,
+	a toolbar icon and a keyboard shortcut all do the same thing.<br>
+	Perhaps also functionality required to animate a dialog (e.g. to slide
+	the buttons and panels in from one side StarCraft style when the dialog
+	starts) could be added with scripts.<br><br>
+	EDIT: callbackID overrides already implemented</li>
+<br>
+<li>Add new and more advanced widgets such as tree lists, lists with multiple
+	columns, a text editor, a toolbar, a status bar, etc. (ideas are welcome).
+	Also reimplement some widgets and dialogs, especially ListBox which
+	should be built on top of the ScrollBox class and the file selector
+	(which doesn't even work sometimes) so that it will easily be extensible.
+	Also some other widgets	might need to be redesigned or just improved,
+	for example sliders with tick marks, buttons with custom bitmap labels
+	and so on...</li>
+<br>
+<li>Implement a clipboard. A clipboard should work with the most commonly
+	used data types such as text and bitmaps and also with any
+	user specified data. It should not directly use the clipboard provided
+	by the platform the program is run on, but it should be able to
+	transparently communicate with it if it is available
+	(i.e. under Windows). Perhaps also build an undo/redo system on
+	top of the clipboard.</li>
+<br>
+<li>Test and further improve OpenGL support. Perhaps add a direct driver
+	that won't immediately support all the nice 2D features of the library
+	but will run at optimal speed. Maybe also add to that some
+	widgets that will use OpenGL accelerated graphics functions such as
+	blending, etc.</li>
+<br>
+<li>Add a LayoutManager class hierarchy (GridLayout, FlowLayout, etc.) for
+	automatically placing and resizing widgets in a dialog without having
+	to deal with absolute coordinates manually.</li>
+<br>
+<li>Find and fix various little bugs. A list of some of the most obvious bugs
+	that were found but have not yet been fixed:
+	<table width="88%" align="center"><tr><td>
+		<li>The TAB key doesn't always work properly.</li>
+		<li>The DRS system has problems when modeless windows are present in
+		    the dialog - it sometimes draws over them when it shouldn't.</li>
+		<li>When selecting a menu item sometimes the first item of the menu
+			also gets selected. Harmless but annoying.</li>
+		<li>When the mouse hovers over the bottom part of the listbox, the
+			list automatically scrolls down when in fact it shouldn't.</li>
+		<li>Tooltips (and other widgets) sometimes get clipped to their parent
+			dialog and sometimes they are drawn over even though they are
+			supposed to be always on top.</li>
+		<li>Spinboxes that are supposed to work with integers display the
+			number in flotaing point format (e.g. 1.0 instead of 1).</li>
+		<li>Listboxes sometimes wrongly calculate the size of the sidebar
+			scroller (when the height of the individual items change and/or
+			the height of all the items in the list is not the same).</li>
+		<li>The file selector has serious issues - to many to list them all.
+			It would probably be best to rewrite the selector from scratch.</li>
+		<li>Keyboard navigation support in menus is a bit broken.</li>
+		<li>Resizing a window to a very small size can produce unexpected
+			results. The contentes of the window can sometimes fall out of
+			the window when they should in fact be clipped.</li>
+		<li>Popup (modal) windows in general don't work very well.</li>
+		<li>All types of buttons use the same animation. Make each use
+			a separate animation settings.</li>
+		<li>True type fonts don't work in OpenGL mode.</li>
+	</td></tr></table>
+</li>
+<br>
+<td><td width="20%"></td></tr></table>
+
+<br>
+<p><hr><p><a href="../index.html">Back</a><p></body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/todo.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:11 GMT -->
+</html>

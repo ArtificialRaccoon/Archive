@@ -1,0 +1,1266 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Widget.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC Widget</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">Widget</A></H2></H2><BLOCKQUOTE> The widget baseclass.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>Widget
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   <!1><A HREF="Point.html">Point</A> <B><A HREF="#DOC.110.52">RelativePos</A></B>() const 
+<DD><I> Returns the position of the widget relative to it's parent dialog</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   int <B><A HREF="#DOC.110.53">Key</A></B>() const 
+<DD><I> Returns the widget's keyboard shortcut</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   int <B><A HREF="#DOC.110.54">Flags</A></B>() const 
+<DD><I> Returns the flags defining the widget's state</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.110.55">TestFlag</A></B>(int i) const 
+<DD><I> Tests a flag or a group of them</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.110.56">HasFocus</A></B>()
+<DD><I> Tests if the widget has input focus</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.110.57">HasMouse</A></B>()
+<DD><I> Tests if the widget currently has the mouse over it.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.110.58">Hidden</A></B>() const 
+<DD><I> Tests if the widget is hidden or not</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.110.59">WillExit</A></B>() const 
+<DD><I> Checks if activating the widget will close the parent dialog</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.110.60">Selected</A></B>() const 
+<DD><I> Checks if the widget is selected.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.110.61">Disabled</A></B>() const 
+<DD><I> Checks if the widget is disabled and grayed out</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.110.62">Dirty</A></B>() const 
+<DD><I> Checks if the widget is marked dirty and needs to be redrawn</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.110.63">HasChildren</A></B>() const 
+<DD><I> Checks if the widget contains child widgets</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.110.64">IsWindow</A></B>() const 
+<DD><I> Checks if the widget is a window that can potentially be moved and resized</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   <!1><A HREF="Dialog.html">Dialog</A>* <B><A HREF="#DOC.110.65">GetParent</A></B>() const 
+<DD><I> Returns a pointer to the widget's parent dialog</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.110.66">IsChildOf</A></B>(<!1><A HREF="Widget.html">Widget</A>* <!1><A HREF="Widget.html#DOC.110.69">w</A>) const 
+<DD><I> Returns true is this widget is a child of the passed widget</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.67">x</A></B>(int i, bool normalized=false)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.68">y</A></B>(int i, bool normalized=false)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.69">w</A></B>(int i, bool normalized=false)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.70">h</A></B>(int i, bool normalized=false)
+<DD><I> These set the widget's x and y coordinates within the dialog and the widgets width and height.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.71">Key</A></B>(int i)
+<DD><I> Sets the keyboard shortcut</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.72">SetFlag</A></B>(int i)
+<DD><I> Sets a flag or a group of them</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.73">SetFlags</A></B>(int <!1><A HREF="Widget.html#DOC.110.1">flags</A>)
+<DD><I> Sets the flags to the given value</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.74">ClearFlag</A></B>(int i)
+<DD><I> Clears a flag</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.75">Enable</A></B>()
+<DD><I> Enables the widget</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.76">Disable</A></B>()
+<DD><I> Disables the widget and grays it out</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.77">Hide</A></B>()
+<DD><I> Hides the widget</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.78">Unhide</A></B>()
+<DD><I> Unhides the widget</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.79">MakeExit</A></B>()
+<DD><I> Flags the widget with the D_EXIT flag to indicate that activating it will close the parent dialog</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.80">DontExit</A></B>()
+<DD><I> Clears the D_EXIT flag</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.81">Redraw</A></B>()
+<DD><I> Marks the widget dirty and schedules for being redrawn</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.82">Redraw</A></B>(const <!1><A HREF="Rect.html">Rect</A> &amp;region)
+<DD><I> Marks only a part of the widget dirty and schedules for being redrawn.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.83">Place</A></B>(int nx, int ny, bool normalized=false)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.84">Place</A></B>(const <!1><A HREF="Point.html">Point</A>&amp; p, bool normalized=false)
+<DD><I> Places the widget at the desired position</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.85">Resize</A></B>(int nw, int nh, bool normalized=false)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.86">Resize</A></B>(const <!1><A HREF="Size.html">Size</A>&amp; s, bool normalized=false)
+<DD><I> Resize the widget to the desired size</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.87">Shape</A></B>(int nx, int ny, int nw, int nh, bool normalized=false)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.88">Shape</A></B>(const <!1><A HREF="Point.html">Point</A>&amp; p, const <!1><A HREF="Size.html">Size</A>&amp; s, bool normalized=false)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.89">Shape</A></B>(const <!1><A HREF="Rect.html">Rect</A> &amp;<!1><A HREF="Color.html#DOC.8.17">r</A>, bool normalized=false)
+<DD><I> Sets the widgets size and position to the desired values</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.90">Select</A></B>()
+<DD><I> Selects the widget</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.91">Deselect</A></B>()
+<DD><I> Deselects the widget</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.92">SetParent</A></B>(<!1><A HREF="Dialog.html">Dialog</A>* f)
+<DD><I> Sets the widget's parent dialog.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.93">SetAnimator</A></B>(<!1><A HREF="Animator.html">Animator</A>* <!1><A HREF="Color.html#DOC.8.20">a</A>)
+<DD><I> Changes the animator the widget is to use for animating.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.94">SetAnimationProperties</A></B>(int length, int <!1><A HREF="Font.html#DOC.52.2">type</A>)
+<DD><I> Sets the default animation length and type for the widget.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.95">Animate</A></B>()
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.96">Animate</A></B>(int <!1><A HREF="Font.html#DOC.52.2">type</A>)
+<DD><I> Starts animating the widget.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.97">StopAnimating</A></B>()
+<DD><I> Stops the animation.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.98">ResetAnimation</A></B>()
+<DD><I> Stops animating and resets the animator so it can start a new animation from scratch</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.99">SetTooltipText</A></B>(const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>)
+<DD><I> Sets the text tooltip help bubbles display when the mouse hovers over the widget.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   const char* <B><A HREF="#DOC.110.100">GetTooltipText</A></B>()
+<DD><I> Returns the widget's tooltip text.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.110.101">SetCallbackID</A></B>(int ID)
+<DD><I> Sets The ID of the main callback message for this widget.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.110.102">GetCallbackID</A></B>()
+<DD><I> Returns the widget's callback ID.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.103">Setup</A></B>(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>=0, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>=0)
+<DD><I> Sets up the most important widget properties (position, size, keyboard shortcut and flags) in one function call</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.104">SetSkin</A></B>(<!1><A HREF="Skin.html">Skin</A>* <!1><A HREF="Widget.html#DOC.110.8">skin</A>)
+<DD><I> Sets the skin the widget is supposed to use for drawing itself.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   <!1><A HREF="Skin.html">Skin</A>* <B><A HREF="#DOC.110.105">GetSkin</A></B>()
+<DD><I> Returns a pointer to the widget's skin</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.110.106">operator==</A></B>(const <!1><A HREF="Widget.html">Widget</A>&amp; obj) const 
+<DD><I> Tests if two references to widgets are one and the same</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.110.107">operator!=</A></B>(const <!1><A HREF="Widget.html">Widget</A>&amp; obj) const 
+<DD><I> Tests if two references to widgets are not the same</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.110.108">SendMessage</A></B>(int msg, int c=0)
+<DD><I> Sends the widget a message with one optional parameter.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   <!1><A HREF="Point.html">Point</A> <B><A HREF="#DOC.110.109">GetMousePos</A></B>() const 
+<DD><I> Returns the current mouse position relative to the widget's top left corner</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.110.110">SetTextMode</A></B>(<!1><A HREF="Color.html">Color</A> m)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.110.111">SetFontColor</A></B>(<!1><A HREF="Color.html">Color</A> <!1><A HREF="Color.html#DOC.8.1">col</A>, <!1><A HREF="Color.html">Color</A> shd, int <!1><A HREF="Font.html#DOC.52.2">type</A>)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.110.112">SetFont</A></B>(int f, int <!1><A HREF="Font.html#DOC.52.2">type</A>)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Font.html">Font</A>&amp; <B><A HREF="#DOC.110.113">GetFont</A></B>(int <!1><A HREF="Font.html#DOC.52.2">type</A>)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Color.html">Color</A>&amp; <B><A HREF="#DOC.110.114">GetTextMode</A></B>()
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Color.html">Color</A>&amp; <B><A HREF="#DOC.110.115">GetFontColor</A></B>(int <!1><A HREF="Font.html#DOC.52.2">type</A>)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Color.html">Color</A>&amp; <B><A HREF="#DOC.110.116">GetShadowColor</A></B>(int <!1><A HREF="Font.html#DOC.52.2">type</A>)
+<DD><I> Functions for setting and getting the colours of the text background, the text and the text shadow and the font indices in the skins font array.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.110.117">SetBitmap</A></B>(int i)
+<DD><I> Selects the bitmap the widget is supposed to use to skin itself.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.110.118">GetBitmapIndex</A></B>() const 
+<DD><I> Returnes the widget's bitmap index in the skin bitmap array</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Bitmap.html">Bitmap</A>&amp; <B><A HREF="#DOC.110.119">GetBitmap</A></B>() const 
+<DD><I> Retreives the selected bitmap from the widget's skin</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.110.120">SetSample</A></B>(int i, int event)
+<DD><I> Selects the sample the widget is supposed to play for each event.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.110.121">GetSampleIndex</A></B>(int event) const 
+<DD><I> Returnes the widget's sample index in the skin sample array for the given event</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Sample.html">Sample</A>&amp; <B><A HREF="#DOC.110.122">GetSample</A></B>(int event) const 
+<DD><I> Retreives the selected sample for the given event from the widget's skin</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.110.123">PlaySample</A></B>(int event) const 
+<DD><I> Plays the sample for the given event</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.110.1">flags</A></B>
+<DD><I> Flags that define the objects state.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.110.2">key</A></B>
+<DD><I> The keyboard shortcut.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.110.3">callbackID</A></B>
+<DD><I> The ID of the main callback message for this widget</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="FontInfo.html">FontInfo</A> <B><A HREF="#DOC.110.4">fontInfo</A></B>
+<DD><I> Information about fonts and font colours the widget should use.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.110.5">bitmap</A></B>
+<DD><I> Index of the bitmap in the skin's bitmap array the widget will use.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.110.6">sample</A></B>[7]
+<DD><I> Sample indices in the skin's sample array for samples that are to be played by the widget at different events</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Dialog.html">Dialog</A>* <B><A HREF="#DOC.110.7">parent</A></B>
+<DD><I> A pointer to the widget's parent Dialog.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Skin.html">Skin</A>* <B><A HREF="#DOC.110.8">skin</A></B>
+<DD><I> A pointer to the skin the widget is to use to skin itself.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Point.html">Point</A> <B><A HREF="#DOC.110.9">relativePos</A></B>
+<DD><I> The widget's relative position.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Animator.html">Animator</A>* <B><A HREF="#DOC.110.10">animator</A></B>
+<DD><I> The animator object that is used to animate the widget</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.110.11">animLength</A></B>
+<DD><I> Animation length of the default animation in miliseconds</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.110.12">animType</A></B>
+<DD><I> Animation type of the default animation.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>char* <B><A HREF="#DOC.110.13">tooltipText</A></B>
+<DD><I> The text displayed in tooltip help bubbles when the mouse hovers over the widget.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>BITMAP* <B><A HREF="#DOC.110.14">GetCanvas</A></B>()
+<DD><I> Returns the widget's own canvas onto which the widget may draw itself.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.110.15">ReleaseCanvas</A></B>(BITMAP* <!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)
+<DD><I> Releases the widget's canvas that was obtained by the GetCanvas() function.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.16">SetCursor</A></B>(int i)
+<DD><I> Changes the global mouse cursor.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.110.17">UpdatePosition</A></B>()
+<DD><I> Updates the widget's absolute position.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.18">MsgStart</A></B>()
+<DD><I> Called when the dialog is started.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.19">MsgEnd</A></B>()
+<DD><I> Called when the dialog is closed.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.20">MsgDraw</A></B>()
+<DD><I> Called to tell the widget to draw itself.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.21">Draw</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)
+<DD><I> Called whenever the widget needs to be redrawn.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.22">MsgClick</A></B>()
+<DD><I> Called whenever a mouse button was clicked while the mouse cursor was over the widget.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.23">MsgDClick</A></B>()
+<DD><I> Called whenever the widget was doubleclicked</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.24">MsgKey</A></B>()
+<DD><I> Called if the widget's shortcut key was pressed</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.110.25">MsgChar</A></B>(int c)
+<DD><I> Called whenever a keyboard button was pressed while the widget had input focus.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.110.26">MsgUChar</A></B>(int c)
+<DD><I> The Unicode version of MsgChar().</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.110.27">MsgXChar</A></B>(int c)
+<DD><I> Sent to all widgets in a dialog when a keypress occurs but the widget with input focus	doesn't handle it and the key doesn't match any of the dialog's widgets keyboard shortcut.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.110.28">MsgWantfocus</A></B>()
+<DD><I> Called to ask the widget if it accepts input focus</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.29">MsgGotfocus</A></B>()
+<DD><I> Called to inform the widget that it received input focus</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.30">MsgLostfocus</A></B>()
+<DD><I> Called to inform the widget that it lost input focus</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.110.31">MsgWantmouse</A></B>()
+<DD><I> Called to ask the widget if cares about the mouse being over it and if the mouse is actually over it.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.32">MsgGotmouse</A></B>()
+<DD><I> Called to inform the widget that the mouse just came on top of it</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.33">MsgLostmouse</A></B>()
+<DD><I> Called to inform the widget that the mouse just left it</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.34">MsgIdle</A></B>()
+<DD><I> Called continously in a loop whenever the dialog manager has nothing better to do</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.35">MsgRadio</A></B>(int <!1><A HREF="Color.html#DOC.8.18">g</A>)
+<DD><I> Called when a radio button object is activate so that other radio buttons in the same group can deselect themselves</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.36">MsgWheel</A></B>(int <!1><A HREF="Mouse.html#DOC.77.19">z</A>)
+<DD><I> Called when the mouse wheel moves.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.37">MsgLPress</A></B>()
+<DD><I> Called when the left mouse button was pressed</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.38">MsgMPress</A></B>()
+<DD><I> Called when the middle mouse button was pressed</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.39">MsgRPress</A></B>()
+<DD><I> Called when the right mouse button was pressed</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.40">MsgLRelease</A></B>()
+<DD><I> Called when the left mouse button was released</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.41">MsgMRelease</A></B>()
+<DD><I> Called when the middle mouse button was released</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.42">MsgRRelease</A></B>()
+<DD><I> Called when the right mouse button was released</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.43">MsgTimer</A></B>(int t)
+<DD><I> Called whenever a timer has ticked.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.44">MsgTick</A></B>()
+<DD><I> Called exactly once per frame</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.45">MsgMove</A></B>()
+<DD><I> Called to inform the widget that it was moved</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.46">MsgResize</A></B>()
+<DD><I> Called to inform the widget that it was resized</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.47">MsgShape</A></B>()
+<DD><I> Called to inform the widget that it was both moved and resized</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.48">MsgMousemove</A></B>(const <!1><A HREF="Point.html">Point</A>&amp; d)
+<DD><I> Called when the mouse has moved.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.110.49">MsgInitSkin</A></B>()
+<DD><I> Called right after the widget's skin has changed.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.110.50">MsgClose</A></B>()
+<DD><I> Called to ask if the dialog can really be closed.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.110.51">MsgWantTab</A></B>()
+<DD><I> Called to ask if the widget can be tabbed to.</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+The widget baseclass.
+This class is quite useless as it is, but all MASkinG widgets need to inherit
+from it. It contains many variables and methods that control the basic
+apprearance and functionality of the widgets such as position, size, flags, etc.</BLOCKQUOTE>
+<DL>
+
+<A NAME="flags"></A>
+<A NAME="DOC.110.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int flags</B></TT>
+<DD>
+Flags that define the objects state. Available flags are all flags defined
+by Allegro and the D_SOMETHING flags. Click <A HREF="index.html">here</A> and
+scroll down to "Macros" to see the full list.
+<DL><DT><DD></DL><P>
+<A NAME="key"></A>
+<A NAME="DOC.110.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int key</B></TT>
+<DD>
+The keyboard shortcut.
+This shortcut can be used to activate the widget. This may be a character such
+as 'a' to respond to a simple keypress, or a number 1-26 to respond to a
+control key a-z.
+<DL><DT><DD></DL><P>
+<A NAME="callbackID"></A>
+<A NAME="DOC.110.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int callbackID</B></TT>
+<DD>
+The ID of the main callback message for this widget
+<DL><DT><DD></DL><P>
+<A NAME="fontInfo"></A>
+<A NAME="DOC.110.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="FontInfo.html">FontInfo</A> fontInfo</B></TT>
+<DD>
+Information about fonts and font colours the widget should use. This is obviously
+relevant only for widgets that contain text.
+<DL><DT><DD></DL><P>
+<A NAME="bitmap"></A>
+<A NAME="DOC.110.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int bitmap</B></TT>
+<DD>
+Index of the bitmap in the skin's bitmap array the widget will use. If a widget
+uses more than one bitmap, it obviously needs to keep track of all the indices
+by itself.
+<DL><DT><DD></DL><P>
+<A NAME="sample"></A>
+<A NAME="DOC.110.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int sample[7]</B></TT>
+<DD>
+Sample indices in the skin's sample array for samples that are to be played by
+the widget at different events
+<DL><DT><DD></DL><P>
+<A NAME="parent"></A>
+<A NAME="DOC.110.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Dialog.html">Dialog</A>* parent</B></TT>
+<DD>
+A pointer to the widget's parent Dialog. The parent of the top level dialog is
+the dialog itself (this pointer).
+<DL><DT><DD></DL><P>
+<A NAME="skin"></A>
+<A NAME="DOC.110.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Skin.html">Skin</A>* skin</B></TT>
+<DD>
+A pointer to the skin the widget is to use to skin itself. This usually
+points to the global skin object (<A HREF="theSkin.html">theSkin</A>), but in
+theory every widget can have its own skin.
+<DL><DT><DD></DL><P>
+<A NAME="relativePos"></A>
+<A NAME="DOC.110.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Point.html">Point</A> relativePos</B></TT>
+<DD>
+The widget's relative position. This is relative to the parent (as opposed
+to being the absolute position on the screen).
+<DL><DT><DD></DL><P>
+<A NAME="animator"></A>
+<A NAME="DOC.110.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Animator.html">Animator</A>* animator</B></TT>
+<DD>
+The animator object that is used to animate the widget
+<DL><DT><DD></DL><P>
+<A NAME="animLength"></A>
+<A NAME="DOC.110.11"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int animLength</B></TT>
+<DD>
+Animation length of the default animation in miliseconds
+<DL><DT><DD></DL><P>
+<A NAME="animType"></A>
+<A NAME="DOC.110.12"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int animType</B></TT>
+<DD>
+Animation type of the default animation. The type can be one of
+<A HREF="animator-2.html#AnimationType">these values</A>.
+<DL><DT><DD></DL><P>
+<A NAME="tooltipText"></A>
+<A NAME="DOC.110.13"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>char* tooltipText</B></TT>
+<DD>
+The text displayed in tooltip help bubbles when the mouse hovers over the
+widget. If NULL, no help bubble is displayed.
+<DL><DT><DD></DL><P>
+<A NAME="GetCanvas"></A>
+<A NAME="DOC.110.14"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>BITMAP* GetCanvas()</B></TT>
+<DD>
+Returns the widget's own canvas onto which the widget may draw itself.
+The canvas is most often the same size as the widget but you shouldn't
+rely on that (in some cases the widget's canvas may be clipped). The
+canvas is actually a subbitmap of the dialog's canvas so the widget
+should draw itself at position (0,0) which is different than in previous
+versions of MASkinG where every widget had access to its dialog's canvas
+and had to draw itself at position (x,y). Normally you shouldn't need to
+call this function because the dialog manager does it for you in the
+MsgDraw() message handler.
+<DL><DT><DD></DL><P>
+<A NAME="ReleaseCanvas"></A>
+<A NAME="DOC.110.15"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void ReleaseCanvas(BITMAP* <!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)</B></TT>
+<DD>
+Releases the widget's canvas that was obtained by the GetCanvas() function.
+It is necessary for every call to GetCanvas() to have a matching call to
+ReleaseCanvas() otherwise you get a memory leak.
+<DL><DT><DD></DL><P>
+<A NAME="SetCursor"></A>
+<A NAME="DOC.110.16"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetCursor(int i)</B></TT>
+<DD>
+Changes the global mouse cursor. Actually it calls the SetCursor() function
+in the <A HREF="mouse-2.html">Mouse</A> class. The parameter i is the index of the
+cursors in the skin's cursor array as defined <A HREF="skin-2.html#SkinCursorIndex">here</A>.
+<DL><DT><DD></DL><P>
+<A NAME="UpdatePosition"></A>
+<A NAME="DOC.110.17"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void UpdatePosition()</B></TT>
+<DD>
+Updates the widget's absolute position.	This means tha widget is moved to
+it's absolute position on the screen if it's a part of a subdialog and not
+of the main dialog. You shouldn't have to call this function yourself, the
+dialog manager does it when the widget is added to the dialog.
+<DL><DT><DD></DL><P>
+<A NAME="MsgStart"></A>
+<A NAME="DOC.110.18"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MsgStart()</B></TT>
+<DD>
+Called when the dialog is started. This allows the widget to initialize itself
+if necessary before being used and drawn. MsgStart() is also called when the
+widget is dynamically added to a dialog while the dialog is already running.
+<DL><DT><DD></DL><P>
+<A NAME="MsgEnd"></A>
+<A NAME="DOC.110.19"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MsgEnd()</B></TT>
+<DD>
+Called when the dialog is closed. Allows the widget to clean up after itself
+before being destroyed. This function is also called when the widget is
+removed from a dialog while the dialog is still running.
+<DL><DT><DD></DL><P>
+<A NAME="MsgDraw"></A>
+<A NAME="DOC.110.20"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MsgDraw()</B></TT>
+<DD>
+Called to tell the widget to draw itself. Normally you should overload this
+because the default implementation takes care of thing like getting and
+releasing the canvas, updating the screen and doing animation. In most cases
+you should implement the drawing code in the Draw() function.
+<DL><DT><DD></DL><P>
+<A NAME="Draw"></A>
+<A NAME="DOC.110.21"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Draw(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)</B></TT>
+<DD>
+Called whenever the widget needs to be redrawn. The canvas parameter is the
+canvas bitmap on which the widget should draw itself. You should normally
+implement this function instead of MsgDraw() unless you're doing something
+really clever. The default implementation of MsgDraw() takes care of acquiring
+and releasing the canvas and doing the animation. You should implement MsgDraw()
+only if you don't need this for some reason or if you want to do it differently
+otherwise you should just implement Draw().
+<DL><DT><DD></DL><P>
+<A NAME="MsgClick"></A>
+<A NAME="DOC.110.22"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MsgClick()</B></TT>
+<DD>
+Called whenever a mouse button was clicked while the mouse cursor was over
+the widget. This doesn't differentiate between mouse buttons so if you need
+to handle clicks with different buttons and if you want better control over
+mouse presses and releases, implement the appropriate lower level message
+handlers instead.
+<DL><DT><DD></DL><P>
+<A NAME="MsgDClick"></A>
+<A NAME="DOC.110.23"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MsgDClick()</B></TT>
+<DD>
+Called whenever the widget was doubleclicked
+<DL><DT><DD></DL><P>
+<A NAME="MsgKey"></A>
+<A NAME="DOC.110.24"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MsgKey()</B></TT>
+<DD>
+Called if the widget's shortcut key was pressed
+<DL><DT><DD></DL><P>
+<A NAME="MsgChar"></A>
+<A NAME="DOC.110.25"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool MsgChar(int c)</B></TT>
+<DD>
+Called whenever a keyboard button was pressed while the widget had input focus.
+The character passed into this function is in the "extended" format with the
+ASCII code in the low byte and the scancode in the high byte. This function
+should return true if the widget handled the key, otherwise it should return
+false to indicate that it isn't interested.
+<DL><DT><DD></DL><P>
+<A NAME="MsgUChar"></A>
+<A NAME="DOC.110.26"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool MsgUChar(int c)</B></TT>
+<DD>
+The Unicode version of MsgChar(). This is called if MsgChar() returned false,
+passing the Unicode value of the pressed key as the parameter. Should return
+true if the widget handled the key, false otherwise.
+<DL><DT><DD></DL><P>
+<A NAME="MsgXChar"></A>
+<A NAME="DOC.110.27"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool MsgXChar(int c)</B></TT>
+<DD>
+Sent to all widgets in a dialog when a keypress occurs but the widget with
+input focus	doesn't handle it and the key doesn't match any of the dialog's widgets
+keyboard shortcut. This allows you to handle special keypresses even when
+you don't have input focus.
+<DL><DT><DD></DL><P>
+<A NAME="MsgWantfocus"></A>
+<A NAME="DOC.110.28"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool MsgWantfocus()</B></TT>
+<DD>
+Called to ask the widget if it accepts input focus
+<DL><DT><DD></DL><P>
+<A NAME="MsgGotfocus"></A>
+<A NAME="DOC.110.29"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MsgGotfocus()</B></TT>
+<DD>
+Called to inform the widget that it received input focus
+<DL><DT><DD></DL><P>
+<A NAME="MsgLostfocus"></A>
+<A NAME="DOC.110.30"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MsgLostfocus()</B></TT>
+<DD>
+Called to inform the widget that it lost input focus
+<DL><DT><DD></DL><P>
+<A NAME="MsgWantmouse"></A>
+<A NAME="DOC.110.31"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool MsgWantmouse()</B></TT>
+<DD>
+Called to ask the widget if cares about the mouse being over it and if
+the mouse is actually over it. This allows you to implement non-rectangular
+widgets. This function is called whenever the mouse cursor enters the
+widget's bounding rectangle but the widget itself should take care of
+figuring out whether the mouse is actually on top of the widget or not.
+<DL><DT><DD></DL><P>
+<A NAME="MsgGotmouse"></A>
+<A NAME="DOC.110.32"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MsgGotmouse()</B></TT>
+<DD>
+Called to inform the widget that the mouse just came on top of it
+<DL><DT><DD></DL><P>
+<A NAME="MsgLostmouse"></A>
+<A NAME="DOC.110.33"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MsgLostmouse()</B></TT>
+<DD>
+Called to inform the widget that the mouse just left it
+<DL><DT><DD></DL><P>
+<A NAME="MsgIdle"></A>
+<A NAME="DOC.110.34"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MsgIdle()</B></TT>
+<DD>
+Called continously in a loop whenever the dialog manager has nothing
+better to do
+<DL><DT><DD></DL><P>
+<A NAME="MsgRadio"></A>
+<A NAME="DOC.110.35"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MsgRadio(int <!1><A HREF="Color.html#DOC.8.18">g</A>)</B></TT>
+<DD>
+Called when a radio button object is activate so that other radio
+buttons in the same group can deselect themselves
+<DL><DT><DD></DL><P>
+<A NAME="MsgWheel"></A>
+<A NAME="DOC.110.36"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MsgWheel(int <!1><A HREF="Mouse.html#DOC.77.19">z</A>)</B></TT>
+<DD>
+Called when the mouse wheel moves. Parameter z is the number of "clicks".
+<DL><DT><DD></DL><P>
+<A NAME="MsgLPress"></A>
+<A NAME="DOC.110.37"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MsgLPress()</B></TT>
+<DD>
+Called when the left mouse button was pressed
+<DL><DT><DD></DL><P>
+<A NAME="MsgMPress"></A>
+<A NAME="DOC.110.38"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MsgMPress()</B></TT>
+<DD>
+Called when the middle mouse button was pressed
+<DL><DT><DD></DL><P>
+<A NAME="MsgRPress"></A>
+<A NAME="DOC.110.39"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MsgRPress()</B></TT>
+<DD>
+Called when the right mouse button was pressed
+<DL><DT><DD></DL><P>
+<A NAME="MsgLRelease"></A>
+<A NAME="DOC.110.40"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MsgLRelease()</B></TT>
+<DD>
+Called when the left mouse button was released
+<DL><DT><DD></DL><P>
+<A NAME="MsgMRelease"></A>
+<A NAME="DOC.110.41"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MsgMRelease()</B></TT>
+<DD>
+Called when the middle mouse button was released
+<DL><DT><DD></DL><P>
+<A NAME="MsgRRelease"></A>
+<A NAME="DOC.110.42"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MsgRRelease()</B></TT>
+<DD>
+Called when the right mouse button was released
+<DL><DT><DD></DL><P>
+<A NAME="MsgTimer"></A>
+<A NAME="DOC.110.43"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MsgTimer(int t)</B></TT>
+<DD>
+Called whenever a timer has ticked. The passed parameter is
+the ID of the timer that caused the message to be sent.
+<DL><DT><DD></DL><P>
+<A NAME="MsgTick"></A>
+<A NAME="DOC.110.44"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MsgTick()</B></TT>
+<DD>
+Called exactly once per frame
+<DL><DT><DD></DL><P>
+<A NAME="MsgMove"></A>
+<A NAME="DOC.110.45"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MsgMove()</B></TT>
+<DD>
+Called to inform the widget that it was moved
+<DL><DT><DD></DL><P>
+<A NAME="MsgResize"></A>
+<A NAME="DOC.110.46"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MsgResize()</B></TT>
+<DD>
+Called to inform the widget that it was resized
+<DL><DT><DD></DL><P>
+<A NAME="MsgShape"></A>
+<A NAME="DOC.110.47"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MsgShape()</B></TT>
+<DD>
+Called to inform the widget that it was both moved and resized
+<DL><DT><DD></DL><P>
+<A NAME="MsgMousemove"></A>
+<A NAME="DOC.110.48"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MsgMousemove(const <!1><A HREF="Point.html">Point</A>&amp; d)</B></TT>
+<DD>
+Called when the mouse has moved. When the mouse is on top of a
+widget or the widget has the D_PRESSED flag set this function is
+called whenever the mouse has moved passing the difference between
+the current and the previous mouse positions (delta).
+<DL><DT><DD></DL><P>
+<A NAME="MsgInitSkin"></A>
+<A NAME="DOC.110.49"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MsgInitSkin()</B></TT>
+<DD>
+Called right after the widget's skin has changed. Most widgets
+read their skin information (like fonts, font colours, bitmaps,
+samples, etc.) from the skin in this function.
+<DL><DT><DD></DL><P>
+<A NAME="MsgClose"></A>
+<A NAME="DOC.110.50"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool MsgClose()</B></TT>
+<DD>
+Called to ask if the dialog can really be closed.
+This is obviously relevant only for dialogs and windows. It is
+passed whenever a request to close the dialog was made (either
+by pressing escape, selecting a widget that has the D_EXIT
+flag set or by explicitly calling the Close() function). This
+functions should return true if the dialog may be closed
+otherwise it should return false. Most often you should popup
+a dialog asking the user if they really want to close the
+window or something similar in this function.
+<DL><DT><DD></DL><P>
+<A NAME="MsgWantTab"></A>
+<A NAME="DOC.110.51"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool MsgWantTab()</B></TT>
+<DD>
+Called to ask if the widget can be tabbed to. This function should
+return true if the widget can be tabbed to with the TAB key or with
+the arrow keys, otherwise it should return false. By default the
+value MsgWantfocus() returns is returned.
+
+<P>The above messages are called every time a message needs to be passed to
+the widget. Every derived widget class may implement any or all of these
+functions to define it's appearance and behaviour. Most of the messages
+are directly related to similar messages in the default Allegro GUI but
+some are completely new and unique to MASkinG.
+<DL><DT><DD></DL><P>
+<A NAME="RelativePos"></A>
+<A NAME="DOC.110.52"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   <!1><A HREF="Point.html">Point</A> RelativePos() const </B></TT>
+<DD>
+Returns the position of the widget relative to it's parent dialog
+<DL><DT><DD></DL><P>
+<A NAME="Key"></A>
+<A NAME="DOC.110.53"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   int Key() const </B></TT>
+<DD>
+Returns the widget's keyboard shortcut
+<DL><DT><DD></DL><P>
+<A NAME="Flags"></A>
+<A NAME="DOC.110.54"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   int Flags() const </B></TT>
+<DD>
+Returns the flags defining the widget's state
+<DL><DT><DD></DL><P>
+<A NAME="TestFlag"></A>
+<A NAME="DOC.110.55"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool TestFlag(int i) const </B></TT>
+<DD>
+Tests a flag or a group of them
+<DL><DT><DD></DL><P>
+<A NAME="HasFocus"></A>
+<A NAME="DOC.110.56"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool HasFocus()</B></TT>
+<DD>
+Tests if the widget has input focus
+<DL><DT><DD></DL><P>
+<A NAME="HasMouse"></A>
+<A NAME="DOC.110.57"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool HasMouse()</B></TT>
+<DD>
+Tests if the widget currently has the mouse over it. Note that only one
+widget can have a mouse at any time so when widgets are stacked on top
+of each other, only the one on top can have the mouse.
+<DL><DT><DD></DL><P>
+<A NAME="Hidden"></A>
+<A NAME="DOC.110.58"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool Hidden() const </B></TT>
+<DD>
+Tests if the widget is hidden or not
+<DL><DT><DD></DL><P>
+<A NAME="WillExit"></A>
+<A NAME="DOC.110.59"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool WillExit() const </B></TT>
+<DD>
+Checks if activating the widget will close the parent dialog
+<DL><DT><DD></DL><P>
+<A NAME="Selected"></A>
+<A NAME="DOC.110.60"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool Selected() const </B></TT>
+<DD>
+Checks if the widget is selected. Note that being selected may have
+different meaning for different widgets.
+<DL><DT><DD></DL><P>
+<A NAME="Disabled"></A>
+<A NAME="DOC.110.61"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool Disabled() const </B></TT>
+<DD>
+Checks if the widget is disabled and grayed out
+<DL><DT><DD></DL><P>
+<A NAME="Dirty"></A>
+<A NAME="DOC.110.62"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool Dirty() const </B></TT>
+<DD>
+Checks if the widget is marked dirty and needs to be redrawn
+<DL><DT><DD></DL><P>
+<A NAME="HasChildren"></A>
+<A NAME="DOC.110.63"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool HasChildren() const </B></TT>
+<DD>
+Checks if the widget contains child widgets
+<DL><DT><DD></DL><P>
+<A NAME="IsWindow"></A>
+<A NAME="DOC.110.64"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool IsWindow() const </B></TT>
+<DD>
+Checks if the widget is a window that can potentially be moved and resized
+<DL><DT><DD></DL><P>
+<A NAME="GetParent"></A>
+<A NAME="DOC.110.65"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   <!1><A HREF="Dialog.html">Dialog</A>* GetParent() const </B></TT>
+<DD>
+Returns a pointer to the widget's parent dialog
+<DL><DT><DD></DL><P>
+<A NAME="IsChildOf"></A>
+<A NAME="DOC.110.66"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool IsChildOf(<!1><A HREF="Widget.html">Widget</A>* <!1><A HREF="Widget.html#DOC.110.69">w</A>) const </B></TT>
+<DD>
+Returns true is this widget is a child of the passed widget
+<DL><DT><DD></DL><P>
+<A NAME="x"></A>
+<A NAME="DOC.110.67"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void x(int i, bool normalized=false)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="y"></A>
+<A NAME="DOC.110.68"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void y(int i, bool normalized=false)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="w"></A>
+<A NAME="DOC.110.69"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void w(int i, bool normalized=false)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="h"></A>
+<A NAME="DOC.110.70"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void h(int i, bool normalized=false)</B></TT>
+<DD>
+These set the widget's x and y coordinates within the dialog and
+the widgets width and height.
+If <i>normalized</i> is true, then the value should be a normalized
+number in the range between 0 and 100 (i.e. percentage of the parent
+dialog size), otherwise it should be the actual number of pixels.
+<DL><DT><DD></DL><P>
+<A NAME="Key"></A>
+<A NAME="DOC.110.71"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Key(int i)</B></TT>
+<DD>
+Sets the keyboard shortcut
+<DL><DT><DD></DL><P>
+<A NAME="SetFlag"></A>
+<A NAME="DOC.110.72"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetFlag(int i)</B></TT>
+<DD>
+Sets a flag or a group of them
+<DL><DT><DD></DL><P>
+<A NAME="SetFlags"></A>
+<A NAME="DOC.110.73"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetFlags(int <!1><A HREF="Widget.html#DOC.110.1">flags</A>)</B></TT>
+<DD>
+Sets the flags to the given value
+<DL><DT><DD></DL><P>
+<A NAME="ClearFlag"></A>
+<A NAME="DOC.110.74"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void ClearFlag(int i)</B></TT>
+<DD>
+Clears a flag
+<DL><DT><DD></DL><P>
+<A NAME="Enable"></A>
+<A NAME="DOC.110.75"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Enable()</B></TT>
+<DD>
+Enables the widget
+<DL><DT><DD></DL><P>
+<A NAME="Disable"></A>
+<A NAME="DOC.110.76"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Disable()</B></TT>
+<DD>
+Disables the widget and grays it out
+<DL><DT><DD></DL><P>
+<A NAME="Hide"></A>
+<A NAME="DOC.110.77"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Hide()</B></TT>
+<DD>
+Hides the widget
+<DL><DT><DD></DL><P>
+<A NAME="Unhide"></A>
+<A NAME="DOC.110.78"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Unhide()</B></TT>
+<DD>
+Unhides the widget
+<DL><DT><DD></DL><P>
+<A NAME="MakeExit"></A>
+<A NAME="DOC.110.79"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MakeExit()</B></TT>
+<DD>
+Flags the widget with the D_EXIT flag to indicate that activating it
+will close the parent dialog
+<DL><DT><DD></DL><P>
+<A NAME="DontExit"></A>
+<A NAME="DOC.110.80"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void DontExit()</B></TT>
+<DD>
+Clears the D_EXIT flag
+<DL><DT><DD></DL><P>
+<A NAME="Redraw"></A>
+<A NAME="DOC.110.81"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Redraw()</B></TT>
+<DD>
+Marks the widget dirty and schedules for being redrawn
+<DL><DT><DD></DL><P>
+<A NAME="Redraw"></A>
+<A NAME="DOC.110.82"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Redraw(const <!1><A HREF="Rect.html">Rect</A> &amp;region)</B></TT>
+<DD>
+Marks only a part of the widget dirty and schedules for being redrawn.
+The region that is to be redrawn should be in absolute screen coordinates and
+not the local widget coordinates. The widget takes care of making sure that
+each part of the widget is drawn only once, if necessary by splitting the
+region into smaller ones.
+<DL><DT><DD></DL><P>
+<A NAME="Place"></A>
+<A NAME="DOC.110.83"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Place(int nx, int ny, bool normalized=false)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="Place"></A>
+<A NAME="DOC.110.84"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Place(const <!1><A HREF="Point.html">Point</A>&amp; p, bool normalized=false)</B></TT>
+<DD>
+Places the widget at the desired position
+<DL><DT><DD></DL><P>
+<A NAME="Resize"></A>
+<A NAME="DOC.110.85"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Resize(int nw, int nh, bool normalized=false)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="Resize"></A>
+<A NAME="DOC.110.86"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Resize(const <!1><A HREF="Size.html">Size</A>&amp; s, bool normalized=false)</B></TT>
+<DD>
+Resize the widget to the desired size
+<DL><DT><DD></DL><P>
+<A NAME="Shape"></A>
+<A NAME="DOC.110.87"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Shape(int nx, int ny, int nw, int nh, bool normalized=false)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="Shape"></A>
+<A NAME="DOC.110.88"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Shape(const <!1><A HREF="Point.html">Point</A>&amp; p, const <!1><A HREF="Size.html">Size</A>&amp; s, bool normalized=false)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="Shape"></A>
+<A NAME="DOC.110.89"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Shape(const <!1><A HREF="Rect.html">Rect</A> &amp;<!1><A HREF="Color.html#DOC.8.17">r</A>, bool normalized=false)</B></TT>
+<DD>
+Sets the widgets size and position to the desired values
+<DL><DT><DD></DL><P>
+<A NAME="Select"></A>
+<A NAME="DOC.110.90"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Select()</B></TT>
+<DD>
+Selects the widget
+<DL><DT><DD></DL><P>
+<A NAME="Deselect"></A>
+<A NAME="DOC.110.91"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Deselect()</B></TT>
+<DD>
+Deselects the widget
+<DL><DT><DD></DL><P>
+<A NAME="SetParent"></A>
+<A NAME="DOC.110.92"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetParent(<!1><A HREF="Dialog.html">Dialog</A>* f)</B></TT>
+<DD>
+Sets the widget's parent dialog. Probably shouldn't be used!
+<DL><DT><DD></DL><P>
+<A NAME="SetAnimator"></A>
+<A NAME="DOC.110.93"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetAnimator(<!1><A HREF="Animator.html">Animator</A>* <!1><A HREF="Color.html#DOC.8.20">a</A>)</B></TT>
+<DD>
+Changes the animator the widget is to use for animating. By default
+the widgets make an instance of the base Animator class but you can
+easily add your own animations by deriving an animator class from it.
+This function deletes the previous animator if any. Also the animator
+is deleted when the widget expires so you don't have to worry about
+destroying it yourself.
+<DL><DT><DD></DL><P>
+<A NAME="SetAnimationProperties"></A>
+<A NAME="DOC.110.94"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetAnimationProperties(int length, int <!1><A HREF="Font.html#DOC.52.2">type</A>)</B></TT>
+<DD>
+Sets the default animation length and type for the widget. Most often
+this is read from the skin description file and set in the
+MsgInitSkin() function.
+<DL><DT><DD></DL><P>
+<A NAME="Animate"></A>
+<A NAME="DOC.110.95"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Animate()</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="Animate"></A>
+<A NAME="DOC.110.96"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Animate(int <!1><A HREF="Font.html#DOC.52.2">type</A>)</B></TT>
+<DD>
+Starts animating the widget. Basically these functions just set a flag
+which means the widget is being animated and then the dialog manager
+makes sure the animation is actually performed.
+<DL><DT><DD></DL><P>
+<A NAME="StopAnimating"></A>
+<A NAME="DOC.110.97"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void StopAnimating()</B></TT>
+<DD>
+Stops the animation. You shouldn't normally have to call this function
+as the animation will acutomatically stop when it reaches the end.
+<DL><DT><DD></DL><P>
+<A NAME="ResetAnimation"></A>
+<A NAME="DOC.110.98"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void ResetAnimation()</B></TT>
+<DD>
+Stops animating and resets the animator so it can start a new animation from scratch
+<DL><DT><DD></DL><P>
+<A NAME="SetTooltipText"></A>
+<A NAME="DOC.110.99"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetTooltipText(const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>)</B></TT>
+<DD>
+Sets the text tooltip help bubbles display when the mouse hovers over the widget.
+Set text to NULL to disable tooltips.
+<DL><DT><DD></DL><P>
+<A NAME="GetTooltipText"></A>
+<A NAME="DOC.110.100"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   const char* GetTooltipText()</B></TT>
+<DD>
+Returns the widget's tooltip text.
+If the text is NULL, the parent dialog's tooltip text is returned instead!
+<DL><DT><DD></DL><P>
+<A NAME="SetCallbackID"></A>
+<A NAME="DOC.110.101"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetCallbackID(int ID)</B></TT>
+<DD>
+Sets The ID of the main callback message for this widget.
+If this value is set to a positive number or 0 (default is -1), an event with this
+ID will be created and sent to the parent dialog via HandleEvent() instead of the
+primary message of the widget.
+For example when a button is clicked, it sends MSG_ACTIVATE to the parent dialog,
+but if this ID is set, it will be sent instead. This makes it easy to map several
+widgets to the same message (so they will perform the same action). For example
+you might have a File/Open menu item, a Ctrl+O keyboard shortcut and an icon all
+do the same thing (popup a file open dialog).
+So to sum it up, this ID overrides MSG_ACTIVATE in widgets that send it when
+they are activated.
+<DL><DT><DD></DL><P>
+<A NAME="GetCallbackID"></A>
+<A NAME="DOC.110.102"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int GetCallbackID()</B></TT>
+<DD>
+Returns the widget's callback ID. Returns -1 if no ID is set.
+<DL><DT><DD></DL><P>
+<A NAME="Setup"></A>
+<A NAME="DOC.110.103"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Setup(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>=0, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>=0)</B></TT>
+<DD>
+Sets up the most important widget properties
+(position, size, keyboard shortcut and flags) in one function call
+<DL><DT><DD></DL><P>
+<A NAME="SetSkin"></A>
+<A NAME="DOC.110.104"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetSkin(<!1><A HREF="Skin.html">Skin</A>* <!1><A HREF="Widget.html#DOC.110.8">skin</A>)</B></TT>
+<DD>
+Sets the skin the widget is supposed to use for drawing itself.
+Usually all widgets use the global skin <A HREF="theSkin.html">theSkin</A>
+but every widget may have it's own skin.
+<DL><DT><DD></DL><P>
+<A NAME="GetSkin"></A>
+<A NAME="DOC.110.105"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   <!1><A HREF="Skin.html">Skin</A>* GetSkin()</B></TT>
+<DD>
+Returns a pointer to the widget's skin
+<DL><DT><DD></DL><P>
+<A NAME="operator=="></A>
+<A NAME="DOC.110.106"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool operator==(const <!1><A HREF="Widget.html">Widget</A>&amp; obj) const </B></TT>
+<DD>
+Tests if two references to widgets are one and the same
+<DL><DT><DD></DL><P>
+<A NAME="operator!="></A>
+<A NAME="DOC.110.107"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool operator!=(const <!1><A HREF="Widget.html">Widget</A>&amp; obj) const </B></TT>
+<DD>
+Tests if two references to widgets are not the same
+<DL><DT><DD></DL><P>
+<A NAME="SendMessage"></A>
+<A NAME="DOC.110.108"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int SendMessage(int msg, int c=0)</B></TT>
+<DD>
+Sends the widget a message with one optional parameter. Becuse all
+the message functions are protected, widgets can only communicate
+with each other by sending messages and events. Available messages
+are all the messages defined by Allegro and the messages defined
+<A HREF="index.html">here</A> (scroll down to "Macros" to see a full list).
+<DL><DT><DD></DL><P>
+<A NAME="GetMousePos"></A>
+<A NAME="DOC.110.109"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   <!1><A HREF="Point.html">Point</A> GetMousePos() const </B></TT>
+<DD>
+Returns the current mouse position relative to the widget's top left corner
+<DL><DT><DD></DL><P>
+<A NAME="SetTextMode"></A>
+<A NAME="DOC.110.110"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetTextMode(<!1><A HREF="Color.html">Color</A> m)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="SetFontColor"></A>
+<A NAME="DOC.110.111"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetFontColor(<!1><A HREF="Color.html">Color</A> <!1><A HREF="Color.html#DOC.8.1">col</A>, <!1><A HREF="Color.html">Color</A> shd, int <!1><A HREF="Font.html#DOC.52.2">type</A>)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="SetFont"></A>
+<A NAME="DOC.110.112"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetFont(int f, int <!1><A HREF="Font.html#DOC.52.2">type</A>)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="GetFont"></A>
+<A NAME="DOC.110.113"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Font.html">Font</A>&amp; GetFont(int <!1><A HREF="Font.html#DOC.52.2">type</A>)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="GetTextMode"></A>
+<A NAME="DOC.110.114"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Color.html">Color</A>&amp; GetTextMode()</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="GetFontColor"></A>
+<A NAME="DOC.110.115"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Color.html">Color</A>&amp; GetFontColor(int <!1><A HREF="Font.html#DOC.52.2">type</A>)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="GetShadowColor"></A>
+<A NAME="DOC.110.116"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Color.html">Color</A>&amp; GetShadowColor(int <!1><A HREF="Font.html#DOC.52.2">type</A>)</B></TT>
+<DD>
+Functions for setting and getting the colours of the text background, the
+text and the text shadow and the font indices in the skins font array.
+These properties can be inidvidually set for all four possible
+<A HREF=skin-2.html#SkinWidgetState>states</A>. Obviously this is relevant only
+for wigets that actually contain some sort of text.
+<DL><DT><DD></DL><P>
+<A NAME="SetBitmap"></A>
+<A NAME="DOC.110.117"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetBitmap(int i)</B></TT>
+<DD>
+Selects the bitmap the widget is supposed to use to skin itself.
+The parameter i is the index of the bitmap in the skin's bitmap array.
+<DL><DT><DD></DL><P>
+<A NAME="GetBitmapIndex"></A>
+<A NAME="DOC.110.118"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int GetBitmapIndex() const </B></TT>
+<DD>
+Returnes the widget's bitmap index in the skin bitmap array
+<DL><DT><DD></DL><P>
+<A NAME="GetBitmap"></A>
+<A NAME="DOC.110.119"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Bitmap.html">Bitmap</A>&amp; GetBitmap() const </B></TT>
+<DD>
+Retreives the selected bitmap from the widget's skin
+<DL><DT><DD></DL><P>
+<A NAME="SetSample"></A>
+<A NAME="DOC.110.120"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetSample(int i, int event)</B></TT>
+<DD>
+Selects the sample the widget is supposed to play for each event.
+The parameter i is the index of the sample in the skin's sample array.
+Event is one of <A HREF=skin-2.html#SkinSampleIndex>these events</A>.
+<DL><DT><DD></DL><P>
+<A NAME="GetSampleIndex"></A>
+<A NAME="DOC.110.121"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int GetSampleIndex(int event) const </B></TT>
+<DD>
+Returnes the widget's sample index in the skin sample array for the given event
+<DL><DT><DD></DL><P>
+<A NAME="GetSample"></A>
+<A NAME="DOC.110.122"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Sample.html">Sample</A>&amp; GetSample(int event) const </B></TT>
+<DD>
+Retreives the selected sample for the given event from the widget's skin
+<DL><DT><DD></DL><P>
+<A NAME="PlaySample"></A>
+<A NAME="DOC.110.123"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void PlaySample(int event) const </B></TT>
+<DD>
+Plays the sample for the given event
+<DL><DT><DD></DL><P></DL>
+<HR>
+<DL><DT><B>Direct child classes:
+</B><DD><A HREF="Tooltip.html">Tooltip</A><BR>
+<A HREF="Shortcut.html">Shortcut</A><BR>
+<A HREF="Separator.html">Separator</A><BR>
+<A HREF="Panel.html">Panel</A><BR>
+<A HREF="MenuItem.html">MenuItem</A><BR>
+<A HREF="ListView.html">ListView</A><BR>
+<A HREF="InputHandler.html">InputHandler</A><BR>
+<A HREF="Label.html">Label</A><BR>
+<A HREF="Image.html">Image</A><BR>
+<A HREF="GLViewport.html">GLViewport</A><BR>
+<A HREF="Dialog.html">Dialog</A><BR>
+<A HREF="ClearScreen.html">ClearScreen</A><BR>
+<A HREF="Accelerator.html">Accelerator</A><BR>
+</DL>
+
+<DL><DT><DT><B>Friends:</B><DD>  class MASKING_DLL_DECLSPEC <!1><A HREF="Dialog.html">Dialog</A><BR><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Widget.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:14 GMT -->
+</html>

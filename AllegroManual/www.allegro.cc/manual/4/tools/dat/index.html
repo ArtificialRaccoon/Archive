@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/tools/dat/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:02:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>dat - Manipulate datafiles from the commandline</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">Tools</a></h2><ul>
+<li><a href="../makedoc/index.html" >makedoc - Generate documentation in various formats</a></li><li><a href="../grabber/index.html" >grabber - Create datafiles</a></li><li><strong>dat - Manipulate datafiles from the commandline</strong></li><li><a href="../dat2s/index.html" >dat2s - Compile datafiles into assembler code</a></li><li><a href="../dat2c/index.html" >dat2c - Compile datafiles into C code</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>dat - Manipulate datafiles from the commandline</h1>
+
+<h2>Commandline options</h2>
+As an alternative to the graphical grabber program, you can use the command
+line dat utility. This accepts the following options:<br /><br />
+
+   '-a &lt;files&gt;'<br /><br />
+
+      Adds the named files to the datafile, for example:<br /><br />
+
+<pre class="text">
+	 dat myfile.dat -a title.pcx scream.wav
+</pre><br /><br />
+
+      If the objects are already present in the datafile, their current
+      contents will be replaced. Names for the new objects will be generated
+      from the input filenames, and the object type will be detected from
+      the file extensions. In some cases this is ambiguous, for example a
+      PCX file can be read as a bitmap, RLE sprite, compiled sprite, or font
+      object, so you may need to explicitly specify the object type with the
+      '-t' flag. For example, to insert alien.pcx as an RLE sprite, use the
+      command:<br /><br />
+
+<pre class="text">
+	 dat myfile.dat -a alien.pcx -t RLE
+</pre><br /><br />
+
+   '-bpp colordepth'
+      Specifies which color format bitmap data should be grabbed in (valid
+      depths are 8, 15, 16, 24, and 32 bits per pixel).<br /><br />
+
+   '-c0' - no compression<br /><br />
+
+   '-c1' - compress objects individually<br /><br />
+
+   '-c2' - global compression on the entire datafile<br /><br />
+
+      Sets the compression mode (see below). These can be used on their own
+      to convert a datafile from one format to another, or in combination
+      with any other options.<br /><br />
+
+   '-d &lt;objects&gt;'<br /><br />
+
+      Deletes the named objects from the datafile.<br /><br />
+
+   '-dither'<br /><br />
+
+      Dithers graphics when reducing color depths.<br /><br />
+
+   '-e &lt;objects&gt;'<br /><br />
+
+      Extracts the named objects from the datafile. To extract everything,
+      use the wildcard * as the object name. To set the output filename or
+      directory, use the '-o filename' option. For example, to extract an
+      object called TITLE_SCREEN to the file title.pcx, use the command:<br /><br />
+
+<pre class="text">
+	 dat myfile.dat -e title_screen -o title.pcx
+</pre><br /><br />
+
+      To extract the entire contents of the datafile to the directory
+      c:\output, use:<br /><br />
+
+<pre class="text">
+	 dat myfile.dat -e * -o c:\output\
+</pre><br /><br />
+
+   '-f'<br /><br />
+
+      Stores the references to original files as relative filenames instead of
+      absolute filenames. This greatly increases the portability of complete
+      source trees containing the source data.<br /><br />
+
+   '-g x y w h'<br /><br />
+
+      Grabs bitmap data from a specific grid location.<br /><br />
+
+   '-h outputfile.h'<br /><br />
+
+      Sets the output header file, for exporting object index definitions.
+      This may be used on its own to produce a header file from an existing
+      datafile, or in combination with any other commands. You can also use
+      the '-p prefixstring' option to set a prefix string for the object
+      definitions.<br /><br />
+
+   '-k'<br /><br />
+
+      Keep original names while grabbing objects. Without this switch, a
+      file called image.pcx will be imported as an object called IMAGE_PCX,
+      to ensure that all the object names are valid symbols for the output
+      header defines.<br /><br />
+
+   '-l'<br /><br />
+
+      Lists the contents of the datafile. This can be combined with the '-v'
+      option to list object properties along with the names, and you can
+      specify particular objects to produce a partial listing.<br /><br />
+
+   '-m dependencyfile'<br /><br />
+
+      Writes a set of makefile dependencies into the specified file, which
+      can be used to automatically update the file whenever any of the
+      source data changes.<br /><br />
+
+   '-n0' - no sort: list the objects in the order they were added<br /><br />
+
+   '-n1' - sort the objects of the datafile alphabetically by name<br /><br />
+
+      Sets the sort mode (see below). These can be used on their own to
+      sort the objects of the datafile, or in combination with any other
+      options.<br /><br />
+
+   '-o output'<br /><br />
+
+      Sets the output file or directory when extracting data.<br /><br />
+
+   '-p prefixstring'<br /><br />
+
+      Sets the prefix for the output header file.<br /><br />
+
+   '-pal objectname'<br /><br />
+
+      Specifies which palette to use.<br /><br />
+
+   '-r'<br /><br />
+
+      Recursively adds directories as nested datafiles. This makes it possible
+      to maintain the data hierarchy within the datafile.<br /><br />
+
+   '-s0' - no strip: save everything<br /><br />
+
+   '-s1' - strip grabber specific information from the file<br /><br />
+
+   '-s2' - strip all object properties and names from the file<br /><br />
+
+   '-s-PROP' do not strip object property PROP from the file<br /><br />
+
+      Sets the strip mode (see below). These can be used on their own to
+      strip properties from the datafile, or in combination with any other
+      options.<br /><br />
+
+   '-t type'<br /><br />
+
+      Sets the object type when adding files.<br /><br />
+
+   '-transparency'<br /><br />
+
+      Preserves transparency when converting between color depths.<br /><br />
+
+   '-u'<br /><br />
+
+      Updates the contents of the datafile. See below.<br /><br />
+
+   '-v'<br /><br />
+
+      Selects verbose mode. This can be used in combination with any other
+      options to produce more detailed output.<br /><br />
+
+   '-w'<br /><br />
+
+      Always updates the entire contents of the datafile.<br /><br />
+
+   '-x &lt;objects&gt;'<br /><br />
+
+      Alias for '-e &lt;objects&gt;'.<br /><br />
+
+   '-007 password'<br /><br />
+
+      Sets the file encryption key.<br /><br />
+
+   '&lt;objects&gt; PROP=value'<br /><br />
+
+      Sets properties for the specified objects. This works like environment
+      variables, in that setting a property to an empty string removes it.
+      Because object names are stored as NAME properties, you can use this
+      command to rename objects. For example, to rename MY_OBJECT to
+      WHAT_A_SILLY_NAME, use the command:<br /><br />
+
+<pre class="text">
+	 dat myfile.dat my_object NAME=what_a_silly_name
+</pre><br /><br />
+
+      You can use the wildcard * to apply the property to everything in the
+      file, so to remove the ORIG property from the entire datafile, you
+      could execute:<br /><br />
+
+<pre class="text">
+	 dat myfile.dat * ORIG=
+</pre><br /><br />
+
+You can create hierarchical nested datafiles by inserting one datafile into
+another with the '-a' command. Objects in the nested datafile can then be
+referred to by as "parentname/objectname". For example if the datafile
+myfile.dat contains a nested datafile called nestedfile, which contains a
+bitmap called thepicture, you could export the bitmap with the command:<br /><br />
+
+<pre class="text">
+	 dat myfile.dat -e nestedfile/thepicture -o output.pcx
+</pre>
+
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,208</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.012006</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/tools/dat/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:02:26 GMT -->
+</html>

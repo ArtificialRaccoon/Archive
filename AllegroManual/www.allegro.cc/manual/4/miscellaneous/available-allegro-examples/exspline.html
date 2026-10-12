@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/miscellaneous/available-allegro-examples/exspline by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:30:23 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>exspline</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Available Allegro examples</a></h2><ul>
+<li><a href="exhello.html" >exhello</a></li><li><a href="exmem.html" >exmem</a></li><li><a href="expal.html" >expal</a></li><li><a href="expat.html" >expat</a></li><li><a href="exflame.html" >exflame</a></li><li><a href="exdbuf.html" >exdbuf</a></li><li><a href="exflip.html" >exflip</a></li><li><a href="exfixed.html" >exfixed</a></li><li><a href="exfont.html" >exfont</a></li><li><a href="exmouse.html" >exmouse</a></li><li><a href="extimer.html" >extimer</a></li><li><a href="exkeys.html" >exkeys</a></li><li><a href="exjoy.html" >exjoy</a></li><li><a href="exsample.html" >exsample</a></li><li><a href="exmidi.html" >exmidi</a></li><li><a href="exgui.html" >exgui</a></li><li><a href="excustom.html" >excustom</a></li><li><a href="exunicod.html" >exunicod</a></li><li><a href="exbitmap.html" >exbitmap</a></li><li><a href="exscale.html" >exscale</a></li><li><a href="exconfig.html" >exconfig</a></li><li><a href="exdata.html" >exdata</a></li><li><a href="exsprite.html" >exsprite</a></li><li><a href="exexedat.html" >exexedat</a></li><li><a href="extrans.html" >extrans</a></li><li><a href="extruec.html" >extruec</a></li><li><a href="excolmap.html" >excolmap</a></li><li><a href="exrgbhsv.html" >exrgbhsv</a></li><li><a href="exshade.html" >exshade</a></li><li><a href="exblend.html" >exblend</a></li><li><a href="exxfade.html" >exxfade</a></li><li><a href="exalpha.html" >exalpha</a></li><li><a href="exlights.html" >exlights</a></li><li><a href="ex3d.html" >ex3d</a></li><li><a href="excamera.html" >excamera</a></li><li><a href="exquat.html" >exquat</a></li><li><a href="exstars.html" >exstars</a></li><li><a href="exscn3d.html" >exscn3d</a></li><li><a href="exzbuf.html" >exzbuf</a></li><li><a href="exscroll.html" >exscroll</a></li><li><a href="ex3buf.html" >ex3buf</a></li><li><a href="ex12bit.html" >ex12bit</a></li><li><a href="exaccel.html" >exaccel</a></li><li><strong>exspline</strong></li><li><a href="exsyscur.html" >exsyscur</a></li><li><a href="exupdate.html" >exupdate</a></li><li><a href="exswitch.html" >exswitch</a></li><li><a href="exstream.html" >exstream</a></li><li><a href="expackf.html" >expackf</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>exspline</h1>
+
+<div class="shortdesc">
+Constructing smooth movement paths from spline curves.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+Example <a href="../../index.html" target="_blank"><span class="a">exspline</span></a>
+</div>
+
+<div>
+This program demonstrates the use of spline curves to create smooth
+   paths connecting a number of node points. This can be useful for
+   constructing realistic motion and animations.<br /><br />
+
+   The technique is to connect the series of guide points p1..p(n) with
+   spline curves from p1-p2, p2-p3, etc. Each spline must pass though
+   both of its guide points, so they must be used as the first and fourth
+   of the spline control points. The fun bit is coming up with sensible
+   values for the second and third spline control points, such that the
+   spline segments will have equal gradients where they meet. I came
+   up with the following solution:<br /><br />
+
+   For each guide point p(n), calculate the desired tangent to the curve
+   at that point. I took this to be the vector p(n-1) -> p(n+1), which
+   can easily be calculated with the inverse tangent function, and gives
+   decent looking results. One implication of this is that two dummy
+   guide points are needed at each end of the curve, which are used in
+   the tangent calculations but not connected to the set of splines.<br /><br />
+
+   Having got these tangents, it becomes fairly easy to calculate the
+   spline control points. For a spline between guide points p(a) and
+   p(b), the second control point should lie along the positive tangent
+   from p(a), and the third control point should lie along the negative
+   tangent from p(b). How far they are placed along these tangents
+   controls the shape of the curve: I found that applying a 'curviness'
+   scaling factor to the distance between p(a) and p(b) works well.<br /><br />
+
+   One thing to note about splines is that the generated points are
+   not all equidistant. Instead they tend to bunch up nearer to the
+   ends of the spline, which means you will need to apply some fudges
+   to get an object to move at a constant speed. On the other hand,
+   in situations where the curve has a noticable change of direction
+   at each guide point, the effect can be quite nice because it makes
+   the object slow down for the curve.
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">END_OF_MAIN</a></li>
+	<li><a href="../../index.html">SCREEN_W</a></li>
+	<li><a href="../../index.html">acquire_screen</a></li>
+	<li><a href="../../index.html">alert</a></li>
+	<li><a href="../../index.html">allegro_error</a></li>
+	<li><a href="../../index.html">allegro_init</a></li>
+	<li><a href="../../index.html">allegro_message</a></li>
+	<li><a href="../../index.html">calc_spline</a></li>
+	<li><a href="../../index.html">circlefill</a></li>
+	<li><a href="../../index.html">clear_keybuf</a></li>
+	<li><a href="../../index.html">clear_to_color</a></li>
+	<li><a href="../../index.html">desktop_palette</a></li>
+	<li><a href="../../index.html">fixatan2</a></li>
+	<li><a href="../../index.html">fixcos</a></li>
+	<li><a href="../../index.html">fixed</a></li>
+	<li><a href="../../index.html">fixmul</a></li>
+	<li><a href="../../index.html">fixsin</a></li>
+	<li><a href="../../index.html">fixsqrt</a></li>
+	<li><a href="../../index.html">fixtof</a></li>
+	<li><a href="../../index.html">fixtoi</a></li>
+	<li><a href="../../index.html">font</a></li>
+	<li><a href="../../index.html">ftofix</a></li>
+	<li><a href="../../index.html">install_keyboard</a></li>
+	<li><a href="../../index.html">install_mouse</a></li>
+	<li><a href="../../index.html">install_timer</a></li>
+	<li><a href="../../index.html">itofix</a></li>
+	<li><a href="../../index.html">key</a></li>
+	<li><a href="../../index.html">keypressed</a></li>
+	<li><a href="../../index.html">line</a></li>
+	<li><a href="../../index.html">makecol</a></li>
+	<li><a href="../../index.html">mouse_b</a></li>
+	<li><a href="../../index.html">mouse_x</a></li>
+	<li><a href="../../index.html">mouse_y</a></li>
+	<li><a href="../../index.html">palette_color</a></li>
+	<li><a href="../../index.html">poll_mouse</a></li>
+	<li><a href="../../index.html">readkey</a></li>
+	<li><a href="../../index.html">release_screen</a></li>
+	<li><a href="../../index.html">screen</a></li>
+	<li><a href="../../index.html">set_gfx_mode</a></li>
+	<li><a href="../../index.html">set_palette</a></li>
+	<li><a href="../../index.html">show_mouse</a></li>
+	<li><a href="../../index.html">spline</a></li>
+	<li><a href="../../index.html">textout_centre_ex</a></li>
+	<li><a href="../../index.html">textprintf_centre_ex</a></li>
+	<li><a href="../../index.html">textprintf_ex</a></li>
+	<li><a href="../../index.html">vsync</a></li>
+	<li><a href="../../index.html">xor_mode</a></li>
+</ul>
+</div>
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,371,148</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.010350</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/miscellaneous/available-allegro-examples/exspline by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:30:23 GMT -->
+</html>

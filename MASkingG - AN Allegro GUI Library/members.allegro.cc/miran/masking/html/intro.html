@@ -1,0 +1,102 @@
+<html>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/intro.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:39:22 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head><title>Introduction to MASkinG</title></head><body>
+<h1><a name="Introduction">Introduction</a></h1>
+<p>MASkinG is an Allegro addon library written in C++ that provides you
+   with an extremely powerfull and flexible system for building exceptionally
+   cool looking  graphic user interfaces (GUIs for short). It can be used for
+   games as well as for "normal" applications. As the name suggests everything 
+   in MASkinG is skinnable. There is a small number of skins already
+   available and it is very easy to create new ones as well.
+
+<p><hr>
+<h1><a name="background">Background</a></h1>
+<p>When I first saw Allegro I was amazed for two things. For one I never even
+   imagined such a cool game programming library existed and secondly I just
+   couldn't believe how its GUI section could be so ugly. So I downloaded a
+   few addon GUI libraries and was pretty disappointed with all of them except
+   one: DeGUI by Doug Eleveld. DeGUI was a C++ GUI library that had a very
+   nice C to C++ interface, looked quite good as it was and it was very easy
+   to adapt and extend. The only problem was that Doug had abandoned the
+   project years ago (in 1997 or 1998 I think) and went on to do greater things
+   (<a href="http://huizen.dds.nl/~deleveld/depui.htm">DEPUI</a>).
+	So this meant that if I wanted to see some bugs fixed (there were a few) and
+   some functionality added I had to do it myself. Soon I started hacking on
+   it and adding things like skin support and all that but abandoned it after
+   a while. About the time Allegro 4.0 came out I decided to have another go.
+   I started all over again this time taking only the core of DeGUI and adding
+   some of the new Allegro GUI code and adding a lot of my own work.
+<p>Version 0.65 was the last in this line but event though it wasn't that bad I
+   wasn't completely satisfied with it yet. Some things didn't work well and some
+   didn't work at all so I decided to do another complete rewrite. This time I
+   rewrote the entire library from scratch using only the knowledge and experience
+   I gained working on the previous version and only very little old code. The
+   new MASkinG is now better and cleaner but as a result it's API is not
+   compatible with the old versions and as a GUI library is a major project
+   quite a lot of old functionality hasn't yet been implemented in this version.
+<p>If you find this library usefull and you think it is worth improving then
+   drop me a note. Say what you liked and what you didn't like and what you
+   would like to see in a future release. There are still many bugs in the
+   code, some are big and serious - these are hard to spot and even harder to
+   fix - but some are really just silly little mistakes and typos like forgeting
+   to initailize a variable or calling a wrong function at the wrong place
+   and things like that. If you look at some of the code and you think to
+   yourself: "Why the heck did he do that for?" then you've probably found
+   one of those bugs so I'd really appreaciate it if you could report it to
+   me so I could fix it or maybe you could fix it yourself and send me the
+   fixed code.
+<p>It would also be very nice if someone could write one or two
+   additional widgets. See the todo/wish list for which are badly needed. There
+   already are enough to start building complex applications but such
+   contributions are always welcome.
+<p>Another thing that would also make me very happy is if someone could draw
+   some nice skins to be used with MASkinG. I'm not a very talented artist
+   so you are unlikely to see an original skin made by me. Most of my skins are
+   just conversions, mostly from WindowBlinds skins. If you make a skin you
+   think is cool then send it to me and I'll include it in the next version
+   (and you will get into the contributors list).
+
+<p><hr>
+<h1><a name="documentation">Documentation</a></h1>
+<p>This documentation is intended for three kinds of people:
+<pre>
+      - me
+      - developers
+      - users
+</pre>
+<p>Even though I am the author of this library I need this documentation so that
+   I don't forget how it all works, developers who want to hack on MASkinG and
+   perhaps improve it will read some parts and users who want to use MASkinG
+   dialogs in their projects will read some other parts. If you read a section
+   and you don't even know why that would be good to know then just skip it - it's
+   probably not even meant for you.
+<p>Anyway, most of the class docs are divided in several parts: data, private
+   methods and interface. If you want to start using MASkinG right away you
+   should only read the "interface" sections and the example code but if you want
+   to see how certain things work you can have a look at the "private" sections
+   and the source code itself.
+
+
+<p><hr>
+<h1><a name="copyright">Legal</a></h1>
+<p>MAskinG is distributed under the zlib license (see license.txt in the root
+   directory).
+   This basically means that you can do pretty much anything with it except claim
+   it's your work. You may use, modify, redistribute, and generally hack it about
+   in any way you like, and you do not have to give me anything in return. However,
+   if you like this product and you find it usefull you can thank me by giving me
+   something in return. This could be by providing a useful bug report, making an
+   improvement to the library, or perhaps just releasing the sources of your program
+   so that other people can learn from them. If you redistribute parts of this code
+   or make a game or application using it, it would be nice if you mentioned MASkinG
+   somewhere in the credits, but you are not required to do this. I trust you not
+   to abuse my generosity.
+<p>Note though that this does not apply to any third party libraries MASkinG uses,
+   especially not to the FreeType project that is used for rendering True Type and
+   other formats of fonts.
+
+
+<p><hr><p><a href="../index.html">Back to Contents</a><p></body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/intro.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:39:22 GMT -->
+</html>

@@ -1,0 +1,32 @@
+HTTrack3.49-2+htsswf+htsjava launched on Sun, 15 Dec 2024 16:37:51 at http://sininenankka.dy.fi/~sami/mirror/vga_all/vga/index.html +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwr20C2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" http://sininenankka.dy.fi/~sami/mirror/vga_all/vga/index.html -O1 "C:\Archive\VGA Programming" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+16:38:36	Error: 	"Not Found" (404) at link sininenankka.dy.fi/~sami/mirror/vga_all/vga/source/djgpp20/pixel.c.html (from sininenankka.dy.fi/~sami/mirror/vga_all/vga/basics.html)
+16:38:36	Error: 	"Not Found" (404) at link sininenankka.dy.fi/~sami/mirror/vga_all/vga/source/bc31/pixel.c.html (from sininenankka.dy.fi/~sami/mirror/vga_all/vga/basics.html)
+16:38:36	Error: 	"Not Found" (404) at link sininenankka.dy.fi/~sami/mirror/vga_all/vga/source/djgpp20/lines.c.html (from sininenankka.dy.fi/~sami/mirror/vga_all/vga/shapes.html)
+16:38:36	Error: 	"Not Found" (404) at link sininenankka.dy.fi/~sami/mirror/vga_all/vga/source/bc31/lines.c.html (from sininenankka.dy.fi/~sami/mirror/vga_all/vga/shapes.html)
+16:38:36	Error: 	"Not Found" (404) at link sininenankka.dy.fi/~sami/mirror/vga_all/vga/source/djgpp20/rect.c.html (from sininenankka.dy.fi/~sami/mirror/vga_all/vga/shapes.html)
+16:38:36	Error: 	"Not Found" (404) at link sininenankka.dy.fi/~sami/mirror/vga_all/vga/source/bc31/rect.c.html (from sininenankka.dy.fi/~sami/mirror/vga_all/vga/shapes.html)
+16:38:36	Error: 	"Not Found" (404) at link sininenankka.dy.fi/~sami/mirror/vga_all/vga/source/djgpp20/circle.c.html (from sininenankka.dy.fi/~sami/mirror/vga_all/vga/shapes.html)
+16:38:36	Error: 	"Not Found" (404) at link sininenankka.dy.fi/~sami/mirror/vga_all/vga/source/bc31/circle.c.html (from sininenankka.dy.fi/~sami/mirror/vga_all/vga/shapes.html)
+16:38:36	Error: 	"Not Found" (404) at link sininenankka.dy.fi/~sami/mirror/vga_all/vga/source/djgpp20/bitmap.c.html (from sininenankka.dy.fi/~sami/mirror/vga_all/vga/bitmaps.html)
+16:38:36	Error: 	"Not Found" (404) at link sininenankka.dy.fi/~sami/mirror/vga_all/vga/source/bc31/bitmap.c.html (from sininenankka.dy.fi/~sami/mirror/vga_all/vga/bitmaps.html)
+16:38:36	Error: 	"Not Found" (404) at link sininenankka.dy.fi/~sami/mirror/vga_all/vga/source/djgpp20/palette.c.html (from sininenankka.dy.fi/~sami/mirror/vga_all/vga/bitmaps.html)
+16:38:36	Error: 	"Not Found" (404) at link sininenankka.dy.fi/~sami/mirror/vga_all/vga/source/bc31/palette.c.html (from sininenankka.dy.fi/~sami/mirror/vga_all/vga/bitmaps.html)
+16:38:36	Error: 	"Not Found" (404) at link sininenankka.dy.fi/~sami/mirror/vga_all/vga/source/djgpp20/mouse.c.html (from sininenankka.dy.fi/~sami/mirror/vga_all/vga/mouse.html)
+16:38:36	Error: 	"Not Found" (404) at link sininenankka.dy.fi/~sami/mirror/vga_all/vga/source/bc31/mouse.c.html (from sininenankka.dy.fi/~sami/mirror/vga_all/vga/mouse.html)
+16:38:36	Error: 	"Not Found" (404) at link sininenankka.dy.fi/~sami/mirror/vga_all/vga/source/djgpp20/unchain.c.html (from sininenankka.dy.fi/~sami/mirror/vga_all/vga/unchain.html)
+16:38:37	Error: 	"Not Found" (404) at link sininenankka.dy.fi/~sami/mirror/vga_all/vga/source/bc31/unchain.c.html (from sininenankka.dy.fi/~sami/mirror/vga_all/vga/unchain.html)
+16:38:37	Error: 	"Not Found" (404) at link sininenankka.dy.fi/~sami/mirror/vga_all/vga/source/djgpp20/modes.c.html (from sininenankka.dy.fi/~sami/mirror/vga_all/vga/unchain.html)
+16:38:37	Error: 	"Not Found" (404) at link sininenankka.dy.fi/~sami/mirror/vga_all/vga/source/bc31/modes.c.html (from sininenankka.dy.fi/~sami/mirror/vga_all/vga/unchain.html)
+16:38:37	Error: 	"Not Found" (404) at link sininenankka.dy.fi/~sami/mirror/vga_all/vga/download/djgpp-all.zip (from sininenankka.dy.fi/~sami/mirror/vga_all/vga/download.html)
+16:38:37	Error: 	"Not Found" (404) at link sininenankka.dy.fi/~sami/mirror/vga_all/vga/download/bc-all.zip (from sininenankka.dy.fi/~sami/mirror/vga_all/vga/download.html)
+16:38:37	Error: 	"Not Found" (404) at link sininenankka.dy.fi/~sami/mirror/vga_all/vga/download/vga-all.zip (from sininenankka.dy.fi/~sami/mirror/vga_all/vga/download.html)
+
+HTTrack Website Copier/3.49-2 mirror complete in 46 seconds : 92 links scanned, 70 files written (973679 bytes overall) [1012909 bytes received at 22019 bytes/sec], 121757 bytes transferred using HTTP compression in 13 files, ratio 32%, 7.2 requests per connection
+(21 errors, 0 warnings, 0 messages)

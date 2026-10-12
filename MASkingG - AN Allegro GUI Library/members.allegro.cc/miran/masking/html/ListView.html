@@ -1,0 +1,381 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/ListView.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC ListView</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">ListView</A></H2></H2><BLOCKQUOTE> An internal helper widget for the ListBox.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>ListView
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.72.16">TotalItems</A></B>()
+<DD><I> Returns the number of items in the list</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.72.17">VisibleItems</A></B>()
+<DD><I> Returns the number of items the list can display on one screen</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.72.18">Selected</A></B>(int i)
+<DD><I> Tests if item i is selected or not</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.72.19">Select</A></B>(int i)
+<DD><I> Selects item i.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.72.20">Deselect</A></B>(int i)
+<DD><I> Deselects item i</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.72.21">Selection</A></B>()
+<DD><I> Returns the index of the firs selected item in the list, 0 if none are selected</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.72.22">ScrollToSelection</A></B>()
+<DD><I> Attempts to scroll the list to the first selected item</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.72.23">Focus</A></B>()
+<DD><I> Returns the index of the focused item.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.72.24">SetFocus</A></B>(int i)
+<DD><I> Moves focus to item i.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.72.25">InsertItem</A></B>(<!1><A HREF="ListItem.html">ListItem</A>* item, int i=0)
+<DD><I> Inserts a new item to the list at index i</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="ListItem.html">ListItem</A>* <B><A HREF="#DOC.72.26">GetItem</A></B>(int i)
+<DD><I> Returns a pointer to the item with index i</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="ListItem.html">ListItem</A>* <B><A HREF="#DOC.72.27">GetFocusedItem</A></B>()
+<DD><I> Returns a pointer to the focused item.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="ListItem.html">ListItem</A>* <B><A HREF="#DOC.72.28">GetSelectedItem</A></B>()
+<DD><I> Returns a pointer to the first selected item in the list.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.72.29">DeleteItem</A></B>(int i)
+<DD><I> Deletes item i from the list</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.72.30">DeleteAllItems</A></B>()
+<DD><I> Clears the list</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.72.31">Offset</A></B>()
+<DD><I> Returns how far the list has scrolled</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.72.32">Sort</A></B>()
+<DD><I> Sorts the list in ascending order according to the list item text regardless of case</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.72.33">Sort</A></B>(bool (*cmp)(const <!1><A HREF="ListItem.html">ListItem</A>* , const <!1><A HREF="ListItem.html">ListItem</A>* ))
+<DD><I> Sorts the list by using the given comparison function.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.72.34">GetSingleClick</A></B>()
+<DD><I> Returns whether the list is in single click mode or not</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.72.35">SetSingleClick</A></B>(bool single=false)
+<DD><I> Sets the single click mode for the list on or off</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>std::vector&lt;<!1><A HREF="ListItem.html">ListItem</A> *&gt;  <B><A HREF="#DOC.72.1">items</A></B>
+<DD><I> The actual list (vector actually) of list items</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.72.2">offset</A></B>
+<DD><I> Stores how far the list has scrolled</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.72.3">focus</A></B>
+<DD><I> The index of the item with the focus (the item under the mouse)</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.72.4">multiSelect</A></B>
+<DD><I> True when the list is in multiselect mode.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.72.5">singleClick</A></B>
+<DD><I> If true then the listbox responds to single clicks on the list as activation</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.72.6">MsgInitSkin</A></B>()
+<DD><I> Initilizes the list view with the default bitmaps, fonts and font colours as defined by the skin</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.72.7">Draw</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)
+<DD><I> Draws the list view by drawing all the list items</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.72.8">MsgWantfocus</A></B>()
+<DD><I> A list view takes focus so this function returns true</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.72.9">MsgChar</A></B>(int c)
+<DD><I> Handles keyboard input.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.72.10">MsgLPress</A></B>()
+<DD><I> Handles mouse input.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.72.11">MsgLRelease</A></B>()
+<DD><I> Issues a MsgDClick() in case the singleClick flag is set</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.72.12">MsgDClick</A></B>()
+<DD><I> Sends MSG_ACTIVATE to the parent dialog</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.72.13">MsgMousemove</A></B>(const <!1><A HREF="Point.html">Point</A>&amp; d)
+<DD><I> Makes sure the focus follows the mouse</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.72.14">DeselectAllItems</A></B>()
+<DD><I> A helper function for deselecting all items</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.72.15">FindMouseItem</A></B>()
+<DD><I> Returns the index of the item the mouse is on top of.</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+An internal helper widget for the ListBox.
+
+<P>This is the core of a ListBox. It contains a list of list items, it provides an
+inteface for working with this list, it draws the background and the items
+and it handles mouse clicks, mouse moves and keyboard input.
+
+<P></BLOCKQUOTE>
+<DL>
+
+<A NAME="items"></A>
+<A NAME="DOC.72.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>std::vector&lt;<!1><A HREF="ListItem.html">ListItem</A> *&gt;  items</B></TT>
+<DD>
+The actual list (vector actually) of list items
+<DL><DT><DD></DL><P>
+<A NAME="offset"></A>
+<A NAME="DOC.72.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int offset</B></TT>
+<DD>
+Stores how far the list has scrolled
+<DL><DT><DD></DL><P>
+<A NAME="focus"></A>
+<A NAME="DOC.72.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int focus</B></TT>
+<DD>
+The index of the item with the focus (the item under the mouse)
+<DL><DT><DD></DL><P>
+<A NAME="multiSelect"></A>
+<A NAME="DOC.72.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool multiSelect</B></TT>
+<DD>
+True when the list is in multiselect mode. In this mode more than
+one item can be selected at once while in normal mode only one
+can be selected.
+<DL><DT><DD></DL><P>
+<A NAME="singleClick"></A>
+<A NAME="DOC.72.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool singleClick</B></TT>
+<DD>
+If true then the listbox responds to single clicks on the list as activation
+<DL><DT><DD></DL><P>
+<A NAME="MsgInitSkin"></A>
+<A NAME="DOC.72.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgInitSkin()</B></TT>
+<DD>
+Initilizes the list view with the default bitmaps, fonts and font colours as defined by the skin
+<DL><DT><DD></DL><P>
+<A NAME="Draw"></A>
+<A NAME="DOC.72.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Draw(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)</B></TT>
+<DD>
+Draws the list view by drawing all the list items
+<DL><DT><DD></DL><P>
+<A NAME="MsgWantfocus"></A>
+<A NAME="DOC.72.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool MsgWantfocus()</B></TT>
+<DD>
+A list view takes focus so this function returns true
+<DL><DT><DD></DL><P>
+<A NAME="MsgChar"></A>
+<A NAME="DOC.72.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool MsgChar(int c)</B></TT>
+<DD>
+Handles keyboard input. The list can be navigated with the cursor keys,
+home, end, page up and page down. In multiselect mode items can be
+selected and deselected with spacebar. If enter is pressed (or space
+in normal mode) the list sends MSG_ACTIVATE to the parent dialog.
+<DL><DT><DD></DL><P>
+<A NAME="MsgLPress"></A>
+<A NAME="DOC.72.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgLPress()</B></TT>
+<DD>
+Handles mouse input. Whenever the left mouse button is pressed the item
+with the mouse is either selected (normal mode) or toggled (multiselect mode).
+<DL><DT><DD></DL><P>
+<A NAME="MsgLRelease"></A>
+<A NAME="DOC.72.11"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgLRelease()</B></TT>
+<DD>
+Issues a MsgDClick() in case the singleClick flag is set
+<DL><DT><DD></DL><P>
+<A NAME="MsgDClick"></A>
+<A NAME="DOC.72.12"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgDClick()</B></TT>
+<DD>
+Sends MSG_ACTIVATE to the parent dialog
+<DL><DT><DD></DL><P>
+<A NAME="MsgMousemove"></A>
+<A NAME="DOC.72.13"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgMousemove(const <!1><A HREF="Point.html">Point</A>&amp; d)</B></TT>
+<DD>
+Makes sure the focus follows the mouse
+<DL><DT><DD></DL><P>
+<A NAME="DeselectAllItems"></A>
+<A NAME="DOC.72.14"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void DeselectAllItems()</B></TT>
+<DD>
+A helper function for deselecting all items
+<DL><DT><DD></DL><P>
+<A NAME="FindMouseItem"></A>
+<A NAME="DOC.72.15"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int FindMouseItem()</B></TT>
+<DD>
+Returns the index of the item the mouse is on top of. If no item is found this function returns -1.
+<DL><DT><DD></DL><P>
+<A NAME="TotalItems"></A>
+<A NAME="DOC.72.16"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int TotalItems()</B></TT>
+<DD>
+Returns the number of items in the list
+<DL><DT><DD></DL><P>
+<A NAME="VisibleItems"></A>
+<A NAME="DOC.72.17"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int VisibleItems()</B></TT>
+<DD>
+Returns the number of items the list can display on one screen
+<DL><DT><DD></DL><P>
+<A NAME="Selected"></A>
+<A NAME="DOC.72.18"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool Selected(int i)</B></TT>
+<DD>
+Tests if item i is selected or not
+<DL><DT><DD></DL><P>
+<A NAME="Select"></A>
+<A NAME="DOC.72.19"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Select(int i)</B></TT>
+<DD>
+Selects item i. If multiselect mode is off this will first deselect the previously selected item.
+<DL><DT><DD></DL><P>
+<A NAME="Deselect"></A>
+<A NAME="DOC.72.20"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Deselect(int i)</B></TT>
+<DD>
+Deselects item i
+<DL><DT><DD></DL><P>
+<A NAME="Selection"></A>
+<A NAME="DOC.72.21"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int Selection()</B></TT>
+<DD>
+Returns the index of the firs selected item in the list, 0 if none are selected
+<DL><DT><DD></DL><P>
+<A NAME="ScrollToSelection"></A>
+<A NAME="DOC.72.22"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void ScrollToSelection()</B></TT>
+<DD>
+Attempts to scroll the list to the first selected item
+<DL><DT><DD></DL><P>
+<A NAME="Focus"></A>
+<A NAME="DOC.72.23"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int Focus()</B></TT>
+<DD>
+Returns the index of the focused item. In normal mode focused and selected items are one and the same.
+<DL><DT><DD></DL><P>
+<A NAME="SetFocus"></A>
+<A NAME="DOC.72.24"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetFocus(int i)</B></TT>
+<DD>
+Moves focus to item i. In normal mode this also selects item i.
+<DL><DT><DD></DL><P>
+<A NAME="InsertItem"></A>
+<A NAME="DOC.72.25"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void InsertItem(<!1><A HREF="ListItem.html">ListItem</A>* item, int i=0)</B></TT>
+<DD>
+Inserts a new item to the list at index i
+<DL><DT><DD></DL><P>
+<A NAME="GetItem"></A>
+<A NAME="DOC.72.26"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="ListItem.html">ListItem</A>* GetItem(int i)</B></TT>
+<DD>
+Returns a pointer to the item with index i
+<DL><DT><DD></DL><P>
+<A NAME="GetFocusedItem"></A>
+<A NAME="DOC.72.27"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="ListItem.html">ListItem</A>* GetFocusedItem()</B></TT>
+<DD>
+Returns a pointer to the focused item. If no item has focus it returns NULL!
+<DL><DT><DD></DL><P>
+<A NAME="GetSelectedItem"></A>
+<A NAME="DOC.72.28"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="ListItem.html">ListItem</A>* GetSelectedItem()</B></TT>
+<DD>
+Returns a pointer to the first selected item in the list. In normal mode this
+is the same as the focused item. If no item is selected it returns NULL!
+<DL><DT><DD></DL><P>
+<A NAME="DeleteItem"></A>
+<A NAME="DOC.72.29"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void DeleteItem(int i)</B></TT>
+<DD>
+Deletes item i from the list
+<DL><DT><DD></DL><P>
+<A NAME="DeleteAllItems"></A>
+<A NAME="DOC.72.30"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void DeleteAllItems()</B></TT>
+<DD>
+Clears the list
+<DL><DT><DD></DL><P>
+<A NAME="Offset"></A>
+<A NAME="DOC.72.31"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int Offset()</B></TT>
+<DD>
+Returns how far the list has scrolled
+<DL><DT><DD></DL><P>
+<A NAME="Sort"></A>
+<A NAME="DOC.72.32"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Sort()</B></TT>
+<DD>
+Sorts the list in ascending order according to the list item text regardless of case
+<DL><DT><DD></DL><P>
+<A NAME="Sort"></A>
+<A NAME="DOC.72.33"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Sort(bool (*cmp)(const <!1><A HREF="ListItem.html">ListItem</A>* , const <!1><A HREF="ListItem.html">ListItem</A>* ))</B></TT>
+<DD>
+Sorts the list by using the given comparison function. The function should
+compare two items and return true if the first item is smaller than the second one.
+<DL><DT><DD></DL><P>
+<A NAME="GetSingleClick"></A>
+<A NAME="DOC.72.34"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool GetSingleClick()</B></TT>
+<DD>
+Returns whether the list is in single click mode or not
+<DL><DT><DD></DL><P>
+<A NAME="SetSingleClick"></A>
+<A NAME="DOC.72.35"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetSingleClick(bool single=false)</B></TT>
+<DD>
+Sets the single click mode for the list on or off
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DT><B>Friends:</B><DD>  class MASKING_DLL_DECLSPEC <!1><A HREF="ListBox.html">ListBox</A><BR><DT><B>See Also:</B><DD><!1><A HREF="ListItem.html">ListItem</A>, <!1><A HREF="ListBox.html">ListBox</A><BR><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/ListView.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+</html>

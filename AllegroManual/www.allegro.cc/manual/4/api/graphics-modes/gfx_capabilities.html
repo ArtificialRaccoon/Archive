@@ -1,0 +1,337 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/graphics-modes/gfx_capabilities by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:16:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>gfx_capabilities</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Graphics modes</a></h2><ul>
+<li><a href="set_color_depth.html" style="font-weight: bold">set_color_depth</a></li><li><a href="get_color_depth.html" >get_color_depth</a></li><li><a href="request_refresh_rate.html" >request_refresh_rate</a></li><li><a href="get_refresh_rate.html" >get_refresh_rate</a></li><li><a href="get_gfx_mode_list.html" >get_gfx_mode_list</a></li><li><a href="destroy_gfx_mode_list.html" >destroy_gfx_mode_list</a></li><li><a href="set_gfx_mode.html" style="font-weight: bold">set_gfx_mode</a></li><li><a href="set_display_switch_mode.html" style="font-weight: bold">set_display_switch_mode</a></li><li><a href="set_display_switch_callback.html" >set_display_switch_callback</a></li><li><a href="remove_display_switch_callback.html" >remove_display_switch_callback</a></li><li><a href="get_display_switch_mode.html" >get_display_switch_mode</a></li><li><a href="is_windowed_mode.html" >is_windowed_mode</a></li><li><strong>gfx_capabilities</strong></li><li><a href="enable_triple_buffer.html" >enable_triple_buffer</a></li><li><a href="scroll_screen.html" >scroll_screen</a></li><li><a href="request_scroll.html" >request_scroll</a></li><li><a href="poll_scroll.html" style="font-weight: bold">poll_scroll</a></li><li><a href="show_video_bitmap.html" style="font-weight: bold">show_video_bitmap</a></li><li><a href="request_video_bitmap.html" style="font-weight: bold">request_video_bitmap</a></li><li><a href="vsync.html" style="font-weight: bold">vsync</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>gfx_capabilities</h1>
+
+<div class="shortdesc">
+Bitfield describing video hardware capabilities.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">extern</span> <span class="k1">int</span> <a href="../../index.html" target="_blank"><span class="a">gfx_capabilities</span></a><span class="k2">;</span>
+</div>
+
+<div>
+Bitfield describing the capabilities of the current graphics driver and
+   video hardware. This may contain combination any of the flags:<br /><br />
+
+   <b>GFX_CAN_SCROLL:</b><br>
+      Indicates that the scroll_screen() function may be used with this
+      driver.<br /><br />
+
+   <b>GFX_CAN_TRIPLE_BUFFER:</b><br>
+      Indicates that the request_scroll() and poll_scroll() functions may be
+      used with this driver. If this flag is not set, it is possible that
+      the enable_triple_buffer() function may be able to activate it.<br /><br />
+
+   <b>GFX_HW_CURSOR:</b><br>
+      Indicates that a hardware mouse cursor is in use. When this flag is
+      set, it is safe to draw onto the screen without hiding the mouse
+      pointer first. Note that not every cursor graphic can be implemented
+      in hardware: in particular VBE/AF only supports 2-color images up to
+      32x32 in size, where the second color is an exact inverse of the
+      first. This means that Allegro may need to switch between hardware and
+      software cursors at any point during the execution of your program, so
+      you should not assume that this flag will remain constant for long
+      periods of time. It only tells you whether a hardware cursor is in use
+      at the current time, and may change whenever you hide/redisplay the
+      pointer.<br /><br />
+
+   <b>GFX_SYSTEM_CURSOR</b><br>
+      Indicates that the mouse cursor is the default system cursor, not
+      Allegro's custom cursor.<br /><br />
+
+   <b>GFX_HW_HLINE:</b><br>
+      Indicates that the normal opaque version of the hline() function is
+      implemented using a hardware accelerator. This will improve the
+      performance not only of hline() itself, but also of many other
+      functions that use it as a workhorse, for example circlefill(),
+      triangle(), and floodfill().<br /><br />
+
+   <b>GFX_HW_HLINE_XOR:</b><br>
+      Indicates that the XOR version of the hline() function, and any other
+      functions that use it as a workhorse, are implemented using a hardware
+      accelerator.<br /><br />
+
+   <b>GFX_HW_HLINE_SOLID_PATTERN:</b><br>
+      Indicates that the solid and masked pattern modes of the hline()
+      function, and any other functions that use it as a workhorse, are
+      implemented using a hardware accelerator (see note below).<br /><br />
+
+   <b>GFX_HW_HLINE_COPY_PATTERN:</b><br>
+      Indicates that the copy pattern mode of the hline() function, and any
+      other functions that use it as a workhorse, are implemented using a
+      hardware accelerator (see note below).<br /><br />
+
+   <b>GFX_HW_FILL:</b><br>
+      Indicates that the opaque version of the rectfill() function, the
+      clear_bitmap() routine, and clear_to_color(), are implemented using a
+      hardware accelerator.<br /><br />
+
+   <b>GFX_HW_FILL_XOR:</b><br>
+      Indicates that the XOR version of the rectfill() function is
+      implemented using a hardware accelerator.<br /><br />
+
+   <b>GFX_HW_FILL_SOLID_PATTERN:</b><br>
+      Indicates that the solid and masked pattern modes of the rectfill()
+      function are implemented using a hardware accelerator (see note below).<br /><br />
+
+   <b>GFX_HW_FILL_COPY_PATTERN:</b><br>
+      Indicates that the copy pattern mode of the rectfill() function is
+      implemented using a hardware accelerator (see note below).<br /><br />
+
+   <b>GFX_HW_LINE:</b><br>
+      Indicates that the opaque mode line() and vline() functions are
+      implemented using a hardware accelerator.<br /><br />
+
+   <b>GFX_HW_LINE_XOR:</b><br>
+      Indicates that the XOR version of the line() and vline() functions are
+      implemented using a hardware accelerator.<br /><br />
+
+   <b>GFX_HW_TRIANGLE:</b><br>
+      Indicates that the opaque mode triangle() function is implemented
+      using a hardware accelerator.<br /><br />
+
+   <b>GFX_HW_TRIANGLE_XOR:</b><br>
+      Indicates that the XOR version of the triangle() function is
+      implemented using a hardware accelerator.<br /><br />
+
+   <b>GFX_HW_GLYPH:</b><br>
+      Indicates that monochrome character expansion (for text drawing) is
+      implemented using a hardware accelerator.<br /><br />
+
+   <b>GFX_HW_VRAM_BLIT:</b><br>
+      Indicates that blitting from one part of the screen to another is
+      implemented using a hardware accelerator. If this flag is set,
+      blitting within the video memory will almost certainly be the fastest
+      possible way to display an image, so it may be worth storing some of
+      your more frequently used graphics in an offscreen portion of the
+      video memory.<br /><br />
+
+   <b>GFX_HW_VRAM_BLIT_MASKED:</b><br>
+      Indicates that the masked_blit() routine is capable of a hardware
+      accelerated copy from one part of video memory to another, and that
+      draw_sprite() will use a hardware copy when given a sub-bitmap of the
+      screen or a video memory bitmap as the source image. If this flag is
+      set, copying within the video memory will almost certainly be the
+      fastest possible way to display an image, so it may be worth storing
+      some of your more frequently used sprites in an offscreen portion of
+      the video memory.<br /><br />
+
+      Warning: if this flag is not set, masked_blit() and draw_sprite() will
+      not work correctly when used with a video memory source image! You
+      must only try to use these functions to copy within the video memory
+      if they are supported in hardware.<br /><br />
+
+   <b>GFX_HW_MEM_BLIT:</b><br>
+      Indicates that blitting from a memory bitmap onto the screen is being
+      accelerated in hardware.<br /><br />
+
+   <b>GFX_HW_MEM_BLIT_MASKED:</b><br>
+      Indicates that the masked_blit() and draw_sprite() functions are being
+      accelerated in hardware when the source image is a memory bitmap and
+      the destination is the physical screen.<br /><br />
+
+   <b>GFX_HW_SYS_TO_VRAM_BLIT:</b><br>
+      Indicates that blitting from a system bitmap onto the screen is being
+      accelerated in hardware. Note that some acceleration may be present
+      even if this flag is not set, because system bitmaps can benefit from
+      normal memory to screen blitting as well. This flag will only be set
+      if system bitmaps have further acceleration above and beyond what is
+      provided by GFX_HW_MEM_BLIT.<br /><br />
+
+   <b>GFX_HW_SYS_TO_VRAM_BLIT_MASKED:</b><br>
+      Indicates that the masked_blit() and draw_sprite() functions are being
+      accelerated in hardware when the source image is a system bitmap and
+      the destination is the physical screen. Note that some acceleration
+      may be present even if this flag is not set, because system bitmaps
+      can benefit from normal memory to screen blitting as well. This flag
+      will only be set if system bitmaps have further acceleration above and
+      beyond what is provided by GFX_HW_MEM_BLIT_MASKED.<br /><br />
+
+   <b>GFX_HW_VRAM_STRETCH_BLIT:</b><br>
+      Indicates that stretched blitting of video bitmaps onto the screen is
+      implemented using hardware acceleration.<br /><br />
+
+   <b>GFX_HW_SYS_STRETCH_BLIT:</b><br>
+      Indicates that stretched blitting of system bitmaps onto the screen is
+      implemented using hardware acceleration.<br /><br />
+
+   <b>GFX_HW_VRAM_STRETCH_BLIT_MASKED:</b><br>
+      Indicates that masked stretched blitting (including stretch_sprite) of
+      video bitmaps onto the screen is implemented using hardware acceleration.
+      NOTE: some display drivers may show artefacts when this function is used.
+      If the image does not look correct try updating your video drivers.<br /><br />
+
+   <b>GFX_HW_SYS_STRETCH_BLIT_MASKED:</b><br>
+      Indicates that masked stretched blitting (including stretch_sprite) of
+      system bitmaps onto the screen is implemented using hardware acceleration.
+      NOTE: some display drivers may show artefacts when this function is used.
+      If the image does not look correct try updating your video drivers.<br /><br />
+
+   Note: even if the capabilities information says that patterned drawing is
+   supported by the hardware, it will not be possible for every size of
+   pattern. VBE/AF only supports patterns up to 8x8 in size, so Allegro will
+   fall back on the original non-accelerated drawing routines whenever you
+   use a pattern larger than this.<br /><br />
+
+   Note2: these hardware acceleration features will only take effect when
+   you are drawing directly onto the screen bitmap, a video memory bitmap,
+   or a sub-bitmap thereof. Accelerated hardware is most useful in a page
+   flipping or triple buffering setup, and is unlikely to make any
+   difference to the classic "draw onto a memory bitmap, then blit to the
+   screen" system.
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">screen</a></li>
+	<li><a href="../../index.html">create_video_bitmap</a></li>
+	<li><a href="../../index.html">scroll_screen</a></li>
+	<li><a href="../../index.html">request_scroll</a></li>
+	<li><a href="../../index.html">show_mouse</a></li>
+	<li><a href="../../index.html">enable_triple_buffer</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../index.html">ex3buf</a></li>
+	<li><a href="../../index.html">exaccel</a></li>
+	<li><a href="../../index.html">exsyscur</a></li>
+	<li><a href="../../index.html">exupdate</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-590620">
+		<a href="https://www.allegro.cc/forums/thread/590620">Graphical problems with video bitmaps</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/659266" style="color: black;">1</a> </span>
+	</li><li id="t-590087">
+		<a href="https://www.allegro.cc/forums/thread/590087">Problem with hardware mousecursors.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/650514" style="color: black;">1</a> </span>
+	</li><li id="t-587829">
+		<a href="https://www.allegro.cc/forums/thread/587829">Query GFX_* driver at runtime.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/617155" style="color: black;">1</a> </span>
+	</li><li id="t-587378">
+		<a href="https://www.allegro.cc/forums/thread/587378">GFX Capabilities</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/611212" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/611375" style="color: black;">2</a> </span>
+	</li><li id="t-587130">
+		<a href="https://www.allegro.cc/forums/thread/587130">Hardware cursor enable / disable.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/607818" style="color: black;">1</a> </span>
+	</li><li id="t-586674">
+		<a href="https://www.allegro.cc/forums/thread/586674">Allegro - Display</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/602325" style="color: black;">1</a> </span>
+	</li><li id="t-585795">
+		<a href="https://www.allegro.cc/forums/thread/585795">Mouse flicker in fullscreen</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/589211" style="color: black;">1</a> </span>
+	</li><li id="t-585681">
+		<a href="https://www.allegro.cc/forums/thread/585681">[4.20] &#39;d_shadow_box_proc&#39; crashes &#39;popup_dialog&#39;</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/587800" style="color: black;">1</a> </span>
+	</li><li id="t-585497">
+		<a href="https://www.allegro.cc/forums/thread/585497">Problems with mouse flicker</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/585590" style="color: black;">1</a> </span>
+	</li><li id="t-580730">
+		<a href="https://www.allegro.cc/forums/thread/580730">Hardware acceleration</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/580733" style="color: black;">1</a> </span>
+	</li><li id="t-574807">
+		<a href="https://www.allegro.cc/forums/thread/574807">hardware enabled custom cursors</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/574846" style="color: black;">1</a> </span>
+	</li><li id="t-572482">
+		<a href="https://www.allegro.cc/forums/thread/572482">Page flipping is slower than double buffer with a powerful graphic card :/</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/572519" style="color: black;">1</a> </span>
+	</li><li id="t-567954">
+		<a href="https://www.allegro.cc/forums/thread/567954">enable_triple_buffer - segmentation error</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/567954" style="color: black;">1</a> </span>
+	</li><li id="t-564396">
+		<a href="https://www.allegro.cc/forums/thread/564396">Triple Buffering in Full Screen</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/564486" style="color: black;">1</a> </span>
+	</li><li id="t-558465">
+		<a href="https://www.allegro.cc/forums/thread/558465">DirectX VRAM-VRAM accelerated stretch blit</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/558518" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/559523" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/559555" style="color: black;">3</a> <a href="https://www.allegro.cc/forums/post/559769" style="color: black;">4</a> <a href="https://www.allegro.cc/forums/post/560363" style="color: black;">5</a> </span>
+	</li><li id="t-556417">
+		<a href="https://www.allegro.cc/forums/thread/556417">vsynv() and mouse?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/556627" style="color: black;">1</a> </span>
+	</li><li id="t-554054">
+		<a href="https://www.allegro.cc/forums/thread/554054">More clearly explaining acquire_bitmap, and locking in general</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/554298" style="color: black;">1</a> </span>
+	</li><li id="t-550119">
+		<a href="https://www.allegro.cc/forums/thread/550119">Screen Update framework (criticism needed)</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/550119" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/CariesField">Caries Field</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/AreYouLost1">Are You Lost?</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/FlashFlood">Flash Flood</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/TPong">TPong</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/Unborn">Unborn</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/PeaceFighter">PeaceFighter</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/StarControlTimeWarp">Star Control: TimeWarp</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/TetrisUnlimited">Tetris Unlimited</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/TW-Light">TW-Light</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/WeWantWar">We Want War</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,456</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.010674</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/graphics-modes/gfx_capabilities by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:16:45 GMT -->
+</html>

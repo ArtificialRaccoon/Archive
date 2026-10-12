@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/mouse-routines/show_mouse by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:16:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>show_mouse</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Mouse routines</a></h2><ul>
+<li><a href="install_mouse.html" style="font-weight: bold">install_mouse</a></li><li><a href="remove_mouse.html" style="font-weight: bold">remove_mouse</a></li><li><a href="poll_mouse.html" style="font-weight: bold">poll_mouse</a></li><li><a href="mouse_needs_poll.html" >mouse_needs_poll</a></li><li><a href="enable_hardware_cursor.html" >enable_hardware_cursor</a></li><li><a href="disable_hardware_cursor.html" >disable_hardware_cursor</a></li><li><a href="select_mouse_cursor.html" >select_mouse_cursor</a></li><li><a href="set_mouse_cursor_bitmap.html" >set_mouse_cursor_bitmap</a></li><li><a href="mouse_x.html" style="font-weight: bold">mouse_x</a></li><li><a href="mouse_y.html" style="font-weight: bold">mouse_y</a></li><li><a href="mouse_z.html" style="font-weight: bold">mouse_z</a></li><li><a href="mouse_b.html" style="font-weight: bold">mouse_b</a></li><li><a href="mouse_pos.html" >mouse_pos</a></li><li><a href="mouse_sprite.html" >mouse_sprite</a></li><li><a href="mouse_x_focus.html" >mouse_x_focus</a></li><li><a href="mouse_y_focus.html" >mouse_y_focus</a></li><li><strong>show_mouse</strong></li><li><a href="scare_mouse.html" style="font-weight: bold">scare_mouse</a></li><li><a href="scare_mouse_area.html" >scare_mouse_area</a></li><li><a href="unscare_mouse.html" style="font-weight: bold">unscare_mouse</a></li><li><a href="show_os_cursor.html" >show_os_cursor</a></li><li><a href="freeze_mouse_flag.html" >freeze_mouse_flag</a></li><li><a href="position_mouse.html" style="font-weight: bold">position_mouse</a></li><li><a href="position_mouse_z.html" >position_mouse_z</a></li><li><a href="set_mouse_range.html" style="font-weight: bold">set_mouse_range</a></li><li><a href="set_mouse_speed.html" style="font-weight: bold">set_mouse_speed</a></li><li><a href="set_mouse_sprite.html" style="font-weight: bold">set_mouse_sprite</a></li><li><a href="set_mouse_sprite_focus.html" style="font-weight: bold">set_mouse_sprite_focus</a></li><li><a href="get_mouse_mickeys.html" style="font-weight: bold">get_mouse_mickeys</a></li><li><a href="mouse_callback.html" >mouse_callback</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>show_mouse</h1>
+
+<div class="shortdesc">
+Tells Allegro to display a mouse pointer on the screen.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">void</span> <a href="../../index.html" target="_blank"><span class="a">show_mouse</span></a><span class="k2">(</span><a href="../../index.html" target="_blank"><span class="a">BITMAP</span></a> <span class="k3">*</span>bmp<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Tells Allegro to display a mouse pointer on the screen. This will only
+   work if the timer module has been installed. The mouse pointer will be
+   drawn onto the specified bitmap, which should normally be `screen' (see
+   later for information about bitmaps). To hide the mouse pointer, call
+   show_mouse(NULL).<br /><br />
+
+   Warning: if you draw anything onto the screen while the pointer is
+   visible, a mouse movement interrupt could occur in the middle of your
+   drawing operation. If this happens the mouse buffering and graphics drawing
+   code will get confused and will leave 'mouse droppings' all over the
+   screen. To prevent this, you must make sure you turn off the mouse
+   pointer whenever you draw onto the screen. This is not needed if you are
+   using a hardware cursor.<br /><br />
+
+   Note: you must not be showing a mouse pointer on a bitmap at the time that
+   the bitmap is destroyed with destroy_bitmap(), e.g. call show_mouse(NULL);
+   before destroying the bitmap. This does not apply to `screen' since you
+   never destroy `screen' with destroy_bitmap().
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">install_mouse</a></li>
+	<li><a href="../../index.html">install_timer</a></li>
+	<li><a href="../../index.html">set_mouse_sprite</a></li>
+	<li><a href="../../index.html">scare_mouse</a></li>
+	<li><a href="../../index.html">freeze_mouse_flag</a></li>
+	<li><a href="../../index.html">show_os_cursor</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../index.html">exmouse</a></li>
+	<li><a href="../../index.html">expal</a></li>
+	<li><a href="../../index.html">exshade</a></li>
+	<li><a href="../../index.html">exspline</a></li>
+	<li><a href="../../index.html">exsyscur</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591835">
+		<a href="https://www.allegro.cc/forums/thread/591835">mouse won&#39;t appear</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/678423" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/678441" style="color: black;">2</a> </span>
+	</li><li id="t-591826">
+		<a href="https://www.allegro.cc/forums/thread/591826">Allegro Mouse</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/678322" style="color: black;">1</a> </span>
+	</li><li id="t-591478">
+		<a href="https://www.allegro.cc/forums/thread/591478">Serious problem</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/673537" style="color: black;">1</a> </span>
+	</li><li id="t-591458">
+		<a href="https://www.allegro.cc/forums/thread/591458">[Open Layer] Creating a GUI</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/673547" style="color: black;">1</a> </span>
+	</li><li id="t-591434">
+		<a href="https://www.allegro.cc/forums/thread/591434">set mouse rate</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/672880" style="color: black;">1</a> </span>
+	</li><li id="t-591351">
+		<a href="https://www.allegro.cc/forums/thread/591351">allegro compiles, but wont work</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/671442" style="color: black;">1</a> </span>
+	</li><li id="t-591139">
+		<a href="https://www.allegro.cc/forums/thread/591139">Update Dialog on a specific BITMAP</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/667805" style="color: black;">1</a> </span>
+	</li><li id="t-590932">
+		<a href="https://www.allegro.cc/forums/thread/590932">The age-old 100% CPU usage problem - but still no solution</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/665601" style="color: black;">1</a> </span>
+	</li><li id="t-590786">
+		<a href="https://www.allegro.cc/forums/thread/590786">Bitmap Rotation</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/661791" style="color: black;">1</a> </span>
+	</li><li id="t-590525">
+		<a href="https://www.allegro.cc/forums/thread/590525">Allegro Crash...</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/657710" style="color: black;">1</a> </span>
+	</li><li id="t-590344">
+		<a href="https://www.allegro.cc/forums/thread/590344">mouse flicker problem</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/654449" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/654477" style="color: black;">2</a> </span>
+	</li><li id="t-590312">
+		<a href="https://www.allegro.cc/forums/thread/590312">Code Review</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/654032" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/654114" style="color: black;">2</a> </span>
+	</li><li id="t-590302">
+		<a href="https://www.allegro.cc/forums/thread/590302">Buffer Class</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/653944" style="color: black;">1</a> </span>
+	</li><li id="t-590264">
+		<a href="https://www.allegro.cc/forums/thread/590264">load_bitmap not working</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/653461" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/653560" style="color: black;">2</a> </span>
+	</li><li id="t-590087">
+		<a href="https://www.allegro.cc/forums/thread/590087">Problem with hardware mousecursors.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/650514" style="color: black;">1</a> </span>
+	</li><li id="t-589627">
+		<a href="https://www.allegro.cc/forums/thread/589627">Fladimir&#39;s alpha blending routines</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/643243" style="color: black;">1</a> </span>
+	</li><li id="t-589593">
+		<a href="https://www.allegro.cc/forums/thread/589593">flikkering bitmaps</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/642827" style="color: black;">1</a> </span>
+	</li><li id="t-589476">
+		<a href="https://www.allegro.cc/forums/thread/589476">Mouse button code problem - Doing something when clicked.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/640846" style="color: black;">1</a> </span>
+	</li><li id="t-589316">
+		<a href="https://www.allegro.cc/forums/thread/589316">Multiple declaration of a variable? Compile error I can&#39;t figure out</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/638626" style="color: black;">1</a> </span>
+	</li><li id="t-589186">
+		<a href="https://www.allegro.cc/forums/thread/589186">Dev-C++ compile error - [Build Error]</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/636690" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/636692" style="color: black;">2</a> </span>
+	</li><li id="t-588872">
+		<a href="https://www.allegro.cc/forums/thread/588872">I&#39;m new at this!</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/632486" style="color: black;">1</a> </span>
+	</li><li id="t-588848">
+		<a href="https://www.allegro.cc/forums/thread/588848">Segmentation Fault? Researched... Couldn&#39;t Fix It.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/632015" style="color: black;">1</a> </span>
+	</li><li id="t-588765">
+		<a href="https://www.allegro.cc/forums/thread/588765">show_mouse(...) error?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/630730" style="color: black;">1</a> </span>
+	</li><li id="t-588745">
+		<a href="https://www.allegro.cc/forums/thread/588745">access violation-newbie tile map...</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/630444" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/630488" style="color: black;">2</a> </span>
+	</li><li id="t-588710">
+		<a href="https://www.allegro.cc/forums/thread/588710">Application crashes on exit</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/630342" style="color: black;">1</a> </span>
+	</li><li id="t-588552">
+		<a href="https://www.allegro.cc/forums/thread/588552">how to hide mouse pointer</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/627877" style="color: black;">1</a> </span>
+	</li><li id="t-587799">
+		<a href="https://www.allegro.cc/forums/thread/587799">AllegroGL Minimize Window</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/616802" style="color: black;">1</a> </span>
+	</li><li id="t-587741">
+		<a href="https://www.allegro.cc/forums/thread/587741">displaying and clearing a bitmap</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/615841" style="color: black;">1</a> </span>
+	</li><li id="t-587415">
+		<a href="https://www.allegro.cc/forums/thread/587415">Is this a known bug or am I dumb?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/611803" style="color: black;">1</a> </span>
+	</li><li id="t-587399">
+		<a href="https://www.allegro.cc/forums/thread/587399">simple program crash</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/611475" style="color: black;">1</a> </span>
+	</li><li id="t-587326">
+		<a href="https://www.allegro.cc/forums/thread/587326">MinorHack Attack!</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/611556" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/611565" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/611572" style="color: black;">3</a> <a href="https://www.allegro.cc/forums/post/613968" style="color: black;">4</a> </span>
+	</li><li id="t-587143">
+		<a href="https://www.allegro.cc/forums/thread/587143">Intel Mac Allegro Port</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/608037" style="color: black;">1</a> </span>
+	</li><li id="t-587130">
+		<a href="https://www.allegro.cc/forums/thread/587130">Hardware cursor enable / disable.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/607792" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/607793" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/607794" style="color: black;">3</a> <a href="https://www.allegro.cc/forums/post/607818" style="color: black;">4</a> </span>
+	</li><li id="t-586861">
+		<a href="https://www.allegro.cc/forums/thread/586861">Mouse problem</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/604635" style="color: black;">1</a> </span>
+	</li><li id="t-586801">
+		<a href="https://www.allegro.cc/forums/thread/586801">allegro mouse distortion question</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/603942" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/603995" style="color: black;">2</a> </span>
+	</li><li id="t-586689">
+		<a href="https://www.allegro.cc/forums/thread/586689">Help with bomb creating in my bomberman.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/602838" style="color: black;">1</a> </span>
+	</li><li id="t-586658">
+		<a href="https://www.allegro.cc/forums/thread/586658">rest() + save_bitmap() clashes?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/602240" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/Simple2PTicTacToe1">Simple 2P TicTacToe</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/CariesField">Caries Field</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/Cylindrix">Cylindrix</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/Escultor">Escultor</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/Mastermind2">Mastermind</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/Plantz">Plantz</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/QuixoGame">Quixo Game</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/Aggression">Aggression</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/AreYouLost1">Are You Lost?</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/BarneyHunter">Barney Hunter</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,381</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.016617</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/mouse-routines/show_mouse by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:16:08 GMT -->
+</html>

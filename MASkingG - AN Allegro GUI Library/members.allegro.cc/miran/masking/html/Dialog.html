@@ -1,0 +1,875 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Dialog.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC Dialog</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">Dialog</A></H2></H2><BLOCKQUOTE> The dialog manager class.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>Dialog
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.45.39">Dialog</A></B>()
+<DD><I> The default constructor.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.45.40">Add</A></B>(<!1><A HREF="Widget.html">Widget</A> &amp;obj)
+<DD><I> Adds the widget to the dialog if it's not already added.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.45.41">Remove</A></B>(<!1><A HREF="Widget.html">Widget</A> &amp;obj, bool del=false)
+<DD><I> Removes the widget from the dialog.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.45.42">DialogMessage</A></B>(int msg, int c=0)
+<DD><I> Broadcasts a message with one optional parameter to all the widgets in the dialog.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.45.43">SetSkin</A></B>(<!1><A HREF="Skin.html">Skin</A>* <!1><A HREF="Widget.html#DOC.110.8">skin</A>)
+<DD><I> Changes the skin of the dialog and all its child widgets</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>BITMAP* <B><A HREF="#DOC.45.44">GetCanvas</A></B>(<!1><A HREF="Point.html">Point</A> &amp;<!1><A HREF="Slider.html#DOC.100.2">offset</A>)
+<DD><I> Returns the drawing canvas of the dialog.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>BITMAP* <B><A HREF="#DOC.45.45">GetCanvas</A></B>(<!1><A HREF="Widget.html">Widget</A>* obj)
+<DD><I> Returns the canvas for widget *obj.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="ScreenUpdate.html">ScreenUpdate</A>* <B><A HREF="#DOC.45.46">GetDriver</A></B>() const 
+<DD><I> Returns a pointer to the dialog's screen update driver object.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Mouse.html">Mouse</A>* <B><A HREF="#DOC.45.47">GetMouse</A></B>() const 
+<DD><I> Returns a pointer to the dialog's mouse object</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.45.48">SetMouse</A></B>(<!1><A HREF="Mouse.html">Mouse</A>* m)
+<DD><I> Changes the mouse system driver.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Point.html">Point</A> <B><A HREF="#DOC.45.49">GetOffset</A></B>() const 
+<DD><I> Returns the offset of the dialog relative to it's parent.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.45.50">HandleEvent</A></B>(<!1><A HREF="Widget.html">Widget</A> &amp;obj, int msg, int arg1=0, int arg2=0)
+<DD><I> The main event handler function.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Dialog.html">Dialog</A>* <B><A HREF="#DOC.45.51">Root</A></B>()
+<DD><I> Returns the root of the dialog hierarchy (the top level dialog)</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Dialog.html">Dialog</A>* <B><A HREF="#DOC.45.52">RootWindow</A></B>()
+<DD><I> Returns the root window of the dialog hierarchy (the top level window) or the root dialog if this dialog isn't part of a window</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.45.53">Close</A></B>()
+<DD><I> Requests the dialog to be closed.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.45.54">HasFocus</A></B>()
+<DD><I> Checks whether the dialog has input focus.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.45.56">Hide</A></B>()
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.45.57">Unhide</A></B>()
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.45.58">Enable</A></B>()
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.45.59">Disable</A></B>()
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.45.60">Redraw</A></B>()
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.45.61">Redraw</A></B>(const MAS::Rect &amp;region)
+<DD><I> These functions do the same thing as the same functions in the Widget base class.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.45.62">GiveFocusTo</A></B>(<!1><A HREF="Widget.html">Widget</A>* <!1><A HREF="Widget.html#DOC.110.69">w</A>)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.45.63">TakeFocusFrom</A></B>(<!1><A HREF="Widget.html">Widget</A>* <!1><A HREF="Widget.html#DOC.110.69">w</A>)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.45.64">MoveFocus</A></B>(<!1><A HREF="Widget.html">Widget</A>* src, <!1><A HREF="Widget.html">Widget</A>* dest)
+<DD><I> Functions for moving input focus.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.45.65">GiveMouseTo</A></B>(<!1><A HREF="Widget.html">Widget</A>* <!1><A HREF="Widget.html#DOC.110.69">w</A>)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.45.66">TakeMouseFrom</A></B>(<!1><A HREF="Widget.html">Widget</A>* <!1><A HREF="Widget.html#DOC.110.69">w</A>)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.45.67">MoveMouse</A></B>(<!1><A HREF="Widget.html">Widget</A>* src, <!1><A HREF="Widget.html">Widget</A>* dest)
+<DD><I> Like the corresponding focus functions.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.45.68">MoveFocusTo</A></B>(<!1><A HREF="Widget.html">Widget</A>* obj)
+<DD><I> Tries to move the input focus to the passed object.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Widget.html">Widget</A>* <B><A HREF="#DOC.45.69">GetFocusObject</A></B>() const 
+<DD><I> Returns a pointer to the widget with the input focus</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Widget.html">Widget</A>* <B><A HREF="#DOC.45.70">GetMouseObject</A></B>() const 
+<DD><I> Returns a pointer to the widget with the mouse</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.45.71">BringToTop</A></B>(<!1><A HREF="Widget.html">Widget</A> &amp;<!1><A HREF="Widget.html#DOC.110.69">w</A>)
+<DD><I> Floats the widget to the top of the dialog.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.45.72">SetTooltipObject</A></B>(<!1><A HREF="Tooltip.html">Tooltip</A>* <!1><A HREF="Dialog.html#DOC.45.16">tooltipObject</A>)
+<DD><I> Registers a user defined tooltip object.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   <!1><A HREF="Widget.html">Widget</A>* <B><A HREF="#DOC.45.73">Execute</A></B>(<!1><A HREF="Widget.html">Widget</A>* <!1><A HREF="Skin.html#DOC.98.62">focus</A> = NULL)
+<DD><I> The main loop of the dialog manager.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   <!1><A HREF="Widget.html">Widget</A>* <B><A HREF="#DOC.45.74">Popup</A></B>(<!1><A HREF="Dialog.html">Dialog</A>* <!1><A HREF="Widget.html#DOC.110.7">parent</A> = NULL, int <!1><A HREF="Widget.html#DOC.110.67">x</A> = MAXINT, int <!1><A HREF="Widget.html#DOC.110.68">y</A> = MAXINT, <!1><A HREF="Widget.html">Widget</A>* <!1><A HREF="Skin.html#DOC.98.62">focus</A> = NULL)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   <!1><A HREF="Widget.html">Widget</A>* <B><A HREF="#DOC.45.75">Popup</A></B>(<!1><A HREF="Dialog.html">Dialog</A>* <!1><A HREF="Widget.html#DOC.110.7">parent</A>, const MAS::Point &amp;<!1><A HREF="ScrollObject.html#DOC.93.3">pos</A>, <!1><A HREF="Widget.html">Widget</A>* <!1><A HREF="Skin.html#DOC.98.62">focus</A> = NULL)
+<DD><I> Pops up a window.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.45.76">Centre</A></B>()
+<DD><I> Centres the dialog on the screen</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Public Members</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>enum  <B><A HREF="#DOC.45.17">ActionType</A></B>
+<DD><I> Determines what kind of action the dialog manager should perform on the active dialog at any time but most notably when the mouse is clicked.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.45.55"> Checks whether the dialog has the mouse.</A></B>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   <!1><A HREF="ScreenUpdate.html">ScreenUpdate</A>* <B><A HREF="#DOC.45.3">driver</A></B>
+<DD><I> The global system screen update driver</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   <!1><A HREF="Mouse.html">Mouse</A>* <B><A HREF="#DOC.45.4">mouse</A></B>
+<DD><I> The global system mouse object</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>std::vector&lt;<!1><A HREF="Widget.html">Widget</A> *&gt;  <B><A HREF="#DOC.45.5">widgets</A></B>
+<DD><I> The array of the dialog's child widgets</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>std::vector&lt;<!1><A HREF="Widget.html">Widget</A> *&gt;  <B><A HREF="#DOC.45.6">deletedWidgets</A></B>
+<DD><I> The array of the dialog's child widgets that are scheduled for removal and deletion</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Widget.html">Widget</A>* <B><A HREF="#DOC.45.7">focusObject</A></B>
+<DD><I> A pointer to the widget that has input focus</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Widget.html">Widget</A>* <B><A HREF="#DOC.45.8">mouseObject</A></B>
+<DD><I> A pointer to the widget the mouse is currently on top of</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   <!1><A HREF="MouseState.html">MouseState</A> <B><A HREF="#DOC.45.9">mouseState</A></B>
+<DD><I> Holds the current state of the mouse</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.45.10">joyOn</A></B>
+<DD><I> True when a joystick button has been pressed.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.45.11">escapeExits</A></B>
+<DD><I> Set to false to prevent the dialog from being closed with escape.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.45.12">arrowKeysMoveFocus</A></B>
+<DD><I> Set to false to prevent input focuse from being changed with the arrow keys.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.45.13">tabKeyMovesFocus</A></B>
+<DD><I> Set to false to turn off moving focus with the tab key.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.45.14">close</A></B>
+<DD><I> This variable is set to true when the dialog is about to be closed</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Tooltip.html">Tooltip</A> <B><A HREF="#DOC.45.15">defaultTooltipObject</A></B>
+<DD><I> A pointer to the tooltip widget used to display tooltips</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Tooltip.html">Tooltip</A>* <B><A HREF="#DOC.45.16">tooltipObject</A></B>
+<DD><I> The default tooltip object used when the user doesn't set their own</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Size.html">Size</A> <B><A HREF="#DOC.45.18">minSize</A></B>
+<DD><I> The minimum size of the dialog.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Dialog.html#DOC.45.17">ActionType</A> <B><A HREF="#DOC.45.19">action</A></B>
+<DD><I> The currently selected dialog action</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   <!1><A HREF="Dialog.html#DOC.45.17">ActionType</A> <B><A HREF="#DOC.45.20">GetAction</A></B>()
+<DD><I> Returns the action the dialog manager should do on the dialog depending on the mouse position.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.45.21">SelectAction</A></B>(<!1><A HREF="Dialog.html#DOC.45.17">ActionType</A> <!1><A HREF="Dialog.html#DOC.45.19">action</A>)
+<DD><I> Switches the current dialog's action to the action passed as the parameter of the function and changes the mouse cursor if required.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.45.22">UpdateSize</A></B>()
+<DD><I> Called whenever the dialog is moved or resized.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.45.23">RedrawForeground</A></B>(MAS::Widget* dirtyWidget, bool fromTheTop=false)
+<DD><I> Helper function for redrawing all the widgets in the current dialog that are on top of the passed widget.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.45.24">RedrawSiblings</A></B>(MAS::Dialog* dlg, MAS::Widget* dirtyWidget)
+<DD><I> Helper function for redrawing everything that is on top of dirtyWidget but is in dialogs that are siblings of the passed dialog</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.45.25">CheckForRedraw</A></B>()
+<DD><I> Checks if any widget needs to be redrawn.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.45.26">CheckGeometry</A></B>()
+<DD><I> Checks if any widget has been moved or resized.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.45.27">CheckForSkinChange</A></B>()
+<DD><I> Checks if any widget's skin has changed and send MSG_INITSKIN if it has</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.45.28">HandleMouseInput</A></B>()
+<DD><I> Handles mouse moves and detects mouse clicks and sends appropriate mouse messages</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.45.29">HandleKeyboardInput</A></B>()
+<DD><I> Hanldes keyboard and joystick input.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.45.30">CheckKeyboardShortcuts</A></B>(int cAscii, int cScan)
+<DD><I> Checks if a widget in the dialog has the passed keyboard shortcut and sends it the MSG_KEY message.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.45.31">SendKeyboardMessages</A></B>(int cAscii, int cScan)
+<DD><I> Sends keyboard messages corresponding to the passed ASCII code and scan code.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   <!1><A HREF="Widget.html">Widget</A>* <B><A HREF="#DOC.45.32">FindMouseObject</A></B>()
+<DD><I> Finds the widget the mouse is currently on top of</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.45.33">MoveFocus</A></B>(int dir)
+<DD><I> Moves input focus using a direction variable that was generated with the keyboard.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.45.34">FillObjectList</A></B>(std::vector&lt;<!1><A HREF="MAS_OBJ_LIST.html">MAS_OBJ_LIST</A>* &gt; &amp;objList, int (*cmp)(const MAS::Widget* , const MAS::Widget* ), MAS::Widget* <!1><A HREF="Dialog.html#DOC.45.7">focusObject</A>, int &amp;c)
+<DD><I> Fills the given list with objects that can potentially be tabbed to.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.45.35">SetMouseCursor</A></B>(int i)
+<DD><I> Changes the mouse cursor to the cursor with the index i in the skin's cursor array</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.45.36">AlreadyAdded</A></B>(const <!1><A HREF="Widget.html">Widget</A> &amp;<!1><A HREF="Widget.html#DOC.110.69">w</A>)
+<DD><I> Tests whether the widget w is already in the dialog's widget array or not</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.45.37">SelectDriver</A></B>()
+<DD><I> Select an update driver according to the settings in the <A HREF=settingshtml.html>Settings</A> class</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Error.html">Error</A> <B><A HREF="#DOC.45.38">CreateUpdateDriver</A></B>(<!1><A HREF="ScreenUpdate.html">ScreenUpdate</A>* <!1><A HREF="Dialog.html#DOC.45.3">driver</A>)
+<DD><I> Creates the selected update driver.</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+The dialog manager class.
+Dialogs in MASkinG are nothing but widgets that can contain other widgets.
+You should always have one main dialog to which you can add widgets and
+other dialogs. Normally you should derive your own dialog class from Dialog
+and implement some of the virtual functions that define the apearance and
+behaviour of your dialog. In almost all cases you will need to implement
+the HandleEvent() and MsgInitSkin().
+
+<P>The most common practice to create dialogs is to define widgets as data
+members of their parent dialog and add them to the dialog in the constructor.
+The widgets may of course also be added and removed dynamically. Once the
+dialog is constructed it can be executed with the Execute() function.
+
+<P>The dialog class should also be used as a baseclass for all compound
+widgets, that is widgets that are made by combining several other more
+low level widgets.</BLOCKQUOTE>
+<DL>
+
+<A NAME="driver"></A>
+<A NAME="DOC.45.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   <!1><A HREF="ScreenUpdate.html">ScreenUpdate</A>* driver</B></TT>
+<DD>
+The global system screen update driver
+<DL><DT><DD></DL><P>
+<A NAME="mouse"></A>
+<A NAME="DOC.45.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   <!1><A HREF="Mouse.html">Mouse</A>* mouse</B></TT>
+<DD>
+The global system mouse object
+<DL><DT><DD></DL><P>
+<A NAME="widgets"></A>
+<A NAME="DOC.45.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>std::vector&lt;<!1><A HREF="Widget.html">Widget</A> *&gt;  widgets</B></TT>
+<DD>
+The array of the dialog's child widgets
+<DL><DT><DD></DL><P>
+<A NAME="deletedWidgets"></A>
+<A NAME="DOC.45.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>std::vector&lt;<!1><A HREF="Widget.html">Widget</A> *&gt;  deletedWidgets</B></TT>
+<DD>
+The array of the dialog's child widgets that are scheduled for removal and deletion
+<DL><DT><DD></DL><P>
+<A NAME="focusObject"></A>
+<A NAME="DOC.45.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Widget.html">Widget</A>* focusObject</B></TT>
+<DD>
+A pointer to the widget that has input focus
+<DL><DT><DD></DL><P>
+<A NAME="mouseObject"></A>
+<A NAME="DOC.45.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Widget.html">Widget</A>* mouseObject</B></TT>
+<DD>
+A pointer to the widget the mouse is currently on top of
+<DL><DT><DD></DL><P>
+<A NAME="mouseState"></A>
+<A NAME="DOC.45.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   <!1><A HREF="MouseState.html">MouseState</A> mouseState</B></TT>
+<DD>
+Holds the current state of the mouse
+<DL><DT><DD></DL><P>
+<A NAME="joyOn"></A>
+<A NAME="DOC.45.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool joyOn</B></TT>
+<DD>
+True when a joystick button has been pressed. This is used to prevent
+the joystick from being too "responsive".
+<DL><DT><DD></DL><P>
+<A NAME="escapeExits"></A>
+<A NAME="DOC.45.11"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool escapeExits</B></TT>
+<DD>
+Set to false to prevent the dialog from being closed with escape. Default is true.
+<DL><DT><DD></DL><P>
+<A NAME="arrowKeysMoveFocus"></A>
+<A NAME="DOC.45.12"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool arrowKeysMoveFocus</B></TT>
+<DD>
+Set to false to prevent input focuse from being changed with the arrow keys. Default is true.
+<DL><DT><DD></DL><P>
+<A NAME="tabKeyMovesFocus"></A>
+<A NAME="DOC.45.13"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool tabKeyMovesFocus</B></TT>
+<DD>
+Set to false to turn off moving focus with the tab key. Default is true.
+<DL><DT><DD></DL><P>
+<A NAME="close"></A>
+<A NAME="DOC.45.14"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool close</B></TT>
+<DD>
+This variable is set to true when the dialog is about to be closed
+<DL><DT><DD></DL><P>
+<A NAME="defaultTooltipObject"></A>
+<A NAME="DOC.45.15"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Tooltip.html">Tooltip</A> defaultTooltipObject</B></TT>
+<DD>
+A pointer to the tooltip widget used to display tooltips
+<DL><DT><DD></DL><P>
+<A NAME="tooltipObject"></A>
+<A NAME="DOC.45.16"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Tooltip.html">Tooltip</A>* tooltipObject</B></TT>
+<DD>
+The default tooltip object used when the user doesn't set their own
+<DL><DT><DD></DL><P>
+<A NAME="ActionType"></A>
+<A NAME="DOC.45.17"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>enum  ActionType</B></TT>
+<DD>
+Determines what kind of action the dialog manager should perform
+on the active dialog at any time but most notably when the mouse
+is clicked. The action type can be one of the following:
+<PRE>
+         NONE                  - do nothing (usually when the mouse is inside the dialog
+         MOVE                  - move the dialog (usually when the mouse is on the caption bar)
+         RESIZE_UP_LEFT        - resize the dialog (usually when the mouse is on the
+         RESIZE_UP_RIGHT         dialog border; the actual action depend on the exact
+         RESIZE_DOWN_LEFT        position on the border)
+         RESIZE_DOWN_RIGHT
+         RESIZE_UP
+         RESIZE_DOWN
+         RESIZE_LEFT
+         RESIZE_RIGHT
+</PRE>
+<DL><DT><DD></DL><P>
+<A NAME="minSize"></A>
+<A NAME="DOC.45.18"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Size.html">Size</A> minSize</B></TT>
+<DD>
+The minimum size of the dialog. This is only relevant for dialogs that are not on the top level and can be resized.
+<DL><DT><DD></DL><P>
+<A NAME="action"></A>
+<A NAME="DOC.45.19"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Dialog.html#DOC.45.17">ActionType</A> action</B></TT>
+<DD>
+The currently selected dialog action
+<DL><DT><DD></DL><P>
+<A NAME="GetAction"></A>
+<A NAME="DOC.45.20"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   <!1><A HREF="Dialog.html#DOC.45.17">ActionType</A> GetAction()</B></TT>
+<DD>
+Returns the action the dialog manager should do on the dialog depending
+on the mouse position. The default implementation returns NONE if the mouse
+is on top of a widget that takes input focus otherwise it returns MOVE.
+The window class for example overloads this function to return MOVE only if
+the mouse is on top of the top bar and appropriate resize actions when it is
+on top of a window border.
+<DL><DT><DD></DL><P>
+<A NAME="SelectAction"></A>
+<A NAME="DOC.45.21"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SelectAction(<!1><A HREF="Dialog.html#DOC.45.17">ActionType</A> <!1><A HREF="Dialog.html#DOC.45.19">action</A>)</B></TT>
+<DD>
+Switches the current dialog's action to the action passed as the parameter
+of the function and changes the mouse cursor if required. For example if the
+new action is RESIZE_VERTICAL it cahnges the cursor to the vertical resize arrows.
+<DL><DT><DD></DL><P>
+<A NAME="UpdateSize"></A>
+<A NAME="DOC.45.22"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void UpdateSize()</B></TT>
+<DD>
+Called whenever the dialog is moved or resized. You should overload this function
+to update the position and size of the dialog's widgets acording to the new size
+of the dialog. For example if you have a window with a panel you should resize the
+panel in this function so that it will always be inside the dialog.
+<DL><DT><DD></DL><P>
+<A NAME="RedrawForeground"></A>
+<A NAME="DOC.45.23"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void RedrawForeground(MAS::Widget* dirtyWidget, bool fromTheTop=false)</B></TT>
+<DD>
+Helper function for redrawing all the widgets in the current dialog that are on
+top of the passed widget. This function needs to be called to prevent dirty widgets
+from drawing themselves over widgets that are on top of them in the z-order. This
+isn't the fastest way, it would be faster if the dirty widget's canvas would be
+clipped so that only the visible parts would be updated but the widgets on top
+might not be rectangular and may have transparent bits in them so it's actually
+easier to just redraw everything. If fromTheTop is true, then all the widgets in
+the dialog are checked to see if they need to be redrawn, otherwise the checking
+starts at the dirtyWidget and goes on from there. This is needed if dirtyWidget
+isn't actually a member of this dialog.
+<DL><DT><DD></DL><P>
+<A NAME="RedrawSiblings"></A>
+<A NAME="DOC.45.24"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void RedrawSiblings(MAS::Dialog* dlg, MAS::Widget* dirtyWidget)</B></TT>
+<DD>
+Helper function for redrawing everything that is on top of dirtyWidget but is in
+dialogs that are siblings of the passed dialog
+<DL><DT><DD></DL><P>
+<A NAME="CheckForRedraw"></A>
+<A NAME="DOC.45.25"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void CheckForRedraw()</B></TT>
+<DD>
+Checks if any widget needs to be redrawn.
+Cycles through all the widgets to see if any need to be redrawn and sends MSG_DRAW
+messages to all that do.
+<DL><DT><DD></DL><P>
+<A NAME="CheckGeometry"></A>
+<A NAME="DOC.45.26"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void CheckGeometry()</B></TT>
+<DD>
+Checks if any widget has been moved or resized.
+Like CheckForRedraw() only this function checks if any widget has been resized or
+moved and sends either MSG_RESIZE, MSG_MOVE or MSG_SHAPE.
+<DL><DT><DD></DL><P>
+<A NAME="CheckForSkinChange"></A>
+<A NAME="DOC.45.27"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void CheckForSkinChange()</B></TT>
+<DD>
+Checks if any widget's skin has changed and send MSG_INITSKIN if it has
+<DL><DT><DD></DL><P>
+<A NAME="HandleMouseInput"></A>
+<A NAME="DOC.45.28"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void HandleMouseInput()</B></TT>
+<DD>
+Handles mouse moves and detects mouse clicks and sends appropriate mouse messages
+<DL><DT><DD></DL><P>
+<A NAME="HandleKeyboardInput"></A>
+<A NAME="DOC.45.29"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void HandleKeyboardInput()</B></TT>
+<DD>
+Hanldes keyboard and joystick input. It converts joystick button presses to
+matching keyboard presses to simulate joystick input.
+<DL><DT><DD></DL><P>
+<A NAME="CheckKeyboardShortcuts"></A>
+<A NAME="DOC.45.30"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool CheckKeyboardShortcuts(int cAscii, int cScan)</B></TT>
+<DD>
+Checks if a widget in the dialog has the passed keyboard shortcut and sends it
+the MSG_KEY message. It returns true if a widget with the keyboard shortcut is
+found, otherwise it returns false. This function searches for the widget with
+the shortcut recursively in all child dialogs and windows too.
+<DL><DT><DD></DL><P>
+<A NAME="SendKeyboardMessages"></A>
+<A NAME="DOC.45.31"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool SendKeyboardMessages(int cAscii, int cScan)</B></TT>
+<DD>
+Sends keyboard messages corresponding to the passed ASCII code and scan code.
+It returns true if a message was actually sent and false if it wasn't. This
+allows the messages to be passed up and down the dialog hierarchy.
+<DL><DT><DD></DL><P>
+<A NAME="FindMouseObject"></A>
+<A NAME="DOC.45.32"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   <!1><A HREF="Widget.html">Widget</A>* FindMouseObject()</B></TT>
+<DD>
+Finds the widget the mouse is currently on top of
+<DL><DT><DD></DL><P>
+<A NAME="MoveFocus"></A>
+<A NAME="DOC.45.33"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MoveFocus(int dir)</B></TT>
+<DD>
+Moves input focus using a direction variable that was generated with the keyboard.
+The valid values for dir are: 0 (TAB), 1 (SHIFT+TAB), 2 (right), 3 (left), 4 (down)
+and 5 (up).
+<DL><DT><DD></DL><P>
+<A NAME="FillObjectList"></A>
+<A NAME="DOC.45.34"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void FillObjectList(std::vector&lt;<!1><A HREF="MAS_OBJ_LIST.html">MAS_OBJ_LIST</A>* &gt; &amp;objList, int (*cmp)(const MAS::Widget* , const MAS::Widget* ), MAS::Widget* <!1><A HREF="Dialog.html#DOC.45.7">focusObject</A>, int &amp;c)</B></TT>
+<DD>
+Fills the given list with objects that can potentially be tabbed to.
+This is an internal function for constructing a list of objects that can be tabbed to.
+The objList parameter is passed by reference and is the list that is being constructed,
+cmp is the comparison function that calculates the difference between the current
+widget and the reference widget, w is the reference widget (the one that currently has
+input focus) and c is a counter of widgets that were added to the list. Derived dialogs
+should not overload this function but compound widgets should, but they should leave
+implementation empty. Instead they should implement MsgGotfocus() and MsgLostfocus()
+to make sure the right subwidget is given focus when the compound is tabbed to.
+<DL><DT><DD></DL><P>
+<A NAME="SetMouseCursor"></A>
+<A NAME="DOC.45.35"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetMouseCursor(int i)</B></TT>
+<DD>
+Changes the mouse cursor to the cursor with the index i in the skin's cursor array
+<DL><DT><DD></DL><P>
+<A NAME="AlreadyAdded"></A>
+<A NAME="DOC.45.36"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool AlreadyAdded(const <!1><A HREF="Widget.html">Widget</A> &amp;<!1><A HREF="Widget.html#DOC.110.69">w</A>)</B></TT>
+<DD>
+Tests whether the widget w is already in the dialog's widget array or not
+<DL><DT><DD></DL><P>
+<A NAME="SelectDriver"></A>
+<A NAME="DOC.45.37"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SelectDriver()</B></TT>
+<DD>
+Select an update driver according to the settings in the <A HREF=settingshtml.html>Settings</A> class
+<DL><DT><DD></DL><P>
+<A NAME="CreateUpdateDriver"></A>
+<A NAME="DOC.45.38"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Error.html">Error</A> CreateUpdateDriver(<!1><A HREF="ScreenUpdate.html">ScreenUpdate</A>* <!1><A HREF="Dialog.html#DOC.45.3">driver</A>)</B></TT>
+<DD>
+Creates the selected update driver. If the requested driver is DRS and
+the driver doesn't work, the default driver is selected instead. If the
+requested driver is one of the double buffering drivers and it doesn't
+work the next one in line is tried and then the next one and if none
+work, the default one is selected. For example if you want triple
+buffering and it doesn't work, this function will try page flipping
+instead, and if that doesn't work, it will try regular double buffering.
+<DL><DT><DD></DL><P>
+<A NAME="Dialog"></A>
+<A NAME="DOC.45.39"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> Dialog()</B></TT>
+<DD>
+The default constructor. Doesn't do much except to initialize
+some varibles. In a derived dialog class you should setup the
+dialog's children widgets and add them to the dialog. You
+shouldn't however do any skin specific initialization (like
+setting the color of some text or something). You should do
+this in the MsgInitSkin() function instead.
+<DL><DT><DD></DL><P>
+<A NAME="Add"></A>
+<A NAME="DOC.45.40"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool Add(<!1><A HREF="Widget.html">Widget</A> &amp;obj)</B></TT>
+<DD>
+Adds the widget to the dialog if it's not already added.
+Returns true if the widget was actually added, false if it
+already was in the dialog.
+<DL><DT><DD></DL><P>
+<A NAME="Remove"></A>
+<A NAME="DOC.45.41"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Remove(<!1><A HREF="Widget.html">Widget</A> &amp;obj, bool del=false)</B></TT>
+<DD>
+Removes the widget from the dialog. After removing a widget
+the entire dialog is redrawn. If del is true, the widget is only scheduled
+for for removal and deletion and is actually removed at the first
+chance (i.e. at the	next MSG_TICK). You have to set del to true if
+you create widgets dynamically in your dialog (with new) because
+it is illegal for you to delete a widget in HandleEvent(). You should
+NOT set del to true if you're removing a statically created widget!
+<DL><DT><DD></DL><P>
+<A NAME="DialogMessage"></A>
+<A NAME="DOC.45.42"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void DialogMessage(int msg, int c=0)</B></TT>
+<DD>
+Broadcasts a message with one optional parameter to all the widgets
+in the dialog. Note that most messages are passed only to widgets
+that are not hidden. There are some expections though: MSG_START,
+MSG_END, MSG_INITSKIN and perhaps some others.
+<DL><DT><DD></DL><P>
+<A NAME="SetSkin"></A>
+<A NAME="DOC.45.43"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetSkin(<!1><A HREF="Skin.html">Skin</A>* <!1><A HREF="Widget.html#DOC.110.8">skin</A>)</B></TT>
+<DD>
+Changes the skin of the dialog and all its child widgets
+<DL><DT><DD></DL><P>
+<A NAME="GetCanvas"></A>
+<A NAME="DOC.45.44"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>BITMAP* GetCanvas(<!1><A HREF="Point.html">Point</A> &amp;<!1><A HREF="Slider.html#DOC.100.2">offset</A>)</B></TT>
+<DD>
+Returns the drawing canvas of the dialog. The offset parameter is
+the relative starting position of the rectangle you wish to draw to.
+The GetCanvas() function then turns them into absolute screen coordinates
+so you can safely create a subbitmap or something like that. Normally
+you shouldn't need to call this function because the dialog manager
+automatically crates a canvas for widgets that need to be redrawn.
+<DL><DT><DD></DL><P>
+<A NAME="GetCanvas"></A>
+<A NAME="DOC.45.45"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>BITMAP* GetCanvas(<!1><A HREF="Widget.html">Widget</A>* obj)</B></TT>
+<DD>
+Returns the canvas for widget *obj. Basically this function gets the
+dialog's canvas, makes a subbitmap where the widget is and returns it.
+<DL><DT><DD></DL><P>
+<A NAME="GetDriver"></A>
+<A NAME="DOC.45.46"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="ScreenUpdate.html">ScreenUpdate</A>* GetDriver() const </B></TT>
+<DD>
+Returns a pointer to the dialog's screen update driver object. You
+shouldn't need to use this except maybe for reading the name of the
+driver or something like that.
+<DL><DT><DD></DL><P>
+<A NAME="GetMouse"></A>
+<A NAME="DOC.45.47"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Mouse.html">Mouse</A>* GetMouse() const </B></TT>
+<DD>
+Returns a pointer to the dialog's mouse object
+<DL><DT><DD></DL><P>
+<A NAME="SetMouse"></A>
+<A NAME="DOC.45.48"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetMouse(<!1><A HREF="Mouse.html">Mouse</A>* m)</B></TT>
+<DD>
+Changes the mouse system driver. If you want to modify the appearance
+and/or bahaviour of the mouse in your program, just derive your own
+mouse class from Mouse, create a new instance of it and pass it to
+this function. The mouse driver is deleted when it's not needed anymore
+(i.e. when a new driver is installed or when the program ends) so you
+don't need to worry about deleting it.
+<DL><DT><DD></DL><P>
+<A NAME="GetOffset"></A>
+<A NAME="DOC.45.49"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Point.html">Point</A> GetOffset() const </B></TT>
+<DD>
+Returns the offset of the dialog relative to it's parent. Note that
+the top level dialog can only be placed at the top left corner of the
+screen.
+<DL><DT><DD></DL><P>
+<A NAME="HandleEvent"></A>
+<A NAME="DOC.45.50"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void HandleEvent(<!1><A HREF="Widget.html">Widget</A> &amp;obj, int msg, int arg1=0, int arg2=0)</B></TT>
+<DD>
+The main event handler function. The default implementation doesn't
+really do much except for handling a couple of events but you should
+overload it in your derived dialog classes and use it to handle events.
+The parameters are the object that caused the event to be created, the
+event message (the same as the MSG_SOMETHING constants) and two optional
+parameters which have different meanings for different messages but are
+most often unused.
+
+<P>The most common way to write the event handler is to write a large switch
+statement in which you call functions that correspond to the event. Here's
+a small example:
+<PRE>
+      void MyDialog::HandleEvent(Widget &obj, int msg, int arg1, int arg2) {
+          pass the event up the class hierarchy
+         Dialog::HandleEvent(obj, msg, arg1, arg2);
+
+<P>          handle different messages
+         switch (msg) {
+            case MSG_ACTIVATE:
+               if (obj == button1)         OnButton1();        else
+               if (obj == button2)         OnButton2();        else
+               if (obj == button3)         OnButton3();
+               break;
+
+<P>            case MSG_RPRESS:
+               if (obj == desktop)         OnPopupMenu();
+               break;
+
+<P>            case MSG_MOUSEMOVE:
+               if (obj == desktop)         OnMouseMove(Point(arg1, arg2));
+               break;
+
+<P>            case MSG_SCROLL:
+               if (object == slider1)      OnChangeVolume(int arg1);
+               break;
+         };
+      }
+</PRE>
+Note that it is illegal to delete a widget in HandleEvent() or in a function
+called from HandleEven(). If you want to remove and delete a dynamically
+created widget (e.g. in response to MSG_CLOSE), call Remove(obj, true) instead.
+<DL><DT><DD></DL><P>
+<A NAME="Root"></A>
+<A NAME="DOC.45.51"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Dialog.html">Dialog</A>* Root()</B></TT>
+<DD>
+Returns the root of the dialog hierarchy (the top level dialog)
+<DL><DT><DD></DL><P>
+<A NAME="RootWindow"></A>
+<A NAME="DOC.45.52"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Dialog.html">Dialog</A>* RootWindow()</B></TT>
+<DD>
+Returns the root window of the dialog hierarchy (the top level window) or
+the root dialog if this dialog isn't part of a window
+<DL><DT><DD></DL><P>
+<A NAME="Close"></A>
+<A NAME="DOC.45.53"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Close()</B></TT>
+<DD>
+Requests the dialog to be closed. It calls MsgClose() to determine
+whether the dialog should really be closed or not. Call this function
+when you want to close the dialog or remove it but don't popup a dialog
+asking the user if they really want to exit. Do that in the MsgClose()
+function instead.
+<DL><DT><DD></DL><P>
+<A NAME="HasFocus"></A>
+<A NAME="DOC.45.54"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool HasFocus()</B></TT>
+<DD>
+Checks whether the dialog has input focus. A dialog has input focus
+if it's D_HASFOCUS flag is set or if any of it's child widgets has
+input focus.
+<DL><DT><DD></DL><P>
+<A NAME=" Checks whether the dialog has the mouse."></A>
+<A NAME="DOC.45.55"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>  Checks whether the dialog has the mouse.</B></TT>
+<DD>
+Checks whether the dialog has the mouse. A dialog has the mouse
+if it's D_HASMOUSE flag is set or if any of it's child widgets has
+the mouse.
+<DL><DT><DD></DL><P>
+<A NAME="Hide"></A>
+<A NAME="DOC.45.56"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Hide()</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="Unhide"></A>
+<A NAME="DOC.45.57"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Unhide()</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="Enable"></A>
+<A NAME="DOC.45.58"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Enable()</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="Disable"></A>
+<A NAME="DOC.45.59"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Disable()</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="Redraw"></A>
+<A NAME="DOC.45.60"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Redraw()</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="Redraw"></A>
+<A NAME="DOC.45.61"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Redraw(const MAS::Rect &amp;region)</B></TT>
+<DD>
+These functions do the same thing as the same functions in the Widget base class.
+The only exception is that they also propagate the messages to all dialog's
+child widgets. For example if you ask the dialog to redraw itself it will ask all
+it's widgets to redraw themselves as well.
+<DL><DT><DD></DL><P>
+<A NAME="GiveFocusTo"></A>
+<A NAME="DOC.45.62"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void GiveFocusTo(<!1><A HREF="Widget.html">Widget</A>* <!1><A HREF="Widget.html#DOC.110.69">w</A>)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="TakeFocusFrom"></A>
+<A NAME="DOC.45.63"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void TakeFocusFrom(<!1><A HREF="Widget.html">Widget</A>* <!1><A HREF="Widget.html#DOC.110.69">w</A>)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="MoveFocus"></A>
+<A NAME="DOC.45.64"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MoveFocus(<!1><A HREF="Widget.html">Widget</A>* src, <!1><A HREF="Widget.html">Widget</A>* dest)</B></TT>
+<DD>
+Functions for moving input focus. GiveFocusTo() tries to give focus to the
+passed widget if it wants it, TakeFocusFrom() takes focus away from the
+widget and MoveFocus() moves the input focus by first taking it away from
+the src object and giving it the dest object.
+<DL><DT><DD></DL><P>
+<A NAME="GiveMouseTo"></A>
+<A NAME="DOC.45.65"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void GiveMouseTo(<!1><A HREF="Widget.html">Widget</A>* <!1><A HREF="Widget.html#DOC.110.69">w</A>)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="TakeMouseFrom"></A>
+<A NAME="DOC.45.66"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void TakeMouseFrom(<!1><A HREF="Widget.html">Widget</A>* <!1><A HREF="Widget.html#DOC.110.69">w</A>)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="MoveMouse"></A>
+<A NAME="DOC.45.67"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void MoveMouse(<!1><A HREF="Widget.html">Widget</A>* src, <!1><A HREF="Widget.html">Widget</A>* dest)</B></TT>
+<DD>
+Like the corresponding focus functions. Except that these don't handle input
+focus but the fact whether a widget has the mouse or not.
+<DL><DT><DD></DL><P>
+<A NAME="MoveFocusTo"></A>
+<A NAME="DOC.45.68"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MoveFocusTo(<!1><A HREF="Widget.html">Widget</A>* obj)</B></TT>
+<DD>
+Tries to move the input focus to the passed object. This can fail if the object
+you're trying to give focus to is hidden, disables or doesn't want to take focus.
+<DL><DT><DD></DL><P>
+<A NAME="GetFocusObject"></A>
+<A NAME="DOC.45.69"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Widget.html">Widget</A>* GetFocusObject() const </B></TT>
+<DD>
+Returns a pointer to the widget with the input focus
+<DL><DT><DD></DL><P>
+<A NAME="GetMouseObject"></A>
+<A NAME="DOC.45.70"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Widget.html">Widget</A>* GetMouseObject() const </B></TT>
+<DD>
+Returns a pointer to the widget with the mouse
+<DL><DT><DD></DL><P>
+<A NAME="BringToTop"></A>
+<A NAME="DOC.45.71"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void BringToTop(<!1><A HREF="Widget.html">Widget</A> &amp;<!1><A HREF="Widget.html#DOC.110.69">w</A>)</B></TT>
+<DD>
+Floats the widget to the top of the dialog. It does so by first removing it from
+the widget array and then adding it back to the end of the array.
+<DL><DT><DD></DL><P>
+<A NAME="SetTooltipObject"></A>
+<A NAME="DOC.45.72"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetTooltipObject(<!1><A HREF="Tooltip.html">Tooltip</A>* <!1><A HREF="Dialog.html#DOC.45.16">tooltipObject</A>)</B></TT>
+<DD>
+Registers a user defined tooltip object. This is then used for displaying tooltip
+help bubbles. Pass NULL to reset the tooltip object to the default implementation.
+<DL><DT><DD></DL><P>
+<A NAME="Execute"></A>
+<A NAME="DOC.45.73"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   <!1><A HREF="Widget.html">Widget</A>* Execute(<!1><A HREF="Widget.html">Widget</A>* <!1><A HREF="Skin.html#DOC.98.62">focus</A> = NULL)</B></TT>
+<DD>
+The main loop of the dialog manager. This function executes the dialog and returns
+a pointer to the widget that last had input focus (i.e. the widget that caused the
+dialog to close. The optional focus parameter should be a pointer to the widget you
+want to have focus when the dialog starts. Note that the dialog you execute (the
+top level dialog) can't be smaller than the screen and you can't place it in an
+arbitrary position, it has to be in the top left corner of the screen.
+<DL><DT><DD></DL><P>
+<A NAME="Popup"></A>
+<A NAME="DOC.45.74"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   <!1><A HREF="Widget.html">Widget</A>* Popup(<!1><A HREF="Dialog.html">Dialog</A>* <!1><A HREF="Widget.html#DOC.110.7">parent</A> = NULL, int <!1><A HREF="Widget.html#DOC.110.67">x</A> = MAXINT, int <!1><A HREF="Widget.html#DOC.110.68">y</A> = MAXINT, <!1><A HREF="Widget.html">Widget</A>* <!1><A HREF="Skin.html#DOC.98.62">focus</A> = NULL)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="Popup"></A>
+<A NAME="DOC.45.75"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   <!1><A HREF="Widget.html">Widget</A>* Popup(<!1><A HREF="Dialog.html">Dialog</A>* <!1><A HREF="Widget.html#DOC.110.7">parent</A>, const MAS::Point &amp;<!1><A HREF="ScrollObject.html#DOC.93.3">pos</A>, <!1><A HREF="Widget.html">Widget</A>* <!1><A HREF="Skin.html#DOC.98.62">focus</A> = NULL)</B></TT>
+<DD>
+Pops up a window. Similar to Execute() except that this function pops up the
+dialog at the specified position which means it will remember the background
+of the dialog if it's not popped up from a parent dialog. Note that if you
+want to popup a dialog, it needs a parent so you have to pass "this" if you call
+this function from a dialog's message handler. Pass NULL only when the dialog is
+not popped up from a parent dialog. In this case a dummy parent will be created
+automatically and it will remember the background of the dialog.
+<DL><DT><DD></DL><P>
+<A NAME="Centre"></A>
+<A NAME="DOC.45.76"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Centre()</B></TT>
+<DD>
+Centres the dialog on the screen
+<DL><DT><DD></DL><P></DL>
+<HR>
+<DL><DT><B>Direct child classes:
+</B><DD><A HREF="Window.html">Window</A><BR>
+<A HREF="TabPanel.html">TabPanel</A><BR>
+<A HREF="Splitter.html">Splitter</A><BR>
+<A HREF="Menu.html">Menu</A><BR>
+<A HREF="GroupBox.html">GroupBox</A><BR>
+<A HREF="GLDialog.html">GLDialog</A><BR>
+<A HREF="CompoundWidget.html">CompoundWidget</A><BR>
+</DL>
+
+<DL><DT><DT><B>Friends:</B><DD>  class MASKING_DLL_DECLSPEC <!1><A HREF="Widget.html">Widget</A><BR><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Dialog.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+</html>

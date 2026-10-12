@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/fixed-point-math-routines/fixtoi by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:26:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>fixtoi</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Fixed point math routines</a></h2><ul>
+<li><a href="itofix.html" style="font-weight: bold">itofix</a></li><li><strong>fixtoi</strong></li><li><a href="fixfloor.html" >fixfloor</a></li><li><a href="fixceil.html" >fixceil</a></li><li><a href="ftofix.html" style="font-weight: bold">ftofix</a></li><li><a href="fixtof.html" >fixtof</a></li><li><a href="fixmul.html" >fixmul</a></li><li><a href="fixdiv.html" >fixdiv</a></li><li><a href="fixadd.html" >fixadd</a></li><li><a href="fixsub.html" >fixsub</a></li><li><a href="fixed-point-trig/fixtorad_r.html" >fixtorad_r</a></li><li><a href="fixed-point-trig/radtofix_r.html" >radtofix_r</a></li><li><a href="fixed-point-trig/fixsin.html" >fixsin</a></li><li><a href="fixed-point-trig/fixcos.html" >fixcos</a></li><li><a href="fixed-point-trig/fixtan.html" >fixtan</a></li><li><a href="fixed-point-trig/fixasin.html" >fixasin</a></li><li><a href="fixed-point-trig/fixacos.html" >fixacos</a></li><li><a href="fixed-point-trig/fixatan.html" >fixatan</a></li><li><a href="fixed-point-trig/fixatan2.html" >fixatan2</a></li><li><a href="fixed-point-trig/fixsqrt.html" >fixsqrt</a></li><li><a href="fixed-point-trig/fixhypot.html" >fixhypot</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>fixtoi</h1>
+
+<div class="shortdesc">
+Converts a fixed point to integer with rounding.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">int</span> <a href="../../index.html" target="_blank"><span class="a">fixtoi</span></a><span class="k2">(</span><a href="../../index.html" target="_blank"><span class="a">fixed</span></a> x<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Converts fixed point to integer, rounding as required to the nearest
+   integer. Example:
+<pre class="code">      <span class="k1">int</span> result<span class="k2">;</span>
+      <span class="c">/* This will put 33 into `result'. */</span>
+      result <span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">fixtoi</span></a><span class="k2">(</span><a href="../../index.html" target="_blank"><span class="a">itofix</span></a><span class="k2">(</span><span class="n">100</span><span class="k2">)</span> <span class="k3">/</span> <span class="n">3</span><span class="k2">)</span><span class="k2">;</span>
+      <span class="c">/* But this will round up to 17. */</span>
+      result <span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">fixtoi</span></a><span class="k2">(</span><a href="../../index.html" target="_blank"><span class="a">itofix</span></a><span class="k2">(</span><span class="n">100</span><span class="k2">)</span> <span class="k3">/</span> <span class="n">6</span><span class="k2">)</span><span class="k2">;</span></pre>
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">itofix</a></li>
+	<li><a href="../../index.html">ftofix</a></li>
+	<li><a href="../../index.html">fixtof</a></li>
+	<li><a href="../../index.html">fixfloor</a></li>
+	<li><a href="../../index.html">fixceil</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../index.html">ex12bit</a></li>
+	<li><a href="../../index.html">ex3buf</a></li>
+	<li><a href="../../index.html">ex3d</a></li>
+	<li><a href="../../index.html">exblend</a></li>
+	<li><a href="../../index.html">excustom</a></li>
+	<li><a href="../../index.html">exlights</a></li>
+	<li><a href="../../index.html">exspline</a></li>
+	<li><a href="../../index.html">exstars</a></li>
+	<li><a href="../../index.html">exupdate</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591237">
+		<a href="https://www.allegro.cc/forums/thread/591237">Can&#39;t get the right angle...</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/669561" style="color: black;">1</a> </span>
+	</li><li id="t-590313">
+		<a href="https://www.allegro.cc/forums/thread/590313">Projectile angled movement</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/654035" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/654360" style="color: black;">2</a> </span>
+	</li><li id="t-590216">
+		<a href="https://www.allegro.cc/forums/thread/590216">drawing a rectangle in 3D</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/652802" style="color: black;">1</a> </span>
+	</li><li id="t-589328">
+		<a href="https://www.allegro.cc/forums/thread/589328">Which face are we looking at?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/638861" style="color: black;">1</a> </span>
+	</li><li id="t-588951">
+		<a href="https://www.allegro.cc/forums/thread/588951">Profiling old code</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/633493" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/633500" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/633527" style="color: black;">3</a> </span>
+	</li><li id="t-588740">
+		<a href="https://www.allegro.cc/forums/thread/588740">Problems with rotating co-ordinates</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/630410" style="color: black;">1</a> </span>
+	</li><li id="t-588026">
+		<a href="https://www.allegro.cc/forums/thread/588026">A* Pathfinding library help</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/620102" style="color: black;">1</a> </span>
+	</li><li id="t-587133">
+		<a href="https://www.allegro.cc/forums/thread/587133">The make Allegro better project</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/607834" style="color: black;">1</a> </span>
+	</li><li id="t-586316">
+		<a href="https://www.allegro.cc/forums/thread/586316">optimisation problem</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/596904" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/597062" style="color: black;">2</a> </span>
+	</li><li id="t-586208">
+		<a href="https://www.allegro.cc/forums/thread/586208">8 directions</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/595349" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/595363" style="color: black;">2</a> </span>
+	</li><li id="t-586189">
+		<a href="https://www.allegro.cc/forums/thread/586189">I&#39;m confused</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/595033" style="color: black;">1</a> </span>
+	</li><li id="t-586085">
+		<a href="https://www.allegro.cc/forums/thread/586085">Speed Performance using either float or fixed</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/593513" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/593520" style="color: black;">2</a> </span>
+	</li><li id="t-585500">
+		<a href="https://www.allegro.cc/forums/thread/585500">fixed or float?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/585642" style="color: black;">1</a> </span>
+	</li><li id="t-583936">
+		<a href="https://www.allegro.cc/forums/thread/583936">Visibility tracing precision</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/583936" style="color: black;">1</a> </span>
+	</li><li id="t-558267">
+		<a href="https://www.allegro.cc/forums/thread/558267">2d coordinate transformation</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/558267" style="color: black;">1</a> </span>
+	</li><li id="t-555858">
+		<a href="https://www.allegro.cc/forums/thread/555858">Depth Sorting</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/555858" style="color: black;">1</a> </span>
+	</li><li id="t-554649">
+		<a href="https://www.allegro.cc/forums/thread/554649">Mode 7 limitations</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/554814" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/554856" style="color: black;">2</a> </span>
+	</li><li id="t-554028">
+		<a href="https://www.allegro.cc/forums/thread/554028">Sin &amp; Cos Questions (Amarillion&#39;s tutorial)</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/554028" style="color: black;">1</a> </span>
+	</li><li id="t-552757">
+		<a href="https://www.allegro.cc/forums/thread/552757">Polygonal platformer</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/552857" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/MermaidPanic">Mermaid Panic</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/AlextheAllegator3">Alex the Allegator 3</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/Dodger">Dodger</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/DrLovepeace">Dr Lovepeace</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/Ghoulsandghostremix1">Ghouls and ghost remix</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/MarsTINSentry">Mars (TINS entry)</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/Molefest">Molefest</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/POPEM">POP'EM</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/Zombiepox">Zombiepox</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/AlextheAllegator4">Alex the Allegator 4</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,919</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.010626</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/fixed-point-math-routines/fixtoi by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:26:47 GMT -->
+</html>

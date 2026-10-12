@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/drawing-primitives/ellipse by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:21:52 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>ellipse</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Drawing primitives</a></h2><ul>
+<li><a href="clear_bitmap.html" style="font-weight: bold">clear_bitmap</a></li><li><a href="clear_to_color.html" style="font-weight: bold">clear_to_color</a></li><li><a href="putpixel.html" style="font-weight: bold">putpixel</a></li><li><a href="_putpixel.html" >_putpixel</a></li><li><a href="_putpixel15.html" >_putpixel15</a></li><li><a href="_putpixel16.html" >_putpixel16</a></li><li><a href="_putpixel24.html" >_putpixel24</a></li><li><a href="_putpixel32.html" >_putpixel32</a></li><li><a href="getpixel.html" style="font-weight: bold">getpixel</a></li><li><a href="_getpixel.html" >_getpixel</a></li><li><a href="_getpixel15.html" >_getpixel15</a></li><li><a href="_getpixel16.html" >_getpixel16</a></li><li><a href="_getpixel24.html" >_getpixel24</a></li><li><a href="_getpixel32.html" >_getpixel32</a></li><li><a href="vline.html" style="font-weight: bold">vline</a></li><li><a href="hline.html" style="font-weight: bold">hline</a></li><li><a href="do_line.html" >do_line</a></li><li><a href="line.html" style="font-weight: bold">line</a></li><li><a href="fastline.html" >fastline</a></li><li><a href="triangle.html" style="font-weight: bold">triangle</a></li><li><a href="polygon.html" style="font-weight: bold">polygon</a></li><li><a href="rect.html" style="font-weight: bold">rect</a></li><li><a href="rectfill.html" style="font-weight: bold">rectfill</a></li><li><a href="do_circle.html" >do_circle</a></li><li><a href="circle.html" style="font-weight: bold">circle</a></li><li><a href="circlefill.html" style="font-weight: bold">circlefill</a></li><li><a href="do_ellipse.html" >do_ellipse</a></li><li><strong>ellipse</strong></li><li><a href="ellipsefill.html" style="font-weight: bold">ellipsefill</a></li><li><a href="do_arc.html" >do_arc</a></li><li><a href="arc.html" >arc</a></li><li><a href="calc_spline.html" >calc_spline</a></li><li><a href="spline.html" >spline</a></li><li><a href="floodfill.html" style="font-weight: bold">floodfill</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>ellipse</h1>
+
+<div class="shortdesc">
+Draws an ellipse.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">void</span> <a href="../../index.html" target="_blank"><span class="a">ellipse</span></a><span class="k2">(</span><a href="../../index.html" target="_blank"><span class="a">BITMAP</span></a> <span class="k3">*</span>bmp, <span class="k1">int</span> x, <span class="k1">int</span> y, <span class="k1">int</span> rx, <span class="k1">int</span> ry, <span class="k1">int</span> color<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Draws an ellipse with the specified centre and radius.
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">circle</a></li>
+	<li><a href="../../index.html">arc</a></li>
+	<li><a href="../../index.html">ellipsefill</a></li>
+	<li><a href="../../index.html">do_ellipse</a></li>
+	<li><a href="../../index.html">drawing_mode</a></li>
+	<li><a href="../../index.html">makecol</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-590786">
+		<a href="https://www.allegro.cc/forums/thread/590786">Bitmap Rotation</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/661791" style="color: black;">1</a> </span>
+	</li><li id="t-590748">
+		<a href="https://www.allegro.cc/forums/thread/590748">Transparent Bitmaps</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/661039" style="color: black;">1</a> </span>
+	</li><li id="t-590114">
+		<a href="https://www.allegro.cc/forums/thread/590114">Motivation</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/651120" style="color: black;">1</a> </span>
+	</li><li id="t-585980">
+		<a href="https://www.allegro.cc/forums/thread/585980">[OpenLayer] A few bugs</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/591964" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/ChromaPlas">ChromaPlas</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/Trichromic">Trichromic</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/AllegroSpriteEditor">Allegro Sprite Editor</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/CrystalStacker">Crystal Stacker</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/LiquidWar5">Liquid War 5</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/Outgun">Outgun</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/Rafkill">Rafkill</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/StarControlTimeWarp">Star Control: TimeWarp</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/TW-Light">TW-Light</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/ARTIC2000Testgame">ARTIC 2000 Testgame</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,606</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.015368</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/drawing-primitives/ellipse by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:21:52 GMT -->
+</html>

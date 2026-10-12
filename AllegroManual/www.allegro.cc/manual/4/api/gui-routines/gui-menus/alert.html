@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/gui-routines/gui-menus/alert by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:28:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>alert</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">GUI routines</a></h2><ul>
+<li><a href="../d_clear_proc.html" style="font-weight: bold">d_clear_proc</a></li><li><a href="../d_box_proc.html" style="font-weight: bold">d_box_proc</a></li><li><a href="../d_shadow_box_proc.html" style="font-weight: bold">d_shadow_box_proc</a></li><li><a href="../d_bitmap_proc.html" >d_bitmap_proc</a></li><li><a href="../d_text_proc.html" style="font-weight: bold">d_text_proc</a></li><li><a href="../d_ctext_proc" style="font-weight: bold">d_ctext_proc</a></li><li><a href="../d_rtext_proc.html" >d_rtext_proc</a></li><li><a href="../d_button_proc.html" style="font-weight: bold">d_button_proc</a></li><li><a href="../d_check_proc.html" style="font-weight: bold">d_check_proc</a></li><li><a href="../d_radio_proc.html" style="font-weight: bold">d_radio_proc</a></li><li><a href="../d_icon_proc.html" >d_icon_proc</a></li><li><a href="../d_keyboard_proc.html" >d_keyboard_proc</a></li><li><a href="../d_edit_proc.html" style="font-weight: bold">d_edit_proc</a></li><li><a href="../d_list_proc.html" style="font-weight: bold">d_list_proc</a></li><li><a href="../d_text_list_proc.html" >d_text_list_proc</a></li><li><a href="../d_textbox_proc.html" style="font-weight: bold">d_textbox_proc</a></li><li><a href="../d_slider_proc.html" style="font-weight: bold">d_slider_proc</a></li><li><a href="../d_menu_proc.html" >d_menu_proc</a></li><li><a href="../d_yield_proc.html" style="font-weight: bold">d_yield_proc</a></li><li><a href="../gui-variables/gui_mouse_focus.html" >gui_mouse_focus</a></li><li><a href="../gui-variables/gui_fg_color.html" style="font-weight: bold">gui_fg_color</a></li><li><a href="../gui-variables/gui_bg_color.html" style="font-weight: bold">gui_bg_color</a></li><li><a href="../gui-variables/gui_mg_color.html" style="font-weight: bold">gui_mg_color</a></li><li><a href="../gui-variables/gui_font_baseline.html" >gui_font_baseline</a></li><li><a href="../gui-variables/gui_mouse_x.html" >gui_mouse_x</a></li><li><a href="../gui-variables/gui_mouse_y.html" >gui_mouse_y</a></li><li><a href="../gui-variables/gui_mouse_z.html" >gui_mouse_z</a></li><li><a href="../gui-variables/gui_mouse_b.html" >gui_mouse_b</a></li><li><a href="../gui-font/gui_textout_ex.html" >gui_textout_ex</a></li><li><a href="../gui-font/gui_strlen.html" >gui_strlen</a></li><li><a href="../gui-font/gui_set_screen.html" >gui_set_screen</a></li><li><a href="../gui-font/gui_get_screen.html" >gui_get_screen</a></li><li><a href="../gui-font/position_dialog.html" >position_dialog</a></li><li><a href="../gui-font/centre_dialog.html" style="font-weight: bold">centre_dialog</a></li><li><a href="../gui-font/set_dialog_color.html" style="font-weight: bold">set_dialog_color</a></li><li><a href="../gui-font/find_dialog_focus.html" >find_dialog_focus</a></li><li><a href="../gui-font/offer_focus.html" >offer_focus</a></li><li><a href="../gui-font/object_message.html" style="font-weight: bold">object_message</a></li><li><a href="../gui-font/dialog_message.html" >dialog_message</a></li><li><a href="../gui-font/broadcast_dialog_message.html" >broadcast_dialog_message</a></li><li><a href="../gui-font/do_dialog.html" style="font-weight: bold">do_dialog</a></li><li><a href="../gui-font/popup_dialog.html" style="font-weight: bold">popup_dialog</a></li><li><a href="../gui-font/init_dialog.html" style="font-weight: bold">init_dialog</a></li><li><a href="../gui-font/update_dialog.html" style="font-weight: bold">update_dialog</a></li><li><a href="../gui-font/shutdown_dialog.html" style="font-weight: bold">shutdown_dialog</a></li><li><a href="../gui-font/active_dialog.html" >active_dialog</a></li><li><a href="do_menu.html" >do_menu</a></li><li><a href="init_menu.html" >init_menu</a></li><li><a href="update_menu.html" >update_menu</a></li><li><a href="shutdown_menu.html" >shutdown_menu</a></li><li><a href="active_menu.html" >active_menu</a></li><li><a href="gui_menu_draw_menu.html" >gui_menu_draw_menu</a></li><li><a href="gui_menu_draw_menu_item.html" >gui_menu_draw_menu_item</a></li><li><strong>alert</strong></li><li><a href="alert3.html" >alert3</a></li><li><a href="file_select_ex.html" style="font-weight: bold">file_select_ex</a></li><li><a href="gfx_mode_select.html" >gfx_mode_select</a></li><li><a href="gfx_mode_select_ex.html" >gfx_mode_select_ex</a></li><li><a href="gfx_mode_select_filter.html" >gfx_mode_select_filter</a></li><li><a href="gui_shadow_box_proc.html" >gui_shadow_box_proc</a></li><li><a href="gui_ctext_proc.html" >gui_ctext_proc</a></li><li><a href="gui_button_proc.html" >gui_button_proc</a></li><li><a href="gui_edit_proc.html" >gui_edit_proc</a></li><li><a href="gui_list_proc.html" >gui_list_proc</a></li><li><a href="gui_text_list_proc.html" >gui_text_list_proc</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>alert</h1>
+
+<div class="shortdesc">
+Displays a popup alert box.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">int</span> <a href="../../../index.html" target="_blank"><span class="a">alert</span></a><span class="k2">(</span><span class="k1">const</span> <span class="k1">char</span> <span class="k3">*</span>s1, <span class="k3">*</span>s2, <span class="k3">*</span>s3, <span class="k1">const</span> <span class="k1">char</span> <span class="k3">*</span>b1, <span class="k3">*</span>b2, <span class="k1">int</span> c1, c2<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Displays a popup alert box, containing three lines of text (s1-s3), and
+   with either one or two buttons. The text for these buttons is passed in
+   `b1' and `b2' (`b2' may be NULL), and the keyboard shortcuts in `c1' and
+   `c2' as ASCII value. Example:
+<pre class="code">      <span class="k1">if</span> <span class="k2">(</span><span class="k3">!</span><a href="../../../index.html" target="_blank"><span class="a">exists</span></a><span class="k2">(</span>CONFIG_FILE<span class="k2">)</span><span class="k2">)</span>
+	 <a href="../../../index.html" target="_blank"><span class="a">alert</span></a><span class="k2">(</span>CONFIG_FILE, <span class="s">"not found."</span>, <span class="s">"Using defaults."</span>,
+	       <span class="s">"&amp;Continue"</span>, NULL, <span class="s">'c'</span>, <span class="n">0</span><span class="k2">)</span><span class="k2">;</span></pre>
+
+</div>
+
+<div class="retval">
+Returns 1 or 2 depending on which button was clicked. If the alert is
+   dismissed by pressing ESC when ESC is not one of the keyboard shortcuts,
+   it treats it as a click on the second button (this is consistent with the
+   common "Ok", "Cancel" alert).
+
+</div>
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../../index.html">alert3</a></li>
+	<li><a href="../../../index.html">gui_fg_color</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../../index.html">exgui</a></li>
+	<li><a href="../../../index.html">expackf</a></li>
+	<li><a href="../../../index.html">exspline</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591798">
+		<a href="https://www.allegro.cc/forums/thread/591798">Web Development: Part II</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/677876" style="color: black;">1</a> </span>
+	</li><li id="t-591774">
+		<a href="https://www.allegro.cc/forums/thread/591774">Extending Built-In Object With prototype Property (JavaScript)</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/677538" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/677823" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/677834" style="color: black;">3</a> <a href="https://www.allegro.cc/forums/post/677939" style="color: black;">4</a> </span>
+	</li><li id="t-591768">
+		<a href="https://www.allegro.cc/forums/thread/591768">help customizing GUI</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/677477" style="color: black;">1</a> </span>
+	</li><li id="t-591696">
+		<a href="https://www.allegro.cc/forums/thread/591696">&quot;AJAX&quot; - That&#39;s right, I said it! (XML DOM) ***Please Help***</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/676538" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/676542" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/676543" style="color: black;">3</a> <a href="https://www.allegro.cc/forums/post/676550" style="color: black;">4</a> </span>
+	</li><li id="t-590803">
+		<a href="https://www.allegro.cc/forums/thread/590803">[HTML/Javascript] Checkbox and table visibility</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/662073" style="color: black;">1</a> </span>
+	</li><li id="t-590344">
+		<a href="https://www.allegro.cc/forums/thread/590344">mouse flicker problem</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/654477" style="color: black;">1</a> </span>
+	</li><li id="t-590144">
+		<a href="https://www.allegro.cc/forums/thread/590144">A.cc Javascript Extension</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/651586" style="color: black;">1</a> </span>
+	</li><li id="t-590114">
+		<a href="https://www.allegro.cc/forums/thread/590114">Motivation</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/651120" style="color: black;">1</a> </span>
+	</li><li id="t-590012">
+		<a href="https://www.allegro.cc/forums/thread/590012">Javascript dynamic treeview</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/649081" style="color: black;">1</a> </span>
+	</li><li id="t-589346">
+		<a href="https://www.allegro.cc/forums/thread/589346">Xcode 2 project template</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/641748" style="color: black;">1</a> </span>
+	</li><li id="t-589056">
+		<a href="https://www.allegro.cc/forums/thread/589056">new mockup widget</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/635079" style="color: black;">1</a> </span>
+	</li><li id="t-588054">
+		<a href="https://www.allegro.cc/forums/thread/588054">[almp3] Music won&#39;t play</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/620658" style="color: black;">1</a> </span>
+	</li><li id="t-587146">
+		<a href="https://www.allegro.cc/forums/thread/587146">Using alert</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/607970" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/607982" style="color: black;">2</a> </span>
+	</li><li id="t-586605">
+		<a href="https://www.allegro.cc/forums/thread/586605">JavaScript: Adding INPUTs onsubmit</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/601302" style="color: black;">1</a> </span>
+	</li><li id="t-585995">
+		<a href="https://www.allegro.cc/forums/thread/585995">APEG issues</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/592162" style="color: black;">1</a> </span>
+	</li><li id="t-585944">
+		<a href="https://www.allegro.cc/forums/thread/585944">Comparison of Interpreted Languages</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/591328" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/591641" style="color: black;">2</a> </span>
+	</li><li id="t-585870">
+		<a href="https://www.allegro.cc/forums/thread/585870">XmlHttpRequest and friends</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/592156" style="color: black;">1</a> </span>
+	</li><li id="t-585786">
+		<a href="https://www.allegro.cc/forums/thread/585786">4.3 error handling</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/590971" style="color: black;">1</a> </span>
+	</li><li id="t-582059">
+		<a href="https://www.allegro.cc/forums/thread/582059">SQLite and AGUP behaving oddly</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/582059" style="color: black;">1</a> </span>
+	</li><li id="t-581976">
+		<a href="https://www.allegro.cc/forums/thread/581976">AGUL Dialog question</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/581976" style="color: black;">1</a> </span>
+	</li><li id="t-581768">
+		<a href="https://www.allegro.cc/forums/thread/581768">SQLite++</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/581802" style="color: black;">1</a> </span>
+	</li><li id="t-581712">
+		<a href="https://www.allegro.cc/forums/thread/581712">Invalid Conversion</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/581712" style="color: black;">1</a> </span>
+	</li><li id="t-578007">
+		<a href="https://www.allegro.cc/forums/thread/578007">Problems drawing bitmaps (it just crashes)</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/578007" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/578011" style="color: black;">2</a> </span>
+	</li><li id="t-566475">
+		<a href="https://www.allegro.cc/forums/thread/566475">Measuring dB from digital audio</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/566664" style="color: black;">1</a> </span>
+	</li><li id="t-563103">
+		<a href="https://www.allegro.cc/forums/thread/563103">Alert box not tied to dialog</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/563103" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/563130" style="color: black;">2</a> </span>
+	</li><li id="t-562235">
+		<a href="https://www.allegro.cc/forums/thread/562235">Home-made Annoying Apps</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/562244" style="color: black;">1</a> </span>
+	</li><li id="t-559748">
+		<a href="https://www.allegro.cc/forums/thread/559748">JavaScript: Enough BS</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/560263" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/560381" style="color: black;">2</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/Cylindrix">Cylindrix</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/Zelda">Zelda</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/AlextheAllegator3">Alex the Allegator 3</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/DiabloIIMapEditor">Diablo II Map Editor</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/DrLovepeace">Dr Lovepeace</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/DrStrange">Dr. Strange</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/Glizda">Glizda</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/Molefest">Molefest</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/POPEM">POP'EM</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/PurpleMartians">Purple Martians</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,371,046</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.012449</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/gui-routines/gui-menus/alert by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:28:42 GMT -->
+</html>

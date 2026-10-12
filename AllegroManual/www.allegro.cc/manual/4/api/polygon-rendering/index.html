@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/polygon-rendering/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:50:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Polygon rendering</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">API</a></h2><ul>
+<li><a href="../using-allegro/index.html" >Using Allegro</a></li><li><a href="../structures-and-types-defined-by-allegro/index.html" >Structures and types defined by Allegro</a></li><li><a href="../unicode-routines/index.html" >Unicode routines</a></li><li><a href="../configuration-routines/index.html" >Configuration routines</a></li><li><a href="../mouse-routines/index.html" >Mouse routines</a></li><li><a href="../timer-routines/index.html" >Timer routines</a></li><li><a href="../keyboard-routines/index.html" >Keyboard routines</a></li><li><a href="../joystick-routines/index.html" >Joystick routines</a></li><li><a href="../graphics-modes/index.html" >Graphics modes</a></li><li><a href="../bitmap-objects/index.html" >Bitmap objects</a></li><li><a href="../loading-image-files/index.html" >Loading image files</a></li><li><a href="../palette-routines/index.html" >Palette routines</a></li><li><a href="../truecolor-pixel-formats/index.html" >Truecolor pixel formats</a></li><li><a href="../drawing-primitives/index.html" >Drawing primitives</a></li><li><a href="../blitting-and-sprites/index.html" >Blitting and sprites</a></li><li><a href="../rle-sprites/index.html" >RLE sprites</a></li><li><a href="../compiled-sprites/index.html" >Compiled sprites</a></li><li><a href="../fonts/index.html" >Fonts</a></li><li><a href="../text-output/index.html" >Text output</a></li><li><strong>Polygon rendering</strong></li><li><a href="../transparency-and-patterned-drawing/index.html" >Transparency and patterned drawing</a></li><li><a href="../converting-between-color-formats/index.html" >Converting between color formats</a></li><li><a href="../direct-access-to-video-memory/index.html" >Direct access to video memory</a></li><li><a href="../flic-routines/index.html" >FLIC routines</a></li><li><a href="../sound-init-routines/index.html" >Sound init routines</a></li><li><a href="../mixer-routines/index.html" >Mixer routines</a></li><li><a href="../digital-sample-routines/index.html" >Digital sample routines</a></li><li><a href="../music-routines-(midi)/index.html" >Music routines (MIDI)</a></li><li><a href="../audio-stream-routines/index.html" >Audio stream routines</a></li><li><a href="../recording-routines/index.html" >Recording routines</a></li><li><a href="../file-and-compression-routines/index.html" >File and compression routines</a></li><li><a href="../datafile-routines/index.html" >Datafile routines</a></li><li><a href="../fixed-point-math-routines/index.html" >Fixed point math routines</a></li><li><a href="../3d-math-routines/index.html" >3D math routines</a></li><li><a href="../quaternion-math-routines/index.html" >Quaternion math routines</a></li><li><a href="../gui-routines/index.html" >GUI routines</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>Polygon rendering</h1>
+
+All the 3d functions that accept a `type' parameter are asking for a polygon
+rendering mode, which can be any of the following POLYTYPE_* values. If the
+CPU_MMX flag of the cpu_capabilities global variable is set, the GRGB and
+truecolor *LIT routines will be optimised using MMX instructions. If the
+CPU_3DNOW flag is set, the truecolor PTEX*LIT routines will take advantage of
+the 3DNow! CPU extensions.<br /><br />
+
+Using MMX for *LIT routines has a side effect: normally (without MMX), these
+routines use the blender functions used also for other lighting functions,
+set with set_trans_blender() or set_blender_mode(). The MMX versions only use
+the RGB value passed to set_trans_blender() and do the linear interpolation
+themselves. Therefore a new set of blender functions passed to
+set_blender_mode() is ignored.
+
+<ul>
+	<li><a href="polytype_flat.html">POLYTYPE_FLAT</a> - Polygon rendering mode type</li>
+	<li><a href="polytype_gcol.html">POLYTYPE_GCOL</a> - Polygon rendering mode type</li>
+	<li><a href="polytype_grgb.html">POLYTYPE_GRGB</a> - Polygon rendering mode type</li>
+	<li><a href="polytype_atex.html">POLYTYPE_ATEX</a> - Polygon rendering mode type</li>
+	<li><a href="polytype_ptex.html">POLYTYPE_PTEX</a> - Polygon rendering mode type</li>
+	<li><a href="polytype_atex_mask.html">POLYTYPE_ATEX_MASK</a></li>
+	<li><a href="polytype_ptex_mask.html">POLYTYPE_PTEX_MASK</a> - Polygon rendering mode type</li>
+	<li><a href="polytype_atex_lit.html">POLYTYPE_ATEX_LIT</a></li>
+	<li><a href="polytype_ptex_lit.html">POLYTYPE_PTEX_LIT</a> - Polygon rendering mode type</li>
+	<li><a href="polytype_atex_mask_lit.html">POLYTYPE_ATEX_MASK_LIT</a></li>
+	<li><a href="polytype_ptex_mask_lit.html">POLYTYPE_PTEX_MASK_LIT</a> - Polygon rendering mode type</li>
+	<li><a href="polytype_atex_trans.html">POLYTYPE_ATEX_TRANS</a></li>
+	<li><a href="polytype_ptex_trans.html">POLYTYPE_PTEX_TRANS</a> - Polygon rendering mode type</li>
+	<li><a href="polytype_atex_mask_trans.html">POLYTYPE_ATEX_MASK_TRANS</a></li>
+	<li><a href="polytype_ptex_mask_trans.html">POLYTYPE_PTEX_MASK_TRANS</a> - Polygon rendering mode type</li>
+	<li><a href="polygon3d.html">polygon3d</a></li>
+	<li><a href="polygon3d_f.html">polygon3d_f</a> - Draws a 3d polygon onto the specified bitmap.</li>
+	<li><a href="triangle3d.html">triangle3d</a></li>
+	<li><a href="triangle3d_f.html">triangle3d_f</a> - Draws a 3d triangle onto the specified bitmap.</li>
+	<li><a href="quad3d.html">quad3d</a></li>
+	<li><a href="quad3d_f.html">quad3d_f</a> - Draws a 3d quad onto the specified bitmap.</li>
+	<li><a href="clip3d_f.html">clip3d_f</a> - Clips the polygon given in vtx using floating point math,</li>
+	<li><a href="clip3d.html">clip3d</a> - Clips the polygon given in vtx using fixed point math.</li>
+</ul>
+<h2>Zbuffered rendering</h2>
+A Z-buffer stores the depth of each pixel that is drawn on a viewport.
+When a 3D object is rendered, the depth of each of its pixels is compared
+against the value stored into the Z-buffer: if the pixel is closer it is
+drawn, otherwise it is skipped.<br /><br />
+
+No polygon sorting is needed. However, backface culling should be done
+because it prevents many invisible polygons being compared against the
+Z-buffer. Z-buffered rendering is the only algorithm supported by Allegro
+that directly solves penetrating shapes (see example exzbuf.c, for instance).
+The price to pay is more complex (and slower) routines.<br /><br />
+
+Z-buffered polygons are designed as an extension of the normal POLYTYPE_*
+rendering styles. Just OR the POLYTYPE with the value POLYTYPE_ZBUF, and
+the normal polygon3d(), polygon3d_f(), quad3d(), etc. functions will
+render z-buffered polygons.<br /><br />
+
+Example:
+<pre class="code">   <a href="../../index.html" target="_blank"><span class="a">polygon3d</span></a><span class="k2">(</span>bmp, POLYTYPE_ATEX <span class="k3">|</span> POLYTYPE_ZBUF, tex, vc, vtx<span class="k2">)</span><span class="k2">;</span></pre><br /><br />
+
+Of course, the z coordinates have to be valid regardless of rendering style.<br /><br />
+
+A Z-buffered rendering procedure looks like a double-buffered rendering
+procedure. You should follow four steps: create a Z-buffer at the beginning
+of the program and make the library use it by calling set_zbuffer(). Then,
+for each frame, clear the Z-buffer and draw polygons with
+POLYTYPE_* | POLYTYPE_ZBUF and finally destroy the Z-buffer when leaving the
+program.<br /><br />
+
+Notes on Z-buffered renderers:
+<ul><li>
+Unlike the normal POLYTYPE_FLAT renderers, the Z-buffered ones don't use
+the hline() routine. Therefore DRAW_MODE has no effect.
+<li>
+The *LIT* routines work the traditional way - through the set of
+blender routines.
+<li>
+All the Z-buffered routines are much slower than their normal counterparts
+(they all use the FPU to interpolate and test 1/z values).
+</ul>
+
+<ul>
+	<li><a href="zbuffered-rendering/create_zbuffer.html">create_zbuffer</a> - Creates a Z-buffer for a bitmap.</li>
+	<li><a href="zbuffered-rendering/create_sub_zbuffer.html">create_sub_zbuffer</a> - Creates a sub-z-buffer.</li>
+	<li><a href="zbuffered-rendering/set_zbuffer.html">set_zbuffer</a> - Makes the given Z-buffer the active one.</li>
+	<li><a href="zbuffered-rendering/clear_zbuffer.html">clear_zbuffer</a> - Writes a depth value into the given Z-buffer.</li>
+	<li><a href="zbuffered-rendering/destroy_zbuffer.html">destroy_zbuffer</a> - Destroys a Z-buffer.</li>
+</ul>
+<h2>Scene rendering</h2>
+Allegro provides two simple approaches to remove hidden surfaces:
+<ul><li>
+   Z-buffering - (see above)
+<li>
+   Scan-line algorithms - along each scanline on your screen, you keep
+   track of what polygons you are "in" and which is the nearest. This
+   status changes only where the scanline crosses some polygon edge. So you
+   have to juggle an edge list and a polygon list. And you have to sort the
+   edges for each scanline (this can be countered by keeping the order of
+   the previous scanline - it won't change much). The BIG advantage is that
+   you write each pixel only once. If you have a lot of overlapping
+   polygons you can get incredible speeds compared to any of the previous
+   algorithms. This algorithm is covered by the *_scene routines.
+</ul><br /><br />
+
+The scene rendering has approximately the following steps:
+<ul><li>
+   Initialize the scene (set the clip area, clear the bitmap, blit a
+   background, etc.)
+<li>
+   Call clear_scene().
+<li>
+   Transform all your points to camera space.
+<li>
+   Clip polygons.
+<li>
+   Project with persp_project() or persp_project_f().
+<li>
+   "Draw" polygons with scene_polygon3d() and/or scene_polygon3d_f().
+   This doesn't do any actual drawing, only initializes tables.
+<li>
+   Render all the polygons defined previously to the bitmap with
+   render_scene().
+<li>
+   Overlay some non-3D graphics.
+<li>
+   Show the bitmap (blit it to screen, flip the page, etc).
+</ul><br /><br />
+
+For each horizontal line in the viewport an x-sorted edge list is used to
+keep track of what polygons are "in" and which is the nearest. Vertical
+coherency is used - the edge list for a scanline is sorted starting from
+the previous one - it won't change much. The scene rendering routines use
+the same low-level asm routines as normal polygon3d().<br /><br />
+
+Notes on scene rendering:
+<ul><li>
+   Unlike polygon3d(), scene_polygon3d() requires valid z coordinates
+   for all vertices, regardless of rendering style (unlike
+   polygon3d(), which only uses z coordinate for *PTEX*).
+<li>
+   All polygons passed to scene_polygon3d() have to be
+   persp_project()'ed.
+<li>
+   After render_scene() the mode is reset to SOLID.
+</ul>
+Using a lot of *MASK* polygons drastically reduces performance, because
+when a MASKed polygon is the first in line of sight, the polygons
+underneath have to be drawn too. The same applies to FLAT polygons drawn
+with DRAW_MODE_TRANS.<br /><br />
+
+Z-buffered rendering works also within the scene renderer. It may be
+helpful when you have a few intersecting polygons, but most of the
+polygons may be safely rendered by the normal scanline sorting algo.
+Same as before: just OR the POLYTYPE with POLYTYPE_ZBUF. Also, you
+have to clear the z-buffer at the start of the frame. Example:
+<pre class="code">   <a href="../../index.html" target="_blank"><span class="a">clear_scene</span></a><span class="k2">(</span>buffer<span class="k2">)</span><span class="k2">;</span>
+   <span class="k1">if</span> <span class="k2">(</span>some_polys_are_zbuf<span class="k2">)</span> <a href="../../index.html" target="_blank"><span class="a">clear_zbuffer</span></a><span class="k2">(</span><span class="n">0</span>.<span class="k2">)</span><span class="k2">;</span>
+   <span class="k1">while</span> <span class="k2">(</span>polygons<span class="k2">)</span> <span class="k2">{</span>
+      ...
+      <span class="k1">if</span> <span class="k2">(</span>this_poly_is_zbuf<span class="k2">)</span> type <span class="k3">|</span><span class="k3">=</span> POLYTYPE_ZBUF<span class="k2">;</span>
+      <a href="../../index.html" target="_blank"><span class="a">scene_polygon3d</span></a><span class="k2">(</span>type, tex, vc, vtx<span class="k2">)</span><span class="k2">;</span>
+   <span class="k2">}</span>
+   <a href="../../index.html" target="_blank"><span class="a">render_scene</span></a><span class="k2">(</span><span class="k2">)</span><span class="k2">;</span></pre>
+
+<ul>
+	<li><a href="scene-rendering/create_scene.html">create_scene</a> - Allocates memory for a 3d scene.</li>
+	<li><a href="scene-rendering/clear_scene.html">clear_scene</a> - Initializes a scene.</li>
+	<li><a href="scene-rendering/destroy_scene.html">destroy_scene</a> - Deallocates the memory used by a scene.</li>
+	<li><a href="scene-rendering/scene_polygon3d.html">scene_polygon3d</a></li>
+	<li><a href="scene-rendering/scene_polygon3d_f.html">scene_polygon3d_f</a> - Puts a polygon in the scene rendering list.</li>
+	<li><a href="scene-rendering/render_scene.html">render_scene</a> - Renders all the queued scene polygons.</li>
+	<li><a href="scene-rendering/scene_gap.html">scene_gap</a> - Number controlling the scene z-sorting algorithm behaviour.</li>
+</ul>
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,170</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.817524</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/polygon-rendering/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:51:14 GMT -->
+</html>

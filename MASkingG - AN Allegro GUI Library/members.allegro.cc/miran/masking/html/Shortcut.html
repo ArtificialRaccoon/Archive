@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Shortcut.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC Shortcut</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">Shortcut</A></H2></H2><BLOCKQUOTE> The shortcut widget.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>Shortcut
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.96.4">Setup</A></B>(int <!1><A HREF="Shortcut.html#DOC.96.1">key</A>, int <!1><A HREF="Shortcut.html#DOC.96.2">shifts</A> = 0)
+<DD><I> Sets the combination of keys the widget should respond to.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.96.1">key</A></B>
+<DD><I> The key the widget is supposed to respond to</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.96.2">shifts</A></B>
+<DD><I> The combination of key shifts the widget is supposed to respond to</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.96.3">MsgXChar</A></B>(int xchar)
+<DD><I> Handles keypresses.</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+The shortcut widget.
+This is an invisible widget that helps implement keyboard shortcuts. It
+supports more or less all keys and combinations of Ctrl, Shift and Alt keys.
+
+<P>Note: Shortcut is deprecated. Use the Accelerator class instead.
+
+<P></BLOCKQUOTE>
+<DL>
+
+<A NAME="key"></A>
+<A NAME="DOC.96.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int key</B></TT>
+<DD>
+The key the widget is supposed to respond to
+<DL><DT><DD></DL><P>
+<A NAME="shifts"></A>
+<A NAME="DOC.96.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int shifts</B></TT>
+<DD>
+The combination of key shifts the widget is supposed to respond to
+<DL><DT><DD></DL><P>
+<A NAME="MsgXChar"></A>
+<A NAME="DOC.96.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool MsgXChar(int xchar)</B></TT>
+<DD>
+Handles keypresses. If it detects a combination of keys defined with
+the Setup() function was pressed it sends MSG_ACTIVATE to the parent dialog.
+<DL><DT><DD></DL><P>
+<A NAME="Setup"></A>
+<A NAME="DOC.96.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Setup(int <!1><A HREF="Shortcut.html#DOC.96.1">key</A>, int <!1><A HREF="Shortcut.html#DOC.96.2">shifts</A> = 0)</B></TT>
+<DD>
+Sets the combination of keys the widget should respond to. Key is an
+Allegro KEY_* constant and shifts is a combination of key shifts flags
+such as KB_CTRL_FLAG, KB_ALT_FLAG, KB_SHIFT_FLAG, etc. Whenever the
+widget detects its combination of keys was pressed it send a
+MSG_ACTIVATE message to the parent dialog.
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DT><B>See Also:</B><DD><!1><A HREF="Accelerator.html">Accelerator</A><BR><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Shortcut.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+</html>

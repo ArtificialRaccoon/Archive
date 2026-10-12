@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/transparency-and-patterned-drawing/truecolor-transparency/set_alpha_blender by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:24:15 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>set_alpha_blender</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">Transparency and patterned drawing</a></h2><ul>
+<li><a href="../drawing_mode.html" style="font-weight: bold">drawing_mode</a></li><li><a href="../xor_mode.html" >xor_mode</a></li><li><a href="../solid_mode.html" style="font-weight: bold">solid_mode</a></li><li><a href="../256-color-transparency/color_map.html" style="font-weight: bold">color_map</a></li><li><a href="../256-color-transparency/create_trans_table.html" style="font-weight: bold">create_trans_table</a></li><li><a href="../256-color-transparency/create_light_table.html" >create_light_table</a></li><li><a href="../256-color-transparency/create_color_table.html" >create_color_table</a></li><li><a href="../256-color-transparency/create_blender_table.html" >create_blender_table</a></li><li><a href="set_trans_blender.html" style="font-weight: bold">set_trans_blender</a></li><li><strong>set_alpha_blender</strong></li><li><a href="set_write_alpha_blender.html" >set_write_alpha_blender</a></li><li><a href="set_add_blender.html" >set_add_blender</a></li><li><a href="set_burn_blender.html" >set_burn_blender</a></li><li><a href="set_color_blender.html" >set_color_blender</a></li><li><a href="set_difference_blender.html" >set_difference_blender</a></li><li><a href="set_dissolve_blender.html" >set_dissolve_blender</a></li><li><a href="set_dodge_blender.html" >set_dodge_blender</a></li><li><a href="set_hue_blender.html" >set_hue_blender</a></li><li><a href="set_invert_blender.html" >set_invert_blender</a></li><li><a href="set_luminance_blender.html" >set_luminance_blender</a></li><li><a href="set_multiply_blender.html" >set_multiply_blender</a></li><li><a href="set_saturation_blender.html" >set_saturation_blender</a></li><li><a href="set_screen_blender.html" >set_screen_blender</a></li><li><a href="set_blender_mode.html" >set_blender_mode</a></li><li><a href="set_blender_mode_ex.html" >set_blender_mode_ex</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>set_alpha_blender</h1>
+
+<div class="shortdesc">
+Enables a special alpha-channel blending mode.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">void</span> <a href="../../../index.html" target="_blank"><span class="a">set_alpha_blender</span></a><span class="k2">(</span><span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Enables the special alpha-channel blending mode, which is used for
+   drawing 32-bit RGBA sprites. After calling this function, you can use
+   draw_trans_sprite() or draw_trans_rle_sprite() to draw a 32-bit source
+   image onto any hicolor or truecolor destination. The alpha values will be
+   taken directly from the source graphic, so you can vary the solidity of
+   each part of the image. You can't use any of the normal translucency
+   functions while this mode is active, though, so you should reset to one
+   of the normal blender modes (eg. set_trans_blender()) before drawing
+   anything other than 32-bit RGBA sprites.
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../../index.html">set_trans_blender</a></li>
+	<li><a href="../../../index.html">draw_trans_sprite</a></li>
+	<li><a href="../../../index.html">draw_trans_rle_sprite</a></li>
+	<li><a href="../../../index.html">set_write_alpha_blender</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../../index.html">exalpha</a></li>
+	<li><a href="../../../index.html">extrans</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591796">
+		<a href="https://www.allegro.cc/forums/thread/591796">8bit bitmap to alpha channel</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/677865" style="color: black;">1</a> </span>
+	</li><li id="t-591336">
+		<a href="https://www.allegro.cc/forums/thread/591336">Problems with AllegroGL tga loading and usage.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/671180" style="color: black;">1</a> </span>
+	</li><li id="t-590057">
+		<a href="https://www.allegro.cc/forums/thread/590057">a bug RLE sprites</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/652313" style="color: black;">1</a> </span>
+	</li><li id="t-589857">
+		<a href="https://www.allegro.cc/forums/thread/589857">DevCpp Learning to profile with</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/646828" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/646840" style="color: black;">2</a> </span>
+	</li><li id="t-589770">
+		<a href="https://www.allegro.cc/forums/thread/589770">draw_trans_sprite, Devcpp and optimizations</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/646004" style="color: black;">1</a> </span>
+	</li><li id="t-589627">
+		<a href="https://www.allegro.cc/forums/thread/589627">Fladimir&#39;s alpha blending routines</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/643243" style="color: black;">1</a> </span>
+	</li><li id="t-589593">
+		<a href="https://www.allegro.cc/forums/thread/589593">flikkering bitmaps</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/642827" style="color: black;">1</a> </span>
+	</li><li id="t-589410">
+		<a href="https://www.allegro.cc/forums/thread/589410">semi-transparent bitmap</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/639929" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/639937" style="color: black;">2</a> </span>
+	</li><li id="t-589076">
+		<a href="https://www.allegro.cc/forums/thread/589076">32Bit-BITMAP Blitting Alphachannel</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/635193" style="color: black;">1</a> </span>
+	</li><li id="t-588928">
+		<a href="https://www.allegro.cc/forums/thread/588928">Blending textures</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/633165" style="color: black;">1</a> </span>
+	</li><li id="t-581147">
+		<a href="https://www.allegro.cc/forums/thread/581147">Transaparent logo. My brain is dead :-(</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/581195" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/Dodger">Dodger</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/DrLovepeace">Dr Lovepeace</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/EggHack">EggHack</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/Othello1">Othello</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/DungeonMasterRemake">Dungeon Master Remake</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/Outgun">Outgun</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/RedPixel2">Red Pixel 2</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/StarControlTimeWarp">Star Control: TimeWarp</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/TetrisUnlimited">Tetris Unlimited</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/TW-Light">TW-Light</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,718</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.011688</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/transparency-and-patterned-drawing/truecolor-transparency/set_alpha_blender by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:24:15 GMT -->
+</html>

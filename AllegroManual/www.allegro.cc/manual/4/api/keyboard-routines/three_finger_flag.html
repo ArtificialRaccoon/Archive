@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/keyboard-routines/three_finger_flag by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:16:27 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>three_finger_flag</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Keyboard routines</a></h2><ul>
+<li><a href="install_keyboard.html" style="font-weight: bold">install_keyboard</a></li><li><a href="remove_keyboard.html" style="font-weight: bold">remove_keyboard</a></li><li><a href="install_keyboard_hooks.html" >install_keyboard_hooks</a></li><li><a href="poll_keyboard.html" style="font-weight: bold">poll_keyboard</a></li><li><a href="keyboard_needs_poll.html" >keyboard_needs_poll</a></li><li><a href="key.html" style="font-weight: bold">key</a></li><li><a href="key_shifts.html" style="font-weight: bold">key_shifts</a></li><li><a href="keypressed.html" style="font-weight: bold">keypressed</a></li><li><a href="readkey.html" style="font-weight: bold">readkey</a></li><li><a href="ureadkey.html" >ureadkey</a></li><li><a href="scancode_to_ascii.html" >scancode_to_ascii</a></li><li><a href="scancode_to_name.html" >scancode_to_name</a></li><li><a href="simulate_keypress.html" >simulate_keypress</a></li><li><a href="simulate_ukeypress.html" >simulate_ukeypress</a></li><li><a href="keyboard_callback.html" >keyboard_callback</a></li><li><a href="keyboard_ucallback.html" >keyboard_ucallback</a></li><li><a href="keyboard_lowlevel_callback.html" >keyboard_lowlevel_callback</a></li><li><a href="set_leds.html" >set_leds</a></li><li><a href="set_keyboard_rate.html" >set_keyboard_rate</a></li><li><a href="clear_keybuf.html" style="font-weight: bold">clear_keybuf</a></li><li><strong>three_finger_flag</strong></li><li><a href="key_led_flag.html" >key_led_flag</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>three_finger_flag</h1>
+
+<div class="shortdesc">
+Flag to desactivate the emergency exit key combination.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">extern</span> <span class="k1">int</span> <a href="../../index.html" target="_blank"><span class="a">three_finger_flag</span></a><span class="k2">;</span>
+</div>
+
+<div>
+The DJGPP keyboard handler provides an 'emergency exit' sequence which
+   you can use to kill off your program. If you are running under DOS this
+   is the three finger salute, ctrl+alt+del. Most multitasking OS's will
+   trap this combination before it reaches the Allegro handler, in which
+   case you can use the alternative ctrl+alt+end. If you want to disable
+   this behaviour in release versions of your program, set this flag to
+   FALSE.
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">install_keyboard</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-585599">
+		<a href="https://www.allegro.cc/forums/thread/585599">Determining if mouse is inside the Allegro window (for v4.20)</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/586483" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/Cylu">Cylu</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/Overgod">Overgod</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/Wormlings">Wormlings</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/CrystalStacker">Crystal Stacker</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/Outgun">Outgun</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/StarControlTimeWarp">Star Control: TimeWarp</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/TW-Light">TW-Light</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/GAACOexample">GA + ACO example</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,432</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.011072</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/keyboard-routines/three_finger_flag by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:16:27 GMT -->
+</html>

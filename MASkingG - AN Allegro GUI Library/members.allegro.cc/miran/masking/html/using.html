@@ -1,0 +1,123 @@
+<html>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/using.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:39:22 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head><title>Using MASkinG</title></head><body>
+<h1><a name="Using MASkinG">Using MASkinG</a></h1>
+<p>
+<p><br><br>
+<p>
+   To use MASkinG you first have to install it. See the <i>installing</i>
+   section of this documentation if you haven't done it already.
+
+<p><b>Include files</b><br>
+   To make a skinnable dialog in your application you have to include the
+   MASkinG.h header file. At the beginning of your source add the line:
+<p><pre>
+      #include &lt;MASkinG.h&gt;
+<p></pre>
+<p><b>The MAS namespace</b><br>
+   All the MASkinG code is in a namespace called MAS. This means that if
+   you want to access a MASkinG class or function you need to prefix it's
+   name with MAS::, for example MAS::Window or MAS::InstallMASkinG(). If
+   you don't want to do that you can add this line right after you include
+   the MASkinG header:
+<p><pre>
+      using namepsace MAS;
+<p></pre>
+   This will make all the MASkinG code accessible in your program directly.
+
+<p><b>Initializing Allegro and MASkinG</b><br>
+   To use the GUI part of Allegro one or two things have to be initialized.
+   You can do this by calling the InstallMASkinG() function or manually. 
+   InstallMASkinG() initializes Allegro, installs the keyboard, mouse and
+   timer modules, installs AllegroFont, loads a skin and some preferences
+   and sets the graphics mode. If you don't want to call InstallMASkinG(),
+   you must manually do everything this function does otherwise your program
+   will most likely crash. See <a href="InstallMASkinG.html">InstallMASkinG()</a>
+   for details.
+
+<p><b>Your first dialog</b><br>
+   After you've installed Allegro and MASkinG you have to make a dialog and
+   execute it. There are many ways in which you can do this, for instance you
+   can create it in your main() function but the recommended way is to create
+   a new class that inherits from the base dialog class provided by MASkinG
+   and build the new dialog inside this class. So make the new class like this:
+<p><pre>
+      class MyDialog : public Dialog {
+         private:
+            // here you put your dialog controls like boxes, buttons, etc.:
+            ClearScreen desktop;
+            Button myFirstButton;
+            
+         public:
+            MyDialog();
+            ~MyDialog();
+      };
+<p></pre>
+   The implementation should look like this:
+<p><pre>
+      // All the initialization can be done in the constructor
+      MyDialog::MyDialog() : Dialog() {
+         // Set the control's size, position, flags, etc.
+         myFirstButton.SetText("Hello, world!");
+         myFirstButton.Shape(100, 100, 200, 24);
+         myFirstButton.MakeExit();
+         
+         // Add the controls to the dialog
+         Add(desktop);
+         Add(myFirstButton);
+      }
+<p></pre>
+
+<p><b>Putting it on the screen</b><br>
+   In your main function you can create an instance of your new dialog and
+   execute it like this:
+<p><pre>
+      MyDialog dlg;
+      dlg.Execute();
+<p></pre>
+   Note though that if you have large dialogs you may run out of stack if you do this
+   so it's better practice to allocate memory for your dialogs on the heap:
+<p><pre>
+      MyDialog *dlg = new MyDialog;
+      dlg->Execute();
+      delete dlg;
+<p></pre>
+<p>When you're done with MASkinG you have to uninstall it by calling the ExitMASkinG() function.
+   This will free any memory used by the skin and make sure your program can exit normally.
+   If you don't call this function your program may crash or hang depending on your compiler
+   and OS. So add this line somewhere at the end of your program:
+<p><pre>
+      ExitMASkinG();
+</pre>
+<p>That's it! If you compile this you should get you average "Hello, world!"
+   program (see example 1 in the examples directory if you can't get it right
+   yourself).
+<p><b>Linking</b><br>
+   To compile MASkinG programs you have to link with the MASkinG library AND the AllegroFont
+   library which is used for loading fonts.
+   The way this is done is different from compiler to compiler. In GCC (DJGPP and MinGW)
+   you have to link with these:
+<p><pre>
+      -lmasking -lalfont -lalleg
+<p></pre>
+   In Linux or some other variant of Unix this should be
+<p><pre>
+      -lmasking -lalfont `allegro-config --libs`
+<p></pre>
+<p>Note: The order of the libraries that you link against is important!
+
+<p> To make programs with OpenGL support you need to link with the MASkinG library that was
+	built with AllegroGL support (built with "make ALLEGRO_GL=1", AllegroGL and all the
+	libraries it requires. For example like this:
+<p><pre>
+      -lmaskinggl -lalfont -lagl -lglu32 -lopengl32 -lalleg -luser32 -lgdi32
+<p></pre>
+	Also you have to define the preprocessor simbol called MASKING_GL. You can do this
+	in code before including the MASkinG header or you can define it at compile time
+	by passing -DMASKING_GL to the compiler (/D MASKING_GL for MSVC).
+   
+<br>
+<p><hr><p><a href="../index.html">Back to Contents</a><p></body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/using.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:39:23 GMT -->
+</html>

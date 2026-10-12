@@ -1,0 +1,246 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Tooltip.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC Tooltip</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">Tooltip</A></H2></H2><BLOCKQUOTE> A helper widget for displaying popup help bubbles.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>Tooltip
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.106.17">SetBackColor</A></B>(const <!1><A HREF="Color.html">Color</A> &amp;<!1><A HREF="Color.html#DOC.8.1">col</A>)
+<DD><I> Sets the background color of the help bubble.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.106.18">SetBorderColor</A></B>(const <!1><A HREF="Color.html">Color</A> &amp;<!1><A HREF="Color.html#DOC.8.1">col</A>)
+<DD><I> Sets the border color of the help bubble.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.106.19">SetText</A></B>(const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>)
+<DD><I> Sets the text used to display the help message.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.106.1">counter</A></B>
+<DD><I> Counters for counting time the mouse hasn't moved</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.106.2">hideCounter</A></B>
+<DD><I> Counters for counting time before the tooltip should hide itself</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.106.3">backCol</A></B>
+<DD><I> The background colour for the help bubble</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.106.4">borderCol</A></B>
+<DD><I> The border colour for the help bubble</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Point.html">Point</A> <B><A HREF="#DOC.106.5">lastMousePos</A></B>
+<DD><I> The last known absolute screen coordinates of the mouse cursor.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>char* <B><A HREF="#DOC.106.6">text</A></B>
+<DD><I> The text the tooltip prints in the help bubble.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Widget.html">Widget</A>* <B><A HREF="#DOC.106.7">lastWidget</A></B>
+<DD><I> A pointer to the last widget in the parent dialog the mouse was on top of.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.106.8">Draw</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)
+<DD><I> Draws the help bubble and fills it with text.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.106.9">MsgInitSkin</A></B>()
+<DD><I> Sets the default font, colours and other info as defined by the skin</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.106.10">MsgTick</A></B>()
+<DD><I> The main help bubble logic function.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.106.11">MsgWantmouse</A></B>()
+<DD><I> Returns false to make sure the tooltips don't confuse the dialog when dealing with moving the input focus</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.106.12">ShowTooltip</A></B>()
+<DD><I> Helper function for turning the tooltip on</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.106.13">HideTooltip</A></B>()
+<DD><I> Helper function for turning the tooltip off</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.106.14">CalculateGeometry</A></B>()
+<DD><I> Calculates the geometry (size and position) of the tooltip help bubble.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.106.15">CalculatePosition</A></B>()
+<DD><I> Lower level function for calculating the tooltip help bubble position.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.106.16">CalculateSize</A></B>()
+<DD><I> Lower level function for calculating the tooltip help bubble size.</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+A helper widget for displaying popup help bubbles. A tooltip is displayed
+when the mouse hovers over a widget for a while. It can display any length
+of text, even in several lines and it can be easily extended to display bitmaps
+and other data. Every dialog contains a default tooltip object which is added
+to it implicitely but you can create your own easily.</BLOCKQUOTE>
+<DL>
+
+<A NAME="counter"></A>
+<A NAME="DOC.106.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int counter</B></TT>
+<DD>
+Counters for counting time the mouse hasn't moved
+<DL><DT><DD></DL><P>
+<A NAME="hideCounter"></A>
+<A NAME="DOC.106.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int hideCounter</B></TT>
+<DD>
+Counters for counting time before the tooltip should hide itself
+<DL><DT><DD></DL><P>
+<A NAME="backCol"></A>
+<A NAME="DOC.106.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Color.html">Color</A> backCol</B></TT>
+<DD>
+The background colour for the help bubble
+<DL><DT><DD></DL><P>
+<A NAME="borderCol"></A>
+<A NAME="DOC.106.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Color.html">Color</A> borderCol</B></TT>
+<DD>
+The border colour for the help bubble
+<DL><DT><DD></DL><P>
+<A NAME="lastMousePos"></A>
+<A NAME="DOC.106.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Point.html">Point</A> lastMousePos</B></TT>
+<DD>
+The last known absolute screen coordinates of the mouse cursor. Used for
+checking whether the mouse has moved or not.
+<DL><DT><DD></DL><P>
+<A NAME="text"></A>
+<A NAME="DOC.106.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>char* text</B></TT>
+<DD>
+The text the tooltip prints in the help bubble. If NULL, the tooltip
+isn't drawn at all.
+<DL><DT><DD></DL><P>
+<A NAME="lastWidget"></A>
+<A NAME="DOC.106.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Widget.html">Widget</A>* lastWidget</B></TT>
+<DD>
+A pointer to the last widget in the parent dialog the mouse was on top of.
+Used for checking when the mouse focus moved.
+<DL><DT><DD></DL><P>
+<A NAME="Draw"></A>
+<A NAME="DOC.106.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Draw(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)</B></TT>
+<DD>
+Draws the help bubble and fills it with text. It tries to be as
+clever as possible to choose the best possible size and position
+for the bubble in order to make it look as nice as possible.
+<DL><DT><DD></DL><P>
+<A NAME="MsgInitSkin"></A>
+<A NAME="DOC.106.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgInitSkin()</B></TT>
+<DD>
+Sets the default font, colours and other info as defined by the skin
+<DL><DT><DD></DL><P>
+<A NAME="MsgTick"></A>
+<A NAME="DOC.106.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgTick()</B></TT>
+<DD>
+The main help bubble logic function. In MsgTick() the tooltip constantly
+checks if the parent's mouse object changed, if the mouse has not moved
+for a certain period of time and so on and acts accordingly.
+<DL><DT><DD></DL><P>
+<A NAME="MsgWantmouse"></A>
+<A NAME="DOC.106.11"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool MsgWantmouse()</B></TT>
+<DD>
+Returns false to make sure the tooltips don't confuse the dialog when
+dealing with moving the input focus
+<DL><DT><DD></DL><P>
+<A NAME="ShowTooltip"></A>
+<A NAME="DOC.106.12"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void ShowTooltip()</B></TT>
+<DD>
+Helper function for turning the tooltip on
+<DL><DT><DD></DL><P>
+<A NAME="HideTooltip"></A>
+<A NAME="DOC.106.13"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void HideTooltip()</B></TT>
+<DD>
+Helper function for turning the tooltip off
+<DL><DT><DD></DL><P>
+<A NAME="CalculateGeometry"></A>
+<A NAME="DOC.106.14"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void CalculateGeometry()</B></TT>
+<DD>
+Calculates the geometry (size and position) of the tooltip help bubble.
+It does so by calling CalculateSize() and CalculatePosition(). Overload
+this function in a derived tooltip class so you can draw tooltips with
+different size, position and content.
+<DL><DT><DD></DL><P>
+<A NAME="CalculatePosition"></A>
+<A NAME="DOC.106.15"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void CalculatePosition()</B></TT>
+<DD>
+Lower level function for calculating the tooltip help bubble position.
+The position is based on the position of the mouse and the size of the
+bubble so that it fits on screen and isn't obscured by the mouse cursor.
+<DL><DT><DD></DL><P>
+<A NAME="CalculateSize"></A>
+<A NAME="DOC.106.16"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void CalculateSize()</B></TT>
+<DD>
+Lower level function for calculating the tooltip help bubble size. The
+size is calculated from the length of the tooltip text. If there's too
+much text to fit in one line, it is distributed in several lines.
+<DL><DT><DD></DL><P>
+<A NAME="SetBackColor"></A>
+<A NAME="DOC.106.17"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetBackColor(const <!1><A HREF="Color.html">Color</A> &amp;<!1><A HREF="Color.html#DOC.8.1">col</A>)</B></TT>
+<DD>
+Sets the background color of the help bubble. The default is pale
+yellow. The actual color is read from the skin file.
+<DL><DT><DD></DL><P>
+<A NAME="SetBorderColor"></A>
+<A NAME="DOC.106.18"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetBorderColor(const <!1><A HREF="Color.html">Color</A> &amp;<!1><A HREF="Color.html#DOC.8.1">col</A>)</B></TT>
+<DD>
+Sets the border color of the help bubble. The default is black.
+The actual color is read from the skin file.
+<DL><DT><DD></DL><P>
+<A NAME="SetText"></A>
+<A NAME="DOC.106.19"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetText(const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>)</B></TT>
+<DD>
+Sets the text used to display the help message. Usually you shouldn't
+have to worry about calling this function because the default
+implementation will obtain the text from the appropriate widget by itself.
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Tooltip.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+</html>

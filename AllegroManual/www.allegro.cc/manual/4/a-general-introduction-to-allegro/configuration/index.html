@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/a-general-introduction-to-allegro/configuration/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:02:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Configuration</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">A general introduction to Allegro</a></h2><ul>
+<li><a href="../introduction/index.html" >Introduction</a></li><li><a href="../supported-platforms/index.html" >Supported platforms</a></li><li><a href="../features/index.html" >Features</a></li><li><a href="../copyright/index.html" >Copyright</a></li><li><strong>Configuration</strong></li><li><a href="../notes-about-sound/index.html" >Notes about sound</a></li><li><a href="../contact-info/index.html" >Contact info</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>Configuration</h1>
+
+Allegro reads information about your hardware from a file called
+   allegro.cfg. If this file doesn't exist it will autodetect (ie. guess :-)
+   You can write your config file by hand with a text editor, or you can use
+   the setup utility program (located in the setup directory).<br /><br />
+
+   Normally the setup program and allegro.cfg will go in the same directory
+   as the Allegro program they are controlling. This is fine for the end
+   user, but it can be a pain for a programmer using Allegro because you may
+   have several programs in different directories and want to use a single
+   allegro.cfg for all of them. If this is the case you can set the
+   environment variable ALLEGRO to the directory containing your
+   allegro.cfg, and Allegro will look there if there is no allegro.cfg in
+   the current directory.<br /><br />
+
+   The mapping tables used to store different keyboard layouts are stored in
+   a file called keyboard.dat. This must either be located in the same
+   directory as your Allegro program, or in the directory pointed to by the
+   ALLEGRO environment variable. If you want to support different
+   international keyboard layouts, you must distribute a copy of
+   keyboard.dat along with your program.<br /><br />
+
+   Various translations of things like the system error messages are stored
+   in a file called language.dat. This must either be located in the same
+   directory as your Allegro program, or in the directory pointed to by the
+   ALLEGRO environment variable. If you want to support non-English versions
+   of these strings, you must distribute a copy of language.dat along with
+   your program.<br /><br />
+
+   Under Unix, BeOS and MacOS X, the config file routines also check for
+   ~/allegro.cfg, ~/.allegrorc, /etc/allegro.cfg, and /etc/allegrorc, in
+   that order, and the keyboard and language files can be stored in your
+   home directory or in /etc/. If under MacOS X, the application bundle
+   Contents/Resources directory, if any, is also scanned first.<br /><br />
+
+   See docs/txt/allegro.txt for details of the config file format.
+
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,218</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.007701</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/a-general-introduction-to-allegro/configuration/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:02:26 GMT -->
+</html>

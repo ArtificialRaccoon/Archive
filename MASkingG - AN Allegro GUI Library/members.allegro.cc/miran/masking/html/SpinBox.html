@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/SpinBox.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC SpinBox</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">SpinBox</A></H2></H2><BLOCKQUOTE> A compound widget made of an EditBox and two spinner Buttons.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>SpinBox
+- <A HREF="CompoundWidget.html">CompoundWidget</A>
+- <A HREF="Dialog.html">Dialog</A>
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<H3>SpinBox
+- <A HREF="ScrollObject.html">ScrollObject</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="EditBox.html">EditBox</A> <B><A HREF="#DOC.101.1">editBox</A></B>
+<DD><I> The underlaying edit box</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>SpinButton <B><A HREF="#DOC.101.2">bUp</A></B>
+<DD><I> The underlaying up arrow button</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>SpinButton <B><A HREF="#DOC.101.3">bDown</A></B>
+<DD><I> The underlaying down arrow button</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.101.7">Setup</A></B>(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, double <!1><A HREF="ScrollObject.html#DOC.93.1">min</A>, double <!1><A HREF="ScrollObject.html#DOC.93.2">max</A>, double <!1><A HREF="ScrollObject.html#DOC.93.3">pos</A>, double <!1><A HREF="ScrollObject.html#DOC.93.4">inc</A>)
+<DD><I> Shortcut for Widget::Setup() and ScrollObject::Setup().</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.101.8">Setup</A></B>(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, int <!1><A HREF="ScrollObject.html#DOC.93.1">min</A>, int <!1><A HREF="ScrollObject.html#DOC.93.2">max</A>, int <!1><A HREF="ScrollObject.html#DOC.93.3">pos</A>, int <!1><A HREF="ScrollObject.html#DOC.93.4">inc</A>)
+<DD><I> Shortcut for Widget::Setup() and ScrollObject::Setup().</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.101.9">HandleEvent</A></B>(<!1><A HREF="Widget.html">Widget</A>&amp; obj, int msg, int arg1=0, int arg2=0)
+<DD><I> Handles events such as spinner button clicks so that the box is updated whenever a button is clicked</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.101.10">SetPosition</A></B>(double <!1><A HREF="ScrollObject.html#DOC.93.3">pos</A>)
+<DD><I> Sets the position (the value) of the SpinBox's contents</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.101.11">Increment</A></B>()
+<DD><I> Increments the box's value</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.101.12">Decrement</A></B>()
+<DD><I> Increments the box's value</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.101.4">integerMode</A></B>
+<DD><I> The current mode of operation.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.101.5">MsgInitSkin</A></B>()
+<DD><I> Initializes the SpinBox and it's widgets with the default bitmaps, fonts and colours as defined by the skin</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.101.6">UpdateSize</A></B>()
+<DD><I> Places and resizes the editbox and the buttons according to the geometry of the SpinBox</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+A compound widget made of an EditBox and two spinner Buttons.
+Functionally a SpinBox is very similar to a Slider except that it presents
+the data differently. While a slider's position can be adjusted by dragging
+it's button, a SpinBox's position can be changed by pressing the two buttons
+or by directly entering the value into the text edit area. A SpinBox can
+operate in two modes: integer mode and double mode. In integer mode
+the number value it holds can only be an integer while in double mode it
+can only be a double.</BLOCKQUOTE>
+<DL>
+
+<A NAME="editBox"></A>
+<A NAME="DOC.101.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="EditBox.html">EditBox</A> editBox</B></TT>
+<DD>
+The underlaying edit box
+<DL><DT><DD></DL><P>
+<A NAME="bUp"></A>
+<A NAME="DOC.101.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>SpinButton bUp</B></TT>
+<DD>
+The underlaying up arrow button
+<DL><DT><DD></DL><P>
+<A NAME="bDown"></A>
+<A NAME="DOC.101.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>SpinButton bDown</B></TT>
+<DD>
+The underlaying down arrow button
+<DL><DT><DD></DL><P>
+<A NAME="integerMode"></A>
+<A NAME="DOC.101.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool integerMode</B></TT>
+<DD>
+The current mode of operation. True if the spinbox is in integer
+mode, false otherwise.
+<DL><DT><DD></DL><P>
+<A NAME="MsgInitSkin"></A>
+<A NAME="DOC.101.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgInitSkin()</B></TT>
+<DD>
+Initializes the SpinBox and it's widgets with the default bitmaps,
+fonts and colours as defined by the skin
+<DL><DT><DD></DL><P>
+<A NAME="UpdateSize"></A>
+<A NAME="DOC.101.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void UpdateSize()</B></TT>
+<DD>
+Places and resizes the editbox and the buttons according to the geometry
+of the SpinBox
+<DL><DT><DD></DL><P>
+<A NAME="Setup"></A>
+<A NAME="DOC.101.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Setup(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, double <!1><A HREF="ScrollObject.html#DOC.93.1">min</A>, double <!1><A HREF="ScrollObject.html#DOC.93.2">max</A>, double <!1><A HREF="ScrollObject.html#DOC.93.3">pos</A>, double <!1><A HREF="ScrollObject.html#DOC.93.4">inc</A>)</B></TT>
+<DD>
+Shortcut for Widget::Setup() and ScrollObject::Setup(). Double version.
+<DL><DT><DD></DL><P>
+<A NAME="Setup"></A>
+<A NAME="DOC.101.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Setup(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, int <!1><A HREF="ScrollObject.html#DOC.93.1">min</A>, int <!1><A HREF="ScrollObject.html#DOC.93.2">max</A>, int <!1><A HREF="ScrollObject.html#DOC.93.3">pos</A>, int <!1><A HREF="ScrollObject.html#DOC.93.4">inc</A>)</B></TT>
+<DD>
+Shortcut for Widget::Setup() and ScrollObject::Setup(). Integer version.
+<DL><DT><DD></DL><P>
+<A NAME="HandleEvent"></A>
+<A NAME="DOC.101.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void HandleEvent(<!1><A HREF="Widget.html">Widget</A>&amp; obj, int msg, int arg1=0, int arg2=0)</B></TT>
+<DD>
+Handles events such as spinner button clicks so that the box is updated whenever a button is clicked
+<DL><DT><DD></DL><P>
+<A NAME="SetPosition"></A>
+<A NAME="DOC.101.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetPosition(double <!1><A HREF="ScrollObject.html#DOC.93.3">pos</A>)</B></TT>
+<DD>
+Sets the position (the value) of the SpinBox's contents
+<DL><DT><DD></DL><P>
+<A NAME="Increment"></A>
+<A NAME="DOC.101.11"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Increment()</B></TT>
+<DD>
+Increments the box's value
+<DL><DT><DD></DL><P>
+<A NAME="Decrement"></A>
+<A NAME="DOC.101.12"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Decrement()</B></TT>
+<DD>
+Increments the box's value
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/SpinBox.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+</html>

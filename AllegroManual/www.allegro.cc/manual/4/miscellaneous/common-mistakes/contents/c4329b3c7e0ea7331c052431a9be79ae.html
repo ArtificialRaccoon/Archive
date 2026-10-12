@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/miscellaneous/common-mistakes/contents/c4329b3c7e0ea7331c052431a9be79ae by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:30:25 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>main() not returning int.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">Common mistakes</a></h2><ul>
+<li><a href="a34a60fd83a021d20de84d76769219bd.html" >Ignoring this manual.</a></li><li><strong>main() not returning int.</strong></li><li><a href="cfa06efb1cb3d8637ba8d19f53fbb9d3.html" >Semicolon at END_OF_MAIN.</a></li><li><a href="4cbbcad7c25f493e691223b3de8de669.html" >Getting bitmap's size.</a></li><li><a href="f7a3e473ebc283a02e585eae89ea4207.html" >Creating bitmaps before loading.</a></li><li><a href="b92e6716df1abfa5304510af3e819c5b.html" >Loading a bitmap/font/sound inside a global object constructor.</a></li><li><a href="80b7c620dbf7f6375aed45b789839f52.html" >Calling set_color_depth without resetting graphic mode.</a></li><li><a href="62d6f74b5113aab430c690e291ae36b8.html" >Destroying global objects like `screen'.</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>main() not returning int.</h1>
+
+<h2>Description</h2>
+
+<div class="syntax">
+main<span class="k2">(</span><span class="k2">)</span> <span class="k1">not</span> returning int.
+</div>
+
+<div>
+On platforms that need it, Allegro uses <code>END_OF_MAIN</code> to
+      mangle your main() function and supply its own that is required by the
+      platform. Allegro assumes that main() returns an integer, as required
+      by various C standards. If you change the return type of your main() to
+      something else Allegro's main() will get confused and return some
+      nonsense value which some system can recognize as an error and crash
+      your program.
+
+</div>
+
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,371,237</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.009525</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/miscellaneous/common-mistakes/contents/c4329b3c7e0ea7331c052431a9be79ae by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:30:25 GMT -->
+</html>

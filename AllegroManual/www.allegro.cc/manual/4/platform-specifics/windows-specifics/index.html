@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/platform-specifics/windows-specifics/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:58:21 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Windows specifics</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">Platform specifics</a></h2><ul>
+<li><a href="../dos-specifics/index.html" >DOS specifics</a></li><li><strong>Windows specifics</strong></li><li><a href="../unix-specifics/index.html" >Unix specifics</a></li><li><a href="../beos-specifics/index.html" >BeOS specifics</a></li><li><a href="../qnx-specifics/index.html" >QNX specifics</a></li><li><a href="../macos-x-specifics/index.html" >MacOS X specifics</a></li><li><a href="../differences-between-platforms/index.html" >Differences between platforms</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>Windows specifics</h1>
+
+In terms of file redistribution, the Windows platform behaves practically the
+same as the DOS platform. Read section chapter "Dos specifics" in the manual
+to learn more about this.<br /><br />
+
+A Windows program that uses the Allegro library is only required to include
+one or more header files from the include/allegro tree, or allegro.h; however,
+if it also needs to directly call non portable Win32 API functions, it must
+include the Windows-specific header file winalleg.h after the Allegro headers,
+and before any Win32 API header file. By default winalleg.h includes the main
+Win32 C API header file windows.h. If instead you want to use the C++
+interface to the Win32 API (a.k.a. the Microsoft Foundation Classes), define
+the preprocessor symbol ALLEGRO_AND_MFC before including any Allegro header
+so that afxwin.h will be included. Note that, in this latter case, the Allegro
+debugging macros ASSERT() and TRACE() are renamed AL_ASSERT() and AL_TRACE()
+respectively.<br /><br />
+
+Windows GUI applications start with a WinMain() entry point, rather than the
+standard main() entry point. Allegro is configured to build GUI applications
+by default and to do some magic in order to make a regular main() work with
+them, but you have to help it out a bit by writing END_OF_MAIN() right after
+your main() function. If you don't want to do that, you can just include
+winalleg.h and write a WinMain() function. Note that this magic may bring
+about conflicts with a few programs using direct calls to Win32 API
+functions; for these programs, the regular WinMain() is required and the
+magic must be disabled by defining the preprocessor symbol
+ALLEGRO_NO_MAGIC_MAIN before including Allegro headers.<br /><br />
+
+If you want to build a console application using Allegro, you have to define
+the preprocessor symbol ALLEGRO_USE_CONSOLE before including Allegro headers;
+it will instruct the library to use console features and also to disable the
+special processing of the main() function described above.<br /><br />
+
+When creating the main window, Allegro searches the executable for an ICON
+resource named "allegro_icon". If it is present, Allegro automatically
+loads it and uses it as its application icon; otherwise, Allegro uses the
+default IDI_APPLICATION icon. See the manual of your compiler for a method
+to create an ICON resource, or use the wfixicon utility from the tools/win
+directory.<br /><br />
+
+DirectX requires that system and video bitmaps (including the screen) be
+locked before you can draw onto them. This will be done automatically, but
+you can usually get much better performance by doing it yourself: see the
+acquire_bitmap() function for details.<br /><br />
+
+Due to a major oversight in the design of DirectX, there is no way to
+preserve the contents of video memory when the user switches away from your
+program. You need to be prepared for the fact that your screen contents, and
+the contents of any video memory bitmaps, may be destroyed at any point. You
+can use the set_display_switch_callback() function to find out when this
+happens.<br /><br />
+
+On the Windows platform, the only return values for the desktop_color_depth()
+function are 8, 16, 24 and 32. This means that 15-bit and 16-bit desktops
+cannot be differentiated and are both reported as 16-bit desktops. See
+below for the consequences for windowed and overlay DirectX drivers.
+
+<ul>
+	<li><a href="joy_type_.html">JOY_TYPE_</a> - Supported Windows joystick drivers.</li>
+	<li><a href="gfx_.html">GFX_</a> - Supported Windows graphic drivers.</li>
+	<li><a href="digi_.html">DIGI_</a> - Supported Windows digital sound drivers.</li>
+	<li><a href="midi_.html">MIDI_</a> - Supported Windows MIDI sound drivers.</li>
+</ul>
+<h2>Windows integration routines</h2>
+The following functions provide a platform specific interface to seamlessly
+integrate Allegro into general purpose Win32 programs. To use these routines,
+you must include winalleg.h after other Allegro headers.
+
+<ul>
+	<li><a href="windows-integration-routines/win_get_window.html">win_get_window</a> - Retrieves a handle to the window used by Allegro.</li>
+	<li><a href="windows-integration-routines/win_set_window.html">win_set_window</a> - Registers an user-created window to be used by Allegro.</li>
+	<li><a href="windows-integration-routines/win_set_wnd_create_proc.html">win_set_wnd_create_proc</a> - Registers a custom procedure to be used by Allegro for creating its window.</li>
+	<li><a href="windows-integration-routines/win_get_dc.html">win_get_dc</a> - Retrieves a handle to the device context.</li>
+	<li><a href="windows-integration-routines/win_release_dc.html">win_release_dc</a> - Releases a handle to the device context.</li>
+</ul>
+<h2>GDI routines</h2>
+The following GDI routines are a very platform specific thing, to allow
+drawing Allegro memory bitmaps onto a Windows device context. When you want
+to use this, you'll have to install the neutral system driver (SYSTEM_NONE)
+or attach Allegro to an external window with win_set_window().<br /><br />
+
+There are two ways to draw your Allegro bitmaps to the Windows GDI. When you
+are using static bitmaps (for example just some pictures loaded from a
+datafile), you can convert them to DDB (device-dependent bitmaps) with
+convert_bitmap_to_hbitmap() and then just use Win32's BitBlt() to draw it.<br /><br />
+
+When you are using dynamic bitmaps (for example some things which react to
+user input), it's better to use set_palette_to_hdc() and blit_to_hdc()
+functions, which work with DIB (device-independent bitmaps).<br /><br />
+
+There are also functions to blit from a device context into an Allegro
+BITMAP, so you can do things like screen capture.<br /><br />
+
+All the drawing and conversion functions use the current palette as a color
+conversion table. You can alter the current palette with the
+set_palette_to_hdc() or select_palette() functions. Warning: when the GDI
+system color palette is explicitly changed, (by another application, for
+example) the current Allegro palette is not updated along with it!<br /><br />
+
+To use these routines, you must include winalleg.h after Allegro headers.
+
+<ul>
+	<li><a href="gdi-routines/set_gdi_color_format.html">set_gdi_color_format</a> - Tells Allegro to use the GDI color layout for truecolor images.</li>
+	<li><a href="gdi-routines/set_palette_to_hdc.html">set_palette_to_hdc</a> - Selects and realizes a palette on the specified device context.</li>
+	<li><a href="gdi-routines/convert_palette_to_hpalette.html">convert_palette_to_hpalette</a> - Converts an Allegro palette to a Windows palette.</li>
+	<li><a href="gdi-routines/convert_hpalette_to_palette.html">convert_hpalette_to_palette</a> - Converts a Windows palette to an Allegro palette.</li>
+	<li><a href="gdi-routines/convert_bitmap_to_hbitmap.html">convert_bitmap_to_hbitmap</a> - Converts an Allegro memory bitmap to a Windows DDB.</li>
+	<li><a href="gdi-routines/convert_hbitmap_to_bitmap.html">convert_hbitmap_to_bitmap</a> - Creates an Allegro memory bitmap from a Windows DDB.</li>
+	<li><a href="gdi-routines/draw_to_hdc.html">draw_to_hdc</a> - Draws an Allegro bitmap to a Windows device context.</li>
+	<li><a href="gdi-routines/blit_to_hdc.html">blit_to_hdc</a> - Blits an Allegro memory bitmap to a Windows device context.</li>
+	<li><a href="gdi-routines/stretch_blit_to_hdc.html">stretch_blit_to_hdc</a> - Blits an Allegro memory bitmap to a Windows device context.</li>
+	<li><a href="gdi-routines/blit_from_hdc.html">blit_from_hdc</a> - Blits from a Windows device context to an Allegro memory bitmap.</li>
+	<li><a href="gdi-routines/stretch_blit_from_hdc.html">stretch_blit_from_hdc</a> - Blits from a Windows device context to an Allegro memory bitmap.</li>
+</ul>
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,181</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>43.894140</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/platform-specifics/windows-specifics/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:58:29 GMT -->
+</html>

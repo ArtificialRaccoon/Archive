@@ -1,0 +1,129 @@
+<html>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/install.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:39:22 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head><title>Installing MASkinG</title></head><body>
+<h1><a name="Installing MASkinG">Installing MASkinG</a></h1>
+<p>
+<hr><ul><h4>
+<li><a href="#platforms">Supported platforms</a>
+<li><a href="#need">What you need</a>
+<li><a href="#building">Building</a>
+<li><a href="#examples">Examples in Linux</a>
+</h4></ul>
+<p><hr><br><br>
+<p>
+<b><a name="platforms">Supported platforms</a></b><br>
+   MASkinG is being developed and tested under the following platforms:
+<pre>
+      - Windows with MinGW (MSVC support is not 100%)
+      - Linux (tested in RedHat 9)
+      - DOS with DJGPP (tested, but not very thouroughly, in a DOS box under Windows98)
+</pre>
+<p>The primary target used to be DJGPP, then I switched to Windows and MSVC but
+   now I work almost exclusively with MinGW. I usually make sure the library and the
+   examples compile on other platforms listed above but I don't guarantee with 100% they
+   will work. Especially DOS support is being slowly dropped. The library might work
+   in DOS or it might not.
+<p>No testing has been done on any other platform but as MASkinG is
+   written in a very "neutral" way there is no reason it shouldn't
+   compile on any other OS/compiler supported by Allegro.
+
+<p>
+<b><a name="need">What you need</a></b><br>
+   In order to successfully compile and use MASkinG you will need
+   the following:
+<p><pre>
+      - Allegro 4.0 or higher
+      - a compiler that can compile Allegro: DJGPP for DOS or MinGW for Windows is prefered
+        (if you have Linux you already have all you need)
+      - AllegroFont library by Javier Gonzalez v1.8.2 or higher
+      - optional: AllegroGL library for interfacing with OpenGL
+<p></pre>
+<b><a name="building">Building</a></b><br>
+   This depends on your compiler. If you are using GCC (DJGPP, MinGW or under Linux) go to the
+   directory where you unzipped MASkinG (in a terminal window or DOS prompt)
+   and type this:
+<p><pre>
+      chmod +x fixlinux.sh
+      ./fixlinux.sh
+<p></pre>
+   or
+<p><pre>
+      fixdjgpp.bat
+<p></pre>
+   or
+<p><pre>
+      fixmingw.bat
+<p></pre>
+    for Linux, DOS/DJGPP and MinGW respectively.
+<p> Then go to the source directory and type <i>"make"</i> followed by <i>"make install"</i>
+    to compile and install the library. In order to install under Linux you will have to be root.
+    You can then optionally go to the examples directory and make the examples by typing "make".
+    The compiled library is put in the <i>/lib</i> directory and the examples in the examples directory.
+
+<p> The compilation process should produce no errors (maybe a few warnings on some compilers).
+    If you do get errors than make sure you have properly setup your compiler, Allegro and
+    AllegroFont (see relevant documentation for details).
+    If only "make install" fails for one reason or another (is known to have happened
+    before) you will have to install manually. Just copy the library (either the .a or the .lib
+    file in the lib directory) to the lib directory of your compiler (or wherever you keep
+    your libraries) and the entire include directory in the include direcotry of your
+    compiler.
+
+<p> To build the library with OpenGL support you will first need to download and install the AllegroGL
+	library and then build MASkinG with "make ALLEGRO_GL=1" and install it with "make install ALLEGRO_GL=1".
+	To build the examples with OpenGL support also type "make ALLEGRO_GL=1" in the examples directory
+	(case is important). Make sure you do "make clean" before compiling the GL version if you had
+	compiled a different version before!
+
+<p> MASkinG gets linked with your program statically but Allegro itself doesn't.
+	To enable full statc linking you must build MASkinG with "make STATICLINK=1". Note
+	that in order to be able to link statically you must also have static
+	version of all other libraries (Allegro, AllegroFont and optionally AllegroGL).
+
+<p> To build MASkinG with MSVC6 or MSVC7 open the workspace file (.dsw) in the root directory and just select
+	the targets you want to compile and hit "build" (that means if you want to build the library
+	with AllegroGL support, select the GL target, otherwise the OpenGL examples won't compile).
+	Note that MSVC support is currently a bit lacking as not all targets have been defined.
+	I have no motivation to keep maintaining the MSVC project files myself. If
+	anyone wants to do that, please contact me.
+
+<p> Note: If you haven't installed AllegroFont yet you may have problems with it as the installation instructions
+    for that library are a bit vague. After you have built the library as the readme.txt file in AllegroFont's
+    root directory says, you have to install it manually! This means you have to copy the .lib (or the .a) file
+    and the header files to the lib and include directories of your compiler.
+
+<p> Note2: With some combinations of flags on some compilers some of the examples don't compile. This is a known
+	problem. All suggestions about how it might be solved will be greatly appreciated.
+<p>
+	The documentation of the MASkinG API (classes, methods, etc.) is auto-generated using Doc++.
+	You can regenerate these with <i>"make docs"</i>
+<p>
+	If for some reason you are missing the .dep files (e.g. if you got MASkinG off CVS)
+	the library will still compile but if you want to work on the source code you will
+	most likely appreciate it if the makefiles did dependency checking for you and rebuild
+	all files that are potentially affected when you modify the source. To create the
+	.dep files just run "make depend". In order for this to work you will also need the
+	'sed' command.
+<p>
+<b><a name="examples">Examples in Linux</a></b><br>
+    Not all fonts are included with the skins. A lot of skins are designed to use standard Windows
+	fonts which are typically located in a subdirecotry called "Fonts" of the Windows directory
+	(e.g. C:\Windows\Fonts). MASkinG will try to look in this directory if it can't find a font
+	in the path specified in the skin configuration file. If the font still can't be found the
+	program will use the default Allegro font. There are however a couple of solutions to this problem:
+<pre>
+    1. get the fonts in question and copy them into the skins directory
+</pre>
+    or
+<pre>
+    2. if you have Windows, mount the partition where Windows is installed
+       and add an environment variable called either "windir" or "WINDIR" (without the
+       quotes of course) that contains the path to your Windows directory.
+</pre>
+	Of course this is just to reduce the download size of the library and avoid any
+	legal issues. In your own releases you should include all the fonts that you use.
+<br>
+<p><hr><p><a href="../index.html">Back to Contents</a><p></body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/install.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:39:22 GMT -->
+</html>

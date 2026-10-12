@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Clipboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC Clipboard</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">Clipboard</A></H2></H2><BLOCKQUOTE> Wrapper for the platform specific clipboard.</BLOCKQUOTE>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>char* <B><A HREF="#DOC.7.2">buffer</A></B>
+<DD><I> Pointer to the text buffer copied from the clipboard.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>unsigned long <B><A HREF="#DOC.7.3">bufSize</A></B>
+<DD><I> Length of the buffer.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.7.4">GetText</A></B>( HWND hWnd = NULL )
+<DD><I> Retrieves text from the clipboard.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.7.5">GetTextLength</A></B>( HWND hWnd = NULL )
+<DD><I> Retrieves length of text on the clipboard</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.7.6">SetText</A></B>( const char* lpszBuffer, HWND hWND = NULL )
+<DD><I> Places text on the clipboard</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.7.7">GetText</A></B>( void )
+<DD><I> Retrieves text from the clipboard.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.7.8">SetText</A></B>( const char* lpszBuffer )
+<DD><I> Places text on the clipboard</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void* <B><A HREF="#DOC.7.1">display</A></B>
+<DD><I> Pointer to the X display (for accessing the X clipboard)</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+Wrapper for the platform specific clipboard.
+Currently only allows copying text to and from the clipboard and is
+implemented only on Windows and Linux. On other platforms the class
+works as an internal clipboard only. To use the clipboard, create a
+Clipboard object and call either GetText() or SetText(). After calling
+GetText(), the retrieved text is stored in the buffer member variable
+and its length is stored in bufSize.</BLOCKQUOTE>
+<DL>
+
+<A NAME="display"></A>
+<A NAME="DOC.7.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void* display</B></TT>
+<DD>
+Pointer to the X display (for accessing the X clipboard)
+<DL><DT><DD></DL><P>
+<A NAME="buffer"></A>
+<A NAME="DOC.7.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>char* buffer</B></TT>
+<DD>
+Pointer to the text buffer copied from the clipboard.
+Invalid when GetText() returns false.
+<DL><DT><DD></DL><P>
+<A NAME="bufSize"></A>
+<A NAME="DOC.7.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>unsigned long bufSize</B></TT>
+<DD>
+Length of the buffer. Invalid when GetText() returns false.
+<DL><DT><DD></DL><P>
+<A NAME="GetText"></A>
+<A NAME="DOC.7.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool GetText( HWND hWnd = NULL )</B></TT>
+<DD>
+Retrieves text from the clipboard.
+
+<P>
+<DL><DT><DT><B>Parameters:</B><DD><B>hWnd</B> -  window handle to be used by clipboard
+<br>
+<BR><DT><B>Returns:</B><DD>  TRUE - Text was successfully copied from clipboard
+<BR>  FALSE - No text on the clipboard<BR><DD></DL><P>
+<A NAME="GetTextLength"></A>
+<A NAME="DOC.7.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool GetTextLength( HWND hWnd = NULL )</B></TT>
+<DD>
+Retrieves length of text on the clipboard
+
+<P>
+<DL><DT><DT><B>Parameters:</B><DD><B>hWnd</B> -  window handle to be used by clipboard
+<br>
+<BR><DT><B>Returns:</B><DD>  TRUE       - Text length was successfully returned.
+<BR>  FALSE      - No text on the clipboard<BR><DD></DL><P>
+<A NAME="SetText"></A>
+<A NAME="DOC.7.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool SetText( const char* lpszBuffer, HWND hWND = NULL )</B></TT>
+<DD>
+Places text on the clipboard
+
+<P>
+<DL><DT><DT><B>Parameters:</B><DD><B>lpszBuffer</B> -  pointer to <!1><A HREF="Color.html#DOC.8.20">a</A> string where the <!1><A HREF="Tooltip.html#DOC.106.6">text</A> is to be put
+<BR><B>hWnd</B> -  window handle to be used by clipboard
+<br>
+<BR><DT><B>Returns:</B><DD>  TRUE       - Text was successfully copied from clipboard
+<BR>  FALSE      - No text on the clipboard<BR><DD></DL><P>
+<A NAME="GetText"></A>
+<A NAME="DOC.7.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool GetText( void )</B></TT>
+<DD>
+Retrieves text from the clipboard.
+
+<P>
+<DL><DT><DT><B>Returns:</B><DD>  TRUE - Text was successfully copied from clipboard
+<BR>  FALSE - No text on the clipboard<BR><DD></DL><P>
+<A NAME="SetText"></A>
+<A NAME="DOC.7.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool SetText( const char* lpszBuffer )</B></TT>
+<DD>
+Places text on the clipboard
+
+<P>
+<DL><DT><DT><B>Parameters:</B><DD><B>lpszBuffer</B> -  pointer to <!1><A HREF="Color.html#DOC.8.20">a</A> string where the <!1><A HREF="Tooltip.html#DOC.106.6">text</A> is to be put
+<br>
+<BR><DT><B>Returns:</B><DD>  TRUE       - Text was successfully copied from clipboard
+<BR>  FALSE      - No text on the clipboard<BR><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Clipboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+</html>

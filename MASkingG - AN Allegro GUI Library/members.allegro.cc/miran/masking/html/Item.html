@@ -1,0 +1,278 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Item.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:14 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC ListBoxEx::Item</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">Item</A></H2></H2><BLOCKQUOTE> Represent one listbox item (one row of values)</BLOCKQUOTE>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.69.3.4">sortColumn</A></B>
+<DD><I> Index of the column that is to be used for sorting.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.69.3.5">sortOrder</A></B>
+<DD><I> The sorting order.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.69.3.6">operator<</A></B>(const <!1><A HREF="Item.html">Item</A> &amp;rhs) const 
+<DD><I> The less than operator.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.3.10">InsertColumn</A></B>(int index=-1)
+<DD><I> Inserts a new column (subitem) with an empty string at the specified index.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.3.11">DeleteColumn</A></B>(int index)
+<DD><I> Deletes the specified column</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   int <B><A HREF="#DOC.69.3.12">GetColumnCount</A></B>()
+<DD><I> Returns the number of subitems in this item</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   int <B><A HREF="#DOC.69.3.13">h</A></B>()
+<DD><I> Returns the rendering height of the item.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.69.3.14">IsSelected</A></B>()
+<DD><I> Checks whether the item is selected or not</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.3.15">Select</A></B>()
+<DD><I> Selects the item</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.3.16">Deselect</A></B>()
+<DD><I> Deselects the item</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.3.17">Toggle</A></B>()
+<DD><I> Toggles item selection status</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.69.3.18">Item</A></B>(const <!1><A HREF="Item.html#DOC.69.3.18">Item</A> &amp;rhs, long userData=0)
+<DD><I>Copy constructor </I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Item.html">Item</A>&amp; <B><A HREF="#DOC.69.3.19">operator=</A></B>(const <!1><A HREF="Item.html">Item</A> &amp;rhs)
+<DD><I>Assignment operator </I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.3.20">SetText</A></B>(const char* str, int index=0)
+<DD><I> Sets the value of the specified subitem</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   const char* <B><A HREF="#DOC.69.3.21">GetText</A></B>(int index=0) const 
+<DD><I> Retreives the value of the specified subitem</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>std::vector&lt;std::string&gt;  <B><A HREF="#DOC.69.3.1">cells</A></B>
+<DD><I> Vector of item values (strings), one for each column</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="ListBoxEx.html">ListBoxEx</A>* <B><A HREF="#DOC.69.3.2">parent</A></B>
+<DD><I> A pointer to the item's parent listbox.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.69.3.3">selected</A></B>
+<DD><I> True when the item is selected, false otherwise</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.3.7">DrawBackground</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;dst, int state, const <!1><A HREF="Rect.html">Rect</A> &amp;dstRect)
+<DD><I> Draws background for the entire row.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.3.8">DrawItem</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>, int i, int state, const <!1><A HREF="Rect.html">Rect</A> &amp;dstRect)
+<DD><I> Draws contents (ie.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.3.9">DrawGrid</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>, int i, int state, const <!1><A HREF="Rect.html">Rect</A> &amp;dstRect)
+<DD><I> Draws gridlines for this item and column i.</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+Represent one listbox item (one row of values)</BLOCKQUOTE>
+<DL>
+
+<A NAME="cells"></A>
+<A NAME="DOC.69.3.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>std::vector&lt;std::string&gt;  cells</B></TT>
+<DD>
+Vector of item values (strings), one for each column
+<DL><DT><DD></DL><P>
+<A NAME="parent"></A>
+<A NAME="DOC.69.3.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="ListBoxEx.html">ListBoxEx</A>* parent</B></TT>
+<DD>
+A pointer to the item's parent listbox. The item uses this pointer
+to access bitmaps, fonts and colours in the skin that is used to
+skin the listbox.
+<DL><DT><DD></DL><P>
+<A NAME="selected"></A>
+<A NAME="DOC.69.3.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool selected</B></TT>
+<DD>
+True when the item is selected, false otherwise
+<DL><DT><DD></DL><P>
+<A NAME="sortColumn"></A>
+<A NAME="DOC.69.3.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int sortColumn</B></TT>
+<DD>
+Index of the column that is to be used for sorting. The listbox sets this
+value as necessary when sorting the list.
+<DL><DT><DD></DL><P>
+<A NAME="sortOrder"></A>
+<A NAME="DOC.69.3.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int sortOrder</B></TT>
+<DD>
+The sorting order. Positive for ascending order, negative for descending.
+<DL><DT><DD></DL><P>
+<A NAME="operator<"></A>
+<A NAME="DOC.69.3.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool operator<(const <!1><A HREF="Item.html">Item</A> &amp;rhs) const </B></TT>
+<DD>
+The less than operator. Used for sorting lists. Overload this for custom
+sorting. The default implementation sorts lexicographically. The operator
+should use sortColumn and sortOrder to calculate the result. It should
+return true if this item should come before the item in the right side of
+the comparison expression, false if it should come after. If items are
+equal, the order is arbitrary.
+<DL><DT><DD></DL><P>
+<A NAME="DrawBackground"></A>
+<A NAME="DOC.69.3.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void DrawBackground(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;dst, int state, const <!1><A HREF="Rect.html">Rect</A> &amp;dstRect)</B></TT>
+<DD>
+Draws background for the entire row. State is different than in most other
+widgets. Each item can be in one of 8 states (as opposed to just 4):
+<PRE>
+      0 - list does not have focus, item is not selected
+      1 - list does not have focus, item is selected
+      2 - list has focus, item is not the focus item, item is not selected
+      3 - list has focus, item is the focus item, item is not selected
+      4 - list has focus, item is the focus item, item is selected
+      5 - list has focus, item is not the focus item, item is selected
+      6 - list is disabled, item is not selected
+      7 - list is disabled, item is selected
+</PRE>
+This only applies to multiselect lists. In normal mode only states 0, 1, 5
+and 6 are possible and are equivalent to the familiar states NORMAL,
+SELECTED,
+FOCUSED and DISABLED.
+
+<P>
+<DL><DT><DT><B>Parameters:</B><DD><B>dst</B> -  the destination <!1><A HREF="Widget.html#DOC.110.5">bitmap</A>
+<BR><B>state</B> -  the state of the item as described above
+<BR><B>dstRect</B> -  the clipping rectangle of the item; all drawing should be done inside this rectangle
+Overload this to implement custom drawing of the <!1><A HREF="ListBox.html#DOC.73.3">list</A> item backgrounds.<BR><DD></DL><P>
+<A NAME="DrawItem"></A>
+<A NAME="DOC.69.3.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void DrawItem(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>, int i, int state, const <!1><A HREF="Rect.html">Rect</A> &amp;dstRect)</B></TT>
+<DD>
+Draws contents (ie. the text) of the specified column of this item. All
+parameters are the same as for DrawBackground() with the addition of i
+which is the index of the column to be drawn. Overload this to implement
+custom drawing of list box items.
+
+<P>
+<DL><DT><DT><B>See Also:</B><DD><!1><A HREF="Item.html#DOC.69.3.7">DrawBackground</A><BR><DD></DL><P>
+<A NAME="DrawGrid"></A>
+<A NAME="DOC.69.3.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void DrawGrid(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>, int i, int state, const <!1><A HREF="Rect.html">Rect</A> &amp;dstRect)</B></TT>
+<DD>
+Draws gridlines for this item and column i. Default implementation draws the
+gridlines by drawing one vertical dotted line on the rightmost side of the item
+and one horizontal dotted line at the bottom of the item. Overload to draw some
+fancy custom gridlines.
+
+<P>
+<DL><DT><DT><B>See Also:</B><DD><!1><A HREF="Item.html#DOC.69.3.8">DrawItem</A><BR><DD></DL><P>
+<A NAME="InsertColumn"></A>
+<A NAME="DOC.69.3.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void InsertColumn(int index=-1)</B></TT>
+<DD>
+Inserts a new column (subitem) with an empty string at the specified index. If index is a
+negative number, new column is added to the en of the list. The listbox makes
+sure each item in the list always has the same number of subitmes as there are columns
+in the listbox.
+<DL><DT><DD></DL><P>
+<A NAME="DeleteColumn"></A>
+<A NAME="DOC.69.3.11"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void DeleteColumn(int index)</B></TT>
+<DD>
+Deletes the specified column
+<DL><DT><DD></DL><P>
+<A NAME="GetColumnCount"></A>
+<A NAME="DOC.69.3.12"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   int GetColumnCount()</B></TT>
+<DD>
+Returns the number of subitems in this item
+<DL><DT><DD></DL><P>
+<A NAME="h"></A>
+<A NAME="DOC.69.3.13"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   int h()</B></TT>
+<DD>
+Returns the rendering height of the item. The height of the skin bitmap used for
+rendering the list items is the default height. Overload this if you want items
+of different size.
+<DL><DT><DD></DL><P>
+<A NAME="IsSelected"></A>
+<A NAME="DOC.69.3.14"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool IsSelected()</B></TT>
+<DD>
+Checks whether the item is selected or not
+<DL><DT><DD></DL><P>
+<A NAME="Select"></A>
+<A NAME="DOC.69.3.15"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Select()</B></TT>
+<DD>
+Selects the item
+<DL><DT><DD></DL><P>
+<A NAME="Deselect"></A>
+<A NAME="DOC.69.3.16"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Deselect()</B></TT>
+<DD>
+Deselects the item
+<DL><DT><DD></DL><P>
+<A NAME="Toggle"></A>
+<A NAME="DOC.69.3.17"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Toggle()</B></TT>
+<DD>
+Toggles item selection status
+<DL><DT><DD></DL><P>
+<A NAME="Item"></A>
+<A NAME="DOC.69.3.18"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> Item(const <!1><A HREF="Item.html#DOC.69.3.18">Item</A> &amp;rhs, long userData=0)</B></TT>
+<DD>Copy constructor 
+<DL><DT><DD></DL><P>
+<A NAME="operator="></A>
+<A NAME="DOC.69.3.19"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Item.html">Item</A>&amp; operator=(const <!1><A HREF="Item.html">Item</A> &amp;rhs)</B></TT>
+<DD>Assignment operator 
+<DL><DT><DD></DL><P>
+<A NAME="SetText"></A>
+<A NAME="DOC.69.3.20"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetText(const char* str, int index=0)</B></TT>
+<DD>
+Sets the value of the specified subitem
+<DL><DT><DD></DL><P>
+<A NAME="GetText"></A>
+<A NAME="DOC.69.3.21"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   const char* GetText(int index=0) const </B></TT>
+<DD>
+Retreives the value of the specified subitem
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DT><B>Friends:</B><DD>  class <!1><A HREF="ListBoxEx.html">ListBoxEx</A><BR><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Item.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:14 GMT -->
+</html>

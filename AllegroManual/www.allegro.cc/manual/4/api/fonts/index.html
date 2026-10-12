@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/fonts/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:50:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Fonts</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">API</a></h2><ul>
+<li><a href="../using-allegro/index.html" >Using Allegro</a></li><li><a href="../structures-and-types-defined-by-allegro/index.html" >Structures and types defined by Allegro</a></li><li><a href="../unicode-routines/index.html" >Unicode routines</a></li><li><a href="../configuration-routines/index.html" >Configuration routines</a></li><li><a href="../mouse-routines/index.html" >Mouse routines</a></li><li><a href="../timer-routines/index.html" >Timer routines</a></li><li><a href="../keyboard-routines/index.html" >Keyboard routines</a></li><li><a href="../joystick-routines/index.html" >Joystick routines</a></li><li><a href="../graphics-modes/index.html" >Graphics modes</a></li><li><a href="../bitmap-objects/index.html" >Bitmap objects</a></li><li><a href="../loading-image-files/index.html" >Loading image files</a></li><li><a href="../palette-routines/index.html" >Palette routines</a></li><li><a href="../truecolor-pixel-formats/index.html" >Truecolor pixel formats</a></li><li><a href="../drawing-primitives/index.html" >Drawing primitives</a></li><li><a href="../blitting-and-sprites/index.html" >Blitting and sprites</a></li><li><a href="../rle-sprites/index.html" >RLE sprites</a></li><li><a href="../compiled-sprites/index.html" >Compiled sprites</a></li><li><strong>Fonts</strong></li><li><a href="../text-output/index.html" >Text output</a></li><li><a href="../polygon-rendering/index.html" >Polygon rendering</a></li><li><a href="../transparency-and-patterned-drawing/index.html" >Transparency and patterned drawing</a></li><li><a href="../converting-between-color-formats/index.html" >Converting between color formats</a></li><li><a href="../direct-access-to-video-memory/index.html" >Direct access to video memory</a></li><li><a href="../flic-routines/index.html" >FLIC routines</a></li><li><a href="../sound-init-routines/index.html" >Sound init routines</a></li><li><a href="../mixer-routines/index.html" >Mixer routines</a></li><li><a href="../digital-sample-routines/index.html" >Digital sample routines</a></li><li><a href="../music-routines-(midi)/index.html" >Music routines (MIDI)</a></li><li><a href="../audio-stream-routines/index.html" >Audio stream routines</a></li><li><a href="../recording-routines/index.html" >Recording routines</a></li><li><a href="../file-and-compression-routines/index.html" >File and compression routines</a></li><li><a href="../datafile-routines/index.html" >Datafile routines</a></li><li><a href="../fixed-point-math-routines/index.html" >Fixed point math routines</a></li><li><a href="../3d-math-routines/index.html" >3D math routines</a></li><li><a href="../quaternion-math-routines/index.html" >Quaternion math routines</a></li><li><a href="../gui-routines/index.html" >GUI routines</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>Fonts</h1>
+
+Allegro provides routines for loading fonts directly from GRX format .fnt
+files, 8x8 or 8x16 BIOS format .fnt files, from bitmap images, from datafiles
+or you can import a multiple-range Unicode font by writing a .txt script that
+specifies a number of different source files for each range of characters.<br /><br />
+
+By default, Allegro can only use bitmapped (non-scalable) fonts. If you want
+to use TrueType fonts, you will need to use an add-on library which allows
+you to load them on the fly (like AllegTTF or Glyph Keeper, listed among
+others at <a href="http://www.allegro.cc/">http://www.allegro.cc/</a>) and render them directly, or generate a
+bitmapped version of a TrueType font with tools like TTF2PCX
+(<a href="http://www.talula.demon.co.uk/ttf2pcx/index.html">http://www.talula.demon.co.uk/ttf2pcx/index.html</a>).
+
+<ul>
+	<li><a href="register_font_file_type.html">register_font_file_type</a> - Register a new font loading function.</li>
+	<li><a href="load_font.html">load_font</a> - Loads a font from a file.</li>
+	<li><a href="destroy_font.html">destroy_font</a> - Frees the memory being used by a font structure.</li>
+	<li><a href="make_trans_font.html">make_trans_font</a> - Makes a font use transparency.</li>
+	<li><a href="is_color_font.html">is_color_font</a> - Returns TRUE if a font is a color font.</li>
+	<li><a href="is_mono_font.html">is_mono_font</a> - Returns TRUE if a font is a monochrome font.</li>
+	<li><a href="is_compatible_font.html">is_compatible_font</a> - Check if two fonts are of the same type.</li>
+	<li><a href="get_font_ranges.html">get_font_ranges</a> - Returns the number of character ranges in a font.</li>
+	<li><a href="get_font_range_begin.html">get_font_range_begin</a> - Returns the start of a character range in a font.</li>
+	<li><a href="get_font_range_end.html">get_font_range_end</a> - Returns the last character of a character range in a font.</li>
+	<li><a href="extract_font_range.html">extract_font_range</a> - Extracts a range of characters from a font.</li>
+	<li><a href="transpose_font.html">transpose_font</a> - Transposes all characters in a font.</li>
+	<li><a href="merge_fonts.html">merge_fonts</a> - Merges two fonts into one font.</li>
+	<li><a href="load_dat_font.html">load_dat_font</a> - Loads a FONT from an Allegro datafile.</li>
+	<li><a href="load_bios_font.html">load_bios_font</a> - Loads a 8x8 or 8x16 BIOS format font.</li>
+	<li><a href="load_grx_font.html">load_grx_font</a> - Loads a GRX format font.</li>
+	<li><a href="load_grx_or_bios_font.html">load_grx_or_bios_font</a> - Loads either a BIOS or GRX format font.</li>
+	<li><a href="load_bitmap_font.html">load_bitmap_font</a> - Grabs a font from a bitmap file.</li>
+	<li><a href="grab_font_from_bitmap.html">grab_font_from_bitmap</a> - Grabs a font from a bitmap</li>
+	<li><a href="load_txt_font.html">load_txt_font</a> - Loads a font script.</li>
+</ul>
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,168</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>1.122695</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/fonts/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:50:52 GMT -->
+</html>

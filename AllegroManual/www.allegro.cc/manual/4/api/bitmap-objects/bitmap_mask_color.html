@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/bitmap-objects/bitmap_mask_color by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:16:53 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>bitmap_mask_color</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Bitmap objects</a></h2><ul>
+<li><a href="screen.html" style="font-weight: bold">screen</a></li><li><a href="screen_w.html" style="font-weight: bold">SCREEN_W</a></li><li><a href="screen_h.html" style="font-weight: bold">SCREEN_H</a></li><li><a href="virtual_w.html" >VIRTUAL_W</a></li><li><a href="virtual_h.html" >VIRTUAL_H</a></li><li><a href="create_bitmap.html" style="font-weight: bold">create_bitmap</a></li><li><a href="create_bitmap_ex.html" style="font-weight: bold">create_bitmap_ex</a></li><li><a href="create_sub_bitmap.html" style="font-weight: bold">create_sub_bitmap</a></li><li><a href="create_video_bitmap.html" style="font-weight: bold">create_video_bitmap</a></li><li><a href="create_system_bitmap.html" >create_system_bitmap</a></li><li><a href="destroy_bitmap.html" style="font-weight: bold">destroy_bitmap</a></li><li><a href="lock_bitmap.html" >lock_bitmap</a></li><li><a href="bitmap_color_depth.html" style="font-weight: bold">bitmap_color_depth</a></li><li><strong>bitmap_mask_color</strong></li><li><a href="is_same_bitmap.html" >is_same_bitmap</a></li><li><a href="is_planar_bitmap.html" >is_planar_bitmap</a></li><li><a href="is_linear_bitmap.html" >is_linear_bitmap</a></li><li><a href="is_memory_bitmap.html" >is_memory_bitmap</a></li><li><a href="is_screen_bitmap.html" >is_screen_bitmap</a></li><li><a href="is_video_bitmap.html" >is_video_bitmap</a></li><li><a href="is_system_bitmap.html" >is_system_bitmap</a></li><li><a href="is_sub_bitmap.html" >is_sub_bitmap</a></li><li><a href="acquire_bitmap.html" style="font-weight: bold">acquire_bitmap</a></li><li><a href="release_bitmap.html" style="font-weight: bold">release_bitmap</a></li><li><a href="acquire_screen.html" style="font-weight: bold">acquire_screen</a></li><li><a href="release_screen.html" style="font-weight: bold">release_screen</a></li><li><a href="set_clip_rect.html" >set_clip_rect</a></li><li><a href="get_clip_rect.html" >get_clip_rect</a></li><li><a href="add_clip_rect.html" >add_clip_rect</a></li><li><a href="set_clip_state.html" >set_clip_state</a></li><li><a href="get_clip_state.html" >get_clip_state</a></li><li><a href="is_inside_bitmap.html" >is_inside_bitmap</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>bitmap_mask_color</h1>
+
+<div class="shortdesc">
+Returns the mask color of the specified bitmap.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">int</span> <a href="../../index.html" target="_blank"><span class="a">bitmap_mask_color</span></a><span class="k2">(</span><a href="../../index.html" target="_blank"><span class="a">BITMAP</span></a> <span class="k3">*</span>bmp<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Returns the mask color for the specified bitmap (the value which is
+   skipped when drawing sprites). For 256-color bitmaps this is zero, and
+   for truecolor bitmaps it is bright pink (maximum red and blue, zero
+   green). A frequent use of this function is to clear a bitmap with the mask
+   color so you can later use this bitmap with masked_blit() or
+   draw_sprite() after drawing other stuff on it. Example:
+<pre class="code">      <span class="c">/* Replace mask color with another color. */</span>
+      <span class="k1">for</span> <span class="k2">(</span>y <span class="k3">=</span> <span class="n">0</span><span class="k2">;</span> y <span class="k3">&lt;</span> bmp-&gt;h<span class="k2">;</span> y<span class="k3">+</span><span class="k3">+</span><span class="k2">)</span>
+	 <span class="k1">for</span> <span class="k2">(</span>x <span class="k3">=</span> <span class="n">0</span><span class="k2">;</span> x <span class="k3">&lt;</span> bmp-&gt;w<span class="k2">;</span> x<span class="k3">+</span><span class="k3">+</span><span class="k2">)</span>
+	    <span class="k1">if</span> <span class="k2">(</span><a href="../../index.html" target="_blank"><span class="a">getpixel</span></a><span class="k2">(</span>bmp, x, y<span class="k2">)</span> <span class="k3">=</span><span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">bitmap_mask_color</span></a><span class="k2">(</span>bmp<span class="k2">)</span><span class="k2">)</span>
+	       <a href="../../index.html" target="_blank"><span class="a">putpixel</span></a><span class="k2">(</span>bmp, x, y, another_color<span class="k2">)</span><span class="k2">;</span></pre>
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">MASK_COLOR_8</a></li>
+	<li><a href="../../index.html">set_color_depth</a></li>
+	<li><a href="../../index.html">bitmap_color_depth</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../index.html">ex3d</a></li>
+	<li><a href="../../index.html">exmouse</a></li>
+	<li><a href="../../index.html">expat</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591502">
+		<a href="https://www.allegro.cc/forums/thread/591502">Function to make blackness transparent</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/673873" style="color: black;">1</a> </span>
+	</li><li id="t-591315">
+		<a href="https://www.allegro.cc/forums/thread/591315">Rotate sprite while using alpha channel</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/670806" style="color: black;">1</a> </span>
+	</li><li id="t-591053">
+		<a href="https://www.allegro.cc/forums/thread/591053">Alternate colour blit</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/666266" style="color: black;">1</a> </span>
+	</li><li id="t-590992">
+		<a href="https://www.allegro.cc/forums/thread/590992">Application Hangs When Switching In/Out</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/665211" style="color: black;">1</a> </span>
+	</li><li id="t-590748">
+		<a href="https://www.allegro.cc/forums/thread/590748">Transparent Bitmaps</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/661055" style="color: black;">1</a> </span>
+	</li><li id="t-590622">
+		<a href="https://www.allegro.cc/forums/thread/590622">Transparency and translucency together</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/659294" style="color: black;">1</a> </span>
+	</li><li id="t-590428">
+		<a href="https://www.allegro.cc/forums/thread/590428">VRAM sprites scrambled under DOS</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/656150" style="color: black;">1</a> </span>
+	</li><li id="t-590388">
+		<a href="https://www.allegro.cc/forums/thread/590388">Terrain with masked bitmaps</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/655289" style="color: black;">1</a> </span>
+	</li><li id="t-590226">
+		<a href="https://www.allegro.cc/forums/thread/590226">Page flipping and window focus - strange behavior</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/653599" style="color: black;">1</a> </span>
+	</li><li id="t-590113">
+		<a href="https://www.allegro.cc/forums/thread/590113">Copying pixels from one bitmap to another</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/651323" style="color: black;">1</a> </span>
+	</li><li id="t-588374">
+		<a href="https://www.allegro.cc/forums/thread/588374">Trouble with tiles and transparency</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/625376" style="color: black;">1</a> </span>
+	</li><li id="t-588362">
+		<a href="https://www.allegro.cc/forums/thread/588362">Unwanted pixels showing up using masked_blit()</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/625330" style="color: black;">1</a> </span>
+	</li><li id="t-587702">
+		<a href="https://www.allegro.cc/forums/thread/587702">collision</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/615388" style="color: black;">1</a> </span>
+	</li><li id="t-587389">
+		<a href="https://www.allegro.cc/forums/thread/587389">Question about sprites and masking</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/611313" style="color: black;">1</a> </span>
+	</li><li id="t-586715">
+		<a href="https://www.allegro.cc/forums/thread/586715">Bitmaps get confused</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/602957" style="color: black;">1</a> </span>
+	</li><li id="t-585843">
+		<a href="https://www.allegro.cc/forums/thread/585843">Font Dealing 2</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/590185" style="color: black;">1</a> </span>
+	</li><li id="t-585780">
+		<a href="https://www.allegro.cc/forums/thread/585780">Mouse access violation?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/589012" style="color: black;">1</a> </span>
+	</li><li id="t-564579">
+		<a href="https://www.allegro.cc/forums/thread/564579">Color collision</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/564786" style="color: black;">1</a> </span>
+	</li><li id="t-560008">
+		<a href="https://www.allegro.cc/forums/thread/560008">Animating Player</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/560008" style="color: black;">1</a> </span>
+	</li><li id="t-554164">
+		<a href="https://www.allegro.cc/forums/thread/554164">collision detection</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/554169" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/Akilah2006">Akilah! 2006</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/domin">domin</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/SpaceInvadersClone1978MidwayArca">Space Invaders Clone (1978 Midway Arcade Version)</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/SpaceASide-Scroller">Space: A Side-Scroller</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/TomtheTomato">Tom the Tomato</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/TPong">TPong</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/AlextheAllegator4">Alex the Allegator 4</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/AllegroSpriteEditor">Allegro Sprite Editor</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/Ashes">Ashes</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/dlg-agraphicalDIALOGeditor">dlg - a graphical DIALOG editor</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,477</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>32.889522</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/bitmap-objects/bitmap_mask_color by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:16:54 GMT -->
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/loading-image-files/save_bitmap by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:17:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>save_bitmap</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Loading image files</a></h2><ul>
+<li><a href="load_bitmap.html" style="font-weight: bold">load_bitmap</a></li><li><a href="load_bmp.html" style="font-weight: bold">load_bmp</a></li><li><a href="load_bmp_pf.html" >load_bmp_pf</a></li><li><a href="load_lbm.html" >load_lbm</a></li><li><a href="load_pcx.html" >load_pcx</a></li><li><a href="load_pcx_pf.html" >load_pcx_pf</a></li><li><a href="load_tga.html" >load_tga</a></li><li><a href="load_tga_pf.html" >load_tga_pf</a></li><li><strong>save_bitmap</strong></li><li><a href="save_bmp.html" style="font-weight: bold">save_bmp</a></li><li><a href="save_bmp_pf.html" >save_bmp_pf</a></li><li><a href="save_pcx.html" style="font-weight: bold">save_pcx</a></li><li><a href="save_pcx_pf.html" >save_pcx_pf</a></li><li><a href="save_tga.html" >save_tga</a></li><li><a href="save_tga_pf.html" >save_tga_pf</a></li><li><a href="register_bitmap_file_type.html" >register_bitmap_file_type</a></li><li><a href="set_color_conversion.html" style="font-weight: bold">set_color_conversion</a></li><li><a href="get_color_conversion.html" >get_color_conversion</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>save_bitmap</h1>
+
+<div class="shortdesc">
+Saves a bitmap into any supported file format.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">int</span> <a href="../../index.html" target="_blank"><span class="a">save_bitmap</span></a><span class="k2">(</span><span class="k1">const</span> <span class="k1">char</span> <span class="k3">*</span>filename, <a href="../../index.html" target="_blank"><span class="a">BITMAP</span></a> <span class="k3">*</span>bmp, <span class="k1">const</span> <a href="../../index.html" target="_blank"><span class="a">RGB</span></a> <span class="k3">*</span>pal<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Writes a bitmap into a file, using the specified palette, which should be
+   an array of 256 RGB structures. The output format is determined from the
+   filename extension: at present this function supports BMP, PCX and TGA
+   formats.<br /><br />
+
+   Two things to watch out for: on some video cards it may be faster to copy
+   the screen to a memory bitmap and save the latter, and if you use this to
+   dump the screen into a file you may end up with an image much larger than
+   you were expecting, because Allegro often creates virtual screens larger
+   than the visible screen. You can get around this by using a sub-bitmap to
+   specify which part of the screen to save, eg:
+<pre class="code">      <a href="../../index.html" target="_blank"><span class="a">BITMAP</span></a> <span class="k3">*</span>bmp<span class="k2">;</span>
+      <a href="../../index.html" target="_blank"><span class="a">PALETTE</span></a> pal<span class="k2">;</span>
+      ...
+      <a href="../../index.html" target="_blank"><span class="a">get_palette</span></a><span class="k2">(</span>pal<span class="k2">)</span><span class="k2">;</span>
+      bmp <span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">create_sub_bitmap</span></a><span class="k2">(</span><a href="../../index.html" target="_blank"><span class="a">screen</span></a>, <span class="n">0</span>, <span class="n">0</span>, <a href="../../index.html" target="_blank"><span class="a">SCREEN_W</span></a>, <a href="../../index.html" target="_blank"><span class="a">SCREEN_H</span></a><span class="k2">)</span><span class="k2">;</span>
+      <a href="../../index.html" target="_blank"><span class="a">save_bitmap</span></a><span class="k2">(</span><span class="s">"dump.pcx"</span>, bmp, pal<span class="k2">)</span><span class="k2">;</span>
+      <a href="../../index.html" target="_blank"><span class="a">destroy_bitmap</span></a><span class="k2">(</span>bmp<span class="k2">)</span><span class="k2">;</span></pre>
+
+</div>
+
+<div class="retval">
+Returns non-zero on error.
+
+</div>
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">save_bmp</a></li>
+	<li><a href="../../index.html">save_pcx</a></li>
+	<li><a href="../../index.html">save_tga</a></li>
+	<li><a href="../../index.html">load_bitmap</a></li>
+	<li><a href="../../index.html">register_bitmap_file_type</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591073">
+		<a href="https://www.allegro.cc/forums/thread/591073">can anyone help tell me why i run out of memory?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/666805" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/666809" style="color: black;">2</a> </span>
+	</li><li id="t-590932">
+		<a href="https://www.allegro.cc/forums/thread/590932">The age-old 100% CPU usage problem - but still no solution</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/664358" style="color: black;">1</a> </span>
+	</li><li id="t-588717">
+		<a href="https://www.allegro.cc/forums/thread/588717">Location of Saved Files</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/630272" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/630642" style="color: black;">2</a> </span>
+	</li><li id="t-588659">
+		<a href="https://www.allegro.cc/forums/thread/588659">Custom save names</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/629300" style="color: black;">1</a> </span>
+	</li><li id="t-588424">
+		<a href="https://www.allegro.cc/forums/thread/588424">OpenGL: EXT_framebuffer_object</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/625913" style="color: black;">1</a> </span>
+	</li><li id="t-587969">
+		<a href="https://www.allegro.cc/forums/thread/587969">Everlands: the second Go</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/619264" style="color: black;">1</a> </span>
+	</li><li id="t-586658">
+		<a href="https://www.allegro.cc/forums/thread/586658">rest() + save_bitmap() clashes?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/602240" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/602249" style="color: black;">2</a> </span>
+	</li><li id="t-586636">
+		<a href="https://www.allegro.cc/forums/thread/586636">[OL] invisible bitmap handling</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/601765" style="color: black;">1</a> </span>
+	</li><li id="t-584944">
+		<a href="https://www.allegro.cc/forums/thread/584944">Save_bitmap loop</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/584945" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/584949" style="color: black;">2</a> </span>
+	</li><li id="t-582672">
+		<a href="https://www.allegro.cc/forums/thread/582672">Black screen</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/582685" style="color: black;">1</a> </span>
+	</li><li id="t-562059">
+		<a href="https://www.allegro.cc/forums/thread/562059">Path-finding issue</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/562059" style="color: black;">1</a> </span>
+	</li><li id="t-553621">
+		<a href="https://www.allegro.cc/forums/thread/553621">OpenLayer border issues</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/553649" style="color: black;">1</a> </span>
+	</li><li id="t-553393">
+		<a href="https://www.allegro.cc/forums/thread/553393">libalfont.a anyone?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/553406" style="color: black;">1</a> </span>
+	</li><li id="t-552203">
+		<a href="https://www.allegro.cc/forums/thread/552203">OpenLayer screenshot system: glReadPixels appropriate?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/552543" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/MergeDCC">MergeDCC</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/TeTrist">TeTrist</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/DECATHLON">DECATHLON</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/Duel">Duel</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/FlamingSnow">Flaming Snow</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/GWar">GWar</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/KFixpal">KFixpal</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/SwingSpace">Swing Space</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/AllegroMinigameCollection">Allegro Minigame Collection</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/AreYouLost1">Are You Lost?</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,504</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.010701</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/loading-image-files/save_bitmap by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:17:12 GMT -->
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/ScreenUpdate.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC ScreenUpdate</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">ScreenUpdate</A></H2></H2><BLOCKQUOTE> The base of the screen update driver system.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>ScreenUpdate
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   <!1><A HREF="Error.html">Error</A> <B><A HREF="#DOC.90.2">Create</A></B>()
+<DD><I> Creates the canvas on which the user can draw.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.90.3">Destroy</A></B>()
+<DD><I> Destroy the canvas bitmap</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.90.4">Redraw</A></B>()
+<DD><I> Shows the canvas on the screen.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   BITMAP* <B><A HREF="#DOC.90.5">GetCanvas</A></B>()
+<DD><I> Returns a pointer to the canvas BITMAP on which the user can draw</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.90.6">AcquireCanvas</A></B>()
+<DD><I> Acquires the drawing canvas.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.90.7">ReleaseCanvas</A></B>()
+<DD><I> Releases the drawing canvas.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   char* <B><A HREF="#DOC.90.8">GetDescription</A></B>()
+<DD><I> Returns a string containing a short description of the driver</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.90.9">RequiresFullRedraw</A></B>()
+<DD><I> Returns true if the driver requires the entire screen to be redrawn every frame.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.90.10">InvalidateRect</A></B>(const <!1><A HREF="Rect.html">Rect</A> &amp;<!1><A HREF="Color.html#DOC.8.17">r</A>)
+<DD><I> Marks a rectangle dirty and schedules it for rerawing.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.90.11">InvalidateRect</A></B>(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>)
+<DD><I> Like InvalidateRect(const Rect &r) except that it accepts individual coordinates</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>BITMAP* <B><A HREF="#DOC.90.1">canvas</A></B>
+<DD><I>The canvas bitmap the user can draw to</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+The base of the screen update driver system.
+This is the base class for the screen update driver system. All screen update
+drivers should inherit from this class and implement the relevant virtual
+functions. Although this isn't an abstract class with pure virtual functions
+it shouldn't really be used in most cases as it implements no special screen
+update functionality - it just exposes the global Allegro screen bitmap which
+means drawing with this driver will produce <I><B>a lot</B></I> of flicker.</BLOCKQUOTE>
+<DL>
+
+<A NAME="canvas"></A>
+<A NAME="DOC.90.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>BITMAP* canvas</B></TT>
+<DD>The canvas bitmap the user can draw to
+<DL><DT><DD></DL><P>
+<A NAME="Create"></A>
+<A NAME="DOC.90.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   <!1><A HREF="Error.html">Error</A> Create()</B></TT>
+<DD>
+Creates the canvas on which the user can draw.
+This driver just makes a subbitmap of the global Allegro screen
+BITMAP. Should return an error code.
+<DL><DT><DD></DL><P>
+<A NAME="Destroy"></A>
+<A NAME="DOC.90.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Destroy()</B></TT>
+<DD>
+Destroy the canvas bitmap
+<DL><DT><DD></DL><P>
+<A NAME="Redraw"></A>
+<A NAME="DOC.90.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Redraw()</B></TT>
+<DD>
+Shows the canvas on the screen.
+In this driver this function is empty because the canvas IS the screen.
+<DL><DT><DD></DL><P>
+<A NAME="GetCanvas"></A>
+<A NAME="DOC.90.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   BITMAP* GetCanvas()</B></TT>
+<DD>
+Returns a pointer to the canvas BITMAP on which the user can draw
+<DL><DT><DD></DL><P>
+<A NAME="AcquireCanvas"></A>
+<A NAME="DOC.90.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void AcquireCanvas()</B></TT>
+<DD>
+Acquires the drawing canvas.
+This is necessary on some platforms to get optimal performance.
+<DL><DT><DD></DL><P>
+<A NAME="ReleaseCanvas"></A>
+<A NAME="DOC.90.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void ReleaseCanvas()</B></TT>
+<DD>
+Releases the drawing canvas.
+This is necessary on some platforms to get optimal performance.
+<DL><DT><DD></DL><P>
+<A NAME="GetDescription"></A>
+<A NAME="DOC.90.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   char* GetDescription()</B></TT>
+<DD>
+Returns a string containing a short description of the driver
+<DL><DT><DD></DL><P>
+<A NAME="RequiresFullRedraw"></A>
+<A NAME="DOC.90.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool RequiresFullRedraw()</B></TT>
+<DD>
+Returns true if the driver requires the entire screen to be redrawn every frame.
+All regular double buffering schemes do, but this driver of course doesn't.
+<DL><DT><DD></DL><P>
+<A NAME="InvalidateRect"></A>
+<A NAME="DOC.90.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void InvalidateRect(const <!1><A HREF="Rect.html">Rect</A> &amp;<!1><A HREF="Color.html#DOC.8.17">r</A>)</B></TT>
+<DD>
+Marks a rectangle dirty and schedules it for rerawing.
+All drivers except for the Dirty Rectangle System (DRS) driver ignore this.
+<DL><DT><DD></DL><P>
+<A NAME="InvalidateRect"></A>
+<A NAME="DOC.90.11"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void InvalidateRect(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>)</B></TT>
+<DD>
+Like InvalidateRect(const Rect &r) except that it accepts individual coordinates
+<DL><DT><DD></DL><P></DL>
+<HR>
+<DL><DT><B>Direct child classes:
+</B><DD><A HREF="PageFlipping.html">PageFlipping</A><BR>
+<A HREF="GLDriver.html">GLDriver</A><BR>
+<A HREF="DoubleBuffer.html">DoubleBuffer</A><BR>
+</DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/ScreenUpdate.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+</html>

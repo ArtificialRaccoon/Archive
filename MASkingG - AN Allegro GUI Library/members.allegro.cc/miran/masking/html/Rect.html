@@ -1,0 +1,254 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Rect.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC Rect</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">Rect</A></H2></H2><BLOCKQUOTE> A simple class that represents a rectangle in 2D space.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>Rect
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.88.3">Rect</A></B>()
+<DD><I> Default constructor</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.88.4">Rect</A></B>(int <!1><A HREF="Rect.html#DOC.88.15">x</A>, int <!1><A HREF="Rect.html#DOC.88.16">y</A>, int <!1><A HREF="Rect.html#DOC.88.19">w</A>, int <!1><A HREF="Rect.html#DOC.88.20">h</A>)
+<DD><I> Constructor for making a rectangle from coordinates of origin, width and height</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.88.5">Rect</A></B>(const <!1><A HREF="Point.html">Point</A> &amp;p, const <!1><A HREF="Size.html">Size</A> &amp;s)
+<DD><I> Constructor for making a rectangle from the origin point and size</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.88.6">operator==</A></B>(const <!1><A HREF="Rect.html">Rect</A> &amp;<!1><A HREF="Color.html#DOC.8.17">r</A>) const 
+<DD><I> Operator for comparing two Rects.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.88.7">operator+=</A></B>(const <!1><A HREF="Point.html">Point</A> &amp;p)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.88.8">operator-=</A></B>(const <!1><A HREF="Point.html">Point</A> &amp;p)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Rect.html">Rect</A> <B><A HREF="#DOC.88.9">operator+</A></B>(const <!1><A HREF="Point.html">Point</A> &amp;p) const 
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Rect.html">Rect</A> <B><A HREF="#DOC.88.10">operator-</A></B>(const <!1><A HREF="Point.html">Point</A> &amp;p) const 
+<DD><I> Operators for doing simple arithmetic with Rects (ie.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.88.11">Intersects</A></B>(const <!1><A HREF="Rect.html">Rect</A> &amp;<!1><A HREF="Color.html#DOC.8.17">r</A>) const 
+<DD><I> Returns true if this rectangle intersects with the passed rectangle (excluding the edges)</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Point.html">Point</A> <B><A HREF="#DOC.88.12">topLeft</A></B>() const 
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Point.html">Point</A> <B><A HREF="#DOC.88.13">bottomRight</A></B>() const 
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Size.html">Size</A> <B><A HREF="#DOC.88.14">size</A></B>() const 
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.88.15">x</A></B>() const 
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.88.16">y</A></B>() const 
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.88.17">x2</A></B>() const 
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.88.18">y2</A></B>() const 
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.88.19">w</A></B>() const 
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.88.20">h</A></B>() const 
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.88.21">topLeft</A></B>(const <!1><A HREF="Point.html">Point</A>&amp; p)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.88.22">bottomRight</A></B>(const <!1><A HREF="Point.html">Point</A>&amp; p)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.88.23">size</A></B>(const <!1><A HREF="Size.html">Size</A>&amp; s)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.88.24">x</A></B>(int v)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.88.25">y</A></B>(int v)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.88.26">x2</A></B>(int v)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.88.27">y2</A></B>(int v)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.88.28">w</A></B>(int v)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.88.29">h</A></B>(int v)
+<DD><I> Bsic get and set functions</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Point.html">Point</A> <B><A HREF="#DOC.88.1">origin</A></B>
+<DD><I> Top left point (origin)</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Size.html">Size</A> <B><A HREF="#DOC.88.2">dim</A></B>
+<DD><I> The size of the rectangle</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+A simple class that represents a rectangle in 2D space.
+It also has some overloaded operators for manipulating rectangles.
+
+<P></BLOCKQUOTE>
+<DL>
+
+<A NAME="origin"></A>
+<A NAME="DOC.88.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Point.html">Point</A> origin</B></TT>
+<DD>
+Top left point (origin)
+<DL><DT><DD></DL><P>
+<A NAME="dim"></A>
+<A NAME="DOC.88.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Size.html">Size</A> dim</B></TT>
+<DD>
+The size of the rectangle
+<DL><DT><DD></DL><P>
+<A NAME="Rect"></A>
+<A NAME="DOC.88.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> Rect()</B></TT>
+<DD>
+Default constructor
+<DL><DT><DD></DL><P>
+<A NAME="Rect"></A>
+<A NAME="DOC.88.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> Rect(int <!1><A HREF="Rect.html#DOC.88.15">x</A>, int <!1><A HREF="Rect.html#DOC.88.16">y</A>, int <!1><A HREF="Rect.html#DOC.88.19">w</A>, int <!1><A HREF="Rect.html#DOC.88.20">h</A>)</B></TT>
+<DD>
+Constructor for making a rectangle from coordinates of origin, width and height
+<DL><DT><DD></DL><P>
+<A NAME="Rect"></A>
+<A NAME="DOC.88.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> Rect(const <!1><A HREF="Point.html">Point</A> &amp;p, const <!1><A HREF="Size.html">Size</A> &amp;s)</B></TT>
+<DD>
+Constructor for making a rectangle from the origin point and size
+<DL><DT><DD></DL><P>
+<A NAME="operator=="></A>
+<A NAME="DOC.88.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool operator==(const <!1><A HREF="Rect.html">Rect</A> &amp;<!1><A HREF="Color.html#DOC.8.17">r</A>) const </B></TT>
+<DD>
+Operator for comparing two Rects.
+Two rectangles are equal if they have the same origin point and size.
+<DL><DT><DD></DL><P>
+<A NAME="operator+="></A>
+<A NAME="DOC.88.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void operator+=(const <!1><A HREF="Point.html">Point</A> &amp;p)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="operator-="></A>
+<A NAME="DOC.88.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void operator-=(const <!1><A HREF="Point.html">Point</A> &amp;p)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="operator+"></A>
+<A NAME="DOC.88.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Rect.html">Rect</A> operator+(const <!1><A HREF="Point.html">Point</A> &amp;p) const </B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="operator-"></A>
+<A NAME="DOC.88.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Rect.html">Rect</A> operator-(const <!1><A HREF="Point.html">Point</A> &amp;p) const </B></TT>
+<DD>
+Operators for doing simple arithmetic with Rects (ie. moving).
+<DL><DT><DD></DL><P>
+<A NAME="Intersects"></A>
+<A NAME="DOC.88.11"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool Intersects(const <!1><A HREF="Rect.html">Rect</A> &amp;<!1><A HREF="Color.html#DOC.8.17">r</A>) const </B></TT>
+<DD>
+Returns true if this rectangle intersects with the passed rectangle (excluding the edges)
+<DL><DT><DD></DL><P>
+<A NAME="topLeft"></A>
+<A NAME="DOC.88.12"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Point.html">Point</A> topLeft() const </B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="bottomRight"></A>
+<A NAME="DOC.88.13"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Point.html">Point</A> bottomRight() const </B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="size"></A>
+<A NAME="DOC.88.14"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Size.html">Size</A> size() const </B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="x"></A>
+<A NAME="DOC.88.15"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int x() const </B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="y"></A>
+<A NAME="DOC.88.16"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int y() const </B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="x2"></A>
+<A NAME="DOC.88.17"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int x2() const </B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="y2"></A>
+<A NAME="DOC.88.18"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int y2() const </B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="w"></A>
+<A NAME="DOC.88.19"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int w() const </B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="h"></A>
+<A NAME="DOC.88.20"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int h() const </B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="topLeft"></A>
+<A NAME="DOC.88.21"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void topLeft(const <!1><A HREF="Point.html">Point</A>&amp; p)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="bottomRight"></A>
+<A NAME="DOC.88.22"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void bottomRight(const <!1><A HREF="Point.html">Point</A>&amp; p)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="size"></A>
+<A NAME="DOC.88.23"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void size(const <!1><A HREF="Size.html">Size</A>&amp; s)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="x"></A>
+<A NAME="DOC.88.24"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void x(int v)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="y"></A>
+<A NAME="DOC.88.25"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void y(int v)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="x2"></A>
+<A NAME="DOC.88.26"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void x2(int v)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="y2"></A>
+<A NAME="DOC.88.27"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void y2(int v)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="w"></A>
+<A NAME="DOC.88.28"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void w(int v)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="h"></A>
+<A NAME="DOC.88.29"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void h(int v)</B></TT>
+<DD>
+Bsic get and set functions
+<DL><DT><DD></DL><P></DL>
+<HR>
+<DL><DT><B>Direct child classes:
+</B><DD><A HREF="Widget.html">Widget</A><BR>
+</DL>
+
+<DL><DT><DT><B>See Also:</B><DD><!1><A HREF="Point.html">Point</A>, <!1><A HREF="Size.html">Size</A><BR><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Rect.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+</html>

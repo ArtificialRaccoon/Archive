@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/fixed-point-math-routines/fixed-point-trig/fixatan2 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:26:53 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>fixatan2</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">Fixed point math routines</a></h2><ul>
+<li><a href="../itofix.html" style="font-weight: bold">itofix</a></li><li><a href="../fixtoi.html" style="font-weight: bold">fixtoi</a></li><li><a href="../fixfloor.html" >fixfloor</a></li><li><a href="../fixceil.html" >fixceil</a></li><li><a href="../ftofix.html" style="font-weight: bold">ftofix</a></li><li><a href="../fixtof.html" >fixtof</a></li><li><a href="../fixmul.html" >fixmul</a></li><li><a href="../fixdiv.html" >fixdiv</a></li><li><a href="../fixadd.html" >fixadd</a></li><li><a href="../fixsub.html" >fixsub</a></li><li><a href="fixtorad_r.html" >fixtorad_r</a></li><li><a href="radtofix_r.html" >radtofix_r</a></li><li><a href="fixsin.html" >fixsin</a></li><li><a href="fixcos.html" >fixcos</a></li><li><a href="fixtan.html" >fixtan</a></li><li><a href="fixasin.html" >fixasin</a></li><li><a href="fixacos.html" >fixacos</a></li><li><a href="fixatan.html" >fixatan</a></li><li><strong>fixatan2</strong></li><li><a href="fixsqrt.html" >fixsqrt</a></li><li><a href="fixhypot.html" >fixhypot</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>fixatan2</h1>
+
+<div class="shortdesc">
+Fixed point version of the libc atan2() routine.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<a href="../../../index.html" target="_blank"><span class="a">fixed</span></a> <a href="../../../index.html" target="_blank"><span class="a">fixatan2</span></a><span class="k2">(</span><a href="../../../index.html" target="_blank"><span class="a">fixed</span></a> y, <a href="../../../index.html" target="_blank"><span class="a">fixed</span></a> x<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+This is a fixed point version of the libc atan2() routine. It computes the
+   arc tangent of `y / x', but the signs of both arguments are used to
+   determine the quadrant of the result, and `x' is permitted to be zero. This
+   function is useful to convert Cartesian coordinates to polar coordinates.
+   Example:
+<pre class="code">      <a href="../../../index.html" target="_blank"><span class="a">fixed</span></a> result<span class="k2">;</span><br /><br />
+
+      <span class="c">/* Sets `result' to binary angle 64. */</span>
+      result <span class="k3">=</span> <a href="../../../index.html" target="_blank"><span class="a">fixatan2</span></a><span class="k2">(</span><a href="../../../index.html" target="_blank"><span class="a">itofix</span></a><span class="k2">(</span><span class="n">1</span><span class="k2">)</span>, <span class="n">0</span><span class="k2">)</span><span class="k2">;</span>
+      <span class="c">/* Sets `result' to binary angle -109. */</span>
+      result <span class="k3">=</span> <a href="../../../index.html" target="_blank"><span class="a">fixatan2</span></a><span class="k2">(</span><a href="../../../index.html" target="_blank"><span class="a">itofix</span></a><span class="k2">(</span><span class="k3">-</span><span class="n">1</span><span class="k2">)</span>, <a href="../../../index.html" target="_blank"><span class="a">itofix</span></a><span class="k2">(</span><span class="k3">-</span><span class="n">2</span><span class="k2">)</span><span class="k2">)</span><span class="k2">;</span>
+      <span class="c">/* Fails the assert. */</span>
+      result <span class="k3">=</span> <a href="../../../index.html" target="_blank"><span class="a">fixatan2</span></a><span class="k2">(</span><span class="n">0</span>, <span class="n">0</span><span class="k2">)</span><span class="k2">;</span>
+      <a href="../../../index.html" target="_blank"><span class="a">ASSERT</span></a><span class="k2">(</span><span class="k3">!</span><a href="http://www.delorie.com/djgpp/doc/libc/libc_293.html" target="_blank">errno</a><span class="k2">)</span><span class="k2">;</span></pre>
+
+</div>
+
+<div class="retval">
+Returns the arc tangent of `y / x' in fixed point binary format angle,
+   from `-128' to `128'. If both `x' and `y' are zero, returns zero and sets
+   `errno' to EDOM.
+
+</div>
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../../index.html">Fixed point trig</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../../index.html">exlights</a></li>
+	<li><a href="../../../index.html">exspline</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591115">
+		<a href="https://www.allegro.cc/forums/thread/591115">fixed point help</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/667436" style="color: black;">1</a> </span>
+	</li><li id="t-586760">
+		<a href="https://www.allegro.cc/forums/thread/586760">Updating game and input</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/603522" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/603903" style="color: black;">2</a> </span>
+	</li><li id="t-585899">
+		<a href="https://www.allegro.cc/forums/thread/585899">Determining if an angle causes polygon to be concave.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/590748" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/590750" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/590754" style="color: black;">3</a> </span>
+	</li><li id="t-562420">
+		<a href="https://www.allegro.cc/forums/thread/562420">getting the angle  if i have the cos value</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/562522" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/Aggression">Aggression</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/AllegroSpriteEditor">Allegro Sprite Editor</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/KBall">KBall</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/Rafkill">Rafkill</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/RedPixel2">Red Pixel 2</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/StarControlTimeWarp">Star Control: TimeWarp</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/TW-Light">TW-Light</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,936</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.009293</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/fixed-point-math-routines/fixed-point-trig/fixatan2 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:26:53 GMT -->
+</html>

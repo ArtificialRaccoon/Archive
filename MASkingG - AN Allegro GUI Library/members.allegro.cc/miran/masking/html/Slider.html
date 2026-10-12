@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Slider.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC Slider</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">Slider</A></H2></H2><BLOCKQUOTE> The slider widget.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>Slider
+- <A HREF="Progress.html">Progress</A>
+- <A HREF="Separator.html">Separator</A>
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.100.14">SetOrientation</A></B>(int o)
+<DD><I> Sets the orientation of the slider.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.100.15">SetBitmap</A></B>(int background, int <!1><A HREF="ComboBox.html#DOC.10.2">button</A>)
+<DD><I> Sets the sliders skin bitmaps.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.100.16">Setup</A></B>(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, int m, int M, int p, int o)
+<DD><I> A shortcut for Widget::Setup(), ScrollObject::SetRange(), ScrollObject::SetPosition() and SetOrientation()</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.100.1">bitmap</A></B>[2]
+<DD><I> Two indices pointing to the slider bitmaps in the skin's bitmap arrays</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.100.2">offset</A></B>
+<DD><I> The offset of the point on the gripper where the user grabbed it to drag from the centre</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.100.3">Draw</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)
+<DD><I> Draws either a horizontal or a vertical slider</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.100.4">MsgLPress</A></B>()
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.100.5">MsgLRelease</A></B>()
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.100.6">MsgMousemove</A></B>(const <!1><A HREF="Point.html">Point</A> &amp;d)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.100.7">MsgWheel</A></B>(int <!1><A HREF="Mouse.html#DOC.77.19">z</A>)
+<DD><I> These handle moving the slider button with the mouse</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.100.8">MsgChar</A></B>(int c)
+<DD><I> Handles keyboard input.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.100.9">MsgWantfocus</A></B>()
+<DD><I> Returns true to indicate the slider takes input focus</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.100.10">MsgInitSkin</A></B>()
+<DD><I> Initializes the slider with the default slider bitmaps</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.100.11">DrawHorizontalSlider</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)
+<DD><I> Helper function for drawing a horizontal slider</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.100.12">DrawVerticalSlider</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)
+<DD><I> Helper function for drawing a vertical slider</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.100.13">Toggle</A></B>()
+<DD><I> A helper function for switching the state of the slider between normal and selected</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+The slider widget.
+This is a simple slider that can be moved with both the mouse and the
+keyboard. Can be horizontal or vertical. Every time the position of the
+slider changes it sends a MSG_SCROLL message to the parent dialog passing
+the new position as the first argument.</BLOCKQUOTE>
+<DL>
+
+<A NAME="bitmap"></A>
+<A NAME="DOC.100.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int bitmap[2]</B></TT>
+<DD>
+Two indices pointing to the slider bitmaps in the skin's bitmap arrays
+<DL><DT><DD></DL><P>
+<A NAME="offset"></A>
+<A NAME="DOC.100.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int offset</B></TT>
+<DD>
+The offset of the point on the gripper where the user grabbed it to drag from the centre
+<DL><DT><DD></DL><P>
+<A NAME="Draw"></A>
+<A NAME="DOC.100.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Draw(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)</B></TT>
+<DD>
+Draws either a horizontal or a vertical slider
+<DL><DT><DD></DL><P>
+<A NAME="MsgLPress"></A>
+<A NAME="DOC.100.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgLPress()</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="MsgLRelease"></A>
+<A NAME="DOC.100.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgLRelease()</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="MsgMousemove"></A>
+<A NAME="DOC.100.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgMousemove(const <!1><A HREF="Point.html">Point</A> &amp;d)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="MsgWheel"></A>
+<A NAME="DOC.100.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgWheel(int <!1><A HREF="Mouse.html#DOC.77.19">z</A>)</B></TT>
+<DD>
+These handle moving the slider button with the mouse
+<DL><DT><DD></DL><P>
+<A NAME="MsgChar"></A>
+<A NAME="DOC.100.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool MsgChar(int c)</B></TT>
+<DD>
+Handles keyboard input. It enables moving the slider button
+with the keyboard. The slider can be moved by eithe left
+and right or up and down arrows (depending on orientation)
+and HOME and END keys.
+<DL><DT><DD></DL><P>
+<A NAME="MsgWantfocus"></A>
+<A NAME="DOC.100.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool MsgWantfocus()</B></TT>
+<DD>
+Returns true to indicate the slider takes input focus
+<DL><DT><DD></DL><P>
+<A NAME="MsgInitSkin"></A>
+<A NAME="DOC.100.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgInitSkin()</B></TT>
+<DD>
+Initializes the slider with the default slider bitmaps
+<DL><DT><DD></DL><P>
+<A NAME="DrawHorizontalSlider"></A>
+<A NAME="DOC.100.11"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void DrawHorizontalSlider(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)</B></TT>
+<DD>
+Helper function for drawing a horizontal slider
+<DL><DT><DD></DL><P>
+<A NAME="DrawVerticalSlider"></A>
+<A NAME="DOC.100.12"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void DrawVerticalSlider(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)</B></TT>
+<DD>
+Helper function for drawing a vertical slider
+<DL><DT><DD></DL><P>
+<A NAME="Toggle"></A>
+<A NAME="DOC.100.13"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Toggle()</B></TT>
+<DD>
+A helper function for switching the state of the slider between normal and selected
+<DL><DT><DD></DL><P>
+<A NAME="SetOrientation"></A>
+<A NAME="DOC.100.14"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetOrientation(int o)</B></TT>
+<DD>
+Sets the orientation of the slider. Pass 0 for vertical and 1 for horizontal.
+<DL><DT><DD></DL><P>
+<A NAME="SetBitmap"></A>
+<A NAME="DOC.100.15"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetBitmap(int background, int <!1><A HREF="ComboBox.html#DOC.10.2">button</A>)</B></TT>
+<DD>
+Sets the sliders skin bitmaps.
+Unlike most other widgets the slider uses two bitmaps instead of just one.
+It uses one for the background and another for the draggable button. The
+slider is automatically resized to the width or height of the background
+bitmap depending on orientation. The button bitmap is usually of the same
+width (or height) as the background bitmap although it may be smaller but
+it mustn't be bigger.
+<DL><DT><DD></DL><P>
+<A NAME="Setup"></A>
+<A NAME="DOC.100.16"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Setup(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, int m, int M, int p, int o)</B></TT>
+<DD>
+A shortcut for Widget::Setup(), ScrollObject::SetRange(), ScrollObject::SetPosition() and SetOrientation()
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Slider.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/digital-sample-routines/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:51:51 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Digital sample routines</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">API</a></h2><ul>
+<li><a href="../using-allegro/index.html" >Using Allegro</a></li><li><a href="../structures-and-types-defined-by-allegro/index.html" >Structures and types defined by Allegro</a></li><li><a href="../unicode-routines/index.html" >Unicode routines</a></li><li><a href="../configuration-routines/index.html" >Configuration routines</a></li><li><a href="../mouse-routines/index.html" >Mouse routines</a></li><li><a href="../timer-routines/index.html" >Timer routines</a></li><li><a href="../keyboard-routines/index.html" >Keyboard routines</a></li><li><a href="../joystick-routines/index.html" >Joystick routines</a></li><li><a href="../graphics-modes/index.html" >Graphics modes</a></li><li><a href="../bitmap-objects/index.html" >Bitmap objects</a></li><li><a href="../loading-image-files/index.html" >Loading image files</a></li><li><a href="../palette-routines/index.html" >Palette routines</a></li><li><a href="../truecolor-pixel-formats/index.html" >Truecolor pixel formats</a></li><li><a href="../drawing-primitives/index.html" >Drawing primitives</a></li><li><a href="../blitting-and-sprites/index.html" >Blitting and sprites</a></li><li><a href="../rle-sprites/index.html" >RLE sprites</a></li><li><a href="../compiled-sprites/index.html" >Compiled sprites</a></li><li><a href="../fonts/index.html" >Fonts</a></li><li><a href="../text-output/index.html" >Text output</a></li><li><a href="../polygon-rendering/index.html" >Polygon rendering</a></li><li><a href="../transparency-and-patterned-drawing/index.html" >Transparency and patterned drawing</a></li><li><a href="../converting-between-color-formats/index.html" >Converting between color formats</a></li><li><a href="../direct-access-to-video-memory/index.html" >Direct access to video memory</a></li><li><a href="../flic-routines/index.html" >FLIC routines</a></li><li><a href="../sound-init-routines/index.html" >Sound init routines</a></li><li><a href="../mixer-routines/index.html" >Mixer routines</a></li><li><strong>Digital sample routines</strong></li><li><a href="../music-routines-(midi)/index.html" >Music routines (MIDI)</a></li><li><a href="../audio-stream-routines/index.html" >Audio stream routines</a></li><li><a href="../recording-routines/index.html" >Recording routines</a></li><li><a href="../file-and-compression-routines/index.html" >File and compression routines</a></li><li><a href="../datafile-routines/index.html" >Datafile routines</a></li><li><a href="../fixed-point-math-routines/index.html" >Fixed point math routines</a></li><li><a href="../3d-math-routines/index.html" >3D math routines</a></li><li><a href="../quaternion-math-routines/index.html" >Quaternion math routines</a></li><li><a href="../gui-routines/index.html" >GUI routines</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>Digital sample routines</h1>
+
+<ul>
+	<li><a href="load_sample.html">load_sample</a> - Loads a sample from a file.</li>
+	<li><a href="load_wav.html">load_wav</a> - Loads a sample from a RIFF WAV file.</li>
+	<li><a href="load_wav_pf.html">load_wav_pf</a> - Packfile version of load_wav.</li>
+	<li><a href="load_voc.html">load_voc</a> - Loads a sample from a Creative Labs VOC file.</li>
+	<li><a href="load_voc_pf.html">load_voc_pf</a> - Packfile version of load_voc.</li>
+	<li><a href="save_sample.html">save_sample</a> - Writes a sample into a file.</li>
+	<li><a href="create_sample.html">create_sample</a> - Constructs a new sample structure of the specified type.</li>
+	<li><a href="destroy_sample.html">destroy_sample</a> - Destroys a sample structure when you are done with it.</li>
+	<li><a href="lock_sample.html">lock_sample</a> - Locks all the memory used by a sample.</li>
+	<li><a href="register_sample_file_type.html">register_sample_file_type</a> - Registers custom loading/saving sample routines.</li>
+	<li><a href="play_sample.html">play_sample</a> - Plays a sample.</li>
+	<li><a href="adjust_sample.html">adjust_sample</a> - Alters the parameters of a sample while it is playing.</li>
+	<li><a href="stop_sample.html">stop_sample</a> - Kills off a sample.</li>
+</ul>
+<h2>Voice control</h2>
+If you need more detailed control over how samples are played, you can use
+the lower level voice functions rather than just calling play_sample(). This
+is rather more work, because you have to explicitly allocate and free the
+voices rather than them being automatically released when they finish
+playing, but allows far more precise specification of exactly how you want
+everything to sound. You may also want to modify a couple of fields from the
+SAMPLE structure. Read chapter "Structures and types defined by Allegro" for
+its definition.
+
+<ul>
+	<li><a href="voice-control/allocate_voice.html">allocate_voice</a> - Allocates a soundcard voice for a sample.</li>
+	<li><a href="voice-control/deallocate_voice.html">deallocate_voice</a> - Frees a soundcard voice.</li>
+	<li><a href="voice-control/reallocate_voice.html">reallocate_voice</a> - Switches the sample of an already-allocated voice.</li>
+	<li><a href="voice-control/release_voice.html">release_voice</a> - Releases a soundcard voice.</li>
+	<li><a href="voice-control/voice_start.html">voice_start</a> - Activates a voice.</li>
+	<li><a href="voice-control/voice_stop.html">voice_stop</a> - Stops a voice.</li>
+	<li><a href="voice-control/voice_set_priority.html">voice_set_priority</a> - Sets the priority of a voice.</li>
+	<li><a href="voice-control/voice_check.html">voice_check</a> - Checks whether a voice is currently allocated.</li>
+	<li><a href="voice-control/voice_get_position.html">voice_get_position</a> - Returns the current position of a voice.</li>
+	<li><a href="voice-control/voice_set_position.html">voice_set_position</a> - Sets the position of a voice.</li>
+	<li><a href="voice-control/voice_set_playmode.html">voice_set_playmode</a> - Adjusts the loop status of the specified voice.</li>
+	<li><a href="voice-control/voice_get_volume.html">voice_get_volume</a> - Returns the current volume of the voice.</li>
+	<li><a href="voice-control/voice_set_volume.html">voice_set_volume</a> - Sets the volume of the voice.</li>
+	<li><a href="voice-control/voice_ramp_volume.html">voice_ramp_volume</a> - Starts a volume ramp for a voice.</li>
+	<li><a href="voice-control/voice_stop_volumeramp.html">voice_stop_volumeramp</a> - Interrupts a volume ramp operation.</li>
+	<li><a href="voice-control/voice_get_frequency.html">voice_get_frequency</a> - Returns the current pitch of the voice.</li>
+	<li><a href="voice-control/voice_set_frequency.html">voice_set_frequency</a> - Sets the pitch of the voice.</li>
+	<li><a href="voice-control/voice_sweep_frequency.html">voice_sweep_frequency</a> - Starts a frequency sweep for a voice.</li>
+	<li><a href="voice-control/voice_stop_frequency_sweep.html">voice_stop_frequency_sweep</a> - Interrupts a frequency sweep operation.</li>
+	<li><a href="voice-control/voice_get_pan.html">voice_get_pan</a> - Returns the current pan position.</li>
+	<li><a href="voice-control/voice_set_pan.html">voice_set_pan</a> - Sets the pan position.</li>
+	<li><a href="voice-control/voice_sweep_pan.html">voice_sweep_pan</a> - Starts a pan sweep for a voice.</li>
+	<li><a href="voice-control/voice_stop_pan_sweep.html">voice_stop_pan_sweep</a> - Interrupts a pan sweep operation.</li>
+	<li><a href="voice-control/voice_set_echo.html">voice_set_echo</a> - Sets the echo parameters for a voice.</li>
+	<li><a href="voice-control/voice_set_tremolo.html">voice_set_tremolo</a> - Sets the tremolo parameters for a voice.</li>
+	<li><a href="voice-control/voice_set_vibrato.html">voice_set_vibrato</a> - Sets the vibrato parameters for a voice.</li>
+</ul>
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">install_sound</a></li>
+	<li><a href="../../index.html">allocate_voice</a></li>
+	<li><a href="../../index.html">deallocate_voice</a></li>
+	<li><a href="../../index.html">reallocate_voice</a></li>
+	<li><a href="../../index.html">release_voice</a></li>
+	<li><a href="../../index.html">voice_start</a></li>
+	<li><a href="../../index.html">voice_set_priority</a></li>
+	<li><a href="../../index.html">voice_check</a></li>
+	<li><a href="../../index.html">voice_set_position</a></li>
+	<li><a href="../../index.html">voice_set_playmode</a></li>
+	<li><a href="../../index.html">voice_set_volume</a></li>
+	<li><a href="../../index.html">voice_set_frequency</a></li>
+	<li><a href="../../index.html">voice_set_pan</a></li>
+	<li><a href="../../index.html">SAMPLE</a></li>
+</ul>
+</div>
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,172</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>118.908094</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/digital-sample-routines/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:52:12 GMT -->
+</html>

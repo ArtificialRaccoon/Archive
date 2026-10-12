@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/GroupBox.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC GroupBox</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">GroupBox</A></H2></H2><BLOCKQUOTE> Similar to a Panel except that it can also have a title</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>GroupBox
+- <A HREF="Dialog.html">Dialog</A>
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Panel.html">Panel</A> <B><A HREF="#DOC.65.1">box</A></B>
+<DD><I> The underlaying panel widget</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Label.html">Label</A> <B><A HREF="#DOC.65.2">title</A></B>
+<DD><I> The underlaying title label</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.65.5">SetTitle</A></B>(const char* <!1><A HREF="GroupBox.html#DOC.65.2">title</A>)
+<DD><I> Sets the title text of the groupbox</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>const char* <B><A HREF="#DOC.65.6">GetTitle</A></B>()
+<DD><I> Returns the title of the groupbox</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.65.7">SetBitmap</A></B>(int index)
+<DD><I> Sets the bitmap that is to be used for the groupbox's underlying panel</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.65.3">MsgInitSkin</A></B>()
+<DD><I> Initialized the groupbox with the default bitmap, fonts and colours as defined by the skin</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.65.4">UpdateSize</A></B>()
+<DD><I> Updates the size of the box and the title.</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+Similar to a Panel except that it can also have a title</BLOCKQUOTE>
+<DL>
+
+<A NAME="box"></A>
+<A NAME="DOC.65.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Panel.html">Panel</A> box</B></TT>
+<DD>
+The underlaying panel widget
+<DL><DT><DD></DL><P>
+<A NAME="title"></A>
+<A NAME="DOC.65.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Label.html">Label</A> title</B></TT>
+<DD>
+The underlaying title label
+<DL><DT><DD></DL><P>
+<A NAME="MsgInitSkin"></A>
+<A NAME="DOC.65.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgInitSkin()</B></TT>
+<DD>
+Initialized the groupbox with the default bitmap, fonts and colours as defined by the skin
+<DL><DT><DD></DL><P>
+<A NAME="UpdateSize"></A>
+<A NAME="DOC.65.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void UpdateSize()</B></TT>
+<DD>
+Updates the size of the box and the title.
+It resizes the panel to fit into the box and positions the title
+text according to the title alignment setting. The title can be
+aligned left or right or can be centered and can be placed at an
+arbitrary offset from either the left or right edge of the box or
+from the centre.
+<DL><DT><DD></DL><P>
+<A NAME="SetTitle"></A>
+<A NAME="DOC.65.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetTitle(const char* <!1><A HREF="GroupBox.html#DOC.65.2">title</A>)</B></TT>
+<DD>
+Sets the title text of the groupbox
+<DL><DT><DD></DL><P>
+<A NAME="GetTitle"></A>
+<A NAME="DOC.65.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>const char* GetTitle()</B></TT>
+<DD>
+Returns the title of the groupbox
+<DL><DT><DD></DL><P>
+<A NAME="SetBitmap"></A>
+<A NAME="DOC.65.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetBitmap(int index)</B></TT>
+<DD>
+Sets the bitmap that is to be used for the groupbox's underlying panel
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/GroupBox.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+</html>

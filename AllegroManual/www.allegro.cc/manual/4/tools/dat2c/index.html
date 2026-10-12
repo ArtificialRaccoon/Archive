@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/tools/dat2c/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:02:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>dat2c - Compile datafiles into C code</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">Tools</a></h2><ul>
+<li><a href="../makedoc/index.html" >makedoc - Generate documentation in various formats</a></li><li><a href="../grabber/index.html" >grabber - Create datafiles</a></li><li><a href="../dat/index.html" >dat - Manipulate datafiles from the commandline</a></li><li><a href="../dat2s/index.html" >dat2s - Compile datafiles into assembler code</a></li><li><strong>dat2c - Compile datafiles into C code</strong></li></ul>
+</div>
+
+<div id="contents">
+<h1>dat2c - Compile datafiles into C code</h1>
+
+<h2>Contents</h2>
+<h2>Introduction</h2>
+The utility dat2c can be used in much the same way as dat2s, above, except
+that it writes C code rather than assembler. This has the advantage that it
+is portable - you can compile it anywhere you can use Allegro.
+
+<h2>Commandline Options</h2>
+Each option may appear only once. To specify which datafile to convert,
+give the filename without a preceding option.<br /><br />
+
+--cfile, -o
+    Arguments: filename<br /><br />
+
+    Gives the name of the C source file to output. Won't add a .c
+    extension, even if you don't specify one. By default, dat2c will
+    write to stdout.<br /><br />
+
+--hfile, -h
+    Arguments: filename<br /><br />
+
+    Gives the name of the C header file to output. Won't add a .h
+    extension, even if you don't specify one.<br /><br />
+
+--prefix, -p
+    Arguments: prefix (must be a valid macro name)<br /><br />
+
+    If you specify a prefix, then this will be used when constructing a
+    macro name for each object in the datafile. This is the same as the
+    grabber; if you don't specify a prefix, the macro name is simply
+    &lt;obj_name&gt;, but if you do, then the macro name becomes
+    &lt;prefix&gt;_&lt;obj_name&gt; .<br /><br />
+
+--crlf, -C
+    Arguments: none<br /><br />
+
+    Forces the file to be output in CRLF (DOS) format. This is the
+    default on DOS/Windows platforms.<br /><br />
+
+--unix, -U
+    Arguments: none<br /><br />
+
+    Sets the output to be in Unix (LF only) text format. This is the
+    default on non-DOS non-Mac platforms.<br /><br />
+
+--mac, -M
+    Arguments: none<br /><br />
+
+    Sets the output to be in Macintosh (CR only) text format. This is
+    the default on Mac platforms.<br /><br />
+
+--global, -g
+    Arguments: none<br /><br />
+
+    Specifies that the objects should be globally visible (default is
+    for objects to be local to the compilation unit). If they are
+    globally visible, then you can refer to them in your code.<br /><br />
+
+--convert-compiled-sprites, -S
+    Arguments: none<br /><br />
+
+    (See note below for more info on compiled sprites). Tells dat2c to
+    convert any compiled sprite objects it finds into bitmap objects.
+    More a convenience feature for lazy people :-)<br /><br />
+
+--datafile-name, -n
+    Arguments: C identifier<br /><br />
+
+    By default, the datafile is exported as:
+        PREFIX_data
+    or  data
+    But with this option, you can change 'data' to be something else.
+
+<h2>Notes</h2>
+- If your datafile contains truecolor images, be sure to call
+   fixup_datafile() after you have set the graphics mode. You must
+   also call fixup_datafile() if your platform does not support
+   constructors (currently any non GCC-based platform).<br /><br />
+
+ - Compiled sprites are *not* supported (but see the commandline option
+   --convert-compiled-sprites , above). This is because Allegro silently
+   switches to an RLE_SPRITE implementation on platforms which don't
+   support compiled sprites, and to get dat2c to implement that behaviour
+   would be more effort than it is worth (especially since you can just
+   call get_compiled_sprite() anyway!).
+
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,211</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.007217</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/tools/dat2c/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:02:26 GMT -->
+</html>

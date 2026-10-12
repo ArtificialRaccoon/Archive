@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/fonts/register_font_file_type by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:22:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>register_font_file_type</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Fonts</a></h2><ul>
+<li><strong>register_font_file_type</strong></li><li><a href="load_font.html" >load_font</a></li><li><a href="destroy_font.html" >destroy_font</a></li><li><a href="make_trans_font.html" >make_trans_font</a></li><li><a href="is_color_font.html" >is_color_font</a></li><li><a href="is_mono_font.html" >is_mono_font</a></li><li><a href="is_compatible_font.html" >is_compatible_font</a></li><li><a href="get_font_ranges.html" >get_font_ranges</a></li><li><a href="get_font_range_begin.html" >get_font_range_begin</a></li><li><a href="get_font_range_end.html" >get_font_range_end</a></li><li><a href="extract_font_range.html" >extract_font_range</a></li><li><a href="transpose_font.html" >transpose_font</a></li><li><a href="merge_fonts.html" >merge_fonts</a></li><li><a href="load_dat_font.html" >load_dat_font</a></li><li><a href="load_bios_font.html" >load_bios_font</a></li><li><a href="load_grx_font.html" >load_grx_font</a></li><li><a href="load_grx_or_bios_font.html" >load_grx_or_bios_font</a></li><li><a href="load_bitmap_font.html" >load_bitmap_font</a></li><li><a href="grab_font_from_bitmap.html" >grab_font_from_bitmap</a></li><li><a href="load_txt_font.html" >load_txt_font</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>register_font_file_type</h1>
+
+<div class="shortdesc">
+Register a new font loading function.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">void</span> <a href="../../index.html" target="_blank"><span class="a">register_font_file_type</span></a><span class="k2">(</span><span class="k1">const</span> <span class="k1">char</span> <span class="k3">*</span>ext, <a href="../../index.html" target="_blank"><span class="a">FONT</span></a> <span class="k3">*</span><span class="k2">(</span><span class="k3">*</span>load<span class="k2">)</span><span class="k2">(</span><span class="k1">const</span> <span class="k1">char</span> <span class="k3">*</span>filename, <a href="../../index.html" target="_blank"><span class="a">RGB</span></a> <span class="k3">*</span>pal, <span class="k1">void</span> <span class="k3">*</span>param<span class="k2">)</span><span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Informs the load_font() functions of a new file type, providing a routine
+   to read fonts in this format. The function you supply must follow the
+   following prototype:
+<pre class="code">      <a href="../../index.html" target="_blank"><span class="a">FONT</span></a> <span class="k3">*</span>load_my_font<span class="k2">(</span><span class="k1">const</span> <span class="k1">char</span> <span class="k3">*</span>filename, <a href="../../index.html" target="_blank"><span class="a">RGB</span></a> <span class="k3">*</span>pal, <span class="k1">void</span> <span class="k3">*</span>param<span class="k2">)</span>
+      <span class="k2">{</span>
+	 ...
+      <span class="k2">}</span></pre>
+   The pal parameter can optionally be used to return a palette for the FONT.
+   The parameter param can be anything you like: you can use this to pass
+   information to your loading routine, such as for instance the font height,
+   the character range to load or the index number of a font in a datafile.
+   If you choose to write your own font loading code, your function should be
+   prepared to deal with a value of NULL for either of these parameters.
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">load_font</a></li>
+</ul>
+</div>
+
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/StarControlTimeWarp">Star Control: TimeWarp</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,642</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.010612</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/fonts/register_font_file_type by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:22:50 GMT -->
+</html>

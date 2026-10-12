@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/TabPanel.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC TabPanel</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">TabPanel</A></H2></H2><BLOCKQUOTE> A compound widget for switching between several widgets (or dialogs).</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>TabPanel
+- <A HREF="Dialog.html">Dialog</A>
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.103.2">Attach</A></B>(<!1><A HREF="Widget.html">Widget</A>* <!1><A HREF="Widget.html#DOC.110.69">w</A>, const char* <!1><A HREF="Window.html#DOC.111.1">title</A>)
+<DD><I> Attaches an exisiting widget (or dialog) to the tab panel.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.103.3">Detach</A></B>(<!1><A HREF="Widget.html">Widget</A>* <!1><A HREF="Widget.html#DOC.110.69">w</A>)
+<DD><I> Removes the passed widget from the panel</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.103.4">OpenTab</A></B>(int i)
+<DD><I> Switches focus to the specified tab</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.103.5">NextTab</A></B>()
+<DD><I> Switches focus to the next tab (wraps around)</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.103.6">PreviousTab</A></B>()
+<DD><I> Switches focus to the previous tab (wraps around)</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.103.7">GetOpenTab</A></B>()
+<DD><I> Returns index of the currently open tab or -1 if no tab is open</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.103.8">GetTabCount</A></B>()
+<DD><I> Returns number of tabs</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.103.1">UpdateSize</A></B>()
+<DD><I> Updates the size and position of all the widgets in the panel.</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+A compound widget for switching between several widgets (or dialogs).
+The currently active widget is displayed in the main panel area.
+Widgets can be selected by clicking buttons on top of the main panel.</BLOCKQUOTE>
+<DL>
+
+<A NAME="UpdateSize"></A>
+<A NAME="DOC.103.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void UpdateSize()</B></TT>
+<DD>
+Updates the size and position of all the widgets in the panel.
+This function places all the buttons along the top edge of the panel
+and resizes all the attached dialogs to fit inside the panel.
+<DL><DT><DD></DL><P>
+<A NAME="Attach"></A>
+<A NAME="DOC.103.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Attach(<!1><A HREF="Widget.html">Widget</A>* <!1><A HREF="Widget.html#DOC.110.69">w</A>, const char* <!1><A HREF="Window.html#DOC.111.1">title</A>)</B></TT>
+<DD>
+Attaches an exisiting widget (or dialog) to the tab panel.
+Widgets are always added to the end of the list. Pass the text
+you want to appear on the button that will select this widget.
+<DL><DT><DD></DL><P>
+<A NAME="Detach"></A>
+<A NAME="DOC.103.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Detach(<!1><A HREF="Widget.html">Widget</A>* <!1><A HREF="Widget.html#DOC.110.69">w</A>)</B></TT>
+<DD>
+Removes the passed widget from the panel
+<DL><DT><DD></DL><P>
+<A NAME="OpenTab"></A>
+<A NAME="DOC.103.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void OpenTab(int i)</B></TT>
+<DD>
+Switches focus to the specified tab
+<DL><DT><DD></DL><P>
+<A NAME="NextTab"></A>
+<A NAME="DOC.103.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void NextTab()</B></TT>
+<DD>
+Switches focus to the next tab (wraps around)
+<DL><DT><DD></DL><P>
+<A NAME="PreviousTab"></A>
+<A NAME="DOC.103.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void PreviousTab()</B></TT>
+<DD>
+Switches focus to the previous tab (wraps around)
+<DL><DT><DD></DL><P>
+<A NAME="GetOpenTab"></A>
+<A NAME="DOC.103.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int GetOpenTab()</B></TT>
+<DD>
+Returns index of the currently open tab or -1 if no tab is open
+<DL><DT><DD></DL><P>
+<A NAME="GetTabCount"></A>
+<A NAME="DOC.103.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int GetTabCount()</B></TT>
+<DD>
+Returns number of tabs
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/TabPanel.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+</html>

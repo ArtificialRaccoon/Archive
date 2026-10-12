@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/mouse-routines/poll_mouse by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:15:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>poll_mouse</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Mouse routines</a></h2><ul>
+<li><a href="install_mouse.html" style="font-weight: bold">install_mouse</a></li><li><a href="remove_mouse.html" style="font-weight: bold">remove_mouse</a></li><li><strong>poll_mouse</strong></li><li><a href="mouse_needs_poll.html" >mouse_needs_poll</a></li><li><a href="enable_hardware_cursor.html" >enable_hardware_cursor</a></li><li><a href="disable_hardware_cursor.html" >disable_hardware_cursor</a></li><li><a href="select_mouse_cursor.html" >select_mouse_cursor</a></li><li><a href="set_mouse_cursor_bitmap.html" >set_mouse_cursor_bitmap</a></li><li><a href="mouse_x.html" style="font-weight: bold">mouse_x</a></li><li><a href="mouse_y.html" style="font-weight: bold">mouse_y</a></li><li><a href="mouse_z.html" style="font-weight: bold">mouse_z</a></li><li><a href="mouse_b.html" style="font-weight: bold">mouse_b</a></li><li><a href="mouse_pos.html" >mouse_pos</a></li><li><a href="mouse_sprite.html" >mouse_sprite</a></li><li><a href="mouse_x_focus.html" >mouse_x_focus</a></li><li><a href="mouse_y_focus.html" >mouse_y_focus</a></li><li><a href="show_mouse.html" style="font-weight: bold">show_mouse</a></li><li><a href="scare_mouse.html" style="font-weight: bold">scare_mouse</a></li><li><a href="scare_mouse_area.html" >scare_mouse_area</a></li><li><a href="unscare_mouse.html" style="font-weight: bold">unscare_mouse</a></li><li><a href="show_os_cursor.html" >show_os_cursor</a></li><li><a href="freeze_mouse_flag.html" >freeze_mouse_flag</a></li><li><a href="position_mouse.html" style="font-weight: bold">position_mouse</a></li><li><a href="position_mouse_z.html" >position_mouse_z</a></li><li><a href="set_mouse_range.html" style="font-weight: bold">set_mouse_range</a></li><li><a href="set_mouse_speed.html" style="font-weight: bold">set_mouse_speed</a></li><li><a href="set_mouse_sprite.html" style="font-weight: bold">set_mouse_sprite</a></li><li><a href="set_mouse_sprite_focus.html" style="font-weight: bold">set_mouse_sprite_focus</a></li><li><a href="get_mouse_mickeys.html" style="font-weight: bold">get_mouse_mickeys</a></li><li><a href="mouse_callback.html" >mouse_callback</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>poll_mouse</h1>
+
+<div class="shortdesc">
+Polls the mouse.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">int</span> <a href="../../index.html" target="_blank"><span class="a">poll_mouse</span></a><span class="k2">(</span><span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Wherever possible, Allegro will read the mouse input asynchronously (ie.
+   from inside an interrupt handler), but on some platforms that may not be
+   possible, in which case you must call this routine at regular intervals
+   to update the mouse state variables. To help you test your mouse polling
+   code even if you are programming on a platform that doesn't require it,
+   after the first time that you call this function Allegro will switch into
+   polling mode, so from that point onwards you will have to call this
+   routine in order to get any mouse input at all, regardless of whether the
+   current driver actually needs to be polled or not.
+
+</div>
+
+<div class="retval">
+Returns zero on success, or a negative number on failure (ie. no mouse
+   driver installed).
+
+</div>
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">mouse_needs_poll</a></li>
+	<li><a href="../../index.html">install_mouse</a></li>
+	<li><a href="../../index.html">mouse_x</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../index.html">exlights</a></li>
+	<li><a href="../../index.html">exmouse</a></li>
+	<li><a href="../../index.html">exshade</a></li>
+	<li><a href="../../index.html">exspline</a></li>
+	<li><a href="../../index.html">extrans</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-588400">
+		<a href="https://www.allegro.cc/forums/thread/588400">Mouse movement</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/625621" style="color: black;">1</a> </span>
+	</li><li id="t-587135">
+		<a href="https://www.allegro.cc/forums/thread/587135">&quot;camera&quot; in 3D scene</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/607949" style="color: black;">1</a> </span>
+	</li><li id="t-585859">
+		<a href="https://www.allegro.cc/forums/thread/585859">Problems with the mouse</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/590229" style="color: black;">1</a> </span>
+	</li><li id="t-585780">
+		<a href="https://www.allegro.cc/forums/thread/585780">Mouse access violation?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/589012" style="color: black;">1</a> </span>
+	</li><li id="t-585599">
+		<a href="https://www.allegro.cc/forums/thread/585599">Determining if mouse is inside the Allegro window (for v4.20)</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/586483" style="color: black;">1</a> </span>
+	</li><li id="t-585368">
+		<a href="https://www.allegro.cc/forums/thread/585368">Second mouse button under OSX?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/585385" style="color: black;">1</a> </span>
+	</li><li id="t-553251">
+		<a href="https://www.allegro.cc/forums/thread/553251">Yielding until an event occurs</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/553253" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/CariesField">Caries Field</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/ThesomewordVirus">The [someword] Virus</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/Aggression">Aggression</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/AllegroMinigameCollection">Allegro Minigame Collection</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/ChromaPlas">ChromaPlas</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/DrLovepeace">Dr Lovepeace</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/Stax">Stax</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/AllegroSpriteEditor">Allegro Sprite Editor</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/FakeNES">FakeNES</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/KBall">KBall</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,367</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.012003</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/mouse-routines/poll_mouse by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:15:58 GMT -->
+</html>

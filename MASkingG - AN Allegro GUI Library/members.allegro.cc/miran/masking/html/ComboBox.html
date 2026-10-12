@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/ComboBox.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC ComboBox</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">ComboBox</A></H2></H2><BLOCKQUOTE> The ComboBox widget.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>ComboBox
+- <A HREF="CompoundWidget.html">CompoundWidget</A>
+- <A HREF="Dialog.html">Dialog</A>
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>ComboEditBox <B><A HREF="#DOC.10.1">editBox</A></B>
+<DD><I> The underlaying edit box widget</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>ComboButton <B><A HREF="#DOC.10.2">button</A></B>
+<DD><I> The underlaying button with the little arrow for showing the list</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="ListBox.html">ListBox</A> <B><A HREF="#DOC.10.3">list</A></B>
+<DD><I> The underlaying listbox object</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.10.8">HandleEvent</A></B>(<!1><A HREF="Widget.html">Widget</A>&amp; obj, int msg, int arg1=0, int arg2=0)
+<DD><I> Handles events such as button clicks and list box clicks</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.10.9">Setup</A></B>(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, int i)
+<DD><I> Shortcut for Widget::Setup() and listSelect(i)</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.10.4">MsgInitSkin</A></B>()
+<DD><I> Initilizes the combo box with the default bitmaps, fonts and font colours as defined by the skin</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.10.5">UpdateSize</A></B>()
+<DD><I> Resizes and repositions all the child widgets when the combobox itself is resized</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.10.6">HideList</A></B>()
+<DD><I> Helper function for hiding the list in the combobox</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.10.7">ShowList</A></B>()
+<DD><I> Helper function for showing the list in the combobox</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+The ComboBox widget.
+A ComboBox is a compound widget made out of an edit box, a button and
+a listbox. By default the listbox is hidden but if the button is pressed
+the listbox is shown. When a listbox item is double clicked the combobox
+sends a MSG_ACTIVATE message to the parent dialog with the index of the
+selected item as the first argument.</BLOCKQUOTE>
+<DL>
+
+<A NAME="editBox"></A>
+<A NAME="DOC.10.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>ComboEditBox editBox</B></TT>
+<DD>
+The underlaying edit box widget
+<DL><DT><DD></DL><P>
+<A NAME="button"></A>
+<A NAME="DOC.10.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>ComboButton button</B></TT>
+<DD>
+The underlaying button with the little arrow for showing the list
+<DL><DT><DD></DL><P>
+<A NAME="list"></A>
+<A NAME="DOC.10.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="ListBox.html">ListBox</A> list</B></TT>
+<DD>
+The underlaying listbox object
+<DL><DT><DD></DL><P>
+<A NAME="MsgInitSkin"></A>
+<A NAME="DOC.10.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgInitSkin()</B></TT>
+<DD>
+Initilizes the combo box with the default bitmaps, fonts and font colours as defined by the skin
+<DL><DT><DD></DL><P>
+<A NAME="UpdateSize"></A>
+<A NAME="DOC.10.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void UpdateSize()</B></TT>
+<DD>
+Resizes and repositions all the child widgets when the combobox itself is resized
+<DL><DT><DD></DL><P>
+<A NAME="HideList"></A>
+<A NAME="DOC.10.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void HideList()</B></TT>
+<DD>
+Helper function for hiding the list in the combobox
+<DL><DT><DD></DL><P>
+<A NAME="ShowList"></A>
+<A NAME="DOC.10.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void ShowList()</B></TT>
+<DD>
+Helper function for showing the list in the combobox
+<DL><DT><DD></DL><P>
+<A NAME="HandleEvent"></A>
+<A NAME="DOC.10.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void HandleEvent(<!1><A HREF="Widget.html">Widget</A>&amp; obj, int msg, int arg1=0, int arg2=0)</B></TT>
+<DD>
+Handles events such as button clicks and list box clicks
+<DL><DT><DD></DL><P>
+<A NAME="Setup"></A>
+<A NAME="DOC.10.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Setup(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, int i)</B></TT>
+<DD>
+Shortcut for Widget::Setup() and listSelect(i)
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/ComboBox.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+</html>

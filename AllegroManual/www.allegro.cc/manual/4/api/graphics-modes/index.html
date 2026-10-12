@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/graphics-modes/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:47:33 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Graphics modes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">API</a></h2><ul>
+<li><a href="../using-allegro/index.html" >Using Allegro</a></li><li><a href="../structures-and-types-defined-by-allegro/index.html" >Structures and types defined by Allegro</a></li><li><a href="../unicode-routines/index.html" >Unicode routines</a></li><li><a href="../configuration-routines/index.html" >Configuration routines</a></li><li><a href="../mouse-routines/index.html" >Mouse routines</a></li><li><a href="../timer-routines/index.html" >Timer routines</a></li><li><a href="../keyboard-routines/index.html" >Keyboard routines</a></li><li><a href="../joystick-routines/index.html" >Joystick routines</a></li><li><strong>Graphics modes</strong></li><li><a href="../bitmap-objects/index.html" >Bitmap objects</a></li><li><a href="../loading-image-files/index.html" >Loading image files</a></li><li><a href="../palette-routines/index.html" >Palette routines</a></li><li><a href="../truecolor-pixel-formats/index.html" >Truecolor pixel formats</a></li><li><a href="../drawing-primitives/index.html" >Drawing primitives</a></li><li><a href="../blitting-and-sprites/index.html" >Blitting and sprites</a></li><li><a href="../rle-sprites/index.html" >RLE sprites</a></li><li><a href="../compiled-sprites/index.html" >Compiled sprites</a></li><li><a href="../fonts/index.html" >Fonts</a></li><li><a href="../text-output/index.html" >Text output</a></li><li><a href="../polygon-rendering/index.html" >Polygon rendering</a></li><li><a href="../transparency-and-patterned-drawing/index.html" >Transparency and patterned drawing</a></li><li><a href="../converting-between-color-formats/index.html" >Converting between color formats</a></li><li><a href="../direct-access-to-video-memory/index.html" >Direct access to video memory</a></li><li><a href="../flic-routines/index.html" >FLIC routines</a></li><li><a href="../sound-init-routines/index.html" >Sound init routines</a></li><li><a href="../mixer-routines/index.html" >Mixer routines</a></li><li><a href="../digital-sample-routines/index.html" >Digital sample routines</a></li><li><a href="../music-routines-(midi)/index.html" >Music routines (MIDI)</a></li><li><a href="../audio-stream-routines/index.html" >Audio stream routines</a></li><li><a href="../recording-routines/index.html" >Recording routines</a></li><li><a href="../file-and-compression-routines/index.html" >File and compression routines</a></li><li><a href="../datafile-routines/index.html" >Datafile routines</a></li><li><a href="../fixed-point-math-routines/index.html" >Fixed point math routines</a></li><li><a href="../3d-math-routines/index.html" >3D math routines</a></li><li><a href="../quaternion-math-routines/index.html" >Quaternion math routines</a></li><li><a href="../gui-routines/index.html" >GUI routines</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>Graphics modes</h1>
+
+Graphics modes are the common denominator for most Allegro programs. While it
+is possible to write platform specific programs using Allegro which don't set
+a graphic mode through the routines provided in this chapter, these are not
+very common.<br /><br />
+
+The first thing to note is that due to the wide range of supported platforms,
+a graphic mode is the only way to safely communicate with the user. When
+Allegro was a DOS only library (versions 3.x and previous), it was frequent
+for programmers to use functions from the C standard library to communicate
+with the user, like calling printf() before setting a graphic mode or maybe
+scanf() to read the user's input. However, what would happen for such a game
+running under Windows where there is no default console output or it may be
+hidden from the user? Even if the game compiled successfully, it would be
+unplayable, especially if there was vital information for the user in those
+text only messages.<br /><br />
+
+Allegro provides the allegro_message() function to deal with this problem,
+but this is not a very user friendly method of communicating with the user
+and its main purpose is displaying small error like messages when no graphic
+mode is available. Therefore, the first thing your Allegro program should do
+is set a graphic mode, and from there on, use Allegro's text output routines
+to display messages to the user, just like `allegro/examples/exhello.c' does.<br /><br />
+
+Setting a graphic mode involves deciding how to allocate the memory of the
+video card for your program. On some platforms this means creating a virtual
+screen bigger than the physical resolution to do hardware scrolling or page
+flipping. Virtual screens can cause a lot of confusion, but they are really
+quite simple. Warning: patronising explanation coming up, so you may wish to
+skip the rest of this paragraph. Think of video memory as a rectangular piece
+of paper which is being viewed through a small hole (your monitor) in a bit of
+cardboard. Since the paper is bigger than the hole you can only see part of it
+at any one time, but by sliding the cardboard around you can alter which
+portion of the image is visible. You could just leave the hole in one position
+and ignore the parts of video memory that aren't visible, but you can get all
+sorts of useful effects by sliding the screen window around, or by drawing
+images in a hidden part of video memory and then flipping across to display
+them.<br /><br />
+
+For example, you could select a 640x480 mode in which the monitor acts as a
+window onto a 1024x1024 virtual screen, and then move the visible screen
+around in this larger area (hardware scrolling). Initially, with the visible
+screen positioned at the top left corner of video memory, this setup would
+look like:
+<pre class="text">
+      (0,0)------------(640,0)----(1024,0)
+	|                  |           |
+	|  visible screen  |           |
+	|                  |           |
+      (0,480)----------(640,480)       |
+	|                              |
+	|   the rest of video memory   |
+	|                              |
+      (0,1024)--------------------(1024,1024)
+</pre>
+With a virtual screen bigger than the visible screen you can perform smooth
+CPU inexpensive scrolling: you draw your graphics once, and then only tell
+the video card to show a different portion of the screen. However, virtual
+screens are not supported on all platforms, and on some they might be
+emulated through software, losing any performance. On top of that, many video
+cards only allow horizontal scrolling in steps of 32 bytes. This is not a
+problem if your game runs in 24 or 32 bit, but it tends to mean jerky
+scrolling for other color depths.<br /><br />
+
+The other reason you could use virtual screens for is page flipping. This
+means showing one portion of the virtual screen while your program draws to
+the hidden one. When you finish, you show the part you have been drawing to
+and repeat the process with the area now hidden. The result is a perfectly
+smooth screen update without flickering or other graphical artifacts.<br /><br />
+
+Scrolling manually to one part of the video memory is one non portable way to
+accomplish this. The portable way is to use functions like
+create_system_bitmap(), create_video_bitmap(), show_video_bitmap(), etc. These
+functions divide the memory of the video card in areas and switch between
+them, a feature supported on all platforms and video cards (given that they
+have enough memory for the screen resolutions you asked for).<br /><br />
+
+The last thing you need to know about setting a graphic mode are drivers.
+Each platform has a number of graphic drivers wich support a different range
+of hardware or behave in different ways. To avoid cluttering your own code
+with #ifdefs and dealing with drivers added after you release your program,
+Allegro provides several so called magic drivers. These magic drivers don't
+really exists, they wrap around a specific kind of functionality.<br /><br />
+
+The magic drivers you can use are:
+<ul><li>
+GFX_AUTODETECT:<br>
+   Allegro will try to set the specified resolution with the current color
+   depth in fullscreen mode. Failing that, it will try to repeat the same
+   operation in windowed mode. If the call to set_gfx_mode() succeeds, you
+   are guaranteed to have set the specified resolution in the current color
+   depth, but you don't know if the program is running fullscreen or
+   windowed.
+<li>
+GFX_AUTODETECT_FULLSCREEN:<br>
+   Allegro will try to set the specified resolution with the current color
+   depth in fullscreen mode. If that is not possible, set_gfx_mode() will
+   fail.
+<li>
+GFX_AUTODETECT_WINDOWED:<br>
+   Allegro will try to set the specified resolution with the current color
+   depth in a windowed mode. If that is not possible, set_gfx_mode() will
+   fail. When it comes to windowed modes, the `specified resolution' actually
+   means the graphic area your program can draw on, without including window
+   decorations (if any). Note that in windowed modes running with a color
+   depth other than the desktop may result in non optimal performance due to
+   internal color conversions in the graphic driver. Use
+   desktop_color_depth() to your advantage in these situations.
+<li>
+GFX_SAFE:<br>
+   Using this driver Allegro guarantees that a graphic mode will always be
+   set correctly. It will try to select the resolution that you request, and
+   if that fails, it will fall back upon whatever mode is known to be
+   reliable on the current platform (this is 320x200 VGA mode under DOS, a
+   640x480 resolution under Windows, the actual framebuffer's resolution
+   under Linux if it's supported, etc). If it absolutely cannot set any
+   graphics mode at all, it will return negative as usual, meaning that
+   there's no possible video output on the machine, and that you should abort
+   your program immediately, possibly after notifying this to the user with
+   allegro_message.<br /><br />
+
+   This fake driver is useful for situations where you just want to get into
+   some kind of workable display mode, and can't be bothered with trying
+   multiple different resolutions and doing all the error checking yourself.
+   Note however, that after a successful call to set_gfx_mode with this
+   driver, you cannot make any assumptions about the width, height or color
+   depth of the screen: your code will have to deal with this little detail.
+<li>
+   GFX_TEXT:<br>
+   Closes any previously opened graphics mode, making you unable to use the
+   global variable `screen', and in those environments that have text modes,
+   sets one previously used or the closest match to that (usually 80x25).
+   With this driver the size parameters of set_gfx_mode don't mean anything,
+   so you can leave them all to zero or any other number you prefer.
+</ul>
+
+<ul>
+	<li><a href="set_color_depth.html">set_color_depth</a> - Sets the global pixel color depth.</li>
+	<li><a href="get_color_depth.html">get_color_depth</a> - Returns the current pixel color depth.</li>
+	<li><a href="request_refresh_rate.html">request_refresh_rate</a> - Requests a specific refresh rate during graphic mode switch.</li>
+	<li><a href="get_refresh_rate.html">get_refresh_rate</a> - Returns the current refresh rate.</li>
+	<li><a href="get_gfx_mode_list.html">get_gfx_mode_list</a> - Obtains a list of available video modes.</li>
+	<li><a href="destroy_gfx_mode_list.html">destroy_gfx_mode_list</a> - Frees the list created by get_gfx_mode_list().</li>
+	<li><a href="set_gfx_mode.html">set_gfx_mode</a> - Sets a graphic video mode.</li>
+	<li><a href="set_display_switch_mode.html">set_display_switch_mode</a> - Tells Allegro how the program handles background switching.</li>
+	<li><a href="set_display_switch_callback.html">set_display_switch_callback</a> - Installs a switching notification callback.</li>
+	<li><a href="remove_display_switch_callback.html">remove_display_switch_callback</a> - Removes a switching notification callback.</li>
+	<li><a href="get_display_switch_mode.html">get_display_switch_mode</a> - Returns the current display switching mode.</li>
+	<li><a href="is_windowed_mode.html">is_windowed_mode</a> - Tells if you are running in windowed mode.</li>
+	<li><a href="gfx_capabilities.html">gfx_capabilities</a> - Bitfield describing video hardware capabilities.</li>
+	<li><a href="enable_triple_buffer.html">enable_triple_buffer</a> - Enables triple buffering.</li>
+	<li><a href="scroll_screen.html">scroll_screen</a> - Requests a hardware scroll request.</li>
+	<li><a href="request_scroll.html">request_scroll</a> - Queues a hardware scroll request with triple buffering.</li>
+	<li><a href="poll_scroll.html">poll_scroll</a> - Checks the status of a scroll request with triple buffering.</li>
+	<li><a href="show_video_bitmap.html">show_video_bitmap</a> - Flips the hardware screen to use the specified page.</li>
+	<li><a href="request_video_bitmap.html">request_video_bitmap</a> - Triple buffering page flip request.</li>
+	<li><a href="vsync.html">vsync</a> - Waits for a vertical retrace to begin.</li>
+</ul>
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,165</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>71.520997</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/graphics-modes/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:47:41 GMT -->
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/direct-access-to-video-memory/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:51:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Direct access to video memory</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">API</a></h2><ul>
+<li><a href="../using-allegro/index.html" >Using Allegro</a></li><li><a href="../structures-and-types-defined-by-allegro/index.html" >Structures and types defined by Allegro</a></li><li><a href="../unicode-routines/index.html" >Unicode routines</a></li><li><a href="../configuration-routines/index.html" >Configuration routines</a></li><li><a href="../mouse-routines/index.html" >Mouse routines</a></li><li><a href="../timer-routines/index.html" >Timer routines</a></li><li><a href="../keyboard-routines/index.html" >Keyboard routines</a></li><li><a href="../joystick-routines/index.html" >Joystick routines</a></li><li><a href="../graphics-modes/index.html" >Graphics modes</a></li><li><a href="../bitmap-objects/index.html" >Bitmap objects</a></li><li><a href="../loading-image-files/index.html" >Loading image files</a></li><li><a href="../palette-routines/index.html" >Palette routines</a></li><li><a href="../truecolor-pixel-formats/index.html" >Truecolor pixel formats</a></li><li><a href="../drawing-primitives/index.html" >Drawing primitives</a></li><li><a href="../blitting-and-sprites/index.html" >Blitting and sprites</a></li><li><a href="../rle-sprites/index.html" >RLE sprites</a></li><li><a href="../compiled-sprites/index.html" >Compiled sprites</a></li><li><a href="../fonts/index.html" >Fonts</a></li><li><a href="../text-output/index.html" >Text output</a></li><li><a href="../polygon-rendering/index.html" >Polygon rendering</a></li><li><a href="../transparency-and-patterned-drawing/index.html" >Transparency and patterned drawing</a></li><li><a href="../converting-between-color-formats/index.html" >Converting between color formats</a></li><li><strong>Direct access to video memory</strong></li><li><a href="../flic-routines/index.html" >FLIC routines</a></li><li><a href="../sound-init-routines/index.html" >Sound init routines</a></li><li><a href="../mixer-routines/index.html" >Mixer routines</a></li><li><a href="../digital-sample-routines/index.html" >Digital sample routines</a></li><li><a href="../music-routines-(midi)/index.html" >Music routines (MIDI)</a></li><li><a href="../audio-stream-routines/index.html" >Audio stream routines</a></li><li><a href="../recording-routines/index.html" >Recording routines</a></li><li><a href="../file-and-compression-routines/index.html" >File and compression routines</a></li><li><a href="../datafile-routines/index.html" >Datafile routines</a></li><li><a href="../fixed-point-math-routines/index.html" >Fixed point math routines</a></li><li><a href="../3d-math-routines/index.html" >3D math routines</a></li><li><a href="../quaternion-math-routines/index.html" >Quaternion math routines</a></li><li><a href="../gui-routines/index.html" >GUI routines</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>Direct access to video memory</h1>
+
+Read chapter "Structures and types defined by Allegro" for an internal
+description of the BITMAP structure. There are several ways to get direct
+access to the image memory of a bitmap, varying in complexity depending on
+what sort of bitmap you are using.<br /><br />
+
+The simplest approach will only work with memory bitmaps (obtained from
+create_bitmap(), grabber datafiles, and image files) and sub-bitmaps of
+memory bitmaps. This uses a table of char pointers, called `line', which is
+a part of the bitmap structure and contains pointers to the start of each
+line of the image. For example, a simple memory bitmap putpixel function is:
+<pre class="code">   <span class="k1">void</span> memory_putpixel<span class="k2">(</span>BITMAP <span class="k3">*</span>bmp, <span class="k1">int</span> x, <span class="k1">int</span> y, <span class="k1">int</span> color<span class="k2">)</span>
+   <span class="k2">{</span>
+      bmp-&gt;line<span class="k2">[</span>y<span class="k2">]</span><span class="k2">[</span>x<span class="k2">]</span> <span class="k3">=</span> color<span class="k2">;</span>
+   <span class="k2">}</span></pre>
+For truecolor modes you need to cast the line pointer to the appropriate
+type, for example:
+<pre class="code">   <span class="k1">void</span> memory_putpixel_15_or_16_bpp<span class="k2">(</span>BITMAP <span class="k3">*</span>bmp, <span class="k1">int</span> x, <span class="k1">int</span> y, <span class="k1">int</span> color<span class="k2">)</span>
+   <span class="k2">{</span>
+      <span class="k2">(</span><span class="k2">(</span><span class="k1">short</span> <span class="k3">*</span><span class="k2">)</span>bmp-&gt;line<span class="k2">[</span>y<span class="k2">]</span><span class="k2">)</span><span class="k2">[</span>x<span class="k2">]</span> <span class="k3">=</span> color<span class="k2">;</span>
+   <span class="k2">}</span><br /><br />
+
+   <span class="k1">void</span> memory_putpixel_32<span class="k2">(</span>BITMAP <span class="k3">*</span>bmp, <span class="k1">int</span> x, <span class="k1">int</span> y, <span class="k1">int</span> color<span class="k2">)</span>
+   <span class="k2">{</span>
+      <span class="k2">(</span><span class="k2">(</span><span class="k1">long</span> <span class="k3">*</span><span class="k2">)</span>bmp-&gt;line<span class="k2">[</span>y<span class="k2">]</span><span class="k2">)</span><span class="k2">[</span>x<span class="k2">]</span> <span class="k3">=</span> color<span class="k2">;</span>
+   <span class="k2">}</span></pre>
+If you want to write to the screen as well as to memory bitmaps, you need to
+use some helper macros, because the video memory may not be part of your
+normal address space. This simple routine will work for any linear screen,
+eg. a VESA linear framebuffers:
+<pre class="code">   <span class="k1">void</span> linear_screen_putpixel<span class="k2">(</span>BITMAP <span class="k3">*</span>bmp, <span class="k1">int</span> x, <span class="k1">int</span> y, <span class="k1">int</span> color<span class="k2">)</span>
+   <span class="k2">{</span>
+      bmp_select<span class="k2">(</span>bmp<span class="k2">)</span><span class="k2">;</span>
+      bmp_write8<span class="k2">(</span><span class="k2">(</span><span class="k1">unsigned</span> <span class="k1">long</span><span class="k2">)</span>bmp-&gt;line<span class="k2">[</span>y<span class="k2">]</span><span class="k3">+</span>x, color<span class="k2">)</span><span class="k2">;</span>
+   <span class="k2">}</span></pre>
+For truecolor modes you should replace the bmp_write8() with bmp_write16(),
+bmp_write24(), or bmp_write32(), and multiply the x offset by the number of
+bytes per pixel. There are of course similar functions to read a pixel value
+from a bitmap, namely bmp_read8(), bmp_read16(), bmp_read24() and
+bmp_read32().<br /><br />
+
+This still won't work in banked SVGA modes, however, or on platforms like
+Windows that do special processing inside the bank switching functions. For
+more flexible access to bitmap memory, you need to call the following
+routines. They are implemented as inline assembler routines, so they are not
+as inefficient as they might seem. If the bitmap doesn't require bank
+switching (ie. it is a memory bitmap, mode 13h screen, etc), these functions
+just return bmp-&gt;line[line].
+
+<ul>
+	<li><a href="bmp_write_line.html">bmp_write_line</a> - Direct access bank switching line selection for writing.</li>
+	<li><a href="bmp_read_line.html">bmp_read_line</a> - Direct access bank switching line selection for reading.</li>
+	<li><a href="bmp_unwrite_line.html">bmp_unwrite_line</a> - Direct access bank switching line release.</li>
+</ul>
+<h2>More on banked direct memory access</h2>
+Although SVGA bitmaps are banked, Allegro provides linear access to the
+memory within each scanline, so you only need to pass a y coordinate to
+these functions. Various x positions can be obtained by simply adding the x
+coordinate to the returned address. The return value is an unsigned long
+rather than a char pointer because the bitmap memory may not be in your data
+segment, and you need to access it with far pointers. For example, a
+putpixel using the bank switching functions is:
+<pre class="code">   <span class="k1">void</span> banked_putpixel<span class="k2">(</span>BITMAP <span class="k3">*</span>bmp, <span class="k1">int</span> x, <span class="k1">int</span> y, <span class="k1">int</span> color<span class="k2">)</span>
+   <span class="k2">{</span>
+      <span class="k1">unsigned</span> <span class="k1">long</span> address <span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">bmp_write_line</span></a><span class="k2">(</span>bmp, y<span class="k2">)</span><span class="k2">;</span>
+      bmp_select<span class="k2">(</span>bmp<span class="k2">)</span><span class="k2">;</span>
+      bmp_write8<span class="k2">(</span>address<span class="k3">+</span>x, color<span class="k2">)</span><span class="k2">;</span>
+      <a href="../../index.html" target="_blank"><span class="a">bmp_unwrite_line</span></a><span class="k2">(</span>bmp<span class="k2">)</span><span class="k2">;</span>
+   <span class="k2">}</span></pre>
+You will notice that Allegro provides separate functions for setting the
+read and write banks. It is important that you distinguish between these,
+because on some graphics cards the banks can be set individually, and on
+others the video memory is read and written at different addresses. Life is
+never quite as simple as we might wish it to be, though (this is true even
+when we _aren't_ talking about graphics coding :-) and so of course some
+cards only provide a single bank. On these the read and write bank functions
+will behave identically, so you shouldn't assume that you can read from one
+part of video memory and write to another at the same time. You can call
+bmp_read_line(), and read whatever you like from that line, and then call
+bmp_write_line() with the same or a different line number, and write
+whatever you like to this second line, but you mustn't call bmp_read_line()
+and bmp_write_line() together and expect to be able to read one line and
+write the other simultaneously. It would be nice if this was possible, but
+if you do it, your code won't work on single banked SVGA cards.<br /><br />
+
+And then there's mode-X. If you've never done any mode-X graphics coding,
+you probably won't understand this, but for those of you who want to know
+how Allegro sets up the mode-X screen bitmaps, here goes...<br /><br />
+
+The line pointers are still present, and they contain planar addresses, ie.
+the actual location at which you access the first pixel in the line. These
+addresses are guaranteed to be quad aligned, so you can just set the write
+plane, divide your x coordinate by four, and add it to the line pointer. For
+example, a mode-X putpixel is:
+<pre class="code">   <span class="k1">void</span> modex_putpixel<span class="k2">(</span>BITMAP <span class="k3">*</span>b, <span class="k1">int</span> x, <span class="k1">int</span> y, <span class="k1">int</span> color<span class="k2">)</span>
+   <span class="k2">{</span>
+      <a href="http://www.delorie.com/djgpp/doc/libc/libc_610.html" target="_blank">outportw</a><span class="k2">(</span><span class="n">0x3C4</span>, <span class="k2">(</span><span class="n">0x100</span><span class="k3">&lt;</span><span class="k3">&lt;</span><span class="k2">(</span>x<span class="k3">&amp;</span><span class="n">3</span><span class="k2">)</span><span class="k2">)</span><span class="k3">|</span><span class="n">2</span><span class="k2">)</span><span class="k2">;</span>
+      bmp_select<span class="k2">(</span>bmp<span class="k2">)</span><span class="k2">;</span>
+      bmp_write8<span class="k2">(</span><span class="k2">(</span><span class="k1">unsigned</span> <span class="k1">long</span><span class="k2">)</span>bmp-&gt;line<span class="k2">[</span>y<span class="k2">]</span><span class="k3">+</span><span class="k2">(</span>x&gt;&gt;2<span class="k2">)</span>, color<span class="k2">)</span><span class="k2">;</span>
+   <span class="k2">}</span></pre><br /><br />
+
+Oh yeah: the DJGPP nearptr hack. Personally I don't like this very much
+because it disables memory protection and isn't portable to other platforms,
+but a lot of people swear by it because it can give you direct access to the
+screen memory via a normal C pointer. Warning: this method will only work
+with the DJGPP library, when using VGA 13h or a linear framebuffer modes!<br /><br />
+
+In your setup code:
+<pre class="code">   <span class="p">#include &lt;sys/nearptr.h&gt;</span><br /><br />
+
+   <span class="k1">unsigned</span> <span class="k1">char</span> <span class="k3">*</span>screenmemory<span class="k2">;</span>
+   <span class="k1">unsigned</span> <span class="k1">long</span> screen_base_addr<span class="k2">;</span><br /><br />
+
+   <a href="#" target="_blank">__djgpp_nearptr_enable</a><span class="k2">(</span><span class="k2">)</span><span class="k2">;</span><br /><br />
+
+   __dpmi_get_segment_base_address<span class="k2">(</span>screen-&gt;seg, <span class="k3">&amp;</span>screen_base_addr<span class="k2">)</span><span class="k2">;</span><br /><br />
+
+   screenmemory <span class="k3">=</span> <span class="k2">(</span><span class="k1">unsigned</span> <span class="k1">char</span> <span class="k3">*</span><span class="k2">)</span><span class="k2">(</span>screen_base_addr <span class="k3">+</span>
+				    screen-&gt;line<span class="k2">[</span><span class="n">0</span><span class="k2">]</span> <span class="k3">-</span>
+				    __djgpp_base_address<span class="k2">)</span><span class="k2">;</span></pre>
+Then:
+<pre class="code">   <span class="k1">void</span> nearptr_putpixel<span class="k2">(</span><span class="k1">int</span> x, <span class="k1">int</span> y, <span class="k1">int</span> color<span class="k2">)</span>
+   <span class="k2">{</span>
+      screenmemory<span class="k2">[</span>x <span class="k3">+</span> y<span class="k3">*</span>VIRTUAL_W<span class="k2">]</span> <span class="k3">=</span> color<span class="k2">;</span>
+   <span class="k2">}</span></pre>
+
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,170</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.774034</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/direct-access-to-video-memory/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:51:38 GMT -->
+</html>

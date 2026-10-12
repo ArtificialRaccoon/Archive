@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/using-allegro/get_desktop_resolution by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:12:10 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>get_desktop_resolution</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Using Allegro</a></h2><ul>
+<li><a href="install_allegro.html" >install_allegro</a></li><li><a href="allegro_init.html" style="font-weight: bold">allegro_init</a></li><li><a href="allegro_exit.html" style="font-weight: bold">allegro_exit</a></li><li><a href="end_of_main.html" style="font-weight: bold">END_OF_MAIN</a></li><li><a href="allegro_id.html" >allegro_id</a></li><li><a href="allegro_error.html" style="font-weight: bold">allegro_error</a></li><li><a href="allegro_version.html" >ALLEGRO_VERSION</a></li><li><a href="allegro_sub_version.html" >ALLEGRO_SUB_VERSION</a></li><li><a href="allegro_wip_version.html" >ALLEGRO_WIP_VERSION</a></li><li><a href="allegro_version_str.html" >ALLEGRO_VERSION_STR</a></li><li><a href="allegro_date_str.html" >ALLEGRO_DATE_STR</a></li><li><a href="allegro_date.html" >ALLEGRO_DATE</a></li><li><a href="al_id.html" >AL_ID</a></li><li><a href="make_version.html" >MAKE_VERSION</a></li><li><a href="os_type.html" >os_type</a></li><li><a href="os_version.html" >os_version</a></li><li><a href="os_revision.html" >os_revision</a></li><li><a href="os_multitasking.html" >os_multitasking</a></li><li><a href="allegro_message.html" style="font-weight: bold">allegro_message</a></li><li><a href="set_window_title.html" style="font-weight: bold">set_window_title</a></li><li><a href="set_close_button_callback.html" style="font-weight: bold">set_close_button_callback</a></li><li><a href="desktop_color_depth.html" style="font-weight: bold">desktop_color_depth</a></li><li><strong>get_desktop_resolution</strong></li><li><a href="check_cpu.html" >check_cpu</a></li><li><a href="cpu_vendor.html" >cpu_vendor</a></li><li><a href="cpu_family.html" >cpu_family</a></li><li><a href="cpu_model.html" >cpu_model</a></li><li><a href="cpu_capabilities.html" >cpu_capabilities</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>get_desktop_resolution</h1>
+
+<div class="shortdesc">
+Finds out the desktop resolution.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">int</span> <a href="../../index.html" target="_blank"><span class="a">get_desktop_resolution</span></a><span class="k2">(</span><span class="k1">int</span> <span class="k3">*</span>width, <span class="k1">int</span> <span class="k3">*</span>height<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Finds out the currently selected desktop resolution. You can use this
+   information to avoid creating windows bigger than the current resolution.
+   This is especially important for some windowed drivers which are unable
+   to create windows bigger than the desktop. Each parameter is a pointer
+   to an integer where one dimension of the screen will be stored.<br /><br />
+
+   Under some OSes, switching to a full screen graphics mode may automatically
+   change the desktop resolution. You have, therefore, to call this function
+   before setting any graphics mode in order to retrieve the real desktop
+   resolution. Example:
+<pre class="code">      <span class="k1">int</span> width, height<span class="k2">;</span><br /><br />
+
+      <a href="../../index.html" target="_blank"><span class="a">allegro_init</span></a><span class="k2">(</span><span class="k2">)</span><span class="k2">;</span>
+      ...
+      <span class="k1">if</span> <span class="k2">(</span><a href="../../index.html" target="_blank"><span class="a">get_desktop_resolution</span></a><span class="k2">(</span><span class="k3">&amp;</span>width, <span class="k3">&amp;</span>height<span class="k2">)</span> <span class="k3">=</span><span class="k3">=</span> <span class="n">0</span><span class="k2">)</span> <span class="k2">{</span>
+	 <span class="c">/* Got the resolution correctly */</span>
+      <span class="k2">}</span></pre>
+
+</div>
+
+<div class="retval">
+Returns zero on success, or a negative number if this information is not
+   available or does not apply, in which case the values stored in the
+   variables you provided for `width' and `height' are undefined.
+
+</div>
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">desktop_color_depth</a></li>
+	<li><a href="../../index.html">set_gfx_mode</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591389">
+		<a href="https://www.allegro.cc/forums/thread/591389">GFX_AUTODETECT_WINDOWED+maximize</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/672119" style="color: black;">1</a> </span>
+	</li><li id="t-563694">
+		<a href="https://www.allegro.cc/forums/thread/563694">[Linux] Mouse speed</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/563942" style="color: black;">1</a> </span>
+	</li><li id="t-561415">
+		<a href="https://www.allegro.cc/forums/thread/561415">Problems displaying Allegro&#39;s global variables</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/561415" style="color: black;">1</a> </span>
+	</li><li id="t-561300">
+		<a href="https://www.allegro.cc/forums/thread/561300">Allegro on Nokia 770</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/561689" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/Aggression">Aggression</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/ChromaPlas">ChromaPlas</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/domin">domin</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/TransitMania">Transit Mania</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/Trichromic">Trichromic</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/CrystalStacker">Crystal Stacker</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/Rafkill">Rafkill</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/RedPixel">Red Pixel</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/StarControlTimeWarp">Star Control: TimeWarp</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/TW-Light">TW-Light</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,237</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.010766</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/using-allegro/get_desktop_resolution by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:12:10 GMT -->
+</html>

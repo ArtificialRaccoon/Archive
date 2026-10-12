@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/DRS.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC DRS</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">DRS</A></H2></H2><BLOCKQUOTE> The Dirty Rectangle Syste (DRS) screen update driver.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>DRS
+- <A HREF="DoubleBuffer.html">DoubleBuffer</A>
+- <A HREF="ScreenUpdate.html">ScreenUpdate</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.47.3">Redraw</A></B>()
+<DD><I> Paints the screen by going through the dirty rectangles list, blitting them to the screen and removing them from the list</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.47.4">RequiresFullRedraw</A></B>()
+<DD><I> DRS obviously doesn't require the screen to be redrawn every frame so this functions returns false</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.47.5">InvalidateRect</A></B>(const <!1><A HREF="Rect.html">Rect</A>&amp; <!1><A HREF="Color.html#DOC.8.17">r</A>)
+<DD><I> Attempts to add a rectangle to the dirty rectangles list.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>std::list&lt;<!1><A HREF="Rect.html">Rect</A>&gt;  <B><A HREF="#DOC.47.1">rectlist</A></B>
+<DD><I> The actual list of dirty rectangles</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Rect.html">Rect</A>* <B><A HREF="#DOC.47.2">CanAdd</A></B>(const <!1><A HREF="Rect.html">Rect</A>&amp; <!1><A HREF="Color.html#DOC.8.17">r</A>)
+<DD><I> Checks whether a rectangle can safely be added to the dirty list without inducing overdraw.</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+The Dirty Rectangle Syste (DRS) screen update driver.
+DRS is similar to normal double buffering except that it doesn't blit the
+entire buffer to the screen every frame but instead keeps a list of rectangles
+that have been chaged since the last update (dirty rectangles) and only
+blits them. This means that when only a small portion of the screen changes
+there is little or no overdaraw which in turn means that for applications where
+most of the screen is static most of the time (like most utility programs,
+editors, etc.) this is by far the fastest screen update method often producing
+thousands of "frames" per second. However when large portions of the screen
+or even the entire screen is updated all the time (like in most games) this
+driver is no faster than regular double buffering. In fact it might even be
+very slightly slower.</BLOCKQUOTE>
+<DL>
+
+<A NAME="rectlist"></A>
+<A NAME="DOC.47.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>std::list&lt;<!1><A HREF="Rect.html">Rect</A>&gt;  rectlist</B></TT>
+<DD>
+The actual list of dirty rectangles
+<DL><DT><DD></DL><P>
+<A NAME="CanAdd"></A>
+<A NAME="DOC.47.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Rect.html">Rect</A>* CanAdd(const <!1><A HREF="Rect.html">Rect</A>&amp; <!1><A HREF="Color.html#DOC.8.17">r</A>)</B></TT>
+<DD>
+Checks whether a rectangle can safely be added to the dirty list
+without inducing overdraw. It returns a pointer to the rectangle that
+is in the way of the recatangle being added if it finds one, NULL
+otherwise.
+<DL><DT><DD></DL><P>
+<A NAME="Redraw"></A>
+<A NAME="DOC.47.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Redraw()</B></TT>
+<DD>
+Paints the screen
+by going through the dirty rectangles list, blitting them to the screen
+and removing them from the list
+<DL><DT><DD></DL><P>
+<A NAME="RequiresFullRedraw"></A>
+<A NAME="DOC.47.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool RequiresFullRedraw()</B></TT>
+<DD>
+DRS obviously doesn't require the screen to be redrawn every frame
+so this functions returns false
+<DL><DT><DD></DL><P>
+<A NAME="InvalidateRect"></A>
+<A NAME="DOC.47.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void InvalidateRect(const <!1><A HREF="Rect.html">Rect</A>&amp; <!1><A HREF="Color.html#DOC.8.17">r</A>)</B></TT>
+<DD>
+Attempts to add a rectangle to the dirty rectangles list.
+If there is	already another rectangle in the way it splits the rectangle
+being added into smaller rectangles and recursively invalidates them
+instead thus preventing parts of the screen to be drawn more than once.
+<DL><DT><DD></DL><P></DL>
+<HR>
+<DL><DT><B>Direct child classes:
+</B><DD><A HREF="GLDriverDRS.html">GLDriverDRS</A><BR>
+</DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/DRS.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+</html>

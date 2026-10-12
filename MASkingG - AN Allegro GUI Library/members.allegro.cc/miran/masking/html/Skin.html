@@ -1,0 +1,1028 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Skin.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC Skin</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">Skin</A></H2></H2><BLOCKQUOTE> The skin class.</BLOCKQUOTE>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   const int <B><A HREF="#DOC.98.1">nBitmaps</A></B>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   const int <B><A HREF="#DOC.98.2">nCursors</A></B>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   const int <B><A HREF="#DOC.98.3">nFonts</A></B>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   const int <B><A HREF="#DOC.98.4">nSamples</A></B>
+<DD><I> Number of skin data elements.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   const int <B><A HREF="#DOC.98.5">nBitmapsEx</A></B>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   const int <B><A HREF="#DOC.98.6">nCursorsEx</A></B>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   const int <B><A HREF="#DOC.98.7">nFontsEx</A></B>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   const int <B><A HREF="#DOC.98.8">nSamplesEx</A></B>
+<DD><I> Sizes of data arrays.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.98.49">c_face</A></B>
+<DD><I> default color for boxes, menus, etc</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.98.50">c_font</A></B>
+<DD><I> default text color</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.98.51">c_shad1</A></B>
+<DD><I> the lighter shade of the colors used for 3D effects</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.98.52">c_shad2</A></B>
+<DD><I> the darker shade of the shadow colors</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.98.53">c_disable</A></B>
+<DD><I> the font color for disabled objects</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.98.54">c_select</A></B>
+<DD><I> the face color for selected objects</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.98.55">c_deselect</A></B>
+<DD><I> the default color for buttons, etc</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.98.56">c_focus</A></B>
+<DD><I> the face color for objects that have the input focus</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.98.57">c_sunken</A></B>
+<DD><I> the color for the sunken panel (for lists, edit boxes, etc)</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.98.58">c_back</A></B>
+<DD><I> the default desktop color</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.98.59">fnt</A></B>[nInfoItems][4]
+<DD><I> indices into the array of fonts</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.98.60">fcol</A></B>[nInfoItems][4]
+<DD><I> the primary text colors</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.98.61">scol</A></B>[nInfoItems][4]
+<DD><I> the secondary (shadow) text colors</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.98.62">focus</A></B>
+<DD><I> How input focus follows the mouse.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.98.63">drawDots</A></B>
+<DD><I> Should widgets draw dotted rectangles?</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.98.64">wallpaperStyle</A></B>
+<DD><I> the default style of the wallpaper widget</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.98.65">buttonDisplacement</A></B>
+<DD><I> the displacement of the button text when selected (in pixels)</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.98.66">buttonAnimationType</A></B>
+<DD><I> the type of animation used for buttons, checkboxes, etc</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.98.67">buttonAnimationLength</A></B>
+<DD><I> the length of animation in miliseconds</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.98.68">boxX</A></B>
+<DD><I> x offset of the group box title</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.98.69">boxY</A></B>
+<DD><I> y offset of the group box title</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.98.70">boxAlign</A></B>
+<DD><I> alignment of the box title text (left, right, centre)</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.98.71">boxBack</A></B>
+<DD><I> the background color of the group box title text (-1 is transparent)</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Point.html">Point</A> <B><A HREF="#DOC.98.72">winTextPos</A></B>
+<DD><I> the position of the title text</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Point.html">Point</A> <B><A HREF="#DOC.98.73">winExitPos</A></B>
+<DD><I> the position of the exit icon</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Point.html">Point</A> <B><A HREF="#DOC.98.74">winMaxPos</A></B>
+<DD><I> the position of the maximize icon</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Point.html">Point</A> <B><A HREF="#DOC.98.75">winMinPos</A></B>
+<DD><I> the position of the minimize icon</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.98.76">winTextAlign</A></B>
+<DD><I> alignment of the title text</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.98.77">winTextBack</A></B>
+<DD><I> true if the title text has a background false otherwise</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.98.78">winAnimationType</A></B>
+<DD><I> the type of animation used to popup a window</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.98.79">winAnimationLength</A></B>
+<DD><I> the length of animation in miliseconds</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.98.80">comboAnimationType</A></B>
+<DD><I> the type of animation used for the list</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.98.81">comboAnimationLength</A></B>
+<DD><I> the length of list animation in miliseconds</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.98.82">menuHeight</A></B>
+<DD><I> the height of one menu entry</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.98.83">menuDelay</A></B>
+<DD><I> the menu auto-open delay in miliseconds</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.98.84">menuAnimationType</A></B>
+<DD><I> the type of menu animation</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.98.85">menuAnimationLength</A></B>
+<DD><I> the length of menu animation in miliseconds</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.98.86">tooltipBack</A></B>
+<DD><I> the background colour for tooltips (pale yellow by default)</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.98.87">tooltipBorder</A></B>
+<DD><I> the border colour for tooltips (black by default)</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.98.88">tooltipAnimationType</A></B>
+<DD><I> the tooltip animation type</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.98.89">tooltipAnimationLength</A></B>
+<DD><I> the tooltip animation length</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.98.29">Skin</A></B>(const char* fileName)
+<DD><I> Default constructor.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   <!1><A HREF="Error.html">Error</A> <B><A HREF="#DOC.98.30">Load</A></B>(const char* file)
+<DD><I> Attempts to load a skin configuration file.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.98.31">Reload</A></B>()
+<DD><I> Attempts to reload the skin from the file that was last loaded</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.98.32">Unload</A></B>()
+<DD><I> Unloads the skin.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.98.33">Reset</A></B>()
+<DD><I> Resets all skin data to default values.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Error.html">Error</A> <B><A HREF="#DOC.98.34">GetError</A></B>()
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Bitmap.html">Bitmap</A>&amp; <B><A HREF="#DOC.98.35">GetBitmap</A></B>(int i) const 
+<DD><I> Returns the bitmap from slot i of the bitmap array</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Cursor.html">Cursor</A>&amp; <B><A HREF="#DOC.98.36">GetCursor</A></B>(int i) const 
+<DD><I> Returns the cursor from slot i of the cursor array</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Font.html">Font</A>&amp; <B><A HREF="#DOC.98.37">GetFont</A></B>(int i) const 
+<DD><I> Returns the font from slot i of the font array</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Sample.html">Sample</A>&amp; <B><A HREF="#DOC.98.38">GetSample</A></B>(int i) const 
+<DD><I> Returns the sample from slot i of the sample array</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Error.html">Error</A> <B><A HREF="#DOC.98.39">LoadBitmap</A></B>(const char* file, int i)
+<DD><I> Attempts to load a bitmap from a file on disk into slot i of the bitmap array.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Error.html">Error</A> <B><A HREF="#DOC.98.40">LoadCursor</A></B>(const char* file, int i, int n = 1, int <!1><A HREF="Cursor.html#DOC.12.9">interval</A> = 20)
+<DD><I> The same as LoadBitmap() only this function loads mouse pointers.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Error.html">Error</A> <B><A HREF="#DOC.98.41">LoadFont</A></B>(const char* file, int i, int <!1><A HREF="Rect.html#DOC.88.14">size</A> = 10)
+<DD><I> Attempts to load a font into the font array.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Error.html">Error</A> <B><A HREF="#DOC.98.42">LoadSample</A></B>(const char* file, int i)
+<DD><I> Loads a sample in WAV or VOC format into the sample array</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.98.43">SetBitmap</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A>&amp; <!1><A HREF="Color.html#DOC.8.19">b</A>, int i, bool copy = false)
+<DD><I> Uploads the passed Bitmap into the bitmap array.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.98.44">SetCursor</A></B>(<!1><A HREF="Cursor.html">Cursor</A>&amp; c, int i)
+<DD><I> Like SetBitmap() only this one uploads a mouse cursor</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.98.45">SetFont</A></B>(<!1><A HREF="Font.html">Font</A>&amp; f, int i)
+<DD><I> Uploads the passed font into the font array.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.98.46">SetSample</A></B>(<!1><A HREF="Sample.html">Sample</A>&amp; s, int i, bool copy = false)
+<DD><I> Like SetBitmap() only this one is for sound samples</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.98.47">PlaySample</A></B>(int i)
+<DD><I> Attempts to play the sample in slot i of the sample array.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.98.48">Colorize</A></B>(const <!1><A HREF="Color.html">Color</A> &amp;<!1><A HREF="Color.html#DOC.8.1">col</A>, int alpha)
+<DD><I> Reloads the skin and colorizes all the bitmaps to the specified color.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Public Members</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>enum  <B><A HREF="#DOC.98.9">SkinBitmapIndex</A></B>
+<DD><I> Bitmap indices.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>enum  <B><A HREF="#DOC.98.10">SkinCursorIndex</A></B>
+<DD><I> Cursor indices.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>enum  <B><A HREF="#DOC.98.11">SkinSampleIndex</A></B>
+<DD><I> Sample indices.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>enum  <B><A HREF="#DOC.98.12">SkinFontInfo</A></B>
+<DD><I> Font and color array indices.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>enum  <B><A HREF="#DOC.98.13">SkinWidgetState</A></B>
+<DD><I> Object states.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>std::vector&lt;<!1><A HREF="Bitmap.html">Bitmap</A> *&gt;  <B><A HREF="#DOC.98.14">bmpList</A></B>
+<DD><I> The array of bitmaps that are used to skin the dialog objects</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>std::vector&lt;<!1><A HREF="Cursor.html">Cursor</A> *&gt;  <B><A HREF="#DOC.98.15">curList</A></B>
+<DD><I> The array of cursors used by the skin</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>std::vector&lt;<!1><A HREF="Font.html">Font</A> *&gt;  <B><A HREF="#DOC.98.16">fntList</A></B>
+<DD><I> The array of fonts that can be used in the skin</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>std::vector&lt;<!1><A HREF="Sample.html">Sample</A> *&gt;  <B><A HREF="#DOC.98.17">smpList</A></B>
+<DD><I> The array of samples that are used by the skin</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>char* <B><A HREF="#DOC.98.18">skinFilePath</A></B>
+<DD><I> Path to the file the skin was loaded from.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   <!1><A HREF="Error.html">Error</A> <B><A HREF="#DOC.98.19">LoadData</A></B>(const char* file)
+<DD><I> Attempts to load all the skin bitmaps from a regular Allegro datafile.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   <!1><A HREF="Error.html">Error</A> <B><A HREF="#DOC.98.20">LoadCursors</A></B>(const char* file)
+<DD><I> Attempts to load the cursors in the same way as LoadData()</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   <!1><A HREF="Error.html">Error</A> <B><A HREF="#DOC.98.21">LoadSamples</A></B>(const char* file)
+<DD><I> Attempts to load the samples in the same way as LoadData()</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.98.22">GenerateDefaultBitmaps</A></B>()
+<DD><I> Generate default skin bitmaps for all the dialog objects.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.98.23">GenerateDefaultBitmap</A></B>(int i)
+<DD><I> Generates the default bitmap in slot i of the bitmap array</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.98.24">GenerateDefaultSamples</A></B>()
+<DD><I> Destroys all samples and generates default empty ones</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.98.25">GenerateDefaultCursors</A></B>()
+<DD><I> Destroys all existing cursors and sets them to the default Allegro arrow</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.98.26">GenerateDefaultFonts</A></B>()
+<DD><I> Sets all the fonts in the font array to the default Allegro font</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.98.27">ResetColors</A></B>()
+<DD><I> Resets the default skin colors to the default values (a grayish green theme)</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.98.28">ResetControls</A></B>()
+<DD><I> Resets all the extra object info to default values</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+The skin class.
+Used to store all the data that descriebes a skin: bitmaps, fonts, cursors, colors, etc.</BLOCKQUOTE>
+<DL>
+
+<A NAME="nBitmaps"></A>
+<A NAME="DOC.98.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   const int nBitmaps</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="nCursors"></A>
+<A NAME="DOC.98.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   const int nCursors</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="nFonts"></A>
+<A NAME="DOC.98.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   const int nFonts</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="nSamples"></A>
+<A NAME="DOC.98.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   const int nSamples</B></TT>
+<DD>
+Number of skin data elements.
+These define the number of bitmaps, cursors, fonts and samples in a
+skin datafile:
+<PRE>
+      nBitmaps = 46;
+      nCursors = 12;
+      nFonts = 8;
+      nSamples = 7;
+      nInfoItems = 13;
+</PRE>
+<DL><DT><DD></DL><P>
+<A NAME="nBitmapsEx"></A>
+<A NAME="DOC.98.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   const int nBitmapsEx</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="nCursorsEx"></A>
+<A NAME="DOC.98.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   const int nCursorsEx</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="nFontsEx"></A>
+<A NAME="DOC.98.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   const int nFontsEx</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="nSamplesEx"></A>
+<A NAME="DOC.98.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   const int nSamplesEx</B></TT>
+<DD>
+Sizes of data arrays.
+These are the sizes of the bitmap, cursor, font and sample vectors.
+The skin itself doesn't use the entire vectors, so all the space
+above nBitmaps, nCursors, nFonts and nSamples in their respective
+arrays can be used by the user. The array sizes are:
+<PRE>
+      nBitmapsEx = 1024;
+      nCursorsEx = 64;
+      nFontsEx = 64;
+      nSamplesEx = 1024;
+</PRE>
+<DL><DT><DD></DL><P>
+<A NAME="SkinBitmapIndex"></A>
+<A NAME="DOC.98.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>enum  SkinBitmapIndex</B></TT>
+<DD>
+Bitmap indices.
+These are the indices of the skin bitmaps in the datafile and the
+skins bitmap array. The possible values are as follows:
+<PRE>
+      BOX
+      BOX_SHADOW
+      BUTTON
+      CHECKBOX
+      CLEAR_BACK
+      COMBO_BUTTON
+      HSLIDER_BACK
+      HSLIDER_GRIP
+      ICONEXIT
+      ICONMAX
+      ICONMIN
+      ICONRESTORE
+      LIST
+      MENU_BACK
+      MENU_BUTTON
+      MENU_ITEM
+      PANEL_GROOVE
+      PANEL_RAISED
+      PANEL_RIDGE
+      PANEL_SUNKEN
+      PROGRESSH
+      PROGRESSV
+      RADIO
+      SCROLL_DOWN
+      SCROLL_HBACK
+      SCROLL_HGRIP
+      SCROLL_HGRIPOVERLAY
+      SCROLL_LEFT
+      SCROLL_RIGHT
+      SCROLL_UP
+      SCROLL_VBACK
+      SCROLL_VGRIP
+      SCROLL_VGRIPOVERLAY
+      SEPARATORH
+      SEPARATORV
+      TAB_BUTTON
+      TAB_WINDOW
+      VSLIDER_BACK
+      VSLIDER_GRIP
+      WINBOTTOM
+      WINDOW
+      WINGRIP
+      WINLEFT
+      WINRIGHT
+      WINTEXT
+      WINTOP
+      XTRA_PALETTE
+</PRE>
+The last entry is the palette that is to be used for 8 bit mode.
+<DL><DT><DD></DL><P>
+<A NAME="SkinCursorIndex"></A>
+<A NAME="DOC.98.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>enum  SkinCursorIndex</B></TT>
+<DD>
+Cursor indices.
+These are the indices of the cursor bitmaps in the cursor datafile
+and the cursor array. Possible values are as follows:
+<PRE>
+      MOUSE_ALTERNATIVE
+      MOUSE_CROSSHAIR
+      MOUSE_HOURGLASS
+      MOUSE_MOVE
+      MOUSE_NORMAL
+      MOUSE_SELECT
+      MOUSE_SIZE_DIAGONAL1
+      MOUSE_SIZE_DIAGONAL2
+      MOUSE_SIZE_HORIZONTAL
+      MOUSE_SIZE_VERTICAL
+      MOUSE_TEXTSELECT
+      MOUSE_UNAVAILABLE
+</PRE>
+<DL><DT><DD></DL><P>
+<A NAME="SkinSampleIndex"></A>
+<A NAME="DOC.98.11"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>enum  SkinSampleIndex</B></TT>
+<DD>
+Sample indices.
+These are the indices of the sound samples in the sample datafile
+and the sample array. Possible values are as follows:
+<PRE>
+      SAMPLE_ACTIVATE
+      SAMPLE_CLOSE
+      SAMPLE_GOTFOCUS
+      SAMPLE_KEY
+      SAMPLE_LOSTFOCUS
+      SAMPLE_OPEN
+      SAMPLE_SCROLL
+</PRE>
+<DL><DT><DD></DL><P>
+<A NAME="SkinFontInfo"></A>
+<A NAME="DOC.98.12"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>enum  SkinFontInfo</B></TT>
+<DD>
+Font and color array indices.
+These are the indices into the font and font color arrays within the
+skin for each widget. Possible values are as follows:
+<PRE>
+      INFO_BOX
+      INFO_BUTTON
+      INFO_CHECKBOX
+      INFO_RADIO
+      INFO_LIST
+      INFO_WINDOW
+      INFO_MENU
+      INFO_TEXT
+      INFO_EDITBOX
+      INFO_BAR
+      INFO_HYPER
+      INFO_TAB
+      INFO_TOOLTIP
+</PRE>
+<DL><DT><DD></DL><P>
+<A NAME="SkinWidgetState"></A>
+<A NAME="DOC.98.13"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>enum  SkinWidgetState</B></TT>
+<DD>
+Object states.
+These are the possible states each dialog object can be in. Every
+object can have a different font and font color for each of these
+states. Most of the skin bitmaps are divided into four subbitmaps,
+one for each state. The possible states are as follows:
+<PRE>
+      NORMAL              - the normal idle state
+      SELECT              - the widget is selected
+      DISABLE             - the widget is disabled
+      FOCUS               - the widget has input focus
+</PRE>
+<DL><DT><DD></DL><P>
+<A NAME="bmpList"></A>
+<A NAME="DOC.98.14"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>std::vector&lt;<!1><A HREF="Bitmap.html">Bitmap</A> *&gt;  bmpList</B></TT>
+<DD>
+The array of bitmaps that are used to skin the dialog objects
+<DL><DT><DD></DL><P>
+<A NAME="curList"></A>
+<A NAME="DOC.98.15"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>std::vector&lt;<!1><A HREF="Cursor.html">Cursor</A> *&gt;  curList</B></TT>
+<DD>
+The array of cursors used by the skin
+<DL><DT><DD></DL><P>
+<A NAME="fntList"></A>
+<A NAME="DOC.98.16"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>std::vector&lt;<!1><A HREF="Font.html">Font</A> *&gt;  fntList</B></TT>
+<DD>
+The array of fonts that can be used in the skin
+<DL><DT><DD></DL><P>
+<A NAME="smpList"></A>
+<A NAME="DOC.98.17"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>std::vector&lt;<!1><A HREF="Sample.html">Sample</A> *&gt;  smpList</B></TT>
+<DD>
+The array of samples that are used by the skin
+<DL><DT><DD></DL><P>
+<A NAME="skinFilePath"></A>
+<A NAME="DOC.98.18"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>char* skinFilePath</B></TT>
+<DD>
+Path to the file the skin was loaded from.
+The skin saves the path to the skin file that was loaded in this
+string. This allows the skin to be reloaded later if necessary.
+<DL><DT><DD></DL><P>
+<A NAME="LoadData"></A>
+<A NAME="DOC.98.19"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   <!1><A HREF="Error.html">Error</A> LoadData(const char* file)</B></TT>
+<DD>
+Attempts to load all the skin bitmaps from a regular Allegro datafile.
+If some bitmaps are missing old ones stay untouched.
+<DL><DT><DD></DL><P>
+<A NAME="LoadCursors"></A>
+<A NAME="DOC.98.20"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   <!1><A HREF="Error.html">Error</A> LoadCursors(const char* file)</B></TT>
+<DD>
+Attempts to load the cursors in the same way as LoadData()
+<DL><DT><DD></DL><P>
+<A NAME="LoadSamples"></A>
+<A NAME="DOC.98.21"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   <!1><A HREF="Error.html">Error</A> LoadSamples(const char* file)</B></TT>
+<DD>
+Attempts to load the samples in the same way as LoadData()
+<DL><DT><DD></DL><P>
+<A NAME="GenerateDefaultBitmaps"></A>
+<A NAME="DOC.98.22"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void GenerateDefaultBitmaps()</B></TT>
+<DD>
+Generate default skin bitmaps for all the dialog objects. These are
+extremely ugly and shouldn't be viewed by anyone :) This function only
+fails if it runs out of memory (unlikely).
+<DL><DT><DD></DL><P>
+<A NAME="GenerateDefaultBitmap"></A>
+<A NAME="DOC.98.23"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void GenerateDefaultBitmap(int i)</B></TT>
+<DD>
+Generates the default bitmap in slot i of the bitmap array
+<DL><DT><DD></DL><P>
+<A NAME="GenerateDefaultSamples"></A>
+<A NAME="DOC.98.24"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void GenerateDefaultSamples()</B></TT>
+<DD>
+Destroys all samples and generates default empty ones
+<DL><DT><DD></DL><P>
+<A NAME="GenerateDefaultCursors"></A>
+<A NAME="DOC.98.25"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void GenerateDefaultCursors()</B></TT>
+<DD>
+Destroys all existing cursors and sets them to the default Allegro arrow
+<DL><DT><DD></DL><P>
+<A NAME="GenerateDefaultFonts"></A>
+<A NAME="DOC.98.26"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void GenerateDefaultFonts()</B></TT>
+<DD>
+Sets all the fonts in the font array to the default Allegro font
+<DL><DT><DD></DL><P>
+<A NAME="ResetColors"></A>
+<A NAME="DOC.98.27"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void ResetColors()</B></TT>
+<DD>
+Resets the default skin colors to the default values (a grayish green theme)
+<DL><DT><DD></DL><P>
+<A NAME="ResetControls"></A>
+<A NAME="DOC.98.28"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void ResetControls()</B></TT>
+<DD>
+Resets all the extra object info to default values
+<DL><DT><DD></DL><P>
+<A NAME="Skin"></A>
+<A NAME="DOC.98.29"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> Skin(const char* fileName)</B></TT>
+<DD>
+Default constructor.
+Load the skin from a file. If the filename is NULL or reads "default",
+then the default skin is generated instead of trying to load from a file.
+The path must be an absolute one (as opposed to being relative)
+<DL><DT><DD></DL><P>
+<A NAME="Load"></A>
+<A NAME="DOC.98.30"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   <!1><A HREF="Error.html">Error</A> Load(const char* file)</B></TT>
+<DD>
+Attempts to load a skin configuration file.
+If the file exists it tries to read every possible bit of skin information.
+If some data is missing it applies default values. This means that the old
+skin is lost even if the file you're trying to load isn't a valid skin file.
+Load() will also try to load the bitmaps, fonts, samples and cursors.
+
+<P>The file path you specify must be an absolute path. If you pass a relative
+path, the function may fail.
+<DL><DT><DD></DL><P>
+<A NAME="Reload"></A>
+<A NAME="DOC.98.31"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Reload()</B></TT>
+<DD>
+Attempts to reload the skin from the file that was last loaded
+<DL><DT><DD></DL><P>
+<A NAME="Unload"></A>
+<A NAME="DOC.98.32"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Unload()</B></TT>
+<DD>
+Unloads the skin.
+Frees all memory allocated for bitmaps, cursors, fonts and samples and unloads all
+loaded datafiles. This is called by the destructor so you normally don't have to
+care about it.
+<DL><DT><DD></DL><P>
+<A NAME="Reset"></A>
+<A NAME="DOC.98.33"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Reset()</B></TT>
+<DD>
+Resets all skin data to default values.
+This includes bitmaps, fonts, cursors, colors, etc.
+
+<P>Note: all user bitmaps, cursors and fonts will be lost too.
+<DL><DT><DD></DL><P>
+<A NAME="GetError"></A>
+<A NAME="DOC.98.34"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Error.html">Error</A> GetError()</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="GetBitmap"></A>
+<A NAME="DOC.98.35"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Bitmap.html">Bitmap</A>&amp; GetBitmap(int i) const </B></TT>
+<DD>
+Returns the bitmap from slot i of the bitmap array
+<DL><DT><DD></DL><P>
+<A NAME="GetCursor"></A>
+<A NAME="DOC.98.36"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Cursor.html">Cursor</A>&amp; GetCursor(int i) const </B></TT>
+<DD>
+Returns the cursor from slot i of the cursor array
+<DL><DT><DD></DL><P>
+<A NAME="GetFont"></A>
+<A NAME="DOC.98.37"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Font.html">Font</A>&amp; GetFont(int i) const </B></TT>
+<DD>
+Returns the font from slot i of the font array
+<DL><DT><DD></DL><P>
+<A NAME="GetSample"></A>
+<A NAME="DOC.98.38"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Sample.html">Sample</A>&amp; GetSample(int i) const </B></TT>
+<DD>
+Returns the sample from slot i of the sample array
+<DL><DT><DD></DL><P>
+<A NAME="LoadBitmap"></A>
+<A NAME="DOC.98.39"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Error.html">Error</A> LoadBitmap(const char* file, int i)</B></TT>
+<DD>
+Attempts to load a bitmap from a file on disk into slot i of the bitmap array.
+This is usefull if you don't want to load your bitmaps from a regular Allegro
+datafile or if you want to load additional bitmaps for some of your own widgets.
+You can use as many slots in the bitmap array as defined here. The skin itself
+uses nBitmaps slots so all the slots above that are at your disposal.
+
+<P>The bitmap has to be either in BMP, PCX or TGA format. Even if the new bitmap
+can't be loaded the old one may be destroyed.
+<DL><DT><DD></DL><P>
+<A NAME="LoadCursor"></A>
+<A NAME="DOC.98.40"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Error.html">Error</A> LoadCursor(const char* file, int i, int n = 1, int <!1><A HREF="Cursor.html#DOC.12.9">interval</A> = 20)</B></TT>
+<DD>
+The same as LoadBitmap() only this function loads mouse pointers. Pointers are
+stored on disk as bitmaps in either BMP, PCX or TGA format. You must use the
+Cursor::SetFocus() function to set your newly loaded cursor's focus point. The
+optional parameters are the number of frames and the interval between frames in
+miliseconds. They are relevant only if you're loading an animated cursor.
+<DL><DT><DD></DL><P>
+<A NAME="LoadFont"></A>
+<A NAME="DOC.98.41"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Error.html">Error</A> LoadFont(const char* file, int i, int <!1><A HREF="Rect.html#DOC.88.14">size</A> = 10)</B></TT>
+<DD>
+Attempts to load a font into the font array. The last parameter is the size
+(height) of the font that you are loading. Filename can be either relative or
+absolute path to the font. If the font can't be found MASkinG will look into your
+windows/fonts directory if it can find it. See Allegro Font documentation for a
+list of supported font formats.
+<DL><DT><DD></DL><P>
+<A NAME="LoadSample"></A>
+<A NAME="DOC.98.42"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Error.html">Error</A> LoadSample(const char* file, int i)</B></TT>
+<DD>
+Loads a sample in WAV or VOC format into the sample array
+<DL><DT><DD></DL><P>
+<A NAME="SetBitmap"></A>
+<A NAME="DOC.98.43"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetBitmap(<!1><A HREF="Bitmap.html">Bitmap</A>&amp; <!1><A HREF="Color.html#DOC.8.19">b</A>, int i, bool copy = false)</B></TT>
+<DD>
+Uploads the passed Bitmap into the bitmap array. The bitmap is loaded into slot i
+of the array by either making a link to it (a pointer) or by copying the actual
+data. If you make a copy you don't have to deal with destroying the data when it
+is no longer needed as the skin will do it for you but if you just set a pointer
+(the default) you have to destroy the bitmap yourself when you're done with your
+program.
+<DL><DT><DD></DL><P>
+<A NAME="SetCursor"></A>
+<A NAME="DOC.98.44"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetCursor(<!1><A HREF="Cursor.html">Cursor</A>&amp; c, int i)</B></TT>
+<DD>
+Like SetBitmap() only this one uploads a mouse cursor
+<DL><DT><DD></DL><P>
+<A NAME="SetFont"></A>
+<A NAME="DOC.98.45"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetFont(<!1><A HREF="Font.html">Font</A>&amp; f, int i)</B></TT>
+<DD>
+Uploads the passed font into the font array. It destroys the old font if it is
+different form the Allegro font. This function is a little different from SetBitmap()
+and SetCursor() as it can't copy the font, it just sets a pointer to the font data.
+This means you must make sure the font you pass to this function remains valid for
+the duration of the skin (i.e. you mustn't destroy it or close the datafile if it
+was loaded from one).
+<DL><DT><DD></DL><P>
+<A NAME="SetSample"></A>
+<A NAME="DOC.98.46"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetSample(<!1><A HREF="Sample.html">Sample</A>&amp; s, int i, bool copy = false)</B></TT>
+<DD>
+Like SetBitmap() only this one is for sound samples
+<DL><DT><DD></DL><P>
+<A NAME="PlaySample"></A>
+<A NAME="DOC.98.47"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void PlaySample(int i)</B></TT>
+<DD>
+Attempts to play the sample in slot i of the sample array.
+If any instances of the same sample are already playing they are stopped.
+<DL><DT><DD></DL><P>
+<A NAME="Colorize"></A>
+<A NAME="DOC.98.48"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Colorize(const <!1><A HREF="Color.html">Color</A> &amp;<!1><A HREF="Color.html#DOC.8.1">col</A>, int alpha)</B></TT>
+<DD>
+Reloads the skin and colorizes all the bitmaps to the specified color.
+Alpha determines by how much the hue will shift towards the destination color.
+It's range is [0,255]. 0 will keep the bitmaps unchanged, 255 will colorize
+the bitmaps completely, any other value between 0 and 255 will let the original
+colours show through a bit.
+<DL><DT><DD></DL><P>
+<A NAME="c_face"></A>
+<A NAME="DOC.98.49"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Color.html">Color</A> c_face</B></TT>
+<DD>
+default color for boxes, menus, etc
+<DL><DT><DD></DL><P>
+<A NAME="c_font"></A>
+<A NAME="DOC.98.50"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Color.html">Color</A> c_font</B></TT>
+<DD>
+default text color
+<DL><DT><DD></DL><P>
+<A NAME="c_shad1"></A>
+<A NAME="DOC.98.51"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Color.html">Color</A> c_shad1</B></TT>
+<DD>
+the lighter shade of the colors used for 3D effects
+<DL><DT><DD></DL><P>
+<A NAME="c_shad2"></A>
+<A NAME="DOC.98.52"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Color.html">Color</A> c_shad2</B></TT>
+<DD>
+the darker shade of the shadow colors
+<DL><DT><DD></DL><P>
+<A NAME="c_disable"></A>
+<A NAME="DOC.98.53"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Color.html">Color</A> c_disable</B></TT>
+<DD>
+the font color for disabled objects
+<DL><DT><DD></DL><P>
+<A NAME="c_select"></A>
+<A NAME="DOC.98.54"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Color.html">Color</A> c_select</B></TT>
+<DD>
+the face color for selected objects
+<DL><DT><DD></DL><P>
+<A NAME="c_deselect"></A>
+<A NAME="DOC.98.55"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Color.html">Color</A> c_deselect</B></TT>
+<DD>
+the default color for buttons, etc
+<DL><DT><DD></DL><P>
+<A NAME="c_focus"></A>
+<A NAME="DOC.98.56"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Color.html">Color</A> c_focus</B></TT>
+<DD>
+the face color for objects that have the input focus
+<DL><DT><DD></DL><P>
+<A NAME="c_sunken"></A>
+<A NAME="DOC.98.57"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Color.html">Color</A> c_sunken</B></TT>
+<DD>
+the color for the sunken panel (for lists, edit boxes, etc)
+<DL><DT><DD></DL><P>
+<A NAME="c_back"></A>
+<A NAME="DOC.98.58"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Color.html">Color</A> c_back</B></TT>
+<DD>
+the default desktop color
+
+<P>These colors are primarily used when no skin has been loaded from disk
+or some bitmaps were missing. They may be used by MASkinG widgets as well
+so every skin file has to specify them. If it doesn't then defaults are used.
+<DL><DT><DD></DL><P>
+<A NAME="fnt"></A>
+<A NAME="DOC.98.59"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int fnt[nInfoItems][4]</B></TT>
+<DD>
+indices into the array of fonts
+<DL><DT><DD></DL><P>
+<A NAME="fcol"></A>
+<A NAME="DOC.98.60"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Color.html">Color</A> fcol[nInfoItems][4]</B></TT>
+<DD>
+the primary text colors
+<DL><DT><DD></DL><P>
+<A NAME="scol"></A>
+<A NAME="DOC.98.61"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Color.html">Color</A> scol[nInfoItems][4]</B></TT>
+<DD>
+the secondary (shadow) text colors
+
+<P>These three arrays hold the font, color and shadow information for each widget
+for each state. Actually only info for objects that require it is stored. The
+possible states of objects are: normal, selected, disabled and focused.
+<DL><DT><DD></DL><P>
+<A NAME="focus"></A>
+<A NAME="DOC.98.62"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int focus</B></TT>
+<DD>
+How input focus follows the mouse.
+Possible values are:
+<PRE>
+      0 - objects will get focus when the mouse is on top of them and loose it
+          as soon as they loose the mouse
+      1 - objects get focus when they get the mouse but they can hold it until
+          another object takes it away
+      2 - focus will not follow the mouse, i.e. you have to click on an
+          object for it to get focus (like in Windows)
+</PRE>
+Default is 1.
+<DL><DT><DD></DL><P>
+<A NAME="drawDots"></A>
+<A NAME="DOC.98.63"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int drawDots</B></TT>
+<DD>
+Should widgets draw dotted rectangles?
+If set to 1, objects that have the input focus should draw a dotted rectangle
+around themselves.
+<DL><DT><DD></DL><P>
+<A NAME="wallpaperStyle"></A>
+<A NAME="DOC.98.64"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int wallpaperStyle</B></TT>
+<DD>
+the default style of the wallpaper widget
+<DL><DT><DD></DL><P>
+<A NAME="buttonDisplacement"></A>
+<A NAME="DOC.98.65"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int buttonDisplacement</B></TT>
+<DD>
+the displacement of the button text when selected (in pixels)
+<DL><DT><DD></DL><P>
+<A NAME="buttonAnimationType"></A>
+<A NAME="DOC.98.66"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int buttonAnimationType</B></TT>
+<DD>
+the type of animation used for buttons, checkboxes, etc
+<DL><DT><DD></DL><P>
+<A NAME="buttonAnimationLength"></A>
+<A NAME="DOC.98.67"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int buttonAnimationLength</B></TT>
+<DD>
+the length of animation in miliseconds
+<DL><DT><DD></DL><P>
+<A NAME="boxX"></A>
+<A NAME="DOC.98.68"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int boxX</B></TT>
+<DD>
+x offset of the group box title
+<DL><DT><DD></DL><P>
+<A NAME="boxY"></A>
+<A NAME="DOC.98.69"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int boxY</B></TT>
+<DD>
+y offset of the group box title
+<DL><DT><DD></DL><P>
+<A NAME="boxAlign"></A>
+<A NAME="DOC.98.70"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int boxAlign</B></TT>
+<DD>
+alignment of the box title text (left, right, centre)
+<DL><DT><DD></DL><P>
+<A NAME="boxBack"></A>
+<A NAME="DOC.98.71"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Color.html">Color</A> boxBack</B></TT>
+<DD>
+the background color of the group box title text (-1 is transparent)
+<DL><DT><DD></DL><P>
+<A NAME="winTextPos"></A>
+<A NAME="DOC.98.72"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Point.html">Point</A> winTextPos</B></TT>
+<DD>
+the position of the title text
+<DL><DT><DD></DL><P>
+<A NAME="winExitPos"></A>
+<A NAME="DOC.98.73"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Point.html">Point</A> winExitPos</B></TT>
+<DD>
+the position of the exit icon
+<DL><DT><DD></DL><P>
+<A NAME="winMaxPos"></A>
+<A NAME="DOC.98.74"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Point.html">Point</A> winMaxPos</B></TT>
+<DD>
+the position of the maximize icon
+<DL><DT><DD></DL><P>
+<A NAME="winMinPos"></A>
+<A NAME="DOC.98.75"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Point.html">Point</A> winMinPos</B></TT>
+<DD>
+the position of the minimize icon
+<DL><DT><DD></DL><P>
+<A NAME="winTextAlign"></A>
+<A NAME="DOC.98.76"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int winTextAlign</B></TT>
+<DD>
+alignment of the title text
+<DL><DT><DD></DL><P>
+<A NAME="winTextBack"></A>
+<A NAME="DOC.98.77"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int winTextBack</B></TT>
+<DD>
+true if the title text has a background false otherwise
+<DL><DT><DD></DL><P>
+<A NAME="winAnimationType"></A>
+<A NAME="DOC.98.78"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int winAnimationType</B></TT>
+<DD>
+the type of animation used to popup a window
+<DL><DT><DD></DL><P>
+<A NAME="winAnimationLength"></A>
+<A NAME="DOC.98.79"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int winAnimationLength</B></TT>
+<DD>
+the length of animation in miliseconds
+<DL><DT><DD></DL><P>
+<A NAME="comboAnimationType"></A>
+<A NAME="DOC.98.80"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int comboAnimationType</B></TT>
+<DD>
+the type of animation used for the list
+<DL><DT><DD></DL><P>
+<A NAME="comboAnimationLength"></A>
+<A NAME="DOC.98.81"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int comboAnimationLength</B></TT>
+<DD>
+the length of list animation in miliseconds
+<DL><DT><DD></DL><P>
+<A NAME="menuHeight"></A>
+<A NAME="DOC.98.82"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int menuHeight</B></TT>
+<DD>
+the height of one menu entry
+<DL><DT><DD></DL><P>
+<A NAME="menuDelay"></A>
+<A NAME="DOC.98.83"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int menuDelay</B></TT>
+<DD>
+the menu auto-open delay in miliseconds
+<DL><DT><DD></DL><P>
+<A NAME="menuAnimationType"></A>
+<A NAME="DOC.98.84"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int menuAnimationType</B></TT>
+<DD>
+the type of menu animation
+<DL><DT><DD></DL><P>
+<A NAME="menuAnimationLength"></A>
+<A NAME="DOC.98.85"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int menuAnimationLength</B></TT>
+<DD>
+the length of menu animation in miliseconds
+<DL><DT><DD></DL><P>
+<A NAME="tooltipBack"></A>
+<A NAME="DOC.98.86"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Color.html">Color</A> tooltipBack</B></TT>
+<DD>
+the background colour for tooltips (pale yellow by default)
+<DL><DT><DD></DL><P>
+<A NAME="tooltipBorder"></A>
+<A NAME="DOC.98.87"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Color.html">Color</A> tooltipBorder</B></TT>
+<DD>
+the border colour for tooltips (black by default)
+<DL><DT><DD></DL><P>
+<A NAME="tooltipAnimationType"></A>
+<A NAME="DOC.98.88"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int tooltipAnimationType</B></TT>
+<DD>
+the tooltip animation type
+<DL><DT><DD></DL><P>
+<A NAME="tooltipAnimationLength"></A>
+<A NAME="DOC.98.89"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int tooltipAnimationLength</B></TT>
+<DD>
+the tooltip animation length
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Skin.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+</html>

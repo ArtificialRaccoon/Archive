@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/mouse-routines/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:41:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Mouse routines</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">API</a></h2><ul>
+<li><a href="../using-allegro/index.html" >Using Allegro</a></li><li><a href="../structures-and-types-defined-by-allegro/index.html" >Structures and types defined by Allegro</a></li><li><a href="../unicode-routines/index.html" >Unicode routines</a></li><li><a href="../configuration-routines/index.html" >Configuration routines</a></li><li><strong>Mouse routines</strong></li><li><a href="../timer-routines/index.html" >Timer routines</a></li><li><a href="../keyboard-routines/index.html" >Keyboard routines</a></li><li><a href="../joystick-routines/index.html" >Joystick routines</a></li><li><a href="../graphics-modes/index.html" >Graphics modes</a></li><li><a href="../bitmap-objects/index.html" >Bitmap objects</a></li><li><a href="../loading-image-files/index.html" >Loading image files</a></li><li><a href="../palette-routines/index.html" >Palette routines</a></li><li><a href="../truecolor-pixel-formats/index.html" >Truecolor pixel formats</a></li><li><a href="../drawing-primitives/index.html" >Drawing primitives</a></li><li><a href="../blitting-and-sprites/index.html" >Blitting and sprites</a></li><li><a href="../rle-sprites/index.html" >RLE sprites</a></li><li><a href="../compiled-sprites/index.html" >Compiled sprites</a></li><li><a href="../fonts/index.html" >Fonts</a></li><li><a href="../text-output/index.html" >Text output</a></li><li><a href="../polygon-rendering/index.html" >Polygon rendering</a></li><li><a href="../transparency-and-patterned-drawing/index.html" >Transparency and patterned drawing</a></li><li><a href="../converting-between-color-formats/index.html" >Converting between color formats</a></li><li><a href="../direct-access-to-video-memory/index.html" >Direct access to video memory</a></li><li><a href="../flic-routines/index.html" >FLIC routines</a></li><li><a href="../sound-init-routines/index.html" >Sound init routines</a></li><li><a href="../mixer-routines/index.html" >Mixer routines</a></li><li><a href="../digital-sample-routines/index.html" >Digital sample routines</a></li><li><a href="../music-routines-(midi)/index.html" >Music routines (MIDI)</a></li><li><a href="../audio-stream-routines/index.html" >Audio stream routines</a></li><li><a href="../recording-routines/index.html" >Recording routines</a></li><li><a href="../file-and-compression-routines/index.html" >File and compression routines</a></li><li><a href="../datafile-routines/index.html" >Datafile routines</a></li><li><a href="../fixed-point-math-routines/index.html" >Fixed point math routines</a></li><li><a href="../3d-math-routines/index.html" >3D math routines</a></li><li><a href="../quaternion-math-routines/index.html" >Quaternion math routines</a></li><li><a href="../gui-routines/index.html" >GUI routines</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>Mouse routines</h1>
+
+Allegro provides functions for reading the mouse state and displaying a mouse
+cursor on-screen. You can read the absolute position of the mouse and the
+state of the mouse buttons from global variables. Additionally, you can read
+the mouse position difference as mouse mickeys, which is the number of pixels
+the cursor moved since the last time this information was read.<br /><br />
+
+Allegro offers three ways to display the mouse cursor:
+<ul><li>
+Standard Allegro cursor<br>
+   Allegro is responsible for drawing the mouse cursor from a timer. Use
+   set_mouse_sprite() and show_mouse() to define your own cursor and display
+   it on the screen.
+   You need to call scare_mouse()/unscare_mouse() to hide the mouse cursor
+   whenever you draw to the screen.
+<li>
+Custom operating system cursor (hardware cursor)<br>
+   Allegro will let the operating system draw the mouse cursor. Use
+   set_mouse_sprite() and show_mouse() (or show_os_cursor) to define your
+   own cursor and display it on the screen. Not all graphics drivers are
+   capable of this and some may only be able to display cursors upto a
+   certain size. Allegro will fall back on its own cursor drawing if it
+   cannot let the OS handle this. On some platforms, the hardware cursor
+   is incompatible with get_mouse_mickeys() and it is therefor disabled by
+   default. In such cases you need to call enable_hardware_cursor() to
+   enable it explicitly.
+<li>
+Default operating system cursor<br>
+   Allegro will not draw its own cursor, but use the operating system default
+   cursor. You can use the select_mouse_cursor() function to select the cursor
+   shape to display. As with custom operating system cursors, you need to call
+   enable_hardware_cursor() before you can use this. Or you can use the
+   low level show_os_cursor() function.
+</ul>
+Not all drivers will support all functionality. See the platform specific
+information for more details.
+
+<ul>
+	<li><a href="install_mouse.html">install_mouse</a> - Installs the Allegro mouse handler.</li>
+	<li><a href="remove_mouse.html">remove_mouse</a> - Removes the mouse handler.</li>
+	<li><a href="poll_mouse.html">poll_mouse</a> - Polls the mouse.</li>
+	<li><a href="mouse_needs_poll.html">mouse_needs_poll</a> - Tells if the mouse driver requires polling.</li>
+	<li><a href="enable_hardware_cursor.html">enable_hardware_cursor</a> - Enables the OS hardware cursor.</li>
+	<li><a href="disable_hardware_cursor.html">disable_hardware_cursor</a> - Disables the OS hardware cursor.</li>
+	<li><a href="select_mouse_cursor.html">select_mouse_cursor</a> - Tells Allegro to select software or hardware cursor drawing.</li>
+	<li><a href="set_mouse_cursor_bitmap.html">set_mouse_cursor_bitmap</a> - Changes the image Allegro uses for mouse cursors.</li>
+	<li><a href="mouse_x.html">mouse_x</a></li>
+	<li><a href="mouse_y.html">mouse_y</a></li>
+	<li><a href="mouse_z.html">mouse_z</a></li>
+	<li><a href="mouse_b.html">mouse_b</a></li>
+	<li><a href="mouse_pos.html">mouse_pos</a> - Global variable with the mouse position/button state.</li>
+	<li><a href="mouse_sprite.html">mouse_sprite</a></li>
+	<li><a href="mouse_x_focus.html">mouse_x_focus</a></li>
+	<li><a href="mouse_y_focus.html">mouse_y_focus</a> - Global variable with the mouse sprite and focus point.</li>
+	<li><a href="show_mouse.html">show_mouse</a> - Tells Allegro to display a mouse pointer on the screen.</li>
+	<li><a href="scare_mouse.html">scare_mouse</a> - Helper for hiding the mouse pointer before drawing.</li>
+	<li><a href="scare_mouse_area.html">scare_mouse_area</a> - Helper for hiding the mouse cursor before drawing in an area.</li>
+	<li><a href="unscare_mouse.html">unscare_mouse</a> - Undoes the effect of scare_mouse() or scare_mouse_area().</li>
+	<li><a href="show_os_cursor.html">show_os_cursor</a> - Low level function to display the operating system cursor.</li>
+	<li><a href="freeze_mouse_flag.html">freeze_mouse_flag</a> - Flag to avoid redrawing the mouse pointer.</li>
+	<li><a href="position_mouse.html">position_mouse</a> - Moves the mouse to the specified screen position.</li>
+	<li><a href="position_mouse_z.html">position_mouse_z</a> - Sets the mouse wheel position global variable.</li>
+	<li><a href="set_mouse_range.html">set_mouse_range</a> - Sets the area of the screen restricting mouse movement.</li>
+	<li><a href="set_mouse_speed.html">set_mouse_speed</a> - Sets the mouse speed.</li>
+	<li><a href="set_mouse_sprite.html">set_mouse_sprite</a> - Sets the mouse sprite.</li>
+	<li><a href="set_mouse_sprite_focus.html">set_mouse_sprite_focus</a> - Sets the mouse sprite focus.</li>
+	<li><a href="get_mouse_mickeys.html">get_mouse_mickeys</a> - How far the mouse has moved since the last call to this function.</li>
+	<li><a href="mouse_callback.html">mouse_callback</a> - User specified mouse callback.</li>
+</ul>
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,164</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>77.765867</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/mouse-routines/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:41:40 GMT -->
+</html>

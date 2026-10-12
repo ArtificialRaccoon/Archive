@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/joystick-routines/install_joystick by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:16:27 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>install_joystick</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Joystick routines</a></h2><ul>
+<li><strong>install_joystick</strong></li><li><a href="remove_joystick.html" >remove_joystick</a></li><li><a href="poll_joystick.html" style="font-weight: bold">poll_joystick</a></li><li><a href="num_joysticks.html" style="font-weight: bold">num_joysticks</a></li><li><a href="joy.html" style="font-weight: bold">joy</a></li><li><a href="calibrate_joystick_name.html" >calibrate_joystick_name</a></li><li><a href="calibrate_joystick.html" >calibrate_joystick</a></li><li><a href="save_joystick_data.html" >save_joystick_data</a></li><li><a href="load_joystick_data.html" >load_joystick_data</a></li><li><a href="initialise_joystick.html" >initialise_joystick</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>install_joystick</h1>
+
+<div class="shortdesc">
+Initialises the joystick.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">int</span> <a href="../../index.html" target="_blank"><span class="a">install_joystick</span></a><span class="k2">(</span><span class="k1">int</span> type<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Installs Allegro's joystick handler, and calibrates the centre position
+   values. The type parameter should usually be JOY_TYPE_AUTODETECT, or see
+   the platform specific documentation for a list of the available drivers.
+   You must call this routine before using any other joystick functions, and
+   you should make sure that all joysticks are in the middle position at the
+   time. Example:
+<pre class="code">      <a href="../../index.html" target="_blank"><span class="a">textout_centre_ex</span></a><span class="k2">(</span><a href="../../index.html" target="_blank"><span class="a">screen</span></a>, <a href="../../index.html" target="_blank"><span class="a">font</span></a>,
+			<span class="s">"Center the joystick and press a key"</span>,
+			<a href="../../index.html" target="_blank"><span class="a">SCREEN_W</span></a><span class="k3">/</span><span class="n">2</span>, <a href="../../index.html" target="_blank"><span class="a">SCREEN_H</span></a><span class="k3">/</span><span class="n">2</span>, red_color, <span class="k3">-</span><span class="n">1</span><span class="k2">)</span><span class="k2">;</span>
+      <a href="../../index.html" target="_blank"><span class="a">readkey</span></a><span class="k2">(</span><span class="k2">)</span><span class="k2">;</span>
+      <span class="k1">if</span> <span class="k2">(</span><a href="../../index.html" target="_blank"><span class="a">install_joystick</span></a><span class="k2">(</span>JOY_TYPE_AUTODETECT<span class="k2">)</span> <span class="k3">!</span><span class="k3">=</span> <span class="n">0</span><span class="k2">)</span>
+	 abort_on_error<span class="k2">(</span><span class="s">"Error initialising joystick!"</span><span class="k2">)</span><span class="k2">;</span></pre>
+
+</div>
+
+<div class="retval">
+Returns zero on success. As soon as you have installed the joystick
+   module, you will be able to read the button state and digital (on/off
+   toggle) direction information, which may be enough for some games. If you
+   want to get full analogue input, though, you need to use the
+   calibrate_joystick() functions to measure the exact range of the inputs:
+   see below.
+
+</div>
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">remove_joystick</a></li>
+	<li><a href="../../index.html">num_joysticks</a></li>
+	<li><a href="../../index.html">load_joystick_data</a></li>
+	<li><a href="../../index.html">calibrate_joystick</a></li>
+	<li><a href="../../index.html">calibrate_joystick_name</a></li>
+	<li><a href="../../index.html">poll_joystick</a></li>
+	<li><a href="../../index.html">Standard config variables</a></li>
+	<li><a href="../../index.html">JOY_TYPE_*/DOS</a></li>
+	<li><a href="../../index.html">JOY_TYPE_*/Windows</a></li>
+	<li><a href="../../index.html">JOY_TYPE_*/Linux</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../index.html">exjoy</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591493">
+		<a href="https://www.allegro.cc/forums/thread/591493">Transition effects</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/673904" style="color: black;">1</a> </span>
+	</li><li id="t-591290">
+		<a href="https://www.allegro.cc/forums/thread/591290">Allegro Joystick Axes messed up.. help</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/670387" style="color: black;">1</a> </span>
+	</li><li id="t-588013">
+		<a href="https://www.allegro.cc/forums/thread/588013">AllegroGL and Intel chipsets.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/619970" style="color: black;">1</a> </span>
+	</li><li id="t-586613">
+		<a href="https://www.allegro.cc/forums/thread/586613">[GL] Masked sprite in 16 bits.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/601801" style="color: black;">1</a> </span>
+	</li><li id="t-586334">
+		<a href="https://www.allegro.cc/forums/thread/586334">AllegroGL (or OpenGL?) set_gfx_mode crash. Hardware problem?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/597038" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/MachineBall">Machine Ball</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/Sokoban">Sokoban</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/AlextheAllegator3">Alex the Allegator 3</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/DrLovepeace">Dr Lovepeace</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/DrStrange">Dr. Strange</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/FlashFlood">Flash Flood</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/Humphrey">Humphrey</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/PurpleMartians">Purple Martians</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/Stax">Stax</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/SwordofFargoalremake">Sword of Fargoal remake</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,434</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.013927</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/joystick-routines/install_joystick by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:16:33 GMT -->
+</html>

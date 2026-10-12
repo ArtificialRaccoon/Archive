@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/bitmap-objects/release_bitmap by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:17:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>release_bitmap</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Bitmap objects</a></h2><ul>
+<li><a href="screen.html" style="font-weight: bold">screen</a></li><li><a href="screen_w.html" style="font-weight: bold">SCREEN_W</a></li><li><a href="screen_h.html" style="font-weight: bold">SCREEN_H</a></li><li><a href="virtual_w.html" >VIRTUAL_W</a></li><li><a href="virtual_h.html" >VIRTUAL_H</a></li><li><a href="create_bitmap.html" style="font-weight: bold">create_bitmap</a></li><li><a href="create_bitmap_ex.html" style="font-weight: bold">create_bitmap_ex</a></li><li><a href="create_sub_bitmap.html" style="font-weight: bold">create_sub_bitmap</a></li><li><a href="create_video_bitmap.html" style="font-weight: bold">create_video_bitmap</a></li><li><a href="create_system_bitmap.html" >create_system_bitmap</a></li><li><a href="destroy_bitmap.html" style="font-weight: bold">destroy_bitmap</a></li><li><a href="lock_bitmap.html" >lock_bitmap</a></li><li><a href="bitmap_color_depth.html" style="font-weight: bold">bitmap_color_depth</a></li><li><a href="bitmap_mask_color.html" style="font-weight: bold">bitmap_mask_color</a></li><li><a href="is_same_bitmap.html" >is_same_bitmap</a></li><li><a href="is_planar_bitmap.html" >is_planar_bitmap</a></li><li><a href="is_linear_bitmap.html" >is_linear_bitmap</a></li><li><a href="is_memory_bitmap.html" >is_memory_bitmap</a></li><li><a href="is_screen_bitmap.html" >is_screen_bitmap</a></li><li><a href="is_video_bitmap.html" >is_video_bitmap</a></li><li><a href="is_system_bitmap.html" >is_system_bitmap</a></li><li><a href="is_sub_bitmap.html" >is_sub_bitmap</a></li><li><a href="acquire_bitmap.html" style="font-weight: bold">acquire_bitmap</a></li><li><strong>release_bitmap</strong></li><li><a href="acquire_screen.html" style="font-weight: bold">acquire_screen</a></li><li><a href="release_screen.html" style="font-weight: bold">release_screen</a></li><li><a href="set_clip_rect.html" >set_clip_rect</a></li><li><a href="get_clip_rect.html" >get_clip_rect</a></li><li><a href="add_clip_rect.html" >add_clip_rect</a></li><li><a href="set_clip_state.html" >set_clip_state</a></li><li><a href="get_clip_state.html" >get_clip_state</a></li><li><a href="is_inside_bitmap.html" >is_inside_bitmap</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>release_bitmap</h1>
+
+<div class="shortdesc">
+Releases a previously locked bitmap.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">void</span> <a href="../../index.html" target="_blank"><span class="a">release_bitmap</span></a><span class="k2">(</span><a href="../../index.html" target="_blank"><span class="a">BITMAP</span></a> <span class="k3">*</span>bmp<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Releases a bitmap that was previously locked by calling acquire_bitmap().
+   If the bitmap was locked multiple times, you must release it the same
+   number of times before it will truly be unlocked.
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">acquire_bitmap</a></li>
+	<li><a href="../../index.html">acquire_screen</a></li>
+	<li><a href="../../index.html">release_screen</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../index.html">ex3buf</a></li>
+	<li><a href="../../index.html">exaccel</a></li>
+	<li><a href="../../index.html">expat</a></li>
+	<li><a href="../../index.html">exquat</a></li>
+	<li><a href="../../index.html">exscroll</a></li>
+	<li><a href="../../index.html">exswitch</a></li>
+	<li><a href="../../index.html">exupdate</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591080">
+		<a href="https://www.allegro.cc/forums/thread/591080">A crash..</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/666966" style="color: black;">1</a> </span>
+	</li><li id="t-590940">
+		<a href="https://www.allegro.cc/forums/thread/590940">FPS-Locking with timer</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/664458" style="color: black;">1</a> </span>
+	</li><li id="t-590785">
+		<a href="https://www.allegro.cc/forums/thread/590785">Performance issues (Windows)</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/662764" style="color: black;">1</a> </span>
+	</li><li id="t-590316">
+		<a href="https://www.allegro.cc/forums/thread/590316">Page Flipping Problem - Flicker</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/654086" style="color: black;">1</a> </span>
+	</li><li id="t-590123">
+		<a href="https://www.allegro.cc/forums/thread/590123">textprintf_ex format modifiers</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/651354" style="color: black;">1</a> </span>
+	</li><li id="t-590019">
+		<a href="https://www.allegro.cc/forums/thread/590019">Menu Drawing is Tweaking Out! MEDIC!!</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/649179" style="color: black;">1</a> </span>
+	</li><li id="t-589913">
+		<a href="https://www.allegro.cc/forums/thread/589913">Fading</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/648084" style="color: black;">1</a> </span>
+	</li><li id="t-589857">
+		<a href="https://www.allegro.cc/forums/thread/589857">DevCpp Learning to profile with</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/646840" style="color: black;">1</a> </span>
+	</li><li id="t-589659">
+		<a href="https://www.allegro.cc/forums/thread/589659">Framerate questions</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/645047" style="color: black;">1</a> </span>
+	</li><li id="t-589627">
+		<a href="https://www.allegro.cc/forums/thread/589627">Fladimir&#39;s alpha blending routines</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/644387" style="color: black;">1</a> </span>
+	</li><li id="t-589396">
+		<a href="https://www.allegro.cc/forums/thread/589396">FPS locking is easy - not taking 100% CPU is hard</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/639750" style="color: black;">1</a> </span>
+	</li><li id="t-588839">
+		<a href="https://www.allegro.cc/forums/thread/588839">Windows mouse stops working in full screen</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/632339" style="color: black;">1</a> </span>
+	</li><li id="t-588297">
+		<a href="https://www.allegro.cc/forums/thread/588297">How to use acquire_bitmap</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/624183" style="color: black;">1</a> </span>
+	</li><li id="t-587130">
+		<a href="https://www.allegro.cc/forums/thread/587130">Hardware cursor enable / disable.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/607818" style="color: black;">1</a> </span>
+	</li><li id="t-586316">
+		<a href="https://www.allegro.cc/forums/thread/586316">optimisation problem</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/598316" style="color: black;">1</a> </span>
+	</li><li id="t-586266">
+		<a href="https://www.allegro.cc/forums/thread/586266">One last  question to answer all  my  questions</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/596226" style="color: black;">1</a> </span>
+	</li><li id="t-585764">
+		<a href="https://www.allegro.cc/forums/thread/585764">dirty rectangles</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/588819" style="color: black;">1</a> </span>
+	</li><li id="t-583544">
+		<a href="https://www.allegro.cc/forums/thread/583544">starfield - direct acces to video memory</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/583544" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/583664" style="color: black;">2</a> </span>
+	</li><li id="t-580811">
+		<a href="https://www.allegro.cc/forums/thread/580811">Greyscale-Filter is too slow. How to improve performance?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/580811" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/580855" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/581224" style="color: black;">3</a> </span>
+	</li><li id="t-569405">
+		<a href="https://www.allegro.cc/forums/thread/569405">STL Vector + sort</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/569428" style="color: black;">1</a> </span>
+	</li><li id="t-564396">
+		<a href="https://www.allegro.cc/forums/thread/564396">Triple Buffering in Full Screen</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/564396" style="color: black;">1</a> </span>
+	</li><li id="t-563590">
+		<a href="https://www.allegro.cc/forums/thread/563590">fblend fade with magic pink</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/563590" style="color: black;">1</a> </span>
+	</li><li id="t-554880">
+		<a href="https://www.allegro.cc/forums/thread/554880">Flicker with Fullscreen</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/554880" style="color: black;">1</a> </span>
+	</li><li id="t-554054">
+		<a href="https://www.allegro.cc/forums/thread/554054">More clearly explaining acquire_bitmap, and locking in general</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/554054" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/554072" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/554252" style="color: black;">3</a> <a href="https://www.allegro.cc/forums/post/554298" style="color: black;">4</a> </span>
+	</li><li id="t-552757">
+		<a href="https://www.allegro.cc/forums/thread/552757">Polygonal platformer</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/552857" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/Mahjongg">Mahjongg</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/SARC--SpadesArtificiallyReasonin">SARC -- Spades Artificially Reasoning Computer</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/Allefant">Allefant</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/ChromaPlas">ChromaPlas</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/FlashFlood">Flash Flood</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/Molefest">Molefest</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/TPong">TPong</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/Unborn">Unborn</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/AllegroSpriteEditor">Allegro Sprite Editor</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/Ashes">Ashes</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,487</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.012258</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/bitmap-objects/release_bitmap by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:17:03 GMT -->
+</html>

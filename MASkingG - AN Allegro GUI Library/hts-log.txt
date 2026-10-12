@@ -1,0 +1,45 @@
+HTTrack3.49-2+htsswf+htsjava launched on Mon, 13 Jan 2025 20:39:15 at http://members.allegro.cc/miran/masking/index.html +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" http://members.allegro.cc/miran/masking/index.html -O1 "C:\Archive\MASkingG - AN Allegro GUI Library" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+20:40:14	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/dialog.html (from members.allegro.cc/miran/masking/html/examples.html)
+20:40:14	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/widget.html (from members.allegro.cc/miran/masking/html/examples.html)
+20:40:14	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/panel.html (from members.allegro.cc/miran/masking/html/examples.html)
+20:40:14	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/window.html (from members.allegro.cc/miran/masking/html/examples.html)
+20:40:14	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/image.html (from members.allegro.cc/miran/masking/html/examples.html)
+20:40:14	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/timer.html (from members.allegro.cc/miran/masking/html/examples.html)
+20:40:14	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/settings.html (from members.allegro.cc/miran/masking/html/tutorial.html)
+20:40:14	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/clearscreen.html (from members.allegro.cc/miran/masking/html/changes.html)
+20:40:14	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/wallpaper.html (from members.allegro.cc/miran/masking/html/changes.html)
+20:40:14	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/label.html (from members.allegro.cc/miran/masking/html/changes.html)
+20:40:14	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/button.html (from members.allegro.cc/miran/masking/html/changes.html)
+20:40:14	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/groupbox.html (from members.allegro.cc/miran/masking/html/changes.html)
+20:40:14	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/editbox.html (from members.allegro.cc/miran/masking/html/changes.html)
+20:40:14	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/listbox.html (from members.allegro.cc/miran/masking/html/changes.html)
+20:40:14	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/combobox.html (from members.allegro.cc/miran/masking/html/changes.html)
+20:40:14	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/shortcut.html (from members.allegro.cc/miran/masking/html/changes.html)
+20:40:14	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/menu.html (from members.allegro.cc/miran/masking/html/changes.html)
+20:40:18	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/animator.html (from members.allegro.cc/miran/masking/html/changes.html)
+20:40:18	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/settingshtml (from members.allegro.cc/miran/masking/html/Dialog.html)
+20:40:18	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/ListViewhtml (from members.allegro.cc/miran/masking/html/ListBox.html)
+20:40:18	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/mouse.html (from members.allegro.cc/miran/masking/html/Widget.html)
+20:40:18	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/skin.html (from members.allegro.cc/miran/masking/html/Widget.html)
+20:40:18	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/fps.html (from members.allegro.cc/miran/masking/html/widgets.html)
+20:40:18	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/checkbox.html (from members.allegro.cc/miran/masking/html/widgets.html)
+20:40:18	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/radiobutton.html (from members.allegro.cc/miran/masking/html/widgets.html)
+20:40:18	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/hypertext.html (from members.allegro.cc/miran/masking/html/widgets.html)
+20:40:18	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/separator.html (from members.allegro.cc/miran/masking/html/widgets.html)
+20:40:18	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/progress.html (from members.allegro.cc/miran/masking/html/widgets.html)
+20:40:18	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/slider.html (from members.allegro.cc/miran/masking/html/widgets.html)
+20:40:18	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/spinbox.html (from members.allegro.cc/miran/masking/html/widgets.html)
+20:40:18	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/scroller.html (from members.allegro.cc/miran/masking/html/widgets.html)
+20:40:18	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/scrollbox.html (from members.allegro.cc/miran/masking/html/widgets.html)
+20:40:18	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/textarea.html (from members.allegro.cc/miran/masking/html/widgets.html)
+20:40:18	Error: 	"Not Found" (404) at link members.allegro.cc/miran/masking/html/tooltip.html (from members.allegro.cc/miran/masking/html/widgets.html)
+
+HTTrack Website Copier/3.49-2 mirror complete in 1 minutes 3 seconds : 176 links scanned, 141 files written (869999 bytes overall) [905994 bytes received at 14380 bytes/sec]
+(34 errors, 0 warnings, 0 messages)

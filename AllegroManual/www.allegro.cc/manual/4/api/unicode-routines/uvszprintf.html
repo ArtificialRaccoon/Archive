@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/unicode-routines/uvszprintf by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:15:41 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>uvszprintf</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Unicode routines</a></h2><ul>
+<li><a href="set_uformat.html" style="font-weight: bold">set_uformat</a></li><li><a href="get_uformat.html" >get_uformat</a></li><li><a href="register_uformat.html" >register_uformat</a></li><li><a href="set_ucodepage.html" >set_ucodepage</a></li><li><a href="need_uconvert.html" >need_uconvert</a></li><li><a href="uconvert_size.html" >uconvert_size</a></li><li><a href="do_uconvert.html" >do_uconvert</a></li><li><a href="uconvert.html" >uconvert</a></li><li><a href="uconvert_ascii.html" >uconvert_ascii</a></li><li><a href="uconvert_toascii.html" >uconvert_toascii</a></li><li><a href="empty_string.html" >empty_string</a></li><li><a href="ugetc.html" >ugetc</a></li><li><a href="ugetx.html" >ugetx</a></li><li><a href="ugetxc.html" >ugetxc</a></li><li><a href="usetc.html" style="font-weight: bold">usetc</a></li><li><a href="uwidth.html" >uwidth</a></li><li><a href="ucwidth.html" >ucwidth</a></li><li><a href="uisok.html" >uisok</a></li><li><a href="uoffset.html" >uoffset</a></li><li><a href="ugetat.html" >ugetat</a></li><li><a href="usetat.html" >usetat</a></li><li><a href="uinsert.html" >uinsert</a></li><li><a href="uremove.html" >uremove</a></li><li><a href="ustrsize.html" >ustrsize</a></li><li><a href="ustrsizez.html" >ustrsizez</a></li><li><a href="uwidth_max.html" >uwidth_max</a></li><li><a href="utolower.html" >utolower</a></li><li><a href="utoupper.html" >utoupper</a></li><li><a href="uisspace.html" >uisspace</a></li><li><a href="uisdigit.html" >uisdigit</a></li><li><a href="ustrdup.html" >ustrdup</a></li><li><a href="_ustrdup.html" >_ustrdup</a></li><li><a href="ustrcpy.html" >ustrcpy</a></li><li><a href="ustrzcpy.html" >ustrzcpy</a></li><li><a href="ustrcat.html" >ustrcat</a></li><li><a href="ustrzcat.html" >ustrzcat</a></li><li><a href="ustrlen.html" style="font-weight: bold">ustrlen</a></li><li><a href="ustrcmp.html" >ustrcmp</a></li><li><a href="ustrncpy.html" >ustrncpy</a></li><li><a href="ustrzncpy.html" >ustrzncpy</a></li><li><a href="ustrncat.html" >ustrncat</a></li><li><a href="ustrzncat.html" >ustrzncat</a></li><li><a href="ustrncmp.html" >ustrncmp</a></li><li><a href="ustricmp.html" >ustricmp</a></li><li><a href="ustrnicmp.html" >ustrnicmp</a></li><li><a href="ustrlwr.html" >ustrlwr</a></li><li><a href="ustrupr.html" >ustrupr</a></li><li><a href="ustrchr.html" >ustrchr</a></li><li><a href="ustrrchr.html" >ustrrchr</a></li><li><a href="ustrstr.html" >ustrstr</a></li><li><a href="ustrpbrk.html" >ustrpbrk</a></li><li><a href="ustrtok.html" >ustrtok</a></li><li><a href="ustrtok_r.html" >ustrtok_r</a></li><li><a href="uatof.html" >uatof</a></li><li><a href="ustrtol.html" >ustrtol</a></li><li><a href="ustrtod.html" >ustrtod</a></li><li><a href="ustrerror.html" >ustrerror</a></li><li><a href="usprintf.html" style="font-weight: bold">usprintf</a></li><li><a href="uszprintf.html" >uszprintf</a></li><li><a href="uvsprintf.html" >uvsprintf</a></li><li><strong>uvszprintf</strong></li></ul>
+</div>
+
+<div id="contents">
+<h1>uvszprintf</h1>
+
+<div class="shortdesc">
+Writes formatted data into a buffer, using size and variable arguments.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">int</span> <a href="../../index.html" target="_blank"><span class="a">uvszprintf</span></a><span class="k2">(</span><span class="k1">char</span> <span class="k3">*</span>buf, <span class="k1">int</span> size, <span class="k1">const</span> <span class="k1">char</span> <span class="k3">*</span>format, va_list args<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+This is like uszprintf(), but you pass the variable argument list
+   directly, instead of the arguments themselves. Example:
+<pre class="code">      <span class="p">#include &lt;stdarg.h&gt;</span><br /><br />
+
+      <span class="k1">void</span> log_message<span class="k2">(</span><span class="k1">const</span> <span class="k1">char</span> <span class="k3">*</span>format, ...<span class="k2">)</span>
+      <span class="k2">{</span>
+	 <span class="k1">char</span> buffer<span class="k2">[</span><span class="n">100</span><span class="k2">]</span><span class="k2">;</span>
+	 va_list parameters<span class="k2">;</span><br /><br />
+
+	 va_start<span class="k2">(</span>parameters, format<span class="k2">)</span><span class="k2">;</span>
+	 <a href="../../index.html" target="_blank"><span class="a">uvszprintf</span></a><span class="k2">(</span>buffer, <span class="k1">sizeof</span><span class="k2">(</span>buffer<span class="k2">)</span>, format, parameters<span class="k2">)</span><span class="k2">;</span>
+	 va_end<span class="k2">(</span>parameters<span class="k2">)</span><span class="k2">;</span><br /><br />
+
+	 append_buffer_to_logfile<span class="k2">(</span>log_name, buffer<span class="k2">)</span><span class="k2">;</span>
+	 send_buffer_to_other_networked_players<span class="k2">(</span>multicast_ip, buffer<span class="k2">)</span><span class="k2">;</span>
+	 and_also_print_it_on_the_screen<span class="k2">(</span>cool_font, buffer<span class="k2">)</span><span class="k2">;</span>
+      <span class="k2">}</span><br /><br />
+
+      <span class="k1">void</span> some_other_function<span class="k2">(</span><span class="k1">void</span><span class="k2">)</span>
+      <span class="k2">{</span>
+	 log_message<span class="k2">(</span><span class="s">"Hello %s, are you %d years old?\n"</span>, <span class="s">"Dave"</span>, <span class="n">25</span><span class="k2">)</span><span class="k2">;</span>
+      <span class="k2">}</span></pre>
+
+</div>
+
+<div class="retval">
+Returns the number of characters that would have been written without
+   eventual truncation (like with uvsprintf), not including the terminating
+   null character.
+
+</div>
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">uconvert</a></li>
+	<li><a href="../../index.html">uszprintf</a></li>
+	<li><a href="../../index.html">uvsprintf</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-563790">
+		<a href="https://www.allegro.cc/forums/thread/563790">Which type of output is faster</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/563806" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/KFixpal">KFixpal</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/ChromaPlas">ChromaPlas</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/Jezzball">Jezzball</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/FakeNES">FakeNES</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/KBall">KBall</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/PeaceFighter">PeaceFighter</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/Rafkill">Rafkill</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/RedPixel2">Red Pixel 2</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/StarControlTimeWarp">Star Control: TimeWarp</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/TW-Light">TW-Light</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,339</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.126009</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/unicode-routines/uvszprintf by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:15:41 GMT -->
+</html>

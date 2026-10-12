@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/ClearScreen.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC ClearScreen</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">ClearScreen</A></H2></H2><BLOCKQUOTE> ClearScreen is a very simple widget whose sole purpose is to clear the canvas to a certain colour</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>ClearScreen
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.6.5">SetColor</A></B>(const <!1><A HREF="Color.html">Color</A>&amp; <!1><A HREF="ClearScreen.html#DOC.6.1">col</A>)
+<DD><I> Sets the colour that is to be used to clear the canvas</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Color.html">Color</A>&amp; <B><A HREF="#DOC.6.6">GetColor</A></B>()
+<DD><I> Gets the colour that is to be used to clear the canvas</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.6.1">col</A></B>
+<DD><I> The background colour</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.6.2">MsgStart</A></B>()
+<DD><I> Resizes the widget to the parent's size when the dialog starts</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.6.3">MsgInitSkin</A></B>()
+<DD><I> Sets the default clear colour which is the background colour defined by the skin</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.6.4">Draw</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)
+<DD><I> Clears the canvas with the selected colour</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+ClearScreen is a very simple widget whose sole purpose is to clear the canvas to a certain colour</BLOCKQUOTE>
+<DL>
+
+<A NAME="col"></A>
+<A NAME="DOC.6.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Color.html">Color</A> col</B></TT>
+<DD>
+The background colour
+<DL><DT><DD></DL><P>
+<A NAME="MsgStart"></A>
+<A NAME="DOC.6.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgStart()</B></TT>
+<DD>
+Resizes the widget to the parent's size when the dialog starts
+<DL><DT><DD></DL><P>
+<A NAME="MsgInitSkin"></A>
+<A NAME="DOC.6.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgInitSkin()</B></TT>
+<DD>
+Sets the default clear colour which is the background colour defined by the skin
+<DL><DT><DD></DL><P>
+<A NAME="Draw"></A>
+<A NAME="DOC.6.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Draw(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)</B></TT>
+<DD>
+Clears the canvas with the selected colour
+<DL><DT><DD></DL><P>
+<A NAME="SetColor"></A>
+<A NAME="DOC.6.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetColor(const <!1><A HREF="Color.html">Color</A>&amp; <!1><A HREF="ClearScreen.html#DOC.6.1">col</A>)</B></TT>
+<DD>
+Sets the colour that is to be used to clear the canvas
+<DL><DT><DD></DL><P>
+<A NAME="GetColor"></A>
+<A NAME="DOC.6.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Color.html">Color</A>&amp; GetColor()</B></TT>
+<DD>
+Gets the colour that is to be used to clear the canvas
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/ClearScreen.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+</html>

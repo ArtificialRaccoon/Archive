@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/text-output/textout_ex by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:23:56 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>textout_ex</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Text output</a></h2><ul>
+<li><a href="font.html" style="font-weight: bold">font</a></li><li><a href="allegro_404_char.html" >allegro_404_char</a></li><li><a href="text_length.html" style="font-weight: bold">text_length</a></li><li><a href="text_height.html" style="font-weight: bold">text_height</a></li><li><strong>textout_ex</strong></li><li><a href="textout_centre_ex.html" style="font-weight: bold">textout_centre_ex</a></li><li><a href="textout_right_ex.html" >textout_right_ex</a></li><li><a href="textout_justify_ex.html" >textout_justify_ex</a></li><li><a href="textprintf_ex.html" style="font-weight: bold">textprintf_ex</a></li><li><a href="textprintf_centre_ex.html" style="font-weight: bold">textprintf_centre_ex</a></li><li><a href="textprintf_right_ex.html" >textprintf_right_ex</a></li><li><a href="textprintf_justify_ex.html" >textprintf_justify_ex</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>textout_ex</h1>
+
+<div class="shortdesc">
+Writes a string on a bitmap.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">void</span> <a href="../../index.html" target="_blank"><span class="a">textout_ex</span></a><span class="k2">(</span><a href="../../index.html" target="_blank"><span class="a">BITMAP</span></a> <span class="k3">*</span>bmp, <span class="k1">const</span> <a href="../../index.html" target="_blank"><span class="a">FONT</span></a> <span class="k3">*</span>f, <span class="k1">const</span> <span class="k1">char</span> <span class="k3">*</span>s, <span class="k1">int</span> x, <span class="k1">int</span> y, <span class="k1">int</span> color, <span class="k1">int</span> bg<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Writes the string `s' onto the bitmap at position x, y, using the
+   specified font, foreground color and background color. If the background
+   color is -1, then the text is written transparently. If the foreground
+   color is -1 and a color font is in use, it will be drawn using the colors
+   from the original font bitmap (the one you imported into the grabber
+   program), which allows multicolored text output. For high and true color
+   fonts, the foreground color is ignored and always treated as -1. Example:
+<pre class="code">      <span class="c">/* Show the program's version in blue letters. */</span>
+      <a href="../../index.html" target="_blank"><span class="a">textout_ex</span></a><span class="k2">(</span><a href="../../index.html" target="_blank"><span class="a">screen</span></a>, <a href="../../index.html" target="_blank"><span class="a">font</span></a>, <span class="s">"v4.2.0-beta2"</span>, <span class="n">10</span>, <span class="n">10</span>,
+		 <a href="../../index.html" target="_blank"><span class="a">makecol</span></a><span class="k2">(</span><span class="n">0</span>, <span class="n">0</span>, <span class="n">255</span><span class="k2">)</span>, <span class="k3">-</span><span class="n">1</span><span class="k2">)</span><span class="k2">;</span></pre>
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">font</a></li>
+	<li><a href="../../index.html">textout_centre_ex</a></li>
+	<li><a href="../../index.html">textout_right_ex</a></li>
+	<li><a href="../../index.html">textout_justify_ex</a></li>
+	<li><a href="../../index.html">textprintf_ex</a></li>
+	<li><a href="../../index.html">text_height</a></li>
+	<li><a href="../../index.html">text_length</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../index.html">Available Allegro examples</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591874">
+		<a href="https://www.allegro.cc/forums/thread/591874">Keyboard not responding to Input</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/678913" style="color: black;">1</a> </span>
+	</li><li id="t-591687">
+		<a href="https://www.allegro.cc/forums/thread/591687">sliding puck - air hockey game</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/676421" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/676502" style="color: black;">2</a> </span>
+	</li><li id="t-591636">
+		<a href="https://www.allegro.cc/forums/thread/591636">Printing tex on top of a bitmap image??</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/675814" style="color: black;">1</a> </span>
+	</li><li id="t-591568">
+		<a href="https://www.allegro.cc/forums/thread/591568">Displaying fonts</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/674836" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/674841" style="color: black;">2</a> </span>
+	</li><li id="t-591420">
+		<a href="https://www.allegro.cc/forums/thread/591420">Collision Detection</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/672704" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/674725" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/674749" style="color: black;">3</a> <a href="https://www.allegro.cc/forums/post/674898" style="color: black;">4</a> </span>
+	</li><li id="t-591373">
+		<a href="https://www.allegro.cc/forums/thread/591373">Tool Tip crash</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/671880" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/671907" style="color: black;">2</a> </span>
+	</li><li id="t-591350">
+		<a href="https://www.allegro.cc/forums/thread/591350">How to change font size?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/671417" style="color: black;">1</a> </span>
+	</li><li id="t-591065">
+		<a href="https://www.allegro.cc/forums/thread/591065">Problem creating a bitmap, and a class</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/666582" style="color: black;">1</a> </span>
+	</li><li id="t-590871">
+		<a href="https://www.allegro.cc/forums/thread/590871">Game Loops</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/663542" style="color: black;">1</a> </span>
+	</li><li id="t-590841">
+		<a href="https://www.allegro.cc/forums/thread/590841">Integer blitting (text output)</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/662783" style="color: black;">1</a> </span>
+	</li><li id="t-590525">
+		<a href="https://www.allegro.cc/forums/thread/590525">Allegro Crash...</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/657710" style="color: black;">1</a> </span>
+	</li><li id="t-590430">
+		<a href="https://www.allegro.cc/forums/thread/590430">How do I get a larger text size and different fonts?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/656668" style="color: black;">1</a> </span>
+	</li><li id="t-590316">
+		<a href="https://www.allegro.cc/forums/thread/590316">Page Flipping Problem - Flicker</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/654086" style="color: black;">1</a> </span>
+	</li><li id="t-590085">
+		<a href="https://www.allegro.cc/forums/thread/590085">My Game runs Slow on PIII Machine</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/652312" style="color: black;">1</a> </span>
+	</li><li id="t-590074">
+		<a href="https://www.allegro.cc/forums/thread/590074">Allegro in Dev-C++</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/650659" style="color: black;">1</a> </span>
+	</li><li id="t-590003">
+		<a href="https://www.allegro.cc/forums/thread/590003">urgh Conversion...</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/648960" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/648963" style="color: black;">2</a> </span>
+	</li><li id="t-589969">
+		<a href="https://www.allegro.cc/forums/thread/589969">Game Engine that conserves CPU</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/648521" style="color: black;">1</a> </span>
+	</li><li id="t-589861">
+		<a href="https://www.allegro.cc/forums/thread/589861">string::resize and string::max_size</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/647258" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/647261" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/647262" style="color: black;">3</a> <a href="https://www.allegro.cc/forums/post/647360" style="color: black;">4</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/AllegroMinigameCollection">Allegro Minigame Collection</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/AreYouLost1">Are You Lost?</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/DarkLightBattles">Dark Light Battles</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/domin">domin</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/HolidayHills">Holiday Hills</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/Jezzball">Jezzball</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/RailBlaster">Rail Blaster</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/SanityInvaders">Sanity Invaders</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/Stax">Stax</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/Wormlings">Wormlings</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,666</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.011139</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/text-output/textout_ex by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:23:57 GMT -->
+</html>

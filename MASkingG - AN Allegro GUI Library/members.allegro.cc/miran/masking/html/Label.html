@@ -1,0 +1,279 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Label.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC Label</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">Label</A></H2></H2><BLOCKQUOTE> Label is a very simple widget for creating both static and dynamic textual labels.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>Label
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.68.4">Label</A></B>()
+<DD><I> default constructor</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.68.5">~Label</A></B>()
+<DD><I> destructor</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.68.6">Setup</A></B>(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>, int <!1><A HREF="Color.html#DOC.8.20">a</A>=0)
+<DD><I> Shortcut for Widget::Setup, SetText and SetAlignment</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.68.7">SetText</A></B>(const char* t)
+<DD><I> Sets the text string the label is supposed to print out</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.68.8">SetNumber</A></B>(int value)
+<DD><I> The label can render numbers as well as normal text.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.68.9">SetNumber</A></B>(double value)
+<DD><I> See Setnumber (int)</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   char* <B><A HREF="#DOC.68.10">GetText</A></B>()
+<DD><I> Returns the label's text</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   int <B><A HREF="#DOC.68.11">GetInt</A></B>()
+<DD><I> This function attempts to convert as much of the text as possible to an integer.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   double <B><A HREF="#DOC.68.12">GetDouble</A></B>()
+<DD><I> This function attempts to convert as much of the text as possible to a double.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.68.13">SetAlignment</A></B>(int <!1><A HREF="Color.html#DOC.8.20">a</A>)
+<DD><I> Sets the alignment method the label should use to render text.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   int <B><A HREF="#DOC.68.14">GetAlignment</A></B>()
+<DD><I> returns the current alignment</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.68.15">AlignLeft</A></B>()
+<DD><I> Shortcut for SetAlignment (0);</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.68.16">AlignRight</A></B>()
+<DD><I> Shortcut for SetAlignment (1);</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.68.17">AlignCentre</A></B>()
+<DD><I> Shortcut for SetAlignment (2);</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.68.18">SetVAlignment</A></B>(int value)
+<DD><I> Sets the vertical alignment.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   int <B><A HREF="#DOC.68.19">GetVAlignment</A></B>()
+<DD><I> returns the current vertical alignment setting</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.68.20">GetWordWrap</A></B>()
+<DD><I> returns the current word-wrapping setting</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.68.21">SetWordWrap</A></B>(bool value)
+<DD><I> turns word-wrapping on or off</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   int <B><A HREF="#DOC.68.22">GetPreferredHeight</A></B>()
+<DD><I> Calculates and returns the height required to print the entire text with the current font and at the current width</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.68.1">MsgInitSkin</A></B>()
+<DD><I> Sets the text background and font colours to the default skin values</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.68.2">UpdateSize</A></B>()
+<DD><I> If the D_AUTOSIZE flag is set this function resizes the label to the length and height of the text</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.68.3">Draw</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)
+<DD><I> Renders the text to the canvas.</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+Label is a very simple widget for creating both static and dynamic textual labels.
+It can display multi-line text with automatic wordwrapping. It treats newline
+characters as hard line breaks.
+
+<P>The label can automatically resize itself to the length and height of the text and
+can render the text with transparent background which is perfect for static text
+because it minimizes the chances of redraw but if you want a label that changes
+dynamically (for example to display the value of a slider or the current time) this
+doesn't work to well because when the text changes and the label is redrawn
+the old text can show through. In that case you should clear the D_AUTOSIZE flag,
+set the text's size to the maximum length of the text you expect to display and set
+the text background with the SetTextMode() function.
+
+<P>note: the autosize option doesn't work well with non left-aligned labels.</BLOCKQUOTE>
+<DL>
+
+<A NAME="MsgInitSkin"></A>
+<A NAME="DOC.68.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgInitSkin()</B></TT>
+<DD>
+Sets the text background and font colours to the default skin values
+<DL><DT><DD></DL><P>
+<A NAME="UpdateSize"></A>
+<A NAME="DOC.68.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void UpdateSize()</B></TT>
+<DD>
+If the D_AUTOSIZE flag is set this function resizes the label
+to the length and height of the text
+<DL><DT><DD></DL><P>
+<A NAME="Draw"></A>
+<A NAME="DOC.68.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Draw(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)</B></TT>
+<DD>
+Renders the text to the canvas. If the text mode colour is different than -1
+it first fills the canvas with this colour then it renders the text.
+If the size of the widget is different from the size of the actual text,
+the text is horizontally aligned according to the alignment
+settings and is centered vertically.
+<DL><DT><DD></DL><P>
+<A NAME="Label"></A>
+<A NAME="DOC.68.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> Label()</B></TT>
+<DD>
+default constructor
+<DL><DT><DD></DL><P>
+<A NAME="~Label"></A>
+<A NAME="DOC.68.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> ~Label()</B></TT>
+<DD>
+destructor
+<DL><DT><DD></DL><P>
+<A NAME="Setup"></A>
+<A NAME="DOC.68.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Setup(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>, int <!1><A HREF="Color.html#DOC.8.20">a</A>=0)</B></TT>
+<DD>
+Shortcut for Widget::Setup, SetText and SetAlignment
+<DL><DT><DD></DL><P>
+<A NAME="SetText"></A>
+<A NAME="DOC.68.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetText(const char* t)</B></TT>
+<DD>
+Sets the text string the label is supposed to print out
+<DL><DT><DD></DL><P>
+<A NAME="SetNumber"></A>
+<A NAME="DOC.68.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetNumber(int value)</B></TT>
+<DD>
+The label can render numbers as well as normal text. Pass an integer or a double and the
+label will render them as text. It will even make sure that just enough decimal
+places are rendered for doubles.
+<DL><DT><DD></DL><P>
+<A NAME="SetNumber"></A>
+<A NAME="DOC.68.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetNumber(double value)</B></TT>
+<DD>
+See Setnumber (int)
+<DL><DT><DD></DL><P>
+<A NAME="GetText"></A>
+<A NAME="DOC.68.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   char* GetText()</B></TT>
+<DD>
+Returns the label's text
+<DL><DT><DD></DL><P>
+<A NAME="GetInt"></A>
+<A NAME="DOC.68.11"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   int GetInt()</B></TT>
+<DD>
+This function attempts to convert as much of the text as possible to an integer.
+If the text doesn't represent a number, 0 is returned.
+<DL><DT><DD></DL><P>
+<A NAME="GetDouble"></A>
+<A NAME="DOC.68.12"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   double GetDouble()</B></TT>
+<DD>
+This function attempts to convert as much of the text as possible to a double.
+If the text doesn't represent a number, 0 is returned.
+<DL><DT><DD></DL><P>
+<A NAME="SetAlignment"></A>
+<A NAME="DOC.68.13"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetAlignment(int <!1><A HREF="Color.html#DOC.8.20">a</A>)</B></TT>
+<DD>
+Sets the alignment method the label should use to render text. Valid values
+for a are 0 for left alignment, 1 for right alignment and 2 for centered text.
+Note that this has meaning only if the D_AUTOSIZE flag is turned off.
+By default it isn't which means the label will automatically resize itself to
+the length and height of the text.
+<DL><DT><DD></DL><P>
+<A NAME="GetAlignment"></A>
+<A NAME="DOC.68.14"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   int GetAlignment()</B></TT>
+<DD>
+returns the current alignment
+<DL><DT><DD></DL><P>
+<A NAME="AlignLeft"></A>
+<A NAME="DOC.68.15"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void AlignLeft()</B></TT>
+<DD>
+Shortcut for SetAlignment (0);
+<DL><DT><DD></DL><P>
+<A NAME="AlignRight"></A>
+<A NAME="DOC.68.16"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void AlignRight()</B></TT>
+<DD>
+Shortcut for SetAlignment (1);
+<DL><DT><DD></DL><P>
+<A NAME="AlignCentre"></A>
+<A NAME="DOC.68.17"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void AlignCentre()</B></TT>
+<DD>
+Shortcut for SetAlignment (2);
+<DL><DT><DD></DL><P>
+<A NAME="SetVAlignment"></A>
+<A NAME="DOC.68.18"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetVAlignment(int value)</B></TT>
+<DD>
+Sets the vertical alignment. Possible values are 0 for top alignment, 1 for bottom and
+2 for vertical centre.
+<DL><DT><DD></DL><P>
+<A NAME="GetVAlignment"></A>
+<A NAME="DOC.68.19"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   int GetVAlignment()</B></TT>
+<DD>
+returns the current vertical alignment setting
+<DL><DT><DD></DL><P>
+<A NAME="GetWordWrap"></A>
+<A NAME="DOC.68.20"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool GetWordWrap()</B></TT>
+<DD>
+returns the current word-wrapping setting
+<DL><DT><DD></DL><P>
+<A NAME="SetWordWrap"></A>
+<A NAME="DOC.68.21"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetWordWrap(bool value)</B></TT>
+<DD>
+turns word-wrapping on or off
+<DL><DT><DD></DL><P>
+<A NAME="GetPreferredHeight"></A>
+<A NAME="DOC.68.22"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   int GetPreferredHeight()</B></TT>
+<DD>
+Calculates and returns the height required to print the entire text with the current
+font and at the current width
+<DL><DT><DD></DL><P></DL>
+<HR>
+<DL><DT><B>Direct child classes:
+</B><DD><A HREF="FPS.html">FPS</A><BR>
+<A HREF="EditBox.html">EditBox</A><BR>
+<A HREF="Button.html">Button</A><BR>
+</DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Label.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+</html>

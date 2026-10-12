@@ -1,0 +1,259 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Cursor.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC Cursor</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">Cursor</A></H2></H2><BLOCKQUOTE> Represents an animated mouse cursor with a Windows XP style shadow</BLOCKQUOTE>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Bitmap.html">Bitmap</A>&amp; <B><A HREF="#DOC.12.13">Sprite</A></B>() const 
+<DD><I> Returns the current mouse sprite</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Bitmap.html">Bitmap</A>&amp; <B><A HREF="#DOC.12.14">Shadow</A></B>() const 
+<DD><I> Returns the current mouse shadow</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Cursor.html">Cursor</A>&amp; <B><A HREF="#DOC.12.15">Create</A></B>(const <!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="Image.html#DOC.67.2">bmp</A>, int n=1)
+<DD><I> Creates a new mouse cursor with a shadow.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Cursor.html">Cursor</A>&amp; <B><A HREF="#DOC.12.16">Create</A></B>()
+<DD><I> Creates a new mouse cursor with a shadow.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.12.17">Destroy</A></B>()
+<DD><I> Destroys the cursor.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.12.18">SetFocus</A></B>(const <!1><A HREF="Point.html">Point</A> &amp;p)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.12.19">SetFocus</A></B>(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>const <!1><A HREF="Point.html">Point</A>&amp; <B><A HREF="#DOC.12.20">GetFocus</A></B>()
+<DD><I> Get and set the focus point of cursor.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.12.21">SetAnimationInterval</A></B>(int i)
+<DD><I> Effectively sets the speed of the mouse cursor animation.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.12.22">Update</A></B>()
+<DD><I> Updates the animation.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>std::vector&lt;<!1><A HREF="Bitmap.html">Bitmap</A> *&gt;  <B><A HREF="#DOC.12.1">sprite</A></B>
+<DD><I> A vector of mouse sprites.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>std::vector&lt;<!1><A HREF="Bitmap.html">Bitmap</A> *&gt;  <B><A HREF="#DOC.12.2">shadow</A></B>
+<DD><I> A vector of mouse shadows.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   int <B><A HREF="#DOC.12.3">PADDING</A></B>
+<DD><I> Effectively the intensity of the blur effect on the shadow sprites.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   <!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.12.4">shadowColor</A></B>
+<DD><I> The color of the cursor shadow.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   <!1><A HREF="Point.html">Point</A> <B><A HREF="#DOC.12.5">shadowOffset</A></B>
+<DD><I> The offset of the shadow relative to the main sprite.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Point.html">Point</A> <B><A HREF="#DOC.12.6">focus</A></B>
+<DD><I> The sprites focus point</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.12.7">frameCount</A></B>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>float <B><A HREF="#DOC.12.8">frame</A></B>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>float <B><A HREF="#DOC.12.9">interval</A></B>
+<DD><I> Animation specific variables.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.12.10">Blur</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="Image.html#DOC.67.2">bmp</A>, int radius)
+<DD><I> Blurs the passed bitmap.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.12.11">MakeShadow</A></B>()
+<DD><I> Creates a shadow sprite for every main cursor sprite of the animated cursor.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   void <B><A HREF="#DOC.12.12">ReadSkinData</A></B>()
+<DD><I> Reads cursor specific data from the skin config file</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+Represents an animated mouse cursor with a Windows XP style shadow</BLOCKQUOTE>
+<DL>
+
+<A NAME="sprite"></A>
+<A NAME="DOC.12.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>std::vector&lt;<!1><A HREF="Bitmap.html">Bitmap</A> *&gt;  sprite</B></TT>
+<DD>
+A vector of mouse sprites.
+These are effectively frames of the animated sprite.
+<DL><DT><DD></DL><P>
+<A NAME="shadow"></A>
+<A NAME="DOC.12.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>std::vector&lt;<!1><A HREF="Bitmap.html">Bitmap</A> *&gt;  shadow</B></TT>
+<DD>
+A vector of mouse shadows.
+There's a matching shadow for each frame of the sprite animation.
+<DL><DT><DD></DL><P>
+<A NAME="PADDING"></A>
+<A NAME="DOC.12.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   int PADDING</B></TT>
+<DD>
+Effectively the intensity of the blur effect on the shadow sprites.
+It is also the number of pixels the shadow sprite must be larger than
+the main sprite at every edge, hence the name of the variable.
+<DL><DT><DD></DL><P>
+<A NAME="shadowColor"></A>
+<A NAME="DOC.12.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   <!1><A HREF="Color.html">Color</A> shadowColor</B></TT>
+<DD>
+The color of the cursor shadow.
+Typically this is some shade of gray. A darker shade of gray produces
+a thicker shadow. A different color might produce a glow effect rather
+then a shadow.
+<DL><DT><DD></DL><P>
+<A NAME="shadowOffset"></A>
+<A NAME="DOC.12.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   <!1><A HREF="Point.html">Point</A> shadowOffset</B></TT>
+<DD>
+The offset of the shadow relative to the main sprite.
+Typically the shadow is just a little to the right of the main sprite.
+<DL><DT><DD></DL><P>
+<A NAME="focus"></A>
+<A NAME="DOC.12.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Point.html">Point</A> focus</B></TT>
+<DD>
+The sprites focus point
+<DL><DT><DD></DL><P>
+<A NAME="frameCount"></A>
+<A NAME="DOC.12.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int frameCount</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="frame"></A>
+<A NAME="DOC.12.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>float frame</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="interval"></A>
+<A NAME="DOC.12.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>float interval</B></TT>
+<DD>
+Animation specific variables.
+The number of frames, the current frame and the interval bewteen frames in miliseconds.
+<DL><DT><DD></DL><P>
+<A NAME="Blur"></A>
+<A NAME="DOC.12.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Blur(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="Image.html#DOC.67.2">bmp</A>, int radius)</B></TT>
+<DD>
+Blurs the passed bitmap.
+Radius is effectively the depth of the blur effect. Good values are between 1 and 4.
+<DL><DT><DD></DL><P>
+<A NAME="MakeShadow"></A>
+<A NAME="DOC.12.11"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MakeShadow()</B></TT>
+<DD>
+Creates a shadow sprite for every main cursor sprite of the animated cursor.
+It does so by creating a new sprite the size of the main sprite and adds a
+border the size of the blur depth on each side. It then clears the shadow
+sprite to the shadow color and makes a black and white mask in the alpha
+channel with black being the transparent color. Then it blurs the alpha
+channel. When the cursor is rendered the shadow is drawn with draw_trans_sprite().
+<DL><DT><DD></DL><P>
+<A NAME="ReadSkinData"></A>
+<A NAME="DOC.12.12"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   void ReadSkinData()</B></TT>
+<DD>
+Reads cursor specific data from the skin config file
+<DL><DT><DD></DL><P>
+<A NAME="Sprite"></A>
+<A NAME="DOC.12.13"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Bitmap.html">Bitmap</A>&amp; Sprite() const </B></TT>
+<DD>
+Returns the current mouse sprite
+<DL><DT><DD></DL><P>
+<A NAME="Shadow"></A>
+<A NAME="DOC.12.14"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Bitmap.html">Bitmap</A>&amp; Shadow() const </B></TT>
+<DD>
+Returns the current mouse shadow
+<DL><DT><DD></DL><P>
+<A NAME="Create"></A>
+<A NAME="DOC.12.15"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Cursor.html">Cursor</A>&amp; Create(const <!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="Image.html#DOC.67.2">bmp</A>, int n=1)</B></TT>
+<DD>
+Creates a new mouse cursor with a shadow.
+This function creates the mouse cursor from the passed bitmap.
+The second parameter is the number of frames in the bitmap. If the number of
+frames is greater than 1, an animated cursor will be created by horizontally
+cutting	the bitmap into n equally sized frames.
+<DL><DT><DD></DL><P>
+<A NAME="Create"></A>
+<A NAME="DOC.12.16"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Cursor.html">Cursor</A>&amp; Create()</B></TT>
+<DD>
+Creates a new mouse cursor with a shadow.
+This function creates the mouse cursor from the default Allegro sprite
+or whatever sprite is currently loaded as the Allegro mouse sprite.
+<DL><DT><DD></DL><P>
+<A NAME="Destroy"></A>
+<A NAME="DOC.12.17"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Destroy()</B></TT>
+<DD>
+Destroys the cursor.
+After this function is called the cursor is invalid and shouldn't be
+used anymore.
+<DL><DT><DD></DL><P>
+<A NAME="SetFocus"></A>
+<A NAME="DOC.12.18"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetFocus(const <!1><A HREF="Point.html">Point</A> &amp;p)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="SetFocus"></A>
+<A NAME="DOC.12.19"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetFocus(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="GetFocus"></A>
+<A NAME="DOC.12.20"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>const <!1><A HREF="Point.html">Point</A>&amp; GetFocus()</B></TT>
+<DD>
+Get and set the focus point of cursor.
+The focus point is the point where the mouse is actually positioned relative
+to the top left of the cursor sprite. For a regular mouse arrow this is
+point [0,0] but for many other cursor sprites this may be at a different location.
+<DL><DT><DD></DL><P>
+<A NAME="SetAnimationInterval"></A>
+<A NAME="DOC.12.21"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetAnimationInterval(int i)</B></TT>
+<DD>
+Effectively sets the speed of the mouse cursor animation.
+The interval is the time between frames of animation in miliseconds.
+<DL><DT><DD></DL><P>
+<A NAME="Update"></A>
+<A NAME="DOC.12.22"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Update()</B></TT>
+<DD>
+Updates the animation.
+This is called by the GUI core once every frame.
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DT><B>Friends:</B><DD>  class MASKING_DLL_DECLSPEC <!1><A HREF="Mouse.html">Mouse</A><BR>  class MASKING_DLL_DECLSPEC <!1><A HREF="Skin.html">Skin</A><BR><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Cursor.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+</html>

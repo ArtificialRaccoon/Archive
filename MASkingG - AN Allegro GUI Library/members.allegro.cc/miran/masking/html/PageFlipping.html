@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/PageFlipping.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC PageFlipping</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">PageFlipping</A></H2></H2><BLOCKQUOTE> The Page Flipping screen update driver.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>PageFlipping
+- <A HREF="ScreenUpdate.html">ScreenUpdate</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Error.html">Error</A> <B><A HREF="#DOC.78.4">Create</A></B>()
+<DD><I> Creates two video pages and shows one on screen while the other is available for drawing</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.78.5">Destroy</A></B>()
+<DD><I> Destroys the video pages</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.78.6">Redraw</A></B>()
+<DD><I> Shows the active page on screen and flips the pages</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>BITMAP* <B><A HREF="#DOC.78.7">GetCanvas</A></B>()
+<DD><I> Returns a pointer to the currently active page which is the page that is available for drawing</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.78.8">AcquireCanvas</A></B>()
+<DD><I> Acquires the currently active page.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.78.9">ReleaseCanvas</A></B>()
+<DD><I> Releases the currently active page.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.78.10">RequiresFullRedraw</A></B>()
+<DD><I> Page flipping requires full redraw so this function returns true</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>BITMAP* <B><A HREF="#DOC.78.1">page1</A></B>
+<DD><I> Video page 1</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>BITMAP* <B><A HREF="#DOC.78.2">page2</A></B>
+<DD><I> Video page 2</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>BITMAP* <B><A HREF="#DOC.78.3">activePage</A></B>
+<DD><I> Currently active page.</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+The Page Flipping screen update driver.
+It imlpements double buffering by creating two video pages. It exposes one
+page to the user so he can draw to it while the other page is shown on the
+screen. When drawing a frame is finished the pages are flipped - the one
+the user was drawing on gets shown on screen and the other one becomes
+available for drawing. Page flipping is very fast but not all systems
+support it.</BLOCKQUOTE>
+<DL>
+
+<A NAME="page1"></A>
+<A NAME="DOC.78.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>BITMAP* page1</B></TT>
+<DD>
+Video page 1
+<DL><DT><DD></DL><P>
+<A NAME="page2"></A>
+<A NAME="DOC.78.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>BITMAP* page2</B></TT>
+<DD>
+Video page 2
+<DL><DT><DD></DL><P>
+<A NAME="activePage"></A>
+<A NAME="DOC.78.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>BITMAP* activePage</B></TT>
+<DD>
+Currently active page.
+Page1 and page2 are the two video pages used for page flipping
+and activePage is a pointer which at any given time points either
+to page1 or page2. The active page is available for drawing and is
+exposed to the user through GetCanvas() while the other page is being
+displayed on the screen.
+<DL><DT><DD></DL><P>
+<A NAME="Create"></A>
+<A NAME="DOC.78.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Error.html">Error</A> Create()</B></TT>
+<DD>
+Creates two video pages and shows one on screen
+while the other is available for drawing
+<DL><DT><DD></DL><P>
+<A NAME="Destroy"></A>
+<A NAME="DOC.78.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Destroy()</B></TT>
+<DD>
+Destroys the video pages
+<DL><DT><DD></DL><P>
+<A NAME="Redraw"></A>
+<A NAME="DOC.78.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Redraw()</B></TT>
+<DD>
+Shows the active page on screen and flips the pages
+<DL><DT><DD></DL><P>
+<A NAME="GetCanvas"></A>
+<A NAME="DOC.78.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>BITMAP* GetCanvas()</B></TT>
+<DD>
+Returns a pointer to the currently active page
+which is the page that is available for drawing
+<DL><DT><DD></DL><P>
+<A NAME="AcquireCanvas"></A>
+<A NAME="DOC.78.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void AcquireCanvas()</B></TT>
+<DD>
+Acquires the currently active page.
+This is important because the pages are video bitmaps which
+need to be acquired prior to drawing on them on some platforms
+to ensure optimal performance.
+<DL><DT><DD></DL><P>
+<A NAME="ReleaseCanvas"></A>
+<A NAME="DOC.78.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void ReleaseCanvas()</B></TT>
+<DD>
+Releases the currently active page.
+This is important because the pages are video bitmaps which
+need to be acquired prior to drawing on them on some platforms
+to ensure optimal performance.
+<DL><DT><DD></DL><P>
+<A NAME="RequiresFullRedraw"></A>
+<A NAME="DOC.78.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool RequiresFullRedraw()</B></TT>
+<DD>
+Page flipping requires full redraw so this function returns true
+<DL><DT><DD></DL><P></DL>
+<HR>
+<DL><DT><B>Direct child classes:
+</B><DD><A HREF="TripleBuffer.html">TripleBuffer</A><BR>
+</DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/PageFlipping.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+</html>

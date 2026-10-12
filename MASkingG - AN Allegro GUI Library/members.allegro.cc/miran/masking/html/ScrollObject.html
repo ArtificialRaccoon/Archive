@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/ScrollObject.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC ScrollObject</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">ScrollObject</A></H2></H2><BLOCKQUOTE> Implements the basic functionality of a widget that can scroll things.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>ScrollObject
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.93.5">SetMin</A></B>(double <!1><A HREF="ScrollObject.html#DOC.93.1">min</A>)
+<DD><I> Sets the minimum value to which the object can scroll.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.93.6">SetMax</A></B>(double <!1><A HREF="ScrollObject.html#DOC.93.2">max</A>)
+<DD><I> Sets the maximum value to which the object can scroll.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.93.7">SetRange</A></B>(double <!1><A HREF="ScrollObject.html#DOC.93.1">min</A>, double <!1><A HREF="ScrollObject.html#DOC.93.2">max</A>)
+<DD><I> A shortcut for SetMin() and SetMax()</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.93.8">SetPosition</A></B>(double <!1><A HREF="ScrollObject.html#DOC.93.3">pos</A>)
+<DD><I> Sets the position of the scroll object.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.93.9">SetIncrement</A></B>(double <!1><A HREF="ScrollObject.html#DOC.93.4">inc</A>)
+<DD><I> Sets the value by which the object can scroll.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.93.10">Setup</A></B>(double <!1><A HREF="ScrollObject.html#DOC.93.1">min</A>, double <!1><A HREF="ScrollObject.html#DOC.93.2">max</A>, double <!1><A HREF="ScrollObject.html#DOC.93.3">pos</A>, double <!1><A HREF="ScrollObject.html#DOC.93.4">inc</A>)
+<DD><I> A shortcut for all of the above functions</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.93.11">Increment</A></B>()
+<DD><I> Increments the object's position by the increment value.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.93.12">Decrement</A></B>()
+<DD><I> Decrements the object's position by the increment value.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   double <B><A HREF="#DOC.93.13">GetMin</A></B>()
+<DD><I> Returns the minimum value of the scroll object</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   double <B><A HREF="#DOC.93.14">GetMax</A></B>()
+<DD><I> Returns the maximum value of the scroll object</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   double <B><A HREF="#DOC.93.15">GetRange</A></B>()
+<DD><I> Returns the scroll object's range (ie.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   double <B><A HREF="#DOC.93.16">GetPosition</A></B>()
+<DD><I> Returns the position of the scroll object</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   double <B><A HREF="#DOC.93.17">GetIncrement</A></B>()
+<DD><I> Returns the increment value</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>double <B><A HREF="#DOC.93.1">min</A></B>
+<DD><I> The minimum value the object can scroll to</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>double <B><A HREF="#DOC.93.2">max</A></B>
+<DD><I> The maximum value the object can scroll to</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>double <B><A HREF="#DOC.93.3">pos</A></B>
+<DD><I> The current position of the scroll object</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>double <B><A HREF="#DOC.93.4">inc</A></B>
+<DD><I> The increment value of the scroll object</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+Implements the basic functionality of a widget that can scroll things.
+That's not a widget that can be scrolled, but a widget that does the
+scrolling! ScrollObject is quite generic so it works with doubles instead
+of ints like most scroll widgets (sliders, scrollers, etc.) so if you
+use it to scroll integer values, you'll have to do a bit of casting.</BLOCKQUOTE>
+<DL>
+
+<A NAME="min"></A>
+<A NAME="DOC.93.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>double min</B></TT>
+<DD>
+The minimum value the object can scroll to
+<DL><DT><DD></DL><P>
+<A NAME="max"></A>
+<A NAME="DOC.93.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>double max</B></TT>
+<DD>
+The maximum value the object can scroll to
+<DL><DT><DD></DL><P>
+<A NAME="pos"></A>
+<A NAME="DOC.93.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>double pos</B></TT>
+<DD>
+The current position of the scroll object
+<DL><DT><DD></DL><P>
+<A NAME="inc"></A>
+<A NAME="DOC.93.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>double inc</B></TT>
+<DD>
+The increment value of the scroll object
+<DL><DT><DD></DL><P>
+<A NAME="SetMin"></A>
+<A NAME="DOC.93.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetMin(double <!1><A HREF="ScrollObject.html#DOC.93.1">min</A>)</B></TT>
+<DD>
+Sets the minimum value to which the object can scroll. Default is 0.
+<DL><DT><DD></DL><P>
+<A NAME="SetMax"></A>
+<A NAME="DOC.93.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetMax(double <!1><A HREF="ScrollObject.html#DOC.93.2">max</A>)</B></TT>
+<DD>
+Sets the maximum value to which the object can scroll. Default is 100.
+<DL><DT><DD></DL><P>
+<A NAME="SetRange"></A>
+<A NAME="DOC.93.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetRange(double <!1><A HREF="ScrollObject.html#DOC.93.1">min</A>, double <!1><A HREF="ScrollObject.html#DOC.93.2">max</A>)</B></TT>
+<DD>
+A shortcut for SetMin() and SetMax()
+<DL><DT><DD></DL><P>
+<A NAME="SetPosition"></A>
+<A NAME="DOC.93.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetPosition(double <!1><A HREF="ScrollObject.html#DOC.93.3">pos</A>)</B></TT>
+<DD>
+Sets the position of the scroll object. The position is clipped to the
+object's range. Default is 0.
+<DL><DT><DD></DL><P>
+<A NAME="SetIncrement"></A>
+<A NAME="DOC.93.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetIncrement(double <!1><A HREF="ScrollObject.html#DOC.93.4">inc</A>)</B></TT>
+<DD>
+Sets the value by which the object can scroll. Default is 1. Must be positive!
+<DL><DT><DD></DL><P>
+<A NAME="Setup"></A>
+<A NAME="DOC.93.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Setup(double <!1><A HREF="ScrollObject.html#DOC.93.1">min</A>, double <!1><A HREF="ScrollObject.html#DOC.93.2">max</A>, double <!1><A HREF="ScrollObject.html#DOC.93.3">pos</A>, double <!1><A HREF="ScrollObject.html#DOC.93.4">inc</A>)</B></TT>
+<DD>
+A shortcut for all of the above functions
+<DL><DT><DD></DL><P>
+<A NAME="Increment"></A>
+<A NAME="DOC.93.11"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Increment()</B></TT>
+<DD>
+Increments the object's position by the increment value.
+The new position is clipped by the maximum value.
+<DL><DT><DD></DL><P>
+<A NAME="Decrement"></A>
+<A NAME="DOC.93.12"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Decrement()</B></TT>
+<DD>
+Decrements the object's position by the increment value.
+The new position is clipped by the minimum value.
+<DL><DT><DD></DL><P>
+<A NAME="GetMin"></A>
+<A NAME="DOC.93.13"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   double GetMin()</B></TT>
+<DD>
+Returns the minimum value of the scroll object
+<DL><DT><DD></DL><P>
+<A NAME="GetMax"></A>
+<A NAME="DOC.93.14"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   double GetMax()</B></TT>
+<DD>
+Returns the maximum value of the scroll object
+<DL><DT><DD></DL><P>
+<A NAME="GetRange"></A>
+<A NAME="DOC.93.15"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   double GetRange()</B></TT>
+<DD>
+Returns the scroll object's range (ie. max - min).
+<DL><DT><DD></DL><P>
+<A NAME="GetPosition"></A>
+<A NAME="DOC.93.16"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   double GetPosition()</B></TT>
+<DD>
+Returns the position of the scroll object
+<DL><DT><DD></DL><P>
+<A NAME="GetIncrement"></A>
+<A NAME="DOC.93.17"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   double GetIncrement()</B></TT>
+<DD>
+Returns the increment value
+<DL><DT><DD></DL><P></DL>
+<HR>
+<DL><DT><B>Direct child classes:
+</B><DD><A HREF="SpinBox.html">SpinBox</A><BR>
+<A HREF="Scroller.html">Scroller</A><BR>
+<A HREF="Progress.html">Progress</A><BR>
+</DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/ScrollObject.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+</html>

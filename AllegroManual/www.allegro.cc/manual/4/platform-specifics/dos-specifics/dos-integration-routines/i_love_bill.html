@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/platform-specifics/dos-specifics/dos-integration-routines/i_love_bill by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:28:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>i_love_bill</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">DOS specifics</a></h2><ul>
+<li><a href="../joy_type_.html" >JOY_TYPE_DOS</a></li><li><a href="../gfx_.html" >GFX_DOS</a></li><li><a href="../digi_.html" >DIGI_DOS</a></li><li><a href="../midi_.html" >MIDI_DOS</a></li><li><strong>i_love_bill</strong></li></ul>
+</div>
+
+<div id="contents">
+<h1>i_love_bill</h1>
+
+<div class="shortdesc">
+Tells if Allegro has to used fixed rate timers.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">extern</span> <span class="k1">int</span> <a href="../../../index.html" target="_blank"><span class="a">i_love_bill</span></a><span class="k2">;</span>
+</div>
+
+<div>
+When running in clean DOS mode, the timer handler dynamically reprograms
+   the clock chip to generate interrupts at exactly the right times, which
+   gives an extremely high accuracy. Unfortunately, this constant speed
+   adjustment doesn't work under most multitasking systems (notably
+   Windows), so there is an alternative mode that just locks the hardware
+   timer interrupt to a speed of 200 ticks per second. This reduces the
+   accuracy of the timer (for instance, rest() will round the delay time to
+   the nearest 5 milliseconds), and prevents the vertical retrace simulator
+   from working, but on the plus side, it makes Allegro programs work under
+   Windows. This flag is set by allegro_init() if it detects the presence of
+   a multitasking OS, and enables the fixed rate timer mode.
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../../index.html">install_timer</a></li>
+	<li><a href="../../../index.html">allegro_init</a></li>
+	<li><a href="../../../index.html">os_type</a></li>
+</ul>
+</div>
+
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/StarControlTimeWarp">Star Control: TimeWarp</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/TW-Light">TW-Light</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/GAACOexample">GA + ACO example</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,371,062</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.011219</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/platform-specifics/dos-specifics/dos-integration-routines/i_love_bill by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:28:49 GMT -->
+</html>

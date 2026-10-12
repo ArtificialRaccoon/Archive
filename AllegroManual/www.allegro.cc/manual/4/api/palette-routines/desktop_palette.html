@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/palette-routines/desktop_palette by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:21:18 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>desktop_palette</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Palette routines</a></h2><ul>
+<li><a href="set_color.html" style="font-weight: bold">set_color</a></li><li><a href="_set_color.html" >_set_color</a></li><li><a href="set_palette.html" style="font-weight: bold">set_palette</a></li><li><a href="set_palette_range.html" >set_palette_range</a></li><li><a href="get_color.html" >get_color</a></li><li><a href="get_palette.html" style="font-weight: bold">get_palette</a></li><li><a href="get_palette_range.html" >get_palette_range</a></li><li><a href="fade_interpolate.html" >fade_interpolate</a></li><li><a href="fade_from_range.html" >fade_from_range</a></li><li><a href="fade_in_range.html" >fade_in_range</a></li><li><a href="fade_out_range.html" >fade_out_range</a></li><li><a href="fade_from.html" >fade_from</a></li><li><a href="fade_in.html" style="font-weight: bold">fade_in</a></li><li><a href="fade_out.html" style="font-weight: bold">fade_out</a></li><li><a href="select_palette.html" >select_palette</a></li><li><a href="unselect_palette.html" >unselect_palette</a></li><li><a href="generate_332_palette.html" >generate_332_palette</a></li><li><a href="generate_optimized_palette.html" >generate_optimized_palette</a></li><li><a href="default_palette.html" >default_palette</a></li><li><a href="black_palette.html" style="font-weight: bold">black_palette</a></li><li><strong>desktop_palette</strong></li></ul>
+</div>
+
+<div id="contents">
+<h1>desktop_palette</h1>
+
+<div class="shortdesc">
+The palette used by the Atari ST low resolution desktop.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">extern</span> <a href="../../index.html" target="_blank"><span class="a">PALETTE</span></a> <a href="../../index.html" target="_blank"><span class="a">desktop_palette</span></a><span class="k2">;</span>
+</div>
+
+<div>
+The palette used by the Atari ST low resolution desktop. I'm not quite
+   sure why this is still here, except that the grabber and test programs
+   use it. It is probably the only Atari legacy code left in Allegro, and it
+   would be a shame to remove it :-)<br /><br />
+
+   The contents of this palette are 16 colors repeated 16 times. Color entry
+   zero is equal to color entry 16, which is equal to color entry 24, etc.
+<pre class="text">
+       Index      Color       RGB values
+         0     White          63  63  63
+         1     Red            63   0   0
+         2     Green           0  63   0
+         3     Yellow         63  63   0
+         4     Blue            0   0  63
+         5     Pink           63   0  63
+         6     Cyan            0  63  63
+         7     Grey           16  16  16
+         8     Light grey     31  31  31
+         9     Light red      63  31  31
+        10     Light green    31  63  31
+        11     Light yellow   63  63  31
+        12     Light blue     31  31  63
+        13     Light pink     63  31  63
+        14     Light cyan     31  63  63
+        15     Black           0   0   0</pre>
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">default_palette</a></li>
+	<li><a href="../../index.html">black_palette</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../index.html">Available Allegro examples</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591130">
+		<a href="https://www.allegro.cc/forums/thread/591130">Very slow while drawing to screen</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/667615" style="color: black;">1</a> </span>
+	</li><li id="t-589597">
+		<a href="https://www.allegro.cc/forums/thread/589597">Allegro for D</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/646093" style="color: black;">1</a> </span>
+	</li><li id="t-588019">
+		<a href="https://www.allegro.cc/forums/thread/588019">AllegroFont and MSVC</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/619945" style="color: black;">1</a> </span>
+	</li><li id="t-585780">
+		<a href="https://www.allegro.cc/forums/thread/585780">Mouse access violation?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/589012" style="color: black;">1</a> </span>
+	</li><li id="t-580811">
+		<a href="https://www.allegro.cc/forums/thread/580811">Greyscale-Filter is too slow. How to improve performance?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/581224" style="color: black;">1</a> </span>
+	</li><li id="t-551390">
+		<a href="https://www.allegro.cc/forums/thread/551390">win_set_window questions</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/551633" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/3dcar16">3dcar16</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/AlextheAllegator3">Alex the Allegator 3</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/Molefest">Molefest</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/POPEM">POP'EM</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/TheLostSwordofArkane">The Lost Sword of Arkane</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/Hellcarrier">Hellcarrier</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/RedPixel2">Red Pixel 2</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/StarControlTimeWarp">Star Control: TimeWarp</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/TW-Light">TW-Light</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/arkanoid">arkanoid</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,535</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.011612</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/palette-routines/desktop_palette by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:21:18 GMT -->
+</html>

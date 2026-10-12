@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/platform-specifics/macos-x-specifics/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:58:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>MacOS X specifics</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">Platform specifics</a></h2><ul>
+<li><a href="../dos-specifics/index.html" >DOS specifics</a></li><li><a href="../windows-specifics/index.html" >Windows specifics</a></li><li><a href="../unix-specifics/index.html" >Unix specifics</a></li><li><a href="../beos-specifics/index.html" >BeOS specifics</a></li><li><a href="../qnx-specifics/index.html" >QNX specifics</a></li><li><strong>MacOS X specifics</strong></li><li><a href="../differences-between-platforms/index.html" >Differences between platforms</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>MacOS X specifics</h1>
+
+In terms of file redistribution, the MacOS X platform behaves practically the
+same as the DOS platform. Read section chapter "Dos specifics" in the manual
+to learn more about this.<br /><br />
+
+Allegro programs under MacOS X are Cocoa applications; in order to hide all
+the Cocoa interfacing to the enduser, you need to add the END_OF_MAIN()
+macro right after your main() function. This is a necessary step: if you omit
+it, your program will not compile.<br /><br />
+
+The END_OF_MAIN() macro simply does some magic to make sure your program
+executes another function before your main(); this function is defined into
+the liballeg-main.a static library, which is automatically linked if you use
+the allegro-config script when linking. Otherwise be sure you link against it
+unless you want to get undefined symbol errors.<br /><br />
+
+To behave nicely with the MacOS X user interface, Allegro apps will provide a
+standard application menu with the "Quit" menu item in it. The default
+behaviour when the user hits Command-Q or selects "Quit" is to do nothing.
+To override this behaviour you must call the set_close_button_callback() function; under MacOS
+X the supplied callback will be used either if the user clicks the window
+close button either on Command-Q or "Quit" selection. In this last case the
+application will not shutdown, but you are supposed to set some quit flag
+in your callback and check for it on a regular basis in your main program
+loop.<br /><br />
+
+If you would like to use InterfaceBuilder to design a more
+fully-featured menu, Allegro will automatically load it if you create
+a bundle for your application. The use of InterfaceBuilder is beyond
+the scope of this document. Briefly, you need to create a Nib, called
+MainMenu.nib, containing a main menu and a controller. Then, when you
+create the bundle, install MainMenu.nib into the Contents/Resources
+subdirectory. Note that the actions attached to the menu items will be
+called from a different thread than the one in which your Allegro code
+is running. Therefore you should not do any work there (especially,
+don't call Allegro functions.) Instead, set a variable, and test it in
+your main loop.
+
+<ul>
+	<li><a href="gfx_.html">GFX_</a> - Supported MacOSX graphic drivers.</li>
+	<li><a href="digi_.html">DIGI_</a> - Supported MacOSX digital sound drivers.</li>
+	<li><a href="midi_.html">MIDI_</a> - Supported MacOSX MIDI sound drivers.</li>
+</ul>
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,184</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>12.901807</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/platform-specifics/macos-x-specifics/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:58:35 GMT -->
+</html>

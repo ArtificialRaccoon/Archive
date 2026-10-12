@@ -1,0 +1,84 @@
+<html>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/faq.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head><title>Frequently Asked Questions</title></head><body>
+<h1><a name="FAQ">The MASkinG FAQ</a></h1>
+
+<p>A short and most definatelly not a comprehensive list of questions that seem
+   to be asked more often than others and of course their respective answers:
+
+<br><br>
+<h4>Q: The library won't compile because a file called alfont.h is missing!</h4>
+<p>A: In order to compile and use MASkinG you need to properly install two other
+   libraries first. The first is Allegro, which I trust you already have, and the
+   other is Allegro Font by Javier Gonzalez. If you don't have it you can get it
+   <a href="http://nekros.freeshell.org/delirium/alfont.php">here</a>. First install
+   Allegro Font and then try compiling MASkinG again.
+
+<h4>Q: How do I install Allegro Font? It compiled fine but what do I do now?</h4>
+<p>A: You have to install it in your compiler's directory. Most libraries are compiled
+   and installed by typing 'make' and 'make install' but Allegro Font doesn't come
+   with a 'make install' command so you must install it manually. Just copy the
+   headers to your compiler's include directory and the library (either the .a or
+   the .lib files) to your compiler's lib directory.
+
+<h4>Q: When trying to compile the library a get a ton of errors!</h4>
+<p>A: Make sure you have installed and configured your compiler and all the necessary
+   libraries, including AllegroFont and AllegroGL if you choose to use it.
+   If you're using the MinGW compiler or the Dev-C++ IDE you must set the environment
+   variable named MINGDIR to point to the location of your compiler installation and
+   add the compilers bin directory to the path.
+   You do this by typing "set MINGDIR=c:\mingw" or "set MINGDIR=c:\dev-cpp" and
+   "set PATH=c:\mingw\bin;%PATH%" or "set PATH=c:\dev-cpp\bin;%PATH%". Replace
+   "c:\" with the actual path to where you installed MinGW or Dev-C++ if you
+   didn't install it in C:\.
+
+<h4>Q: MASkinG compiled fine but when I type 'make install' I get erors. What's wrong?</h4>
+<p>A: If 'make install' fails on your system (it should work on every system with
+   a working instalation of the GCC compiler and file utils) you will have to
+   install manually. Just copy all the header files (the entire directory) to
+   your compiler's include directory and the library (either the .a or
+   the .lib files) to your compiler's lib directory.
+
+<h4>Q: I'm using the MSVC compiler and when I build my project it compiles fine
+   but I get linker errors about symbols already being defined.</h4>
+<p>A: You need to setup your project to use the multithreaded DLL runtime library
+   (by default MSVC will use the single threaded version). To do this open
+   the project settings dialog, click the "C/C++" tab (the third tab), in the
+   category drop down list select "Code Generation" and in the user run-time
+   library drop down list select either "Multithreaded DLL" or "Debug Multithreaded
+   DLL".
+
+<h4>Q: Can I use MASkinG to make a game or is it only good to make utility programs?</h4>
+<p>A: MASkinG was originally meant for making "normal" programs but it can just as
+   easily be used to make games. In fact recently most of my efforts have been
+   targeted at making it a game GUI library rather than a general purpose GUI.
+   MASkinG is now very well suited for making GUI intensive games such as strategies,
+   role playing games, adventure games, etc.
+
+<h4>Q: Can I use MASkinG to just popup a few windows here and there and use my own
+   engine to do everything else?</h4>
+<p>A: Unfortunately no. MASkinG is really not just a library of functions that can
+   be called, it is an entire engine with its own main loop. You can of course use
+   it for your game's menus and options dialogs and then use your own game engine to
+   do the actual game but you can't have for example your engine and some MASkinG
+   dialogs on the screen running simultaneously. If you want to use MASkinG in-game
+   you will need to design your entire game around it.
+
+<h4>Q: How can I use MASkinG without having to call InstallMASkinG() which wants to
+   install and initialize everything by itself?</h4>
+<p>A: If you don't want to call InstallMASkinG() for some reason, you have to do
+   everything that function does manually. Look for "masking.cpp" in the source
+   directory of MASkinG to see exactly what it does.
+   
+<p><hr>
+
+<p>Send your questions, comments, ideas, bug reports, feature requests or anything
+   else in connection with MASkinG to <a href="mailto:miranamon@users.sourceforge.net">
+   miranamon@users.sourceforge.net</a> or at the <a href="http://www.allegro.cc/">Allegro.cc</a>
+   forums.
+
+<br>
+<p><hr><p><a href="../index.html">Back</a><p></body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/faq.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:07 GMT -->
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Window.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:14 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC Window</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">Window</A></H2></H2><BLOCKQUOTE> A movable and resizable dialog aka window.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>Window
+- <A HREF="Dialog.html">Dialog</A>
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Label.html">Label</A> <B><A HREF="#DOC.111.1">title</A></B>
+<DD><I> The window's title Label.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.111.23">HandleEvent</A></B>(<!1><A HREF="Widget.html">Widget</A> &amp;obj, int msg, int arg1=0, int arg2=0)
+<DD><I> Handles events such as icon clicks</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.111.24">Add</A></B>(<!1><A HREF="Widget.html">Widget</A> &amp;<!1><A HREF="Widget.html#DOC.110.69">w</A>)
+<DD><I> Adds a widget to the client area</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.111.25">Remove</A></B>(<!1><A HREF="Widget.html">Widget</A> &amp;<!1><A HREF="Widget.html#DOC.110.69">w</A>)
+<DD><I> Removes a widget from the client area</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.111.26">SetClientArea</A></B>(<!1><A HREF="Dialog.html">Dialog</A>* <!1><A HREF="Window.html#DOC.111.11">clientArea</A>)
+<DD><I> Sets the passed dialog as the window's client area.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Dialog.html">Dialog</A>* <B><A HREF="#DOC.111.27">GetClientArea</A></B>()
+<DD><I> Returns a pointer to the window's client area dialog</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.111.28">Minimize</A></B>()
+<DD><I> Minimizes the window or restores it if it is already minimized.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.111.29">Maximize</A></B>()
+<DD><I> Maximizes the window or restores it if it is already maximized</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.111.30">Autorollup</A></B>(bool)
+<DD><I> Enables or disables the autorollup (or auto-minimize) feature.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>FrameBorder <B><A HREF="#DOC.111.2">bLeft</A></B>
+<DD><I> Left border</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>FrameBorder <B><A HREF="#DOC.111.3">bRight</A></B>
+<DD><I> Right border</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>FrameBorder <B><A HREF="#DOC.111.4">bTop</A></B>
+<DD><I> Top border</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>FrameBorder <B><A HREF="#DOC.111.5">bBottom</A></B>
+<DD><I> Bottom border</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>FrameBorder <B><A HREF="#DOC.111.6">bGrip</A></B>
+<DD><I> The caption area</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>WinIcon <B><A HREF="#DOC.111.7">iconMin</A></B>
+<DD><I> Minimize icon</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>WinIcon <B><A HREF="#DOC.111.8">iconMax</A></B>
+<DD><I> Maximize icon</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>WinIcon <B><A HREF="#DOC.111.9">iconExit</A></B>
+<DD><I> Exit icon.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>TextBack <B><A HREF="#DOC.111.10">textBack</A></B>
+<DD><I> The background for the window title.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Dialog.html">Dialog</A>* <B><A HREF="#DOC.111.11">clientArea</A></B>
+<DD><I> A pointer to the window's client area</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>WinClientArea <B><A HREF="#DOC.111.12">ownClientArea</A></B>
+<DD><I> The window's own client area that is used by default if the user doesn't provide one</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Rect.html">Rect</A> <B><A HREF="#DOC.111.13">restoreRect</A></B>
+<DD><I> The restore rectangle.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.111.14">extraFlags</A></B>
+<DD><I> Some window specific flags that don't fit in the normal widget flags scheme.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.111.15">MsgInitSkin</A></B>()
+<DD><I> Initilizes the window item with the default bitmaps, fonts and font colours as defined by the skin</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.111.16">MsgGotfocus</A></B>()
+<DD><I> Sends a MSG_GOTFOCUS to all the widgets (except for the client area) and plays an appropriate sample to indicate the window got input focus</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.111.17">MsgLostfocus</A></B>()
+<DD><I> Sends a MSG_LOSTFOCUS to all the widgets (except for the client area) and plays an appropriate sample to indicate the window lost input focus</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.111.18">MsgGotmouse</A></B>()
+<DD><I> Restores the window when it gets the mouse if the autorollup feature is enabled</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.111.19">MsgLostmouse</A></B>()
+<DD><I> Minimizes the window when it loses the mouse if the autorollup feature is enabled</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.111.20">UpdateSize</A></B>()
+<DD><I> Resizes and repositions some of the child widgets after the window has been resized or moved.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Dialog.html#DOC.45.17">ActionType</A> <B><A HREF="#DOC.111.21">GetAction</A></B>()
+<DD><I> Returns the ActionType accordin to the position of the mouse.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.111.22">UpdateWindowProperties</A></B>()
+<DD><I> A helper function for enabling and disabling the icons according to the window's properties</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+A movable and resizable dialog aka window.
+
+<P>A Window implements a dialog that has a frame with a caption area, three icons
+for minimizing, maximizing and closing the window and a client area for holding
+the window's contents. A window can be modal (it takes exclusive input focus)
+or modeless (it coexists with other widgets in a dialog). A window can but
+doeasn't have to be movable and/or resizable. It can use it's own client area
+for holding its contents or you can give it any dialog to act as a client area.</BLOCKQUOTE>
+<DL>
+
+<A NAME="title"></A>
+<A NAME="DOC.111.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Label.html">Label</A> title</B></TT>
+<DD>
+The window's title Label. This is public so you can access it freely
+without the need of a special access function.
+<DL><DT><DD></DL><P>
+<A NAME="bLeft"></A>
+<A NAME="DOC.111.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>FrameBorder bLeft</B></TT>
+<DD>
+Left border
+<DL><DT><DD></DL><P>
+<A NAME="bRight"></A>
+<A NAME="DOC.111.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>FrameBorder bRight</B></TT>
+<DD>
+Right border
+<DL><DT><DD></DL><P>
+<A NAME="bTop"></A>
+<A NAME="DOC.111.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>FrameBorder bTop</B></TT>
+<DD>
+Top border
+<DL><DT><DD></DL><P>
+<A NAME="bBottom"></A>
+<A NAME="DOC.111.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>FrameBorder bBottom</B></TT>
+<DD>
+Bottom border
+<DL><DT><DD></DL><P>
+<A NAME="bGrip"></A>
+<A NAME="DOC.111.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>FrameBorder bGrip</B></TT>
+<DD>
+The caption area
+<DL><DT><DD></DL><P>
+<A NAME="iconMin"></A>
+<A NAME="DOC.111.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>WinIcon iconMin</B></TT>
+<DD>
+Minimize icon
+<DL><DT><DD></DL><P>
+<A NAME="iconMax"></A>
+<A NAME="DOC.111.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>WinIcon iconMax</B></TT>
+<DD>
+Maximize icon
+<DL><DT><DD></DL><P>
+<A NAME="iconExit"></A>
+<A NAME="DOC.111.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>WinIcon iconExit</B></TT>
+<DD>
+Exit icon. The exit icon actually closes a modal window but if the
+window is modeless, it will just send MSG_REMOVEME to the parent dialog
+and the dialog needs to actually remove the window from itself.
+<DL><DT><DD></DL><P>
+<A NAME="textBack"></A>
+<A NAME="DOC.111.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>TextBack textBack</B></TT>
+<DD>
+The background for the window title. Note that only some skins use this.
+<DL><DT><DD></DL><P>
+<A NAME="clientArea"></A>
+<A NAME="DOC.111.11"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Dialog.html">Dialog</A>* clientArea</B></TT>
+<DD>
+A pointer to the window's client area
+<DL><DT><DD></DL><P>
+<A NAME="ownClientArea"></A>
+<A NAME="DOC.111.12"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>WinClientArea ownClientArea</B></TT>
+<DD>
+The window's own client area that is used by default if the user
+doesn't provide one
+<DL><DT><DD></DL><P>
+<A NAME="restoreRect"></A>
+<A NAME="DOC.111.13"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Rect.html">Rect</A> restoreRect</B></TT>
+<DD>
+The restore rectangle. This rectangle stores the original window size
+and position so the window can be restored after being minimized or maximized.
+<DL><DT><DD></DL><P>
+<A NAME="extraFlags"></A>
+<A NAME="DOC.111.14"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int extraFlags</B></TT>
+<DD>
+Some window specific flags that don't fit in the normal widget flags scheme.
+<PRE>
+         W_MINIMIZED=1      - the window is minimized
+         W_MAXIMIZED=2      - the window is maximized
+         W_AUTOROLLUP=4     - the window automatically minimizes when it loses the mouse
+</PRE>
+<DL><DT><DD></DL><P>
+<A NAME="MsgInitSkin"></A>
+<A NAME="DOC.111.15"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgInitSkin()</B></TT>
+<DD>
+Initilizes the window item with the default bitmaps, fonts and font colours as defined by the skin
+<DL><DT><DD></DL><P>
+<A NAME="MsgGotfocus"></A>
+<A NAME="DOC.111.16"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgGotfocus()</B></TT>
+<DD>
+Sends a MSG_GOTFOCUS to all the widgets (except for the client area)
+and plays an appropriate sample to indicate the window got input focus
+<DL><DT><DD></DL><P>
+<A NAME="MsgLostfocus"></A>
+<A NAME="DOC.111.17"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgLostfocus()</B></TT>
+<DD>
+Sends a MSG_LOSTFOCUS to all the widgets (except for the client area)
+and plays an appropriate sample to indicate the window lost input focus
+<DL><DT><DD></DL><P>
+<A NAME="MsgGotmouse"></A>
+<A NAME="DOC.111.18"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgGotmouse()</B></TT>
+<DD>
+Restores the window when it gets the mouse if the autorollup feature is enabled
+<DL><DT><DD></DL><P>
+<A NAME="MsgLostmouse"></A>
+<A NAME="DOC.111.19"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgLostmouse()</B></TT>
+<DD>
+Minimizes the window when it loses the mouse if the autorollup feature is enabled
+<DL><DT><DD></DL><P>
+<A NAME="UpdateSize"></A>
+<A NAME="DOC.111.20"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void UpdateSize()</B></TT>
+<DD>
+Resizes and repositions some of the child widgets after the window has
+been resized or moved. You should overload this function if you want your
+widgets to follow the window's size and position properly.
+<DL><DT><DD></DL><P>
+<A NAME="GetAction"></A>
+<A NAME="DOC.111.21"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Dialog.html#DOC.45.17">ActionType</A> GetAction()</B></TT>
+<DD>
+Returns the ActionType accordin to the position of the mouse. This
+makes sure the window can be resized when the mouse is on top of a border
+and moved when it is on top of the caption area.
+<DL><DT><DD></DL><P>
+<A NAME="UpdateWindowProperties"></A>
+<A NAME="DOC.111.22"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void UpdateWindowProperties()</B></TT>
+<DD>
+A helper function for enabling and disabling the icons according to the window's properties
+<DL><DT><DD></DL><P>
+<A NAME="HandleEvent"></A>
+<A NAME="DOC.111.23"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void HandleEvent(<!1><A HREF="Widget.html">Widget</A> &amp;obj, int msg, int arg1=0, int arg2=0)</B></TT>
+<DD>
+Handles events such as icon clicks
+<DL><DT><DD></DL><P>
+<A NAME="Add"></A>
+<A NAME="DOC.111.24"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Add(<!1><A HREF="Widget.html">Widget</A> &amp;<!1><A HREF="Widget.html#DOC.110.69">w</A>)</B></TT>
+<DD>
+Adds a widget to the client area
+<DL><DT><DD></DL><P>
+<A NAME="Remove"></A>
+<A NAME="DOC.111.25"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Remove(<!1><A HREF="Widget.html">Widget</A> &amp;<!1><A HREF="Widget.html#DOC.110.69">w</A>)</B></TT>
+<DD>
+Removes a widget from the client area
+<DL><DT><DD></DL><P>
+<A NAME="SetClientArea"></A>
+<A NAME="DOC.111.26"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetClientArea(<!1><A HREF="Dialog.html">Dialog</A>* <!1><A HREF="Window.html#DOC.111.11">clientArea</A>)</B></TT>
+<DD>
+Sets the passed dialog as the window's client area. The window contains
+its own default client area dialog but if you want you can have any
+dialog act as a client area for a window.
+<DL><DT><DD></DL><P>
+<A NAME="GetClientArea"></A>
+<A NAME="DOC.111.27"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Dialog.html">Dialog</A>* GetClientArea()</B></TT>
+<DD>
+Returns a pointer to the window's client area dialog
+<DL><DT><DD></DL><P>
+<A NAME="Minimize"></A>
+<A NAME="DOC.111.28"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Minimize()</B></TT>
+<DD>
+Minimizes the window or restores it if it is already minimized. Note
+that in MASkinG minimizing a window isn't exactly the same as minimizing
+a window in MS Windows. In MASkinG minimizing is about halfway between
+rolling up and normal minimizing.
+
+<P>Note: this can change in the future.
+<DL><DT><DD></DL><P>
+<A NAME="Maximize"></A>
+<A NAME="DOC.111.29"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Maximize()</B></TT>
+<DD>
+Maximizes the window or restores it if it is already maximized
+<DL><DT><DD></DL><P>
+<A NAME="Autorollup"></A>
+<A NAME="DOC.111.30"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Autorollup(bool)</B></TT>
+<DD>
+Enables or disables the autorollup (or auto-minimize) feature. If
+enabled, the window will automatically minimize itself when it loses
+the mouse and restore itself when it gets it back.
+<DL><DT><DD></DL><P></DL>
+<HR>
+<DL><DT><B>Direct child classes:
+</B><DD><A HREF="MessageBox.html">MessageBox</A><BR>
+<A HREF="FileSelect.html">FileSelect</A><BR>
+<A HREF="ColorSelect.html">ColorSelect</A><BR>
+</DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Window.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:14 GMT -->
+</html>

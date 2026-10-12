@@ -1,0 +1,435 @@
+<html>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/tutorial.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:05 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head><title>Tutorial</title></head><body>
+<h1><a name="tutorial">A short MASkinG Tutorial</a></h1>
+
+<p>This short tutorial will introduce you to writing a graphical user interface
+   or GUI (pronounced "gooey") with the MASkinG programming library. It doesn't
+   require any prior knowledge of the Allegro GUI although if you haven't used
+   it before it is recommended that you have the Allegro documentation at hand.
+
+<p><hr>
+<ul><h4>
+<p><b>A simple GUI application</b><br>
+<li><a href="#step1">Step 1: setting up Allegro and MASkinG</a>
+<li><a href="#step2">Step 2: making a simple dialog</a>
+<li><a href="#step3">Step 3: adding more objects</a>
+<li><a href="#step4">Step 4: making widgets of your own</a>
+<li><a href="#step5">Step 5</a>
+<li><a href="#step6">Step 6</a>
+<li><a href="#step7">Step 7</a>
+<li><a href="#step8">Step 8</a>
+</h4></ul>
+<p><hr>
+
+<p>
+<b><a name="step1">Step 1 - Setting up Allegro and MASkinG</a></b><br>
+   If you haven't installed MASkinG yet do it now. Compile the example programs to see if it works.<br>
+   To start the tutorial you will first have to create a normal Allegro application. Just create a new
+   file called 'tutorial.cpp' (or whatever you want) and type in the following lines:
+<pre>
+   #include &lt;MASkinG.h&gt;
+   using namespace MAS;
+</pre>
+   The first line includes the MASkinG header (note: you don't need to explicitly include allegro.h because it
+   gets included with MASkinG.h) and the second one makes sure all classes from the MAS namespace can be accessed
+   directly. You can of course skip the second line but then you will have to prefix every MASkinG class and
+   function name with "MAS::" in order to be able to access it.
+
+<p>Then write the main() function and initialize MASkinG:
+<pre>
+   int main() {
+      Error e = InstallMASkinG("allegro.cfg");
+      if (e) {
+         e.Report();
+      }
+
+      return 0;
+   }
+   END_OF_MAIN();
+</pre>
+   The InstallMASkinG() function will read the settings from the 'allegro.cfg' file,
+   install and initialize all required modules, set the graphics mode and initialize
+   MASkinG itself. If you want the settings to be read from a different file, just pass
+   its name as a parameter to the InstallMASkinG() function. If the file you're trying
+   to read settings from doesn't exist, MASkinG will create a new one and fill it in
+   with the default settings. If you don't want to read settings from a config file just
+   don't pass anything to InstallMASkinG(). In that case you can change the members
+   of the <a href="settings-2.html">Settings</a> class as you wish before calling
+   InstallMASkinG().
+<p>As you can see InstallMAskinG() is a very handy function but as it does everything
+   automatically your program has no control over what settings to use. If you need
+   more control you can alternatively install MASkinG "manually":
+<pre>
+   allegro_init();
+   install_keyboard();
+   install_timer();
+   install_mouse();
+   set_color_depth(16);
+   set_gfx_mode(GFX_AUTODETECT, 640, 480, 0, 0);
+   alfont_init();
+
+   Timer::Lock();
+   Color::OnColorDepthChange();
+   theSkin = new Skin("myskin.ini");
+</pre>
+<p>This is exactly what the InstallMASkinG() function does except that it reads settings
+   from a configuration file, sets up a couple of other things and of course does
+   error checking which is what you should do too.
+<p>Just before your program exits you have to make sure all the resources used by the skin are freed. You
+   do this by calling the ExitMASkinG() function.
+<p>In the end your main source file should look like this:
+<pre>
+   //--------------------file: tutorial.cpp----------------------------
+
+   #include &lt;MASkinG.h&gt;
+   using namespace MAS;
+
+   int main() {
+      Error e = InstallMASkinG("allegro.cfg");
+      if (e) {
+         e.Report();
+     }
+
+      ExitMASkinG();
+
+      allegro_message("Finished successfully!");
+      return 0;
+   }
+   END_OF_MAIN();
+
+   //---------------------------eof------------------------------------
+</pre>
+   If you compile this you should get no errors. If you do, then read the "Installation" and "Using" sections of
+   this documentation again. When you run the program the screen should go black for a moment and then
+   the program should exit with a message saying it finished successfully.
+</p>
+
+<p><hr>
+
+<p>
+<b><a name="step2">Step 2 - Making a simple dialog</a></b><br>
+   In step 2 we will make our first simple dialog.
+<p>In MASkinG every dialog should be derived from a class named Dialog. So create a new file called
+   "MainDlg.h" and type the following into it:
+<pre>
+   //----------------------file: MainDlg.h-----------------------------
+
+   #include &lt;MASkinG.h&gt;
+   using namespace MAS;
+
+   #ifndef MAINDLG_H
+   #define MAINDLG_H
+
+   class MainDlg : public Dialog {
+      private:
+         ClearScreen desktop;
+         Panel pBox;
+         Button bQuit;
+
+      public:
+         MainDlg();
+         virtual ~MainDlg();
+   };
+
+   #endif //MAINDLG_H
+
+   //---------------------------eof------------------------------------
+</pre>
+<p>Then make a new file called "MainDlg.cpp" and type the following into it:
+<pre>
+   //---------------------file: MainDlg.cpp----------------------------
+
+   #include "MainDlg.h"
+
+   MainDlg::MainDlg() : Dialog() {
+      pBox.Shape(10, 10, 620, 460);
+      bQuit.Setup(20, 440, 150, 20, KEY_Q, D_EXIT, "&Quit");
+
+      Add(desktop);
+      Add(pBox);
+      Add(bQuit);
+   }
+
+   MainDlg::~MainDlg() {
+   }
+
+   //---------------------------eof------------------------------------
+</pre>
+<p>Finally change the main source file to include "MainDlg.h", delete the line that displays the message that says
+   everything went OK and add the following between the calls to InstallMASkinG() and ExitMASkinG():
+<pre>
+   MainDlg *dlg = new MainDlg;
+   dlg->Execute();
+   delete dlg;
+</pre>
+<p>Now lets go through the code. The first file is a header file where our dialog is declared. It says that
+   our dialog is called MainDlg and that it is derived from Dialog. The dialog contains three dialog objects
+   (also called widgets). They are all private as we don't need them to be visible to the outside. The first is
+   a ClearScreen with a very descriptive name - desktop. It is exactly what its name says. Every static dialog
+   should have one (or a Wallpaper which uses a bitmap to paint the desktop instead of just a single colour).
+   Next is a Panel. Panels don't actually do anything usefull. They are there just to visually
+   separate objects and to make the dialog look a bit better. Finally there is a Button. This is just a normal
+   button that we'll use to close the program with.<br>
+   In the public section are two functions. They are the constructor and destructor. We will use the constructor
+   to setup our dialog.
+
+<p>The second file contains the implementation of our dialog. All the functionality that you expect from a dialog
+   has already been coded into the base class - Dialog. In our dialog we just have to setup our objects. We'll
+   do that in the constructor:
+
+<p>The first two lines setup the panel and the button. For the panel we used the Shape() function which defines
+   an objects size and position. Our box is almost as big as the entire screen (assuming we're running in 640x480),
+   there are just 10 pixels on each side left. For the button we use the Setup() function. This is just like
+   Shape() only that it takes a few more parameters. The first argument after the position and size is the keyboard
+   shortuct for the button. We set KEY_Q which means we'll be able to press the button not only with the mouse but
+   also with the Ctrl+Q keyboard combination. The next value is the combination of flags we want the button to
+   have. The flags are the same as in Allegro GUI. D_EXIT means that clicking the button will close the dialog.
+   The last parameter is the text that will apear on the button. Every character in this text that is preceded
+   with an '&' is underlined so by putting an '&' in front of the x we make sure the x will be underlined.
+
+<p>After we have setup the objects we must add them to the dialog. The order in which they are added is important!
+   When the dialog is drawn the objects are drawn in that order so if we were to put the desktop at the end it
+   would cover everything else. The rule is: first add the desktop, then the panels and then other objects.
+
+<p>Compile the program and run it. If everything went OK you have made your first dialog!
+
+<p><hr>
+
+<p>
+<b><a name="step3">Step 3 - Adding more objects</a></b><br>
+   In step 3 we will add a few more objects to our dialog. We will add a top bar menu and an event handler function.
+   We will also learn how to change the colors and fonts of the objects.
+<p>Objects in MASkinG communicate with their dialog through events and messages. The dialog sends messages to the
+   objects and objects in return may create events. For example when a mouse button is pressed while on top of
+   a Button the dialog manager will send the button a MSG_CLICK message by calling its MsgClick() function. The
+   button will then process this message and if it finds out that the mouse button was released while still on
+   top of it, it will be activated and will create a MSG_ACTIVATE event by calling the dialogs HandleEvent()
+   function. We can overload this function to catch such events. In our example we will have a slider that will
+   create MSG_SCROLL events and a label that will display the position of the slider. We will handle
+   MSG_SCROLL events in our HandleEvent() function.
+
+<p>Almost every application and a lot of games have some sort of a mouse operated menu. Either it is a top bar
+   pull down menu or a popup menu or something similar. The menus in MASkinG too create events so responding
+   to a menu click is no different than responding to a button click. We will add a menu to our application
+   and we will handle the events it creates in the HandleEvent() funcition.
+
+<p>Finally we will add some text that will have different colour than that defined by the skin. Because the colours
+   and the fonts are defined by the skin we will have to overload the MsgInitSkin() function. So add this into the
+   protected section of the MainDlg class:
+<pre>
+   Slider slider;
+   EditBox textSlider;
+   Label textInfo;
+   Menu menuFile, menuEdit, menuHelp, menuMain;
+   enum { FILE_NEW = MSG_SUSER, FILE_OPEN, FILE_SAVE, FILE_QUIT, EDIT_COPY, EDIT_PASTE, EDIT_CUT, HELP_CONTENTS, HELP_ABOUT };
+   void MakeMenu();
+</pre>
+
+<p>The first three lines should be clear - they are declarations of a slider, an edit box (in this example it won't
+   be editable because we will disable it) and a label object. The menu is a little more complicated. The menu
+   object is made out of several menus: menuMain is the top bar menu and the rest are submenus. The enumeration
+   variable are actually IDs of the events the menu will create. The first one equals MSG_SUSER because all IDs
+   before that have already been taken by other objects. Finally there is a helper function that will construct
+   our program's menu tree.
+
+<p>Now add the following to the public section:
+<pre>
+   void HandleEvent(Widget &obj, int msg, int arg1=0, int arg2=0);
+   void MsgInitSkin();
+</pre>
+<p>These two functions are already declared in the base class for the dialog. Here we are just overloading them.
+   HandleEvent() takes three arguments: a reference to the object that created the event, the ID of the event itself
+   and two optional event arguments. MsgInitSkin() is a message handler that is called whenever the skin of
+   the dialog changes (i.e. at the beginning of the program).
+
+<p>In the constructor add these lines and move the panel down a little to make room for the menu:
+<pre>
+   slider.Setup(30, 40, 20, 200, 0, 0, 0, 9, 0, 0);
+   textSlider.Setup(25, 245, 30, 20, 0, D_DISABLED, "0", 2);
+   textInfo.ClearFlag(D_AUTOSIZE);
+   textInfo.Setup(320, 450, 300, 20, 0, 0, "This is a tutorial application v1.0", 1);
+   MakeMenu();
+
+   Add(slider);
+   Add(textSlider);
+   Add(textInfo);
+   Add(menuMain);
+</pre>
+
+<p>The setup functions are used similarly as in step 2 only that different objects have slightly different setup
+   functions. Actually the first 6 arguments are almost always the same but others are specific for each type of
+   object. The slider takes 4 extra arguments: the minimum position, the maximum position, the starting position
+   and orientation. We made our slider take values between 0 and 9, initially it is in position 0 and it is a vertical
+   slider. The editbox object takes the initial text and the number of characters it can take in. The label
+   object just takes the text and text alignment. In our case we made the text right justified. Note that by
+   default labels are automatically resized to the size of the text so if we want text alignment to have any
+   effect we must first disable the D_AUTOSIZE flag.
+
+<p>Now we'll implement the MakeMenu() function which will construct our menu:
+<pre>
+   void MainDlg::MakeMenu() {
+      menuFile.Add("&New\tCtrl-N", FILE_NEW);
+      menuFile.Add("&Open\tCtrl-O", FILE_OPEN);
+      menuFile.Add("&Save\tCtrl-S", FILE_SAVE);
+      menuFile.Add();
+      menuFile.Add("&Quit\tCtrl-Q", FILE_QUIT);
+
+      menuEdit.Add("&Copy\tCtrl-C", EDIT_COPY);
+      menuEdit.Add("&Paste\tCtrl-V", EDIT_PASTE);
+      menuEdit.Add("Cu&t\tCtrl-X", EDIT_CUT);
+
+      menuHelp.Add("&Contents\tF1", HELP_CONTENTS);
+      menuHelp.Add("&About\tCtrl-A", HELP_ABOUT);
+
+      menuMain.Add("&File", menuFile);
+      menuMain.Add("&Edit", menuEdit);
+      menuMain.Add("&Help", menuHelp);
+   }
+</pre>
+<p>The Menu::Add() function takes a text string and either an event ID or a reference to another Menu. This way
+   we can make a menu tree as complex as we want. The text that we pass to the Add() function is made of two parts
+   separated by a '\t' character. Everything left of the '\t' is printed on the left side of the menu and everything
+   on the right side becomes right justified. By passing not passing anything or NULL we can create a menu separator.
+
+<p>Now we'll implement the event handler function. This should most often be done like this:
+<pre>
+   void MainDlg::HandleEvent(Widget &obj, int msg, int arg1, int arg2) {
+      Dialog::HandleEvent(obj, msg, arg1, arg2);
+
+      switch (msg) {
+         case MSG_SCROLL:
+            if (obj == slider) {
+               textSlider.SetNumber(arg1);
+            }
+            break;
+
+         case FILE_NEW:                    break;
+         case FILE_OPEN:                   break;
+         ...
+         case FILE_QUIT:     Close();      break;
+      };
+   }
+</pre>
+<p>First we must pass the message we recieved up the class hierarchy structure, then we can actually process the
+   message. In order to do this we first look at what kind of a message we received and then which widget sent it.
+   When we know all this we can take appropriate action. In the case of the MSG_SCROLL event that was sent
+   by the slider we set the matcing text to contain the new slider position which is passed in the 'arg1' parameter.
+   In the case of the menu we handle only the FILE_EXIT event for now and ignore all the ohers.
+
+<p>Finally we will set the info-texts color. This must be done in the MsgInitSkin() function so we can override
+   the text settings defined by the skin:
+<pre>
+   void MainDlg::MsgInitSkin() {
+      Dialog::MsgInitSkin();
+      textInfo.SetFontColor(Color(128,128,196), Color::white, Skin::NORMAL);
+   }
+</pre>
+<p>We first have to call the base class' MsgInitSkin() method, then we can set whatever fonts, bitmaps, samples, colours
+   or any other skin related object information we want. In this case we made the info text have a blue color with
+   a bright shadow.
+
+<p>That's it for step 3. You should now have quite good understanding of how MASkinG works and be ready to make
+   a GUI of your own.
+
+<p><hr>
+
+<b><a name="step4">Step 4 - Making widgets of your own</a></b><br>
+   In step 4 we will make a widget with our own custom behaviour and looks. It will be a simple
+   analogue clock which will show current time in hours, minutes and seconds. It will override the Draw()
+   method to draw a simple clock, it will install a user defined timer to measure time and it will
+   capture input from the mouse and keyboard to manipulate it a bit. This will also demonstrate
+   how to use some more advanced features, for example the clock will be round (as opposed to being rectangular),
+   it will have some transparent parts and it will be movable. For this reason the code may look
+   a bit complicated and obscure, but don't worry, just skip the parts about the advanced stuff
+   if you're not interested in them. The basic layout of a derived widget is always roughly the
+   same and one of the purposes of this tutorial is to show just that.
+
+<p>So the first step is to make two new files which will be home to our little clock widget. You're
+   technically not required to do this, you could put the code just about anywhere you want, but it is
+   advisable to organize it in an easily managable way. So we will make a file named
+   <a href="../tutorial/anaclock.h">anaclock.h</a> and another one called
+   <a href="../tutorial/anaclock.cpp">anaclock.cpp</a>. The first one will contain our widget's
+   declaration and the second one will be the implementation. Open the two files to see how I
+   implemented the clock widget, the implementation is quite heavily commented. Now let's go
+   over the header file together here.
+
+<p>The first part should be familiar - there are some include guards to make sure you don't get
+   multiple declarations in large projects (you should always use those no matter how small the
+   program you're writing is), followed by the line that includes the MASkinG header. Then comes
+   our clock's class itself. The clock is a simple widget derived straight from the base widget
+   class, it overloads several functions and has one or two extra variables and functions. Lets
+   go over them one by one.
+
+<p>Our clock will show hours, minutes and seconds, which means it will have to be updated once
+   per second. For this purpose it will install a timer interrupt that will tick once every
+   1000 ms. In order to use this feature of MASkinG, the clock will have to remember the ID of
+   its timer and the timerID variable is used just for that.
+
+<p>Then come the overloaded mesasge handlers. A widget might have less or it might have more, the
+   clock implements quite a good number of them actually. The first one is MsgStart(). This is
+   called once when the dialog the clock belongs to starts executing. The clock installs a timer
+   that ticks once every 1000ms in that function. In MsgEnd(), which is called just before the
+   parent dialog stops executing, the clock simply stops the timer, nothing complicated about that.
+
+<p>MsgTimer() is called whenever a timer ticks. The ID of the timer that ticked is passed into the
+   function with the ID parameter. In this handler the clock checks whether the timer that ticked
+   is the one it is interested in and if it is, it makes itself redraw.
+
+<p>The comes Draw(), the main drawing function. In this function the clock receives a canvas
+   bitmap onto which it can draw itself. It just draws a simple analogue clock with twelve
+   tick marks and three pointers for hours, minutes and seconds, showing the current time.
+
+<p>After that are two handlers dealing with receiving the mouse and input focus. MsgWantfocus()
+   simply returns true to indicate the clock wants input focus (remember, we will use the mouse
+   and keyboard to manipulate it) and MsgWantmouse() does the same for receiving the mouse.
+   However because the clock is not rectangular, the MsgWantmouse() handler has to check where
+   exactly the mouse cursor is. If it's in one of the corners of the clock, or if it's not inside the
+   clock's bounding rectangle at all, the clock doesn't want the mouse. Only if the mouse is
+   inside the round area of the clock, will the clock receive it.
+
+<p>Then come some handlers for dealing with handling input. The clock can be moved with the mouse or
+   the keyboard. To move it with the mouse, MsgMousemove() is used. This function receives
+   a parameter that holds the distance the mouse cursor traveled since the last update. The clock
+   will be moved whenever the left mouse button is pressed down and the mouse moves. To remember
+   when the mouse button is down the MsgLPress() and MsgLRelease() handlers are used, they simply
+   set and clear the D_PRESSED flag of the clock widget. Actually the clock could directly access
+   the mouse state to determine that, but the proper way is through the D_PRESSED flag which
+   takes care of some unexpected situations, like for example if the mouse button is pressed
+   when the cursor is not on top of the clock and is then moved over the clock. When MsgMousemove()
+   detects the clock is being pressed down (D_PRESSED flag is set) and the cursor has moved,
+   it simply calls the Move() function which actually moves the widget to a new location.
+
+<p>MsgChar() is a handler for handling buffered keyboard input. The clock's MsgChar() simply
+   checks which of the cursor keys are being pressed down and moves the clock accordingly. Notice
+   that the movement is a bit jerky. That's because the keyboard input MsgChar() handles is
+   buffered. If you wanted continuous keyboard input, you could overload the MsgTick() handler
+   (which is called once per tick to provide a function in which one can implement a frame of logic)
+   and access the global key array to handle keyboard input, just like you would do
+   in any normal Allegro application.
+
+<p>Finally there's the MsgLostfocus() handler, which is called whenever the widget loses input
+   focus. The clock simply requests the parent dialog to redraw everything that is behind the
+   clock in that handler. It has to do that because it is partly transparent and not all parts
+   are the same when it has focus and when it doesn't, so it has to explicitely request this
+   redraw in order to make sure the old state doesn't show through when it loses focus.
+
+<p>That's it for this tutorial, all that needs to be done now is use the clock widget in our
+   main dialog. Just put an instance of the AnaClock class in the dialog as you would do with
+   any other widget.
+
+<p>Here's the full source code if you can't get it right yourself: <a href="../tutorial/tutorial.cpp">tutorial.cpp</a>,
+   <a href="../tutorial/MainDlg.h">MainDlg.h</a> and <a href="../tutorial/MainDlg.cpp">MainDlg.cpp</a>,
+   <a href="../tutorial/anaclock.h">anaclock.h</a> and <a href="../tutorial/anaclock.cpp">anaclock.cpp</a>.
+
+<p>
+<b><a name="step5">Step 5 - </a></b><br>
+<b><a name="step6">Step 6 - </a></b><br>
+<b><a name="step7">Step 7 - </a></b><br>
+<b><a name="step8">Step 8 - </a></b><br>
+   I'll write some more when I have time.
+
+<p><hr><p><a href="../index.html">Back to contents</a><p></body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/tutorial.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:07 GMT -->
+</html>

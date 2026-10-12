@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/GLDriver.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC GLDriver</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">GLDriver</A></H2></H2><BLOCKQUOTE> Simple OpenGL/AllegroGL driver.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>GLDriver
+- <A HREF="ScreenUpdate.html">ScreenUpdate</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.57.1">RequiresFullRedraw</A></B>()
+<DD><I> This driver requires full redraw</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.57.2">Redraw</A></B>()
+<DD><I> Performs a GL flip</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+Simple OpenGL/AllegroGL driver.
+Draws to the screen and does an allegro_gl_flip() for every frame.
+This driver is most useful for applications that use OpenGL in a
+fullscreen context (i.e. games). It's the fastest OpenGL driver you'll
+get (for pure OpenGL graphics) but has a few drawbacks. Some Allegro
+drawing primitives are not supported and others are very slow. This
+means that for this	driver font antialiasing and mouse shadows have
+to be turned off (this is done automatically).
+
+<P>Note: At present (v0.80) there seem to be some problems with this
+driver that prevent most normal Allegro graphics features from working
+when this driver is used.</BLOCKQUOTE>
+<DL>
+
+<A NAME="RequiresFullRedraw"></A>
+<A NAME="DOC.57.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool RequiresFullRedraw()</B></TT>
+<DD>
+This driver requires full redraw
+<DL><DT><DD></DL><P>
+<A NAME="Redraw"></A>
+<A NAME="DOC.57.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Redraw()</B></TT>
+<DD>
+Performs a GL flip
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/GLDriver.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+</html>

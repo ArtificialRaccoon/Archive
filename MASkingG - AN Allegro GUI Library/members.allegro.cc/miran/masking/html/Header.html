@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Header.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:14 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC ListBoxEx::Header</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">Header</A></H2></H2><BLOCKQUOTE> The listbox header widget.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>Header
+- <A HREF="Button.html">Button</A>
+- <A HREF="Label.html">Label</A>
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>std::vector&lt;<!1><A HREF="Column.html">Column</A>&gt; * <B><A HREF="#DOC.69.2.1">columns</A></B>
+<DD><I> pointer to a vector of columns; the actual list is owned by the listbox</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.69.2.2">mouseColumn</A></B>
+<DD><I> index of the column the mouse is currently hovering over</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.69.2.3">resizingColumn</A></B>
+<DD><I> index of the column that is being resized; -1 if no column is being resized</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.69.2.4">resizeOffset</A></B>
+<DD><I> the distance between the mouse x position and the border of the column at the time when resizing is initiated</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.69.2.5">Draw</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)
+<DD><I> draws the header</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.69.2.6">MsgMousemove</A></B>(const <!1><A HREF="Point.html">Point</A> &amp;d)
+<DD><I> updates mouseColumn on mouse move</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.69.2.7">OnResize</A></B>()
+<DD><I> handles resizing the columns with the mouse; called by MsgMousemove()</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.69.2.8">OnMousemove</A></B>()
+<DD><I> handles switching focus between header columns with the mouse; called by MsgMousemove()</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.2.9">DrawItemBackground</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;dst, <!1><A HREF="Column.html">Column</A>* item, int state, const <!1><A HREF="Rect.html">Rect</A> &amp;dstRect)
+<DD><I> Draws one background for one column header.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.69.2.10">DrawItemContents</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;dst, <!1><A HREF="Column.html">Column</A>* item, int state, const <!1><A HREF="Rect.html">Rect</A> &amp;dstRect)
+<DD><I> Draws the contents of one column header (ie.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   int <B><A HREF="#DOC.69.2.11">PreferredHeight</A></B>()
+<DD><I> Returns the preferred height of the header.</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+The listbox header widget. Draws all column headers and allows individual
+headers to be clicked. You can derive your own headers from it to implement
+custom drawing or behaviour.</BLOCKQUOTE>
+<DL>
+
+<A NAME="columns"></A>
+<A NAME="DOC.69.2.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>std::vector&lt;<!1><A HREF="Column.html">Column</A>&gt; * columns</B></TT>
+<DD>
+pointer to a vector of columns; the actual list is owned by the listbox
+<DL><DT><DD></DL><P>
+<A NAME="mouseColumn"></A>
+<A NAME="DOC.69.2.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int mouseColumn</B></TT>
+<DD>
+index of the column the mouse is currently hovering over
+<DL><DT><DD></DL><P>
+<A NAME="resizingColumn"></A>
+<A NAME="DOC.69.2.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int resizingColumn</B></TT>
+<DD>
+index of the column that is being resized; -1 if no column is being resized
+<DL><DT><DD></DL><P>
+<A NAME="resizeOffset"></A>
+<A NAME="DOC.69.2.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int resizeOffset</B></TT>
+<DD>
+the distance between the mouse x position and the border of the column at
+the time when resizing is initiated
+<DL><DT><DD></DL><P>
+<A NAME="Draw"></A>
+<A NAME="DOC.69.2.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Draw(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)</B></TT>
+<DD>
+draws the header
+<DL><DT><DD></DL><P>
+<A NAME="MsgMousemove"></A>
+<A NAME="DOC.69.2.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgMousemove(const <!1><A HREF="Point.html">Point</A> &amp;d)</B></TT>
+<DD>
+updates mouseColumn on mouse move
+<DL><DT><DD></DL><P>
+<A NAME="OnResize"></A>
+<A NAME="DOC.69.2.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void OnResize()</B></TT>
+<DD>
+handles resizing the columns with the mouse; called by MsgMousemove()
+<DL><DT><DD></DL><P>
+<A NAME="OnMousemove"></A>
+<A NAME="DOC.69.2.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void OnMousemove()</B></TT>
+<DD>
+handles switching focus between header columns with the mouse; called by MsgMousemove()
+<DL><DT><DD></DL><P>
+<A NAME="DrawItemBackground"></A>
+<A NAME="DOC.69.2.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void DrawItemBackground(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;dst, <!1><A HREF="Column.html">Column</A>* item, int state, const <!1><A HREF="Rect.html">Rect</A> &amp;dstRect)</B></TT>
+<DD>
+Draws one background for one column header. Overload this to implement custom drawing
+of the header background. The default implementation draws the column header backgrounds
+using the bitmap normally used to skin buttons.
+
+<P>
+<DL><DT><DT><B>Parameters:</B><DD><B>dst</B> -  destination <!1><A HREF="Widget.html#DOC.110.5">bitmap</A>
+<BR><B>item</B> -  pointer to the item being drawn
+<BR><B>state</B> -  status of the item (normal, <!1><A HREF="ListItem.html#DOC.70.5">selected</A>, disabled or focused)
+<BR><B>dstRect</B> -  rectangle into which the <!1><A HREF="ListBoxEx.html#DOC.69.6">header</A> should be rendered<BR><DD></DL><P>
+<A NAME="DrawItemContents"></A>
+<A NAME="DOC.69.2.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void DrawItemContents(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;dst, <!1><A HREF="Column.html">Column</A>* item, int state, const <!1><A HREF="Rect.html">Rect</A> &amp;dstRect)</B></TT>
+<DD>
+Draws the contents of one column header (ie. the column title). Overload to implement
+custom drawing of the header contents (i.e. the header titles).
+
+<P>
+<DL><DT><DT><B>See Also:</B><DD><!1><A HREF="Header.html#DOC.69.2.9">DrawItemBackground</A><BR><DD></DL><P>
+<A NAME="PreferredHeight"></A>
+<A NAME="DOC.69.2.11"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   int PreferredHeight()</B></TT>
+<DD>
+Returns the preferred height of the header. The listbox may actually ignore this but
+will try to use it if possible. Overload this in a derived header class if you want
+a differently sized header.
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DT><B>Friends:</B><DD>  class <!1><A HREF="ListBoxEx.html">ListBoxEx</A><BR><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Header.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:14 GMT -->
+</html>

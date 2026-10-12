@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/polygon-rendering/clip3d_f by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:24:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>clip3d_f</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Polygon rendering</a></h2><ul>
+<li><a href="polytype_flat.html" >POLYTYPE_FLAT</a></li><li><a href="polytype_gcol.html" >POLYTYPE_GCOL</a></li><li><a href="polytype_grgb.html" >POLYTYPE_GRGB</a></li><li><a href="polytype_atex.html" >POLYTYPE_ATEX</a></li><li><a href="polytype_ptex.html" >POLYTYPE_PTEX</a></li><li><a href="polytype_atex_mask.html" >POLYTYPE_ATEX_MASK</a></li><li><a href="polytype_ptex_mask.html" >POLYTYPE_PTEX_MASK</a></li><li><a href="polytype_atex_lit.html" >POLYTYPE_ATEX_LIT</a></li><li><a href="polytype_ptex_lit.html" >POLYTYPE_PTEX_LIT</a></li><li><a href="polytype_atex_mask_lit.html" >POLYTYPE_ATEX_MASK_LIT</a></li><li><a href="polytype_ptex_mask_lit.html" >POLYTYPE_PTEX_MASK_LIT</a></li><li><a href="polytype_atex_trans.html" >POLYTYPE_ATEX_TRANS</a></li><li><a href="polytype_ptex_trans.html" >POLYTYPE_PTEX_TRANS</a></li><li><a href="polytype_atex_mask_trans.html" >POLYTYPE_ATEX_MASK_TRANS</a></li><li><a href="polytype_ptex_mask_trans.html" >POLYTYPE_PTEX_MASK_TRANS</a></li><li><a href="polygon3d.html" >polygon3d</a></li><li><a href="polygon3d_f.html" >polygon3d_f</a></li><li><a href="triangle3d.html" >triangle3d</a></li><li><a href="triangle3d_f.html" >triangle3d_f</a></li><li><a href="quad3d.html" >quad3d</a></li><li><a href="quad3d_f.html" >quad3d_f</a></li><li><strong>clip3d_f</strong></li><li><a href="clip3d.html" >clip3d</a></li><li><a href="zbuffered-rendering/create_zbuffer.html" >create_zbuffer</a></li><li><a href="zbuffered-rendering/create_sub_zbuffer.html" >create_sub_zbuffer</a></li><li><a href="zbuffered-rendering/set_zbuffer.html" >set_zbuffer</a></li><li><a href="zbuffered-rendering/clear_zbuffer.html" >clear_zbuffer</a></li><li><a href="zbuffered-rendering/destroy_zbuffer.html" >destroy_zbuffer</a></li><li><a href="scene-rendering/create_scene.html" >create_scene</a></li><li><a href="scene-rendering/clear_scene.html" >clear_scene</a></li><li><a href="scene-rendering/destroy_scene.html" >destroy_scene</a></li><li><a href="scene-rendering/scene_polygon3d.html" >scene_polygon3d</a></li><li><a href="scene-rendering/scene_polygon3d_f.html" >scene_polygon3d_f</a></li><li><a href="scene-rendering/render_scene.html" >render_scene</a></li><li><a href="scene-rendering/scene_gap.html" >scene_gap</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>clip3d_f</h1>
+
+<div class="shortdesc">
+Clips the polygon given in vtx using floating point math,
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">int</span> <a href="../../index.html" target="_blank"><span class="a">clip3d_f</span></a><span class="k2">(</span><span class="k1">int</span> type, <span class="k1">float</span> min_z, <span class="k1">float</span> max_z, <span class="k1">int</span> vc, <span class="k1">const</span> <a href="../../index.html" target="_blank"><span class="a">V3D_f</span></a> <span class="k3">*</span>vtx<span class="k2">[</span><span class="k2">]</span>, <a href="../../index.html" target="_blank"><span class="a">V3D_f</span></a> <span class="k3">*</span>vout<span class="k2">[</span><span class="k2">]</span>, <a href="../../index.html" target="_blank"><span class="a">V3D_f</span></a> <span class="k3">*</span>vtmp<span class="k2">[</span><span class="k2">]</span>, <span class="k1">int</span> out<span class="k2">[</span><span class="k2">]</span><span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Clips the polygon given in `vtx'. The number of vertices is `vc', the
+   result goes in `vout', and `vtmp' and `out' are needed for internal
+   purposes. The pointers in `vtx', `vout' and `vtmp' must point to valid
+   V3D_f structures.<br /><br />
+
+   As additional vertices may appear in the process of clipping, so the
+   size of `vout', `vtmp' and `out' should be at least vc * (1.5 ^ n), where
+   `n' is the number of clipping planes (5 or 6), and `^' denotes "to the
+   power of".<br /><br />
+
+   The frustum (viewing volume) is defined by -z&lt;x&lt;z, -z&lt;y&lt;z,
+   0&lt;min_z&lt;z&lt;max_z. If  max_z&lt;=min_z, the z&lt;max_z clipping is
+   not done. As you can see, clipping is done in the camera space, with
+   perspective in mind, so this routine should be called after you apply
+   the camera matrix, but before the perspective projection. The routine
+   will correctly interpolate u, v, and c in the vertex structure. However,
+   no provision is made for high/truecolor GCOL.
+
+</div>
+
+<div class="retval">
+Returns the number of vertices after clipping is done.
+
+</div>
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">polygon3d</a></li>
+	<li><a href="../../index.html">clip3d</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../index.html">excamera</a></li>
+	<li><a href="../../index.html">exscn3d</a></li>
+</ul>
+</div>
+
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/3dcar16">3dcar16</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/Ashes">Ashes</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/StarControlTimeWarp">Star Control: TimeWarp</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/TW-Light">TW-Light</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/EmiliaPinball">Emilia Pinball</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/MonkeyHack">MonkeyHack</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/Stehovak3D">Stehovak3D</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/GAACOexample">GA + ACO example</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,695</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.010103</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/polygon-rendering/clip3d_f by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:24:03 GMT -->
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/HyperText.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC HyperText</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">HyperText</A></H2></H2><BLOCKQUOTE> A HyperText is almost the same as a Button without a bitmap except that it looks more like an internet link</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>HyperText
+- <A HREF="Button.html">Button</A>
+- <A HREF="Label.html">Label</A>
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.66.1">Draw</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A>&amp; <!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)
+<DD><I> Draws the hypertext on the canvas.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.66.2">MsgGotmouse</A></B>()
+<DD><I> When the hypertext gets the mouse it changes the cursor to an internet link pointer hand cursor thingy and when it loses the mouse it changes the cursor back to normal</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.66.3">MsgLostmouse</A></B>()
+<DD><I> See MsgGotmouse()</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.66.4">MsgInitSkin</A></B>()
+<DD><I> Initializes the widget with the default hypertext fonts and font colours from the skin and sets all the flags that define the behaviour of a hypertext widget</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.66.5">UpdateSize</A></B>()
+<DD><I> This widget resizes itself to the size of the text regardless of the status of the D_AUTOSIZE flag</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+A HyperText is almost the same as a Button without a bitmap except that it looks more
+like an internet link</BLOCKQUOTE>
+<DL>
+
+<A NAME="Draw"></A>
+<A NAME="DOC.66.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Draw(<!1><A HREF="Bitmap.html">Bitmap</A>&amp; <!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)</B></TT>
+<DD>
+Draws the hypertext on the canvas. The link is drawn as underlined
+text with a dotted rectangle around it.
+<DL><DT><DD></DL><P>
+<A NAME="MsgGotmouse"></A>
+<A NAME="DOC.66.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgGotmouse()</B></TT>
+<DD>
+When the hypertext gets the mouse it changes the cursor to an internet link pointer
+hand cursor thingy and when it loses the mouse it changes the cursor back to normal
+<DL><DT><DD></DL><P>
+<A NAME="MsgLostmouse"></A>
+<A NAME="DOC.66.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgLostmouse()</B></TT>
+<DD>
+See MsgGotmouse()
+<DL><DT><DD></DL><P>
+<A NAME="MsgInitSkin"></A>
+<A NAME="DOC.66.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgInitSkin()</B></TT>
+<DD>
+Initializes the widget with the default hypertext fonts and font colours from
+the skin and sets all the flags that define the behaviour of a hypertext widget
+<DL><DT><DD></DL><P>
+<A NAME="UpdateSize"></A>
+<A NAME="DOC.66.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void UpdateSize()</B></TT>
+<DD>
+This widget resizes itself to the size of the text regardless of the
+status of the D_AUTOSIZE flag
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/HyperText.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+</html>

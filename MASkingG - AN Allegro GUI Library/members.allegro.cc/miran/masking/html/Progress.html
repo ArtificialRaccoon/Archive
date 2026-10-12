@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Progress.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC Progress</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">Progress</A></H2></H2><BLOCKQUOTE> The progress bar widget.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>Progress
+- <A HREF="Separator.html">Separator</A>
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<H3>Progress
+- <A HREF="ScrollObject.html">ScrollObject</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.86.4">SetOrientation</A></B>(int o)
+<DD><I> Set the orientation of the progress bar.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.86.5">SetPosition</A></B>(int <!1><A HREF="ScrollObject.html#DOC.93.3">pos</A>)
+<DD><I> Sets the position of the progress bar.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.86.6">Setup</A></B>(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, int p, int o)
+<DD><I> A shortcut for Widget::Setup(), SetOrientation() and SetPosition()</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.86.7">Increment</A></B>()
+<DD><I> Advances the progress bar.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.86.1">Draw</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)
+<DD><I> Draws either a horizontal or a vertical progress bar</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.86.2">MsgInitSkin</A></B>()
+<DD><I> Initializes the progress bar with the default progress bar bitmap</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.86.3">UpdateSize</A></B>()
+<DD><I> Automatically calculates the size of the progress bar depending on orientation</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+The progress bar widget.
+Displays either a horizontal or a vertical progress bar although it
+works best as a horizontal one.</BLOCKQUOTE>
+<DL>
+
+<A NAME="Draw"></A>
+<A NAME="DOC.86.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Draw(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)</B></TT>
+<DD>
+Draws either a horizontal or a vertical progress bar
+<DL><DT><DD></DL><P>
+<A NAME="MsgInitSkin"></A>
+<A NAME="DOC.86.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgInitSkin()</B></TT>
+<DD>
+Initializes the progress bar with the default progress bar bitmap
+<DL><DT><DD></DL><P>
+<A NAME="UpdateSize"></A>
+<A NAME="DOC.86.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void UpdateSize()</B></TT>
+<DD>
+Automatically calculates the size of the progress bar depending on orientation
+<DL><DT><DD></DL><P>
+<A NAME="SetOrientation"></A>
+<A NAME="DOC.86.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetOrientation(int o)</B></TT>
+<DD>
+Set the orientation of the progress bar. Pass 0 for vertical and 1 for horizontal.
+<DL><DT><DD></DL><P>
+<A NAME="SetPosition"></A>
+<A NAME="DOC.86.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetPosition(int <!1><A HREF="ScrollObject.html#DOC.93.3">pos</A>)</B></TT>
+<DD>
+Sets the position of the progress bar. You should use this only to set the
+initial position if it is different than 0 and use Increment() to advance the bar.
+<DL><DT><DD></DL><P>
+<A NAME="Setup"></A>
+<A NAME="DOC.86.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Setup(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, int p, int o)</B></TT>
+<DD>
+A shortcut for Widget::Setup(), SetOrientation() and SetPosition()
+<DL><DT><DD></DL><P>
+<A NAME="Increment"></A>
+<A NAME="DOC.86.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Increment()</B></TT>
+<DD>
+Advances the progress bar. You should call this function every time the amount
+of progress increases.
+<DL><DT><DD></DL><P></DL>
+<HR>
+<DL><DT><B>Direct child classes:
+</B><DD><A HREF="Slider.html">Slider</A><BR>
+</DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Progress.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+</html>

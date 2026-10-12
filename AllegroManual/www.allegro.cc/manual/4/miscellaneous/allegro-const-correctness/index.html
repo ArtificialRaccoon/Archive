@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/miscellaneous/allegro-const-correctness/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:02:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Allegro `const'-correctness</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">Miscellaneous</a></h2><ul>
+<li><a href="../reducing-your-executable-size/index.html" >Reducing your executable size</a></li><li><a href="../debugging/index.html" >Debugging</a></li><li><a href="../makefile-targets/index.html" >Makefile targets</a></li><li><a href="../available-allegro-examples/index.html" >Available Allegro examples</a></li><li><a href="../changes-since-previous-versions/index.html" >Changes since previous versions</a></li><li><a href="../contributors--the-hall-of-fame/index.html" >Contributors: The Hall of Fame</a></li><li><a href="../frequently-asked-questions-(faq)/index.html" >Frequently asked questions (FAQ)</a></li><li><a href="../common-mistakes/index.html" >Common mistakes</a></li><li><a href="../help--what-to-do-when-your-allegro-program-doesnt-work/index.html" >Help: what to do when your Allegro program doesn't work</a></li><li><a href="../api-compatibility-information/index.html" >API compatibility information</a></li><li><a href="../abi-compatibility-information/index.html" >ABI compatibility information</a></li><li><a href="../the-allegro-hackers-guide/index.html" >The Allegro hacker's guide</a></li><li><strong>Allegro `const'-correctness</strong></li><li><a href="../packfile-format-information/index.html" >Packfile format information</a></li><li><a href="../datafile-format-information/index.html" >Datafile format information</a></li><li><a href="../license-and-disclaimer/index.html" >License and Disclaimer</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>Allegro `const'-correctness</h1>
+
+<h2>Contents</h2>
+<h2>Library changes</h2>
+There are very few actual changes to the library code itself; only some
+symbol declarations and definitions have been altered to include
+AL_CONST. See below for a description of the AL_CONST preprocessor
+define. In a few places, some string was changed that should not have
+been - in these cases, the string is simply duplicated and then the
+duplicate is erased on exiting the function.<br /><br />
+
+In all, there were very few changes to the library code.
+
+<h2>The AL_CONST preprocessor define</h2>
+In order to support compilers which don't know about the `const'
+keyword, or perhaps use a different keyword, the preprocessor symbol
+AL_CONST is used wherever `const' would normally be used. Note that in
+the documentation, I have used `const' for readability.
+
+<h2>Allegro API changes</h2>
+These are, generally speaking, totally transparent to the user. I did
+not change the behaviour of any function; only its parameter types.
+Basically, if you can pass it as <code>type* ptr</code>, then you can
+pass it as <code>const type* ptr</code> without any problem whatsoever.
+Note also that certain changes may remove warnings in your program as
+static strings, etc, are now treated as `const' by Allegro functions.<br /><br />
+
+There are a few places, described below, where there will be an effect
+on existing code.<br /><br />
+
+`const'-correctness is deemed important for two reasons. Firstly, it can
+increase code readability and comprehension of Allegro functions (for
+instance, you can see which parameters are altered and which are not).
+Secondly, it ensures that the Allegro code is not changing data which it
+should not be, and that client callback functions are not breaking
+Allegro by changing data they should not be.
+
+<h2>Callback functions and Pointers to Pointers</h2>
+Certain callback functions now have a different type - they take `const'
+pointers as opposed to non-`const' pointers. As far as I know, a
+compiler will issue a warning about incompatible pointer types. You
+should update your callback function to the new format (which will be
+listed in the main Allegro documentation).<br /><br />
+
+Also, when passing a pointer to a pointer to an Allegro function which
+is declared as taking an <code>AL_CONST type** ptr</code>, you will need
+to cast your pointer to be `const' if it is not already. For instance:
+<pre class="code">   <span class="k1">int</span> some_allegro_function<span class="k2">(</span>AL_CONST <span class="k1">char</span><span class="k3">*</span><span class="k3">*</span> p<span class="k2">)</span><span class="k2">;</span><br /><br />
+
+   <span class="k1">void</span> my_func<span class="k2">(</span><span class="k1">char</span><span class="k3">*</span><span class="k3">*</span> x<span class="k2">)</span>
+   <span class="k2">{</span>
+       some_allegro_function<span class="k2">(</span><span class="k2">(</span>AL_CONST <span class="k1">char</span><span class="k3">*</span><span class="k3">*</span><span class="k2">)</span> x<span class="k2">)</span><span class="k2">;</span>
+   <span class="k2">}</span></pre>
+I realise that this is a change to the Allegro API, and that we are
+supposed to avoid those at all costs, but this is essentially fixing a
+bug in Allegro and changing behaviour. It also ensures that
+client-supplied callback functions are functioning correctly, and not
+altering data that they should not. Callback functions which do not
+treat relevant parameters as `const' are, in a small (but potentially
+signficant) way, broken.<br /><br />
+
+Please note that for the Unicode function ugetx(), I have provided an
+alternative version ugetxc(), which takes a `const char**' parameter as
+opposed to a `char**' parameter. This is because it is valid to pass
+either a `char**' or a `const char**', but unfortunately there is no way
+to tell the compiler exactly what we mean.
+
+<h2>BITMAP objects</h2>
+Allegro represents both a screen bitmap and a memory bitmap by a single
+object; a BITMAP. Unfortunately, these two things can be very different.
+For instance, reading a pixel from a bitmap would not seem to change it,
+but if it is a screen bitmap we are reading from, then it is possible
+that some parameter of the video card is changed to select the correct
+line, etc.<br /><br />
+
+Therefore, a const BITMAP parameter does not make sense, and is not used
+throughout the library. This is unfortunate, but I cannot see any way
+around it.
+
+<h2>Finally...</h2>
+Allegro `const'-correctness has been tested for quite enough time to say
+that it is working OK. However, if you still find problems with a compiler,
+please contact the Allegro mailing list; see `Contact info' in the Allegro
+documentation (readme.txt).<br /><br />
+
+Email: lwithers AT lwithers.demon.co DOT uk.<br /><br />
+
+Thanks for listening :-)
+
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,199</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.008159</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/miscellaneous/allegro-const-correctness/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:02:26 GMT -->
+</html>

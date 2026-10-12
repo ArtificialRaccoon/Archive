@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/TripleBuffer.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC TripleBuffer</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">TripleBuffer</A></H2></H2><BLOCKQUOTE> The Triple Buffering screen update driver.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>TripleBuffer
+- <A HREF="PageFlipping.html">PageFlipping</A>
+- <A HREF="ScreenUpdate.html">ScreenUpdate</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Error.html">Error</A> <B><A HREF="#DOC.107.3">Create</A></B>()
+<DD><I> If triple buffering is available, this function tries to turn it on and creates three video pages</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.107.4">Destroy</A></B>()
+<DD><I> Destroys the video pages</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.107.5">Redraw</A></B>()
+<DD><I> Requests the active page to be shown on screen, advances to the next page and returns without waiting for a vertical retrace</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>BITMAP* <B><A HREF="#DOC.107.1">page3</A></B>
+<DD><I> The third video page</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.107.2">page</A></B>
+<DD><I> An index storing the number of the currently active page</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+The Triple Buffering screen update driver.
+Triple buffering is very similar to page flipping. In fact triple buffering
+is just an extension of page flipping where a third video page is used to
+eliminate the need to wait for vertical synchronisation. In a triple buffering
+scheme one page is available for drawing (the active page), one contains the
+last completely drawn frame and is waiting for the next vertical retrace so it
+can be shown on screen and the third contains the previous frame and is at the
+time being drawn by the hardware onto the physical screen. Triple buffering is
+in most cases where the entire screen needs to be fully redrawn the fastest
+screen update method but is not available on all systems.</BLOCKQUOTE>
+<DL>
+
+<A NAME="page3"></A>
+<A NAME="DOC.107.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>BITMAP* page3</B></TT>
+<DD>
+The third video page
+<DL><DT><DD></DL><P>
+<A NAME="page"></A>
+<A NAME="DOC.107.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int page</B></TT>
+<DD>
+An index storing the number of the currently active page
+<DL><DT><DD></DL><P>
+<A NAME="Create"></A>
+<A NAME="DOC.107.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Error.html">Error</A> Create()</B></TT>
+<DD>
+If triple buffering is available, this function tries to turn it on and creates three video pages
+<DL><DT><DD></DL><P>
+<A NAME="Destroy"></A>
+<A NAME="DOC.107.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Destroy()</B></TT>
+<DD>
+Destroys the video pages
+<DL><DT><DD></DL><P>
+<A NAME="Redraw"></A>
+<A NAME="DOC.107.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Redraw()</B></TT>
+<DD>
+Requests the active page to be shown on screen,
+advances to the next page and returns without waiting for a
+vertical retrace
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/TripleBuffer.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/platform-specifics/differences-between-platforms/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:58:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Differences between platforms</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">Platform specifics</a></h2><ul>
+<li><a href="../dos-specifics/index.html" >DOS specifics</a></li><li><a href="../windows-specifics/index.html" >Windows specifics</a></li><li><a href="../unix-specifics/index.html" >Unix specifics</a></li><li><a href="../beos-specifics/index.html" >BeOS specifics</a></li><li><a href="../qnx-specifics/index.html" >QNX specifics</a></li><li><a href="../macos-x-specifics/index.html" >MacOS X specifics</a></li><li><strong>Differences between platforms</strong></li></ul>
+</div>
+
+<div id="contents">
+<h1>Differences between platforms</h1>
+
+Here's a quick summary of things that may cause problems when moving your
+code from one platform to another (you can find a more detailed version of
+this in the docs section of the Allegro website).<br /><br />
+
+The Windows, Unix and MacOS X versions require you to write END_OF_MAIN()
+after your main() function. This is used to magically turn an ISO C style
+main() into a Windows style WinMain(), or by the Unix code to grab a copy
+of your argv[] parameter, or by the MacOS X code to shell the user main()
+inside a Cocoa application.<br /><br />
+
+On many platforms Allegro runs very slowly if you rely on it in order to
+automatically lock bitmaps when drawing onto them. For good performance,
+you need to call acquire_bitmap() and release_bitmap() yourself, and try
+to keep the amount of locking to a minimum.<br /><br />
+
+The Windows version may lose the contents of video memory if the user
+switches away from your program, so you need to deal with that.<br /><br />
+
+None of the currently supported platforms require input polling, but it is
+possible that some future ones might, so if you want to ensure 100%
+portability of your program, you should call poll_mouse() and
+poll_keyboard() in all the relevant places.<br /><br />
+
+On Unix the shared files by Allegro (like `language.dat') may require a
+special use due to the nature of distributing the resources in separate paths
+instead of putting everything in the same directory. Check the beginning of
+your platform's specific chapter to learn more about this.<br /><br />
+
+Allegro defines a number of standard macros that can be used to check
+various attributes of the current platform:<br /><br />
+
+<b>ALLEGRO_PLATFORM_STR</b><br>
+   Text string containing the name of the current platform.<br /><br />
+
+<b>ALLEGRO_DOS</b><br>
+<b>ALLEGRO_DJGPP</b><br>
+<b>ALLEGRO_WATCOM</b><br>
+<b>ALLEGRO_WINDOWS</b><br>
+<b>ALLEGRO_MSVC</b><br>
+<b>ALLEGRO_MINGW32</b><br>
+<b>ALLEGRO_BCC32</b><br>
+<b>ALLEGRO_UNIX</b><br>
+<b>ALLEGRO_LINUX</b><br>
+<b>ALLEGRO_BEOS</b><br>
+<b>ALLEGRO_QNX</b><br>
+<b>ALLEGRO_DARWIN</b><br>
+<b>ALLEGRO_MACOSX</b><br>
+<b>ALLEGRO_GCC</b><br>
+   Defined if you are building for a relevant system. Often several of these
+   will apply, eg. DOS+Watcom, or Windows+GCC+MinGW.<br /><br />
+
+<b>ALLEGRO_AMD64</b><br>
+<b>ALLEGRO_I386</b><br>
+<b>ALLEGRO_BIG_ENDIAN</b><br>
+<b>ALLEGRO_LITTLE_ENDIAN</b><br>
+   Defined if you are building for a processor of the relevant type.<br /><br />
+
+<b>ALLEGRO_MULTITHREADED</b><br>
+   Defined if the library is internally multi-threaded on this system.<br /><br />
+
+<b>ALLEGRO_USE_CONSTRUCTOR</b><br>
+   Defined if the compiler supports constructor/destructor functions.<br /><br />
+
+<b>ALLEGRO_VRAM_SINGLE_SURFACE</b><br>
+   Defined if the screen is a single large surface that is then partitioned
+   into multiple video sub-bitmaps (eg. DOS), rather than each video bitmap
+   being a totally unique entity (eg. Windows).<br /><br />
+
+<b>ALLEGRO_CONSOLE_OK</b><br>
+   Defined if when you are not in a graphics mode, there is a text mode
+   console that you can printf() to, and from which the user could
+   potentially redirect stdout to capture it even while you are in a
+   graphics mode. If this define is absent, you are running in an
+   environment like Windows that has no stdout at all.<br /><br />
+
+<b>ALLEGRO_MAGIC_MAIN</b><br>
+   Defined if Allegro uses a magic main, i.e takes over the main() entry
+   point and turns it into a secondary entry point suited to its needs.<br /><br />
+
+<b>ALLEGRO_LFN</b><br>
+   Non-zero if long filenames are supported, or zero if you are limited to
+   8.3 format (in the DJGPP version, this is a variable depending on the
+   runtime environment).<br /><br />
+
+<b>LONG_LONG</b><br>
+   Defined to whatever represents a 64-bit "long long" integer for the
+   current compiler, or not defined if that isn't supported.<br /><br />
+
+<b>OTHER_PATH_SEPARATOR</b><br>
+   Defined to a path separator character other than a forward slash for
+   platforms that use one (eg. a backslash under DOS and Windows), or
+   defined to a forward slash if there is no other separator character.<br /><br />
+
+<b>DEVICE_SEPARATOR</b><br>
+   Defined to the filename device separator character (a colon for DOS and
+   Windows), or to zero if there are no explicit devices in paths (Unix).<br /><br />
+
+Allegro can be customized at compile time to a certain extent with the
+following macros:<br /><br />
+
+<b>ALLEGRO_NO_MAGIC_MAIN</b><br>
+   If you define this prior to including Allegro headers, Allegro won't
+   touch the main() entry point. This effectively removes the requirement
+   on a program to be linked against the Allegro library when it includes
+   the allegro.h header file. Note that the configuration and file routines
+   are not guaranteed to work on Unix systems when this symbol is defined.
+   Moreover, on Darwin/MacOS X systems, this symbol simply prevents the
+   program from being linked against the Allegro library! This highly non
+   portable feature is primarily intended to be used under Windows.<br /><br />
+
+<b>ALLEGRO_USE_CONSOLE</b><br>
+   If you define this prior to including Allegro headers, Allegro will be
+   set up for building a console application rather than the default GUI
+   program on some platforms (especially Windows).<br /><br />
+
+<b>ALLEGRO_NO_STD_HEADER</b><br>
+   If you define this prior to including Allegro headers, Allegro will not
+   automatically include some standard headers (eg &lt;stddef.h&gt;) its own
+   headers depend upon.<br /><br />
+
+<b>ALLEGRO_NO_KEY_DEFINES</b><br>
+   If you define this prior to including Allegro headers, Allegro will omit
+   the definition of the KEY_* constants, which may clash with other headers.<br /><br />
+
+<b>ALLEGRO_NO_FIX_ALIASES</b><br>
+   The fixed point functions used to be named with an "f" prefix instead of
+   "fix", eg. fixsqrt() used to be fsqrt(), but were renamed due to conflicts
+   with some libc implementations. So backwards compatibility aliases are
+   provided as static inline functions which map the old names to the new
+   names, eg. fsqrt() calls fixsqrt(). If you define this symbol prior to
+   including Allegro headers, the aliases will be turned off.<br /><br />
+
+<b>ALLEGRO_NO_FIX_CLASS</b><br>
+   If you define this symbol prior to including Allegro headers in a C++
+   source file, the 'fix' class will not be made available. This mitigates
+   problems with the 'fix' class's overloading getting in the way.<br /><br />
+
+<b>ALLEGRO_NO_VHLINE_ALIAS</b><br>
+   The `curses' API also defines functions called vline() and hline().
+   To avoid a linker conflict when both libraries are used, we have
+   internally renamed our functions and added inline function aliases which
+   remap vline() and hline(). This should not be noticable to most users.<br /><br />
+
+   If you define ALLEGRO_NO_VHLINE_ALIAS prior to including Allegro headers,
+   Allegro will not define the vline() and hline() aliases, e.g. so you can
+   include curses.h and allegro.h in the same module.<br /><br />
+
+<b>ALLEGRO_NO_CLEAR_BITMAP_ALIAS</b><br>
+   If you define this prior to including Allegro headers, Allegro will not
+   define the clear() backwards compatibility alias to clear_bitmap().<br /><br />
+
+<b>ALLEGRO_NO_COMPATIBILITY</b><br>
+   If you define this prior to including Allegro headers, Allegro will not
+   include the backward compatibility layer. It is undefined by default so
+   old programs can still be compiled with the minimum amount of issues,
+   but you should define this symbol if you intend to maintain your code
+   up to date with the latest versions of Allegro. It automatically turns
+   off all backwards compatibility aliases.<br /><br />
+
+Allegro also defines a number of standard macros that can be used to
+insulate you from some of the differences between systems:<br /><br />
+
+<b>INLINE</b><br>
+   Use this in place of the regular "inline" function modifier keyword, and
+   your code will work correctly on any of the supported compilers.<br /><br />
+
+<b>RET_VOLATILE</b><br>
+   Use this to declare a function with a volatile return value.<br /><br />
+
+<b>ZERO_SIZE_ARRAY(type, name)</b><br>
+   Use this to declare zero-sized arrays in terminal position inside
+   structures, like in the BITMAP structure. These arrays are effectively
+   equivalent to the flexible array members of ISO C99.<br /><br />
+
+<b>AL_CONST</b><br>
+   Use this in place of the regular "const" object modifier keyword, and
+   your code will work correctly on any of the supported compilers.<br /><br />
+
+<b>AL_RAND()</b><br>
+   On platforms that require it, this macro does a simple shift
+   transformation of the libc rand() function, in order to improve the
+   perceived randomness of the output series in the lower 16 bits.
+   Where not required, it directly translates into a rand() call.
+
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,187</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.009628</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/platform-specifics/differences-between-platforms/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:58:36 GMT -->
+</html>

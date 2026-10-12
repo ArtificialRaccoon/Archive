@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/fixed-point-math-routines/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:54:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Fixed point math routines</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">API</a></h2><ul>
+<li><a href="../using-allegro/index.html" >Using Allegro</a></li><li><a href="../structures-and-types-defined-by-allegro/index.html" >Structures and types defined by Allegro</a></li><li><a href="../unicode-routines/index.html" >Unicode routines</a></li><li><a href="../configuration-routines/index.html" >Configuration routines</a></li><li><a href="../mouse-routines/index.html" >Mouse routines</a></li><li><a href="../timer-routines/index.html" >Timer routines</a></li><li><a href="../keyboard-routines/index.html" >Keyboard routines</a></li><li><a href="../joystick-routines/index.html" >Joystick routines</a></li><li><a href="../graphics-modes/index.html" >Graphics modes</a></li><li><a href="../bitmap-objects/index.html" >Bitmap objects</a></li><li><a href="../loading-image-files/index.html" >Loading image files</a></li><li><a href="../palette-routines/index.html" >Palette routines</a></li><li><a href="../truecolor-pixel-formats/index.html" >Truecolor pixel formats</a></li><li><a href="../drawing-primitives/index.html" >Drawing primitives</a></li><li><a href="../blitting-and-sprites/index.html" >Blitting and sprites</a></li><li><a href="../rle-sprites/index.html" >RLE sprites</a></li><li><a href="../compiled-sprites/index.html" >Compiled sprites</a></li><li><a href="../fonts/index.html" >Fonts</a></li><li><a href="../text-output/index.html" >Text output</a></li><li><a href="../polygon-rendering/index.html" >Polygon rendering</a></li><li><a href="../transparency-and-patterned-drawing/index.html" >Transparency and patterned drawing</a></li><li><a href="../converting-between-color-formats/index.html" >Converting between color formats</a></li><li><a href="../direct-access-to-video-memory/index.html" >Direct access to video memory</a></li><li><a href="../flic-routines/index.html" >FLIC routines</a></li><li><a href="../sound-init-routines/index.html" >Sound init routines</a></li><li><a href="../mixer-routines/index.html" >Mixer routines</a></li><li><a href="../digital-sample-routines/index.html" >Digital sample routines</a></li><li><a href="../music-routines-(midi)/index.html" >Music routines (MIDI)</a></li><li><a href="../audio-stream-routines/index.html" >Audio stream routines</a></li><li><a href="../recording-routines/index.html" >Recording routines</a></li><li><a href="../file-and-compression-routines/index.html" >File and compression routines</a></li><li><a href="../datafile-routines/index.html" >Datafile routines</a></li><li><strong>Fixed point math routines</strong></li><li><a href="../3d-math-routines/index.html" >3D math routines</a></li><li><a href="../quaternion-math-routines/index.html" >Quaternion math routines</a></li><li><a href="../gui-routines/index.html" >GUI routines</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>Fixed point math routines</h1>
+
+Allegro provides some routines for working with fixed point numbers, and
+defines the type `fixed' to be a signed 32-bit integer. The high word is
+used for the integer part and the low word for the fraction, giving a range
+of -32768 to 32767 and an accuracy of about four or five decimal places.
+Fixed point numbers can be assigned, compared, added, subtracted, negated and
+shifted (for multiplying or dividing by powers of two) using the normal
+integer operators, but you should take care to use the appropriate conversion
+routines when mixing fixed point with integer or floating point values.
+Writing `fixed_point_1 + fixed_point_2' is OK, but `fixed_point + integer' is
+not.<br /><br />
+
+Unfortunately the only advantage of fixed point math routines is that you
+don't require a floating point coprocessor to use them. This was great in the
+time period of i386 and i486 machines, but stopped being so useful with the
+coming of the Pentium class of processors. From Pentium onwards, CPUs have
+increased their strength in floating point operations, equaling or even
+surpassing integer math performance.<br /><br />
+
+Depending on the type of operations your program may need, using floating
+point types may be faster than fixed types if you are targeting a specific
+machine class. Allegro comes with a test program in the `allegro/tests'
+directory. Its `Misc' menu contains a basic profile test which can give you
+an idea of the speed difference between fixed and float types for a few basic
+operations on your machine. However, don't forget to profile your program in
+real life conditions, tight loop benchmarks are after all artificial.<br /><br />
+
+Fixed point math is considered "add-on" material and is kept only for
+backwards compatibility. Whenever a future release of Allegro breaks backwards
+compatibility, fixed point math will likely be moved to a separate add-on
+package for the very few users who still find it convenient and useful, and
+Allegro functions using fixed point math will use other types.
+
+<ul>
+	<li><a href="itofix.html">itofix</a> - Converts an integer to fixed point.</li>
+	<li><a href="fixtoi.html">fixtoi</a> - Converts a fixed point to integer with rounding.</li>
+	<li><a href="fixfloor.html">fixfloor</a> - Returns the greatest integer not greater than x.</li>
+	<li><a href="fixceil.html">fixceil</a> - Returns the smallest integer not less than x.</li>
+	<li><a href="ftofix.html">ftofix</a> - Converts a floating point value to fixed point.</li>
+	<li><a href="fixtof.html">fixtof</a> - Converts a fixed point to floating point.</li>
+	<li><a href="fixmul.html">fixmul</a> - Multiplies two fixed point values together.</li>
+	<li><a href="fixdiv.html">fixdiv</a> - Fixed point division.</li>
+	<li><a href="fixadd.html">fixadd</a> - Safe function to add fixed point numbers clamping overflow.</li>
+	<li><a href="fixsub.html">fixsub</a> - Safe function to subtract fixed point numbers clamping underflow.</li>
+</ul>
+<h2>Fixed point trig</h2>
+The fixed point square root, sin, cos, tan, inverse sin, and inverse cos
+functions are implemented using lookup tables, which are very fast but not
+particularly accurate. At the moment the inverse tan uses an iterative
+search on the tan table, so it is a lot slower than the others. Note that on
+machines with very good floating point processors using these functions could
+be slower in real life code due to cache misses: it may be faster to wait
+a few extra cicles for a floating point sine result rather than wait for the
+CPU to fetch the precalculated table from main memory. Always profile your
+code.<br /><br />
+
+Angles are represented in a binary format with 256 equal to a full circle,
+64 being a right angle and so on. This has the advantage that a simple
+bitwise 'and' can be used to keep the angle within the range zero to a full
+circle, eliminating all those tiresome 'if (angle &gt;= 360)' checks.
+
+<ul>
+	<li><a href="fixed-point-trig/fixtorad_r.html">fixtorad_r</a> - Constant to convert angles in fixed point format to radians.</li>
+	<li><a href="fixed-point-trig/radtofix_r.html">radtofix_r</a> - Constant to convert radians to fixed point angles.</li>
+	<li><a href="fixed-point-trig/fixsin.html">fixsin</a> - Fixed point sine of binary angles.</li>
+	<li><a href="fixed-point-trig/fixcos.html">fixcos</a> - Fixed point cosine of binary angles.</li>
+	<li><a href="fixed-point-trig/fixtan.html">fixtan</a> - Fixed point tangent of binary angles.</li>
+	<li><a href="fixed-point-trig/fixasin.html">fixasin</a> - Fixed point inverse sine lookup table.</li>
+	<li><a href="fixed-point-trig/fixacos.html">fixacos</a> - Fixed point inverse cosine lookup table.</li>
+	<li><a href="fixed-point-trig/fixatan.html">fixatan</a> - Fixed point inverse tangent lookup table.</li>
+	<li><a href="fixed-point-trig/fixatan2.html">fixatan2</a> - Fixed point version of the libc atan2() routine.</li>
+	<li><a href="fixed-point-trig/fixsqrt.html">fixsqrt</a> - Fixed point square root.</li>
+	<li><a href="fixed-point-trig/fixhypot.html">fixhypot</a> - Fixed point hypotenuse.</li>
+</ul>
+<h2>Fix class</h2>
+If you are programming in C++ you can ignore all the above and use the fix
+class instead, which overloads a lot of operators to provide automatic
+conversion to and from integer and floating point values, and calls the
+above routines as they are required. You should not mix the fix class with
+the fixed typedef though, because the compiler will mistake the fixed values
+for regular integers and insert unnecessary conversions. For example, if x
+is an object of class fix, calling fixsqrt(x) will return the wrong result.
+You should use the overloaded sqrt(x) or x.sqrt() instead.<br /><br />
+
+On top of that, the Fix class may be slower than using directly the C
+functions because of implicit internal conversions from one type to another
+which you otherwise could avoid or minimise. Finally, this is the only bit
+of C++ in the whole Allegro library, and the developers are certainly going
+to move it into add-on space in the next version of Allegro which breaks
+source backwards compatibility.
+
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,179</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.664227</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/fixed-point-math-routines/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:54:54 GMT -->
+</html>

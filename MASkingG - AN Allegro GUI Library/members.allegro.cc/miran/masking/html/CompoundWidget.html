@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/CompoundWidget.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC CompoundWidget</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">CompoundWidget</A></H2></H2><BLOCKQUOTE> An intermediate virtual class for making compound widgets.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>CompoundWidget
+- <A HREF="Dialog.html">Dialog</A>
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.11.1">FillObjectList</A></B>(std::vector&lt;<!1><A HREF="MAS_OBJ_LIST.html">MAS_OBJ_LIST</A>* &gt; &amp;objList, int (*cmp)(const MAS::Widget* , const MAS::Widget* ), MAS::Widget* <!1><A HREF="Dialog.html#DOC.45.7">focusObject</A>, int &amp;c)
+<DD><I> Supposed to fill a list with objects that can be tabbed to.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.11.2">MsgWantTab</A></B>()
+<DD><I> Returns true to indicate a compound widget can take input focus.</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+An intermediate virtual class for making compound widgets.
+A compound widget is basically a dialog but some of its wunctions are slightly
+different from a normal user dialog. This class serves as an intermediate
+layer between a dialog and compound widgets (such as listboxes, combo boxes, etc)
+All compound widgets should be derived from this class instead of the dialog
+class directly.</BLOCKQUOTE>
+<DL>
+
+<A NAME="FillObjectList"></A>
+<A NAME="DOC.11.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void FillObjectList(std::vector&lt;<!1><A HREF="MAS_OBJ_LIST.html">MAS_OBJ_LIST</A>* &gt; &amp;objList, int (*cmp)(const MAS::Widget* , const MAS::Widget* ), MAS::Widget* <!1><A HREF="Dialog.html#DOC.45.7">focusObject</A>, int &amp;c)</B></TT>
+<DD>
+Supposed to fill a list with objects that can be tabbed to. In this
+class the implementation of this function is empty. Every widget
+should take care of forwarding input focus to the right subwidget
+when tabbed to by itself by overloading MsgGotfocus() and giving
+focus to the appropriate widget with GiveFocusTo().
+<DL><DT><DD></DL><P>
+<A NAME="MsgWantTab"></A>
+<A NAME="DOC.11.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool MsgWantTab()</B></TT>
+<DD>
+Returns true to indicate a compound widget can take input focus.
+A derived compound widget should overload this function and return
+false in case it does not take input focus.
+<DL><DT><DD></DL><P></DL>
+<HR>
+<DL><DT><B>Direct child classes:
+</B><DD><A HREF="SpinBox.html">SpinBox</A><BR>
+<A HREF="Scroller.html">Scroller</A><BR>
+<A HREF="ScrollBox.html">ScrollBox</A><BR>
+<A HREF="ListBox.html">ListBox</A><BR>
+<A HREF="ComboBox.html">ComboBox</A><BR>
+</DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/CompoundWidget.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+</html>

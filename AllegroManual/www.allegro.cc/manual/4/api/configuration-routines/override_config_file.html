@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/configuration-routines/override_config_file by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:15:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>override_config_file</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Configuration routines</a></h2><ul>
+<li><a href="set_config_file.html" style="font-weight: bold">set_config_file</a></li><li><a href="set_config_data.html" >set_config_data</a></li><li><strong>override_config_file</strong></li><li><a href="override_config_data.html" >override_config_data</a></li><li><a href="push_config_state.html" style="font-weight: bold">push_config_state</a></li><li><a href="pop_config_state.html" style="font-weight: bold">pop_config_state</a></li><li><a href="flush_config_file.html" >flush_config_file</a></li><li><a href="reload_config_texts.html" >reload_config_texts</a></li><li><a href="hook_config_section.html" >hook_config_section</a></li><li><a href="config_is_hooked.html" >config_is_hooked</a></li><li><a href="get_config_string.html" style="font-weight: bold">get_config_string</a></li><li><a href="get_config_int.html" style="font-weight: bold">get_config_int</a></li><li><a href="get_config_hex.html" >get_config_hex</a></li><li><a href="get_config_float.html" >get_config_float</a></li><li><a href="get_config_id.html" >get_config_id</a></li><li><a href="get_config_argv.html" >get_config_argv</a></li><li><a href="get_config_text.html" >get_config_text</a></li><li><a href="set_config_string.html" style="font-weight: bold">set_config_string</a></li><li><a href="set_config_int.html" style="font-weight: bold">set_config_int</a></li><li><a href="set_config_hex.html" >set_config_hex</a></li><li><a href="set_config_float.html" >set_config_float</a></li><li><a href="set_config_id.html" >set_config_id</a></li><li><a href="list_config_entries.html" >list_config_entries</a></li><li><a href="list_config_sections.html" >list_config_sections</a></li><li><a href="free_config_entries.html" >free_config_entries</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>override_config_file</h1>
+
+<div class="shortdesc">
+Specifies a file containing config overrides.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">void</span> <a href="../../index.html" target="_blank"><span class="a">override_config_file</span></a><span class="k2">(</span><span class="k1">const</span> <span class="k1">char</span> <span class="k3">*</span>filename<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Specifies a file containing config overrides. These settings will be used
+   in addition to the parameters in the main config file, and where a
+   variable is present in both files this version will take priority. This
+   can be used by application programmers to override some of the config
+   settings from their code, while still leaving the main config file free
+   for the end user to customise. For example, you could specify a
+   particular sample frequency and IBK instrument file, but the user could
+   still use an `allegro.cfg' file to specify the port settings and irq
+   numbers.<br /><br />
+
+   The override config file will not only take precedence when reading, but
+   will also be used for storing values. When you are done with using the
+   override config file, you can call override_config_file with a NULL
+   parameter, so config data will be directly read from the current config
+   file again.<br /><br />
+
+   Note: The override file is completely independent from the current
+   configuration. You can e.g. call set_config_file, and the override file
+   will still be active. Also the flush_config_file function will only affect
+   the current config file (which can be changed with set_config_file), never
+   the overriding one specified with this function. The modified override
+   config is written back to disk whenever you call override_config_file.<br /><br />
+
+   Example:
+<pre class="code">      <a href="../../index.html" target="_blank"><span class="a">override_config_file</span></a><span class="k2">(</span><span class="s">"my.cfg"</span><span class="k2">)</span><span class="k2">;</span>
+      <span class="c">/* This will read from my.cfg, and if it doesn't find a
+       * setting, will read from the current config file instead.
+       */</span>
+      language <span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">get_config_string</span></a><span class="k2">(</span><span class="s">"system"</span>, <span class="s">"language"</span>, NULL<span class="k2">)</span><span class="k2">;</span>
+      <span class="c">/* This will always write to my.cfg, no matter if the
+       * settings is already present or not.
+       */</span>
+      <a href="../../index.html" target="_blank"><span class="a">set_config_string</span></a><span class="k2">(</span><span class="s">"system"</span>, <span class="s">"language"</span>, <span class="s">"RU"</span><span class="k2">)</span><span class="k2">;</span>
+      <span class="c">/* This forces the changed setting to be written back to
+       * disk. Else it is written back at the next call to
+       * override_config_file, or when Allegro shuts down.
+       */</span>
+      <a href="../../index.html" target="_blank"><span class="a">override_config_file</span></a><span class="k2">(</span>NULL<span class="k2">)</span><span class="k2">;</span></pre><br /><br />
+
+   Note that this function and override_config_data() are mutually exclusive,
+   i.e. calling one will cancel the effects of the other.
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">override_config_data</a></li>
+	<li><a href="../../index.html">set_config_file</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-590772">
+		<a href="https://www.allegro.cc/forums/thread/590772">TINS 07 Countdown</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/662016" style="color: black;">1</a> </span>
+	</li><li id="t-590345">
+		<a href="https://www.allegro.cc/forums/thread/590345">The name of the currently used Allegro configuration file.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/654463" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/FoleRaulgobananas">Fole &amp; Raul go bananas</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/Wormlings">Wormlings</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/Xelda">Xelda</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/AllegroSpriteEditor">Allegro Sprite Editor</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/CrystalStacker">Crystal Stacker</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/dlg-agraphicalDIALOGeditor">dlg - a graphical DIALOG editor</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/StarControlTimeWarp">Star Control: TimeWarp</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/TW-Light">TW-Light</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/GAACOexample">GA + ACO example</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,342</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.010173</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/configuration-routines/override_config_file by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:15:43 GMT -->
+</html>

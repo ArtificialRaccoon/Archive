@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/graphics-modes/set_display_switch_mode by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:16:41 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>set_display_switch_mode</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Graphics modes</a></h2><ul>
+<li><a href="set_color_depth.html" style="font-weight: bold">set_color_depth</a></li><li><a href="get_color_depth.html" >get_color_depth</a></li><li><a href="request_refresh_rate.html" >request_refresh_rate</a></li><li><a href="get_refresh_rate.html" >get_refresh_rate</a></li><li><a href="get_gfx_mode_list.html" >get_gfx_mode_list</a></li><li><a href="destroy_gfx_mode_list.html" >destroy_gfx_mode_list</a></li><li><a href="set_gfx_mode.html" style="font-weight: bold">set_gfx_mode</a></li><li><strong>set_display_switch_mode</strong></li><li><a href="set_display_switch_callback.html" >set_display_switch_callback</a></li><li><a href="remove_display_switch_callback.html" >remove_display_switch_callback</a></li><li><a href="get_display_switch_mode.html" >get_display_switch_mode</a></li><li><a href="is_windowed_mode.html" >is_windowed_mode</a></li><li><a href="gfx_capabilities.html" >gfx_capabilities</a></li><li><a href="enable_triple_buffer.html" >enable_triple_buffer</a></li><li><a href="scroll_screen.html" >scroll_screen</a></li><li><a href="request_scroll.html" >request_scroll</a></li><li><a href="poll_scroll.html" style="font-weight: bold">poll_scroll</a></li><li><a href="show_video_bitmap.html" style="font-weight: bold">show_video_bitmap</a></li><li><a href="request_video_bitmap.html" style="font-weight: bold">request_video_bitmap</a></li><li><a href="vsync.html" style="font-weight: bold">vsync</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>set_display_switch_mode</h1>
+
+<div class="shortdesc">
+Tells Allegro how the program handles background switching.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">int</span> <a href="../../index.html" target="_blank"><span class="a">set_display_switch_mode</span></a><span class="k2">(</span><span class="k1">int</span> mode<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Sets how the program should handle being switched into the background,
+   if the user tabs away from it. Not all of the possible modes will be
+   supported by every graphics driver on every platform. The available modes
+   are:
+<ul><li>
+   SWITCH_NONE<br>
+      Disables switching. This is the default in single-tasking systems like
+      DOS. It may be supported on other platforms, but you should use it
+      with caution, because your users won't be impressed if they want to
+      switch away from your program, but you don't let them!
+<li>
+   SWITCH_PAUSE<br>
+      Pauses the program whenever it is in the background. Execution will be
+      resumed as soon as the user switches back to it. This is the default
+      in most fullscreen multitasking environments, for example the Linux
+      console, but not under Windows.
+<li>
+   SWITCH_AMNESIA<br>
+      Like SWITCH_PAUSE, but this mode doesn't bother to remember the
+      contents of video memory, so the screen, and any video bitmaps that
+      you have created, will be erased after the user switches away and then
+      back to your program. This is not a terribly useful mode to have, but
+      it is the default for the fullscreen drivers under Windows because
+      DirectDraw is too dumb to implement anything better.
+<li>
+   SWITCH_BACKGROUND<br>
+      The program will carry on running in the background, with the screen
+      bitmap temporarily being pointed at a memory buffer for the fullscreen
+      drivers. You must take special care when using this mode, because bad
+      things will happen if the screen bitmap gets changed around when your
+      program isn't expecting it (see below).
+<li>
+   SWITCH_BACKAMNESIA<br>
+      Like SWITCH_BACKGROUND, but this mode doesn't bother to remember the
+      contents of video memory (see SWITCH_AMNESIA). It is again the only
+      mode supported by the fullscreen drivers under Windows that lets the
+      program keep running in the background.
+</ul>
+   Note that you should be very careful when you are using graphics routines
+   in the switching context: you must always call acquire_screen() before the
+   start of any drawing code onto the screen and not release it until you are
+   completely finished, because the automatic locking mechanism may not be
+   good enough to work when the program runs in the background or has just
+   been raised in the foreground.
+
+</div>
+
+<div class="retval">
+Returns zero on success, invalidating at the same time all callbacks
+   previously registered with set_display_switch_callback(). Returns -1 if
+   the requested mode is not currently possible.
+
+</div>
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">set_display_switch_callback</a></li>
+	<li><a href="../../index.html">get_display_switch_mode</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../index.html">exmidi</a></li>
+	<li><a href="../../index.html">exswitch</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591808">
+		<a href="https://www.allegro.cc/forums/thread/591808">60Hz with Allegro?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/678283" style="color: black;">1</a> </span>
+	</li><li id="t-591478">
+		<a href="https://www.allegro.cc/forums/thread/591478">Serious problem</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/673537" style="color: black;">1</a> </span>
+	</li><li id="t-591434">
+		<a href="https://www.allegro.cc/forums/thread/591434">set mouse rate</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/672880" style="color: black;">1</a> </span>
+	</li><li id="t-591414">
+		<a href="https://www.allegro.cc/forums/thread/591414">How to run program in background</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/672603" style="color: black;">1</a> </span>
+	</li><li id="t-591291">
+		<a href="https://www.allegro.cc/forums/thread/591291">Windows programming and changing resolutions</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/670763" style="color: black;">1</a> </span>
+	</li><li id="t-591194">
+		<a href="https://www.allegro.cc/forums/thread/591194">Window resizing</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/668970" style="color: black;">1</a> </span>
+	</li><li id="t-590992">
+		<a href="https://www.allegro.cc/forums/thread/590992">Application Hangs When Switching In/Out</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/665211" style="color: black;">1</a> </span>
+	</li><li id="t-590960">
+		<a href="https://www.allegro.cc/forums/thread/590960">allegro in background</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/664767" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/664768" style="color: black;">2</a> </span>
+	</li><li id="t-590871">
+		<a href="https://www.allegro.cc/forums/thread/590871">Game Loops</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/663542" style="color: black;">1</a> </span>
+	</li><li id="t-590252">
+		<a href="https://www.allegro.cc/forums/thread/590252">Keeping a program from &quot;stopping&quot; when moving the window</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/653289" style="color: black;">1</a> </span>
+	</li><li id="t-589969">
+		<a href="https://www.allegro.cc/forums/thread/589969">Game Engine that conserves CPU</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/648521" style="color: black;">1</a> </span>
+	</li><li id="t-589943">
+		<a href="https://www.allegro.cc/forums/thread/589943">network gaming</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/648685" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/648686" style="color: black;">2</a> </span>
+	</li><li id="t-589794">
+		<a href="https://www.allegro.cc/forums/thread/589794">duel core CPUs  and allegro 4.0</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/645849" style="color: black;">1</a> </span>
+	</li><li id="t-589361">
+		<a href="https://www.allegro.cc/forums/thread/589361">Full Screen Lock</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/639315" style="color: black;">1</a> </span>
+	</li><li id="t-589002">
+		<a href="https://www.allegro.cc/forums/thread/589002">Window Response</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/634115" style="color: black;">1</a> </span>
+	</li><li id="t-588013">
+		<a href="https://www.allegro.cc/forums/thread/588013">AllegroGL and Intel chipsets.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/619970" style="color: black;">1</a> </span>
+	</li><li id="t-587627">
+		<a href="https://www.allegro.cc/forums/thread/587627">SWITCH_BACKGROUND hangs</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/614528" style="color: black;">1</a> </span>
+	</li><li id="t-587343">
+		<a href="https://www.allegro.cc/forums/thread/587343">Using Rand()</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/610780" style="color: black;">1</a> </span>
+	</li><li id="t-587200">
+		<a href="https://www.allegro.cc/forums/thread/587200">A simple egg timer</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/608666" style="color: black;">1</a> </span>
+	</li><li id="t-586284">
+		<a href="https://www.allegro.cc/forums/thread/586284">question to allegro developpers</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/596468" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/596469" style="color: black;">2</a> </span>
+	</li><li id="t-586102">
+		<a href="https://www.allegro.cc/forums/thread/586102">Running without focus</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/593805" style="color: black;">1</a> </span>
+	</li><li id="t-585599">
+		<a href="https://www.allegro.cc/forums/thread/585599">Determining if mouse is inside the Allegro window (for v4.20)</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/586483" style="color: black;">1</a> </span>
+	</li><li id="t-585575">
+		<a href="https://www.allegro.cc/forums/thread/585575">keeping the window focus</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/586568" style="color: black;">1</a> </span>
+	</li><li id="t-583627">
+		<a href="https://www.allegro.cc/forums/thread/583627">Next stop, how do i determine if my app loses focus?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/583650" style="color: black;">1</a> </span>
+	</li><li id="t-571867">
+		<a href="https://www.allegro.cc/forums/thread/571867">Keep it running</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/571869" style="color: black;">1</a> </span>
+	</li><li id="t-567858">
+		<a href="https://www.allegro.cc/forums/thread/567858">switch back mode for Windows</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/567860" style="color: black;">1</a> </span>
+	</li><li id="t-565214">
+		<a href="https://www.allegro.cc/forums/thread/565214">Compilling allegro.h &amp; windows.h</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/565233" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/565234" style="color: black;">2</a> </span>
+	</li><li id="t-561126">
+		<a href="https://www.allegro.cc/forums/thread/561126">Allegro and multitasking</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/561132" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/BamboozleMachinae">Bamboozle Machinae</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/Mahjongg">Mahjongg</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/AlextheAllegator3">Alex the Allegator 3</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/AreYouLost1">Are You Lost?</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/ChromaPlas">ChromaPlas</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/domin">domin</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/HolidayHills">Holiday Hills</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/Paranoid">Paranoid</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/RailBlaster">Rail Blaster</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/RebelsAndLords">Rebels And Lords</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,451</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.010644</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/graphics-modes/set_display_switch_mode by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:16:42 GMT -->
+</html>

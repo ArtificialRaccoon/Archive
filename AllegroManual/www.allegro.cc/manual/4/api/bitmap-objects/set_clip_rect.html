@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/bitmap-objects/set_clip_rect by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:17:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>set_clip_rect</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Bitmap objects</a></h2><ul>
+<li><a href="screen.html" style="font-weight: bold">screen</a></li><li><a href="screen_w.html" style="font-weight: bold">SCREEN_W</a></li><li><a href="screen_h.html" style="font-weight: bold">SCREEN_H</a></li><li><a href="virtual_w.html" >VIRTUAL_W</a></li><li><a href="virtual_h.html" >VIRTUAL_H</a></li><li><a href="create_bitmap.html" style="font-weight: bold">create_bitmap</a></li><li><a href="create_bitmap_ex.html" style="font-weight: bold">create_bitmap_ex</a></li><li><a href="create_sub_bitmap.html" style="font-weight: bold">create_sub_bitmap</a></li><li><a href="create_video_bitmap.html" style="font-weight: bold">create_video_bitmap</a></li><li><a href="create_system_bitmap.html" >create_system_bitmap</a></li><li><a href="destroy_bitmap.html" style="font-weight: bold">destroy_bitmap</a></li><li><a href="lock_bitmap.html" >lock_bitmap</a></li><li><a href="bitmap_color_depth.html" style="font-weight: bold">bitmap_color_depth</a></li><li><a href="bitmap_mask_color.html" style="font-weight: bold">bitmap_mask_color</a></li><li><a href="is_same_bitmap.html" >is_same_bitmap</a></li><li><a href="is_planar_bitmap.html" >is_planar_bitmap</a></li><li><a href="is_linear_bitmap.html" >is_linear_bitmap</a></li><li><a href="is_memory_bitmap.html" >is_memory_bitmap</a></li><li><a href="is_screen_bitmap.html" >is_screen_bitmap</a></li><li><a href="is_video_bitmap.html" >is_video_bitmap</a></li><li><a href="is_system_bitmap.html" >is_system_bitmap</a></li><li><a href="is_sub_bitmap.html" >is_sub_bitmap</a></li><li><a href="acquire_bitmap.html" style="font-weight: bold">acquire_bitmap</a></li><li><a href="release_bitmap.html" style="font-weight: bold">release_bitmap</a></li><li><a href="acquire_screen.html" style="font-weight: bold">acquire_screen</a></li><li><a href="release_screen.html" style="font-weight: bold">release_screen</a></li><li><strong>set_clip_rect</strong></li><li><a href="get_clip_rect.html" >get_clip_rect</a></li><li><a href="add_clip_rect.html" >add_clip_rect</a></li><li><a href="set_clip_state.html" >set_clip_state</a></li><li><a href="get_clip_state.html" >get_clip_state</a></li><li><a href="is_inside_bitmap.html" >is_inside_bitmap</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>set_clip_rect</h1>
+
+<div class="shortdesc">
+Sets the clipping rectangle of a bitmap.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">void</span> <a href="../../index.html" target="_blank"><span class="a">set_clip_rect</span></a><span class="k2">(</span><a href="../../index.html" target="_blank"><span class="a">BITMAP</span></a> <span class="k3">*</span>bitmap, <span class="k1">int</span> x1, <span class="k1">int</span> y1, <span class="k1">int</span> x2, <span class="k1">int</span> y2<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Each bitmap has an associated clipping rectangle, which is the area of
+   the image that it is ok to draw onto. Nothing will be drawn to positions
+   outside this space. This function sets the clipping rectangle for the
+   specified bitmap. Pass the coordinates of the top-left and bottom-right
+   corners of the clipping rectangle in this order; these are both inclusive,
+   i.e. set_clip_rect(bitmap, 16, 16, 32, 32) will allow drawing to (16, 16)
+   and (32, 32), but not to (15, 15) and (33, 33).<br /><br />
+
+   Drawing operations will be performed (at least partially) on the bitmap as
+   long as the first coordinates of its clipping rectangle are not greater
+   than the second coordinates and its intersection with the actual image
+   is non-empty. If either condition is not fulfilled, drawing will be turned
+   off for the bitmap, e.g.
+<pre class="code">      <a href="../../index.html" target="_blank"><span class="a">set_clip_rect</span></a><span class="k2">(</span>bmp, <span class="n">0</span>, <span class="n">0</span>, <span class="k3">-</span><span class="n">1</span>, <span class="k3">-</span><span class="n">1</span><span class="k2">)</span><span class="k2">;</span> <span class="c">/* disable drawing on bmp */</span></pre><br /><br />
+
+   Note that passing "out-of-bitmap" coordinates is allowed, but they are
+   likely to be altered (and so the coordinates returned by get_clip_rect()
+   will be different). However, such modifications are guaranteed to preserve
+   the external effect of the clipping rectangle, that is not to modify the
+   actual area of the image that it is ok to draw onto.
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">get_clip_rect</a></li>
+	<li><a href="../../index.html">add_clip_rect</a></li>
+	<li><a href="../../index.html">set_clip_state</a></li>
+	<li><a href="../../index.html">get_clip_state</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../index.html">ex12bit</a></li>
+	<li><a href="../../index.html">excamera</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591407">
+		<a href="https://www.allegro.cc/forums/thread/591407">deprecated replacements</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/672466" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/672476" style="color: black;">2</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/Plantz">Plantz</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/Akilah2006">Akilah! 2006</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/FoleRaulgobananas">Fole &amp; Raul go bananas</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/RailBlaster">Rail Blaster</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/AllegroSpriteEditor">Allegro Sprite Editor</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/DungeonMasterRemake">Dungeon Master Remake</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/LiquidWar5">Liquid War 5</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/Outgun">Outgun</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/StarControlTimeWarp">Star Control: TimeWarp</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/WeWantWar">We Want War</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,490</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.010825</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/bitmap-objects/set_clip_rect by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:17:04 GMT -->
+</html>

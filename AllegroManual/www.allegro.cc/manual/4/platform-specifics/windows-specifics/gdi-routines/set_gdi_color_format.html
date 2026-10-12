@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/platform-specifics/windows-specifics/gdi-routines/set_gdi_color_format by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:28:51 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>set_gdi_color_format</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">Windows specifics</a></h2><ul>
+<li><a href="../joy_type_.html" >JOY_TYPE_Windows</a></li><li><a href="../gfx_.html" >GFX_Windows</a></li><li><a href="../digi_.html" >DIGI_Windows</a></li><li><a href="../midi_.html" >MIDI_Windows</a></li><li><a href="../windows-integration-routines/win_get_window.html" >win_get_window</a></li><li><a href="../windows-integration-routines/win_set_window.html" >win_set_window</a></li><li><a href="../windows-integration-routines/win_set_wnd_create_proc.html" >win_set_wnd_create_proc</a></li><li><a href="../windows-integration-routines/win_get_dc.html" >win_get_dc</a></li><li><a href="../windows-integration-routines/win_release_dc.html" >win_release_dc</a></li><li><strong>set_gdi_color_format</strong></li><li><a href="set_palette_to_hdc.html" >set_palette_to_hdc</a></li><li><a href="convert_palette_to_hpalette.html" >convert_palette_to_hpalette</a></li><li><a href="convert_hpalette_to_palette.html" >convert_hpalette_to_palette</a></li><li><a href="convert_bitmap_to_hbitmap.html" >convert_bitmap_to_hbitmap</a></li><li><a href="convert_hbitmap_to_bitmap.html" >convert_hbitmap_to_bitmap</a></li><li><a href="draw_to_hdc.html" >draw_to_hdc</a></li><li><a href="blit_to_hdc.html" >blit_to_hdc</a></li><li><a href="stretch_blit_to_hdc.html" >stretch_blit_to_hdc</a></li><li><a href="blit_from_hdc.html" >blit_from_hdc</a></li><li><a href="stretch_blit_from_hdc.html" >stretch_blit_from_hdc</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>set_gdi_color_format</h1>
+
+<div class="shortdesc">
+Tells Allegro to use the GDI color layout for truecolor images.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">void</span> <a href="../../../index.html" target="_blank"><span class="a">set_gdi_color_format</span></a><span class="k2">(</span><span class="k1">void</span><span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Tells Allegro to use the GDI color layout for truecolor images. This is
+   optional, but it will make the conversions work faster. If you are going
+   to call this, you should do it right after initialising Allegro and
+   before creating any graphics.
+
+</div>
+
+
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/MouseTrap">MouseTrap</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/ChromaPlas">ChromaPlas</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/StarControlTimeWarp">Star Control: TimeWarp</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/TW-Light">TW-Light</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/GenthuMatrixTracer">Genthu Matrix Tracer</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/EXA-Graphiceditor">EXA-Graphic editor</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,371,072</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.010163</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/platform-specifics/windows-specifics/gdi-routines/set_gdi_color_format by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:28:52 GMT -->
+</html>

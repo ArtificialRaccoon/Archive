@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/datafile-routines/create_datafile_index by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:26:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>create_datafile_index</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Datafile routines</a></h2><ul>
+<li><a href="load_datafile.html" style="font-weight: bold">load_datafile</a></li><li><a href="load_datafile_callback.html" >load_datafile_callback</a></li><li><a href="unload_datafile.html" style="font-weight: bold">unload_datafile</a></li><li><a href="load_datafile_object.html" >load_datafile_object</a></li><li><a href="unload_datafile_object.html" >unload_datafile_object</a></li><li><a href="find_datafile_object.html" >find_datafile_object</a></li><li><strong>create_datafile_index</strong></li><li><a href="load_datafile_object_indexed.html" >load_datafile_object_indexed</a></li><li><a href="destroy_datafile_index.html" >destroy_datafile_index</a></li><li><a href="get_datafile_property.html" >get_datafile_property</a></li><li><a href="register_datafile_object.html" >register_datafile_object</a></li><li><a href="fixup_datafile.html" >fixup_datafile</a></li><li><a href="dat_id.html" style="font-weight: bold">DAT_ID</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>create_datafile_index</h1>
+
+<div class="shortdesc">
+Creates an index for a datafile.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+DATAFILE_INDEX <span class="k3">*</span><a href="../../index.html" target="_blank"><span class="a">create_datafile_index</span></a><span class="k2">(</span><span class="k1">const</span> <span class="k1">char</span> <span class="k3">*</span>filename<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Creates an index for a datafile, to speed up loading single objects out of
+   it. This is mostly useful for big datafiles, which you don't want to load as
+   a whole. The index will store the offset of all objects inside the datafile,
+   and then you can load it quickly with "load_datafile_object_indexed" later.
+   Use destroy_datafile_index to free the memory used by it again.<br /><br />
+
+   Note: If the datafile uses global compression, there is no performance gain
+   from using an index, because seeking to the offset still requires to
+   uncompress the whole datafile up to that offset.
+   Example:
+<pre class="code">   DATAFILE_INDEX <span class="k3">*</span><a href="http://www.delorie.com/djgpp/doc/libc/libc_470.html" target="_blank">index</a> <span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">create_datafile_index</span></a><span class="k2">(</span><span class="s">"huge.dat"</span><span class="k2">)</span><span class="k2">;</span>
+   <a href="../../index.html" target="_blank"><span class="a">DATAFILE</span></a> <span class="k3">*</span>object <span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">load_datafile_object_indexed</span></a><span class="k2">(</span><a href="http://www.delorie.com/djgpp/doc/libc/libc_470.html" target="_blank">index</a>, <span class="n">1234</span><span class="k2">)</span><span class="k2">;</span>
+   ...
+   <a href="../../index.html" target="_blank"><span class="a">unload_datafile_object</span></a><span class="k2">(</span>object<span class="k2">)</span><span class="k2">;</span>
+   <a href="../../index.html" target="_blank"><span class="a">destroy_datafile_index</span></a><span class="k2">(</span><a href="http://www.delorie.com/djgpp/doc/libc/libc_470.html" target="_blank">index</a><span class="k2">)</span><span class="k2">;</span></pre>
+
+</div>
+
+<div class="retval">
+A pointer value which you can pass to load_datafile_object_indexed.
+
+</div>
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">destroy_datafile_index</a></li>
+	<li><a href="../../index.html">load_datafile_object_indexed</a></li>
+	<li><a href="../../index.html">Using datafiles</a></li>
+</ul>
+</div>
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,911</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.017742</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/datafile-routines/create_datafile_index by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:26:44 GMT -->
+</html>

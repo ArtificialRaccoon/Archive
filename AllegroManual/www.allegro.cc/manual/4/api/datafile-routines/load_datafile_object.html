@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/datafile-routines/load_datafile_object by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:26:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>load_datafile_object</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Datafile routines</a></h2><ul>
+<li><a href="load_datafile.html" style="font-weight: bold">load_datafile</a></li><li><a href="load_datafile_callback.html" >load_datafile_callback</a></li><li><a href="unload_datafile.html" style="font-weight: bold">unload_datafile</a></li><li><strong>load_datafile_object</strong></li><li><a href="unload_datafile_object.html" >unload_datafile_object</a></li><li><a href="find_datafile_object.html" >find_datafile_object</a></li><li><a href="create_datafile_index.html" >create_datafile_index</a></li><li><a href="load_datafile_object_indexed.html" >load_datafile_object_indexed</a></li><li><a href="destroy_datafile_index.html" >destroy_datafile_index</a></li><li><a href="get_datafile_property.html" >get_datafile_property</a></li><li><a href="register_datafile_object.html" >register_datafile_object</a></li><li><a href="fixup_datafile.html" >fixup_datafile</a></li><li><a href="dat_id.html" style="font-weight: bold">DAT_ID</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>load_datafile_object</h1>
+
+<div class="shortdesc">
+Loads a specific object from a datafile.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<a href="../../index.html" target="_blank"><span class="a">DATAFILE</span></a> <span class="k3">*</span><a href="../../index.html" target="_blank"><span class="a">load_datafile_object</span></a><span class="k2">(</span><span class="k1">const</span> <span class="k1">char</span> <span class="k3">*</span>filename, <span class="k1">const</span> <span class="k1">char</span> <span class="k3">*</span>objectname<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Loads a specific object from a datafile. This won't work if you strip the
+   object names from the file, and it will be very slow if you save the file
+   with global compression. Example:
+<pre class="code">      <span class="c">/* Load only the music from the datafile. */</span>
+      music_object <span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">load_datafile_object</span></a><span class="k2">(</span><span class="s">"datafile.dat"</span>,
+					  <span class="s">"MUSIC"</span><span class="k2">)</span><span class="k2">;</span>
+      <span class="c">/* Play it and wait a moment for it. */</span>
+      <a href="../../index.html" target="_blank"><span class="a">play_midi</span></a><span class="k2">(</span>music_object-&gt;dat<span class="k2">)</span><span class="k2">;</span>
+      ...
+      <span class="c">/* Destroy unneeded music. */</span>
+      <a href="../../index.html" target="_blank"><span class="a">unload_datafile_object</span></a><span class="k2">(</span>music_object<span class="k2">)</span><span class="k2">;</span></pre>
+
+</div>
+
+<div class="retval">
+Returns a pointer to a single DATAFILE element whose `dat' member points to
+   the object, or NULL if there was an error or there was no object with the
+   requested name. Remember to free this DATAFILE later to avoid memory leaks,
+   but use the correct unloading function!
+
+</div>
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">unload_datafile_object</a></li>
+	<li><a href="../../index.html">load_datafile</a></li>
+	<li><a href="../../index.html">set_color_conversion</a></li>
+	<li><a href="../../index.html">find_datafile_object</a></li>
+	<li><a href="../../index.html">register_datafile_object</a></li>
+	<li><a href="../../index.html">Using datafiles</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591739">
+		<a href="https://www.allegro.cc/forums/thread/591739">&quot;bitmap_color_depth&quot; error with Datafile BITMAPs</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/677108" style="color: black;">1</a> </span>
+	</li><li id="t-590889">
+		<a href="https://www.allegro.cc/forums/thread/590889">how to extract all file in *.dat to disk</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/663677" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/663680" style="color: black;">2</a> </span>
+	</li><li id="t-590718">
+		<a href="https://www.allegro.cc/forums/thread/590718">Buffering class for datafiles.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/660654" style="color: black;">1</a> </span>
+	</li><li id="t-589511">
+		<a href="https://www.allegro.cc/forums/thread/589511">AllegroGL: How to make textures from datafile-bitmaps?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/641356" style="color: black;">1</a> </span>
+	</li><li id="t-579339">
+		<a href="https://www.allegro.cc/forums/thread/579339">HOW TO LOAD DAT FILE IN PACK FILE</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/579344" style="color: black;">1</a> </span>
+	</li><li id="t-578194">
+		<a href="https://www.allegro.cc/forums/thread/578194">HOW TO LOAD DATA FILE OBJECT...!!!!!!!!</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/578543" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/578758" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/578781" style="color: black;">3</a> <a href="https://www.allegro.cc/forums/post/578813" style="color: black;">4</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/TomtheTomato">Tom the Tomato</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/Unborn">Unborn</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/AlextheAllegator4">Alex the Allegator 4</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/Ashes">Ashes</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/KBall">KBall</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/Kraptor">Kraptor</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/LiquidWar5">Liquid War 5</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/Outgun">Outgun</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/RedPixel">Red Pixel</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/StarControlTimeWarp">Star Control: TimeWarp</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,908</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.011078</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/datafile-routines/load_datafile_object by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:26:43 GMT -->
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/flic-routines/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:51:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>FLIC routines</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">API</a></h2><ul>
+<li><a href="../using-allegro/index.html" >Using Allegro</a></li><li><a href="../structures-and-types-defined-by-allegro/index.html" >Structures and types defined by Allegro</a></li><li><a href="../unicode-routines/index.html" >Unicode routines</a></li><li><a href="../configuration-routines/index.html" >Configuration routines</a></li><li><a href="../mouse-routines/index.html" >Mouse routines</a></li><li><a href="../timer-routines/index.html" >Timer routines</a></li><li><a href="../keyboard-routines/index.html" >Keyboard routines</a></li><li><a href="../joystick-routines/index.html" >Joystick routines</a></li><li><a href="../graphics-modes/index.html" >Graphics modes</a></li><li><a href="../bitmap-objects/index.html" >Bitmap objects</a></li><li><a href="../loading-image-files/index.html" >Loading image files</a></li><li><a href="../palette-routines/index.html" >Palette routines</a></li><li><a href="../truecolor-pixel-formats/index.html" >Truecolor pixel formats</a></li><li><a href="../drawing-primitives/index.html" >Drawing primitives</a></li><li><a href="../blitting-and-sprites/index.html" >Blitting and sprites</a></li><li><a href="../rle-sprites/index.html" >RLE sprites</a></li><li><a href="../compiled-sprites/index.html" >Compiled sprites</a></li><li><a href="../fonts/index.html" >Fonts</a></li><li><a href="../text-output/index.html" >Text output</a></li><li><a href="../polygon-rendering/index.html" >Polygon rendering</a></li><li><a href="../transparency-and-patterned-drawing/index.html" >Transparency and patterned drawing</a></li><li><a href="../converting-between-color-formats/index.html" >Converting between color formats</a></li><li><a href="../direct-access-to-video-memory/index.html" >Direct access to video memory</a></li><li><strong>FLIC routines</strong></li><li><a href="../sound-init-routines/index.html" >Sound init routines</a></li><li><a href="../mixer-routines/index.html" >Mixer routines</a></li><li><a href="../digital-sample-routines/index.html" >Digital sample routines</a></li><li><a href="../music-routines-(midi)/index.html" >Music routines (MIDI)</a></li><li><a href="../audio-stream-routines/index.html" >Audio stream routines</a></li><li><a href="../recording-routines/index.html" >Recording routines</a></li><li><a href="../file-and-compression-routines/index.html" >File and compression routines</a></li><li><a href="../datafile-routines/index.html" >Datafile routines</a></li><li><a href="../fixed-point-math-routines/index.html" >Fixed point math routines</a></li><li><a href="../3d-math-routines/index.html" >3D math routines</a></li><li><a href="../quaternion-math-routines/index.html" >Quaternion math routines</a></li><li><a href="../gui-routines/index.html" >GUI routines</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>FLIC routines</h1>
+
+There are two high level functions for playing FLI/FLC animations:
+play_fli(), which reads the data directly from disk, and play_memory_fli(),
+which uses data that has already been loaded into RAM. Apart from the
+different sources of the data, these two functions behave identically. They
+draw the animation onto the specified bitmap, which should normally be the
+screen. Frames will be aligned with the top left corner of the bitmap: if
+you want to position them somewhere else you will need to create a
+sub-bitmap for the FLI player to draw onto.<br /><br />
+
+If the callback function is not NULL it will be called once for each frame,
+allowing you to perform background tasks of your own. This callback should
+normally return zero: if it returns non-zero the player will terminate (this
+is the only way to stop an animation that is playing in looped mode).<br /><br />
+
+The FLI player returns FLI_OK if it reached the end of the file, FLI_ERROR
+if something went wrong, and the value returned by the callback function if
+that was what stopped it. If you need to distinguish between different return
+values, your callback should return positive integers, since FLI_OK is zero
+and FLI_ERROR is negative.<br /><br />
+
+Note that the FLI player will only work when the timer module is installed,
+and that it will alter the palette according to whatever palette data is
+present in the animation file.<br /><br />
+
+Occasionally you may need more detailed control over how an FLI is played,
+for example if you want to superimpose a text scroller on top of the
+animation, or to play it back at a different speed. You could do both of
+these with the lower level functions described below.
+
+<ul>
+	<li><a href="play_fli.html">play_fli</a> - Plays a FLI or FLC animation from disk.</li>
+	<li><a href="play_memory_fli.html">play_memory_fli</a> - Plays a FLI or FLC animation from memory.</li>
+	<li><a href="open_fli.html">open_fli</a></li>
+	<li><a href="open_memory_fli.html">open_memory_fli</a> - Makes a FLI file open and ready for playing.</li>
+	<li><a href="close_fli.html">close_fli</a> - Closes a FLI file previously opened.</li>
+	<li><a href="next_fli_frame.html">next_fli_frame</a> - Reads the next frame of the current animation file.</li>
+	<li><a href="fli_bitmap.html">fli_bitmap</a> - Contains the current frame of the animation.</li>
+	<li><a href="fli_palette.html">fli_palette</a> - Contains the current palette of the animation.</li>
+	<li><a href="fli_bmp_dirty_from.html">fli_bmp_dirty_from</a></li>
+	<li><a href="fli_bmp_dirty_to.html">fli_bmp_dirty_to</a> - Indicate which parts of the image have changed.</li>
+	<li><a href="fli_pal_dirty_from.html">fli_pal_dirty_from</a></li>
+	<li><a href="fli_pal_dirty_to.html">fli_pal_dirty_to</a> - Indicate which parts of the palette have changed.</li>
+	<li><a href="reset_fli_variables.html">reset_fli_variables</a> - Resets the bitmap and palette dirty global variables.</li>
+	<li><a href="fli_frame.html">fli_frame</a> - Stores the current frame number of the animation.</li>
+	<li><a href="fli_timer.html">fli_timer</a> - Global variable for timing FLI playback.</li>
+</ul>
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,174</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>119.226145</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/flic-routines/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:51:44 GMT -->
+</html>

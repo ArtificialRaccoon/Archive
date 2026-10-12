@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/quaternion-math-routines/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:56:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Quaternion math routines</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">API</a></h2><ul>
+<li><a href="../using-allegro/index.html" >Using Allegro</a></li><li><a href="../structures-and-types-defined-by-allegro/index.html" >Structures and types defined by Allegro</a></li><li><a href="../unicode-routines/index.html" >Unicode routines</a></li><li><a href="../configuration-routines/index.html" >Configuration routines</a></li><li><a href="../mouse-routines/index.html" >Mouse routines</a></li><li><a href="../timer-routines/index.html" >Timer routines</a></li><li><a href="../keyboard-routines/index.html" >Keyboard routines</a></li><li><a href="../joystick-routines/index.html" >Joystick routines</a></li><li><a href="../graphics-modes/index.html" >Graphics modes</a></li><li><a href="../bitmap-objects/index.html" >Bitmap objects</a></li><li><a href="../loading-image-files/index.html" >Loading image files</a></li><li><a href="../palette-routines/index.html" >Palette routines</a></li><li><a href="../truecolor-pixel-formats/index.html" >Truecolor pixel formats</a></li><li><a href="../drawing-primitives/index.html" >Drawing primitives</a></li><li><a href="../blitting-and-sprites/index.html" >Blitting and sprites</a></li><li><a href="../rle-sprites/index.html" >RLE sprites</a></li><li><a href="../compiled-sprites/index.html" >Compiled sprites</a></li><li><a href="../fonts/index.html" >Fonts</a></li><li><a href="../text-output/index.html" >Text output</a></li><li><a href="../polygon-rendering/index.html" >Polygon rendering</a></li><li><a href="../transparency-and-patterned-drawing/index.html" >Transparency and patterned drawing</a></li><li><a href="../converting-between-color-formats/index.html" >Converting between color formats</a></li><li><a href="../direct-access-to-video-memory/index.html" >Direct access to video memory</a></li><li><a href="../flic-routines/index.html" >FLIC routines</a></li><li><a href="../sound-init-routines/index.html" >Sound init routines</a></li><li><a href="../mixer-routines/index.html" >Mixer routines</a></li><li><a href="../digital-sample-routines/index.html" >Digital sample routines</a></li><li><a href="../music-routines-(midi)/index.html" >Music routines (MIDI)</a></li><li><a href="../audio-stream-routines/index.html" >Audio stream routines</a></li><li><a href="../recording-routines/index.html" >Recording routines</a></li><li><a href="../file-and-compression-routines/index.html" >File and compression routines</a></li><li><a href="../datafile-routines/index.html" >Datafile routines</a></li><li><a href="../fixed-point-math-routines/index.html" >Fixed point math routines</a></li><li><a href="../3d-math-routines/index.html" >3D math routines</a></li><li><strong>Quaternion math routines</strong></li><li><a href="../gui-routines/index.html" >GUI routines</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>Quaternion math routines</h1>
+
+Quaternions are an alternate way to represent the rotation part of a
+transformation, and can be easier to manipulate than matrices. As with a
+matrix, you can encode a geometric transformations in one, concatenate
+several of them to merge multiple transformations, and apply them to a
+vector, but they can only store pure rotations. The big advantage is that
+you can accurately interpolate between two quaternions to get a part-way
+rotation, avoiding the gimbal problems of the more conventional euler angle
+interpolation.<br /><br />
+
+Quaternions only have floating point versions, without any _f suffix. Other
+than that, most of the quaternion functions correspond with a matrix
+function that performs a similar operation.<br /><br />
+
+Quaternion means 'of four parts', and that's exactly what it is. Here is the
+structure:
+<pre class="code">   <span class="k1">typedef</span> <span class="k1">struct</span> QUAT
+   <span class="k2">{</span>
+      <span class="k1">float</span> w, x, y, z<span class="k2">;</span>
+   <span class="k2">}</span></pre>
+You will have lots of fun figuring out what these numbers actually mean, but
+that is beyond the scope of this documentation. Quaternions do work -- trust
+me.
+
+<ul>
+	<li><a href="identity_quat.html">identity_quat</a> - Global variable containing the identity quaternion.</li>
+	<li><a href="get_x_rotate_quat.html">get_x_rotate_quat</a></li>
+	<li><a href="get_y_rotate_quat.html">get_y_rotate_quat</a></li>
+	<li><a href="get_z_rotate_quat.html">get_z_rotate_quat</a> - Construct axis rotation quaternions.</li>
+	<li><a href="get_rotation_quat.html">get_rotation_quat</a> - Constructs a quaternion to rotate points around all three axes.</li>
+	<li><a href="get_vector_rotation_quat.html">get_vector_rotation_quat</a> - Constructs a quaternion to rotate points around a vector.</li>
+	<li><a href="quat_to_matrix.html">quat_to_matrix</a> - Constructs a rotation matrix from a quaternion.</li>
+	<li><a href="matrix_to_quat.html">matrix_to_quat</a> - Constructs a quaternion from a rotation matrix.</li>
+	<li><a href="quat_mul.html">quat_mul</a> - Multiplies two quaternions.</li>
+	<li><a href="apply_quat.html">apply_quat</a> - Multiplies a point by a quaternion.</li>
+	<li><a href="quat_interpolate.html">quat_interpolate</a> - Constructs a quaternion representing a rotation between from and to.</li>
+	<li><a href="quat_slerp.html">quat_slerp</a> - Version of quat_interpolate() allowing control over the rotation.</li>
+</ul>
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,180</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.691976</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/quaternion-math-routines/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:57:04 GMT -->
+</html>

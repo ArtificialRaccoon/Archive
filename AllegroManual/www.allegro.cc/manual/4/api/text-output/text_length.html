@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/text-output/text_length by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:23:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>text_length</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Text output</a></h2><ul>
+<li><a href="font.html" style="font-weight: bold">font</a></li><li><a href="allegro_404_char.html" >allegro_404_char</a></li><li><strong>text_length</strong></li><li><a href="text_height.html" style="font-weight: bold">text_height</a></li><li><a href="textout_ex.html" style="font-weight: bold">textout_ex</a></li><li><a href="textout_centre_ex.html" style="font-weight: bold">textout_centre_ex</a></li><li><a href="textout_right_ex.html" >textout_right_ex</a></li><li><a href="textout_justify_ex.html" >textout_justify_ex</a></li><li><a href="textprintf_ex.html" style="font-weight: bold">textprintf_ex</a></li><li><a href="textprintf_centre_ex.html" style="font-weight: bold">textprintf_centre_ex</a></li><li><a href="textprintf_right_ex.html" >textprintf_right_ex</a></li><li><a href="textprintf_justify_ex.html" >textprintf_justify_ex</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>text_length</h1>
+
+<div class="shortdesc">
+Returns the length of a string in pixels.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">int</span> <a href="../../index.html" target="_blank"><span class="a">text_length</span></a><span class="k2">(</span><span class="k1">const</span> <a href="../../index.html" target="_blank"><span class="a">FONT</span></a> <span class="k3">*</span>f, <span class="k1">const</span> <span class="k1">char</span> <span class="k3">*</span>str<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Returns the length (in pixels) of a string in the specified font. Example:
+<pre class="code">      <span class="k1">int</span> width <span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">text_length</span></a><span class="k2">(</span><a href="../../index.html" target="_blank"><span class="a">font</span></a>, <span class="s">"I love spam"</span><span class="k2">)</span><span class="k2">;</span>
+      ...
+      bmp <span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">create_bitmap</span></a><span class="k2">(</span>width, height<span class="k2">)</span><span class="k2">;</span></pre>
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">text_height</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../index.html">ex12bit</a></li>
+	<li><a href="../../index.html">exmidi</a></li>
+	<li><a href="../../index.html">expat</a></li>
+	<li><a href="../../index.html">exunicod</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591350">
+		<a href="https://www.allegro.cc/forums/thread/591350">How to change font size?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/671417" style="color: black;">1</a> </span>
+	</li><li id="t-590202">
+		<a href="https://www.allegro.cc/forums/thread/590202">[OpenLayer] TextRenderer::getHeight()</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/653605" style="color: black;">1</a> </span>
+	</li><li id="t-589764">
+		<a href="https://www.allegro.cc/forums/thread/589764">vline, etc.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/645511" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/645574" style="color: black;">2</a> </span>
+	</li><li id="t-589667">
+		<a href="https://www.allegro.cc/forums/thread/589667">Text input.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/644071" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/644151" style="color: black;">2</a> </span>
+	</li><li id="t-589594">
+		<a href="https://www.allegro.cc/forums/thread/589594">working with char arrays: memory leak?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/642853" style="color: black;">1</a> </span>
+	</li><li id="t-588877">
+		<a href="https://www.allegro.cc/forums/thread/588877">Pass char * list as function parameter</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/632308" style="color: black;">1</a> </span>
+	</li><li id="t-587830">
+		<a href="https://www.allegro.cc/forums/thread/587830">Input box using Allegro</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/617656" style="color: black;">1</a> </span>
+	</li><li id="t-585843">
+		<a href="https://www.allegro.cc/forums/thread/585843">Font Dealing 2</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/590185" style="color: black;">1</a> </span>
+	</li><li id="t-585495">
+		<a href="https://www.allegro.cc/forums/thread/585495">Another newbie question (100% cpu usage and memory leak)</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/585531" style="color: black;">1</a> </span>
+	</li><li id="t-585347">
+		<a href="https://www.allegro.cc/forums/thread/585347">Pink is not Transparent with Grabber and Bitmaps</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/585347" style="color: black;">1</a> </span>
+	</li><li id="t-583797">
+		<a href="https://www.allegro.cc/forums/thread/583797">Color Fonts in allegro...</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/583822" style="color: black;">1</a> </span>
+	</li><li id="t-581296">
+		<a href="https://www.allegro.cc/forums/thread/581296">Text Wrapping in Allegro</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/581299" style="color: black;">1</a> </span>
+	</li><li id="t-560721">
+		<a href="https://www.allegro.cc/forums/thread/560721">allegro_gl_printf() and text_height()</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/560734" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/WormHole">WormHole</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/ChristmasFun">Christmas Fun</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/Paratrooper3D">Paratrooper 3D</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/Akilah2006">Akilah! 2006</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/AlextheAllegator3">Alex the Allegator 3</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/Allefant">Allefant</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/AreYouLost1">Are You Lost?</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/CastleAdventure">Castle Adventure</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/domin">domin</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/DrStrange">Dr. Strange</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,664</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.010035</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/text-output/text_length by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:23:56 GMT -->
+</html>

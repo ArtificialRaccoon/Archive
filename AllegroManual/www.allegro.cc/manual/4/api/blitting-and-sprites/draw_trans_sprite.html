@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/blitting-and-sprites/draw_trans_sprite by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:22:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>draw_trans_sprite</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Blitting and sprites</a></h2><ul>
+<li><a href="blit.html" style="font-weight: bold">blit</a></li><li><a href="stretch_blit.html" style="font-weight: bold">stretch_blit</a></li><li><a href="masked_blit.html" style="font-weight: bold">masked_blit</a></li><li><a href="masked_stretch_blit.html" style="font-weight: bold">masked_stretch_blit</a></li><li><a href="draw_sprite.html" style="font-weight: bold">draw_sprite</a></li><li><a href="stretch_sprite.html" style="font-weight: bold">stretch_sprite</a></li><li><a href="draw_sprite_v_flip.html" >draw_sprite_v_flip</a></li><li><a href="draw_sprite_h_flip.html" style="font-weight: bold">draw_sprite_h_flip</a></li><li><a href="draw_sprite_vh_flip.html" >draw_sprite_vh_flip</a></li><li><strong>draw_trans_sprite</strong></li><li><a href="draw_lit_sprite.html" >draw_lit_sprite</a></li><li><a href="draw_gouraud_sprite.html" >draw_gouraud_sprite</a></li><li><a href="draw_character_ex.html" >draw_character_ex</a></li><li><a href="rotate_sprite.html" style="font-weight: bold">rotate_sprite</a></li><li><a href="rotate_sprite_v_flip.html" >rotate_sprite_v_flip</a></li><li><a href="rotate_scaled_sprite.html" >rotate_scaled_sprite</a></li><li><a href="rotate_scaled_sprite_v_flip.html" >rotate_scaled_sprite_v_flip</a></li><li><a href="pivot_sprite.html" >pivot_sprite</a></li><li><a href="pivot_sprite_v_flip.html" >pivot_sprite_v_flip</a></li><li><a href="pivot_scaled_sprite.html" >pivot_scaled_sprite</a></li><li><a href="pivot_scaled_sprite_v_flip.html" >pivot_scaled_sprite_v_flip</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>draw_trans_sprite</h1>
+
+<div class="shortdesc">
+Draws a sprite blending it with the destination.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">void</span> <a href="../../index.html" target="_blank"><span class="a">draw_trans_sprite</span></a><span class="k2">(</span><a href="../../index.html" target="_blank"><span class="a">BITMAP</span></a> <span class="k3">*</span>bmp, <a href="../../index.html" target="_blank"><span class="a">BITMAP</span></a> <span class="k3">*</span>sprite, <span class="k1">int</span> x, <span class="k1">int</span> y<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Uses the global color_map table or truecolor blender functions to overlay
+   the sprite on top of the existing image. This must only be used after you
+   have set up the color mapping table (for 256-color modes) or blender
+   functions (for truecolor modes). Because it involves reading as well as
+   writing the bitmap memory, translucent drawing is very slow if you draw
+   directly to video RAM, so wherever possible you should use a memory
+   bitmap instead. Example:
+<pre class="code">      <span class="c">/* Some one time initialisation code. */</span>
+      <a href="../../index.html" target="_blank"><span class="a">COLOR_MAP</span></a> global_trans_table<span class="k2">;</span>
+      <a href="../../index.html" target="_blank"><span class="a">create_trans_table</span></a><span class="k2">(</span><span class="k3">&amp;</span>global_trans_table, my_palette,
+			 <span class="n">128</span>, <span class="n">128</span>, <span class="n">128</span>, NULL<span class="k2">)</span><span class="k2">;</span>
+      ...
+      <span class="k1">if</span> <span class="k2">(</span><a href="../../index.html" target="_blank"><span class="a">get_color_depth</span></a><span class="k2">(</span><span class="k2">)</span> <span class="k3">=</span><span class="k3">=</span> <span class="n">8</span><span class="k2">)</span>
+	 <a href="../../index.html" target="_blank"><span class="a">color_map</span></a> <span class="k3">=</span> <span class="k3">&amp;</span>global_trans_table<span class="k2">;</span>
+      <span class="k1">else</span>
+	 <a href="../../index.html" target="_blank"><span class="a">set_trans_blender</span></a><span class="k2">(</span><span class="n">128</span>, <span class="n">128</span>, <span class="n">128</span>, <span class="n">128</span><span class="k2">)</span><span class="k2">;</span><br /><br />
+
+      <a href="../../index.html" target="_blank"><span class="a">draw_trans_sprite</span></a><span class="k2">(</span>buffer, ghost_sprite, x, y<span class="k2">)</span><span class="k2">;</span></pre><br /><br />
+
+   The bitmap and sprite must normally be in the same color depth, but as a
+   special case you can draw 32 bit RGBA format sprites onto any hicolor or
+   truecolor bitmap, as long as you call set_alpha_blender() first, and you
+   can draw 8-bit alpha images onto a 32-bit RGBA destination, as long as you
+   call set_write_alpha_blender() first. As draw_sprite() this function skips
+   transparent pixels, except if the source sprite is an 8-bit image; if this
+   is the case, you should pay attention to properly set up your color map
+   table for index 0.
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">draw_sprite</a></li>
+	<li><a href="../../index.html">draw_lit_sprite</a></li>
+	<li><a href="../../index.html">draw_trans_rle_sprite</a></li>
+	<li><a href="../../index.html">color_map</a></li>
+	<li><a href="../../index.html">set_trans_blender</a></li>
+	<li><a href="../../index.html">set_alpha_blender</a></li>
+	<li><a href="../../index.html">set_write_alpha_blender</a></li>
+	<li><a href="../../index.html">bitmap_mask_color</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../index.html">exalpha</a></li>
+	<li><a href="../../index.html">exblend</a></li>
+	<li><a href="../../index.html">exlights</a></li>
+	<li><a href="../../index.html">extrans</a></li>
+	<li><a href="../../index.html">exxfade</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591796">
+		<a href="https://www.allegro.cc/forums/thread/591796">8bit bitmap to alpha channel</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/677865" style="color: black;">1</a> </span>
+	</li><li id="t-591493">
+		<a href="https://www.allegro.cc/forums/thread/591493">Transition effects</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/673879" style="color: black;">1</a> </span>
+	</li><li id="t-591336">
+		<a href="https://www.allegro.cc/forums/thread/591336">Problems with AllegroGL tga loading and usage.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/671180" style="color: black;">1</a> </span>
+	</li><li id="t-591315">
+		<a href="https://www.allegro.cc/forums/thread/591315">Rotate sprite while using alpha channel</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/670806" style="color: black;">1</a> </span>
+	</li><li id="t-591116">
+		<a href="https://www.allegro.cc/forums/thread/591116">Image processing and transparency</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/667445" style="color: black;">1</a> </span>
+	</li><li id="t-591046">
+		<a href="https://www.allegro.cc/forums/thread/591046">FBlend missing pixels</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/666178" style="color: black;">1</a> </span>
+	</li><li id="t-590622">
+		<a href="https://www.allegro.cc/forums/thread/590622">Transparency and translucency together</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/659306" style="color: black;">1</a> </span>
+	</li><li id="t-590057">
+		<a href="https://www.allegro.cc/forums/thread/590057">a bug RLE sprites</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/652313" style="color: black;">1</a> </span>
+	</li><li id="t-589885">
+		<a href="https://www.allegro.cc/forums/thread/589885">4.2.1 seems to be fooked with font grabbing</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/647203" style="color: black;">1</a> </span>
+	</li><li id="t-589857">
+		<a href="https://www.allegro.cc/forums/thread/589857">DevCpp Learning to profile with</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/646828" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/646840" style="color: black;">2</a> </span>
+	</li><li id="t-589770">
+		<a href="https://www.allegro.cc/forums/thread/589770">draw_trans_sprite, Devcpp and optimizations</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/646004" style="color: black;">1</a> </span>
+	</li><li id="t-589730">
+		<a href="https://www.allegro.cc/forums/thread/589730">I need a high resolution timer with QPC</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/645031" style="color: black;">1</a> </span>
+	</li><li id="t-589627">
+		<a href="https://www.allegro.cc/forums/thread/589627">Fladimir&#39;s alpha blending routines</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/643243" style="color: black;">1</a> </span>
+	</li><li id="t-589593">
+		<a href="https://www.allegro.cc/forums/thread/589593">flikkering bitmaps</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/642827" style="color: black;">1</a> </span>
+	</li><li id="t-589550">
+		<a href="https://www.allegro.cc/forums/thread/589550">How to draw an opaque, screen-sized, black rectangle?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/642167" style="color: black;">1</a> </span>
+	</li><li id="t-589410">
+		<a href="https://www.allegro.cc/forums/thread/589410">semi-transparent bitmap</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/639929" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/639937" style="color: black;">2</a> </span>
+	</li><li id="t-589235">
+		<a href="https://www.allegro.cc/forums/thread/589235">A question of transparency</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/637292" style="color: black;">1</a> </span>
+	</li><li id="t-589076">
+		<a href="https://www.allegro.cc/forums/thread/589076">32Bit-BITMAP Blitting Alphachannel</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/635193" style="color: black;">1</a> </span>
+	</li><li id="t-588928">
+		<a href="https://www.allegro.cc/forums/thread/588928">Blending textures</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/633165" style="color: black;">1</a> </span>
+	</li><li id="t-587326">
+		<a href="https://www.allegro.cc/forums/thread/587326">MinorHack Attack!</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/611556" style="color: black;">1</a> </span>
+	</li><li id="t-587260">
+		<a href="https://www.allegro.cc/forums/thread/587260">faster method of multiply-blender</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/609468" style="color: black;">1</a> </span>
+	</li><li id="t-586149">
+		<a href="https://www.allegro.cc/forums/thread/586149">trail</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/594559" style="color: black;">1</a> </span>
+	</li><li id="t-585866">
+		<a href="https://www.allegro.cc/forums/thread/585866">Increasing the speed of transitioning from one image into another?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/590308" style="color: black;">1</a> </span>
+	</li><li id="t-585040">
+		<a href="https://www.allegro.cc/forums/thread/585040">Variables...</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/585040" style="color: black;">1</a> </span>
+	</li><li id="t-581147">
+		<a href="https://www.allegro.cc/forums/thread/581147">Transaparent logo. My brain is dead :-(</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/581195" style="color: black;">1</a> </span>
+	</li><li id="t-580693">
+		<a href="https://www.allegro.cc/forums/thread/580693">create_trans_table</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/580693" style="color: black;">1</a> </span>
+	</li><li id="t-577795">
+		<a href="https://www.allegro.cc/forums/thread/577795">FIFO data structure</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/577864" style="color: black;">1</a> </span>
+	</li><li id="t-572568">
+		<a href="https://www.allegro.cc/forums/thread/572568">FBlend transparency drawing not perfect?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/572568" style="color: black;">1</a> </span>
+	</li><li id="t-563590">
+		<a href="https://www.allegro.cc/forums/thread/563590">fblend fade with magic pink</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/563590" style="color: black;">1</a> </span>
+	</li><li id="t-560025">
+		<a href="https://www.allegro.cc/forums/thread/560025">BITMAP Border</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/560398" style="color: black;">1</a> </span>
+	</li><li id="t-551991">
+		<a href="https://www.allegro.cc/forums/thread/551991">A.cc ChristmasHack</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/553824" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/BeatlesFreaks">Beatles Freaks</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/FantasticVacation">Fantastic Vacation</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/FlamingSnow">Flaming Snow</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/MermaidPanic">Mermaid Panic</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/Sokoban">Sokoban</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/Aggression">Aggression</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/DiabloIIMapEditor">Diablo II Map Editor</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/Dodger">Dodger</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/domin">domin</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/DrLovepeace">Dr Lovepeace</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,622</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.011898</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/blitting-and-sprites/draw_trans_sprite by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:22:01 GMT -->
+</html>

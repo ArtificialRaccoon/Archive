@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/unicode-routines/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:40:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Unicode routines</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">API</a></h2><ul>
+<li><a href="../using-allegro/index.html" >Using Allegro</a></li><li><a href="../structures-and-types-defined-by-allegro/index.html" >Structures and types defined by Allegro</a></li><li><strong>Unicode routines</strong></li><li><a href="../configuration-routines/index.html" >Configuration routines</a></li><li><a href="../mouse-routines/index.html" >Mouse routines</a></li><li><a href="../timer-routines/index.html" >Timer routines</a></li><li><a href="../keyboard-routines/index.html" >Keyboard routines</a></li><li><a href="../joystick-routines/index.html" >Joystick routines</a></li><li><a href="../graphics-modes/index.html" >Graphics modes</a></li><li><a href="../bitmap-objects/index.html" >Bitmap objects</a></li><li><a href="../loading-image-files/index.html" >Loading image files</a></li><li><a href="../palette-routines/index.html" >Palette routines</a></li><li><a href="../truecolor-pixel-formats/index.html" >Truecolor pixel formats</a></li><li><a href="../drawing-primitives/index.html" >Drawing primitives</a></li><li><a href="../blitting-and-sprites/index.html" >Blitting and sprites</a></li><li><a href="../rle-sprites/index.html" >RLE sprites</a></li><li><a href="../compiled-sprites/index.html" >Compiled sprites</a></li><li><a href="../fonts/index.html" >Fonts</a></li><li><a href="../text-output/index.html" >Text output</a></li><li><a href="../polygon-rendering/index.html" >Polygon rendering</a></li><li><a href="../transparency-and-patterned-drawing/index.html" >Transparency and patterned drawing</a></li><li><a href="../converting-between-color-formats/index.html" >Converting between color formats</a></li><li><a href="../direct-access-to-video-memory/index.html" >Direct access to video memory</a></li><li><a href="../flic-routines/index.html" >FLIC routines</a></li><li><a href="../sound-init-routines/index.html" >Sound init routines</a></li><li><a href="../mixer-routines/index.html" >Mixer routines</a></li><li><a href="../digital-sample-routines/index.html" >Digital sample routines</a></li><li><a href="../music-routines-(midi)/index.html" >Music routines (MIDI)</a></li><li><a href="../audio-stream-routines/index.html" >Audio stream routines</a></li><li><a href="../recording-routines/index.html" >Recording routines</a></li><li><a href="../file-and-compression-routines/index.html" >File and compression routines</a></li><li><a href="../datafile-routines/index.html" >Datafile routines</a></li><li><a href="../fixed-point-math-routines/index.html" >Fixed point math routines</a></li><li><a href="../3d-math-routines/index.html" >3D math routines</a></li><li><a href="../quaternion-math-routines/index.html" >Quaternion math routines</a></li><li><a href="../gui-routines/index.html" >GUI routines</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>Unicode routines</h1>
+
+Allegro can manipulate and display text using any character values from 0
+right up to 2^32-1 (although the current implementation of the grabber can
+only create fonts using characters up to 2^16-1). You can choose between a
+number of different text encoding formats, which controls how strings are
+stored and how Allegro interprets strings that you pass to it. This setting
+affects all aspects of the system: whenever you see a function that returns
+a char * type, or that takes a char * as an argument, that text will be in
+whatever format you have told Allegro to use.<br /><br />
+
+By default, Allegro uses UTF-8 encoded text (U_UTF8). This is a
+variable-width format, where characters can occupy anywhere from one to four
+bytes. The nice thing about it is that characters ranging from 0-127 are
+encoded directly as themselves, so UTF-8 is upwardly compatible with 7-bit
+ASCII ("Hello, World!" means the same thing regardless of whether you
+interpret it as ASCII or UTF-8 data). Any character values above 128, such
+as accented vowels, the UK currency symbol, and Arabic or Chinese
+characters, will be encoded as a sequence of two or more bytes, each in the
+range 128-255. This means you will never get what looks like a 7-bit ASCII
+character as part of the encoding of a different character value, which
+makes it very easy to manipulate UTF-8 strings.<br /><br />
+
+There are a few editing programs that understand UTF-8 format text files.
+Alternatively, you can write your strings in plain ASCII or 16-bit Unicode
+formats, and then use the Allegro textconv program to convert them into
+UTF-8.<br /><br />
+
+If you prefer to use some other text format, you can set Allegro to work
+with normal 8-bit ASCII (U_ASCII), or 16-bit Unicode (U_UNICODE) instead, or
+you can provide some handler functions to make it support whatever other
+text encoding you like (for example it would be easy to add support for 32
+bit UCS-4 characters, or the Chinese GB-code format).<br /><br />
+
+There is some limited support for alternative 8-bit codepages, via the
+U_ASCII_CP mode. This is very slow, so you shouldn't use it for serious
+work, but it can be handy as an easy way to convert text between different
+codepages. By default the U_ASCII_CP mode is set up to reduce text to a
+clean 7-bit ASCII format, trying to replace any accented vowels with their
+simpler equivalents (this is used by the allegro_message() function when it
+needs to print an error report onto a text mode DOS screen). If you want to
+work with other codepages, you can do this by passing a character mapping
+table to the set_ucodepage() function.<br /><br />
+
+Note that you can use the Unicode routines before you call install_allegro()
+or allegro_init(). If you want to work in a text mode other than UTF-8, it
+is best to set it with set_uformat() just before you call these.
+
+<ul>
+	<li><a href="set_uformat.html">set_uformat</a> - Set the global current text encoding format.</li>
+	<li><a href="get_uformat.html">get_uformat</a> - Finds out what text encoding format is currently selected.</li>
+	<li><a href="register_uformat.html">register_uformat</a> - Installs handler functions for a new text encoding format.</li>
+	<li><a href="set_ucodepage.html">set_ucodepage</a> - Sets 8-bit to Unicode conversion tables.</li>
+	<li><a href="need_uconvert.html">need_uconvert</a> - Tells if a string requires encoding conversion.</li>
+	<li><a href="uconvert_size.html">uconvert_size</a> - Number of bytes needed to store a string after conversion.</li>
+	<li><a href="do_uconvert.html">do_uconvert</a> - Converts a string to another encoding format.</li>
+	<li><a href="uconvert.html">uconvert</a> - Hih level string encoding conversion wrapper.</li>
+	<li><a href="uconvert_ascii.html">uconvert_ascii</a> - Converts string from ASCII into the current format.</li>
+	<li><a href="uconvert_toascii.html">uconvert_toascii</a> - Converts strings from the current format into ASCII.</li>
+	<li><a href="empty_string.html">empty_string</a> - Universal string NULL terminator.</li>
+	<li><a href="ugetc.html">ugetc</a> - Low level helper function for reading Unicode text data.</li>
+	<li><a href="ugetx.html">ugetx</a></li>
+	<li><a href="ugetxc.html">ugetxc</a> - Low level helper function for reading Unicode text data.</li>
+	<li><a href="usetc.html">usetc</a> - Low level helper function for writing Unicode text data.</li>
+	<li><a href="uwidth.html">uwidth</a> - Low level helper function for testing Unicode text data.</li>
+	<li><a href="ucwidth.html">ucwidth</a> - Low level helper function for testing Unicode text data.</li>
+	<li><a href="uisok.html">uisok</a> - Low level helper function for testing Unicode text data.</li>
+	<li><a href="uoffset.html">uoffset</a> - Finds the offset of a character in a string.</li>
+	<li><a href="ugetat.html">ugetat</a> - Finds out the value of a character in a string.</li>
+	<li><a href="usetat.html">usetat</a> - Replaces a character in a string.</li>
+	<li><a href="uinsert.html">uinsert</a> - Inserts a character in a string.</li>
+	<li><a href="uremove.html">uremove</a> - Removes a character from a string.</li>
+	<li><a href="ustrsize.html">ustrsize</a> - Size of the string in bytes without null terminator.</li>
+	<li><a href="ustrsizez.html">ustrsizez</a> - Size of the string in bytes including null terminator.</li>
+	<li><a href="uwidth_max.html">uwidth_max</a> - Number of bytes a character can occupy.</li>
+	<li><a href="utolower.html">utolower</a> - Converts a letter to lower case.</li>
+	<li><a href="utoupper.html">utoupper</a> - Converts a letter to upper case.</li>
+	<li><a href="uisspace.html">uisspace</a> - Tells if a character is whitespace.</li>
+	<li><a href="uisdigit.html">uisdigit</a> - Tells if a character is a digit.</li>
+	<li><a href="ustrdup.html">ustrdup</a> - Duplicates a string.</li>
+	<li><a href="_ustrdup.html">_ustrdup</a> - Duplicates a string with a custom memory allocator.</li>
+	<li><a href="ustrcpy.html">ustrcpy</a> - Copies a string into another one.</li>
+	<li><a href="ustrzcpy.html">ustrzcpy</a> - Copies a string into another one, specifying size.</li>
+	<li><a href="ustrcat.html">ustrcat</a> - Concatenates a string to another one.</li>
+	<li><a href="ustrzcat.html">ustrzcat</a> - Concatenates a string to another one, specifying size.</li>
+	<li><a href="ustrlen.html">ustrlen</a> - Tells the number of characters in a string.</li>
+	<li><a href="ustrcmp.html">ustrcmp</a> - Compares two strings.</li>
+	<li><a href="ustrncpy.html">ustrncpy</a> - Copies a string into another one, specifying size.</li>
+	<li><a href="ustrzncpy.html">ustrzncpy</a> - Copies a string into another one, specifying size.</li>
+	<li><a href="ustrncat.html">ustrncat</a> - Concatenates a string to another one, specifying size.</li>
+	<li><a href="ustrzncat.html">ustrzncat</a> - Concatenates a string to another one, specifying size.</li>
+	<li><a href="ustrncmp.html">ustrncmp</a> - Compares up to n letters of two strings.</li>
+	<li><a href="ustricmp.html">ustricmp</a> - Compares two strings ignoring case.</li>
+	<li><a href="ustrnicmp.html">ustrnicmp</a> - Compares up to n letters of two strings ignoring case.</li>
+	<li><a href="ustrlwr.html">ustrlwr</a> - Replaces all letters with lower case.</li>
+	<li><a href="ustrupr.html">ustrupr</a> - Replaces all letters with upper case.</li>
+	<li><a href="ustrchr.html">ustrchr</a> - Finds the first occurrence of a character in a string.</li>
+	<li><a href="ustrrchr.html">ustrrchr</a> - Finds the last occurence of a character in a string.</li>
+	<li><a href="ustrstr.html">ustrstr</a> - Finds the first occurence of a string in another one.</li>
+	<li><a href="ustrpbrk.html">ustrpbrk</a> - Finds the first character that matches any in a set.</li>
+	<li><a href="ustrtok.html">ustrtok</a> - Retrieves tokens from a string.</li>
+	<li><a href="ustrtok_r.html">ustrtok_r</a> - Reentrant function to retrieve tokens from a string.</li>
+	<li><a href="uatof.html">uatof</a> - Converts a string into a double.</li>
+	<li><a href="ustrtol.html">ustrtol</a> - Converts a string into an integer.</li>
+	<li><a href="ustrtod.html">ustrtod</a> - Converts a string into a floating point number.</li>
+	<li><a href="ustrerror.html">ustrerror</a> - Returns a string describing errno.</li>
+	<li><a href="usprintf.html">usprintf</a> - Writes formatted data into a buffer.</li>
+	<li><a href="uszprintf.html">uszprintf</a> - Writes formatted data into a buffer, specifying size.</li>
+	<li><a href="uvsprintf.html">uvsprintf</a> - Writes formatted data into a buffer, using variable arguments.</li>
+	<li><a href="uvszprintf.html">uvszprintf</a> - Writes formatted data into a buffer, using size and variable arguments.</li>
+</ul>
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,162</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>6.658801</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/unicode-routines/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:41:16 GMT -->
+</html>

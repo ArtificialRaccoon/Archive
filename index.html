@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Archive</title>
+  <style>
+    :root {
+      --bg: #2c1e18;
+      --card-bg: #372820;
+      --card-border: rgba(247, 240, 222, 0.12);
+      --card-hover: #dfb16c;
+      --text: #f7f0de;
+      --text-muted: rgba(247, 240, 222, 0.78);
+      --subtitle: #ab9c92;
+      --author: #dfb16c;
+      --btn-bg: #dfb16c;
+      --btn-text: #2c1e18;
+      --btn-hover: #e8c484;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 20px;
+      background-image:
+        radial-gradient(circle at 15% 15%, rgba(223, 177, 108, 0.09) 0%, transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(110, 139, 160, 0.1) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    h1 {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: var(--subtitle);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--card-hover);
+      box-shadow: 0 14px 32px -10px rgba(0, 0, 0, 0.55);
+    }
+
+    .card-content {
+      margin-bottom: 22px;
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .card-author {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--author);
+      margin-bottom: 12px;
+    }
+
+    .card-desc {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    .card-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px 20px;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      font-size: 14.5px;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: background-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .card-btn:hover {
+      background: var(--btn-hover);
+      transform: translateY(-1px);
+    }
+
+    .card-btn span {
+      transition: transform 0.15s ease;
+      display: inline-block;
+    }
+
+    .card-btn:hover span {
+      transform: translateX(3px);
+    }
+
+    footer {
+      margin-top: 48px;
+      text-align: center;
+      color: #8c7c72;
+      font-size: 13px;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 32px 16px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <main class="grid">
+      <article class="card">
+        <div class="card-content">
+          <h2 class="card-title">Game Programming Patterns</h2>
+          <div class="card-author">By Bob Nystrom</div>
+          <p class="card-desc">
+            A comprehensive book on software architecture patterns in games, exploring classic design patterns
+            revisited, sequencing, decoupling, and cache optimization techniques.
+          </p>
+        </div>
+        <a href="./GameProgrammingPatterns/gameprogrammingpatterns.com/index.html" class="card-btn">
+          Open Page <span>&rarr;</span>
+        </a>
+      </article>
+
+      <article class="card">
+        <div class="card-content">
+          <h2 class="card-title">256-Color VGA Programming in C</h2>
+          <div class="card-author">By Sami Tammekann</div>
+          <p class="card-desc">
+            A classic hands-on tutorial for low-level PC graphics in Mode 13h (320&times;200), unchained Mode X, palette
+            registers, double buffering, and complete C source code.
+          </p>
+        </div>
+        <a href="./VGA%20Programming/sininenankka.dy.fi/_sami/mirror/vga_all/vga/index.html" class="card-btn">
+          Open Page <span>&rarr;</span>
+        </a>
+      </article>
+
+      <article class="card">
+        <div class="card-content">
+          <h2 class="card-title">Allegro Documentation (Stable)</h2>
+          <div class="card-author">By liballeg.org</div>
+          <p class="card-desc">
+            The official stable documentation and reference chapters for the Allegro game programming library, including
+            2D drawing primitives, sound, sprites, timers, and input.
+          </p>
+        </div>
+        <a href="./Allegro/liballeg.org/stabledocs/en/index.html" class="card-btn">
+          Open Page <span>&rarr;</span>
+        </a>
+      </article>
+
+      <article class="card">
+        <div class="card-content">
+          <h2 class="card-title">Allegro 4 Comprehensive Manual</h2>
+          <div class="card-author">By allegro.cc Community</div>
+          <p class="card-desc">
+            An extensive reference manual mirrored from allegro.cc containing detailed API documentation for over 870
+            functions, platform guides, data tools, and sound architecture.
+          </p>
+        </div>
+        <a href="./AllegroManual/www.allegro.cc/manual/4/index.html" class="card-btn">
+          Open Page <span>&rarr;</span>
+        </a>
+      </article>
+
+      <article class="card">
+        <div class="card-content">
+          <h2 class="card-title">MASkinG Allegro GUI Library</h2>
+          <div class="card-author">By Miran Amon</div>
+          <p class="card-desc">
+            A skinnable C++ graphical user interface library for Allegro featuring customizable dialogs, widgets,
+            skinning documentation, and dirty rectangle rendering.
+          </p>
+        </div>
+        <a href="./MASkingG%20-%20AN%20Allegro%20GUI%20Library/members.allegro.cc/miran/masking/index.html"
+          class="card-btn">
+          Open Page <span>&rarr;</span>
+        </a>
+      </article>
+    </main>
+  </div>
+</body>
+
+</html>

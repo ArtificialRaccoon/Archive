@@ -1,0 +1,1134 @@
+span.json {
+	display: none;
+}
+		
+		td.column {
+			background-color: #f0f0f0;
+			border-left: #808080 solid 1px;
+			border-right: #808080 solid 1px;
+			border-top: #d0d0d0 solid 1px;
+			border-bottom: #808080 double 3px;
+		}
+		
+		#header {
+			height: 60px;
+			padding-top: 10px;
+			position: relative;
+			text-align: center;
+		}
+		
+	
+		#footer {
+		}
+
+
+/* --------------- TEMPLATE --------------- */
+div.template-heading {
+	font-weight: bold;
+	font-size: 12px;
+	text-align: center;
+	background-color: #a0d0a0;
+	color: #000;	
+	border-bottom: #004400 solid 1px;
+	border-top: #d0f0d0 solid 1px;
+	border-left: #408040 solid 1px;
+	border-right: #408040 solid 1px;
+	padding: 2px;
+	margin: 2px 1px 2px 1px;
+}
+
+a {
+	text-decoration: none;
+	color: #369;
+}
+
+a:hover {
+	color: green;
+	text-decoration: underline;		
+}
+
+a.anchor {
+	text-decoration: none;
+	color: black;
+}
+
+a.anchor:hover {
+	background: none;
+	color: black;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	background-color: white;
+	color: black;
+	font-family: verdana, helvetica, sans-serif;
+	font-size: 12pt;
+	margin: 0px;
+	height: 100%;
+}	
+
+div.forumpage {
+	font-size: 10pt;
+	margin-left: 24px;
+	margin-right: 24px;
+	padding-top: 0.5em;
+}
+
+div.forums {
+}	
+
+div.instructions {
+	background-image: url(../icon/information.png);
+	background-repeat: no-repeat;
+	background-position: 0px 4px;
+	font-family: Trebuchet MS;
+	font-size: 12px;
+	line-height: 1.4;
+	margin: 4px;
+	min-height: 32px;
+	padding: 4px 4px 4px 40px;
+}
+
+div.news-bar {
+	color: #000000;	
+	font-size: 8pt;
+	padding-left: 4px;
+}
+
+div.news-body {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	font-size: 10pt;
+}
+	
+div.news-caption {				
+	background: #e0e0e0;
+	border-bottom: #d0d0d0 solid 1px;
+	color: #000000;	
+	font-size: 11pt;
+	font-weight: bold;
+	padding-left: 4px;
+}
+
+div.news-item {	
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+div.resource-category-main {
+	font-weight: bold;
+}
+
+div.resource-category-sub {
+	font-size: 8pt;	
+}	
+	
+
+	h3 {
+		background: #e0e0e0;
+		border-bottom: #d0d0d0 solid 1px;
+		color: #000000;	
+		font-size: 11pt;
+		font-weight: bold;
+		padding-left: 4px;
+		margin: 0px;
+	}
+	
+	h4 {
+		margin: 0px 0px 2px 0px;
+	}
+	
+	small {
+		font-size: 8pt;
+	}
+	
+	body, td {
+		font-family: verdana, helvetica, sans-serif;
+		font-size: 10pt;
+	}
+	
+	td.label {
+		vertical-align: text-top;
+		font-weight: bold;
+	}
+	
+	form {
+		margin: 0;
+		padding: 0;
+	}
+	
+/* --------------- Poll Capsule --------------- */
+table#poll_table {
+}
+
+table#poll_table td#poll_question{
+	background: #e0e0e0;
+	border-bottom: solid black 1px;
+	border-top: solid black 1px;
+	font-size: x-small;
+	font-weight: bold;
+	text-align: left;	
+}
+
+table#poll_table tr.poll_answer {
+	background: #fff;
+}
+
+table#poll_table tr.poll_answer:hover {
+	background: #d0d0e0;
+}
+
+table#poll_table td.poll_caption {
+	text-align: left;
+	font-size: small;
+}
+
+table#poll_table td.poll_percent {
+	text-align: right;
+	font-size: small;
+}
+
+table#poll_table tr.poll_bar {
+	background: #fff;
+}
+
+table#poll_table tr.poll_bar div {
+	text-align: left;
+}
+
+table#poll_table td#poll_footer {
+	background: #e0e0e0;
+	border-bottom: solid black 1px;
+	border-top: solid black 1px;	
+	text-align: center;
+}
+
+/* --------------- Public Opinion --------------- */
+div#public-opinion {
+	text-align: left;
+}
+
+div#public-opinion div.overall {
+	text-align: center;
+	margin: 0.5em;
+}
+
+div#public-opinion ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+div#public-opinion ul li {
+	line-height: 1.4;
+	margin: 0.5em;
+	overflow: auto;
+	padding-top: 0.5em;
+	border-top: dashed #666 1px;
+	font-size: 10px;
+}
+
+div#public-opinion div.rating {
+	display: none;
+}
+
+div#public-opinion div.reviewer {
+	display: inline;
+	margin-left: 1em;
+}
+
+div#public-opinion div.opinion {
+	display: inline;
+}
+
+div#public-opinion div.opinion span.rating {
+	font-weight: bold;
+	margin: 0 0.5em 0 0.5em;
+}
+
+div#public-opinion form {
+	text-align: center;
+	margin: 0.5em;
+}
+
+/* --------------- Recent Update Table --------------- */
+table#recent_update_table {
+}
+
+table#recent_update_table tr.date td {
+	text-align: center;
+	font-size: 8pt;
+	border-top: solid black 1px;
+	border-bottom: solid black 1px;
+	background: #e0e0e0;
+}
+
+table#recent_update_table tr.title td {
+	background: #ffffff;
+	padding-left: 2px;
+	border-left: #b0b0b0 solid 1px;
+	border-bottom: solid #b0b0b0 1px;
+	font-size: 8pt;
+}
+
+/* --------------- Review List Capsule--------------- */
+div#review_list_div {
+	text-align: left;
+}
+
+div#review_list_div ul {
+	margin-top: 0px;
+	margin-left: 20px;
+	padding-left: 0px;
+}
+
+/* --------------- General --------------- */
+#template_page {
+	padding-bottom: 1em;
+	padding-top: 0.5em;		
+}
+
+span.url {
+	font-family: Tahoma, sans-serif;
+	font-size: 10.5px;
+	font-weight: normal;
+	font-style: normal;
+	text-decoration: none;
+	color: #666;
+}
+
+
+span.cuss {
+	margin: 0;
+	display: inline-block;
+	position: relative;
+	top: 2px;
+	min-width: 64px;
+	background-image: url(../../../images/curse.png);
+	background-position: bottom left;
+	background-repeat: repeat-x;
+}
+
+span.cuss span {
+	visibility: hidden;
+}
+
+/* --------------- Tabs  --------------- */
+
+ul.tabs {
+	border-bottom: solid black 1px;
+	display: block;
+	list-style-type: none;
+	margin: 0;
+	padding-left: 1em;
+}
+
+ul.tabs li a {
+	color: RGB(0,0,0);
+}
+
+ul.tabs li {
+	cursor: pointer;
+	background: RGB(208,208,208);
+	padding: 4px;
+	border-left: solid black 1px;
+	border-right: solid black 1px;
+	border-top: solid black 2px;
+	display: inline;
+	position: relative;
+	bottom: 4px;
+	margin-right: 1px;
+	text-align: center;
+}
+
+ul.tabs .selected {
+	cursor: pointer;
+	font-weight: bold;
+	color: white;
+	background-color: rgb(160,208,160);
+	padding: 4px;
+	border-left: solid RGB(0,100,0) 1px;
+	border-right: solid RGB(0,100,0) 1px; 
+	border-top: solid RGB(0,100,0) 2px;
+}
+
+ul.tabs li:hover {
+	background-color: RGB(208,240,208);
+}
+
+/* --------------- IOTD  --------------- */
+#iotd_big_container {
+	margin-top: 1em;
+}
+
+#iotd_big_container div.nav_bar {
+	margin-bottom: 1em; 
+}
+
+div.iotd {
+	width: 160px;
+	border: solid black 1px;	
+}
+
+div.iotd_container {
+	width: 200px; 
+	height: 160px; 
+	overflow: hidden; 
+	float: left; 
+	font-size: 9px;
+}
+
+div.iotd_container div.date {
+	color: black; 
+	background: #a0d0a0;
+}
+
+div.iotd_container div.caption {
+	color: white; 
+	background: #000;
+}
+
+
+div.form {
+	background-color: #e0e0e0;
+	margin: 16px;
+	border: outset #333 1px;
+	padding: 1em;
+}
+
+div.form div.label {
+	clear: both;
+	float: left;
+}
+
+div.form div.label label {
+	font-family: Trebuchet MS;
+	font-weight: bold;
+}
+
+div.form div.field {
+	margin-left: 120px;
+	margin-bottom: 8px;
+}
+
+div.form div.field input,
+div.form div.field textarea,
+div.form div.field select,
+div.form div.field option
+{
+	padding: 2px;
+	font-family: Tahoma, Arial, Verdana, sans-serif;
+	font-size: 14px;
+}
+
+div.form div.field option {
+	padding-right: 1em;
+}
+
+div.form div.field input[type="button"],
+div.form div.field input[type="submit"]
+{
+	font-size: 12px;
+}
+
+/* --------------- MOCKUP BOX v2 --------------- */
+div.mockup-box2 {
+	background-color: #ccc;
+	border: solid #bbb 1px;
+	padding: 1px;
+}
+
+div.mockup-box2 div.toolbar {
+	padding: 1px 2px 5px 2px;
+	background-color: #ddd;
+	border-bottom: solid #999 1px;
+}
+
+div.mockup-box2 div.toolbar span.button {
+	cursor: pointer;
+	font-family: Tahoma, Arial;
+	font-size: 10px;
+	margin: 1em;
+	position: relative;
+	border: solid transparent 1px;
+	padding: 2px 2px 6px 2px;
+}
+
+div.mockup-box2 div.toolbar span.button img {
+	opacity: 0.5;
+}
+
+div.mockup-box2 div.toolbar span.button.selected img,
+div.mockup-box2 div.toolbar span.button:hover img {
+	opacity: 1;
+}
+
+div.mockup-box2 div.toolbar span.button.selected {
+	color: #900;
+	left: 1px;
+	top: 1px;
+	border: outset #aaa 1px;
+}
+
+div.mockup-box2 div.toolbar span.button:active {
+}
+
+div.mockup-box2 div.toolbar span.button * {
+	vertical-align: middle;
+}
+
+div.mockup-box2 div.container {
+	position: relative;
+	background-color: Window;
+	border-top: solid #ccc 1px;
+	border-bottom: solid #ccc 1px;
+	height: 350px;
+}
+
+div.mockup-box2 div.container.preview-mode {
+	background-color: white;
+}
+
+div.mockup-box2 div.preview,
+div.mockup-box2 div.spell-check {
+	border: 0;
+	display: none;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 12px;
+	line-height: 1.4;
+	overflow: auto;
+}
+
+div.mockup-box2 div.compose,
+div.mockup-box2 div.preview,
+div.mockup-box2 div.spell-check {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 348px;
+	width: 100%;
+	bottom: 0;
+	right: 0;
+	z-index: 10;
+}
+
+div.mockup-box2 div.compose textarea {
+	border: 0;
+	background-color: transparent;
+	font-family: monospace;
+	font-size: 14px;
+	margin: 0;
+	height: 348px;
+	width: 100% !important;
+}
+
+div.mockup-box2 div.spell-check select,
+div.mockup-box2 div.spell-check option {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 12px;
+	padding: 0;
+}
+
+div.mockup-box2 div.spell-check select {
+	color: red;
+}
+
+div.mockup-box2 div.spell-check option {
+	padding-left: 0.5em;
+}
+
+div.mockup-box2 div.tabs {
+	padding: 2px 0 0 0;
+	font-size: 10px;
+	height: 16px;
+	background: bottom right url(../icon/resize-handle.png) no-repeat #ddd;
+	border-top: solid #999 1px;
+}
+
+div.mockup-box2 div.mockup-loading {
+	position: absolute;
+	top: -1px;
+	right: 0;
+	padding: 2px 1px 1px 1px;
+	font-family: Verdana, Arial;
+	font-size: 12px;
+	background-color: #000;
+	color: #fff;
+	width: 6em;
+	text-align: center;
+}
+
+div.mockup-box2 div.attachments {
+	border-top: solid #fff 1px;
+	border-bottom: solid #999 1px;
+	background-color: #eee;
+//	margin-bottom: 2px;
+}
+
+div.mockup-box2 div.attachments p {
+	background: 0 4px url(../icon/information.png) no-repeat;
+	font-size: 11px;
+	margin: 4px;
+	min-height: 40px;
+	padding: 0 0 0 38px;
+}
+
+div.mockup-box2 div.attachments span.filename {
+	font-weight: bold;
+}
+
+div.mockup-box2 div.attachments span.status {
+	margin-left: 2em;
+}
+
+div.upload-button {
+	position: relative;
+	width: 200px;
+	border: solid #ccc 1px;
+	text-align: center;
+	padding: 0.5em;
+	margin: 4px 0;
+}
+
+div.upload-files {
+	display: none;
+	border: solid #ccc 1px;
+	padding: 0.5em;
+	margin: 4px 0;
+}
+
+div.upload-files input {
+	float: left;
+	clear: left;
+}
+
+div.upload-files div.file {
+	position: relative;
+	width: 400px;
+	margin: 0 0 4px 20px;
+	padding: 1px;
+}
+
+div.upload-files div.file.pending {
+	border: solid #ccc 1px;
+	padding: 0px;
+}
+
+div.upload-files div.file span { 
+	position: relative;
+	z-index: 2;
+}
+
+div.upload-files div.progress {
+	position: absolute;
+	width: 0px;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background-color: #ccc;
+}
+
+/* --------------- HEADERS --------------------- */
+
+div.mockup h1, div.mockup h2 {
+	font-weight: normal;
+	border-bottom: 1px solid #aaa;
+	margin: 0 0 0.6em 0;
+	background: none;
+}
+
+div.mockup h3, div.mockup h4, div.mockup h5 {
+	font-weight: bold;
+	background: none;
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+
+div.mockup h1 {
+	font-size: 188%;
+}
+
+div.mockup h2, div.mockup h2 {
+	font-size: 150%;
+}
+
+div.mockup h3 {
+	font-size: 132%;
+}
+
+div.mockup h4 {
+	font-size: 116%;
+}
+
+div.mockup h5 {
+	font-size: 100%;
+}
+
+div.mockup div.spoiler {
+	display: none;	
+	padding: 0 0 0 1em;
+	margin-left: 1em;
+	border-left: dotted #999 2px;
+}
+
+div.mockup input.spoiler {
+	cursor: pointer;
+	font-size: 10px;
+	font-family: Tahoma, Arial, sans-serif;
+	margin: 0 1em;
+	width: 100px;
+}
+
+/* --------------- REMOTE IMAGES --------------- */
+span.remote-thumbnail {
+	cursor: pointer;
+}
+
+span.remote-thumbnail span {
+	display: none;
+}
+
+span.remote-thumbnail img {
+	border: solid black 1px;
+	padding: 1px;
+	margin-bottom: 1px;
+	background-color: #fff;
+}
+
+a:hover span.remote-thumbnail img {
+	border: solid #369 1px;
+}
+
+/* --------------- SORT TABLE --------------- */
+.sort-table td {
+	color: #000;
+	font-family: Arial;
+	font-size: 14px;
+}
+
+.sort-table {
+	border-left: solid #bbb 1px;
+	border-right: solid #bbb 1px;
+	border-bottom: solid #bbb 1px;
+}
+
+.sort-table thead td {
+	background-color: #e0e0e0;
+	border-top: solid #bbb 1px;
+	border-bottom: solid #bbb 2px;
+	/* border-right: solid #ddd 1px; */
+	font-weight: bold;
+}
+
+.sort-table tbody {
+	border: solid 1px red;
+}
+
+.sort-table tbody td {
+	/* border-right: solid #f7f7f7 2px; */
+}
+
+.sort-table tbody tr.odd td {
+	background-color: #f0f0f0;
+}
+
+.sort-table tbody tr.even td {
+	background-color: #f9f9f9;
+}
+
+/* --------------- MOCKUP --------------- */
+div.slideshow ul {
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
+div.slideshow li {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+div.quote_container {
+	margin: 1em 1em 0.5em 1em;
+	font-size: 11px;
+}
+
+div.quote_container div.title {
+	font-style: italic;
+	font-size: 10pt;
+	margin-bottom: 4px;
+}
+
+div.quote_container div.title a {
+}
+
+div.quote_container div.quote {
+	padding: 4px 4px 4px 4px;
+	margin-left: 1em;
+	border-left: solid #999 2px;
+}
+
+div.mockup p
+{
+	padding: 0;
+	margin: 1em 0;
+	line-height: 1.4;
+}
+
+div.mockup li p
+{
+	margin: 1em 0 0 0;
+}
+
+div.mockup li p:first-child
+{
+	margin: 0;
+	padding: 0;
+}
+
+div.mockup div.quote > p
+{
+	margin: 1em 0 0 0;
+	padding: 0;
+}
+
+div.mockup div.quote > p:first-child
+{
+	margin: 0;
+	padding: 0;
+}
+
+div.mockup > p:first-child
+{
+	margin-top: 0;
+}
+
+.snippet, .terminal {
+	font-size: 13px;
+	font-family: monospace;
+	line-height: 1.2;
+	width: 95%;
+	white-space: pre;
+	overflow: auto;
+}
+
+.snippet code {
+	font-family: monospace;
+	font-size: 13px;
+	line-height: 1.2;
+	white-space: normal;
+}
+
+div.source-code div.inner, pre.source-code, .terminal.scroll {
+	background-color: #fff;
+	border-bottom: solid #999 1px;
+	border-left: solid #ccc 1px;
+	border-right: solid #999 1px;
+	border-top: solid #ccc 1px;
+	font-family: monospace;
+	line-height: 1.2;
+	white-space: pre;
+	max-height: 400px;
+	overflow: auto;
+}
+
+span.source-code,
+.source-code pre {
+	font-family: monospace;
+	font-size: 12px;
+	line-height: 1.2;
+	white-space: pre;
+}
+
+div.mockup div.source-code {
+	xwidth: 600px;
+}
+
+div.mockup div.source-code.snippet div.inner,
+div.mockup div.source-code.snippet div.inner td {
+	border: none;
+	background-color: transparent !important;
+}
+
+div.mockup div.source-code div.inner.fullsize {
+	max-height: none;
+}
+
+div.mockup div.source-code div.toolbar {
+	background-color: #eee;
+	border-top: solid #ccc 1px;
+	border-left: solid #ccc 1px;
+	border-right: solid #999 1px;
+	font-family: Tahoma, sans-serif;
+	font-size: 11px;
+	padding: 4px;
+}
+
+div.mockup div.source-code div.toolbar span.name {
+	font-weight: bold;
+	margin-right: 16px;
+}
+
+div.mockup div.source-code div.toolbar span.button {
+	border: solid #eee 1px;
+	cursor: pointer;
+	padding: 1px 4px;
+	margin-right: 2px;
+}
+
+div.mockup div.source-code div.toolbar span.button.enabled {
+	background-color: #ddd;
+	border-top: solid #fff 1px;
+	border-left: solid #fff 1px;
+	border-right: solid #999 1px;
+	border-bottom: solid #999 1px;
+}
+
+div.mockup div.source-code div.highlight {
+	background-color: #ffa !important;
+}
+
+div.mockup div.source-code span.number {
+	background-color: #eee !important;
+	border-right: #999 solid 1px !important;
+	text-align: right;
+	padding: 0 0.5em;
+	margin: 0 1em 0 0;
+	width: 40px;
+}
+
+div.mockup div.source-code div.highlight span.number {
+	background-color: #ccc !important;
+	font-weight: bold;
+}
+
+div.mockup div.source-code div.inner {
+	margin: 0;
+	padding: 0;
+	font-family: monospace;
+	font-size: 12px;
+	line-height: 1.2;
+}
+
+/* references  */
+
+div.mockup div.ref {
+	display: none;
+}
+
+div.mockup div.ref-block {
+	font-size: 75%;
+}
+
+div.mockup div.ref-block h2 {		
+}
+
+div.mockup div.ref-block div.ref {
+	display: block;
+}
+
+/* code colors */
+.a {
+	color: #336699;
+	font-weight: bold;
+}
+
+.c {
+	color: green;
+}
+
+.h {
+	color: green;
+	background: red;
+}
+
+.k1 {
+	color: blue;
+}
+
+.k2 {
+	font-weight: bold;
+}
+
+.k3 {
+	color: red;
+	font-weight: bold;
+}
+
+.n {
+	color: #ff00aa;
+}
+
+.p {
+	color: purple;
+	font-style: italic;
+}
+
+.s {
+	color: #666666;
+}
+
+a.allegro-function {
+	color: #000000;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a.allegro-function:hover {
+	background: #ffffaa;
+	color: #000000;
+	font-weight: bold;
+}
+
+a.allegro-struct {
+	color: #000000;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a.allegro-struct:hover {
+	background: #ffffaa;	
+	color: #000000;
+	font-weight: bold;
+}
+
+
+/* Drop shadows (http://www.alistapart.com/articles/cssdropshadows/) */
+.drop-shadow {
+	background: url(../../../images/shadowAlpha.png) no-repeat bottom right !important;
+	background: url(../../../images/shadow.gif) no-repeat bottom right;
+	margin: 10px 0 0 10px !important;
+	margin: 10px 0 0 5px;
+}
+
+.drop-shadow div.wrap {
+	background: none !important;
+	background: url(../../../images/shadow2.gif) no-repeat left top;
+	padding: 0 !important;
+	padding: 0 6px 6px 0;
+}
+
+.drop-shadow img.shadow {
+  display: block;
+  position: relative;
+  background-color: #fff;
+  border: 1px solid #a9a9a9;
+  margin: -6px 6px 6px -6px;
+  padding: 4px;
+}
+
+/* Tool Tips */
+div.tool-tip {
+	background-color: #ffffe1;
+	border: 1px solid #999;
+	color: #000;
+	font-family: Tahoma, sans-serif;
+	font-size: 11px;
+	padding: 4px;
+	line-height: 1.2;
+	margin: -6px 6px 6px -6px !important;
+	margin: 0;
+	max-width: 400px;
+	max-height: 200px;
+	overflow: hidden;
+	padding: 4px;
+	z-index: 100; 
+}
+
+/* Combo Box */
+div.combobox {
+	display: none;
+	position: absolute;
+	background-color: Window;
+	border-left: solid #999 1px;
+	border-right: solid #999 1px;
+	border-bottom: solid #999 1px;
+	color: WindowText;
+	z-index: 10;
+}
+
+div.combobox div.option {
+	cursor: default;
+	font-family: Tahoma, sans-serif;
+	padding: 2px;
+}
+
+div.combobox div.option:hover {
+}
+
+div.combobox div.option.selected {
+	background-color: Highlight;
+	color: HighlightText;
+}
+
+div.combobox-shadow {
+	background: url(../../../images/shadowAlpha.png) no-repeat bottom right !important;
+	background: url(../../../images/shadow.gif) no-repeat bottom right;
+	position: absolute;
+	display: none;
+	z-index: 9;
+}
+
+div.combobox div.option img.icon {
+	margin: 0 4px 0 2px;
+	opacity: 0.75;
+	padding: 1px;
+	vertical-align: middle;
+}
+
+div.combobox div.option.selected img.icon {
+	opacity: 1;
+	border: solid #ccc 1px;
+	padding: 0px;
+}
+
+div.combobox div.option.selected img.blank.icon {
+	border: 0px;
+	padding: 1px;
+}
+
+span.typo {
+	background: transparent url(../../../images/misspell.png) repeat-x bottom left;
+	padding-bottom: 1px;
+	cursor: pointer;
+}
+
+div.context-dialog {
+	position: absolute;
+	z-index: 1000;
+	background-color: ButtonFace;
+	border: solid ThreeDShadow 1px;
+	color: ButtonText;	
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 12px;
+	line-height: 1.3;
+	max-height: 300px;
+	min-width: 100px;
+	max-width: 400px;
+	overflow: auto;
+	padding: 4px;
+	z-index: 1001;
+}
+
+div.context-dialog-shadow {
+	background: url(../../../images/shadowAlpha.png) no-repeat bottom right !important;
+	position: absolute;
+	z-index: 1000;
+}
+
+div.context-dialog div.option {
+	cursor: pointer;
+	padding: 2px;
+}
+
+div.context-dialog div.option:hover {
+	background-color: Highlight;
+	color: HighlightText;
+}

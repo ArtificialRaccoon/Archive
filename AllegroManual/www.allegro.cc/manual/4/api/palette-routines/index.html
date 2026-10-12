@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/palette-routines/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:48:41 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Palette routines</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">API</a></h2><ul>
+<li><a href="../using-allegro/index.html" >Using Allegro</a></li><li><a href="../structures-and-types-defined-by-allegro/index.html" >Structures and types defined by Allegro</a></li><li><a href="../unicode-routines/index.html" >Unicode routines</a></li><li><a href="../configuration-routines/index.html" >Configuration routines</a></li><li><a href="../mouse-routines/index.html" >Mouse routines</a></li><li><a href="../timer-routines/index.html" >Timer routines</a></li><li><a href="../keyboard-routines/index.html" >Keyboard routines</a></li><li><a href="../joystick-routines/index.html" >Joystick routines</a></li><li><a href="../graphics-modes/index.html" >Graphics modes</a></li><li><a href="../bitmap-objects/index.html" >Bitmap objects</a></li><li><a href="../loading-image-files/index.html" >Loading image files</a></li><li><strong>Palette routines</strong></li><li><a href="../truecolor-pixel-formats/index.html" >Truecolor pixel formats</a></li><li><a href="../drawing-primitives/index.html" >Drawing primitives</a></li><li><a href="../blitting-and-sprites/index.html" >Blitting and sprites</a></li><li><a href="../rle-sprites/index.html" >RLE sprites</a></li><li><a href="../compiled-sprites/index.html" >Compiled sprites</a></li><li><a href="../fonts/index.html" >Fonts</a></li><li><a href="../text-output/index.html" >Text output</a></li><li><a href="../polygon-rendering/index.html" >Polygon rendering</a></li><li><a href="../transparency-and-patterned-drawing/index.html" >Transparency and patterned drawing</a></li><li><a href="../converting-between-color-formats/index.html" >Converting between color formats</a></li><li><a href="../direct-access-to-video-memory/index.html" >Direct access to video memory</a></li><li><a href="../flic-routines/index.html" >FLIC routines</a></li><li><a href="../sound-init-routines/index.html" >Sound init routines</a></li><li><a href="../mixer-routines/index.html" >Mixer routines</a></li><li><a href="../digital-sample-routines/index.html" >Digital sample routines</a></li><li><a href="../music-routines-(midi)/index.html" >Music routines (MIDI)</a></li><li><a href="../audio-stream-routines/index.html" >Audio stream routines</a></li><li><a href="../recording-routines/index.html" >Recording routines</a></li><li><a href="../file-and-compression-routines/index.html" >File and compression routines</a></li><li><a href="../datafile-routines/index.html" >Datafile routines</a></li><li><a href="../fixed-point-math-routines/index.html" >Fixed point math routines</a></li><li><a href="../3d-math-routines/index.html" >3D math routines</a></li><li><a href="../quaternion-math-routines/index.html" >Quaternion math routines</a></li><li><a href="../gui-routines/index.html" >GUI routines</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>Palette routines</h1>
+
+All the Allegro drawing functions use integer parameters to represent
+colors. In truecolor resolutions these numbers encode the color directly as
+a collection of red, green, and blue bits, but in a regular 256-color mode
+the values are treated as indexes into the current palette, which is a table
+listing the red, green and blue intensities for each of the 256 possible
+colors.<br /><br />
+
+Palette entries are stored in an RGB structure, which contains red, green
+and blue intensities in the VGA hardware format, ranging from 0-63, and is
+defined as:
+<pre class="code">   <span class="k1">typedef</span> <span class="k1">struct</span> RGB
+   <span class="k2">{</span>
+      <span class="k1">unsigned</span> <span class="k1">char</span> r, g, b<span class="k2">;</span>
+   <span class="k2">}</span> RGB<span class="k2">;</span></pre>
+It contains an additional field for the purpose of padding but you should
+not usually care about it. For example:
+<pre class="code">   RGB black <span class="k3">=</span> <span class="k2">{</span> <span class="n">0</span>,  <span class="n">0</span>,  <span class="n">0</span>  <span class="k2">}</span><span class="k2">;</span>
+   RGB white <span class="k3">=</span> <span class="k2">{</span> <span class="n">63</span>, <span class="n">63</span>, <span class="n">63</span> <span class="k2">}</span><span class="k2">;</span>
+   RGB green <span class="k3">=</span> <span class="k2">{</span> <span class="n">0</span>,  <span class="n">63</span>, <span class="n">0</span>  <span class="k2">}</span><span class="k2">;</span>
+   RGB grey  <span class="k3">=</span> <span class="k2">{</span> <span class="n">32</span>, <span class="n">32</span>, <span class="n">32</span> <span class="k2">}</span><span class="k2">;</span></pre>
+The type PALETTE is defined to be an array of PAL_SIZE RGB structures, where
+PAL_SIZE is a preprocessor constant equal to 256.<br /><br />
+
+You may notice that a lot of the code in Allegro spells 'palette' as
+'pallete'. This is because the headers from my old Mark Williams compiler on
+the Atari spelt it with two l's, so that is what I'm used to. Allegro will
+happily accept either spelling, due to some #defines in allegro/alcompat.h
+(which can be turned off by defining the ALLEGRO_NO_COMPATIBILITY symbol
+before including Allegro headers).
+
+<ul>
+	<li><a href="set_color.html">set_color</a> - Sets the specified palette entry to the specified RGB triplet.</li>
+	<li><a href="_set_color.html">_set_color</a> - Inline version of set_color().</li>
+	<li><a href="set_palette.html">set_palette</a> - Sets the entire palette of 256 colors.</li>
+	<li><a href="set_palette_range.html">set_palette_range</a> - Sets a specific range of the palette.</li>
+	<li><a href="get_color.html">get_color</a> - Retrieves the specified palette entry.</li>
+	<li><a href="get_palette.html">get_palette</a> - Retrieves the entire palette of 256 colors.</li>
+	<li><a href="get_palette_range.html">get_palette_range</a> - Retrieves a specific palette range.</li>
+	<li><a href="fade_interpolate.html">fade_interpolate</a> - Calculates a new palette interpolated between two others.</li>
+	<li><a href="fade_from_range.html">fade_from_range</a> - Gradually fades a part of the palette between two others.</li>
+	<li><a href="fade_in_range.html">fade_in_range</a> - Gradually fades a part of the palette from black.</li>
+	<li><a href="fade_out_range.html">fade_out_range</a> - Gradually fades a part of the palette to black.</li>
+	<li><a href="fade_from.html">fade_from</a> - Gradually fades the palette between two others.</li>
+	<li><a href="fade_in.html">fade_in</a> - Gradually fades the palette from black.</li>
+	<li><a href="fade_out.html">fade_out</a> - Gradually fades the palette to black.</li>
+	<li><a href="select_palette.html">select_palette</a> - Sets the internal palette for color conversion.</li>
+	<li><a href="unselect_palette.html">unselect_palette</a> - Restores the palette before last call to select_palette().</li>
+	<li><a href="generate_332_palette.html">generate_332_palette</a> - Constructs a fake truecolor palette.</li>
+	<li><a href="generate_optimized_palette.html">generate_optimized_palette</a> - Generates an optimized palette for a bitmap.</li>
+	<li><a href="default_palette.html">default_palette</a> - The default IBM BIOS palette.</li>
+	<li><a href="black_palette.html">black_palette</a> - A palette containing solid black colors.</li>
+	<li><a href="desktop_palette.html">desktop_palette</a> - The palette used by the Atari ST low resolution desktop.</li>
+</ul>
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,166</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>58.522886</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/palette-routines/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:48:49 GMT -->
+</html>

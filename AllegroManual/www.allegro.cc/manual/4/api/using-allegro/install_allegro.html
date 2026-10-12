@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/using-allegro/install_allegro by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:02:27 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>install_allegro</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Using Allegro</a></h2><ul>
+<li><strong>install_allegro</strong></li><li><a href="allegro_init.html" style="font-weight: bold">allegro_init</a></li><li><a href="allegro_exit.html" style="font-weight: bold">allegro_exit</a></li><li><a href="end_of_main.html" style="font-weight: bold">END_OF_MAIN</a></li><li><a href="allegro_id.html" >allegro_id</a></li><li><a href="allegro_error.html" style="font-weight: bold">allegro_error</a></li><li><a href="allegro_version.html" >ALLEGRO_VERSION</a></li><li><a href="allegro_sub_version.html" >ALLEGRO_SUB_VERSION</a></li><li><a href="allegro_wip_version.html" >ALLEGRO_WIP_VERSION</a></li><li><a href="allegro_version_str.html" >ALLEGRO_VERSION_STR</a></li><li><a href="allegro_date_str.html" >ALLEGRO_DATE_STR</a></li><li><a href="allegro_date.html" >ALLEGRO_DATE</a></li><li><a href="al_id.html" >AL_ID</a></li><li><a href="make_version.html" >MAKE_VERSION</a></li><li><a href="os_type.html" >os_type</a></li><li><a href="os_version.html" >os_version</a></li><li><a href="os_revision.html" >os_revision</a></li><li><a href="os_multitasking.html" >os_multitasking</a></li><li><a href="allegro_message.html" style="font-weight: bold">allegro_message</a></li><li><a href="set_window_title.html" style="font-weight: bold">set_window_title</a></li><li><a href="set_close_button_callback.html" style="font-weight: bold">set_close_button_callback</a></li><li><a href="desktop_color_depth.html" style="font-weight: bold">desktop_color_depth</a></li><li><a href="get_desktop_resolution.html" >get_desktop_resolution</a></li><li><a href="check_cpu.html" >check_cpu</a></li><li><a href="cpu_vendor.html" >cpu_vendor</a></li><li><a href="cpu_family.html" >cpu_family</a></li><li><a href="cpu_model.html" >cpu_model</a></li><li><a href="cpu_capabilities.html" >cpu_capabilities</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>install_allegro</h1>
+
+<div class="shortdesc">
+Initialise the Allegro library.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">int</span> <a href="../../index.html" target="_blank"><span class="a">install_allegro</span></a><span class="k2">(</span><span class="k1">int</span> system_id, <span class="k1">int</span> <span class="k3">*</span>errno_ptr, <span class="k1">int</span> <span class="k2">(</span><span class="k3">*</span>atexit_ptr<span class="k2">)</span><span class="k2">(</span><span class="k2">)</span><span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Initialises the Allegro library. You must call either this or
+   allegro_init() before doing anything other than using the Unicode
+   routines. If you want to use a text mode other than UTF-8, you can set
+   it with set_uformat() before you call this. The other functions that can
+   be called before this one will be marked explicitly in the documentation,
+   like set_config_file().<br /><br />
+
+   The available system ID codes will vary from one platform to another, but
+   you will almost always want to pass SYSTEM_AUTODETECT. Alternatively,
+   SYSTEM_NONE installs a stripped down version of Allegro that won't even
+   try to touch your hardware or do anything platform specific: this can be
+   useful for situations where you only want to manipulate memory bitmaps,
+   such as the text mode datafile tools or the Windows GDI interfacing
+   functions.<br /><br />
+
+   The `errno_ptr' and `atexit_ptr' parameters should point to the errno
+   variable and atexit function from your libc: these are required because
+   when Allegro is linked as a DLL, it doesn't have direct access to your
+   local libc data. `atexit_ptr' may be NULL, in which case it is your
+   responsibility to call allegro_exit() manually. Example:
+<pre class="code">      <a href="../../index.html" target="_blank"><span class="a">install_allegro</span></a><span class="k2">(</span>SYSTEM_AUTODETECT, <span class="k3">&amp;</span><a href="http://www.delorie.com/djgpp/doc/libc/libc_293.html" target="_blank">errno</a>, <a href="http://www.delorie.com/djgpp/doc/libc/libc_52.html" target="_blank">atexit</a><span class="k2">)</span><span class="k2">;</span></pre>
+
+</div>
+
+<div class="retval">
+This function returns zero on success and non-zero on failure (e.g. no
+   system driver could be used). Note: in previous versions of Allegro this
+   function would abort on error.
+
+</div>
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">allegro_init</a></li>
+	<li><a href="../../index.html">allegro_exit</a></li>
+	<li><a href="../../index.html">set_uformat</a></li>
+	<li><a href="../../index.html">set_config_file</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-590176">
+		<a href="https://www.allegro.cc/forums/thread/590176">load_bitmap trouble</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/652719" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/652725" style="color: black;">2</a> </span>
+	</li><li id="t-589877">
+		<a href="https://www.allegro.cc/forums/thread/589877">Allegro programs not compiling in ubuntu.. need help setting up!</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/647120" style="color: black;">1</a> </span>
+	</li><li id="t-588902">
+		<a href="https://www.allegro.cc/forums/thread/588902">Allegro.pas: a wrapper to use Allegro and Pascal</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/632841" style="color: black;">1</a> </span>
+	</li><li id="t-587947">
+		<a href="https://www.allegro.cc/forums/thread/587947">anjuta annoyance</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/618850" style="color: black;">1</a> </span>
+	</li><li id="t-587457">
+		<a href="https://www.allegro.cc/forums/thread/587457">Timers and high speed animation - need advice!</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/612517" style="color: black;">1</a> </span>
+	</li><li id="t-586520">
+		<a href="https://www.allegro.cc/forums/thread/586520">Allegro with wxWidgets</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/600058" style="color: black;">1</a> </span>
+	</li><li id="t-576392">
+		<a href="https://www.allegro.cc/forums/thread/576392">install_allegro() error</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/576392" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/576404" style="color: black;">2</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/Akilah2006">Akilah! 2006</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/ChromaPlas">ChromaPlas</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/FakeNES">FakeNES</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/LiquidWar5">Liquid War 5</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/RedPixel">Red Pixel</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/RedPixel2">Red Pixel 2</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/sparklet">sparklet</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/StarControlTimeWarp">Star Control: TimeWarp</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/TetrisUnlimited">Tetris Unlimited</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/TW-Light">TW-Light</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,197</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.016136</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/using-allegro/install_allegro by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:05:30 GMT -->
+</html>

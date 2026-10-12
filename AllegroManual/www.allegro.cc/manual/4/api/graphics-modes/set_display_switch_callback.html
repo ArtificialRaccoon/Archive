@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/graphics-modes/set_display_switch_callback by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:16:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>set_display_switch_callback</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Graphics modes</a></h2><ul>
+<li><a href="set_color_depth.html" style="font-weight: bold">set_color_depth</a></li><li><a href="get_color_depth.html" >get_color_depth</a></li><li><a href="request_refresh_rate.html" >request_refresh_rate</a></li><li><a href="get_refresh_rate.html" >get_refresh_rate</a></li><li><a href="get_gfx_mode_list.html" >get_gfx_mode_list</a></li><li><a href="destroy_gfx_mode_list.html" >destroy_gfx_mode_list</a></li><li><a href="set_gfx_mode.html" style="font-weight: bold">set_gfx_mode</a></li><li><a href="set_display_switch_mode.html" style="font-weight: bold">set_display_switch_mode</a></li><li><strong>set_display_switch_callback</strong></li><li><a href="remove_display_switch_callback.html" >remove_display_switch_callback</a></li><li><a href="get_display_switch_mode.html" >get_display_switch_mode</a></li><li><a href="is_windowed_mode.html" >is_windowed_mode</a></li><li><a href="gfx_capabilities.html" >gfx_capabilities</a></li><li><a href="enable_triple_buffer.html" >enable_triple_buffer</a></li><li><a href="scroll_screen.html" >scroll_screen</a></li><li><a href="request_scroll.html" >request_scroll</a></li><li><a href="poll_scroll.html" style="font-weight: bold">poll_scroll</a></li><li><a href="show_video_bitmap.html" style="font-weight: bold">show_video_bitmap</a></li><li><a href="request_video_bitmap.html" style="font-weight: bold">request_video_bitmap</a></li><li><a href="vsync.html" style="font-weight: bold">vsync</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>set_display_switch_callback</h1>
+
+<div class="shortdesc">
+Installs a switching notification callback.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">int</span> <a href="../../index.html" target="_blank"><span class="a">set_display_switch_callback</span></a><span class="k2">(</span><span class="k1">int</span> dir, <span class="k1">void</span> <span class="k2">(</span><span class="k3">*</span>cb<span class="k2">)</span><span class="k2">(</span><span class="k2">)</span><span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Installs a notification callback for the switching mode that was
+   previously selected by calling set_display_switch_mode(). The direction
+   parameter can either be SWITCH_IN or SWITCH_OUT, depending whether you
+   want to be notified about switches away from your program or back to your
+   program. You can sometimes install callbacks for both directions at the
+   same time, but not every platform supports this. You can install several
+   switch callbacks, but no more than eight on any platform.
+
+</div>
+
+<div class="retval">
+Returns zero on success, decreasing the number of empty callback slots by
+   one. Returns -1 if the request is impossible for the current platform or
+   you have reached the maximum number of allowed callbacks.
+
+</div>
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">remove_display_switch_callback</a></li>
+	<li><a href="../../index.html">set_display_switch_mode</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../index.html">exswitch</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591194">
+		<a href="https://www.allegro.cc/forums/thread/591194">Window resizing</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/668970" style="color: black;">1</a> </span>
+	</li><li id="t-590992">
+		<a href="https://www.allegro.cc/forums/thread/590992">Application Hangs When Switching In/Out</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/665211" style="color: black;">1</a> </span>
+	</li><li id="t-590234">
+		<a href="https://www.allegro.cc/forums/thread/590234">MinGW time issues, etc.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/653290" style="color: black;">1</a> </span>
+	</li><li id="t-587200">
+		<a href="https://www.allegro.cc/forums/thread/587200">A simple egg timer</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/608666" style="color: black;">1</a> </span>
+	</li><li id="t-586339">
+		<a href="https://www.allegro.cc/forums/thread/586339">OpenLayer / AllegroGL desktop resizing error</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/598116" style="color: black;">1</a> </span>
+	</li><li id="t-583627">
+		<a href="https://www.allegro.cc/forums/thread/583627">Next stop, how do i determine if my app loses focus?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/583650" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/ChromaPlas">ChromaPlas</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/Molefest">Molefest</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/RailBlaster">Rail Blaster</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/Wormlings">Wormlings</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/AlextheAllegator4">Alex the Allegator 4</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/FakeNES">FakeNES</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/Outgun">Outgun</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/RedPixel">Red Pixel</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/RedPixel2">Red Pixel 2</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/sparklet">sparklet</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,452</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.009305</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/graphics-modes/set_display_switch_callback by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:16:43 GMT -->
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/InputHandler.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:14 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC ListBoxEx::InputHandler</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">InputHandler</A></H2></H2><BLOCKQUOTE> Invisible helper widget the listbox uses for getting input (keyboard, mouse).</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>InputHandler
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.69.4.1">MsgWantmouse</A></B>()
+<DD><I> makes sure the widget accepts the mouse when offered</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.69.4.2">MsgWantfocus</A></B>()
+<DD><I> makes sure the widget accepts input focus when offered</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.69.4.3">MsgChar</A></B>(int c)
+<DD><I> intercepts some of the keys that are usually used for switching focus (eg.</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+Invisible helper widget the listbox uses for getting input (keyboard, mouse). It is setup
+so that it covers all the space not covered by the headers and the scrollers (i.e. the
+client are minus the headers). Basically it just takes input focus when offered and
+forwards all the messages to the parent listbox. A bit of a hack but require because of
+an oversight in the design of the Dialog class.</BLOCKQUOTE>
+<DL>
+
+<A NAME="MsgWantmouse"></A>
+<A NAME="DOC.69.4.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool MsgWantmouse()</B></TT>
+<DD>
+makes sure the widget accepts the mouse when offered
+<DL><DT><DD></DL><P>
+<A NAME="MsgWantfocus"></A>
+<A NAME="DOC.69.4.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool MsgWantfocus()</B></TT>
+<DD>
+makes sure the widget accepts input focus when offered
+<DL><DT><DD></DL><P>
+<A NAME="MsgChar"></A>
+<A NAME="DOC.69.4.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool MsgChar(int c)</B></TT>
+<DD>
+intercepts some of the keys that are usually used for switching focus (eg. arrow
+keys) and forwards the message to the parent listbox for further processing
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/InputHandler.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:14 GMT -->
+</html>

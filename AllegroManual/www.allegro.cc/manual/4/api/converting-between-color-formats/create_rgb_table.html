@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/converting-between-color-formats/create_rgb_table by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:24:16 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>create_rgb_table</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Converting between color formats</a></h2><ul>
+<li><a href="bestfit_color.html" >bestfit_color</a></li><li><a href="rgb_map.html" style="font-weight: bold">rgb_map</a></li><li><strong>create_rgb_table</strong></li><li><a href="hsv_to_rgb.html" >hsv_to_rgb</a></li><li><a href="rgb_to_hsv.html" >rgb_to_hsv</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>create_rgb_table</h1>
+
+<div class="shortdesc">
+Generates an RGB mapping table with lookup data for a palette.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">void</span> <a href="../../index.html" target="_blank"><span class="a">create_rgb_table</span></a><span class="k2">(</span><a href="../../index.html" target="_blank"><span class="a">RGB_MAP</span></a> <span class="k3">*</span>table, <span class="k1">const</span> <a href="../../index.html" target="_blank"><span class="a">PALETTE</span></a> pal, <span class="k1">void</span> <span class="k2">(</span><span class="k3">*</span>callback<span class="k2">)</span><span class="k2">(</span><span class="k1">int</span> pos<span class="k2">)</span><span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Fills the specified RGB mapping table with lookup data for the specified
+   palette. If the callback function is not NULL, it will be called 256
+   times during the calculation, allowing you to display a progress
+   indicator. Example:
+<pre class="code">      <a href="../../index.html" target="_blank"><span class="a">RGB_MAP</span></a> rgb_table<span class="k2">;</span><br /><br />
+
+      <a href="../../index.html" target="_blank"><span class="a">create_rgb_table</span></a><span class="k2">(</span><span class="k3">&amp;</span>rgb_table, palette, NULL<span class="k2">)</span><span class="k2">;</span>
+      <a href="../../index.html" target="_blank"><span class="a">rgb_map</span></a> <span class="k3">=</span> <span class="k3">&amp;</span>rgb_table<span class="k2">;</span></pre>
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">rgb_map</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../index.html">ex3d</a></li>
+	<li><a href="../../index.html">excolmap</a></li>
+	<li><a href="../../index.html">exrgbhsv</a></li>
+	<li><a href="../../index.html">exshade</a></li>
+	<li><a href="../../index.html">extrans</a></li>
+</ul>
+</div>
+
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/3dcar16">3dcar16</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/Isthistheend">Is this... the end?</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/Paranoid">Paranoid</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/POPEM">POP'EM</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/SwordofFargoalremake">Sword of Fargoal remake</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/TheLostSwordofArkane">The Lost Sword of Arkane</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/TomtheTomato">Tom the Tomato</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/AllegroSpriteEditor">Allegro Sprite Editor</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/Ashes">Ashes</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/Hellcarrier">Hellcarrier</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,736</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>8.595261</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/converting-between-color-formats/create_rgb_table by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:24:16 GMT -->
+</html>

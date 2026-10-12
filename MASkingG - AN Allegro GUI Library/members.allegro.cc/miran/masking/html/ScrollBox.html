@@ -1,0 +1,239 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/ScrollBox.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC ScrollBox</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">ScrollBox</A></H2></H2><BLOCKQUOTE> This is a widget that can display something that is larger than the area of the widget on the screen.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>ScrollBox
+- <A HREF="CompoundWidget.html">CompoundWidget</A>
+- <A HREF="Dialog.html">Dialog</A>
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.91.3">ScrollBox</A></B>()
+<DD><I> Default constructor</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.91.4">GetXOffset</A></B>()
+<DD><I> get the horizontal scroll position</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.91.5">GetYOffset</A></B>()
+<DD><I> get the vertical scroll position</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.91.6">SetScrollSize</A></B>(int <!1><A HREF="Column.html#DOC.69.1.2">width</A>, int height)
+<DD><I> Set the size of the scroll area.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.91.7">SetPos</A></B>(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>)
+<DD><I> set the horizontal & vertical scroll position.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.91.8">Center</A></B>()
+<DD><I> scroll to the center of the scroll area</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.91.9">SetScrollOption</A></B>(int newhopt, int newvopt)
+<DD><I> set the horizontal and vertical scrollbars on, off or automatic.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.91.10">GetHScrollOption</A></B>()
+<DD><I> returns ScrollBox::SCROLLER_OFF, ScrollBox::SCROLLER_AUTO or ScrollBox::SCROLLER_ON depending on the state of the Horizontal Scrollbar</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.91.11">GetVScrollOption</A></B>()
+<DD><I> returns ScrollBox::SCROLLER_OFF, ScrollBox::SCROLLER_AUTO or ScrollBox::SCROLLER_ON depending on the state of the Vertical Scrollbar</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.91.12">SetHorizontalIncrement</A></B>( int <!1><A HREF="ScrollObject.html#DOC.93.4">inc</A> )
+<DD><I> Sets the increment value for horizontal scroller.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.91.13">SetVerticalIncrement</A></B>( int <!1><A HREF="ScrollObject.html#DOC.93.4">inc</A> )
+<DD><I> Sets the increment value for vertical scroller.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.91.14">GetHorizontalIncrement</A></B>( void )
+<DD><I> Gets the increment value for horizontal scroller</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.91.15">GetVerticalIncrement</A></B>( void )
+<DD><I> Gets the increment value for vertical scroller</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.91.16">ScrollTo</A></B>(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>)
+<DD><I> Scrolls to the specified position</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.91.17">ScrollToX</A></B>(int <!1><A HREF="Widget.html#DOC.110.67">x</A>)
+<DD><I> Scrolls to the specified position (horizontally)</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.91.18">ScrollToY</A></B>(int <!1><A HREF="Widget.html#DOC.110.68">y</A>)
+<DD><I> Scrolls to the specified position (horizontally)</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Public Members</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>enum <B><A HREF="#DOC.91.2"> Possible Scrollbar states.</A></B>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.91.1">DrawClientArea</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;dest, int xofst, int yofst)
+<DD><I> override this to provide a way to draw the content of your derived scrollbox</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+This is a widget that can display something that is larger than the area of the widget on the screen.
+It provides scrollbars to be able to scroll through the content of this widget.
+everything that has optional (h and/or v) scrollbars should be derived from this.
+The first thing you should do is override the DrawClientArea function to provide a way to
+draw the content of your derived scrollbox.</BLOCKQUOTE>
+<DL>
+
+<A NAME="DrawClientArea"></A>
+<A NAME="DOC.91.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void DrawClientArea(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;dest, int xofst, int yofst)</B></TT>
+<DD>
+override this to provide a way to draw the content of your derived scrollbox
+<DL><DT><DD></DL><P>
+<A NAME=" Possible Scrollbar states."></A>
+<A NAME="DOC.91.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>enum  Possible Scrollbar states.</B></TT>
+<DD>
+Possible Scrollbar states.
+
+<P><PRE>
+        SCROLLER_OFF
+        SCROLLER_ON
+        SCROLLER_AUTO
+</PRE>
+<DL><DT><DD></DL><P>
+<A NAME="ScrollBox"></A>
+<A NAME="DOC.91.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> ScrollBox()</B></TT>
+<DD>
+Default constructor
+<DL><DT><DD></DL><P>
+<A NAME="GetXOffset"></A>
+<A NAME="DOC.91.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int GetXOffset()</B></TT>
+<DD>
+get the horizontal scroll position
+<DL><DT><DD></DL><P>
+<A NAME="GetYOffset"></A>
+<A NAME="DOC.91.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int GetYOffset()</B></TT>
+<DD>
+get the vertical scroll position
+<DL><DT><DD></DL><P>
+<A NAME="SetScrollSize"></A>
+<A NAME="DOC.91.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetScrollSize(int <!1><A HREF="Column.html#DOC.69.1.2">width</A>, int height)</B></TT>
+<DD>
+Set the size of the scroll area. If this is more than the widget area and the scrollbar option is set to automatic,
+scrollbars will appear automatically.
+<DL><DT><DD></DL><P>
+<A NAME="SetPos"></A>
+<A NAME="DOC.91.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetPos(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>)</B></TT>
+<DD>
+set the horizontal & vertical scroll position.
+
+<P>note: perhaps this shoud be renamed to ScrollTo (x, y) or SetOffset (x, y)
+<DL><DT><DD></DL><P>
+<A NAME="Center"></A>
+<A NAME="DOC.91.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Center()</B></TT>
+<DD>
+scroll to the center of the scroll area
+<DL><DT><DD></DL><P>
+<A NAME="SetScrollOption"></A>
+<A NAME="DOC.91.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetScrollOption(int newhopt, int newvopt)</B></TT>
+<DD>
+set the horizontal and vertical scrollbars on, off or automatic. Use the enum values ScrollBox::SCROLLER_ON,
+ScrollBox::SCROLLER_OFF or ScrollBox::SCROLLER_AUTO. In the last case scrollbars are on only if they are needed, i.e.
+when the scroll area is larger than the widget area.
+<DL><DT><DD></DL><P>
+<A NAME="GetHScrollOption"></A>
+<A NAME="DOC.91.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int GetHScrollOption()</B></TT>
+<DD>
+returns ScrollBox::SCROLLER_OFF, ScrollBox::SCROLLER_AUTO or ScrollBox::SCROLLER_ON depending on
+the state of the Horizontal Scrollbar
+<DL><DT><DD></DL><P>
+<A NAME="GetVScrollOption"></A>
+<A NAME="DOC.91.11"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int GetVScrollOption()</B></TT>
+<DD>
+returns ScrollBox::SCROLLER_OFF, ScrollBox::SCROLLER_AUTO or ScrollBox::SCROLLER_ON depending on
+the state of the Vertical Scrollbar
+<DL><DT><DD></DL><P>
+<A NAME="SetHorizontalIncrement"></A>
+<A NAME="DOC.91.12"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetHorizontalIncrement( int <!1><A HREF="ScrollObject.html#DOC.93.4">inc</A> )</B></TT>
+<DD>
+Sets the increment value for horizontal scroller. Used when scrolling with the
+keyboard (arrow keys) or by clicking on the scroller background. Inc must be a
+positive value. Default is 1.
+<DL><DT><DD></DL><P>
+<A NAME="SetVerticalIncrement"></A>
+<A NAME="DOC.91.13"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetVerticalIncrement( int <!1><A HREF="ScrollObject.html#DOC.93.4">inc</A> )</B></TT>
+<DD>
+Sets the increment value for vertical scroller. Used when scrolling with the
+keyboard (arrow keys) or by clicking on the scroller background. Inc must be a
+positive value. Default is 1.
+<DL><DT><DD></DL><P>
+<A NAME="GetHorizontalIncrement"></A>
+<A NAME="DOC.91.14"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int GetHorizontalIncrement( void )</B></TT>
+<DD>
+Gets the increment value for horizontal scroller
+<DL><DT><DD></DL><P>
+<A NAME="GetVerticalIncrement"></A>
+<A NAME="DOC.91.15"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int GetVerticalIncrement( void )</B></TT>
+<DD>
+Gets the increment value for vertical scroller
+<DL><DT><DD></DL><P>
+<A NAME="ScrollTo"></A>
+<A NAME="DOC.91.16"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void ScrollTo(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>)</B></TT>
+<DD>
+Scrolls to the specified position
+<DL><DT><DD></DL><P>
+<A NAME="ScrollToX"></A>
+<A NAME="DOC.91.17"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void ScrollToX(int <!1><A HREF="Widget.html#DOC.110.67">x</A>)</B></TT>
+<DD>
+Scrolls to the specified position (horizontally)
+<DL><DT><DD></DL><P>
+<A NAME="ScrollToY"></A>
+<A NAME="DOC.91.18"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void ScrollToY(int <!1><A HREF="Widget.html#DOC.110.68">y</A>)</B></TT>
+<DD>
+Scrolls to the specified position (horizontally)
+<DL><DT><DD></DL><P></DL>
+<HR>
+<DL><DT><B>Direct child classes:
+</B><DD><A HREF="TextArea.html">TextArea</A><BR>
+<A HREF="ListBoxEx.html">ListBoxEx</A><BR>
+</DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/ScrollBox.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/CFPS.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  CFPS</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  <A HREF="#DOC.DOCU">CFPS</A></H2></H2><BLOCKQUOTE> A simple helper class that measures the frame rate of a MASkinG program.</BLOCKQUOTE>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.53.1">Init</A></B>(int samples)
+<DD><I> Initializes the object.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.53.2">Tick</A></B>()
+<DD><I> Records a logic tick.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.53.3">Frame</A></B>()
+<DD><I> Records a frame.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.53.4">Get</A></B>()
+<DD><I> Returns the framerate.</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+A simple helper class that measures the frame rate of a MASkinG program. The
+frame rate is measured by calculating a running average over a short period of
+time. There is a global instance of this class defined in the MAS namespace
+named globalFpsCounter. This object is initialized and updated automatically
+by the dialog that is being executed and is queried by any instance of the
+FPS widget that is present in the dialog. Note that the calculations this
+class performs depend on the value of Settings::logicFramerate. The Init method
+is called in Dialog::MsgStart() and the update methods are called in Dialog::MsgIdle().
+This means that if you don't use the Settings class and/or run your own main
+loop, the globalFpsCounter object won't work unless you initialize and update
+it yourself as is indicated in this documentation.
+
+<P></BLOCKQUOTE>
+<DL>
+
+<A NAME="Init"></A>
+<A NAME="DOC.53.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Init(int samples)</B></TT>
+<DD>
+Initializes the object.
+This function should be called at the same time as when the timer
+that runs the main loop is started.
+
+<DL><DT><DT><B>Parameters:</B><DD><B>samples</B> -  The target logic framerate. This is the number of times
+per second that the logic portion of the main loop is executed.<BR><DD></DL><P>
+<A NAME="Tick"></A>
+<A NAME="DOC.53.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Tick()</B></TT>
+<DD>
+Records a logic tick.
+This function must be called exactly once per logic update.
+<DL><DT><DD></DL><P>
+<A NAME="Frame"></A>
+<A NAME="DOC.53.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Frame()</B></TT>
+<DD>
+Records a frame.
+This function must be called exactly once every time a new frame has
+been rendered. Typically this is after blitting the backbuffer to the
+screen or flipping video pages.
+<DL><DT><DD></DL><P>
+<A NAME="Get"></A>
+<A NAME="DOC.53.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int Get()</B></TT>
+<DD>
+Returns the framerate.
+
+<DL><DT><DT><B>Returns:</B><DD>  The average framerate over the last second.<BR><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DT><B>See Also:</B><DD><!1><A HREF="Settings.html">Settings</A>
+<BR><!1><A HREF="FPS.html">FPS</A><BR><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/CFPS.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+</html>

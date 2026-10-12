@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/transparency-and-patterned-drawing/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:51:14 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Transparency and patterned drawing</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">API</a></h2><ul>
+<li><a href="../using-allegro/index.html" >Using Allegro</a></li><li><a href="../structures-and-types-defined-by-allegro/index.html" >Structures and types defined by Allegro</a></li><li><a href="../unicode-routines/index.html" >Unicode routines</a></li><li><a href="../configuration-routines/index.html" >Configuration routines</a></li><li><a href="../mouse-routines/index.html" >Mouse routines</a></li><li><a href="../timer-routines/index.html" >Timer routines</a></li><li><a href="../keyboard-routines/index.html" >Keyboard routines</a></li><li><a href="../joystick-routines/index.html" >Joystick routines</a></li><li><a href="../graphics-modes/index.html" >Graphics modes</a></li><li><a href="../bitmap-objects/index.html" >Bitmap objects</a></li><li><a href="../loading-image-files/index.html" >Loading image files</a></li><li><a href="../palette-routines/index.html" >Palette routines</a></li><li><a href="../truecolor-pixel-formats/index.html" >Truecolor pixel formats</a></li><li><a href="../drawing-primitives/index.html" >Drawing primitives</a></li><li><a href="../blitting-and-sprites/index.html" >Blitting and sprites</a></li><li><a href="../rle-sprites/index.html" >RLE sprites</a></li><li><a href="../compiled-sprites/index.html" >Compiled sprites</a></li><li><a href="../fonts/index.html" >Fonts</a></li><li><a href="../text-output/index.html" >Text output</a></li><li><a href="../polygon-rendering/index.html" >Polygon rendering</a></li><li><strong>Transparency and patterned drawing</strong></li><li><a href="../converting-between-color-formats/index.html" >Converting between color formats</a></li><li><a href="../direct-access-to-video-memory/index.html" >Direct access to video memory</a></li><li><a href="../flic-routines/index.html" >FLIC routines</a></li><li><a href="../sound-init-routines/index.html" >Sound init routines</a></li><li><a href="../mixer-routines/index.html" >Mixer routines</a></li><li><a href="../digital-sample-routines/index.html" >Digital sample routines</a></li><li><a href="../music-routines-(midi)/index.html" >Music routines (MIDI)</a></li><li><a href="../audio-stream-routines/index.html" >Audio stream routines</a></li><li><a href="../recording-routines/index.html" >Recording routines</a></li><li><a href="../file-and-compression-routines/index.html" >File and compression routines</a></li><li><a href="../datafile-routines/index.html" >Datafile routines</a></li><li><a href="../fixed-point-math-routines/index.html" >Fixed point math routines</a></li><li><a href="../3d-math-routines/index.html" >3D math routines</a></li><li><a href="../quaternion-math-routines/index.html" >Quaternion math routines</a></li><li><a href="../gui-routines/index.html" >GUI routines</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>Transparency and patterned drawing</h1>
+
+<ul>
+	<li><a href="drawing_mode.html">drawing_mode</a> - Sets the graphics drawing mode.</li>
+	<li><a href="xor_mode.html">xor_mode</a> - Shortcut for toggling xor drawing mode on and off.</li>
+	<li><a href="solid_mode.html">solid_mode</a> - Shortcut for selecting solid drawing mode.</li>
+</ul>
+<h2>256-color transparency</h2>
+In paletted video modes, translucency and lighting are implemented with a
+64k lookup table, which contains the result of combining any two colors c1
+and c2. You must set up this table before you use any of the translucency
+or lighting routines. Depending on how you construct the table, a range of
+different effects are possible. For example, translucency can be implemented
+by using a color halfway between c1 and c2 as the result of the combination.
+Lighting is achieved by treating one of the colors as a light level (0-255)
+rather than a color, and setting up the table appropriately. A range of
+specialised effects are possible, for instance replacing any color with any
+other color and making individual source or destination colors completely
+solid or invisible. Color mapping tables can be precalculated with the
+colormap utility, or generated at runtime. Read chapter "Structures and types
+defined by Allegro" for an internal description of the COLOR_MAP structure.
+
+<ul>
+	<li><a href="256-color-transparency/color_map.html">color_map</a> - Global pointer to the color mapping table.</li>
+	<li><a href="256-color-transparency/create_trans_table.html">create_trans_table</a> - Fills a color mapping table for translucency effects.</li>
+	<li><a href="256-color-transparency/create_light_table.html">create_light_table</a> - Fills a color mapping table for lighting effects.</li>
+	<li><a href="256-color-transparency/create_color_table.html">create_color_table</a> - Fills a color mapping table for customised effects.</li>
+	<li><a href="256-color-transparency/create_blender_table.html">create_blender_table</a> - Emulates truecolor blender effects in palettised modes.</li>
+</ul>
+<h2>Truecolor transparency</h2>
+In truecolor video modes, translucency and lighting are implemented by a
+blender function of the form:
+<pre class="code">   <span class="k1">unsigned</span> <span class="k1">long</span> <span class="k2">(</span><span class="k3">*</span>BLENDER_FUNC<span class="k2">)</span><span class="k2">(</span><span class="k1">unsigned</span> <span class="k1">long</span> x, y, n<span class="k2">)</span><span class="k2">;</span></pre><br /><br />
+
+For each pixel to be drawn, this routine is passed two color parameters x
+and y, decomposes them into their red, green and blue components, combines
+them according to some mathematical transformation involving the
+interpolation factor n, and then merges the result back into a single
+return color value, which will be used to draw the pixel onto
+the destination bitmap.<br /><br />
+
+The parameter x represents the blending modifier color and the parameter y
+represents the base color to be modified. The interpolation factor n is in
+the range [0-255] and controls the solidity of the blending.<br /><br />
+
+When a translucent drawing function is used, x is the color of the source,
+y is the color of the bitmap being drawn onto and n is the alpha level
+that was passed to the function that sets the blending mode (the RGB triplet
+that was passed to this function is not taken into account).<br /><br />
+
+When a lit sprite drawing function is used, x is the color represented by
+the RGB triplet that was passed to the function that sets the blending mode
+(the alpha level that was passed to this function is not taken into
+account), y is the color of the sprite and n is the alpha level that was
+passed to the drawing function itself.<br /><br />
+
+Since these routines may be used from various different color depths, there
+are three such callbacks, one for use with 15-bit 5.5.5 pixels, one for 16
+bit 5.6.5 pixels, and one for 24-bit 8.8.8 pixels (this can be shared
+between the 24 and 32-bit code since the bit packing is the same).
+
+<ul>
+	<li><a href="truecolor-transparency/set_trans_blender.html">set_trans_blender</a> - Enables a truecolor blender.</li>
+	<li><a href="truecolor-transparency/set_alpha_blender.html">set_alpha_blender</a> - Enables a special alpha-channel blending mode.</li>
+	<li><a href="truecolor-transparency/set_write_alpha_blender.html">set_write_alpha_blender</a> - Enables the special alpha-channel editing mode.</li>
+	<li><a href="truecolor-transparency/set_add_blender.html">set_add_blender</a> - Enables an additive blender mode.</li>
+	<li><a href="truecolor-transparency/set_burn_blender.html">set_burn_blender</a> - Enables a burn blender mode.</li>
+	<li><a href="truecolor-transparency/set_color_blender.html">set_color_blender</a> - Enables a color blender mode.</li>
+	<li><a href="truecolor-transparency/set_difference_blender.html">set_difference_blender</a> - Enables a difference blender mode.</li>
+	<li><a href="truecolor-transparency/set_dissolve_blender.html">set_dissolve_blender</a> - Enables a dissolve blender mode.</li>
+	<li><a href="truecolor-transparency/set_dodge_blender.html">set_dodge_blender</a> - Enables a dodge blender mode.</li>
+	<li><a href="truecolor-transparency/set_hue_blender.html">set_hue_blender</a> - Enables a hue blender mode.</li>
+	<li><a href="truecolor-transparency/set_invert_blender.html">set_invert_blender</a> - Enables an invert blender mode.</li>
+	<li><a href="truecolor-transparency/set_luminance_blender.html">set_luminance_blender</a> - Enables a luminance blender mode.</li>
+	<li><a href="truecolor-transparency/set_multiply_blender.html">set_multiply_blender</a> - Enables a multiply blender mode.</li>
+	<li><a href="truecolor-transparency/set_saturation_blender.html">set_saturation_blender</a> - Enables a saturation blender mode.</li>
+	<li><a href="truecolor-transparency/set_screen_blender.html">set_screen_blender</a> - Enables a screen blender mode.</li>
+	<li><a href="truecolor-transparency/set_blender_mode.html">set_blender_mode</a> - Specifies a custom set of truecolor blender routines.</li>
+	<li><a href="truecolor-transparency/set_blender_mode_ex.html">set_blender_mode_ex</a> - An even more complex version of set_blender_mode().</li>
+</ul>
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,171</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.865425</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/transparency-and-patterned-drawing/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:51:24 GMT -->
+</html>

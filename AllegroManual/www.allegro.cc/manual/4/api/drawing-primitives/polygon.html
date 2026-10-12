@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/drawing-primitives/polygon by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:21:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>polygon</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Drawing primitives</a></h2><ul>
+<li><a href="clear_bitmap.html" style="font-weight: bold">clear_bitmap</a></li><li><a href="clear_to_color.html" style="font-weight: bold">clear_to_color</a></li><li><a href="putpixel.html" style="font-weight: bold">putpixel</a></li><li><a href="_putpixel.html" >_putpixel</a></li><li><a href="_putpixel15.html" >_putpixel15</a></li><li><a href="_putpixel16.html" >_putpixel16</a></li><li><a href="_putpixel24.html" >_putpixel24</a></li><li><a href="_putpixel32.html" >_putpixel32</a></li><li><a href="getpixel.html" style="font-weight: bold">getpixel</a></li><li><a href="_getpixel.html" >_getpixel</a></li><li><a href="_getpixel15.html" >_getpixel15</a></li><li><a href="_getpixel16.html" >_getpixel16</a></li><li><a href="_getpixel24.html" >_getpixel24</a></li><li><a href="_getpixel32.html" >_getpixel32</a></li><li><a href="vline.html" style="font-weight: bold">vline</a></li><li><a href="hline.html" style="font-weight: bold">hline</a></li><li><a href="do_line.html" >do_line</a></li><li><a href="line.html" style="font-weight: bold">line</a></li><li><a href="fastline.html" >fastline</a></li><li><a href="triangle.html" style="font-weight: bold">triangle</a></li><li><strong>polygon</strong></li><li><a href="rect.html" style="font-weight: bold">rect</a></li><li><a href="rectfill.html" style="font-weight: bold">rectfill</a></li><li><a href="do_circle.html" >do_circle</a></li><li><a href="circle.html" style="font-weight: bold">circle</a></li><li><a href="circlefill.html" style="font-weight: bold">circlefill</a></li><li><a href="do_ellipse.html" >do_ellipse</a></li><li><a href="ellipse.html" >ellipse</a></li><li><a href="ellipsefill.html" style="font-weight: bold">ellipsefill</a></li><li><a href="do_arc.html" >do_arc</a></li><li><a href="arc.html" >arc</a></li><li><a href="calc_spline.html" >calc_spline</a></li><li><a href="spline.html" >spline</a></li><li><a href="floodfill.html" style="font-weight: bold">floodfill</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>polygon</h1>
+
+<div class="shortdesc">
+Draws a filled polygon.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">void</span> <a href="../../index.html" target="_blank"><span class="a">polygon</span></a><span class="k2">(</span><a href="../../index.html" target="_blank"><span class="a">BITMAP</span></a> <span class="k3">*</span>bmp, <span class="k1">int</span> vertices, <span class="k1">const</span> <span class="k1">int</span> <span class="k3">*</span>points, <span class="k1">int</span> color<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Draws a filled polygon with an arbitrary number of corners. Pass the
+   number of vertices and an array containing a series of x, y points (a
+   total of vertices*2 values). Example:
+<pre class="code">      <span class="k1">int</span> points<span class="k2">[</span><span class="n">12</span><span class="k2">]</span> <span class="k3">=</span> <span class="k2">{</span> <span class="n">50</span>, <span class="n">50</span>,   <span class="n">100</span>, <span class="n">100</span>,  <span class="n">100</span>, <span class="n">150</span>,
+			 <span class="n">50</span>, <span class="n">200</span>,  <span class="n">0</span>,   <span class="n">150</span>,  <span class="n">0</span>,   <span class="n">100</span> <span class="k2">}</span><span class="k2">;</span>
+      ...
+      <a href="../../index.html" target="_blank"><span class="a">clear_to_color</span></a><span class="k2">(</span><a href="../../index.html" target="_blank"><span class="a">screen</span></a>, <a href="../../index.html" target="_blank"><span class="a">makecol</span></a><span class="k2">(</span><span class="n">255</span>, <span class="n">255</span>, <span class="n">255</span><span class="k2">)</span><span class="k2">)</span><span class="k2">;</span>
+      <a href="../../index.html" target="_blank"><span class="a">polygon</span></a><span class="k2">(</span><a href="../../index.html" target="_blank"><span class="a">screen</span></a>, <span class="n">6</span>, points, <a href="../../index.html" target="_blank"><span class="a">makecol</span></a><span class="k2">(</span><span class="n">0</span>, <span class="n">0</span>, <span class="n">0</span><span class="k2">)</span><span class="k2">)</span><span class="k2">;</span></pre>
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">triangle</a></li>
+	<li><a href="../../index.html">polygon3d</a></li>
+	<li><a href="../../index.html">drawing_mode</a></li>
+	<li><a href="../../index.html">makecol</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../index.html">excamera</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591801">
+		<a href="https://www.allegro.cc/forums/thread/591801">Vector multiplication.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/677954" style="color: black;">1</a> </span>
+	</li><li id="t-587653">
+		<a href="https://www.allegro.cc/forums/thread/587653">newbie question, tessellation</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/615030" style="color: black;">1</a> </span>
+	</li><li id="t-580534">
+		<a href="https://www.allegro.cc/forums/thread/580534">Circle and Polygon Collision</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/580543" style="color: black;">1</a> </span>
+	</li><li id="t-579196">
+		<a href="https://www.allegro.cc/forums/thread/579196">A little help with open layer</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/580377" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/Cylindrix">Cylindrix</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/3dcar16">3dcar16</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/AlextheAllegator3">Alex the Allegator 3</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/domin">domin</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/Overgod">Overgod</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/Vertigo">Vertigo</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/AllegroSpriteEditor">Allegro Sprite Editor</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/KBall">KBall</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/LiquidWar5">Liquid War 5</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/Rafkill">Rafkill</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,599</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.009484</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/drawing-primitives/polygon by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:21:48 GMT -->
+</html>

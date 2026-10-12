@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/blitting-and-sprites/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:50:31 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Blitting and sprites</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">API</a></h2><ul>
+<li><a href="../using-allegro/index.html" >Using Allegro</a></li><li><a href="../structures-and-types-defined-by-allegro/index.html" >Structures and types defined by Allegro</a></li><li><a href="../unicode-routines/index.html" >Unicode routines</a></li><li><a href="../configuration-routines/index.html" >Configuration routines</a></li><li><a href="../mouse-routines/index.html" >Mouse routines</a></li><li><a href="../timer-routines/index.html" >Timer routines</a></li><li><a href="../keyboard-routines/index.html" >Keyboard routines</a></li><li><a href="../joystick-routines/index.html" >Joystick routines</a></li><li><a href="../graphics-modes/index.html" >Graphics modes</a></li><li><a href="../bitmap-objects/index.html" >Bitmap objects</a></li><li><a href="../loading-image-files/index.html" >Loading image files</a></li><li><a href="../palette-routines/index.html" >Palette routines</a></li><li><a href="../truecolor-pixel-formats/index.html" >Truecolor pixel formats</a></li><li><a href="../drawing-primitives/index.html" >Drawing primitives</a></li><li><strong>Blitting and sprites</strong></li><li><a href="../rle-sprites/index.html" >RLE sprites</a></li><li><a href="../compiled-sprites/index.html" >Compiled sprites</a></li><li><a href="../fonts/index.html" >Fonts</a></li><li><a href="../text-output/index.html" >Text output</a></li><li><a href="../polygon-rendering/index.html" >Polygon rendering</a></li><li><a href="../transparency-and-patterned-drawing/index.html" >Transparency and patterned drawing</a></li><li><a href="../converting-between-color-formats/index.html" >Converting between color formats</a></li><li><a href="../direct-access-to-video-memory/index.html" >Direct access to video memory</a></li><li><a href="../flic-routines/index.html" >FLIC routines</a></li><li><a href="../sound-init-routines/index.html" >Sound init routines</a></li><li><a href="../mixer-routines/index.html" >Mixer routines</a></li><li><a href="../digital-sample-routines/index.html" >Digital sample routines</a></li><li><a href="../music-routines-(midi)/index.html" >Music routines (MIDI)</a></li><li><a href="../audio-stream-routines/index.html" >Audio stream routines</a></li><li><a href="../recording-routines/index.html" >Recording routines</a></li><li><a href="../file-and-compression-routines/index.html" >File and compression routines</a></li><li><a href="../datafile-routines/index.html" >Datafile routines</a></li><li><a href="../fixed-point-math-routines/index.html" >Fixed point math routines</a></li><li><a href="../3d-math-routines/index.html" >3D math routines</a></li><li><a href="../quaternion-math-routines/index.html" >Quaternion math routines</a></li><li><a href="../gui-routines/index.html" >GUI routines</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>Blitting and sprites</h1>
+
+As far as Allegro is concerned, a bitmap and a sprite are the same thing,
+but to many people the two words imply slightly different things.  The
+function draw_sprite() is called so rather than draw_bitmap() partly because
+it indicates that it uses a masked drawing mode (if it existed, you could
+expect draw_bitmap() to be a simple block copy), and partly for historical
+reasons. In Allegro 1.0 there were actually different structures for sprites
+and bitmaps, each with their own set of abilities. Allegro 2.0 merged these
+into a single more flexible structure, but retained some names like
+draw_sprite().<br /><br />
+
+In wider (non-Allegro) terms, the two words can mean quite different things.
+Generally you can say that sprites are a subset of bitmaps, but even that
+isn't true in 100% of cases.<br /><br />
+
+BITMAP: a widely accepted term that will be understood by anyone even
+remotely connected with computer graphics. It simply means an image built up
+from a grid of pixels, ie. just about any picture that you are likely to come
+across on a computer (vector graphics formats are the exception, but those
+must be rendered into a bitmap format before they can be displayed by most
+hardware). A more accurate term but slightly rarer term with the same meaning
+is "pixmap" (pixel-map).<br /><br />
+
+SPRITE: a particular usage of bitmapped images, restricted to video games
+(other types of programmer probably won't be familiar with this term).
+Originally on machines like the C64, sprites were a hardware feature that
+allowed a number of small bitmap images to be loaded into special registers,
+and they could then be superimposed over the main graphics display and moved
+around just by modifying the position register. They were used for the moving
+objects (player and enemy characters), and enabled the C64 to do much more
+impressive things than would have been possible if all the drawing had to be
+done directly by the puny CPU.<br /><br />
+
+Later on, a lot of old C64 programmers upgraded to machines like the Atari
+ST, which didn't have any special sprite hardware, but they carried on
+referring to their main moving objects as sprites (the routine to draw such a
+thing would obviously be called draw_sprite()).  A sprite is really just a
+bitmap graphic which is drawn onto the screen, but when you call it a sprite
+rather than a bitmap, this suggests it is a gameplay element that can move
+freely around the world rather than being a static part of the environment,
+and that it will be drawn in a masked overlay mode rather than as a solid
+rectangle (there is also a strong implication that a sprite will be animated
+by cycling through a number of frames, but that isn't always the case).<br /><br />
+
+In recent years some people have started using "sprite" to refer to any
+character graphics, even if they are not in fact drawn as 2d bitmaps, eg.
+"this game uses 3d polygonal player sprites". This is a confusing misuse of
+the word (Doom uses sprites, Quake does not), but it does happen.<br /><br />
+
+The origin of the term "blit" is also rather interesting. This was originally
+BitBlt, an abbreviation of BITmap BLock Transfer, which was a function
+designed (possibly) by the people at Xerox who did so much of the pioneering
+work on graphics display systems, and subsequently copied by virtually
+everybody doing computer graphics (the Microsoft Windows GDI still provides a
+BitBlt function with identical functionality to the original). This routine
+was a workhorse for all sorts of drawing operations, basically copying bitmap
+graphics from one place to another, but including a number of different ROP
+modes (Raster OPerations) for doing things like XOR, inverting pixels, etc.
+A whole family of related words grew up around the BitBlt function, but "blt"
+is impossible to speak (try saying "bltter" or "bltting" :-) so people added
+the vowel to make it easier to pronounce.<br /><br />
+
+Thusly, the act of calling the BitBlt function came to be known as "doing a
+blit". The obvious next step was to rename the function itself to blit(),
+which generally took place at the same time as people decided to simplify the
+original, removing the different ROP modes on the grounds that they aren't
+needed for games coding and don't work well with anything higher than
+monochrome images in any case. This leaves us with a function called blit(),
+which is an abbreviation for "block transfer". A strong case could be made
+for calling this blot() instead, but somehow that just doesn't sound the
+same!<br /><br />
+
+Anyway, all the routines in this chapter are affected by the
+clipping rectangle of the destination bitmap.
+
+<ul>
+	<li><a href="blit.html">blit</a> - Copies a rectangular area from one bitmap to another.</li>
+	<li><a href="stretch_blit.html">stretch_blit</a> - Scales a rectangular area from one bitmap to another.</li>
+	<li><a href="masked_blit.html">masked_blit</a> - Copies a rectangle skipping pixels with the mask color.</li>
+	<li><a href="masked_stretch_blit.html">masked_stretch_blit</a> - Scales a rectangular area skipping pixels with the mask color.</li>
+	<li><a href="draw_sprite.html">draw_sprite</a> - Draws a copy of the sprite onto the destination bitmap.</li>
+	<li><a href="stretch_sprite.html">stretch_sprite</a> - Stretches a sprite to the destination bitmap.</li>
+	<li><a href="draw_sprite_v_flip.html">draw_sprite_v_flip</a></li>
+	<li><a href="draw_sprite_h_flip.html">draw_sprite_h_flip</a></li>
+	<li><a href="draw_sprite_vh_flip.html">draw_sprite_vh_flip</a> - Draws the sprite transformed to the destination bitmap.</li>
+	<li><a href="draw_trans_sprite.html">draw_trans_sprite</a> - Draws a sprite blending it with the destination.</li>
+	<li><a href="draw_lit_sprite.html">draw_lit_sprite</a> - Draws a sprite tinted with a specific color.</li>
+	<li><a href="draw_gouraud_sprite.html">draw_gouraud_sprite</a> - Draws a sprite with gouraud shading.</li>
+	<li><a href="draw_character_ex.html">draw_character_ex</a> - Draws non transparent pixels of the sprite with a color.</li>
+	<li><a href="rotate_sprite.html">rotate_sprite</a> - Rotates a sprite.</li>
+	<li><a href="rotate_sprite_v_flip.html">rotate_sprite_v_flip</a> - Rotates and flips a sprite.</li>
+	<li><a href="rotate_scaled_sprite.html">rotate_scaled_sprite</a> - Rotates and stretches a sprite.</li>
+	<li><a href="rotate_scaled_sprite_v_flip.html">rotate_scaled_sprite_v_flip</a> - Rotates, stretches and flips a sprite.</li>
+	<li><a href="pivot_sprite.html">pivot_sprite</a> - Rotates a sprite around a specified point.</li>
+	<li><a href="pivot_sprite_v_flip.html">pivot_sprite_v_flip</a> - Rotates and flips a sprite around a specified point.</li>
+	<li><a href="pivot_scaled_sprite.html">pivot_scaled_sprite</a> - Rotates and stretches a sprite around a specified point.</li>
+	<li><a href="pivot_scaled_sprite_v_flip.html">pivot_scaled_sprite_v_flip</a> - Rotates, stretches and flips a sprite around a specified point.</li>
+</ul>
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,166</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>58.412277</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/blitting-and-sprites/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:50:40 GMT -->
+</html>

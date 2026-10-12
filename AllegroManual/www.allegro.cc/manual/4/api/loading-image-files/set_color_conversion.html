@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/loading-image-files/set_color_conversion by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:17:14 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>set_color_conversion</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Loading image files</a></h2><ul>
+<li><a href="load_bitmap.html" style="font-weight: bold">load_bitmap</a></li><li><a href="load_bmp.html" style="font-weight: bold">load_bmp</a></li><li><a href="load_bmp_pf.html" >load_bmp_pf</a></li><li><a href="load_lbm.html" >load_lbm</a></li><li><a href="load_pcx.html" >load_pcx</a></li><li><a href="load_pcx_pf.html" >load_pcx_pf</a></li><li><a href="load_tga.html" >load_tga</a></li><li><a href="load_tga_pf.html" >load_tga_pf</a></li><li><a href="save_bitmap.html" style="font-weight: bold">save_bitmap</a></li><li><a href="save_bmp.html" style="font-weight: bold">save_bmp</a></li><li><a href="save_bmp_pf.html" >save_bmp_pf</a></li><li><a href="save_pcx.html" style="font-weight: bold">save_pcx</a></li><li><a href="save_pcx_pf.html" >save_pcx_pf</a></li><li><a href="save_tga.html" >save_tga</a></li><li><a href="save_tga_pf.html" >save_tga_pf</a></li><li><a href="register_bitmap_file_type.html" >register_bitmap_file_type</a></li><li><strong>set_color_conversion</strong></li><li><a href="get_color_conversion.html" >get_color_conversion</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>set_color_conversion</h1>
+
+<div class="shortdesc">
+Tells Allegro how to convert images during loading time.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">void</span> <a href="../../index.html" target="_blank"><span class="a">set_color_conversion</span></a><span class="k2">(</span><span class="k1">int</span> mode<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Specifies how to convert images between the various color depths when
+   reading graphics from external bitmap files or datafiles. The mode is a
+   bitmask specifying which types of conversion are allowed. If the
+   appropriate bit is set, data will be converted into the current pixel
+   format (selected by calling the set_color_depth() function), otherwise it
+   will be left in the same format as the disk file, leaving you to convert
+   it manually before the graphic can be displayed. The default mode is
+   total conversion, so that all images will be loaded in the appropriate
+   format for the current video mode. Valid bit flags are:
+<pre class="text">
+      COLORCONV_NONE                // disable all format
+				    // conversions
+      COLORCONV_8_TO_15             // expand 8-bit to 15-bit
+      COLORCONV_8_TO_16             // expand 8-bit to 16-bit
+      COLORCONV_8_TO_24             // expand 8-bit to 24-bit
+      COLORCONV_8_TO_32             // expand 8-bit to 32-bit
+      COLORCONV_15_TO_8             // reduce 15-bit to 8-bit
+      COLORCONV_15_TO_16            // expand 15-bit to 16-bit
+      COLORCONV_15_TO_24            // expand 15-bit to 24-bit
+      COLORCONV_15_TO_32            // expand 15-bit to 32-bit
+      COLORCONV_16_TO_8             // reduce 16-bit to 8-bit
+      COLORCONV_16_TO_15            // reduce 16-bit to 15-bit
+      COLORCONV_16_TO_24            // expand 16-bit to 24-bit
+      COLORCONV_16_TO_32            // expand 16-bit to 32-bit
+      COLORCONV_24_TO_8             // reduce 24-bit to 8-bit
+      COLORCONV_24_TO_15            // reduce 24-bit to 15-bit
+      COLORCONV_24_TO_16            // reduce 24-bit to 16-bit
+      COLORCONV_24_TO_32            // expand 24-bit to 32-bit
+      COLORCONV_32_TO_8             // reduce 32-bit RGB to 8-bit
+      COLORCONV_32_TO_15            // reduce 32-bit RGB to 15-bit
+      COLORCONV_32_TO_16            // reduce 32-bit RGB to 16-bit
+      COLORCONV_32_TO_24            // reduce 32-bit RGB to 24-bit
+      COLORCONV_32A_TO_8            // reduce 32-bit RGBA to 8-bit
+      COLORCONV_32A_TO_15           // reduce 32-bit RGBA to 15-bit
+      COLORCONV_32A_TO_16           // reduce 32-bit RGBA to 16-bit
+      COLORCONV_32A_TO_24           // reduce 32-bit RGBA to 24-bit
+      COLORCONV_DITHER_PAL          // dither when reducing to 8-bit
+      COLORCONV_DITHER_HI           // dither when reducing to
+				    // hicolor
+      COLORCONV_KEEP_TRANS          // keep original transparency
+</pre>
+   For convenience, the following macros can be used to select common
+   combinations of these flags:
+<pre class="text">
+      COLORCONV_EXPAND_256          // expand 256-color to hi/truecolor
+      COLORCONV_REDUCE_TO_256       // reduce hi/truecolor to 256-color
+      COLORCONV_EXPAND_15_TO_16     // expand 15-bit hicolor to 16-bit
+      COLORCONV_REDUCE_16_TO_15     // reduce 16-bit hicolor to 15-bit
+      COLORCONV_EXPAND_HI_TO_TRUE   // expand 15/16-bit to 24/32-bit
+      COLORCONV_REDUCE_TRUE_TO_HI   // reduce 24/32-bit to 15/16-bit
+      COLORCONV_24_EQUALS_32        // convert between 24- and 32-bit
+      COLORCONV_TOTAL               // everything to current format
+      COLORCONV_PARTIAL             // convert 15 &lt;-&gt; 16-bit and
+				    // 24 &lt;-&gt; 32-bit
+      COLORCONV_MOST                // all but hi/truecolor &lt;-&gt; 256
+      COLORCONV_DITHER              // dither during all color reductions
+      COLORCONV_KEEP_ALPHA          // convert everything to current format
+                                    // unless it would lose alpha information
+</pre>
+   If you enable the COLORCONV_DITHER flag, dithering will be performed
+   whenever truecolor graphics are converted into a hicolor or paletted
+   format, including by the blit() function, and any automatic conversions
+   that take place while reading graphics from disk. This can produce much
+   better looking results, but is obviously slower than a direct conversion.<br /><br />
+
+   If you intend using converted bitmaps with functions like masked_blit()
+   or draw_sprite(), you should specify the COLORCONV_KEEP_TRANS flag. It
+   will ensure that the masked areas in the bitmap before and after the
+   conversion stay exactly the same, by mapping transparent colors to each
+   other and adjusting colors which would be converted to the transparent
+   color otherwise. It affects every blit() operation between distinct pixel
+   formats and every automatic conversion.
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">set_color_depth</a></li>
+	<li><a href="../../index.html">load_bitmap</a></li>
+	<li><a href="../../index.html">load_datafile</a></li>
+	<li><a href="../../index.html">fixup_datafile</a></li>
+	<li><a href="../../index.html">makecol15_dither</a></li>
+	<li><a href="../../index.html">get_color_conversion</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../index.html">exalpha</a></li>
+	<li><a href="../../index.html">exblend</a></li>
+	<li><a href="../../index.html">exdata</a></li>
+	<li><a href="../../index.html">exexedat</a></li>
+	<li><a href="../../index.html">exlights</a></li>
+	<li><a href="../../index.html">exxfade</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591739">
+		<a href="https://www.allegro.cc/forums/thread/591739">&quot;bitmap_color_depth&quot; error with Datafile BITMAPs</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/677290" style="color: black;">1</a> </span>
+	</li><li id="t-591039">
+		<a href="https://www.allegro.cc/forums/thread/591039">STL and BITMAPs</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/666053" style="color: black;">1</a> </span>
+	</li><li id="t-590932">
+		<a href="https://www.allegro.cc/forums/thread/590932">The age-old 100% CPU usage problem - but still no solution</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/665601" style="color: black;">1</a> </span>
+	</li><li id="t-590264">
+		<a href="https://www.allegro.cc/forums/thread/590264">load_bitmap not working</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/653461" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/653560" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/653615" style="color: black;">3</a> </span>
+	</li><li id="t-589658">
+		<a href="https://www.allegro.cc/forums/thread/589658">rant: why  tilemaps?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/644018" style="color: black;">1</a> </span>
+	</li><li id="t-589559">
+		<a href="https://www.allegro.cc/forums/thread/589559">Bitmap loses data when transferred into Allegro datafile?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/642343" style="color: black;">1</a> </span>
+	</li><li id="t-588532">
+		<a href="https://www.allegro.cc/forums/thread/588532">making a datafile, but it won&#39;t load..?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/627585" style="color: black;">1</a> </span>
+	</li><li id="t-588389">
+		<a href="https://www.allegro.cc/forums/thread/588389">Networking (WinSock)</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/625493" style="color: black;">1</a> </span>
+	</li><li id="t-588090">
+		<a href="https://www.allegro.cc/forums/thread/588090">Background color issue</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/621205" style="color: black;">1</a> </span>
+	</li><li id="t-587876">
+		<a href="https://www.allegro.cc/forums/thread/587876">I can&#39;t draw_sprite</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/617879" style="color: black;">1</a> </span>
+	</li><li id="t-587395">
+		<a href="https://www.allegro.cc/forums/thread/587395">AllegroGL and translucent textures</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/611524" style="color: black;">1</a> </span>
+	</li><li id="t-587389">
+		<a href="https://www.allegro.cc/forums/thread/587389">Question about sprites and masking</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/611313" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/611317" style="color: black;">2</a> </span>
+	</li><li id="t-586351">
+		<a href="https://www.allegro.cc/forums/thread/586351">masked_blit problem</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/597277" style="color: black;">1</a> </span>
+	</li><li id="t-586165">
+		<a href="https://www.allegro.cc/forums/thread/586165">3d matrix</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/595113" style="color: black;">1</a> </span>
+	</li><li id="t-580517">
+		<a href="https://www.allegro.cc/forums/thread/580517">How to Move Bitmap By Input Keys...</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/580915" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/581245" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/581417" style="color: black;">3</a> </span>
+	</li><li id="t-577955">
+		<a href="https://www.allegro.cc/forums/thread/577955">savepng and transparency</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/578206" style="color: black;">1</a> </span>
+	</li><li id="t-567996">
+		<a href="https://www.allegro.cc/forums/thread/567996">Game speed</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/567996" style="color: black;">1</a> </span>
+	</li><li id="t-566799">
+		<a href="https://www.allegro.cc/forums/thread/566799">What the hell is wrong with this?!?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/566799" style="color: black;">1</a> </span>
+	</li><li id="t-564257">
+		<a href="https://www.allegro.cc/forums/thread/564257">How to send and receive sockets with out waiting for a reply...</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/564257" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/564609" style="color: black;">2</a> </span>
+	</li><li id="t-556967">
+		<a href="https://www.allegro.cc/forums/thread/556967">what is wrong?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/556967" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/556972" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/557085" style="color: black;">3</a> </span>
+	</li><li id="t-556956">
+		<a href="https://www.allegro.cc/forums/thread/556956">printing out vectors of type BITMAP</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/556956" style="color: black;">1</a> </span>
+	</li><li id="t-556766">
+		<a href="https://www.allegro.cc/forums/thread/556766">STL...any help please...</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/556793" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/556919" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/556940" style="color: black;">3</a> </span>
+	</li><li id="t-556463">
+		<a href="https://www.allegro.cc/forums/thread/556463">blitting sprites</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/556646" style="color: black;">1</a> </span>
+	</li><li id="t-556196">
+		<a href="https://www.allegro.cc/forums/thread/556196">mouse problems</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/557043" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/MouseTrap">MouseTrap</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/3dcar16">3dcar16</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/Akilah2006">Akilah! 2006</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/ChromaPlas">ChromaPlas</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/domin">domin</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/EggHack">EggHack</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/Othello1">Othello</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/ShadowsofGurmanyala2">Shadows of Gurmanyala 2</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/SwordofFargoalremake">Sword of Fargoal remake</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/TomtheTomato">Tom the Tomato</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,512</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.012237</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/loading-image-files/set_color_conversion by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:18:10 GMT -->
+</html>

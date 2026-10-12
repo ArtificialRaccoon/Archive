@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/sound-init-routines/set_volume by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:24:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>set_volume</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Sound init routines</a></h2><ul>
+<li><a href="detect_digi_driver.html" >detect_digi_driver</a></li><li><a href="detect_midi_driver.html" >detect_midi_driver</a></li><li><a href="reserve_voices.html" style="font-weight: bold">reserve_voices</a></li><li><a href="set_volume_per_voice.html" style="font-weight: bold">set_volume_per_voice</a></li><li><a href="install_sound.html" style="font-weight: bold">install_sound</a></li><li><a href="remove_sound.html" style="font-weight: bold">remove_sound</a></li><li><strong>set_volume</strong></li><li><a href="set_hardware_volume.html" >set_hardware_volume</a></li><li><a href="get_volume.html" >get_volume</a></li><li><a href="get_hardware_volume.html" >get_hardware_volume</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>set_volume</h1>
+
+<div class="shortdesc">
+Alters the global sound output volume.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">void</span> <a href="../../index.html" target="_blank"><span class="a">set_volume</span></a><span class="k2">(</span><span class="k1">int</span> digi_volume, <span class="k1">int</span> midi_volume<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Alters the global sound output volume. Specify volumes for both digital
+   samples and MIDI playback, as integers from 0 to 255, or pass a negative
+   value to leave one of the settings unchanged. Values bigger than 255 will
+   be reduced to 255. This routine will not alter the volume of the hardware
+   mixer if it exists (i.e. only your application will be affected).
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">install_sound</a></li>
+	<li><a href="../../index.html">set_hardware_volume</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-590259">
+		<a href="https://www.allegro.cc/forums/thread/590259">Error with type BITMAP</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/653484" style="color: black;">1</a> </span>
+	</li><li id="t-590085">
+		<a href="https://www.allegro.cc/forums/thread/590085">My Game runs Slow on PIII Machine</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/652312" style="color: black;">1</a> </span>
+	</li><li id="t-587678">
+		<a href="https://www.allegro.cc/forums/thread/587678">DIGI fails after MIDI under DOS</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/615252" style="color: black;">1</a> </span>
+	</li><li id="t-551198">
+		<a href="https://www.allegro.cc/forums/thread/551198">Midi temporarly chokes for a moment after playing a bit. How to fix?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/551269" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/BeatlesFreaks">Beatles Freaks</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/ChristmasFun">Christmas Fun</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/Duel">Duel</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/FantasticVacation">Fantastic Vacation</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/MachineBall">Machine Ball</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/Zelda">Zelda</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/3dcar16">3dcar16</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/AlextheAllegator3">Alex the Allegator 3</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/AreYouLost1">Are You Lost?</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/domin">domin</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,763</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.115939</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/sound-init-routines/set_volume by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:24:34 GMT -->
+</html>

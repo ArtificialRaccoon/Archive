@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/transparency-and-patterned-drawing/256-color-transparency/create_light_table by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:24:08 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>create_light_table</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">Transparency and patterned drawing</a></h2><ul>
+<li><a href="../drawing_mode.html" style="font-weight: bold">drawing_mode</a></li><li><a href="../xor_mode.html" >xor_mode</a></li><li><a href="../solid_mode.html" style="font-weight: bold">solid_mode</a></li><li><a href="color_map.html" style="font-weight: bold">color_map</a></li><li><a href="create_trans_table.html" style="font-weight: bold">create_trans_table</a></li><li><strong>create_light_table</strong></li><li><a href="create_color_table.html" >create_color_table</a></li><li><a href="create_blender_table.html" >create_blender_table</a></li><li><a href="../truecolor-transparency/set_trans_blender.html" style="font-weight: bold">set_trans_blender</a></li><li><a href="../truecolor-transparency/set_alpha_blender.html" >set_alpha_blender</a></li><li><a href="../truecolor-transparency/set_write_alpha_blender.html" >set_write_alpha_blender</a></li><li><a href="../truecolor-transparency/set_add_blender.html" >set_add_blender</a></li><li><a href="../truecolor-transparency/set_burn_blender.html" >set_burn_blender</a></li><li><a href="../truecolor-transparency/set_color_blender.html" >set_color_blender</a></li><li><a href="../truecolor-transparency/set_difference_blender.html" >set_difference_blender</a></li><li><a href="../truecolor-transparency/set_dissolve_blender.html" >set_dissolve_blender</a></li><li><a href="../truecolor-transparency/set_dodge_blender.html" >set_dodge_blender</a></li><li><a href="../truecolor-transparency/set_hue_blender.html" >set_hue_blender</a></li><li><a href="../truecolor-transparency/set_invert_blender.html" >set_invert_blender</a></li><li><a href="../truecolor-transparency/set_luminance_blender.html" >set_luminance_blender</a></li><li><a href="../truecolor-transparency/set_multiply_blender.html" >set_multiply_blender</a></li><li><a href="../truecolor-transparency/set_saturation_blender.html" >set_saturation_blender</a></li><li><a href="../truecolor-transparency/set_screen_blender.html" >set_screen_blender</a></li><li><a href="../truecolor-transparency/set_blender_mode.html" >set_blender_mode</a></li><li><a href="../truecolor-transparency/set_blender_mode_ex.html" >set_blender_mode_ex</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>create_light_table</h1>
+
+<div class="shortdesc">
+Fills a color mapping table for lighting effects.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">void</span> <a href="../../../index.html" target="_blank"><span class="a">create_light_table</span></a><span class="k2">(</span><a href="../../../index.html" target="_blank"><span class="a">COLOR_MAP</span></a> <span class="k3">*</span>table, <span class="k1">const</span> <a href="../../../index.html" target="_blank"><span class="a">PALETTE</span></a> pal, <span class="k1">int</span> r, g, b, <span class="k1">void</span> <span class="k2">(</span><span class="k3">*</span>callback<span class="k2">)</span><span class="k2">(</span><span class="k1">int</span> pos<span class="k2">)</span><span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Fills the specified color mapping table with lookup data for doing
+   lighting effects with the specified palette. When combining the colors c1
+   and c2 with this table, c1 is treated as a light level from 0-255. At
+   light level 255 the table will output color c2 unchanged, at light level
+   0 it will output the r, g, b value you specify to this function, and at
+   intermediate light levels it will output a color somewhere between the
+   two extremes. The r, g, and b values are in the range 0-63.<br /><br />
+
+   This function will take advantage of the global rgb_ap variable to speed
+   up color conversions. If the callback function is not NULL, it will be
+   called 256 times during the calculation, allowing you to display a
+   progress indicator. Example:
+<pre class="code">      <a href="../../../index.html" target="_blank"><span class="a">COLOR_MAP</span></a> light_table<span class="k2">;</span>
+      ...
+      <span class="c">/* Build a color lookup table for lighting effects. */</span>
+      <a href="../../../index.html" target="_blank"><span class="a">create_light_table</span></a><span class="k2">(</span><span class="k3">&amp;</span>light_table, pal, <span class="n">0</span>, <span class="n">0</span>, <span class="n">0</span>, NULL<span class="k2">)</span><span class="k2">;</span></pre>
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../../index.html">color_map</a></li>
+	<li><a href="../../../index.html">create_trans_table</a></li>
+	<li><a href="../../../index.html">create_color_table</a></li>
+	<li><a href="../../../index.html">create_blender_table</a></li>
+	<li><a href="../../../index.html">draw_trans_sprite</a></li>
+	<li><a href="../../../index.html">draw_lit_sprite</a></li>
+	<li><a href="../../../index.html">draw_gouraud_sprite</a></li>
+	<li><a href="../../../index.html">rgb_map</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../../index.html">ex3d</a></li>
+	<li><a href="../../../index.html">exshade</a></li>
+	<li><a href="../../../index.html">extrans</a></li>
+</ul>
+</div>
+
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/3dcar16">3dcar16</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/Isthistheend">Is this... the end?</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/POPEM">POP'EM</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/TheLostSwordofArkane">The Lost Sword of Arkane</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/TomtheTomato">Tom the Tomato</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/Zombiepox">Zombiepox</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/Hellcarrier">Hellcarrier</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/RedPixel">Red Pixel</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/StarControlTimeWarp">Star Control: TimeWarp</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/TW-Light">TW-Light</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,714</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.012280</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/transparency-and-patterned-drawing/256-color-transparency/create_light_table by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:24:08 GMT -->
+</html>

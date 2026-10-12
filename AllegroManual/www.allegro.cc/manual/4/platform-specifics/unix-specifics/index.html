@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/platform-specifics/unix-specifics/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:58:29 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Unix specifics</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">Platform specifics</a></h2><ul>
+<li><a href="../dos-specifics/index.html" >DOS specifics</a></li><li><a href="../windows-specifics/index.html" >Windows specifics</a></li><li><strong>Unix specifics</strong></li><li><a href="../beos-specifics/index.html" >BeOS specifics</a></li><li><a href="../qnx-specifics/index.html" >QNX specifics</a></li><li><a href="../macos-x-specifics/index.html" >MacOS X specifics</a></li><li><a href="../differences-between-platforms/index.html" >Differences between platforms</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>Unix specifics</h1>
+
+Under Unix you usually have two ways of redistributing your binaries. You
+either pack everything in a single directory, even providing Allegro in
+binary or source form for the user to compile. Or your program is being
+packaged separately from Allegro and stored in different paths. For the
+first case of redistribution, read section "Files shared by Allegro" from
+the "Dos specifics" chapter to learn more about this.<br /><br />
+
+For the second type, you can ignore redistributing the setup, keyboard
+mappings and language datafiles, because they will be already installed in
+the system. This, however, is problematic if you are using get_config_text()
+to localise your program's text strings.<br /><br />
+
+The problem is that on other platforms you usually mix your program's text
+strings with those of Allegro (found in the `resources' directory) to create
+a special language.dat. And it is likely that the Allegro library installed
+on the user's system already contains a datafile.dat. You can go ahead and
+still provide your own language.dat file, but this will mean that if Allegro
+is updated, your language.dat file may not contain all the text strings used
+by the new version.<br /><br />
+
+Given the slow paced release cycle of Allegro, this might not be a concern.
+However, if you want to make it easy on system administrators, instead of
+providing your own `language.dat', you should provide the separate
+`xxtext.cfg' files it in a separate directory. Then, before showing the
+strings to the user you can detect the language setting and use
+override_config_file() with the appropriate localisation file and call
+reload_config_texts().<br /><br />
+
+In order to locate things like the config and translation files, Allegro
+needs to know the path to your executable. Since there is no standard way to
+find that, it needs to capture a copy of your argv[] parameter, and it does
+this with some preprocessor macro trickery. Unfortunately it can't quite
+pull this off without a little bit of your help, so you will have to write
+END_OF_MAIN() right after your main() function. Pretty easy, really, and if
+you forget, you'll get a nice linker error about a missing _mangled_main
+function to remind you :-)<br /><br />
+
+Under Unix resources are searched for in many different paths (see above).
+When a configuration resource is looked for, it is usually tried with the
+variations `name.cfg' or `.namerc' in multiple paths: the current directory,
+the directory pointed to by the ALLEGRO environment variable, the user's home
+directory, one or more global system directories which usually only the
+root user has access to and any custom paths set up with
+set_allegro_resource_path(). Text files, like the main allegro config file or
+a language text translation files are looked for in the following places:
+<pre class="text">
+   ./allegro.cfg
+   $ALLEGRO/allegro.cfg
+   ~/allegro.cfg
+   ~/.allegrorc
+   /etc/allegro.cfg
+   /etc/allegrorc
+</pre>
+Binary resources like the language translation files packfile (language.dat)
+are looked for in:
+<pre class="text">
+   ./language.dat
+   $ALLEGRO/language.dat
+   ~/language.dat
+   /etc/language.dat
+   /usr/share/allegro/language.dat
+   /usr/local/share/allegro/language.dat
+</pre>
+Note that if you have installed Allegro from the source distribution with
+the typical `<tt>make install</tt>', global files like `language.dat' and
+`allegro.cfg' will not have been installed. As a system administrator you are
+required to install them manually wherever you prefer to have them. If you
+suspect that an Allegro program is somehow not finding the correct
+configuration file, you could try using the following command:
+<pre class="text">
+   strace program 2>&amp;1|egrep "(open|stat)"
+</pre>
+The strace program traces system calls and signals. By default it outputs
+the information to stderr, so that's why we redirect it to stdin with `<tt>2>&amp;1</tt>'.
+Since we are interested only in files being (un)successfully opened, we
+restrict the output of the log to stat or open calls with the extended grep
+command. You could add another grep to filter only lines with text like
+`language' or `allegro'.
+
+<ul>
+	<li><a href="joy_type_.html">JOY_TYPE_</a> - Supported Linux joystick drivers.</li>
+	<li><a href="gfx_.html">GFX_</a> - Supported Linux console graphic drivers.</li>
+	<li><a href="gfx_.html">GFX_</a> - Supported X graphic drivers.</li>
+	<li><a href="digi_.html">DIGI_</a> - Supported Unix digital sound drivers.</li>
+	<li><a href="midi_.html">MIDI_</a> - Supported Unix MIDI sound drivers.</li>
+</ul>
+<h2>Unix integration routines</h2>
+<ul>
+	<li><a href="unix-integration-routines/xwin_set_window_name.html">xwin_set_window_name</a> - Specify the window name and group (or class).</li>
+	<li><a href="unix-integration-routines/allegro_icon.html">allegro_icon</a> - Pointer to the Allegro X11 icon.</li>
+</ul>
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,185</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>12.911185</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/platform-specifics/unix-specifics/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:58:31 GMT -->
+</html>

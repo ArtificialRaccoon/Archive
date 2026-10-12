@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/MessageBox.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC MessageBox</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">MessageBox</A></H2></H2><BLOCKQUOTE> Standard message box dialog.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>MessageBox
+- <A HREF="Window.html">Window</A>
+- <A HREF="Dialog.html">Dialog</A>
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Button.html">Button</A> <B><A HREF="#DOC.76.1">button1</A></B>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Button.html">Button</A> <B><A HREF="#DOC.76.2">button2</A></B>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Button.html">Button</A> <B><A HREF="#DOC.76.3">button3</A></B>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Label.html">Label</A> <B><A HREF="#DOC.76.4">line1</A></B>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Label.html">Label</A> <B><A HREF="#DOC.76.5">line2</A></B>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Label.html">Label</A> <B><A HREF="#DOC.76.6">line3</A></B>
+<DD><I> The three buttons and labels.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.76.8">MessageBox</A></B>( const char* = "Message", const char* = "This is <!1><A HREF="Color.html#DOC.8.20">a</A> message.", const char* = NULL, const char* = NULL, const char* = "OK", const char* = NULL, const char* = NULL)
+<DD><I> The MessageBox constructor.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   int <B><A HREF="#DOC.76.9">Popup</A></B>(<!1><A HREF="Dialog.html">Dialog</A>* p, int <!1><A HREF="Widget.html#DOC.110.67">x</A> = MAXINT, int <!1><A HREF="Widget.html#DOC.110.68">y</A> = MAXINT)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   int <B><A HREF="#DOC.76.10">Popup</A></B>(<!1><A HREF="Dialog.html">Dialog</A>* p, const MAS::Point &amp;<!1><A HREF="ScrollObject.html#DOC.93.3">pos</A>)
+<DD><I> Pops up the mesage box at the given position.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.76.7">CalculateGeometry</A></B>()
+<DD><I> Calculates the sizes and positions of all the labels and buttons according to the lengths of all the strings</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+Standard message box dialog.
+A MessageBox is a simple dialog that can hold up to three lines of text
+and up to three buttons that all close it. It is primarily used for
+informing the user that a certain event has happened and for asking the
+user simple questions that can be answered with yes and no or something
+similar.
+
+<P>Note: the name MessageBox clashes with a define in the Win32 API.
+Micro$soft was stupid enough to call their message box function
+<i>MessageBoxA</i> and then they defined <i>MessageBox</i> as
+<i>"#define MessageBox MessageBoxA"</i> (most probably for backwards
+compatibility or something). If for some reason you need to use the Win32
+API alongside MASkinG you have to undefine the Win32 MessageBox right
+after including the windows header:
+<PRE>
+      #include &lt;winalleg.h&gt;
+      #undef MessageBox
+</PRE>
+Then you should use either the MASkinG MessageBox or allegro_message() to
+communicate messages to the user.</BLOCKQUOTE>
+<DL>
+
+<A NAME="button1"></A>
+<A NAME="DOC.76.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Button.html">Button</A> button1</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="button2"></A>
+<A NAME="DOC.76.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Button.html">Button</A> button2</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="button3"></A>
+<A NAME="DOC.76.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Button.html">Button</A> button3</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="line1"></A>
+<A NAME="DOC.76.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Label.html">Label</A> line1</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="line2"></A>
+<A NAME="DOC.76.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Label.html">Label</A> line2</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="line3"></A>
+<A NAME="DOC.76.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Label.html">Label</A> line3</B></TT>
+<DD>
+The three buttons and labels. Note that all of these are public
+so you can access and change them as you wish.
+<DL><DT><DD></DL><P>
+<A NAME="CalculateGeometry"></A>
+<A NAME="DOC.76.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void CalculateGeometry()</B></TT>
+<DD>
+Calculates the sizes and positions of all the labels and buttons
+according to the lengths of all the strings
+<DL><DT><DD></DL><P>
+<A NAME="MessageBox"></A>
+<A NAME="DOC.76.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> MessageBox( const char* = "Message", const char* = "This is <!1><A HREF="Color.html#DOC.8.20">a</A> message.", const char* = NULL, const char* = NULL, const char* = "OK", const char* = NULL, const char* = NULL)</B></TT>
+<DD>
+The MessageBox constructor. You can setup your message box in the
+constructor but you can change it at any time you want. The first
+parameter is the box's title, the next three are the three lines
+of text the box is to display and the last three are the labels
+of the three buttons. If you pass NULL instead of a valid string
+the relevant label or button will not be shown but a message box
+must have at least one label and at least on button.
+<DL><DT><DD></DL><P>
+<A NAME="Popup"></A>
+<A NAME="DOC.76.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   int Popup(<!1><A HREF="Dialog.html">Dialog</A>* p, int <!1><A HREF="Widget.html#DOC.110.67">x</A> = MAXINT, int <!1><A HREF="Widget.html#DOC.110.68">y</A> = MAXINT)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="Popup"></A>
+<A NAME="DOC.76.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   int Popup(<!1><A HREF="Dialog.html">Dialog</A>* p, const MAS::Point &amp;<!1><A HREF="ScrollObject.html#DOC.93.3">pos</A>)</B></TT>
+<DD>
+Pops up the mesage box at the given position. Returns the 1 based
+index of the button that was used to close the dialog. If the exit
+icon was used or the box was escaped 0 is returned.
+
+<P>Example:
+<PRE>
+      bool MainDialog::MsgClose() {
+        if (HaveUnsavedData()) {
+           MessageBox msg("Unsaved data", "Do you want to save your data before exiting?", NULL, NULL, "Yes", "No", "Cancel");
+           switch (msg.Popup(this)) {
+              case 1:
+                 Save();
+
+<P>              case 2:
+                 return true;
+
+<P>              default:
+                 return false;
+           };
+        }
+        else {
+           MessageBox msg("Really?", "Do you really want to exit?", NULL, NULL, "OK", "Cancel");
+           if (msg.Popup(this) == 1) {
+              return true;
+           }
+           else {
+              return false;
+           }
+        }
+      }
+</PRE>
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/MessageBox.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+</html>

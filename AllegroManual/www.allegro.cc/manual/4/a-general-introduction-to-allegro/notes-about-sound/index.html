@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/a-general-introduction-to-allegro/notes-about-sound/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:02:27 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Notes about sound</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">A general introduction to Allegro</a></h2><ul>
+<li><a href="../introduction/index.html" >Introduction</a></li><li><a href="../supported-platforms/index.html" >Supported platforms</a></li><li><a href="../features/index.html" >Features</a></li><li><a href="../copyright/index.html" >Copyright</a></li><li><a href="../configuration/index.html" >Configuration</a></li><li><strong>Notes about sound</strong></li><li><a href="../contact-info/index.html" >Contact info</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>Notes about sound</h1>
+
+The DIGMID wavetable driver uses standard GUS format .pat files, and you
+   will need a collection of such instruments before you can use it. This
+   can either be in the standard GUS format (a set of .pat files and a
+   default.cfg index), or a patches.dat file as produced by the pat2dat
+   utility. You can also use pat2dat to convert AWE32 SoundFont banks into
+   the patches.dat format, and if you list some MIDI files on the command
+   line it will filter the sample set to only include the instruments that
+   are actually used by those tunes, so it can be useful for getting rid of
+   unused instruments when you are preparing to distribute a game. See the
+   Allegro website for some links to suitable sample sets.<br /><br />
+
+   The DIGMID driver normally only loads the patches needed for each song
+   when the tune is first played. This reduces the memory usage, but can
+   result in a longish delay the first time you play each MIDI file. If you
+   prefer to load the entire patch set in one go, call the
+   load_midi_patches() function.<br /><br />
+
+   The CPU sample mixing code can support between 1 and 64 voices, going up
+   in powers of two (ie. either 1, 2, 4, 8, 16, 32, or 64 channels). By
+   default it provides 8 digital voices, or 8 digital plus 24 MIDI voices (a
+   total of 32) if the DIGMID driver is in use. But the more voices, the
+   lower the output volume and quality, so you may wish to change this by
+   calling the reserve_voices() function or setting the digi_voices and
+   midi_voices parameters in allegro.cfg.
+
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,219</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.009458</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/a-general-introduction-to-allegro/notes-about-sound/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:02:27 GMT -->
+</html>

@@ -1,0 +1,299 @@
+<html>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/examples.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head><title>Examples</title></head><body>
+<h1><a name="examples">Examples</a></h1>
+<p>
+   In the <a href="http://members.allegro.cc/miran/examples/">examples directory</a> you can find a
+   handfull of small examples that demonstrate how to use most features of
+   MASkinG. They aren't particularly well documented but are simple enough
+   so you shouldn't have any major problems understanding them or the basic
+   concepts behind using MASkinG in general.
+
+<p>The examples can all be configured by editing the <a href="http://members.allegro.cc/miran/examples/allegro.cfg">
+   allegro.cfg</a> file that is located in the same directory as the example
+   source code and executables.
+
+<hr><p>Here's a short description of each example and what it does:</p>
+<ul><h4>
+<li><a href="#example1">example1 - Hello, world!</a>
+<li><a href="#example2">example2 - a large dialog</a>
+<li><a href="#example3">example3 - windows and menus</a>
+<li><a href="#example4">example4 - a stopwatch</a>
+<li><a href="#example5">example5 - a tetris clone</a>
+<li><a href="#example6">example6 - a piano application</a>
+<li><a href="#example7">example7 - scrollbox and textarea</a>
+<li><a href="#example8">example8 - scrolling starfield</a>
+<li><a href="#example9">example9 - polling a MASkinG dialog</a>
+<li><a href="#example10">example10 - adding and removing widgets dynamically</a>
+<li><a href="#example11">example11 - making user defined tooltips</a>
+<li><a href="#example12">example12 - how to use tab panels</a>
+<li><a href="#example13">example13 - how to use splitters</a>
+<li><a href="#example14">example14 - how to use normalized coordinates</a>
+<li><a href="#example15">example15 - how to use a GLDialog</a>
+<li><a href="#example16">example16 - how to use a GLViewport</a>
+<li><a href="#example17">example17 - making a menu system for a simple game</a>
+<li><a href="#example18">example18 - a simple Minesweeper clone</a>
+<li><a href="#example19">example19 - a simple animated widget</a>
+<li><a href="#example20">example20 - how to use wallpapers in MASkinG</a>
+<li><a href="#example21">example21 - multicolumn listboxes</a>
+</h4></ul>
+<p><hr>
+
+<p>
+<b><a name="example1">example1 - Hello, world!</a>(<a href="http://members.allegro.cc/miran/examples/ex01.cpp">source</a>)</b><br>
+   This is your standard "Hello, world!" program. All it does is that it
+   executes a dialog with a button saying "Hello, world!". When you click
+   the button, the dialog and the whole program ends. As you can see
+   installing and using MASkinG is quite painless. All we do in the main
+   function of the program is install MASkinG with <a href="InstallMASkinG.html">
+   InstallMASkinG()</a>, create and execute a dialog and when the dialog has
+   finished executing clean up with <a href="ExitMASkinG.html">
+   ExitMASkinG()</a> and exit the program. This should be quite standard in
+   all MASkinG applications. The majority of the code is in MASkinG dialogs.
+   As you can see in this example we derived a new dialog from the the base
+   <a href="dialog-2.html">Dialog</a> class with just two member variables and
+   an overloaded default constructor. The two variables are two widgets which
+   act as a desktop and a button. In the constructor we setup the widgets
+   and add the to the dialog. The widgets don't necessarily have to be members
+   of the dialog class and you don't necessarily have to add them to the
+   dialog in the constructor but I choose to do so as it is most convenient.
+
+<p>
+<b><a name="example2">example2 - a large dialog</a>(<a href="http://members.allegro.cc/miran/examples/ex02.cpp">source</a>)</b><br>
+   This seems quite a big step from the first example but it really isn't so.
+   If you take a closer look at the code you can see that this example is
+   almost identical to the first one except that the dialog contains far
+   more widgets. In fact it contains just about every single simple widget
+   available in MASkinG (window and menus are left for later though). All the
+   widgets are the dialog's member variables and they are set up and added
+   to the dialog in its constructor. There are a couple of things I should
+   point out though, a few functions from the Dialog class are overloaded in
+   this example:
+<p>In <a href="widget-2.html#message">MsgInitSkin()</a> we have
+   to setup some of the skin specific stuff. The thing is that when a dialog
+   starts it is given a skin and it and all of its widgets are informed of
+   this event by calling the MsgInitSkin() function. More or less all of the
+   widgets read skin specific configuration about themselves from the skin
+   at that time so if we want to override a widget's default appearance and/or
+   behaviour we must do it after the skin was set. In this example we want
+   some panels to use different bitmaps than the default. A <a href="panel-2.html">
+   Panel</a> will by default use the bitmap normally used for a raised panel
+   but in this example we make some panels use other bitmaps instead.
+<p>The other even more important thing is the <a href="dialog-2.html#HandleEvent">
+   HandleEvent()</a> function. This is effectively the core of a dialog and
+   every non-trivial dialog should overload it. In this example we just check
+   for a MSG_ACTIVATE message which a lot of widgets send when they are
+   selected or in some other way activated (hence the name of the message).
+<p>The third overloaded function is MsgTick() but that's used just to animate
+   the two progress bars, nothing special there. Actually you can overload just
+   about every message function the dialog class has to define it's behaviour.
+   Also note that in almost every overloaded function in the dialog class it
+   is vital that you call the base class' function you are overloading. This
+   is necessary because C++ unlike some other OOP languages doesn't do it
+   automatically for you. In most cases it doesn't matter much but as a general
+   rule of thumb you should call the base class' function before your own code.
+
+<p>
+<b><a name="example3">example3 - windows and menus</a>(<a href="http://members.allegro.cc/miran/examples/ex03.cpp">source</a>)</b><br>
+   This example doesn't really demonstrate how to use every single feature
+   of the menu and window systems but it does show how to create a window,
+   how to use it in both the modal and modeless variants and how to create
+   and use a menu. As a bonus it shows how to derive a whole new widget and
+   how to use scrollbars. Let's go through the code:
+<p>MyWindow is very simple to the MyDialog class from the previous example
+   except that it's quite a bit smaller. Also note that we overloaded the
+   <a href="window-2.html#UpdateSize">UpdateSize()</a> function in which we
+   resize and reposition some of the widgets to follow the edges of the
+   window. This is necessary if we want the proportions in the window to
+   stay the same when it is resized.
+<p>ClippedImage is a new widget derived from <a href="image-2.html">Image</a>.
+   All that is changes from Image is that it isn't resized automatically
+   (we cleared the D_AUTOSIZE flag) and that it draws a bit differently -
+   it draws just the part of the bitmap that can fit into thw widget's
+   area and it can start drawing from a given offset. We will change this
+   offset latef with the use of scrollbars.
+<p>ImagePad is a whole dialog that contains a ClippedImage from above and
+   two scrollbars for manipulating with it. Again we overloaded the
+   UpdateSize() function where we make sure the scrollbars follow the
+   right and bottom borders of the dialog when it is resized and the
+   HandleEvent() function in which we catch MSG_SCROLL messages that are
+   being sent by the scrollbars and we modify the image according to them.
+   Note though that we won't execute or popup this dialog. We will set it
+   to be a client area of a window instead.
+<p>The MyDialog is the main dialog of this example. It contains a number of
+   buttons and other widgets and a menu. As in the previous examples we setup
+   the widgets and add them to the dialog in the constructor and we
+   handle event like button clicks in the HandleEvent() function. I beleive
+   the rest of the code should be quite self explanatory.
+
+<p>
+<b><a name="example4">example4 - a stopwatch</a>(<a href="http://members.allegro.cc/miran/examples/ex04.cpp">source</a>)</b><br>
+   This example should be a bit easier to understand than te previous one.
+   All it really demonstrates is how to use user defined timers in MASkinG.
+   You shouldn't worry too much about the first part of the code. NUMCHAR
+   and NUMFONT are just a couple of classes that implement my own font
+   routines for outputting numbers (that's what we're going to be doing with
+   them) and don't have much to do with MASkinG itself. TimeDisplay is a simple
+   widget that prints out the time with the previously defined font and
+   shouldn't be too hard to understand. Then comes the main dialog. It is
+   organized in the familiar way: widgets are member variables and are added
+   to the dialog in the constructor. Note however that in this example the
+   central part of the dialog isn't a part of the main dialog itself. Instead
+   it's a subdialog that is made to apear as if it was a window and can be
+   moved. The most important part of the program is in the functions that
+   are called from HandleEvent(). They are used to start and stop the timer,
+   to reset the stopwatch and to record an intermediate time. Notice how
+   we install a timer by accessing the static function <a href="timer-2.html#Install">
+   Timer::Install()</a> and remember the return value. We the use this value
+   int the OnStop() function and the MsgTimer() message handler that actually
+   runs the stopwatch.
+
+<p>
+<b><a name="example5">example5 - a tetris clone</a>(<a href="http://members.allegro.cc/miran/examples/ex05.cpp">source</a>)</b><br>
+   Example 5 is an almost complete clone of the poopular game of Tetris.
+   There are no sounds or special graphics effects but everything else
+   including a highscore list is there and is completely functional. This
+   example is quite complex though and I really don't have the time nor the
+   patience to go through and explain all that code. But most of it is simple
+   and straightforward so if you're feeling brave your welcome to browse through
+   the code and learn from it.
+
+<p>
+<b><a name="example6">example6 - a piano application</a>(<a href="http://members.allegro.cc/miran/examples/ex06.cpp">source</a>)</b><br>
+   A simple application that looks like a piano. It can load a sample in
+   either wav, voc or its (Impulse Tracker sample) format. When the
+   piano view has input focus you can play a "piano" with your keyboard.
+
+<p>
+<b><a name="example7">example7 - scrollbox and textarea</a>(<a href="http://members.allegro.cc/miran/examples/ex07.cpp">source</a>)</b><br>
+   This example shows how to use the ScrollBox class to make scrollable widgets
+   and the TextArea widget that extends ScrollBox and implements a multiline
+   text area box with optional scrollers. The example also implements an
+   image box for displaying a bitmap and is similar to the one in example 03
+   although it uses a completely different approach to adding scrollers to
+   a window.
+
+<p>
+<b><a name="example8">example8 - scrolling starfield</a>(<a href="http://members.allegro.cc/miran/examples/ex08.cpp">source</a>)</b><br>
+   Demonstrates how MASkinG can be used in a "serious" game. There is a
+   starfield widget which contains a space with some stars. The space
+   is larger than the screen area so only a small part of it is seen at
+   a time and the rest can be scrolled to by moving the mouse pointer to
+   the edge of the space area. There is also a minimap widget connected
+   to the space area and shows how different widgets can communicate
+   in MASkinG.
+
+<p>
+<b><a name="example9">example9 - polling a MASkinG dialog</a>(<a href="http://members.allegro.cc/miran/examples/ex09.cpp">source</a>)</b><br>
+   This example show how to include MASkinG into an existing project that
+   has its own engine. Instead of calling InstallMASkinG() all the required
+   modules have to be installed, a skin has to be loaded and a couple of
+   other things have to be done. Instead of executing a dialog with
+   Dialog::Execute() a dialog can also be polled, you just need to call
+   MsgStart() once at the beginning, MsgIdle() in the main loop and
+   MsgEnd() when you're done. You also need to redirect the GUI to draw
+   onto your own buffer by creating a screen update driver that exposes
+   that buffer to your MASkinG dialog.
+
+<p>
+<b><a name="example10">example10 - adding and removing widgets dynamically</a>(<a href="http://members.allegro.cc/miran/examples/ex10.cpp">source</a>)</b><br>
+   This example shows how you can animate a dialog by dynamically adding
+   and removing widgets to and from it. In the example when the dialog
+   starts it is empty, but then at regular intervals, driven by a timer,
+   buttons are added until the dialog is full. When the dialog is closed,
+   it doesn't close immediatelly, but instead starts the animation timer
+   again, which in this case makes the dialog remove the buttons one by
+   one until they're all gone, at which time the dialog actually closes
+   itself. The example also shows how you can make buttons use custom
+   bitmaps instead of the default one.
+
+<p>
+<b><a name="example11">example11 - making user defined tooltips</a>(<a href="http://members.allegro.cc/miran/examples/ex11.cpp">source</a>)</b><br>
+   This example shows how you can derive a user defined tooltip class from
+   the default one and draw any kind of tooltip help bubbles you want.
+   In the example we make a tooltip class that parses the tooltip text
+   for instructions to draw geometric shapes such as circles, squares
+   and triangles and if it finds them it draws the appropriate shape,
+   otherwise it calls the default implementation of the tooltip. In a
+   real application you might want to draw other non-textual content in
+   a tooltip help bubble such as bitmaps, icons, etc.
+
+<p>
+<b><a name="example12">example12 - how to use tab panels</a>(<a href="http://members.allegro.cc/miran/examples/ex12.cpp">source</a>)</b><br>
+   This extremely simple example shows how you can organize dialogs
+   or individual widgets with the TabPanel class.
+
+<p>
+<b><a name="example13">example13 - how to use splitters</a>(<a href="http://members.allegro.cc/miran/examples/ex13.cpp">source</a>)</b><br>
+   Another simple example - show how dialogs and widgets can be
+   organized on the screen with the use of the Splitter class.
+
+<p>
+<b><a name="example14">example14 - how to use normalized coordinates</a>(<a href="http://members.allegro.cc/miran/examples/ex14.cpp">source</a>)</b><br>
+	This example show how you can place and resize widgets with normalized
+	coordinates instead of absolute pixel coordinates. Normalized coordinates
+	are in the range between 0 and 100. A widget or dialog that whose size or
+	position has been set with normalized coordinates will automatically be
+	resized and repositioned every time the parent dialog is resized or
+	repositioned. This means that if you make a button 60% the size of its
+	parent dialog, it will always be automatically be resized to this size
+	no matter what the size of the parent dialog or the screen resolution.
+
+<p>
+<b><a name="example15">example15 - how to use GLDialog</a>(<a href="http://members.allegro.cc/miran/examples/ex15.cpp">source</a>)</b><br>
+<b><a name="example16">example16 - how to use GLViewport</a>(<a href="http://members.allegro.cc/miran/examples/ex16.cpp">source</a>)</b><br>
+	A couple of simple spinning cude demos to show how to make a dialog whose
+	client area is an OpenGL context and how to make an OpenGL viewport. Note
+	that both of these examples will only work if you build them by passing
+	ALLEGRO_GL=1 to the make command. Unlike the other examples these two
+    read their settings from gl.cfg.
+
+<p>
+<b><a name="example17">example17 - making a menu system for a simple game</a>(<a href="http://members.allegro.cc/miran/examples/ex17.cpp">source</a>)</b><br>
+	This little example shows one possible way you might organize your dialogs
+	when making the menu system for a simple game. The approach demonstrated
+	here may not be perfect or even the right way to do it, but that's how
+	I make the GUI in all my games and it seems to work just fine. The whole
+	system is a finite state machine where each state is a dialog that is
+	run when the state is evaluated. The dialog Run() function returns the
+	ID of the state the FSM should go to next, depending on which button was
+	pressed. All the dialogs (main menu, options dialog, help screen, credits,
+	etc.) are constructed at the beginning of the program and put into an
+	array, and the main GUI handler just runs the FSM in an endless loop,
+	breaking only after reaching the exit state.
+
+<p>
+<b><a name="example18">example18 - a simple Minesweeper clone</a>(<a href="http://members.allegro.cc/miran/examples/ex18.cpp">source</a>)</b><br>
+	This is just a simple unfinished Minesweeper clone. The source is not very
+	thouroughly documented but perhaps you'll find it useful to see how
+	certain things are done.
+
+<p>
+<b><a name="example19">example19 - a simple animated wiget</a>(<a href="http://members.allegro.cc/miran/examples/ex19.cpp">source</a>)</b><br>
+	This example contains just one very simple animated widget. The widget
+	has a few states and for each one of them a prerendered bitmap displayed
+	(you could of course load the graphics from disk or draw them on the fly).
+	The current state is changed once every few seconds (driven by a timer)
+	and when this happens, the previous state's bitmap nicely blends into the
+	next one. Just make the bitmaps bigger, draw some nice gfx and text on
+	them and you have a great looking intro for your game already.
+
+<p>
+<b><a name="example20">example20 - how to use wallpapers in MASkinG</a>(<a href="http://members.allegro.cc/miran/examples/ex20.cpp">source</a>)</b><br>
+	Not much to this example, just to show how the Wallpaper widget is used.
+	It contains a simple dialog with a button to load a custom wallpaper
+	and a few radio buttons to select the wallpaper style. Note that this
+	example can only load the file formats that Allegro supports, that is
+	BMP, PCX and TGA. You can easily extend this list with the help of
+	various add-on libs for loading such formats as JPD and PNG.
+
+<p>
+<b><a name="example21">example21 - multicolumn listboxes</a>(<a href="http://members.allegro.cc/miran/examples/ex21.cpp">source</a>)</b><br>
+	The ListBoxEx widget is a featurefull listbox control. This example
+	shows how most of the basic listbox functionalities are used. The
+	code is heavily commented so check it out.
+
+<p><hr><p><a href="../index.html">Back</a><p></body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/examples.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:05 GMT -->
+</html>

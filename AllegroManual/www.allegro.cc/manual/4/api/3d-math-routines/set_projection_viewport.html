@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/3d-math-routines/set_projection_viewport by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:27:16 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>set_projection_viewport</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">3D math routines</a></h2><ul>
+<li><a href="identity_matrix.html" >identity_matrix</a></li><li><a href="identity_matrix_f.html" >identity_matrix_f</a></li><li><a href="get_translation_matrix.html" >get_translation_matrix</a></li><li><a href="get_translation_matrix_f.html" >get_translation_matrix_f</a></li><li><a href="get_scaling_matrix.html" >get_scaling_matrix</a></li><li><a href="get_scaling_matrix_f.html" >get_scaling_matrix_f</a></li><li><a href="get_x_rotate_matrix.html" >get_x_rotate_matrix</a></li><li><a href="get_x_rotate_matrix_f.html" >get_x_rotate_matrix_f</a></li><li><a href="get_y_rotate_matrix.html" >get_y_rotate_matrix</a></li><li><a href="get_y_rotate_matrix_f.html" >get_y_rotate_matrix_f</a></li><li><a href="get_z_rotate_matrix.html" >get_z_rotate_matrix</a></li><li><a href="get_z_rotate_matrix_f.html" >get_z_rotate_matrix_f</a></li><li><a href="get_rotation_matrix.html" >get_rotation_matrix</a></li><li><a href="get_rotation_matrix_f.html" >get_rotation_matrix_f</a></li><li><a href="get_align_matrix.html" >get_align_matrix</a></li><li><a href="get_align_matrix_f.html" >get_align_matrix_f</a></li><li><a href="get_vector_rotation_matrix.html" >get_vector_rotation_matrix</a></li><li><a href="get_vector_rotation_matrix_f.html" >get_vector_rotation_matrix_f</a></li><li><a href="get_transformation_matrix.html" >get_transformation_matrix</a></li><li><a href="get_transformation_matrix_f.html" >get_transformation_matrix_f</a></li><li><a href="get_camera_matrix.html" >get_camera_matrix</a></li><li><a href="get_camera_matrix_f.html" >get_camera_matrix_f</a></li><li><a href="qtranslate_matrix.html" >qtranslate_matrix</a></li><li><a href="qtranslate_matrix_f.html" >qtranslate_matrix_f</a></li><li><a href="qscale_matrix.html" >qscale_matrix</a></li><li><a href="qscale_matrix_f.html" >qscale_matrix_f</a></li><li><a href="matrix_mul.html" >matrix_mul</a></li><li><a href="matrix_mul_f.html" >matrix_mul_f</a></li><li><a href="vector_length.html" >vector_length</a></li><li><a href="vector_length_f.html" >vector_length_f</a></li><li><a href="normalize_vector.html" >normalize_vector</a></li><li><a href="normalize_vector_f.html" >normalize_vector_f</a></li><li><a href="dot_product.html" >dot_product</a></li><li><a href="dot_product_f.html" >dot_product_f</a></li><li><a href="cross_product.html" >cross_product</a></li><li><a href="cross_product_f.html" >cross_product_f</a></li><li><a href="polygon_z_normal.html" >polygon_z_normal</a></li><li><a href="polygon_z_normal_f.html" >polygon_z_normal_f</a></li><li><a href="apply_matrix.html" >apply_matrix</a></li><li><a href="apply_matrix_f.html" >apply_matrix_f</a></li><li><strong>set_projection_viewport</strong></li><li><a href="persp_project.html" >persp_project</a></li><li><a href="persp_project_f.html" >persp_project_f</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>set_projection_viewport</h1>
+
+<div class="shortdesc">
+Sets the viewport used to scale the output of persp_project().
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">void</span> <a href="../../index.html" target="_blank"><span class="a">set_projection_viewport</span></a><span class="k2">(</span><span class="k1">int</span> x, <span class="k1">int</span> y, <span class="k1">int</span> w, <span class="k1">int</span> h<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Sets the viewport used to scale the output of the persp_project()
+   function. Pass the dimensions of the screen area you want to draw onto,
+   which will typically be 0, 0, SCREEN_W, and SCREEN_H. Also don't forget
+   to pass an appropriate aspect ratio to get_camera_matrix later. The
+   width and height you specify here will determine how big your viewport
+   is in 3d space. So if an object in your 3D space is w units wide, it
+   will fill the complete screen when you run into it (i.e., if it has a
+   distance of 1.0 after the camera matrix was applied. The fov and
+   aspect-ratio parameters to get_camera_matrix also apply some scaling
+   though, so this isn't always completely true). If you pass -1/-1/2/2 as
+   parameters, no extra scaling will be performed by the projection.
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">persp_project</a></li>
+	<li><a href="../../index.html">get_camera_matrix</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../index.html">ex3d</a></li>
+	<li><a href="../../index.html">excamera</a></li>
+	<li><a href="../../index.html">exquat</a></li>
+	<li><a href="../../index.html">exscn3d</a></li>
+	<li><a href="../../index.html">exstars</a></li>
+	<li><a href="../../index.html">exzbuf</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-590216">
+		<a href="https://www.allegro.cc/forums/thread/590216">drawing a rectangle in 3D</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/652802" style="color: black;">1</a> </span>
+	</li><li id="t-589610">
+		<a href="https://www.allegro.cc/forums/thread/589610">[quad3d] Crash!</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/642995" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/643263" style="color: black;">2</a> </span>
+	</li><li id="t-586279">
+		<a href="https://www.allegro.cc/forums/thread/586279">3D problem, drawing a plane, sprites, camera</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/596388" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/3dcar16">3dcar16</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/PinCHESS3D">Pin CHESS 3D</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/Ashes">Ashes</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/StarControlTimeWarp">Star Control: TimeWarp</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/TW-Light">TW-Light</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/3DMatrix">3D Matrix</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/EmiliaPinball">Emilia Pinball</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/GenthuMatrixTracer">Genthu Matrix Tracer</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/MonkeyHack">MonkeyHack</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/Stehovak3D">Stehovak3D</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,979</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.010285</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/3d-math-routines/set_projection_viewport by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:27:16 GMT -->
+</html>

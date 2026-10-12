@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/configuration-routines/list_config_entries by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:15:52 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>list_config_entries</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Configuration routines</a></h2><ul>
+<li><a href="set_config_file.html" style="font-weight: bold">set_config_file</a></li><li><a href="set_config_data.html" >set_config_data</a></li><li><a href="override_config_file.html" >override_config_file</a></li><li><a href="override_config_data.html" >override_config_data</a></li><li><a href="push_config_state.html" style="font-weight: bold">push_config_state</a></li><li><a href="pop_config_state.html" style="font-weight: bold">pop_config_state</a></li><li><a href="flush_config_file.html" >flush_config_file</a></li><li><a href="reload_config_texts.html" >reload_config_texts</a></li><li><a href="hook_config_section.html" >hook_config_section</a></li><li><a href="config_is_hooked.html" >config_is_hooked</a></li><li><a href="get_config_string.html" style="font-weight: bold">get_config_string</a></li><li><a href="get_config_int.html" style="font-weight: bold">get_config_int</a></li><li><a href="get_config_hex.html" >get_config_hex</a></li><li><a href="get_config_float.html" >get_config_float</a></li><li><a href="get_config_id.html" >get_config_id</a></li><li><a href="get_config_argv.html" >get_config_argv</a></li><li><a href="get_config_text.html" >get_config_text</a></li><li><a href="set_config_string.html" style="font-weight: bold">set_config_string</a></li><li><a href="set_config_int.html" style="font-weight: bold">set_config_int</a></li><li><a href="set_config_hex.html" >set_config_hex</a></li><li><a href="set_config_float.html" >set_config_float</a></li><li><a href="set_config_id.html" >set_config_id</a></li><li><strong>list_config_entries</strong></li><li><a href="list_config_sections.html" >list_config_sections</a></li><li><a href="free_config_entries.html" >free_config_entries</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>list_config_entries</h1>
+
+<div class="shortdesc">
+Lists the names of all entries in a config section
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">int</span> <a href="../../index.html" target="_blank"><span class="a">list_config_entries</span></a><span class="k2">(</span><span class="k1">const</span> <span class="k1">char</span> <span class="k3">*</span>section, <span class="k1">const</span> <span class="k1">char</span> <span class="k3">*</span><span class="k3">*</span><span class="k3">*</span>names<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+This function can be used to get a list of all entries in the given config
+   section. The names parameter is a pointer to an array of strings. If it
+   points to a NULL pointer, the list will be allocated, else it will be
+   re-allocated. You should free the list again with free_config_entries if you
+   don't need it anymore, or you can pass it again to list_config_entries and
+   the memory will be re-used. See the following example for how you can use it,
+   it will print out the complete contents of the current configuration:
+<pre class="code">   <span class="k1">int</span> i, n<span class="k2">;</span>
+   <span class="k1">char</span> <span class="k1">const</span> <span class="k3">*</span><span class="k3">*</span>sections <span class="k3">=</span> NULL<span class="k2">;</span>
+   <span class="k1">char</span> <span class="k1">const</span> <span class="k3">*</span><span class="k3">*</span>entries <span class="k3">=</span> NULL<span class="k2">;</span><br /><br />
+
+   n <span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">list_config_sections</span></a><span class="k2">(</span><span class="k3">&amp;</span>sections<span class="k2">)</span><span class="k2">;</span>
+   <span class="c">/* loop through all section names */</span>
+   <span class="k1">for</span> <span class="k2">(</span>i <span class="k3">=</span> <span class="n">0</span><span class="k2">;</span> i <span class="k3">&lt;</span> n<span class="k2">;</span> i<span class="k3">+</span><span class="k3">+</span><span class="k2">)</span>
+   <span class="k2">{</span>
+      <span class="k1">int</span> j, m<span class="k2">;</span>
+      <a href="http://www.delorie.com/djgpp/doc/libc/libc_624.html" target="_blank">printf</a><span class="k2">(</span><span class="s">"%s\n"</span>, sections<span class="k2">[</span>i<span class="k2">]</span><span class="k2">)</span><span class="k2">;</span>
+      m <span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">list_config_entries</span></a><span class="k2">(</span>sections<span class="k2">[</span>i<span class="k2">]</span>, <span class="k3">&amp;</span>entries<span class="k2">)</span><span class="k2">;</span>
+      <span class="c">/* loop through all entries in the section */</span>
+      <span class="k1">for</span> <span class="k2">(</span>j <span class="k3">=</span> <span class="n">0</span><span class="k2">;</span> j <span class="k3">&lt;</span> m<span class="k2">;</span> j<span class="k3">+</span><span class="k3">+</span><span class="k2">)</span>
+      <span class="k2">{</span>
+          <a href="http://www.delorie.com/djgpp/doc/libc/libc_624.html" target="_blank">printf</a><span class="k2">(</span><span class="s">" %s=\"%s\"\n"</span>, entries<span class="k2">[</span>j<span class="k2">]</span>, <a href="../../index.html" target="_blank"><span class="a">get_config_string</span></a><span class="k2">(</span>
+             sections<span class="k2">[</span>i<span class="k2">]</span>, entries<span class="k2">[</span>j<span class="k2">]</span>, <span class="s">"-"</span><span class="k2">)</span><span class="k2">)</span><span class="k2">;</span>
+      <span class="k2">}</span>
+   <span class="k2">}</span>
+   <a href="../../index.html" target="_blank"><span class="a">free_config_entries</span></a><span class="k2">(</span><span class="k3">&amp;</span>sections<span class="k2">)</span><span class="k2">;</span>
+   <a href="../../index.html" target="_blank"><span class="a">free_config_entries</span></a><span class="k2">(</span><span class="k3">&amp;</span>entries<span class="k2">)</span><span class="k2">;</span></pre>
+
+</div>
+
+<div class="retval">
+Returns the number of valid strings in the names array.
+
+</div>
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">set_config_file</a></li>
+	<li><a href="../../index.html">get_config_string</a></li>
+	<li><a href="../../index.html">list_config_sections</a></li>
+	<li><a href="../../index.html">free_config_entries</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591831">
+		<a href="https://www.allegro.cc/forums/thread/591831">list_config_sections not working correctly and section name problem</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/678372" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,362</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.017841</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/configuration-routines/list_config_entries by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:15:53 GMT -->
+</html>

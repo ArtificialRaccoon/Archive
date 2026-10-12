@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Point.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC Point</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">Point</A></H2></H2><BLOCKQUOTE> S simple class that holds two integers representing a point in 2D space.</BLOCKQUOTE>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.85.3">Point</A></B>(int <!1><A HREF="Point.html#DOC.85.12">x</A>=0, int <!1><A HREF="Point.html#DOC.85.13">y</A>=0)
+<DD><I> Default constructor</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.85.4">operator==</A></B>(const <!1><A HREF="Point.html">Point</A> &amp;p) const 
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.85.5">operator!=</A></B>(const <!1><A HREF="Point.html">Point</A> &amp;p) const 
+<DD><I> Operators for comparing two points</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.85.6">operator<</A></B>(const <!1><A HREF="Rect.html">Rect</A> &amp;<!1><A HREF="Color.html#DOC.8.17">r</A>) const 
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.85.7">operator<=</A></B>(const <!1><A HREF="Rect.html">Rect</A> &amp;<!1><A HREF="Color.html#DOC.8.17">r</A>) const 
+<DD><I> Operators for checking whether the point is inside a rectangle or not.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.85.8">operator+=</A></B>(const <!1><A HREF="Point.html">Point</A> &amp;p)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.85.9">operator-=</A></B>(const <!1><A HREF="Point.html">Point</A> &amp;p)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Point.html">Point</A> <B><A HREF="#DOC.85.10">operator+</A></B>(const <!1><A HREF="Point.html">Point</A> &amp;p) const 
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Point.html">Point</A> <B><A HREF="#DOC.85.11">operator-</A></B>(const <!1><A HREF="Point.html">Point</A> &amp;p) const 
+<DD><I> Operators for doing simple vector arithmetic with two points.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.85.12">x</A></B>() const 
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.85.13">y</A></B>() const 
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.85.14">x</A></B>(int v)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.85.15">y</A></B>(int v)
+<DD><I> Get and set functions</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.85.1">posx</A></B>
+<DD><I> The underlaying x coordinate</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.85.2">posy</A></B>
+<DD><I> The underlaying y coordinate</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+S simple class that holds two integers representing a point in 2D space.
+It also has a number of functions and overloaded operators for manipulating
+point objects.
+
+<P></BLOCKQUOTE>
+<DL>
+
+<A NAME="posx"></A>
+<A NAME="DOC.85.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int posx</B></TT>
+<DD>
+The underlaying x coordinate
+<DL><DT><DD></DL><P>
+<A NAME="posy"></A>
+<A NAME="DOC.85.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int posy</B></TT>
+<DD>
+The underlaying y coordinate
+<DL><DT><DD></DL><P>
+<A NAME="Point"></A>
+<A NAME="DOC.85.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> Point(int <!1><A HREF="Point.html#DOC.85.12">x</A>=0, int <!1><A HREF="Point.html#DOC.85.13">y</A>=0)</B></TT>
+<DD>
+Default constructor
+<DL><DT><DD></DL><P>
+<A NAME="operator=="></A>
+<A NAME="DOC.85.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool operator==(const <!1><A HREF="Point.html">Point</A> &amp;p) const </B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="operator!="></A>
+<A NAME="DOC.85.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool operator!=(const <!1><A HREF="Point.html">Point</A> &amp;p) const </B></TT>
+<DD>
+Operators for comparing two points
+<DL><DT><DD></DL><P>
+<A NAME="operator<"></A>
+<A NAME="DOC.85.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool operator<(const <!1><A HREF="Rect.html">Rect</A> &amp;<!1><A HREF="Color.html#DOC.8.17">r</A>) const </B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="operator<="></A>
+<A NAME="DOC.85.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool operator<=(const <!1><A HREF="Rect.html">Rect</A> &amp;<!1><A HREF="Color.html#DOC.8.17">r</A>) const </B></TT>
+<DD>
+Operators for checking whether the point is inside a rectangle or not.
+The < operator checks the inside of the rectangle only, while <= checks
+for borders as well.
+<DL><DT><DD></DL><P>
+<A NAME="operator+="></A>
+<A NAME="DOC.85.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void operator+=(const <!1><A HREF="Point.html">Point</A> &amp;p)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="operator-="></A>
+<A NAME="DOC.85.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void operator-=(const <!1><A HREF="Point.html">Point</A> &amp;p)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="operator+"></A>
+<A NAME="DOC.85.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Point.html">Point</A> operator+(const <!1><A HREF="Point.html">Point</A> &amp;p) const </B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="operator-"></A>
+<A NAME="DOC.85.11"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Point.html">Point</A> operator-(const <!1><A HREF="Point.html">Point</A> &amp;p) const </B></TT>
+<DD>
+Operators for doing simple vector arithmetic with two points.
+
+<P>Examples:
+<PRE>
+      Point a(10, 20);
+      Point b(30, 40);
+
+<P>      Point c = a + b;    c = (40, 60)
+      Point d = b - a;    d = (20, 20)
+      c += a;             c = (50, 80)
+      c -= b;             c = (20, 40)
+</PRE>
+<DL><DT><DD></DL><P>
+<A NAME="x"></A>
+<A NAME="DOC.85.12"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int x() const </B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="y"></A>
+<A NAME="DOC.85.13"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int y() const </B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="x"></A>
+<A NAME="DOC.85.14"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void x(int v)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="y"></A>
+<A NAME="DOC.85.15"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void y(int v)</B></TT>
+<DD>
+Get and set functions
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DT><B>See Also:</B><DD><!1><A HREF="Size.html">Size</A><BR><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Point.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+</html>

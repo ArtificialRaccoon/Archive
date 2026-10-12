@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/bitmap-objects/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:47:41 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Bitmap objects</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">API</a></h2><ul>
+<li><a href="../using-allegro/index.html" >Using Allegro</a></li><li><a href="../structures-and-types-defined-by-allegro/index.html" >Structures and types defined by Allegro</a></li><li><a href="../unicode-routines/index.html" >Unicode routines</a></li><li><a href="../configuration-routines/index.html" >Configuration routines</a></li><li><a href="../mouse-routines/index.html" >Mouse routines</a></li><li><a href="../timer-routines/index.html" >Timer routines</a></li><li><a href="../keyboard-routines/index.html" >Keyboard routines</a></li><li><a href="../joystick-routines/index.html" >Joystick routines</a></li><li><a href="../graphics-modes/index.html" >Graphics modes</a></li><li><strong>Bitmap objects</strong></li><li><a href="../loading-image-files/index.html" >Loading image files</a></li><li><a href="../palette-routines/index.html" >Palette routines</a></li><li><a href="../truecolor-pixel-formats/index.html" >Truecolor pixel formats</a></li><li><a href="../drawing-primitives/index.html" >Drawing primitives</a></li><li><a href="../blitting-and-sprites/index.html" >Blitting and sprites</a></li><li><a href="../rle-sprites/index.html" >RLE sprites</a></li><li><a href="../compiled-sprites/index.html" >Compiled sprites</a></li><li><a href="../fonts/index.html" >Fonts</a></li><li><a href="../text-output/index.html" >Text output</a></li><li><a href="../polygon-rendering/index.html" >Polygon rendering</a></li><li><a href="../transparency-and-patterned-drawing/index.html" >Transparency and patterned drawing</a></li><li><a href="../converting-between-color-formats/index.html" >Converting between color formats</a></li><li><a href="../direct-access-to-video-memory/index.html" >Direct access to video memory</a></li><li><a href="../flic-routines/index.html" >FLIC routines</a></li><li><a href="../sound-init-routines/index.html" >Sound init routines</a></li><li><a href="../mixer-routines/index.html" >Mixer routines</a></li><li><a href="../digital-sample-routines/index.html" >Digital sample routines</a></li><li><a href="../music-routines-(midi)/index.html" >Music routines (MIDI)</a></li><li><a href="../audio-stream-routines/index.html" >Audio stream routines</a></li><li><a href="../recording-routines/index.html" >Recording routines</a></li><li><a href="../file-and-compression-routines/index.html" >File and compression routines</a></li><li><a href="../datafile-routines/index.html" >Datafile routines</a></li><li><a href="../fixed-point-math-routines/index.html" >Fixed point math routines</a></li><li><a href="../3d-math-routines/index.html" >3D math routines</a></li><li><a href="../quaternion-math-routines/index.html" >Quaternion math routines</a></li><li><a href="../gui-routines/index.html" >GUI routines</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>Bitmap objects</h1>
+
+Once you have selected a graphics mode, you can draw things onto the display
+via the `screen' bitmap. All the Allegro graphics routines draw onto BITMAP
+structures, which are areas of memory containing rectangular images, stored
+as packed byte arrays (in 8-bit modes one byte per pixel, in 15- and 16-bit
+modes two bytes per pixel, in 24-bit modes 3 bytes per pixel and in 32-bit
+modes 4 bytes per pixel). You can create and manipulate bitmaps in system
+RAM, or you can write to the special `screen' bitmap which represents the
+video memory in your graphics card.<br /><br />
+
+Read chapter "Direct access to video memory" for information on how to get
+direct access to the image memory in a bitmap.<br /><br />
+
+Allegro supports several different types of bitmaps:
+<ul><li>
+   The `screen' bitmap, which represents the hardware video memory. Ultimately
+   you have to draw onto this in order for your image to be visible. It is
+   destroyed by any subsequent calls to set_gfx_mode(), so you should never
+   attempt to destroy it yourself.
+<li>
+   Memory bitmaps, which are located in system RAM and can be used to store
+   graphics or as temporary drawing spaces for double buffered systems. These
+   can be obtained by calling create_bitmap(), load_pcx(), or by loading a
+   grabber datafile.
+<li>
+   Sub-bitmaps. These share image memory with a parent bitmap (which can be
+   the screen, a video or system bitmap, a memory bitmap, or another
+   sub-bitmap), so drawing onto them will also change their parent. They can
+   be of any size and located anywhere within the parent bitmap, and can have
+   their own clipping rectangles, so they are a useful way of dividing a
+   bitmap into several smaller units, eg. splitting a large virtual screen
+   into multiple sections (see examples/exscroll.c).<br /><br />
+
+   Warning: Make sure not to destroy a bitmap before all of its sub-bitmaps,
+   otherwise bad things will happen when you try to access one of these
+   sub-bitmaps.
+<li>
+   Video memory bitmaps. These are created by the create_video_bitmap()
+   function, and are usually implemented as sub-bitmaps of the screen object.
+   They must be destroyed by destroy_bitmap() before any subsequent calls to
+   set_gfx_mode().
+<li>
+   System bitmaps. These are created by the create_system_bitmap() function,
+   and are a sort of halfway house between memory and video bitmaps. They
+   live in system memory, so you aren't limited by the amount of video ram in
+   your card, but they are stored in a platform-specific format that may
+   enable better hardware acceleration than is possible with a normal memory
+   bitmap (see the GFX_HW_SYS_TO_VRAM_BLIT and GFX_HW_SYS_TO_VRAM_BLIT_MASKED
+   flags in gfx_capabilities). System bitmaps must be accessed in the same way
+   as video bitmaps, using the bank switch functions and bmp_write*() macros.
+   Not every platform implements this type of bitmap: if they aren't
+   available, create_system_bitmap() will function identically to
+   create_bitmap(). They must be destroyed by destroy_bitmap() before any
+   subsequent calls to set_gfx_mode().
+</ul>
+
+<ul>
+	<li><a href="screen.html">screen</a> - Global pointer to the screen hardware video memory.</li>
+	<li><a href="screen_w.html">SCREEN_W</a></li>
+	<li><a href="screen_h.html">SCREEN_H</a> - Global define to obtain the size of the screen.</li>
+	<li><a href="virtual_w.html">VIRTUAL_W</a></li>
+	<li><a href="virtual_h.html">VIRTUAL_H</a> - Global define to obtain the virtual size of the screen.</li>
+	<li><a href="create_bitmap.html">create_bitmap</a> - Creates a memory bitmap.</li>
+	<li><a href="create_bitmap_ex.html">create_bitmap_ex</a> - Creates a memory bitmap specifying color depth.</li>
+	<li><a href="create_sub_bitmap.html">create_sub_bitmap</a> - Creates a memory sub bitmap.</li>
+	<li><a href="create_video_bitmap.html">create_video_bitmap</a> - Creates a video memory bitmap.</li>
+	<li><a href="create_system_bitmap.html">create_system_bitmap</a> - Creates a system memory bitmap.</li>
+	<li><a href="destroy_bitmap.html">destroy_bitmap</a> - Destroys any type of created bitmap.</li>
+	<li><a href="lock_bitmap.html">lock_bitmap</a> - Locks the memory used by a bitmap.</li>
+	<li><a href="bitmap_color_depth.html">bitmap_color_depth</a> - Returns the color depth of the specified bitmap.</li>
+	<li><a href="bitmap_mask_color.html">bitmap_mask_color</a> - Returns the mask color of the specified bitmap.</li>
+	<li><a href="is_same_bitmap.html">is_same_bitmap</a> - Tells if two bitmaps describe the same drawing surface.</li>
+	<li><a href="is_planar_bitmap.html">is_planar_bitmap</a> - Tells if a bitmap is a planar screen bitmap.</li>
+	<li><a href="is_linear_bitmap.html">is_linear_bitmap</a> - Tells if a bitmap is linear.</li>
+	<li><a href="is_memory_bitmap.html">is_memory_bitmap</a> - Tells if a bitmap is a memory bitmap.</li>
+	<li><a href="is_screen_bitmap.html">is_screen_bitmap</a> - Tells if a bitmap is the screen bitmap or sub bitmap.</li>
+	<li><a href="is_video_bitmap.html">is_video_bitmap</a> - Tells if a bitmap is a screen bitmap, video memory or sub bitmap.</li>
+	<li><a href="is_system_bitmap.html">is_system_bitmap</a> - Tells if a bitmap is a system bitmap or sub bitmap.</li>
+	<li><a href="is_sub_bitmap.html">is_sub_bitmap</a> - Tells if a bitmap is a sub bitmap.</li>
+	<li><a href="acquire_bitmap.html">acquire_bitmap</a> - Locks the bitmap before drawing onto it.</li>
+	<li><a href="release_bitmap.html">release_bitmap</a> - Releases a previously locked bitmap.</li>
+	<li><a href="acquire_screen.html">acquire_screen</a> - Shortcut of acquire_bitmap(screen);</li>
+	<li><a href="release_screen.html">release_screen</a> - Shortcut of release_bitmap(screen);</li>
+	<li><a href="set_clip_rect.html">set_clip_rect</a> - Sets the clipping rectangle of a bitmap.</li>
+	<li><a href="get_clip_rect.html">get_clip_rect</a> - Returns the clipping rectangle of a bitmap.</li>
+	<li><a href="add_clip_rect.html">add_clip_rect</a> - Intersects a bitmap's clipping rectangle with the given area.</li>
+	<li><a href="set_clip_state.html">set_clip_state</a> - Turns on or off the clipping of a bitmap.</li>
+	<li><a href="get_clip_state.html">get_clip_state</a> - Tells if clipping is on for a bitmap.</li>
+	<li><a href="is_inside_bitmap.html">is_inside_bitmap</a> - Tells if a point is inside a bitmap.</li>
+</ul>
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,165</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>71.514125</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/bitmap-objects/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:48:33 GMT -->
+</html>

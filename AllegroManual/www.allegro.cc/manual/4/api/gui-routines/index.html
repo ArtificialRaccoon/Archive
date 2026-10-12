@@ -1,0 +1,376 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/gui-routines/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:57:04 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>GUI routines</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">API</a></h2><ul>
+<li><a href="../using-allegro/index.html" >Using Allegro</a></li><li><a href="../structures-and-types-defined-by-allegro/index.html" >Structures and types defined by Allegro</a></li><li><a href="../unicode-routines/index.html" >Unicode routines</a></li><li><a href="../configuration-routines/index.html" >Configuration routines</a></li><li><a href="../mouse-routines/index.html" >Mouse routines</a></li><li><a href="../timer-routines/index.html" >Timer routines</a></li><li><a href="../keyboard-routines/index.html" >Keyboard routines</a></li><li><a href="../joystick-routines/index.html" >Joystick routines</a></li><li><a href="../graphics-modes/index.html" >Graphics modes</a></li><li><a href="../bitmap-objects/index.html" >Bitmap objects</a></li><li><a href="../loading-image-files/index.html" >Loading image files</a></li><li><a href="../palette-routines/index.html" >Palette routines</a></li><li><a href="../truecolor-pixel-formats/index.html" >Truecolor pixel formats</a></li><li><a href="../drawing-primitives/index.html" >Drawing primitives</a></li><li><a href="../blitting-and-sprites/index.html" >Blitting and sprites</a></li><li><a href="../rle-sprites/index.html" >RLE sprites</a></li><li><a href="../compiled-sprites/index.html" >Compiled sprites</a></li><li><a href="../fonts/index.html" >Fonts</a></li><li><a href="../text-output/index.html" >Text output</a></li><li><a href="../polygon-rendering/index.html" >Polygon rendering</a></li><li><a href="../transparency-and-patterned-drawing/index.html" >Transparency and patterned drawing</a></li><li><a href="../converting-between-color-formats/index.html" >Converting between color formats</a></li><li><a href="../direct-access-to-video-memory/index.html" >Direct access to video memory</a></li><li><a href="../flic-routines/index.html" >FLIC routines</a></li><li><a href="../sound-init-routines/index.html" >Sound init routines</a></li><li><a href="../mixer-routines/index.html" >Mixer routines</a></li><li><a href="../digital-sample-routines/index.html" >Digital sample routines</a></li><li><a href="../music-routines-(midi)/index.html" >Music routines (MIDI)</a></li><li><a href="../audio-stream-routines/index.html" >Audio stream routines</a></li><li><a href="../recording-routines/index.html" >Recording routines</a></li><li><a href="../file-and-compression-routines/index.html" >File and compression routines</a></li><li><a href="../datafile-routines/index.html" >Datafile routines</a></li><li><a href="../fixed-point-math-routines/index.html" >Fixed point math routines</a></li><li><a href="../3d-math-routines/index.html" >3D math routines</a></li><li><a href="../quaternion-math-routines/index.html" >Quaternion math routines</a></li><li><strong>GUI routines</strong></li></ul>
+</div>
+
+<div id="contents">
+<h1>GUI routines</h1>
+
+Allegro contains an object-oriented dialog manager, which was originally
+based on the Atari GEM system (form_do(), objc_draw(), etc: old ST
+programmers will know what we are talking about :-) You can use the GUI as-is
+to knock out simple interfaces for things like the test program and grabber
+utility, or you can use it as a basis for more complicated systems of your
+own. Allegro lets you define your own object types by writing new dialog
+procedures, so you can take complete control over the visual aspects of the
+interface while still using Allegro to handle input from the mouse,
+keyboard, joystick, etc.<br /><br />
+
+A GUI dialog is stored as an array of DIALOG objects, read chapter
+"Structures and types defined by Allegro" for an internal description of the
+DIALOG structure. The array should end with an object which has the proc
+pointer set to NULL. Each object has a flags field which may contain any
+combination of the bit flags:
+<pre class="text">
+   D_EXIT          - this object should close the dialog when it is
+		     clicked
+   D_SELECTED      - this object is selected
+   D_GOTFOCUS      - this object has got the input focus
+   D_GOTMOUSE      - the mouse is currently on top of this object
+   D_HIDDEN        - this object is hidden and inactive
+   D_DISABLED      - this object is greyed-out and inactive
+   D_DIRTY         - this object needs to be redrawn
+   D_INTERNAL      - don't use this! It is for internal use by the
+		     library...
+   D_USER          - any powers of two above this are free for your
+		     own use
+</pre>
+Each object is controlled by a dialog procedure, which is stored in the proc
+pointer. This will be called by the dialog manager whenever any action
+concerning the object is required, or you can call it directly with the
+object_message() function. The dialog procedure should follow the form:
+<pre class="code">   <span class="k1">int</span> foo<span class="k2">(</span><span class="k1">int</span> msg, DIALOG <span class="k3">*</span>d, <span class="k1">int</span> c<span class="k2">)</span><span class="k2">;</span></pre>
+It will be passed a flag (msg) indicating what action it should perform, a
+pointer to the object concerned (d), and if msg is MSG_CHAR or MSG_XCHAR,
+the key that was pressed (c). Note that d is a pointer to a specific object,
+and not to the entire dialog.<br /><br />
+
+The dialog procedure should return one of the values:
+<pre class="text">
+   D_O_K          - normal return status
+   D_CLOSE        - tells the dialog manager to close the dialog
+   D_REDRAW       - tells the dialog manager to redraw the entire
+		    dialog
+   D_REDRAWME     - tells the dialog manager to redraw the current
+		    object
+   D_WANTFOCUS    - requests that the input focus be given to this
+		    object
+   D_USED_CHAR    - MSG_CHAR and MSG_XCHAR return this if they used
+		    the key
+</pre>
+Dialog procedures may be called with any of the messages:<br /><br />
+
+<b>MSG_START:</b><br>
+   Tells the object to initialise itself. The dialog manager sends this to
+   all the objects in a dialog just before it displays the dialog.<br /><br />
+
+<b>MSG_END:</b><br>
+   Sent to all objects when closing a dialog, allowing them to perform
+   whatever cleanup operations they require.<br /><br />
+
+<b>MSG_DRAW:</b><br>
+   Tells the object to draw itself onto the screen. The mouse pointer will
+   be turned off when this message is sent, so the drawing code does not
+   need to worry about it.<br /><br />
+
+<b>MSG_CLICK:</b><br>
+   Informs the object that a mouse button has been clicked while the mouse
+   was on top of the object. Typically an object will perform its own mouse
+   tracking as long as the button is held down, and only return from this
+   message handler when it is released.<br /><br />
+
+   If you process this message, use the functions gui_mouse_*() to read the
+   state of the mouse.<br /><br />
+
+<b>MSG_DCLICK:</b><br>
+   Sent when the user double-clicks on an object. A MSG_CLICK will be sent
+   when the button is first pressed, then MSG_DCLICK if it is released and
+   pressed again within a short space of time.<br /><br />
+
+   If you process this message, use the functions gui_mouse_*() to read the
+   state of the mouse.<br /><br />
+
+<b>MSG_KEY:</b><br>
+   Sent when the keyboard shortcut for the object is pressed, or if enter,
+   space, or a joystick button is pressed while it has the input focus.<br /><br />
+
+<b>MSG_CHAR:</b><br>
+   When a key is pressed, this message is sent to the object that has the
+   input focus, with a readkey() format character code (ASCII value in the
+   low byte, scancode in the high byte) as the c parameter. If the object
+   deals with the keypress it should return D_USED_CHAR, otherwise it should
+   return D_O_K to allow the default keyboard interface to operate. If you
+   need to access Unicode character input, you should use MSG_UCHAR instead
+   of MSG_CHAR.<br /><br />
+
+<b>MSG_UCHAR:</b><br>
+   If an object ignores the MSG_CHAR input, this message will be sent
+   immediately after it, passed the full Unicode key value as the c
+   parameter. This enables you to read character codes greater than 255, but
+   cannot tell you anything about the scancode: if you need to know that,
+   use MSG_CHAR instead. This handler should return D_USED_CHAR if it
+   processed the input, or D_O_K otherwise.<br /><br />
+
+<b>MSG_XCHAR:</b><br>
+   When a key is pressed, Allegro will send a MSG_CHAR and MSG_UCHAR to the
+   object with the input focus. If this object doesn't process the key (ie.
+   it returns D_O_K rather than D_USED_CHAR), the dialog manager will look
+   for an object with a matching keyboard shortcut in the key field, and
+   send it a MSG_KEY. If this fails, it broadcasts a MSG_XCHAR to all
+   objects in the dialog, allowing them to respond to special keypresses
+   even when they don't have the input focus. Normally you should ignore
+   this message (return D_O_K rather than D_USED_CHAR), in which case
+   Allegro will perform default actions such as moving the focus in response
+   to the arrow keys and closing the dialog if ESC is pressed.<br /><br />
+
+<b>MSG_WANTFOCUS:</b><br>
+   Queries whether an object is willing to accept the input focus. It should
+   return D_WANTFOCUS if it does, or D_O_K if it isn't interested in getting
+   user input.<br /><br />
+
+<b>MSG_GOTFOCUS:</b><br>
+<b>MSG_LOSTFOCUS:</b><br>
+   Sent whenever an object gains or loses the input focus. These messages
+   will always be followed by a MSG_DRAW, to let objects display themselves
+   differently when they have the input focus. If you return D_WANTFOCUS in
+   response to a MSG_LOSTFOCUS event, this will prevent your object from
+   losing the focus when the mouse moves off it onto the screen background
+   or some inert object, so it will only lose the input focus when some
+   other object is ready to take over the focus (this trick is used by the
+   d_edit_proc() object).<br /><br />
+
+<b>MSG_GOTMOUSE:</b><br>
+<b>MSG_LOSTMOUSE:</b><br>
+   Sent when the mouse moves on top of or away from an object. Unlike the
+   focus messages, these are not followed by a MSG_DRAW, so if the object is
+   displayed differently when the mouse is on top of it, it is responsible
+   for redrawing itself in response to these messages.<br /><br />
+
+<b>MSG_IDLE:</b><br>
+   Sent whenever the dialog manager has nothing better to do.<br /><br />
+
+<b>MSG_RADIO:</b><br>
+   Sent by radio button objects to deselect other buttons in the same group
+   when they are clicked. The group number is passed in the c message
+   parameter.<br /><br />
+
+<b>MSG_WHEEL:</b><br>
+   Sent to the focused object whenever the mouse wheel moves. The c message
+   parameter contains the number of clicks.<br /><br />
+
+<b>MSG_LPRESS, MSG_MPRESS, MSG_RPRESS:</b><br>
+   Sent when the corresponding mouse button is pressed.<br /><br />
+
+<b>MSG_LRELEASE, MSG_MRELEASE, MSG_RRELEASE:</b><br>
+   Sent when the corresponding mouse button is released.<br /><br />
+
+<b>MSG_USER:</b><br>
+   The first free message value. Any numbers from here on (MSG_USER,
+   MSG_USER+1, MSG_USER+2, ... MSG_USER+n) are free to use for whatever you
+   like.<br /><br />
+
+Allegro provides several standard dialog procedures. You can use these as
+they are to provide simple user interface objects, or you can call them from
+within your own dialog procedures, resulting in a kind of OOP inheritance.
+For instance, you could make an object which calls d_button_proc to draw
+itself, but handles the click message in a different way, or an object which
+calls d_button_proc for everything except drawing itself, so it would behave
+like a normal button but could look completely different.<br /><br />
+
+Since the release of Allegro version 3.9.33 (CVS), some GUI objects and
+menus are being drawn differently unlike in previous Allegro versions. The
+changes are the following:
+<ul><li>
+   Shadows under d_shadow_box_proc and d_button_proc are always black.
+<li>
+   The most important (and immediately visible) change is, that some objects
+   are being drawn smaller. The difference is exactly one pixel in both
+   height and width, when comparing to previous versions. The reason is,
+   that in previous versions these objects were too large on the screen -
+   their size was d-&gt;w+1 and d-&gt;h+1 pixels (and not d-&gt;w and d-&gt;h, as it
+   should be). This change affects the following objects :
+<pre class="text">
+      d_box_proc,
+      d_shadow_box_proc,
+      d_button_proc,
+      d_check_proc,
+      d_radio_proc,
+      d_list_proc,
+      d_text_list_proc and
+      d_textbox_proc.
+</pre>
+   When you want to convert old dialogs to look equally when compiling with
+   the new Allegro version, just increase the size of the mentioned objects
+   by one pixel in both width and height fields.
+<li>
+   When a GUI menu item (not in a bar menu) has a child menu, there is a
+   small arrow next to the child menu name, pointing to the right - so the
+   user can immediately see that this menu item has a child menu - and
+   there is no need to use such menu item names as for example "New...",
+   to show that it has a child menu. The submenu will be drawn to the right
+   of the parent menu, trying not to overlap it.
+</ul><br><br /><br />
+
+Menus had been forgotten during the changes for 3.9.33 (CVS), so they were
+still drawn too large until version 4.1.0.
+
+<ul>
+	<li><a href="d_clear_proc.html">d_clear_proc</a> - Dialog procedure to clear the screen.</li>
+	<li><a href="d_box_proc.html">d_box_proc</a></li>
+	<li><a href="d_shadow_box_proc.html">d_shadow_box_proc</a> - Dialog procedure drawing boxes onto the screen.</li>
+	<li><a href="d_bitmap_proc.html">d_bitmap_proc</a> - Dialog procedure drawing a bitmap.</li>
+	<li><a href="d_text_proc.html">d_text_proc</a></li>
+	<li><a href="d_ctext_proc">d_ctext_proc</a></li>
+	<li><a href="d_rtext_proc.html">d_rtext_proc</a> - Dialogs procedure drawing text onto the screen.</li>
+	<li><a href="d_button_proc.html">d_button_proc</a> - Dialog procedure implementing a button object.</li>
+	<li><a href="d_check_proc.html">d_check_proc</a> - Dialog procedure implementing a check box object.</li>
+	<li><a href="d_radio_proc.html">d_radio_proc</a> - Dialog procedure implementing a radio button object.</li>
+	<li><a href="d_icon_proc.html">d_icon_proc</a> - Dialog procedure implementing a bitmap button.</li>
+	<li><a href="d_keyboard_proc.html">d_keyboard_proc</a> - Invisible dialog procedure for implementing keyboard shortcuts.</li>
+	<li><a href="d_edit_proc.html">d_edit_proc</a> - Dialog procedure implementing an editable text object.</li>
+	<li><a href="d_list_proc.html">d_list_proc</a> - Dialog procedure implementing a list box object.</li>
+	<li><a href="d_text_list_proc.html">d_text_list_proc</a> - Dialog procedure implementing a list box object with type ahead.</li>
+	<li><a href="d_textbox_proc.html">d_textbox_proc</a> - Dialog procedure implementing a text box object.</li>
+	<li><a href="d_slider_proc.html">d_slider_proc</a> - Dialog procedure implementing a slider control object.</li>
+	<li><a href="d_menu_proc.html">d_menu_proc</a> - Dialog procedure implementing a menu bar object.</li>
+	<li><a href="d_yield_proc.html">d_yield_proc</a> - Invisible dialog procedure that yields CPU timeslices.</li>
+</ul>
+<h2>GUI variables</h2>
+The behaviour of the dialog manager can be controlled by the following
+global variables.
+
+<ul>
+	<li><a href="gui-variables/gui_mouse_focus.html">gui_mouse_focus</a> - Tells if the input focus follows the mouse pointer.</li>
+	<li><a href="gui-variables/gui_fg_color.html">gui_fg_color</a></li>
+	<li><a href="gui-variables/gui_bg_color.html">gui_bg_color</a> - The foreground and background colors for the standard dialogs.</li>
+	<li><a href="gui-variables/gui_mg_color.html">gui_mg_color</a> - The color used for displaying greyed-out dialog objects.</li>
+	<li><a href="gui-variables/gui_font_baseline.html">gui_font_baseline</a> - Adjusts the keyboard shortcut underscores height.</li>
+	<li><a href="gui-variables/gui_mouse_x.html">gui_mouse_x</a></li>
+	<li><a href="gui-variables/gui_mouse_y.html">gui_mouse_y</a></li>
+	<li><a href="gui-variables/gui_mouse_z.html">gui_mouse_z</a></li>
+	<li><a href="gui-variables/gui_mouse_b.html">gui_mouse_b</a> - Hook functions used by the GUI routines to access the mouse state.</li>
+</ul>
+<h2>GUI font</h2>
+You can change the global 'font' pointer to make the GUI objects use
+something other than the standard 8x8 font. The standard dialog procedures,
+menus, and alert boxes, will work with fonts of any size, but the
+gfx_mode_select() dialog will look wrong with anything other than 8x8 fonts.
+
+<ul>
+	<li><a href="gui-font/gui_textout_ex.html">gui_textout_ex</a> - Draws a text string onto the screen with keyboard shortcut underbars.</li>
+	<li><a href="gui-font/gui_strlen.html">gui_strlen</a> - Returns the length of a string in pixels.</li>
+	<li><a href="gui-font/gui_set_screen.html">gui_set_screen</a> - Changes the bitmap surface GUI routines draw to.</li>
+	<li><a href="gui-font/gui_get_screen.html">gui_get_screen</a> - Returns the bitmap surface GUI routines draw to.</li>
+	<li><a href="gui-font/position_dialog.html">position_dialog</a> - Moves an array of dialog objects to the specified position.</li>
+	<li><a href="gui-font/centre_dialog.html">centre_dialog</a> - Centers an array of dialog objects.</li>
+	<li><a href="gui-font/set_dialog_color.html">set_dialog_color</a> - Sets the colors of an array of dialog objects.</li>
+	<li><a href="gui-font/find_dialog_focus.html">find_dialog_focus</a> - Searches the dialog for the object which has the input focus.</li>
+	<li><a href="gui-font/offer_focus.html">offer_focus</a> - Offers the input focus to a particular object.</li>
+	<li><a href="gui-font/object_message.html">object_message</a> - Sends a message to an object and returns the answer.</li>
+	<li><a href="gui-font/dialog_message.html">dialog_message</a> - Sends a message to all the objects in an array.</li>
+	<li><a href="gui-font/broadcast_dialog_message.html">broadcast_dialog_message</a> - Broadcasts a message to all the objects in the active dialog.</li>
+	<li><a href="gui-font/do_dialog.html">do_dialog</a> - Basic dialog manager function.</li>
+	<li><a href="gui-font/popup_dialog.html">popup_dialog</a> - do_dialog() used for popup dialogs.</li>
+	<li><a href="gui-font/init_dialog.html">init_dialog</a> - Low level initialisation of a dialog.</li>
+	<li><a href="gui-font/update_dialog.html">update_dialog</a> - Low level function to update a dialog player.</li>
+	<li><a href="gui-font/shutdown_dialog.html">shutdown_dialog</a> - Destroys a dialog player returned by init_dialog().</li>
+	<li><a href="gui-font/active_dialog.html">active_dialog</a> - Global pointer to the most recent activated dialog.</li>
+</ul>
+<h2>GUI menus</h2>
+Popup or pulldown menus are created as an array of MENU structures. Read
+chapter "Structures and types defined by Allegro" for an internal description
+of the MENU structure.<br /><br />
+
+Each menu item contains a text string. This can use the '&amp;' character to
+indicate keyboard shortcuts, or can be an zero-length string to display the
+item as a non-selectable splitter bar. If the string contains a "\t" tab
+character, any text after this will be right-justified, eg. for displaying
+keyboard shortcut information. The proc pointer is a function which will be
+called when the menu item is selected, and child points to another menu,
+allowing you to create nested menus. Both proc and child may be NULL. The
+proc function returns an integer which is ignored if the menu was brought up
+by calling do_menu(), but which is passed back to the dialog manager if it
+was created by a d_menu_proc() object. The array of menu items is terminated
+by an entry with a NULL text pointer.<br /><br />
+
+Menu items can be disabled (greyed-out) by setting the D_DISABLED bit in the
+flags field, and a check mark can be displayed next to them by setting the
+D_SELECTED bit. With the default alignment and font this will usually
+overlap the menu text, so if you are going to use checked menu items it
+would be a good idea to prefix all your options with a space or two, to
+ensure there is room for the check.
+
+<ul>
+	<li><a href="gui-menus/do_menu.html">do_menu</a> - Displays an animates a popup menu.</li>
+	<li><a href="gui-menus/init_menu.html">init_menu</a> - Low level initialisation of a menu.</li>
+	<li><a href="gui-menus/update_menu.html">update_menu</a> - Low level function to update a menu player.</li>
+	<li><a href="gui-menus/shutdown_menu.html">shutdown_menu</a> - Destroys a menu player object returned by init_menu().</li>
+	<li><a href="gui-menus/active_menu.html">active_menu</a> - Global pointer to the most recent activated menu.</li>
+	<li><a href="gui-menus/gui_menu_draw_menu.html">gui_menu_draw_menu</a></li>
+	<li><a href="gui-menus/gui_menu_draw_menu_item.html">gui_menu_draw_menu_item</a> - Hooks to modify the appearance of menus.</li>
+	<li><a href="gui-menus/alert.html">alert</a> - Displays a popup alert box.</li>
+	<li><a href="gui-menus/alert3.html">alert3</a> - Like alert(), but with three buttons.</li>
+	<li><a href="gui-menus/file_select_ex.html">file_select_ex</a> - Displays the Allegro file selector with a caption.</li>
+	<li><a href="gui-menus/gfx_mode_select.html">gfx_mode_select</a> - Displays the Allegro graphics mode selection dialog.</li>
+	<li><a href="gui-menus/gfx_mode_select_ex.html">gfx_mode_select_ex</a> - Extended version of the graphics mode selection dialog.</li>
+	<li><a href="gui-menus/gfx_mode_select_filter.html">gfx_mode_select_filter</a> - Even more extended version of the graphics mode selection dialog.</li>
+	<li><a href="gui-menus/gui_shadow_box_proc.html">gui_shadow_box_proc</a></li>
+	<li><a href="gui-menus/gui_ctext_proc.html">gui_ctext_proc</a></li>
+	<li><a href="gui-menus/gui_button_proc.html">gui_button_proc</a></li>
+	<li><a href="gui-menus/gui_edit_proc.html">gui_edit_proc</a></li>
+	<li><a href="gui-menus/gui_list_proc.html">gui_list_proc</a></li>
+	<li><a href="gui-menus/gui_text_list_proc.html">gui_text_list_proc</a> - Hooks to customise the look and feel of Allegro dialogs.</li>
+</ul>
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">do_menu</a></li>
+	<li><a href="../../index.html">d_menu_proc</a></li>
+	<li><a href="../../index.html">gui_menu_draw_menu</a></li>
+</ul>
+</div>
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,181</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>44.201424</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/gui-routines/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:58:18 GMT -->
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/file-and-compression-routines/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:52:41 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>File and compression routines</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">API</a></h2><ul>
+<li><a href="../using-allegro/index.html" >Using Allegro</a></li><li><a href="../structures-and-types-defined-by-allegro/index.html" >Structures and types defined by Allegro</a></li><li><a href="../unicode-routines/index.html" >Unicode routines</a></li><li><a href="../configuration-routines/index.html" >Configuration routines</a></li><li><a href="../mouse-routines/index.html" >Mouse routines</a></li><li><a href="../timer-routines/index.html" >Timer routines</a></li><li><a href="../keyboard-routines/index.html" >Keyboard routines</a></li><li><a href="../joystick-routines/index.html" >Joystick routines</a></li><li><a href="../graphics-modes/index.html" >Graphics modes</a></li><li><a href="../bitmap-objects/index.html" >Bitmap objects</a></li><li><a href="../loading-image-files/index.html" >Loading image files</a></li><li><a href="../palette-routines/index.html" >Palette routines</a></li><li><a href="../truecolor-pixel-formats/index.html" >Truecolor pixel formats</a></li><li><a href="../drawing-primitives/index.html" >Drawing primitives</a></li><li><a href="../blitting-and-sprites/index.html" >Blitting and sprites</a></li><li><a href="../rle-sprites/index.html" >RLE sprites</a></li><li><a href="../compiled-sprites/index.html" >Compiled sprites</a></li><li><a href="../fonts/index.html" >Fonts</a></li><li><a href="../text-output/index.html" >Text output</a></li><li><a href="../polygon-rendering/index.html" >Polygon rendering</a></li><li><a href="../transparency-and-patterned-drawing/index.html" >Transparency and patterned drawing</a></li><li><a href="../converting-between-color-formats/index.html" >Converting between color formats</a></li><li><a href="../direct-access-to-video-memory/index.html" >Direct access to video memory</a></li><li><a href="../flic-routines/index.html" >FLIC routines</a></li><li><a href="../sound-init-routines/index.html" >Sound init routines</a></li><li><a href="../mixer-routines/index.html" >Mixer routines</a></li><li><a href="../digital-sample-routines/index.html" >Digital sample routines</a></li><li><a href="../music-routines-(midi)/index.html" >Music routines (MIDI)</a></li><li><a href="../audio-stream-routines/index.html" >Audio stream routines</a></li><li><a href="../recording-routines/index.html" >Recording routines</a></li><li><strong>File and compression routines</strong></li><li><a href="../datafile-routines/index.html" >Datafile routines</a></li><li><a href="../fixed-point-math-routines/index.html" >Fixed point math routines</a></li><li><a href="../3d-math-routines/index.html" >3D math routines</a></li><li><a href="../quaternion-math-routines/index.html" >Quaternion math routines</a></li><li><a href="../gui-routines/index.html" >GUI routines</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>File and compression routines</h1>
+
+The following routines implement a fast buffered file I/O system, which
+supports the reading and writing of compressed files using a ring buffer
+algorithm based on the LZSS compressor by Haruhiko Okumura. This does not
+achieve quite such good compression as programs like zip and lha, but
+unpacking is very fast and it does not require much memory. Packed files
+always begin with the 32-bit value F_PACK_MAGIC, and autodetect files with
+the value F_NOPACK_MAGIC.<br /><br />
+
+The following FA_* flags are guaranteed to work:
+<pre class="text">
+      FA_NONE           - Exclude files that have any attribute set
+      FA_RDONLY         - Directory entries that are unwritable for current user
+      FA_HIDDEN         - Hidden flag
+      FA_DIREC          - Directories
+      FA_SYSTEM         - Files with system flag set (DOS/Windows only)
+      FA_LABEL          - Files with volume label flag set (DOS/Windows only)
+      FA_ARCH           - Files with archive flag set (DOS/Windows only)
+      FA_ALL            - Match all attributes</pre>
+Do not use any other flags from DOS/Windows or your code will not compile on
+another platform.
+FA_RDONLY is for directory entries with read-only flag on DOS-like systems or
+unwritable by current user on Unix-like systems. Hidden files are directory
+entries that have the hidden flag set (DOS/Windows) or have names starting with
+'.' (UNIX, excluding '.' and '..').
+Flags can be combined using '|' (binary OR operator).<br /><br />
+
+When passed to the functions as the 'attrib' parameter, these flags
+represent an upper set in which the actual flag set of a matching file must
+be included. That is, in order for a file to be matching, its attributes
+may contain any of the specified flags but must not contain any of the
+unspecified flags. In other words, you explictly <i>exclude</i> the flags that you
+do <i>not</i> specify. Thus if you pass 'FA_DIREC | FA_RDONLY', normal files
+and directories will be included as well as read-only files and
+directories, but not hidden files and directories. Similarly, if you pass
+'FA_ARCH' then both archived and non-archived files will be included. If
+FA_NONE is passed all attributes are excluded and only files with no attributes
+are returned. Conversely, if you pass FA_ALL, no attributes are excluded so all
+files are returned (which is what you would usually want).<br /><br />
+
+Functions which accept wildcards as file names support the meta characters
+`*' (which means, zero or any quantity of characters) and `?' (which means
+any character, but only one).
+
+<ul>
+	<li><a href="get_executable_name.html">get_executable_name</a> - Obtains the full path to the current executable.</li>
+	<li><a href="fix_filename_case.html">fix_filename_case</a> - Converts a filename to a standardised case.</li>
+	<li><a href="fix_filename_slashes.html">fix_filename_slashes</a> - Converts all the directory separators to a standard character.</li>
+	<li><a href="canonicalize_filename.html">canonicalize_filename</a> - Converts any filename into its canonical form.</li>
+	<li><a href="make_absolute_filename.html">make_absolute_filename</a> - Makes an absolute filename from a path and relative filename.</li>
+	<li><a href="make_relative_filename.html">make_relative_filename</a> - Tries to make a relative filename from absolute path and filename.</li>
+	<li><a href="is_relative_filename.html">is_relative_filename</a> - Returns TRUE if the filename is relative.</li>
+	<li><a href="replace_filename.html">replace_filename</a> - Replaces path+filename with a new filename tail.</li>
+	<li><a href="replace_extension.html">replace_extension</a> - Replaces filename+extension with a new extension tail.</li>
+	<li><a href="append_filename.html">append_filename</a> - Concatenates a filename to a path.</li>
+	<li><a href="get_filename.html">get_filename</a> - Returns a pointer to the filename portion of a path.</li>
+	<li><a href="get_extension.html">get_extension</a> - Returns a pointer to the extension of a filename.</li>
+	<li><a href="put_backslash.html">put_backslash</a> - Puts a path separator at the end of a path if needed.</li>
+	<li><a href="file_exists.html">file_exists</a> - Tells if a file exists.</li>
+	<li><a href="exists.html">exists</a> - Shortcut version of file_exists() for normal files.</li>
+	<li><a href="file_size_ex.html">file_size_ex</a> - Returns the size of a file in bytes.</li>
+	<li><a href="file_time.html">file_time</a> - Returns the modification time of a file.</li>
+	<li><a href="delete_file.html">delete_file</a> - Removes a file from the disk.</li>
+	<li><a href="for_each_file_ex.html">for_each_file_ex</a> - Executes callback() for each file matching a wildcard.</li>
+	<li><a href="al_findfirst.html">al_findfirst</a> - Low-level function for searching files.</li>
+	<li><a href="al_findnext.html">al_findnext</a> - Finds the next file in a search started by al_findfirst().</li>
+	<li><a href="al_findclose.html">al_findclose</a> - Closes a previously opened search with al_findfirst().</li>
+	<li><a href="al_ffblk_get_size.html">al_ffblk_get_size</a> - Get size of file returned by al_findfirst/al_findnext.</li>
+	<li><a href="find_allegro_resource.html">find_allegro_resource</a> - Searches for a support file in many places.</li>
+	<li><a href="set_allegro_resource_path.html">set_allegro_resource_path</a> - Sets a specific resource search path.</li>
+	<li><a href="packfile_password.html">packfile_password</a> - Sets the global I/O encryption password.</li>
+	<li><a href="pack_fopen.html">pack_fopen</a> - Opens a file according to mode.</li>
+	<li><a href="pack_fopen_vtable.html">pack_fopen_vtable</a></li>
+	<li><a href="pack_fclose.html">pack_fclose</a> - Closes a stream previously opened.</li>
+	<li><a href="pack_fseek.html">pack_fseek</a> - Seeks inside a stream.</li>
+	<li><a href="pack_feof.html">pack_feof</a> - Returns nonzero as soon as you reach the end of the file.</li>
+	<li><a href="pack_ferror.html">pack_ferror</a> - Tells if an error occurred during an operation on the stream.</li>
+	<li><a href="pack_getc.html">pack_getc</a> - Returns the next character from a stream.</li>
+	<li><a href="pack_putc.html">pack_putc</a> - Puts a character in the stream.</li>
+	<li><a href="pack_igetw.html">pack_igetw</a> - Like pack_getc(), but using 16-bit Intel byte ordering words.</li>
+	<li><a href="pack_iputw.html">pack_iputw</a> - Like pack_putc(), but using 16-bit Intel byte ordering words.</li>
+	<li><a href="pack_igetl.html">pack_igetl</a> - Like pack_getc(), but using 32-bit Intel byte ordering words.</li>
+	<li><a href="pack_iputl.html">pack_iputl</a> - Like pack_putc(), but using 32-bit Intel byte ordering words.</li>
+	<li><a href="pack_mgetw.html">pack_mgetw</a> - Like pack_getc(), but using 16-bit Motorola byte ordering words.</li>
+	<li><a href="pack_mputw.html">pack_mputw</a> - Like pack_putc(), but using 16-bit Motorola byte ordering words.</li>
+	<li><a href="pack_mgetl.html">pack_mgetl</a> - Like pack_getc(), but using 32-bit Motorola byte ordering words.</li>
+	<li><a href="pack_mputl.html">pack_mputl</a> - Like pack_putc(), but using 32-bit Motorola byte ordering words.</li>
+	<li><a href="pack_fread.html">pack_fread</a> - Reads n bytes from the stream.</li>
+	<li><a href="pack_fwrite.html">pack_fwrite</a> - Writes n bytes to the stream.</li>
+	<li><a href="pack_fgets.html">pack_fgets</a> - Reads a line from the stream.</li>
+	<li><a href="pack_fputs.html">pack_fputs</a> - Writes a string to the stream.</li>
+	<li><a href="pack_fopen_chunk.html">pack_fopen_chunk</a> - Opens a sub-chunk of a file.</li>
+	<li><a href="pack_fclose_chunk.html">pack_fclose_chunk</a> - Closes a previously opened sub-chunk.</li>
+	<li><a href="create_lzss_pack_data.html">create_lzss_pack_data</a> - Creates an LZSS structure for compression.</li>
+	<li><a href="free_lzss_pack_data.html">free_lzss_pack_data</a> - Frees an LZSS structure.</li>
+	<li><a href="lzss_write.html">lzss_write</a> - Compresses data using LZSS.</li>
+	<li><a href="create_lzss_unpack_data.html">create_lzss_unpack_data</a> - Creates an LZSS structure for decompression.</li>
+	<li><a href="free_lzss_unpack_data.html">free_lzss_unpack_data</a> - Frees an LZSS structure.</li>
+	<li><a href="lzss_read.html">lzss_read</a> - Decompresses data using LZSS.</li>
+</ul>
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,177</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.859574</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/file-and-compression-routines/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:54:35 GMT -->
+</html>

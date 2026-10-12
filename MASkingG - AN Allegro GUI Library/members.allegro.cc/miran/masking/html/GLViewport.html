@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/GLViewport.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC GLViewport</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">GLViewport</A></H2></H2><BLOCKQUOTE> A simple OpenGL viewport widget.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>GLViewport
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.64.1">MsgDraw</A></B>()
+<DD><I> Draws the contents of the viewport.</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+A simple OpenGL viewport widget.
+This is intended for making small windows containing OpenGL accelerated
+3D graphics. You should use this widget only with the GLDriverDRS screen
+update driver as it won't work properly with any of the others.
+
+<P></BLOCKQUOTE>
+<DL>
+
+<A NAME="MsgDraw"></A>
+<A NAME="DOC.64.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgDraw()</B></TT>
+<DD>
+Draws the contents of the viewport.
+This function does all the tedious work necessary to setup a
+viewport and calls the Draw(Bitmap &canvas) function. To draw
+into the viewport in a derived widget simply overload the Draw()
+function and put your OpenGL drawing code in it (typically gl_begin(),
+gl_end() and everything that goes in between). The Draw()
+function is passed a Bitmap object but the viewport currently
+doesn't support regular Allegro drawing so this object is
+an invalid null bitmap and should be ignored!
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DT><B>See Also:</B><DD><!1><A HREF="GLDialog.html">GLDialog</A>
+<BR><!1><A HREF="GLDriverDRS.html">GLDriverDRS</A><BR><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/GLViewport.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+</html>

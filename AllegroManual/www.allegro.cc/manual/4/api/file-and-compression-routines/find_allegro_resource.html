@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/file-and-compression-routines/find_allegro_resource by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:25:33 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>find_allegro_resource</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">File and compression routines</a></h2><ul>
+<li><a href="get_executable_name.html" style="font-weight: bold">get_executable_name</a></li><li><a href="fix_filename_case.html" >fix_filename_case</a></li><li><a href="fix_filename_slashes.html" >fix_filename_slashes</a></li><li><a href="canonicalize_filename.html" >canonicalize_filename</a></li><li><a href="make_absolute_filename.html" >make_absolute_filename</a></li><li><a href="make_relative_filename.html" >make_relative_filename</a></li><li><a href="is_relative_filename.html" >is_relative_filename</a></li><li><a href="replace_filename.html" style="font-weight: bold">replace_filename</a></li><li><a href="replace_extension.html" >replace_extension</a></li><li><a href="append_filename.html" >append_filename</a></li><li><a href="get_filename.html" style="font-weight: bold">get_filename</a></li><li><a href="get_extension.html" style="font-weight: bold">get_extension</a></li><li><a href="put_backslash.html" >put_backslash</a></li><li><a href="file_exists.html" >file_exists</a></li><li><a href="exists.html" style="font-weight: bold">exists</a></li><li><a href="file_size_ex.html" >file_size_ex</a></li><li><a href="file_time.html" >file_time</a></li><li><a href="delete_file.html" >delete_file</a></li><li><a href="for_each_file_ex.html" >for_each_file_ex</a></li><li><a href="al_findfirst.html" style="font-weight: bold">al_findfirst</a></li><li><a href="al_findnext.html" style="font-weight: bold">al_findnext</a></li><li><a href="al_findclose.html" style="font-weight: bold">al_findclose</a></li><li><a href="al_ffblk_get_size.html" >al_ffblk_get_size</a></li><li><strong>find_allegro_resource</strong></li><li><a href="set_allegro_resource_path.html" >set_allegro_resource_path</a></li><li><a href="packfile_password.html" style="font-weight: bold">packfile_password</a></li><li><a href="pack_fopen.html" style="font-weight: bold">pack_fopen</a></li><li><a href="pack_fopen_vtable.html" >pack_fopen_vtable</a></li><li><a href="pack_fclose.html" style="font-weight: bold">pack_fclose</a></li><li><a href="pack_fseek.html" >pack_fseek</a></li><li><a href="pack_feof.html" >pack_feof</a></li><li><a href="pack_ferror.html" >pack_ferror</a></li><li><a href="pack_getc.html" style="font-weight: bold">pack_getc</a></li><li><a href="pack_putc.html" style="font-weight: bold">pack_putc</a></li><li><a href="pack_igetw.html" >pack_igetw</a></li><li><a href="pack_iputw.html" >pack_iputw</a></li><li><a href="pack_igetl.html" style="font-weight: bold">pack_igetl</a></li><li><a href="pack_iputl.html" style="font-weight: bold">pack_iputl</a></li><li><a href="pack_mgetw.html" >pack_mgetw</a></li><li><a href="pack_mputw.html" >pack_mputw</a></li><li><a href="pack_mgetl.html" >pack_mgetl</a></li><li><a href="pack_mputl.html" >pack_mputl</a></li><li><a href="pack_fread.html" style="font-weight: bold">pack_fread</a></li><li><a href="pack_fwrite.html" style="font-weight: bold">pack_fwrite</a></li><li><a href="pack_fgets.html" >pack_fgets</a></li><li><a href="pack_fputs.html" >pack_fputs</a></li><li><a href="pack_fopen_chunk.html" >pack_fopen_chunk</a></li><li><a href="pack_fclose_chunk.html" >pack_fclose_chunk</a></li><li><a href="create_lzss_pack_data.html" >create_lzss_pack_data</a></li><li><a href="free_lzss_pack_data.html" >free_lzss_pack_data</a></li><li><a href="lzss_write.html" >lzss_write</a></li><li><a href="create_lzss_unpack_data.html" >create_lzss_unpack_data</a></li><li><a href="free_lzss_unpack_data.html" >free_lzss_unpack_data</a></li><li><a href="lzss_read.html" >lzss_read</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>find_allegro_resource</h1>
+
+<div class="shortdesc">
+Searches for a support file in many places.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">int</span> <a href="../../index.html" target="_blank"><span class="a">find_allegro_resource</span></a><span class="k2">(</span><span class="k1">char</span> <span class="k3">*</span>dest, <span class="k1">const</span> <span class="k1">char</span> <span class="k3">*</span>resource, <span class="k1">const</span> <span class="k1">char</span> <span class="k3">*</span>ext, <span class="k1">const</span> <span class="k1">char</span> <span class="k3">*</span>datafile, <span class="k1">const</span> <span class="k1">char</span> <span class="k3">*</span>objectname, <span class="k1">const</span> <span class="k1">char</span> <span class="k3">*</span>envvar, <span class="k1">const</span> <span class="k1">char</span> <span class="k3">*</span>subdir, <span class="k1">int</span> size<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Searches for a support file, eg. `allegro.cfg' or `language.dat'. Passed a
+   resource string describing what you are looking for, along with extra
+   optional information such as the default extension, what datafile to look
+   inside, what the datafile object name is likely to be, any special
+   environment variable to check, and any subdirectory that you would like
+   to check as well as the default location, this function looks in a hell
+   of a lot of different places :-). Pass NULL for the parameters you are not
+   using.<br /><br />
+
+   Check the documentation chapter specific to your platform for information
+   on additional paths this function might search for. Also, don't forget
+   about set_allegro_resource_path() to extend the searches. Example:
+<pre class="code">      <span class="k1">char</span> path<span class="k2">[</span><span class="n">256</span><span class="k2">]</span><span class="k2">;</span>
+      <span class="k1">int</span> ret<span class="k2">;</span>
+      ret <span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">find_allegro_resource</span></a><span class="k2">(</span>path, <span class="s">"scores.cfg"</span>, NULL, NULL,
+				  NULL, NULL, NULL, <span class="k1">sizeof</span><span class="k2">(</span>path<span class="k2">)</span><span class="k2">)</span><span class="k2">;</span>
+      <span class="k1">if</span> <span class="k2">(</span>ret <span class="k3">=</span><span class="k3">=</span> <span class="n">0</span><span class="k2">)</span> <span class="k2">{</span>
+	 <span class="c">/* Found system wide scores file. */</span>
+      <span class="k2">}</span> <span class="k1">else</span> <span class="k2">{</span>
+	 <span class="c">/* No previous scores, create our own file. */</span>
+      <span class="k2">}</span></pre>
+
+</div>
+
+<div class="retval">
+Returns zero on success, and stores a full path to the file (at most size
+   bytes) into the dest buffer.
+
+</div>
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">set_allegro_resource_path</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-588935">
+		<a href="https://www.allegro.cc/forums/thread/588935">Set path</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/633294" style="color: black;">1</a> </span>
+	</li><li id="t-587006">
+		<a href="https://www.allegro.cc/forums/thread/587006">test a sample OS X (PPC) binary</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/606251" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/AllegroSpriteEditor">Allegro Sprite Editor</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/dlg-agraphicalDIALOGeditor">dlg - a graphical DIALOG editor</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/KBall">KBall</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/Kraptor">Kraptor</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/PongUltra">Pong Ultra</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/SoundWaveGenerator">Sound Wave Generator</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/StarControlTimeWarp">Star Control: TimeWarp</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/TW-Light">TW-Light</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/WizardryLegacy">Wizardry Legacy</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/GAACOexample">GA + ACO example</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,873</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.010692</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/file-and-compression-routines/find_allegro_resource by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:25:34 GMT -->
+</html>

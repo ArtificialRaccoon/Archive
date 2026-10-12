@@ -1,0 +1,430 @@
+<html>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/changes.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head><title>Version history</title></head><body>
+<h1><a name="changes">Version history</a></h1>
+<p>
+   MASkinG has been developed in several stages. At first it was just a hack
+   of DeGUI, another popular Allegro GUI library written in C++. Then I made
+   a complete rewrite of it copying parts of DeGUI and parts of the default
+   Allegro GUI to the new codebase and writing lots of new code myself. I worked
+   on this for about a year or so with the last version of this line being
+   v0.65. Then at some point I decided the library had too many design flaws
+   and bugs and it wasn't flexible and powerfull enough and that I should
+   rewrite it again, this time from scratch. So I did and MASkinG v0.70 came
+   into existance. As it is so completely different from the old version I
+   decided to write a short guide to successfully porting old code to the new
+   library which you can find in the second part of this page.
+<p>
+<hr><ul><h4>
+<p><b>Version history</b><br>
+<li><a href="#080">version 0.80 (26th July 2006)</a>
+<li><a href="#079">version 0.79 (3rd April 2005)</a>
+<li><a href="#0782">version 0.78.2 (29th January 2005)</a>
+<li><a href="#078">version 0.78 (16th January 2005)</a>
+<li><a href="#077">version 0.77 (17th June 2004)</a>
+<li><a href="#076">version 0.76 (20th April 2004)</a>
+<li><a href="#075">version 0.75 (2nd March 2004)</a>
+<li><a href="#074">version 0.74 (9th December 2003)</a>
+<li><a href="#073">version 0.73 (22nd October 2003)</a>
+<li><a href="#072">version 0.72 (14th September 2003)</a>
+<li><a href="#071">version 0.71 (31st August 2003)</a>
+<li><a href="#070">version 0.70 (25th August 2003)</a>
+<p><b>A short guide to porting code from MASkinG v0.65</b><br>
+<li><a href="#intro">Introduction</a>
+<li><a href="#init">Initializing</a>
+<li><a href="#widgets">Widgets</a>
+<li><a href="#dialogs">Dialogs</a>
+<li><a href="#skin">Skin</a>
+</h4></ul>
+<p><hr>
+
+<p>
+<b><a name="080">version 0.80 (26th July 2006)</a></b><br><br>
+   Miran Amon:
+   <li>bugfix (ListBoxEx): ListBoxEx would crash in an extremely unlikely event where you put it into a tabpanel as the first dialog.</li>
+   <li>added (ListBoxEx): Added the option for the listbox to draw gridlines between cells.</li>
+   <li>added (ListBoxEx): Added GetMouseRowIndex() and GetMouseColumnIndex().</li>
+   <li>bugfix (ListBoxEx): Size and scrollers weren't properly updated after adding and removing items.</li>
+   <li>bugfix (ListBoxEx): MSG_SCROLL was sent on mouse click even when the mouse cursor was not on top of a list item.</li>
+   <li>added (TabPanel): Added several functions for programmatically switching between tabs.</li>
+   <li>bugfix (Widget, Skin): All widgets would use font #0 regardless of the skin definition.</li>
+   <li>bugfix (Mouse): In some situations (ex09) the mouse background would not be properly updated. Bug pointed out by Johan van der Vleuten.</li>
+   <li>bugfix (Widget): Some values didn't get initialized when calling SetSkin().</li>
+   <li>bugfix: The lib wouldn't compile on  64 bit OS. Fixed now.</li>
+   <li>added (Settings): Added Settings::gfxFrameRate. Also made unlimitedFrameRate actually work.</li>
+   <li>changed (ListBoxEx): Made listbox items adjust height according to the height of the font the listbox uses.</li>
+   <li>added (Settings,Mouse): Added a quick little hack to make the mouse work in direct OpenGL mode (driven with Settings::useOpenGLMouseHack) and optimized the OpenGL DRS driver.</li>
+   <li>changed (ex15): Significant changes to ex15, the example that demonstrates how to efficiently use OpenGL with MASkinG.
+   <li>added (CFPS): Added a more accurate framerate counter and moved the FPS label widget to fpslabel.h/cpp.</li>
+<br>
+   Milan Mimica:
+   <li>bugfix (GLDriverDRS): Fixed the DRS OpenGL driver so that it works in fullscreen as well as in windowed mode.</li>
+   <li>changed (Clipboard): Fixed compiling under Linux by changing an #ifdef to check for ALLEGRO_UNIX instead of ALLEGRO_LINUX.</li>
+   <li>bugfix (Widget): Fixed the bug in Widget::Redraw() that would cause a crash when the redraw region was empty.</li>
+<br>
+   Vladimir Kokovic:
+   <li>added (ListBoxEx): Added the userData member to the ListBoxEx::Item class.</li>
+
+<p>
+<b><a name="079">version 0.79 (3rd April 2005)</a></b><br><br>
+   Miran Amon:
+   <li>bugfix (Font): Fixed a bug that would make coloured bitmap fonts not work.
+		I made the copy ctor and assignment operator copy over the contents of
+		the palette if the font is a multicoloured bitmap font. Might be a
+		performance bottleneck though.</li>
+   <li>change: Made the lib internally work with absolute paths only to make all programs work
+	   regardless of the method used to start them. To that end MAS::MakeFullPath() was added
+	   and code was changed in MAS::InstallMASkinG() and MAS::Settings::Load(). Also the
+	   examples were modified where needed.</li>
+   <li>added (Dialog): Added the option to turn moving focus with the keyboard off.</li>
+   <li>added (Scroller): Vladimir Kokovic added custom scroll increments to Scroller and ScrollBox.</li>
+   <li>added (Menu): Vladimir Kokovic added item history to the menus.</li>
+   <li>changed (Menu): Changed the menus so they hide only when they loose focus and not already when they loose the mouse.</li>
+   <li>added (Clipboard): Vladimir Kokovic added the Clipboard class.</li>
+   <li>changed (EditBox): Added clipboard functionality to the EditBox.</li>
+   <li>changed (Menu): Changed the menus so that an item that opens a submenu stays selected while the submenu is open.</li>
+   <li>added (makefiles): Added an option to compile MASkinG as a DLL on MinGW.</li>
+   <li>added (makefiles): Added dependency checking in makefiles.</li>
+   <li>added (ListBoxEx): Added the ListBoxEx widget with multi-column support.</li>
+   <li>added (ex21): Added ex21 to demonstrate the new ListBoxEx widget.</li>
+
+<p>
+<b><a name="0782">version 0.78.2 (29th January 2005)</a></b><br><br>
+   Miran Amon:
+   <li>added (Settings): Added Settings::scrollingSpeed and set the default value to 3 to make mouse wheel scrolling faster.</li>
+   <li>changed (Font): Changed the font class to use the load_font() function available in Allegro 4.1.18 to load fonts and added support for colour bitmap fonts.</li>
+
+<p>
+<b><a name="078">version 0.78 (16th January 2005)</a></b><br><br>
+   Miran Amon:
+   <li>added (ex18): Added example 18 (a simple Minesweeper clone).</li>
+   <li>bugfix (GroupBox): SetBitmap() didn't work on a GroupBox.</li>
+   <li>bugfix (Widget): Big bad bug would freeze the program if a widget with no size was redrawn.</li>
+   <li>bugfix (Dialog): Popup dialogs wouldn't work properly in all situations - fixed now.</li>
+   <li>bugfix (Widget): Widget settings set in MsgInitSkin() would sometimes override user defined settings when they shouldn't.</li>
+   <li>added (ex19): Added example 19.</li>
+   <li>added (ListBox): Added the option to make a single click act as a double click and updated the ComboBox to use this feature.</li>
+   <li>added (Button): Added Setup() overloads for easily changing the bitmap the button will use for drawing itself.</li>
+   <li>added (EditBox): Added the D_READONLY flag and updated the EditBox to use it.</li>
+   <li>update (ex10): Replaced example 10 with a more appropriate one.</li>
+   <li>bugfix (ScrollBox): Fixed a bug that would redraw the client area of the ScrollBox wrong in some cases.</li>
+   <li>bugfix (Dialog): Fixed a bug that would make dialogs draw over sibling widgets that are on top of them.</li>
+   <li>bugfix (ListBox): Fixed a bug that made the scrollers in a listbox not match the list contents sometimes.</li>
+   <li>bugfix (Dialog): Fixed a bug in the input focus moving code that caused the combobox not to work in some cases.</li>
+   <li>bugfix (Slider): Vertical sliders were upside down.</li>
+   <li>added (Skin): Added special font and colour settings for the editbox (was shared with Label before).</li>
+   <li>added (Slider): Made the slider (and scroller) respond to Shift+cursor key events properly.</li>
+   <li>bugfix (makefile): Certain combinations of flags wouldn't work in the MinGW makefiles. Fixed.</li>
+   <li>bugfix (Dialog): Calling Dialog::Remove(Widget) on a widget with input focus would leave dangling pointers. Fixed. I think.</li>
+   <li>bugfix (Slider): When clicking on a slider outside of the slider gripper, the slider position wouldn't change and the appropriate event wouldn't be sent. Fixed.</li>
+   <li>bugfix (Window): If a widget would stick out of a modeless window (e.g. an open combobox) the window would loose mouse and focus when the mouse left it even though it was still inside that widget.</li>
+   <li>update (Tooltip): Updated the Tooltip class to work well with multiline texts with hard line breaks (big thanks to mugendai for help).</li>
+   <li>bugfix (Dialog): Fixed a nasty little bug in Dialog::Popup() that would occasionally crash programs.</li>
+   <li>bugfix (Dialog): Made keyboard shorctuts for widgets in subdialogs work right again.</li>
+   <li>update (Sample): Made samples not attempt to play if no data is allocated. Playing a non-existing sample could produce an audible click.</li>
+   <li>bugfix (Dialog): Fixed a bug that caused input focus to be given to the wrong widget when popping up a dialog.</li>
+   <li>update (ListBox): Changed the way how a multi select listbox behaves a bit.</li>
+   <li>bugfix (Dialog): Fixed Dialog::BringToTop() which wouldn't work for windows.</li>
+   <li>bugfix (Dialog): Fixed Dialog::Hide(), Widget::Hide() and Window::UpdateWindowProperties() so that hiding a widget, dialog or window works as expected.</li>
+   <li>added (Dialog): Added an optional parameter to Dialog::Remove() to make using dynamically created wigets easier.</li>
+
+<p>
+<b><a name="077">version 0.77 (17th June 2004)</a></b><br><br>
+   Miran Amon:
+   <li>update: Somewhat optimized the screen update system.</li>
+   <li>bugfix (Dialog): Widgets that were pushed down (i.e. buttons) would loose focus when they shouldn't have, resulting in bad behaviour.</li>
+   <li>added (ex17): Added example 17 which shows one possible way to organize dialogs in a larger project.</li>
+   <li>added (Panel): Added a masked option to the panel effectively fixing a bug with semitransparent menus.</li>
+   <li>bugfix (ComboBox): The list of the combobox is now floated to top when it is opened.</li>
+   <li>added (Widget): Added the callbackID override. Also updated several widgets to use that instead of MSG_ACTIVATE (e.g. Button, Shortcut, etc).</li>
+   <li>added (CompoundWiget): Added the CompoundWidget intermediate layer class for making compound widgets and made some general improvement in regards to how input focus is switched in response to keyboard input.</li>
+   <li>bugfix (Dialog): Fixed some minor bugs in regard with how focus is moved between widgets.</li>
+   <li>added: Several get functions were added to various classes to allow access to some members that were hidden before.</li>
+   <li>added (tutorial): Wrote chapter 4 of the tutorial.</li>
+   <br><br>
+   Dmitriy Skorodumov:<br>
+   <li>update (ComboBox): Fixed the way focus changes when opening and closing the combobox list.</li>
+   <li>update (Menu): Improved the menu system to make it more robust.</li>
+   <li>update (ListBox): Made the listview a pointer and added a new constructor to make the ListBox more extensible.</li>
+
+<p>
+<b><a name="076">version 0.76 (20th April 2004)</a></b><br><br>
+   Miran Amon:
+   <li>bugfix (Menu): Fixed the menus so they can't be tabbed to.</li>
+   <li>bugfix (Dialog): Fixed returning focus after popping up a modal window.</li>
+   <li>added (EditBox): Added the function EditBox::ScrollTo().</li>
+   <li>bugfix (FileSelect): Fixed some more bugs in the fileselector. Still not perfect though.</li>
+   <li>update (Skin): Changed some of the colours for the default skin.</li>
+   <li>bugfix (EditBox): Selecting text with shift+home and shift+end would not work sometimes.</li>
+   <li>update (Bitmap): Optimized tiled blitting routines (thanks to James Bryant).</li>
+   <li>update (Cursor): Made a new default cursor.</li>
+   <li>added (Skin): Added *_TCKX and *_TCKY settings to define bitmap tiling properties and *_FCSX, *_FCSY, *_FRMS and *_FDUR mouse cursor settings.</li>
+   <li>added (TabPanel): Added the TabPanel widget and ex12 to demonstrate how it's used and updated the skins with TabPanel bitmaps.</li>
+   <li>bugfix (RadioButton): Radio button could sometimes be deselected when this shouldn't be possible.</li>
+   <li>added (Splitter): Added the Splitter widget and ex13 to demonstrate how it's used.</li>
+   <li>added (Widget): Added the option to specify widget size and position in normalized format (as in percentages of the dialog size).</li>
+   <li>added (ex14): Added a simple example to demonstrate the use of normalized coordinates.</li>
+   <li>added: Some preliminary OpenGL support using AllegroGL.</li>
+   <li>bugfix (makefiles): Makefiles for DJGPP and MINGW should work now (thanks to Vitaliy Kravtsov).</li>
+   <li>bugfix (ListBox): The listbox wouldn't lose focus when it should have.</li>
+   <li>added (Window): Double clicking the caption maximizes or restores the window.</li>
+   <li>bugfix (sounds): Some widgets (sliders, menus, etc.) wouldn't play event sounds when they should have.</li>
+
+<p>
+<b><a name="075">version 0.75 (2nd March 2004)</a></b><br><br>
+   Miran Amon:
+   <li>bugfix: Several small bugs mostly in regard with window and dialog resizing were fixed.</li>
+   <li>added (examples): Added example 10 to show how to add and remove widgets dynamically.</li>
+   <li>added (Tooltip): Added tooltip help bubbles!</li>
+   <li>added (examples): Added example 11 to show how to use tooltip and how to create a user defined tooltip class.</li>
+   <li>bugfix: Added some #define's so the lib compiles in DJGPP.</li>
+   <li>bugfix (Menu): Fixed most bugs in the menu system.</li>
+   <li>bugfix (Slider): Fixed a bug in Slider that caused it not to work if the minimum value was not 0.</li>
+   <li>added: The Accelerator class for adding keyboard shortcuts and combos.</li>
+   <li>bugfix (Dialog): Focus is now returned to the original owner after popping up a modal dialog.</li>
+   <li>update (FileSelector): Made the file selector behave a bit better. Fixed a small bug in the ListBox in the process.</li>
+   <li>update (Slider): Fixed the sliders so they behave better when dragging.</li>
+   <li>update (Scroller): Improved scroller dragging and made them scroll when clicked outside the gripper button.</li>
+   <li>bugfix (Mouse): Fixed a bug that would crash the program if the mouse was initially turned off.</li>
+   <br><br>
+   Martijn van Iersel:<br>
+   <li>added (Font): added a bunch of functions for multiline textoutput with word wrapping.</li>
+   <li>added (Label): added word wrapping.</li>
+   <li>added (ScrollBox): added extra functionality (MsgScroll(), IsInClientArea())</li>
+   <li>changed (examples): changed ex08 to use ScrollBox for scrolling</li>
+
+<p>
+<b><a name="074">version 0.74 (9th December 2003)</a></b><br>
+   <li>added (Widget): Added MsgWantTab() to the widget class to make sure moving input focus with the keyboard works as expected.
+   <li>bugfix (Skin): Fixed a big bad bug in Skin::GetBitmap().
+   <li>change (Timer): Changed the timer system a bit. I added Timer::Check() which checks if a timer ticked, made Timer::Update() only decrement the appropriate timer variable and added frame skipping functionality which allows a program run on computers too slow to even process the logic by skipping logic frames.
+   <li>added (Settings): Added Settings::runInBackground which if set to true makes the program run in background even when tabbed away.
+   <li>bugfix (Dialog): Fixed another big bad bug that made Settings::yield not work in Windows.
+   <li>change (ex06): Replaced example 06 with a different example.
+   <li>bugfix (ListBox): Fixed another silly little bug in the ListBox.
+
+<p>
+<b><a name="073">version 0.73 (22nd October 2003)</a></b><br>
+   <li>added (Scrollbox): Martijn van Iersel wrote the Scrollbox widget.
+   <li>added (TextArea): Martijn van Iersel wrote a simple multiline text area widget.
+   <li>bugfix (ListBox): There was a big bad bug with focused items not being selected and stuff. Fixed now.
+   <li>change (EditBox): DrawText() is now virtual as it should have been all along.
+   <li>change (Dialog): SelectDriver() and CreateUpdateDriver() are now virtual which makes it easier to make a dialog use a user supplied screen update driver (see example 09).
+   <li>added (Dialog): Made Dialog::Popup() work even if the dialog has no parent.
+   <li>bugfix (Dialog): Moving and resizing dialogs and windows now works as expected. Mostly...
+   <li>added (examples): Wrote 3 new examples (7, 8 and 9).
+
+<p>
+<b><a name="072">version 0.72 (14th September 2003)</a></b><br>
+   <li>bugfix (ListBox): text in the list items is now centered vertically.
+   <li>bugfix (Scroller): scroller now handles keyboard input a bit better.
+   <li>bugfix: Martijn van Iersel fixed a small but deadly bug in ComboBox and FileSelect
+   <li>change: Martijn van Iersel made the scroller more robust by making the SetRange() function handle all possible input values
+   <li>change: Changed how the graphics driver is selected. Now always GFX_AUTODETECT or GFX_AUTODETECT_WINDOWED is used. Also added a new variable named fullscreen to the settings file and changed the ChangeResolution() function.
+
+<p>
+<b><a name="071">version 0.71 (31st August 2003)</a></b><br>
+   <li>bugfix (EditBox): scrolling while deleting text with backspace now works.
+   <li>bugfix (EditBox): type sample now doesn't play when the box is full.
+   <li>bugfix (EditBox): maximum length of the is now set to hold all the text you pass to the Setup() and SetText() functions.
+   <li>bugfix (ListBox): when the listbox sends MSG_SCROLL and MSG_ACTIVATE to the parent dialog it now also sends the index of the selected item.
+   <li>bugfix (ComboBox): when the combo box sends MSG_ACTIVATE to the parent dialog it now also sends the index of the list's selected item.
+   <li>bugfix (Menu): when a menu item is clicked and the callback ID is sent to the parent dialog through the HandleEvent() function, the root menu object is now sent as the first parameter (like in MASking v0.65 and earlier).
+   <li>bugfix (ListBox): selecting items of a multiselect list box now works.
+   <li>bugfix (Slider): setting default values now works like it should.
+   <li>bugfix: moving input focus with the keyboard now works in MSVC (actually moving with TAB still doesn't work quite right).
+   <li>change: InstallMASkinG() now doesn't use allegro.cfg by default. Now it doesn't load settings from a config file at all but uses the currently valid settings instead.
+   <li>added feature: Slider, Scroller and ListBox now respond to the MSG_WHEEL message.
+   <li>other: fixed the documentation that wasn't consistant with the actual API in some places.
+
+<p>
+<b><a name="070">version 0.70 (25th August 2003)</a></b><br>
+   This is the first version of the new line.
+
+<p><hr>
+
+<h3>A short guide to porting code from MASkinG v0.65</h3>
+<p>Warning: this is all just off the top of my head so it may be incomplete,
+   inaccurate or even wrong.
+
+<p>
+<b><a name="intro">Introduction</a></b><br>
+   If you have used MASkinG prior to the release of version 0.70 you will
+   immediately notice there are quite a lot of differences. The basic concept
+   behind making dialogs with MASkinG has change more or less the same
+   but a number of classes have been renamed, some functions and classed
+   are no longer available and there are quite lot of new ones. But one of
+   the most prominent changes is the fact that all the classes and functions
+   have been moved from the global namespace to MASkinG's own namespace
+   called MAS. This of course means that they are all no longer prefixed
+   with MAS, like MASButton, MASWindow, MASDialog, etc. So the first thing
+   you should do to port your old code from v0.65 or earlier to v0.70 is add
+   the line:
+<pre>
+   using namespace MAS;
+</pre>
+   right after you include the MASkinG.h header and use the search and replace
+   function of your text editor or IDE to change all occurances of MAS with
+   nothing. For example you should change this:
+<pre>
+   #include &lt;MASkinG.h&gt;
+
+   class MyDialog : public MASDialog {
+      MASClearScreen desktop;
+      MASButton button;
+      MASPanelRaised panel;
+   };
+</pre>
+   to this:
+<pre>
+   #include &lt;MASkinG.h&gt;
+   using namespace MAS;
+
+   class MyDialog : public Dialog {
+      ClearScreen desktop;
+      Button button;
+      PanelRaised panel;
+   };
+</pre>
+
+<p>
+<b><a name="init">Initializing</a></b><br>
+   The next major change is the way you initialize Allegro and MASkinG in
+   your program. Previously you would have to install and initialize Allegro
+   yourself, then install MASkinG by calling a function named MASInstall().
+   Now you can install everything with a single function call to InstallMASkinG()
+   and everything will be installed for you. So something like this:
+<pre>
+   allegro_init();
+   install_keyboard();
+   install_mouse();
+   install_timer();
+   install_sound(DIGI_AUTODETECT, MIDI_AUTODETECT, NULL);
+
+   int err = MASInstall("allegro.cfg");
+   if (err != MASkin::ERR_SKIN_NONE) {
+      MASError(err);
+   }
+</pre>
+   should become something like this:
+<pre>
+   Error err = InstallMASkinG();
+   if (err) {
+      err.Report();
+   }
+</pre>
+
+   A similar change needs to be made when exeiting the program. To clean up
+   when you were done you would call MASExit() in the previous version, now
+   you have to call ExitMASkinG().
+
+<p>
+<b><a name="widgets">Widgets</a></b><br>
+   A number of changes have been made in the widgetset and the widget baseclass.
+   Some of the widgets have been renamed for various reasons, some have been
+   merged into one widget and some have simply not been implemented in the
+   new version. The changes are as follows:
+<li>None of the widgets now has a constructor that would setup the state of the
+   widget in any way. All the setup is done either with the <a href="widget-2.html#Setup">
+   Setup()</a> function or with various other SetSomething() functions.
+<li>MASClearScreen was split in two widgets, <a href="clearscreen-2.html">ClearScreen</a> and <a href="wallpaper-2.html">Wallpaper</a>.
+<li>MASBitmap was renamed to <a href="image-2.html">Image</a> (Bitmap is now the Allegro BITMAP wrapper).
+<li>MASText was renamed to <a href="label-2.html">Label</a> for no immediately obvious reason.
+<li>MASButton, MASWinButton, MASIcon and MASWinIcon have all been merged into
+   <a href="button-2.html">Button</a>. The default behaviour of the new Button is the same as that of a
+   MASWinButton. If you want to make a button with a different behaviour you
+   should set the D_TOGGLE flag to get the behaviour of a MASButton and
+   MASIcon and set the D_AUTOSIZE flag to get the appearance of a MASIcon and
+   MASWinIcon.
+<li>MASBox was renamed to <a href="groupbox-2.html">GroupBox</a> and MASWinBox was removed.
+<li>MASEditText was renamed to <a href="editbox-2.html">EditBox</a>.
+<li>MASList was renamed to <a href="listbox-2.html">ListBox</a> and MASHiddenList
+    was replaced with the functionally similar <a href="combobox-2.html">ComboBox</a>.
+<li>MASTabWindow hasn't yet been implemented.
+<li>MASKeyboard was renamed to <a href="shortcut-2.html">Shortcut</a>.
+<li>MASMenuObject and MASMenu were merged into <a href="menu-2.html">Menu</a>.
+    Also the interface for the menu system has changed quite a bit.
+<li>The interface for making <a href="window-2.html">windows</a> has changed
+    considerably (actually the MASWindow class was never really finished in
+    the old versions).
+<li>MASLog and MASConsole have been removed.
+<li>MASMusicPlayer and MASMidiPayer have not yet been implemented.
+
+<p>There may also be some differences in the way individual widgets are used and
+   there are a number of new ones available. See <a href="widgets.html">here</a>
+   for details.
+
+<p>Also note that the widget baseclass is now called Widget when it was previously
+   called MASDialogObject.
+
+<p>The internal workings of a <a href="widget-2.html">Widget</a> have changed a
+   bit. The most important difference is the way the widgets are drawn to
+   the canvas. Previously you would simply draw to the parent dialog's public
+   member called BITMAP *dscreen. Now you need to get your drawing canvas
+   by calling <a href="widget-2.html#GetCanvas">GetCanvas()</a> and release it
+   when you're done with <a href="widget-2.html#ReleaseCanvas">ReleaseCanvas()</a>.
+   But most widgets should draw themselves in the Draw() function instead of
+   the MsgDraw() function anyway and shouldn't have to care about that at all.
+   Also note that the widget shouldn't care about its position in the parent
+   dialog. All the coordinates, be it the coordinates of the mouse or the
+   coordinates where the widget draws itself, are relative to (0, 0) and not
+   to (x, y) where x and y are the position of the widget. Speaking of mouse
+   coordinates, the widgets should no longer rely on the Allegro mouse_x and
+   mouse_y variables. They should call GetMousePos() instead.
+<p>Another big difference is that none of the widgets can be blocking. That means none of the may
+   have loops that wait for some event in them. Previously when a button
+   was clicked it would have a loop like <i>while(mouse_b);</i> to wait for
+   the mouse button to be released. Now this problem has to be solved differently.
+
+<p>Also the way we do animations is completely changed. Previously animations
+   were done with the DRS system through the InvalidateRect() function but
+   now they're done with a special <a href="animator-2.html">Animator</a>
+   class. If your widgets draw themselves with Draw they shouldn't have to care
+   about that though. Also you shouldn't have to use InvalidateRect() anymore
+   as this will be done for you.
+
+<p>The way widgets access the skin is different too. First of all the widget's
+   skin is now called <i>skin</i> (previously it was <i>theSkin</i>). But there
+   are now also Get functions for retreiving everything that belngs to a widget
+   from the skin (like Widget::GetBitmap(), Widget::GetSample(), etc). So
+   basically a widgets should almost never access its skin directly.
+
+<p>
+<b><a name="dialogs">Dialogs</a></b><br>
+   The dialog manager was rewritten completely from scratch. The API has stayed
+   the same or at least similar in most respects but there are some changes.
+   Two of the most prominent changes are that the Add(Widget) function doesn't
+   place and resize widgets anymore and that the HandleEvent() function now
+   takes two optional arguments instead of just one.
+
+<p>Other small changes that come to mind in no particular order:
+<li>There is no MASAlert standard dialog. Use the MessageBox instead.
+<li>Checking whether a dialog should be closed should be done by overloading
+   the Dialog::MsgClose() function.
+<li>To handle changes after a dialog was moved or resized the UpdateSize()
+   function should be oerloaded (instead of MsgResize()).
+<li>The parameter lists for <a href="dialog-2.html#Execute">Dialog::Execute</a>
+   and <a href="dialog-2.html#Popup">Dialog::Popup</a> have changed.
+<li>The _escape_exits variable was removed.
+
+<p>There are also lots of other minor changes, see <a href="dialog-2.html">here</a>
+   for a detailed description of the dialog class.
+
+<p>
+<b><a name="skin">Skin</a></b><br>
+   The format of some of the bitmaps has changed and there are some changes
+   in the skin configuration file. Every bitmap in the skin datafile can
+   (and most should) have two properties called TCKX and TCKY that define
+   the size of the part of the bitmap that gets tiled when drawn. Open an
+   existing skin datafile in the grabber to see the what bitmaps have changed
+   and see the template.ini file to see the changes in the configuration file
+   format.
+<p>Also the format of the mouse cursor data file is different. All the cursors
+   can now have 4 extra properties called FCSX, FCSY, FRMS and FDUR. The first
+   two define the cursor's focus point and the other two define the cursor's
+   animation properties.
+
+<p><hr><p><a href="../index.html">Back to Contents</a><p></body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/changes.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:11 GMT -->
+</html>

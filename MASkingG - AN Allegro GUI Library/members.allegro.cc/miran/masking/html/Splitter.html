@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Splitter.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC Splitter</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">Splitter</A></H2></H2><BLOCKQUOTE> An invisible splitter object.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>Splitter
+- <A HREF="Dialog.html">Dialog</A>
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.102.6">Attach</A></B>(<!1><A HREF="Widget.html">Widget</A>* <!1><A HREF="Widget.html#DOC.110.69">w</A>, int section)
+<DD><I> Attaches an exisiting widget (or dialog) to the splitter.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.102.7">Detach</A></B>(<!1><A HREF="Widget.html">Widget</A>* <!1><A HREF="Widget.html#DOC.110.69">w</A>)
+<DD><I> Removes the passed widget from the splitter</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.102.8">SetBufferZone</A></B>(int pixels)
+<DD><I> Sets the size of the buffer zone between widgets in pixels.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.102.9">SetOffset</A></B>(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>)
+<DD><I> Sets the offset of the centre point of the splitter from its centre.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Widget.html">Widget</A>* <B><A HREF="#DOC.102.1">attached</A></B>[4]
+<DD><I> Pointers to the 4 attached widgets/dialogs</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.102.2">bufferZone</A></B>
+<DD><I> The width of the buffer zone between dialogs.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.102.3">offsetX</A></B>
+<DD><I> Horizontal offset from the centre</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.102.4">offsetY</A></B>
+<DD><I> Vertical offset from the centre</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.102.5">UpdateSize</A></B>()
+<DD><I> Updates the size and position of all the widgets attached to the splitter.</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+An invisible splitter object.
+Splitters can be used to separate and resize up to 4 widgets (or dialogs).
+The dialogs attached to a splitter share the area of the splitter and the
+splitter allows the user to resize them at will.</BLOCKQUOTE>
+<DL>
+
+<A NAME="attached"></A>
+<A NAME="DOC.102.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Widget.html">Widget</A>* attached[4]</B></TT>
+<DD>
+Pointers to the 4 attached widgets/dialogs
+<DL><DT><DD></DL><P>
+<A NAME="bufferZone"></A>
+<A NAME="DOC.102.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int bufferZone</B></TT>
+<DD>
+The width of the buffer zone between dialogs. Should be positive.
+The default is 4 pixels.
+<DL><DT><DD></DL><P>
+<A NAME="offsetX"></A>
+<A NAME="DOC.102.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int offsetX</B></TT>
+<DD>
+Horizontal offset from the centre
+<DL><DT><DD></DL><P>
+<A NAME="offsetY"></A>
+<A NAME="DOC.102.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int offsetY</B></TT>
+<DD>
+Vertical offset from the centre
+<DL><DT><DD></DL><P>
+<A NAME="UpdateSize"></A>
+<A NAME="DOC.102.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void UpdateSize()</B></TT>
+<DD>
+Updates the size and position of all the widgets attached to the splitter.
+This function places and resizes all the widgets so that they take up
+as much space of the spitter window as possible without overlapping.
+<DL><DT><DD></DL><P>
+<A NAME="Attach"></A>
+<A NAME="DOC.102.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Attach(<!1><A HREF="Widget.html">Widget</A>* <!1><A HREF="Widget.html#DOC.110.69">w</A>, int section)</B></TT>
+<DD>
+Attaches an exisiting widget (or dialog) to the splitter.
+Pass the section of the splitter where you want to put the
+widget. Possible sections are:
+<PRE>
+      0 - top left
+      1 - bottom left
+      2 - top right
+      3 - bottom right
+</PRE>
+If a widget already occupies the desired section, the existing
+widget will be removed.
+<DL><DT><DD></DL><P>
+<A NAME="Detach"></A>
+<A NAME="DOC.102.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Detach(<!1><A HREF="Widget.html">Widget</A>* <!1><A HREF="Widget.html#DOC.110.69">w</A>)</B></TT>
+<DD>
+Removes the passed widget from the splitter
+<DL><DT><DD></DL><P>
+<A NAME="SetBufferZone"></A>
+<A NAME="DOC.102.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetBufferZone(int pixels)</B></TT>
+<DD>
+Sets the size of the buffer zone between widgets in pixels.
+The default value is 4.
+<DL><DT><DD></DL><P>
+<A NAME="SetOffset"></A>
+<A NAME="DOC.102.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetOffset(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>)</B></TT>
+<DD>
+Sets the offset of the centre point of the splitter from its centre.
+The default is (0,0). Negative values move the splitter left and up,
+positive move it right and down.<br>
+Note: you can only set the offset after you've set the size of the
+splitter.
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Splitter.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+</html>

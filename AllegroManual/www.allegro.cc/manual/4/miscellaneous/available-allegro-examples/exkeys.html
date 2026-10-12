@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/miscellaneous/available-allegro-examples/exkeys by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:30:17 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>exkeys</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Available Allegro examples</a></h2><ul>
+<li><a href="exhello.html" >exhello</a></li><li><a href="exmem.html" >exmem</a></li><li><a href="expal.html" >expal</a></li><li><a href="expat.html" >expat</a></li><li><a href="exflame.html" >exflame</a></li><li><a href="exdbuf.html" >exdbuf</a></li><li><a href="exflip.html" >exflip</a></li><li><a href="exfixed.html" >exfixed</a></li><li><a href="exfont.html" >exfont</a></li><li><a href="exmouse.html" >exmouse</a></li><li><a href="extimer.html" >extimer</a></li><li><strong>exkeys</strong></li><li><a href="exjoy.html" >exjoy</a></li><li><a href="exsample.html" >exsample</a></li><li><a href="exmidi.html" >exmidi</a></li><li><a href="exgui.html" >exgui</a></li><li><a href="excustom.html" >excustom</a></li><li><a href="exunicod.html" >exunicod</a></li><li><a href="exbitmap.html" >exbitmap</a></li><li><a href="exscale.html" >exscale</a></li><li><a href="exconfig.html" >exconfig</a></li><li><a href="exdata.html" >exdata</a></li><li><a href="exsprite.html" >exsprite</a></li><li><a href="exexedat.html" >exexedat</a></li><li><a href="extrans.html" >extrans</a></li><li><a href="extruec.html" >extruec</a></li><li><a href="excolmap.html" >excolmap</a></li><li><a href="exrgbhsv.html" >exrgbhsv</a></li><li><a href="exshade.html" >exshade</a></li><li><a href="exblend.html" >exblend</a></li><li><a href="exxfade.html" >exxfade</a></li><li><a href="exalpha.html" >exalpha</a></li><li><a href="exlights.html" >exlights</a></li><li><a href="ex3d.html" >ex3d</a></li><li><a href="excamera.html" >excamera</a></li><li><a href="exquat.html" >exquat</a></li><li><a href="exstars.html" >exstars</a></li><li><a href="exscn3d.html" >exscn3d</a></li><li><a href="exzbuf.html" >exzbuf</a></li><li><a href="exscroll.html" >exscroll</a></li><li><a href="ex3buf.html" >ex3buf</a></li><li><a href="ex12bit.html" >ex12bit</a></li><li><a href="exaccel.html" >exaccel</a></li><li><a href="exspline.html" >exspline</a></li><li><a href="exsyscur.html" >exsyscur</a></li><li><a href="exupdate.html" >exupdate</a></li><li><a href="exswitch.html" >exswitch</a></li><li><a href="exstream.html" >exstream</a></li><li><a href="expackf.html" >expackf</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>exkeys</h1>
+
+<div class="shortdesc">
+How to get input from the keyboard in different ways.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+Example <a href="../../index.html" target="_blank"><span class="a">exkeys</span></a>
+</div>
+
+<div>
+This program demonstrates how to access the keyboard. The
+   first part shows the basic use of readkey(). The second part
+   shows how to extract the ASCII value. Next come the scancodes.
+   The fourth test detects modifier keys like alt or shift. The
+   fifth test requires some focus to be passed. The final step
+   shows how to use the global key array to read simultaneous
+   keypresses.
+   The last method to detect key presses are keyboard callbacks.
+   This is demonstrated by by installing a keyboard callback,
+   which marks all pressed keys by drawing to a grid.
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">END_OF_FUNCTION</a></li>
+	<li><a href="../../index.html">END_OF_MAIN</a></li>
+	<li><a href="../../index.html">LOCK_FUNCTION</a></li>
+	<li><a href="../../index.html">SCREEN_H</a></li>
+	<li><a href="../../index.html">SCREEN_W</a></li>
+	<li><a href="../../index.html">acquire_screen</a></li>
+	<li><a href="../../index.html">allegro_error</a></li>
+	<li><a href="../../index.html">allegro_init</a></li>
+	<li><a href="../../index.html">allegro_message</a></li>
+	<li><a href="../../index.html">blit</a></li>
+	<li><a href="../../index.html">clear_keybuf</a></li>
+	<li><a href="../../index.html">clear_to_color</a></li>
+	<li><a href="../../index.html">desktop_palette</a></li>
+	<li><a href="../../index.html">font</a></li>
+	<li><a href="../../index.html">install_keyboard</a></li>
+	<li><a href="../../index.html">install_timer</a></li>
+	<li><a href="../../index.html">key</a></li>
+	<li><a href="../../index.html">key_shifts</a></li>
+	<li><a href="../../index.html">keyboard_lowlevel_callback</a></li>
+	<li><a href="../../index.html">keypressed</a></li>
+	<li><a href="../../index.html">makecol</a></li>
+	<li><a href="../../index.html">readkey</a></li>
+	<li><a href="../../index.html">rectfill</a></li>
+	<li><a href="../../index.html">release_screen</a></li>
+	<li><a href="../../index.html">rest</a></li>
+	<li><a href="../../index.html">scancode_to_name</a></li>
+	<li><a href="../../index.html">screen</a></li>
+	<li><a href="../../index.html">set_gfx_mode</a></li>
+	<li><a href="../../index.html">set_palette</a></li>
+	<li><a href="../../index.html">textprintf_centre_ex</a></li>
+	<li><a href="../../index.html">textprintf_ex</a></li>
+	<li><a href="../../index.html">ureadkey</a></li>
+	<li><a href="../../index.html">usprintf</a></li>
+	<li><a href="../../index.html">ustrzncpy</a></li>
+</ul>
+</div>
+
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/Kraptor">Kraptor</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,371,116</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.010284</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/miscellaneous/available-allegro-examples/exkeys by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:30:17 GMT -->
+</html>

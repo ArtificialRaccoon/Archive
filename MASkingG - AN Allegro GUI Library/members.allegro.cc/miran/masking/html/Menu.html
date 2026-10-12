@@ -1,0 +1,385 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Menu.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC Menu</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">Menu</A></H2></H2><BLOCKQUOTE> The Menu widget class.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>Menu
+- <A HREF="Dialog.html">Dialog</A>
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.75.19">HandleEvent</A></B>(<!1><A HREF="Widget.html">Widget</A>&amp; obj, int msg, int arg1=0, int arg2=0)
+<DD><I> Handles events such as keyboard input, menu item clicks, etc</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.75.20">Add</A></B>(<!1><A HREF="MenuItem.html">MenuItem</A>* item)
+<DD><I> Adds an existing menu item to the bottom of the menu</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.75.21">Add</A></B>(const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>, <!1><A HREF="Menu.html">Menu</A> &amp;<!1><A HREF="MenuItem.html#DOC.74.2">child</A>)
+<DD><I> Creates a new menu item with a submenu and adds it to the bottom of the menu</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.75.22">Add</A></B>(const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A> = NULL, int id = 0)
+<DD><I> Creates a new menu item with a message ID and adds it to the bottom of the menu</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.75.23">Remove</A></B>(int i)
+<DD><I> Removes item i from the menu item list.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.75.24">RemoveByID</A></B>(int ID)
+<DD><I> Removes the item with the given callback ID</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   <!1><A HREF="MenuItem.html">MenuItem</A>* <B><A HREF="#DOC.75.25">GetItem</A></B>(int i)
+<DD><I> Returns a pointer to menu item i from the menu item list</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   int <B><A HREF="#DOC.75.26">GetItemByID</A></B>(int ID)
+<DD><I> Finds and returns the index of the menu item with the given callback ID.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.75.27">Enable</A></B>(int i)
+<DD><I> Enables item i</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.75.28">Disable</A></B>(int i)
+<DD><I> Disables item i.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.75.29">Check</A></B>(int i)
+<DD><I> Checks item i.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.75.30">Uncheck</A></B>(int i)
+<DD><I> Unchecks item i</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.75.31">Disabled</A></B>(int i)
+<DD><I> Checks whether item i is disabled or not</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.75.32">Checked</A></B>(int i)
+<DD><I> Checks whether item i is checked or not</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.75.33">Popup</A></B>(<!1><A HREF="Dialog.html">Dialog</A>* parentDialog, <!1><A HREF="MenuItem.html">MenuItem</A>* <!1><A HREF="Menu.html#DOC.75.3">parentMenu</A>, int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.75.34">Popup</A></B>(<!1><A HREF="Dialog.html">Dialog</A>* parentDialog, <!1><A HREF="MenuItem.html">MenuItem</A>* <!1><A HREF="Menu.html#DOC.75.3">parentMenu</A>, const <!1><A HREF="Point.html">Point</A> &amp;p)
+<DD><I> Pops up a menu at the given position.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.75.35">Close</A></B>()
+<DD><I> Closes a menu that was popped up with Popup().</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Panel.html">Panel</A> <B><A HREF="#DOC.75.1">back</A></B>
+<DD><I> The menu's background panel</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.75.2">topBar</A></B>
+<DD><I> True if the menu is a top bar menu</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="MenuItem.html">MenuItem</A>* <B><A HREF="#DOC.75.3">parentMenu</A></B>
+<DD><I> The menu's parent menu if any</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Menu.html">Menu</A>* <B><A HREF="#DOC.75.4">openChildMenu</A></B>
+<DD><I> The currently open child menu if any</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.75.5">MsgInitSkin</A></B>()
+<DD><I> Initilizes the menu with the default bitmaps, fonts and font colours as defined by the skin</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.75.6">MsgXChar</A></B>(int <!1><A HREF="Widget.html#DOC.110.67">x</A>)
+<DD><I> Hnadles menu shortcuts (Alt + key) even when the menu doesn't have input focus</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.75.7">MsgChar</A></B>(int c)
+<DD><I> Hnadles submenu shortcuts</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.75.8">MsgLostmouse</A></B>()
+<DD><I> Closes a popup menu after it has lost the mouse</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.75.9">UpdateSize</A></B>()
+<DD><I> Calculates the size of the menu and applies it.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.75.10">MouseInMenu</A></B>()
+<DD><I> Checks if the mouse is on top of the menu or a parent menu (recursively)</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.75.11">MouseInChildMenu</A></B>()
+<DD><I> Recursively checks if the mouse is on top of any of the menu's child menus</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.75.12">OpenChildMenu</A></B>(<!1><A HREF="MenuItem.html">MenuItem</A>* item)
+<DD><I> Pops up the item's child menu</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.75.13">CloseChildMenu</A></B>()
+<DD><I> Closes the currently open child menu</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Menu.html">Menu</A>* <B><A HREF="#DOC.75.14">GetRootMenu</A></B>()
+<DD><I> Returns a pointer to the root menu of the menu structure</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.75.15">MenuAltKey</A></B>(int k)
+<DD><I> Looks for a shortcut in the menu item list.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.75.16">MenuKeyShortcut</A></B>(int c, const char* s)
+<DD><I> Checks whether the string s contains shortcut c.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Dialog.html#DOC.45.17">ActionType</A> <B><A HREF="#DOC.75.17">GetAction</A></B>()
+<DD><I> Makes sure a menu can't be moved</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.75.18">MoveFocus</A></B>(int dir)
+<DD><I> Moves the input focus around the menu in the given direction</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+The Menu widget class.
+
+<P>Implements the entire menu system. A menu can be a top bar menu or a popup menu.
+Every menu item can have either a submenu that pops up when the item is selected
+or an message ID which is sent to the parent dialog when the item is selected.
+
+<P>Note: menu navigation with keyboard hasn't yet been implemented!
+
+<P></BLOCKQUOTE>
+<DL>
+
+<A NAME="back"></A>
+<A NAME="DOC.75.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Panel.html">Panel</A> back</B></TT>
+<DD>
+The menu's background panel
+<DL><DT><DD></DL><P>
+<A NAME="topBar"></A>
+<A NAME="DOC.75.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool topBar</B></TT>
+<DD>
+True if the menu is a top bar menu
+<DL><DT><DD></DL><P>
+<A NAME="parentMenu"></A>
+<A NAME="DOC.75.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="MenuItem.html">MenuItem</A>* parentMenu</B></TT>
+<DD>
+The menu's parent menu if any
+<DL><DT><DD></DL><P>
+<A NAME="openChildMenu"></A>
+<A NAME="DOC.75.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Menu.html">Menu</A>* openChildMenu</B></TT>
+<DD>
+The currently open child menu if any
+<DL><DT><DD></DL><P>
+<A NAME="MsgInitSkin"></A>
+<A NAME="DOC.75.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgInitSkin()</B></TT>
+<DD>
+Initilizes the menu with the default bitmaps, fonts and font colours as defined by the skin
+<DL><DT><DD></DL><P>
+<A NAME="MsgXChar"></A>
+<A NAME="DOC.75.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool MsgXChar(int <!1><A HREF="Widget.html#DOC.110.67">x</A>)</B></TT>
+<DD>
+Hnadles menu shortcuts (Alt + key) even when the menu doesn't have input focus
+<DL><DT><DD></DL><P>
+<A NAME="MsgChar"></A>
+<A NAME="DOC.75.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool MsgChar(int c)</B></TT>
+<DD>
+Hnadles submenu shortcuts
+<DL><DT><DD></DL><P>
+<A NAME="MsgLostmouse"></A>
+<A NAME="DOC.75.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgLostmouse()</B></TT>
+<DD>
+Closes a popup menu after it has lost the mouse
+<DL><DT><DD></DL><P>
+<A NAME="UpdateSize"></A>
+<A NAME="DOC.75.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void UpdateSize()</B></TT>
+<DD>
+Calculates the size of the menu and applies it. The height of a single menu item
+is defined by the skin while the width of the menu is the width of the widest menu item.
+<DL><DT><DD></DL><P>
+<A NAME="MouseInMenu"></A>
+<A NAME="DOC.75.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool MouseInMenu()</B></TT>
+<DD>
+Checks if the mouse is on top of the menu or a parent menu (recursively)
+<DL><DT><DD></DL><P>
+<A NAME="MouseInChildMenu"></A>
+<A NAME="DOC.75.11"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool MouseInChildMenu()</B></TT>
+<DD>
+Recursively checks if the mouse is on top of any of the menu's child menus
+<DL><DT><DD></DL><P>
+<A NAME="OpenChildMenu"></A>
+<A NAME="DOC.75.12"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void OpenChildMenu(<!1><A HREF="MenuItem.html">MenuItem</A>* item)</B></TT>
+<DD>
+Pops up the item's child menu
+<DL><DT><DD></DL><P>
+<A NAME="CloseChildMenu"></A>
+<A NAME="DOC.75.13"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void CloseChildMenu()</B></TT>
+<DD>
+Closes the currently open child menu
+<DL><DT><DD></DL><P>
+<A NAME="GetRootMenu"></A>
+<A NAME="DOC.75.14"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Menu.html">Menu</A>* GetRootMenu()</B></TT>
+<DD>
+Returns a pointer to the root menu of the menu structure
+<DL><DT><DD></DL><P>
+<A NAME="MenuAltKey"></A>
+<A NAME="DOC.75.15"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int MenuAltKey(int k)</B></TT>
+<DD>
+Looks for a shortcut in the menu item list. If it finds an item with the
+given shortcut it returns the shortcuts ASCII code otherwise it returns 0.
+<DL><DT><DD></DL><P>
+<A NAME="MenuKeyShortcut"></A>
+<A NAME="DOC.75.16"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool MenuKeyShortcut(int c, const char* s)</B></TT>
+<DD>
+Checks whether the string s contains shortcut c. Shortcut is the
+character prefixed with '&' if any.
+<DL><DT><DD></DL><P>
+<A NAME="GetAction"></A>
+<A NAME="DOC.75.17"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Dialog.html#DOC.45.17">ActionType</A> GetAction()</B></TT>
+<DD>
+Makes sure a menu can't be moved
+<DL><DT><DD></DL><P>
+<A NAME="MoveFocus"></A>
+<A NAME="DOC.75.18"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MoveFocus(int dir)</B></TT>
+<DD>
+Moves the input focus around the menu in the given direction
+<DL><DT><DD></DL><P>
+<A NAME="HandleEvent"></A>
+<A NAME="DOC.75.19"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void HandleEvent(<!1><A HREF="Widget.html">Widget</A>&amp; obj, int msg, int arg1=0, int arg2=0)</B></TT>
+<DD>
+Handles events such as keyboard input, menu item clicks, etc
+<DL><DT><DD></DL><P>
+<A NAME="Add"></A>
+<A NAME="DOC.75.20"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Add(<!1><A HREF="MenuItem.html">MenuItem</A>* item)</B></TT>
+<DD>
+Adds an existing menu item to the bottom of the menu
+<DL><DT><DD></DL><P>
+<A NAME="Add"></A>
+<A NAME="DOC.75.21"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Add(const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>, <!1><A HREF="Menu.html">Menu</A> &amp;<!1><A HREF="MenuItem.html#DOC.74.2">child</A>)</B></TT>
+<DD>
+Creates a new menu item with a submenu and adds it to the bottom of the menu
+<DL><DT><DD></DL><P>
+<A NAME="Add"></A>
+<A NAME="DOC.75.22"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Add(const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A> = NULL, int id = 0)</B></TT>
+<DD>
+Creates a new menu item with a message ID and adds it to the bottom of the menu
+<DL><DT><DD></DL><P>
+<A NAME="Remove"></A>
+<A NAME="DOC.75.23"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Remove(int i)</B></TT>
+<DD>
+Removes item i from the menu item list. If the menu created the menu item it
+will delete it as well but if you created it yourself, you have take care of
+destroying it.
+<DL><DT><DD></DL><P>
+<A NAME="RemoveByID"></A>
+<A NAME="DOC.75.24"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void RemoveByID(int ID)</B></TT>
+<DD>
+Removes the item with the given callback ID
+<DL><DT><DD></DL><P>
+<A NAME="GetItem"></A>
+<A NAME="DOC.75.25"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   <!1><A HREF="MenuItem.html">MenuItem</A>* GetItem(int i)</B></TT>
+<DD>
+Returns a pointer to menu item i from the menu item list
+<DL><DT><DD></DL><P>
+<A NAME="GetItemByID"></A>
+<A NAME="DOC.75.26"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   int GetItemByID(int ID)</B></TT>
+<DD>
+Finds and returns the index of the menu item with the given callback ID.
+If the item with the requested ID isn't find this function returns -1.
+<DL><DT><DD></DL><P>
+<A NAME="Enable"></A>
+<A NAME="DOC.75.27"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Enable(int i)</B></TT>
+<DD>
+Enables item i
+<DL><DT><DD></DL><P>
+<A NAME="Disable"></A>
+<A NAME="DOC.75.28"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Disable(int i)</B></TT>
+<DD>
+Disables item i. Disabled items are greyed out and can't be selected.
+<DL><DT><DD></DL><P>
+<A NAME="Check"></A>
+<A NAME="DOC.75.29"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Check(int i)</B></TT>
+<DD>
+Checks item i. Checked items usually have a little checkmark drawn on
+their right side (that depends on the skin).
+<DL><DT><DD></DL><P>
+<A NAME="Uncheck"></A>
+<A NAME="DOC.75.30"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Uncheck(int i)</B></TT>
+<DD>
+Unchecks item i
+<DL><DT><DD></DL><P>
+<A NAME="Disabled"></A>
+<A NAME="DOC.75.31"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool Disabled(int i)</B></TT>
+<DD>
+Checks whether item i is disabled or not
+<DL><DT><DD></DL><P>
+<A NAME="Checked"></A>
+<A NAME="DOC.75.32"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool Checked(int i)</B></TT>
+<DD>
+Checks whether item i is checked or not
+<DL><DT><DD></DL><P>
+<A NAME="Popup"></A>
+<A NAME="DOC.75.33"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Popup(<!1><A HREF="Dialog.html">Dialog</A>* parentDialog, <!1><A HREF="MenuItem.html">MenuItem</A>* <!1><A HREF="Menu.html#DOC.75.3">parentMenu</A>, int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="Popup"></A>
+<A NAME="DOC.75.34"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Popup(<!1><A HREF="Dialog.html">Dialog</A>* parentDialog, <!1><A HREF="MenuItem.html">MenuItem</A>* <!1><A HREF="Menu.html#DOC.75.3">parentMenu</A>, const <!1><A HREF="Point.html">Point</A> &amp;p)</B></TT>
+<DD>
+Pops up a menu at the given position. You have to pass the menu's parent
+dialog (i.e. the dialog from where or on top of which the menu was popped
+up) and the menu's parent menu if any (usually NULL). Note that Popup() doesn't
+block the program but instead just adds the menu to the parent dialog and
+then execution continues in that dialog's main loop.
+<DL><DT><DD></DL><P>
+<A NAME="Close"></A>
+<A NAME="DOC.75.35"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Close()</B></TT>
+<DD>
+Closes a menu that was popped up with Popup(). You shouldn't normally have to
+call this as a menu closes itself when it loses focus.
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DT><B>Friends:</B><DD>  class MASKING_DLL_DECLSPEC <!1><A HREF="MenuItem.html">MenuItem</A><BR><DT><B>See Also:</B><DD><!1><A HREF="MenuItem.html">MenuItem</A><BR><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Menu.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+</html>

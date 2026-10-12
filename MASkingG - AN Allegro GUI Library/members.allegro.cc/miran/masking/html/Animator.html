@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Animator.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC Animator</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">Animator</A></H2></H2><BLOCKQUOTE> Provides basic animation functionality for the GUI.</BLOCKQUOTE>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.2.6">Animating</A></B>()
+<DD><I> Returns true if an animation is in progress</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.2.7">Update</A></B>()
+<DD><I> Updates animation variables.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.2.8">Reset</A></B>()
+<DD><I> Resets the animation variables and destroys the background</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.2.9">Create</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="Image.html#DOC.67.2">bmp</A>, int length)
+<DD><I> Sets up a new animation.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Bitmap.html">Bitmap</A>&amp; <B><A HREF="#DOC.2.10">GetBuffer</A></B>()
+<DD><I> Returns the buffer onto which you can draw whatever is to be animated</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.2.11">Draw</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>, int <!1><A HREF="Font.html#DOC.52.2">type</A>)
+<DD><I> Draws one frame of animation.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Public Members</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>enum  <B><A HREF="#DOC.2.1">AnimationType</A></B>
+<DD><I> Animation types.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Bitmap.html">Bitmap</A> <B><A HREF="#DOC.2.2">buffer</A></B>
+<DD><I> The buffer that is actually being animated.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Bitmap.html">Bitmap</A> <B><A HREF="#DOC.2.3">back</A></B>
+<DD><I> The background of the animated buffer.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.2.4">frames</A></B>
+<DD><I> Total number of frames in the animation</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.2.5">progress</A></B>
+<DD><I> The current frame of animation</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+Provides basic animation functionality for the GUI. There are currently 26
+different available animation not all of which are really that impressive
+or usefull. Animatiions provided by this class are mostly used as
+transition effects for certain widget, for example for buttons changing
+from one state to another and so on.</BLOCKQUOTE>
+<DL>
+
+<A NAME="AnimationType"></A>
+<A NAME="DOC.2.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>enum  AnimationType</B></TT>
+<DD>
+Animation types.
+These are all currently available animations. The names are quite
+self explanatory in most cases I think.
+<PRE>
+            NONE
+            BLEND
+            SLIDE_DOWN
+            SLIDE_UP
+            SLIDE_LEFT
+            SLIDE_RIGHT
+            ROLL_DOWN
+            ROLL_UP
+            ROLL_LEFT
+            ROLL_RIGHT
+            BLINDS_DOWN
+            BLINDS_UP
+            BLINDS_LEFT
+            BLINDS_RIGHT
+            OPEN_VERTICAL
+            OPEN_HORIZONTAL
+            OPEN_FROM_CENTRE
+            ROLL_OPEN_VERTICAL
+            ROLL_OPEN_HORIZONTAL
+            ROLL_OPEN_FROM_CENTRE
+            CLOSE_VERTICAL
+            CLOSE_HORIZONTAL
+            CLOSE_TO_CENTRE
+            ROLL_CLOSE_VERTICAL
+            ROLL_CLOSE_HORIZONTAL
+            ROLL_CLOSE_TO_CENTRE
+            ROLL_CLOSE_TO_CENTRE2
+</PRE>
+<DL><DT><DD></DL><P>
+<A NAME="buffer"></A>
+<A NAME="DOC.2.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Bitmap.html">Bitmap</A> buffer</B></TT>
+<DD>
+The buffer that is actually being animated. The user should draw
+onto this buffer, then call the Draw() function to draw to the canvas.
+<DL><DT><DD></DL><P>
+<A NAME="back"></A>
+<A NAME="DOC.2.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Bitmap.html">Bitmap</A> back</B></TT>
+<DD>
+The background of the animated buffer. Most animations need to have
+this bitmap along with the animated buffer so they can interpolate
+each frame between them.
+<DL><DT><DD></DL><P>
+<A NAME="frames"></A>
+<A NAME="DOC.2.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int frames</B></TT>
+<DD>
+Total number of frames in the animation
+<DL><DT><DD></DL><P>
+<A NAME="progress"></A>
+<A NAME="DOC.2.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int progress</B></TT>
+<DD>
+The current frame of animation
+<DL><DT><DD></DL><P>
+<A NAME="Animating"></A>
+<A NAME="DOC.2.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool Animating()</B></TT>
+<DD>
+Returns true if an animation is in progress
+<DL><DT><DD></DL><P>
+<A NAME="Update"></A>
+<A NAME="DOC.2.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool Update()</B></TT>
+<DD>
+Updates animation variables. Returns true if the animation is still
+in progress and false if it has finished.
+<DL><DT><DD></DL><P>
+<A NAME="Reset"></A>
+<A NAME="DOC.2.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Reset()</B></TT>
+<DD>
+Resets the animation variables and destroys the background
+<DL><DT><DD></DL><P>
+<A NAME="Create"></A>
+<A NAME="DOC.2.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Create(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="Image.html#DOC.67.2">bmp</A>, int length)</B></TT>
+<DD>
+Sets up a new animation. The parameters passed are the bitmap that is to
+be animated and the length of the animation in miliseconds.
+<DL><DT><DD></DL><P>
+<A NAME="GetBuffer"></A>
+<A NAME="DOC.2.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Bitmap.html">Bitmap</A>&amp; GetBuffer()</B></TT>
+<DD>
+Returns the buffer onto which you can draw whatever is to be animated
+<DL><DT><DD></DL><P>
+<A NAME="Draw"></A>
+<A NAME="DOC.2.11"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Draw(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>, int <!1><A HREF="Font.html#DOC.52.2">type</A>)</B></TT>
+<DD>
+Draws one frame of animation. Parameters are the canvas onto which the
+animation should be drawn and the type of animation that is to be used.
+See above for a list of available animation types.
+
+<P>Here's a small example:
+<PRE>
+       make a screen bitmap and clear it with lightgray
+      Bitmap screen;
+      screen = ::screen;
+      screen.Clear(Color::lightgray);
+
+<P>       make a backbuffer for double buffering and clear it
+      Bitmap buffer;
+      buffer.Create(SCREEN_W, SCREEN_H);
+      buffer.Clear(Color::lightgray);
+
+<P>       make a canvas for a nice little "window"
+      Bitmap canvas;
+      canvas.CreateSubBitmap(buffer, 100, 20, 120, 60);
+
+<P>       now make an animator
+      Animator anim;
+      anim.Create(canvas, 500);              first create an animated buffer
+      anim.GetBuffer().Clear(Color::red);    draw to the animated buffer
+
+<P>       now do the main loop; this should normally be controled by a timer
+      do {
+          update the animator
+         anim.Update();
+
+<P>          draw the next frame of animation
+         anim.Draw(canvas, Animator::BLEND);
+
+<P>          do the double buffering bit
+         buffer.Blit(screen, 0, 0, 0, 0, buffer.w(), buffer.h());
+
+<P>          wait for a while
+         rest(20);
+      } while (anim.Animating());
+</PRE>
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Animator.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+</html>

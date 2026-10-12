@@ -1,0 +1,270 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Scroller.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC Scroller</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">Scroller</A></H2></H2><BLOCKQUOTE> The scroller widget.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>Scroller
+- <A HREF="CompoundWidget.html">CompoundWidget</A>
+- <A HREF="Dialog.html">Dialog</A>
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<H3>Scroller
+- <A HREF="ScrollObject.html">ScrollObject</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.92.13">Setup</A></B>(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, int totalItems, int <!1><A HREF="Scroller.html#DOC.92.5">visibleItems</A>, int <!1><A HREF="ScrollObject.html#DOC.93.3">pos</A>, int o)
+<DD><I> Shortcut for Widget::Setup(), SetRange(), SetPosition() and SetOrientation()</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.92.14">HandleEvent</A></B>(<!1><A HREF="Widget.html">Widget</A>&amp; obj, int msg, int arg1=0, int arg2=0)
+<DD><I> Main event handler.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.92.15">SetOrientation</A></B>(int o)
+<DD><I> Sets the Scroller's orientation.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   int <B><A HREF="#DOC.92.16">GetOrientation</A></B>()
+<DD><I> Returns the orientation of the scroller</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.92.17">SetRange</A></B>(int totalItems, int <!1><A HREF="Scroller.html#DOC.92.5">visibleItems</A>)
+<DD><I> Sets the range of values in which the scroller may be scrolled.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.92.18">GetVisibleItems</A></B>()
+<DD><I> Returns the number of items the object attached to the scroller can display on one "screen"</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.92.19">SetPosition</A></B>(int <!1><A HREF="ScrollObject.html#DOC.93.3">pos</A>)
+<DD><I> Sets the position of the scroller</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.92.20">Increment</A></B>()
+<DD><I> Moves the scroller position right or up</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.92.21">Decrement</A></B>()
+<DD><I> Moves the scroller position left or down</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>ScrollBack <B><A HREF="#DOC.92.1">back</A></B>
+<DD><I> The underlaying background widget</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>ArrowButton <B><A HREF="#DOC.92.2">bUp</A></B>
+<DD><I> The underlaying up/right arrow button</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>ArrowButton <B><A HREF="#DOC.92.3">bDown</A></B>
+<DD><I> The underlaying down/left arrow button</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>ScrollButton <B><A HREF="#DOC.92.4">bGrip</A></B>
+<DD><I> The underlaying gripper button</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.92.5">visibleItems</A></B>
+<DD><I> The number of items the scrolled object can display on one screen.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.92.6">orientation</A></B>
+<DD><I> The orientation of the scroller.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Point.html">Point</A> <B><A HREF="#DOC.92.7">gOffset</A></B>
+<DD><I> The offset of the point on the gripper where the user grabbed it to drag from the centre</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.92.8">hInc</A></B>
+<DD><I> Vertical and horizontal increment values</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.92.9">MsgInitSkin</A></B>()
+<DD><I> Initializes the Scroller and it's widgets with the default bitmaps, fonts and colours as defined by the skin</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.92.10">CalculateGripperPosition</A></B>()
+<DD><I> Updates the position of the draggable scroller button dependin on current position and orientation</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.92.11">UpdateSize</A></B>()
+<DD><I> Updates the size and position of all the widgets depending on the size of the scroller and its orientation.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.92.12">MsgWantTab</A></B>()
+<DD><I> Returns false to indicate the scroller itself can't be tabbed to.</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+The scroller widget. A Scroller is just like a Slider or a SpinBox except
+that it represents the data a bit differently. Like a SpinBox it has two
+buttons for scrolling up and down but it also has a third button that can
+be dragged like a slider's button. A Scroller can be either horizontal or
+vertical. Its width or height (depending on orientation) is set automatically
+according to the background bitmap.
+
+<P></BLOCKQUOTE>
+<DL>
+
+<A NAME="back"></A>
+<A NAME="DOC.92.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>ScrollBack back</B></TT>
+<DD>
+The underlaying background widget
+<DL><DT><DD></DL><P>
+<A NAME="bUp"></A>
+<A NAME="DOC.92.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>ArrowButton bUp</B></TT>
+<DD>
+The underlaying up/right arrow button
+<DL><DT><DD></DL><P>
+<A NAME="bDown"></A>
+<A NAME="DOC.92.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>ArrowButton bDown</B></TT>
+<DD>
+The underlaying down/left arrow button
+<DL><DT><DD></DL><P>
+<A NAME="bGrip"></A>
+<A NAME="DOC.92.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>ScrollButton bGrip</B></TT>
+<DD>
+The underlaying gripper button
+<DL><DT><DD></DL><P>
+<A NAME="visibleItems"></A>
+<A NAME="DOC.92.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int visibleItems</B></TT>
+<DD>
+The number of items the scrolled object can display on one screen.
+The scroll button is resized to reflect the relation between the
+number of visible items and the number of all items.
+<DL><DT><DD></DL><P>
+<A NAME="orientation"></A>
+<A NAME="DOC.92.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int orientation</B></TT>
+<DD>
+The orientation of the scroller. If 0 the scroller is vertical otherwise it is horizontal.
+<DL><DT><DD></DL><P>
+<A NAME="gOffset"></A>
+<A NAME="DOC.92.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Point.html">Point</A> gOffset</B></TT>
+<DD>
+The offset of the point on the gripper where the user grabbed it to drag from the centre
+<DL><DT><DD></DL><P>
+<A NAME="hInc"></A>
+<A NAME="DOC.92.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int hInc</B></TT>
+<DD>
+Vertical and horizontal increment values
+<DL><DT><DD></DL><P>
+<A NAME="MsgInitSkin"></A>
+<A NAME="DOC.92.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgInitSkin()</B></TT>
+<DD>
+Initializes the Scroller and it's widgets with the default bitmaps,
+fonts and colours as defined by the skin
+<DL><DT><DD></DL><P>
+<A NAME="CalculateGripperPosition"></A>
+<A NAME="DOC.92.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void CalculateGripperPosition()</B></TT>
+<DD>
+Updates the position of the draggable scroller button dependin on current position and orientation
+<DL><DT><DD></DL><P>
+<A NAME="UpdateSize"></A>
+<A NAME="DOC.92.11"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void UpdateSize()</B></TT>
+<DD>
+Updates the size and position of all the widgets depending on the
+size of the scroller and its orientation. If the scroller is horizontal
+its height is set to the height of the background bitmap othwerwise its
+width is set to the width if the background bitmap.
+<DL><DT><DD></DL><P>
+<A NAME="MsgWantTab"></A>
+<A NAME="DOC.92.12"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool MsgWantTab()</B></TT>
+<DD>
+Returns false to indicate the scroller itself can't be tabbed to.
+Instead the underlaying widgets can be tabbed to.
+<DL><DT><DD></DL><P>
+<A NAME="Setup"></A>
+<A NAME="DOC.92.13"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Setup(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, int totalItems, int <!1><A HREF="Scroller.html#DOC.92.5">visibleItems</A>, int <!1><A HREF="ScrollObject.html#DOC.93.3">pos</A>, int o)</B></TT>
+<DD>
+Shortcut for Widget::Setup(), SetRange(), SetPosition() and SetOrientation()
+<DL><DT><DD></DL><P>
+<A NAME="HandleEvent"></A>
+<A NAME="DOC.92.14"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void HandleEvent(<!1><A HREF="Widget.html">Widget</A>&amp; obj, int msg, int arg1=0, int arg2=0)</B></TT>
+<DD>
+Main event handler.
+Handles events such as button clicks and keypresses so that the scroller
+is updated whenever a button is clicked or dragged, etc.
+<DL><DT><DD></DL><P>
+<A NAME="SetOrientation"></A>
+<A NAME="DOC.92.15"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetOrientation(int o)</B></TT>
+<DD>
+Sets the Scroller's orientation. Pass 0 for a vertical Scroller, 1 for a horizontal one.
+<DL><DT><DD></DL><P>
+<A NAME="GetOrientation"></A>
+<A NAME="DOC.92.16"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   int GetOrientation()</B></TT>
+<DD>
+Returns the orientation of the scroller
+<DL><DT><DD></DL><P>
+<A NAME="SetRange"></A>
+<A NAME="DOC.92.17"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetRange(int totalItems, int <!1><A HREF="Scroller.html#DOC.92.5">visibleItems</A>)</B></TT>
+<DD>
+Sets the range of values in which the scroller may be scrolled.
+Note that this function takes different parameters than
+ScrollObject::SetRange(min, max). TotalItems is the number of all
+items the scroller can scroll (min is implicitlly 0 and max equals
+totalItems) and visibleItems is the number of items the scrolled
+object is capable of displaying on one screen. This is needed
+because the little draggable scroll button is sized proportionally
+to the number of currently visible items.
+<DL><DT><DD></DL><P>
+<A NAME="GetVisibleItems"></A>
+<A NAME="DOC.92.18"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int GetVisibleItems()</B></TT>
+<DD>
+Returns the number of items the object attached to the scroller can display
+on one "screen"
+<DL><DT><DD></DL><P>
+<A NAME="SetPosition"></A>
+<A NAME="DOC.92.19"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetPosition(int <!1><A HREF="ScrollObject.html#DOC.93.3">pos</A>)</B></TT>
+<DD>
+Sets the position of the scroller
+<DL><DT><DD></DL><P>
+<A NAME="Increment"></A>
+<A NAME="DOC.92.20"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Increment()</B></TT>
+<DD>
+Moves the scroller position right or up
+<DL><DT><DD></DL><P>
+<A NAME="Decrement"></A>
+<A NAME="DOC.92.21"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Decrement()</B></TT>
+<DD>
+Moves the scroller position left or down
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DT><B>See Also:</B><DD><!1><A HREF="Scroller.html">Scroller</A>, <!1><A HREF="SpinBox.html">SpinBox</A><BR><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Scroller.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+</html>

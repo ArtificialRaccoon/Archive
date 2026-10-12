@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/file-and-compression-routines/pack_fopen_chunk by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:26:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>pack_fopen_chunk</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">File and compression routines</a></h2><ul>
+<li><a href="get_executable_name.html" style="font-weight: bold">get_executable_name</a></li><li><a href="fix_filename_case.html" >fix_filename_case</a></li><li><a href="fix_filename_slashes.html" >fix_filename_slashes</a></li><li><a href="canonicalize_filename.html" >canonicalize_filename</a></li><li><a href="make_absolute_filename.html" >make_absolute_filename</a></li><li><a href="make_relative_filename.html" >make_relative_filename</a></li><li><a href="is_relative_filename.html" >is_relative_filename</a></li><li><a href="replace_filename.html" style="font-weight: bold">replace_filename</a></li><li><a href="replace_extension.html" >replace_extension</a></li><li><a href="append_filename.html" >append_filename</a></li><li><a href="get_filename.html" style="font-weight: bold">get_filename</a></li><li><a href="get_extension.html" style="font-weight: bold">get_extension</a></li><li><a href="put_backslash.html" >put_backslash</a></li><li><a href="file_exists.html" >file_exists</a></li><li><a href="exists.html" style="font-weight: bold">exists</a></li><li><a href="file_size_ex.html" >file_size_ex</a></li><li><a href="file_time.html" >file_time</a></li><li><a href="delete_file.html" >delete_file</a></li><li><a href="for_each_file_ex.html" >for_each_file_ex</a></li><li><a href="al_findfirst.html" style="font-weight: bold">al_findfirst</a></li><li><a href="al_findnext.html" style="font-weight: bold">al_findnext</a></li><li><a href="al_findclose.html" style="font-weight: bold">al_findclose</a></li><li><a href="al_ffblk_get_size.html" >al_ffblk_get_size</a></li><li><a href="find_allegro_resource.html" >find_allegro_resource</a></li><li><a href="set_allegro_resource_path.html" >set_allegro_resource_path</a></li><li><a href="packfile_password.html" style="font-weight: bold">packfile_password</a></li><li><a href="pack_fopen.html" style="font-weight: bold">pack_fopen</a></li><li><a href="pack_fopen_vtable.html" >pack_fopen_vtable</a></li><li><a href="pack_fclose.html" style="font-weight: bold">pack_fclose</a></li><li><a href="pack_fseek.html" >pack_fseek</a></li><li><a href="pack_feof.html" >pack_feof</a></li><li><a href="pack_ferror.html" >pack_ferror</a></li><li><a href="pack_getc.html" style="font-weight: bold">pack_getc</a></li><li><a href="pack_putc.html" style="font-weight: bold">pack_putc</a></li><li><a href="pack_igetw.html" >pack_igetw</a></li><li><a href="pack_iputw.html" >pack_iputw</a></li><li><a href="pack_igetl.html" style="font-weight: bold">pack_igetl</a></li><li><a href="pack_iputl.html" style="font-weight: bold">pack_iputl</a></li><li><a href="pack_mgetw.html" >pack_mgetw</a></li><li><a href="pack_mputw.html" >pack_mputw</a></li><li><a href="pack_mgetl.html" >pack_mgetl</a></li><li><a href="pack_mputl.html" >pack_mputl</a></li><li><a href="pack_fread.html" style="font-weight: bold">pack_fread</a></li><li><a href="pack_fwrite.html" style="font-weight: bold">pack_fwrite</a></li><li><a href="pack_fgets.html" >pack_fgets</a></li><li><a href="pack_fputs.html" >pack_fputs</a></li><li><strong>pack_fopen_chunk</strong></li><li><a href="pack_fclose_chunk.html" >pack_fclose_chunk</a></li><li><a href="create_lzss_pack_data.html" >create_lzss_pack_data</a></li><li><a href="free_lzss_pack_data.html" >free_lzss_pack_data</a></li><li><a href="lzss_write.html" >lzss_write</a></li><li><a href="create_lzss_unpack_data.html" >create_lzss_unpack_data</a></li><li><a href="free_lzss_unpack_data.html" >free_lzss_unpack_data</a></li><li><a href="lzss_read.html" >lzss_read</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>pack_fopen_chunk</h1>
+
+<div class="shortdesc">
+Opens a sub-chunk of a file.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<a href="../../index.html" target="_blank"><span class="a">PACKFILE</span></a> <span class="k3">*</span><a href="../../index.html" target="_blank"><span class="a">pack_fopen_chunk</span></a><span class="k2">(</span><a href="../../index.html" target="_blank"><span class="a">PACKFILE</span></a> <span class="k3">*</span>f, <span class="k1">int</span> pack<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Opens a sub-chunk of a file. Chunks are primarily intended for use by the
+   datafile code, but they may also be useful for your own file routines. A
+   chunk provides a logical view of part of a file, which can be compressed
+   as an individual entity and will automatically insert and check length
+   counts to prevent reading past the end of the chunk. The PACKFILE
+   parameter is a previously opened file, and `pack' is a boolean parameter
+   which will turn compression on for the sub-chunk if it is non-zero.
+   Example:
+<pre class="code">      <a href="../../index.html" target="_blank"><span class="a">PACKFILE</span></a> <span class="k3">*</span>output <span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">pack_fopen</span></a><span class="k2">(</span><span class="s">"out.raw"</span>, <span class="s">"w!"</span><span class="k2">)</span><span class="k2">;</span>
+      ...
+      <span class="c">/* Create a sub-chunk with compression. */</span>
+      output <span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">pack_fopen</span></a><span class="k2">(</span>chunk<span class="k2">(</span>output, <span class="n">1</span><span class="k2">)</span><span class="k2">;</span>
+      <span class="k1">if</span> <span class="k2">(</span><span class="k3">!</span>output<span class="k2">)</span>
+	 abort_on_error<span class="k2">(</span><span class="s">"Error saving data!"</span><span class="k2">)</span><span class="k2">;</span>
+      <span class="c">/* Write some data to the sub-chunk. */</span>
+      ...
+      <span class="c">/* Close the sub-chunk, recovering parent file. */</span>
+      output <span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">pack_fclose_chunk</span></a><span class="k2">(</span>output<span class="k2">)</span><span class="k2">;</span></pre>
+   The data written to the chunk will be prefixed with two length counts
+   (32-bit, a.k.a. big-endian). For uncompressed chunks these will both be
+   set to the size of the data in the chunk. For compressed chunks (created
+   by setting the `pack' flag), the first length will be the raw size of the
+   chunk, and the second will be the negative size of the uncompressed data.<br /><br />
+
+   To read the chunk, use the following code:
+<pre class="code">      <a href="../../index.html" target="_blank"><span class="a">PACKFILE</span></a> <span class="k3">*</span>input <span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">pack_fopen</span></a><span class="k2">(</span><span class="s">"out.raw"</span>, <span class="s">"rp"</span><span class="k2">)</span><span class="k2">;</span>
+      ...
+      input <span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">pack_fopen_chunk</span></a><span class="k2">(</span>input, <span class="n">1</span><span class="k2">)</span><span class="k2">;</span>
+      <span class="c">/* Read data from the sub-chunk and close it. */</span>
+      ...
+      input <span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">pack_fclose_chunk</span></a><span class="k2">(</span>input<span class="k2">)</span><span class="k2">;</span></pre>
+   This sequence will read the length counts created when the chunk was
+   written, and automatically decompress the contents of the chunk if it
+   was compressed. The length will also be used to prevent reading past the
+   end of the chunk (Allegro will return EOF if you attempt this), and to
+   automatically skip past any unread chunk data when you call
+   pack_fclose_chunk().<br /><br />
+
+   Chunks can be nested inside each other by making repeated calls to
+   pack_fopen_chunk(). When writing a file, the compression status is
+   inherited from the parent file, so you only need to set the pack flag if
+   the parent is not compressed but you want to pack the chunk data. If the
+   parent file is already open in packed mode, setting the pack flag will
+   result in data being compressed twice: once as it is written to the
+   chunk, and again as the chunk passes it on to the parent file.
+
+</div>
+
+<div class="retval">
+Returns a pointer to the sub-chunked PACKFILE, or NULL if there was some
+   error (eg. you are using a custom PACKFILE vtable).
+
+</div>
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">pack_fclose_chunk</a></li>
+	<li><a href="../../index.html">pack_fopen</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-587457">
+		<a href="https://www.allegro.cc/forums/thread/587457">Timers and high speed animation - need advice!</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/612517" style="color: black;">1</a> </span>
+	</li><li id="t-586937">
+		<a href="https://www.allegro.cc/forums/thread/586937">Adding sounds together</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/605524" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/EggHack">EggHack</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/SwordofFargoalremake">Sword of Fargoal remake</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/Ashes">Ashes</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/FakeNES">FakeNES</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/StarControlTimeWarp">Star Control: TimeWarp</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/TetrisUnlimited">Tetris Unlimited</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/TW-Light">TW-Light</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/GAACOexample">GA + ACO example</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,897</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.010818</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/file-and-compression-routines/pack_fopen_chunk by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:26:39 GMT -->
+</html>

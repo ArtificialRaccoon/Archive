@@ -1,0 +1,276 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/MenuItem.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC MenuItem</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">MenuItem</A></H2></H2><BLOCKQUOTE> Internal helper widget for making menu items.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>MenuItem
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.74.17">MenuItem</A></B>(const char* <!1><A HREF="MenuItem.html#DOC.74.1">text</A>, <!1><A HREF="Menu.html">Menu</A>* <!1><A HREF="MenuItem.html#DOC.74.2">child</A>)
+<DD><I> The constructor for making a menu item with a child menu</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.74.18">MenuItem</A></B>(const char* <!1><A HREF="MenuItem.html#DOC.74.1">text</A> = NULL, int id = 0)
+<DD><I> The constructor for making a menu item with a message ID.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   char* <B><A HREF="#DOC.74.19">GetText</A></B>()
+<DD><I> Returns the item's text</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.74.20">SetText</A></B>(const char* t)
+<DD><I> Sets the item's text</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   int <B><A HREF="#DOC.74.21">GetCallbackID</A></B>()
+<DD><I> Returns callbackID of the menu item</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   <!1><A HREF="Menu.html">Menu</A>* <B><A HREF="#DOC.74.22">GetChildMenu</A></B>()
+<DD><I> Returns pointer to child menu if any</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>char* <B><A HREF="#DOC.74.1">text</A></B>
+<DD><I> The item's text.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Menu.html">Menu</A>* <B><A HREF="#DOC.74.2">child</A></B>
+<DD><I> A pointer to the menu item's child menu if any</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.74.3">callbackID</A></B>
+<DD><I> The ID of the message the item is to send to its parent menu when it is selected.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.74.4">topBar</A></B>
+<DD><I> True if the item is part of a top bar menu</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.74.5">delayTimer</A></B>
+<DD><I> A frame counter that help implement a short delay before a submenu automatically pops up when the mouse is on top of an item</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.74.6">MsgInitSkin</A></B>()
+<DD><I> Initilizes the menu item with the default bitmaps, fonts and font colours as defined by the skin</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.74.7">MsgWantfocus</A></B>()
+<DD><I> Returns true</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.74.8">MsgGotfocus</A></B>()
+<DD><I> Start the timer counter that counts frames and controls when a submenu automatically pops up</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.74.9">MsgLostfocus</A></B>()
+<DD><I> Stops the timer counter that counts frames and controls when a submenu automatically pops up</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.74.10">MsgLPress</A></B>()
+<DD><I> Handles mouse clicks with the left mouse button</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.74.11">MsgLRelease</A></B>()
+<DD><I> Handles mouse clicks with the left mouse button.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.74.12">MsgTick</A></B>()
+<DD><I> Increments the frame counter and after a certain time has passed it pops up the child menu</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.74.13">MsgKey</A></B>()
+<DD><I> Handles keyboard input</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.74.14">Draw</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)
+<DD><I> Draws the menu item</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.74.15">UpdateSize</A></B>()
+<DD><I> Resizes the item according to the length of the text</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.74.16">MsgWantTab</A></B>()
+<DD><I> Returns false to prevent the menu items from  being tabbed to</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+Internal helper widget for making menu items.
+
+<P>MenuItem implements a single item of a complex menu. Every item may have
+either a child menu which pops up when the item is selected or after a
+certain time delay or a message ID which is sent to the parent menu when
+the item is selected.
+
+<P></BLOCKQUOTE>
+<DL>
+
+<A NAME="text"></A>
+<A NAME="DOC.74.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>char* text</B></TT>
+<DD>
+The item's text. See above for a description of the text formatting.
+<DL><DT><DD></DL><P>
+<A NAME="child"></A>
+<A NAME="DOC.74.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Menu.html">Menu</A>* child</B></TT>
+<DD>
+A pointer to the menu item's child menu if any
+<DL><DT><DD></DL><P>
+<A NAME="callbackID"></A>
+<A NAME="DOC.74.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int callbackID</B></TT>
+<DD>
+The ID of the message the item is to send to its parent menu when it
+is selected. This should normally be above the normal GUI MSG_SOMETHING
+constants, for example MSG_SUSER+1, MSG_SUSER+2, etc.
+<DL><DT><DD></DL><P>
+<A NAME="topBar"></A>
+<A NAME="DOC.74.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool topBar</B></TT>
+<DD>
+True if the item is part of a top bar menu
+<DL><DT><DD></DL><P>
+<A NAME="delayTimer"></A>
+<A NAME="DOC.74.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int delayTimer</B></TT>
+<DD>
+A frame counter that help implement a short delay before a submenu
+automatically pops up when the mouse is on top of an item
+<DL><DT><DD></DL><P>
+<A NAME="MsgInitSkin"></A>
+<A NAME="DOC.74.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgInitSkin()</B></TT>
+<DD>
+Initilizes the menu item with the default bitmaps, fonts and font colours as defined by the skin
+<DL><DT><DD></DL><P>
+<A NAME="MsgWantfocus"></A>
+<A NAME="DOC.74.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool MsgWantfocus()</B></TT>
+<DD>
+Returns true
+<DL><DT><DD></DL><P>
+<A NAME="MsgGotfocus"></A>
+<A NAME="DOC.74.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgGotfocus()</B></TT>
+<DD>
+Start the timer counter that counts frames and controls when a submenu automatically pops up
+<DL><DT><DD></DL><P>
+<A NAME="MsgLostfocus"></A>
+<A NAME="DOC.74.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgLostfocus()</B></TT>
+<DD>
+Stops the timer counter that counts frames and controls when a submenu automatically pops up
+<DL><DT><DD></DL><P>
+<A NAME="MsgLPress"></A>
+<A NAME="DOC.74.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgLPress()</B></TT>
+<DD>
+Handles mouse clicks with the left mouse button
+<DL><DT><DD></DL><P>
+<A NAME="MsgLRelease"></A>
+<A NAME="DOC.74.11"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgLRelease()</B></TT>
+<DD>
+Handles mouse clicks with the left mouse button.
+
+<P>When a menu item is clicked it either pops up its submenu or sends
+its callback message ID to the parent menu.
+<DL><DT><DD></DL><P>
+<A NAME="MsgTick"></A>
+<A NAME="DOC.74.12"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgTick()</B></TT>
+<DD>
+Increments the frame counter and after a certain time has passed it pops up the child menu
+<DL><DT><DD></DL><P>
+<A NAME="MsgKey"></A>
+<A NAME="DOC.74.13"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgKey()</B></TT>
+<DD>
+Handles keyboard input
+<DL><DT><DD></DL><P>
+<A NAME="Draw"></A>
+<A NAME="DOC.74.14"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Draw(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)</B></TT>
+<DD>
+Draws the menu item
+<DL><DT><DD></DL><P>
+<A NAME="UpdateSize"></A>
+<A NAME="DOC.74.15"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void UpdateSize()</B></TT>
+<DD>
+Resizes the item according to the length of the text
+<DL><DT><DD></DL><P>
+<A NAME="MsgWantTab"></A>
+<A NAME="DOC.74.16"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool MsgWantTab()</B></TT>
+<DD>
+Returns false to prevent the menu items from  being tabbed to
+<DL><DT><DD></DL><P>
+<A NAME="MenuItem"></A>
+<A NAME="DOC.74.17"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> MenuItem(const char* <!1><A HREF="MenuItem.html#DOC.74.1">text</A>, <!1><A HREF="Menu.html">Menu</A>* <!1><A HREF="MenuItem.html#DOC.74.2">child</A>)</B></TT>
+<DD>
+The constructor for making a menu item with a child menu
+<DL><DT><DD></DL><P>
+<A NAME="MenuItem"></A>
+<A NAME="DOC.74.18"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> MenuItem(const char* <!1><A HREF="MenuItem.html#DOC.74.1">text</A> = NULL, int id = 0)</B></TT>
+<DD>
+The constructor for making a menu item with a message ID.
+
+<P>A menuitem may have a submenu or a mesage ID (or none of those
+but that's quite pointless). The text of a menu item is made
+of two parts separated with a horizontal tab character ('\t').
+The first part is printed on the left part of the item while the
+other part is printed on the right. Usually the left part contains
+the name of a command or selection and the right part contains a
+description of the matching keyboard shortcut. Also the left part
+may contain a character that is prefixed with '&'. This character
+will then be underlined and will act as a quick shortcut for
+navigating the menu. For example the text <i>"&New\tCtrl-N"</i>
+will produce a menu item that will read <i>"<u>N</u>ew          Ctrl-N"</i>.
+If text is NULL, the menu item will be a separator.
+<DL><DT><DD></DL><P>
+<A NAME="GetText"></A>
+<A NAME="DOC.74.19"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   char* GetText()</B></TT>
+<DD>
+Returns the item's text
+<DL><DT><DD></DL><P>
+<A NAME="SetText"></A>
+<A NAME="DOC.74.20"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetText(const char* t)</B></TT>
+<DD>
+Sets the item's text
+<DL><DT><DD></DL><P>
+<A NAME="GetCallbackID"></A>
+<A NAME="DOC.74.21"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   int GetCallbackID()</B></TT>
+<DD>
+Returns callbackID of the menu item
+<DL><DT><DD></DL><P>
+<A NAME="GetChildMenu"></A>
+<A NAME="DOC.74.22"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   <!1><A HREF="Menu.html">Menu</A>* GetChildMenu()</B></TT>
+<DD>
+Returns pointer to child menu if any
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DT><B>Friends:</B><DD>  class MASKING_DLL_DECLSPEC <!1><A HREF="Menu.html">Menu</A><BR><DT><B>See Also:</B><DD><!1><A HREF="Menu.html">Menu</A><BR><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/MenuItem.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+</html>

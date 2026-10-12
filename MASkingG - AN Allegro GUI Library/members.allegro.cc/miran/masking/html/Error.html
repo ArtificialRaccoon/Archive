@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Error.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC Error</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">Error</A></H2></H2><BLOCKQUOTE> Represents an error code functions can return and you can check.</BLOCKQUOTE>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.49.3">Error</A></B>(<!1><A HREF="Error.html#DOC.49.1">Type</A> t = NONE)
+<DD><I> The constructor for making a new Error object.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   const char* <B><A HREF="#DOC.49.4">GetDescription</A></B>()
+<DD><I> Returns a string containing a short description of the error.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   <B><A HREF="#DOC.49.5">operator bool</A></B>() const 
+<DD><I> Casts an error code to a bool value.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.49.6">operator==</A></B>(const <!1><A HREF="Error.html#DOC.49.1">Type</A> &amp;t)
+<DD><I> Compares two error codes.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   bool <B><A HREF="#DOC.49.7">operator!=</A></B>(const <!1><A HREF="Error.html#DOC.49.1">Type</A> &amp;t)
+<DD><I> Compares two error codes.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.49.8">Report</A></B>()
+<DD><I> Prints an error message to the screen by using allegro_message() and exits the program.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Public Members</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>enum  <B><A HREF="#DOC.49.1">Type</A></B>
+<DD><I> The type of the error.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Error.html#DOC.49.1">Type</A> <B><A HREF="#DOC.49.2">type</A></B>
+<DD><I> The actual error code of the Error object</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+Represents an error code functions can return and you can check.
+It contains some most common error codes but you can easily derive your own
+error class with your own errors. This class is most often used for checking
+whether installing some module or MASkinG itself was successfull or for
+checking if loading data has failed or something.</BLOCKQUOTE>
+<DL>
+
+<A NAME="Type"></A>
+<A NAME="DOC.49.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>enum  Type</B></TT>
+<DD>
+The type of the error.
+An Error can be one of the following values:
+<PRE>
+	NONE            - there was no error
+	ALLEGRO         - error installing Allegro
+	KEYBOARD        - error installing the keyboard module
+	MOUSE           - error installing the mouse module
+	TIMER           - error installing the timer module
+	GFX             - error setting the graphics mode
+	SOUND           - error installing the sound module (not fatal, just a warnin so to speak)
+	MEMORY          - ran out of memory
+	VIDEOMEMORY     - ran out of video memory
+	TRIPLEBUFFER    - error setting triplebuffering
+	SKIN_INI        - can't find a config file (skin)
+	SKIN_DAT        - can't find or load a datafile (skin)
+	NO_FILE         - file doesn't exist
+	LOAD_FILE       - can't load a file
+	ALFONT          - error installing or using AllegroFont
+	INDEX           - wrong index for accessing an array or vector
+	UNKNOWN         - an undetermined error (any values above UNKNOWN can be used by derived error classes)
+</PRE>
+<DL><DT><DD></DL><P>
+<A NAME="type"></A>
+<A NAME="DOC.49.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Error.html#DOC.49.1">Type</A> type</B></TT>
+<DD>
+The actual error code of the Error object
+<DL><DT><DD></DL><P>
+<A NAME="Error"></A>
+<A NAME="DOC.49.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> Error(<!1><A HREF="Error.html#DOC.49.1">Type</A> t = NONE)</B></TT>
+<DD>
+The constructor for making a new Error object.
+Pass one of the possible error codes as the parameter to create an error.
+<DL><DT><DD></DL><P>
+<A NAME="GetDescription"></A>
+<A NAME="DOC.49.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   const char* GetDescription()</B></TT>
+<DD>
+Returns a string containing a short description of the error.
+This can be used to print to the screen to inform the user of an error.
+If you derive your own error class you need to implement this function
+like this:
+<PRE>
+      virtual const char *MyErrror::GetDescription() {
+          if (type > UNKNOWN) {
+               return my own error description string
+          }
+          else {
+              return Error::GetDescription();
+          }
+      }
+</PRE>
+<DL><DT><DD></DL><P>
+<A NAME="operator bool"></A>
+<A NAME="DOC.49.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   operator bool() const </B></TT>
+<DD>
+Casts an error code to a bool value.
+If the error code represents a fatal error that requires the program to shut
+down this returns true otherwise it returns false. This enables you to do
+something like this:
+<PRE>
+      Error e = FunctionThatTriesToDoSomething();
+      if (e) {
+          ShutdownProgram();
+      }
+</PRE>
+<DL><DT><DD></DL><P>
+<A NAME="operator=="></A>
+<A NAME="DOC.49.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool operator==(const <!1><A HREF="Error.html#DOC.49.1">Type</A> &amp;t)</B></TT>
+<DD>
+Compares two error codes.
+Return true if the error codes are the same.
+<DL><DT><DD></DL><P>
+<A NAME="operator!="></A>
+<A NAME="DOC.49.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   bool operator!=(const <!1><A HREF="Error.html#DOC.49.1">Type</A> &amp;t)</B></TT>
+<DD>
+Compares two error codes.
+Return true if the error codes are different.
+<DL><DT><DD></DL><P>
+<A NAME="Report"></A>
+<A NAME="DOC.49.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Report()</B></TT>
+<DD>
+Prints an error message to the screen by using allegro_message() and exits the program.
+Call this when you catch a fatal error.
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Error.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+</html>

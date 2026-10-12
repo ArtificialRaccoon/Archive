@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/keyboard-routines/scancode_to_name by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:16:27 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>scancode_to_name</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Keyboard routines</a></h2><ul>
+<li><a href="install_keyboard.html" style="font-weight: bold">install_keyboard</a></li><li><a href="remove_keyboard.html" style="font-weight: bold">remove_keyboard</a></li><li><a href="install_keyboard_hooks.html" >install_keyboard_hooks</a></li><li><a href="poll_keyboard.html" style="font-weight: bold">poll_keyboard</a></li><li><a href="keyboard_needs_poll.html" >keyboard_needs_poll</a></li><li><a href="key.html" style="font-weight: bold">key</a></li><li><a href="key_shifts.html" style="font-weight: bold">key_shifts</a></li><li><a href="keypressed.html" style="font-weight: bold">keypressed</a></li><li><a href="readkey.html" style="font-weight: bold">readkey</a></li><li><a href="ureadkey.html" >ureadkey</a></li><li><a href="scancode_to_ascii.html" >scancode_to_ascii</a></li><li><strong>scancode_to_name</strong></li><li><a href="simulate_keypress.html" >simulate_keypress</a></li><li><a href="simulate_ukeypress.html" >simulate_ukeypress</a></li><li><a href="keyboard_callback.html" >keyboard_callback</a></li><li><a href="keyboard_ucallback.html" >keyboard_ucallback</a></li><li><a href="keyboard_lowlevel_callback.html" >keyboard_lowlevel_callback</a></li><li><a href="set_leds.html" >set_leds</a></li><li><a href="set_keyboard_rate.html" >set_keyboard_rate</a></li><li><a href="clear_keybuf.html" style="font-weight: bold">clear_keybuf</a></li><li><a href="three_finger_flag.html" >three_finger_flag</a></li><li><a href="key_led_flag.html" >key_led_flag</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>scancode_to_name</h1>
+
+<div class="shortdesc">
+Converts a scancode to a key name.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">const</span> <span class="k1">char</span> <span class="k3">*</span><a href="../../index.html" target="_blank"><span class="a">scancode_to_name</span></a><span class="k2">(</span><span class="k1">int</span> scancode<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+This function returns a string pointer containing the name of they key with
+   the given scancode. This is useful if you e.g. let the user choose a key for
+   some action, and want to display something more meaningful than just the
+   scancode. Example:
+<pre class="code">      <span class="k1">char</span> <span class="k1">const</span> <span class="k3">*</span>keyname <span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">scancode_to_name</span></a><span class="k2">(</span>scancode<span class="k2">)</span><span class="k2">;</span>
+      <a href="../../index.html" target="_blank"><span class="a">allegro_message</span></a><span class="k2">(</span><span class="s">"You pressed the %s key."</span>, keyname<span class="k2">)</span><span class="k2">;</span></pre>
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">scancode_to_ascii</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../index.html">exkeys</a></li>
+</ul>
+</div>
+
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/AllegroMinigameCollection">Allegro Minigame Collection</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/FoleRaulgobananas">Fole &amp; Raul go bananas</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/Xelda">Xelda</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/CrystalStacker">Crystal Stacker</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/PeaceFighter">PeaceFighter</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/sparklet">sparklet</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/StarControlTimeWarp">Star Control: TimeWarp</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,423</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.012360</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/keyboard-routines/scancode_to_name by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:16:27 GMT -->
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Mouse.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC Mouse</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">Mouse</A></H2></H2><BLOCKQUOTE> The mouse input handling class.</BLOCKQUOTE>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Point.html">Point</A> <B><A HREF="#DOC.77.17">pos</A></B>
+<DD><I> The current position of the mouse cursor on the screen.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.77.18">flags</A></B>
+<DD><I> The state of the mouse buttons.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.77.19">z</A></B>
+<DD><I> The current position of the mouse wheel.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.77.11">SetParent</A></B>(<!1><A HREF="ScreenUpdate.html">ScreenUpdate</A>* p)
+<DD><I> Sets the mouse's parent screen zpdate driver.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.77.12">SetCursor</A></B>(<!1><A HREF="Cursor.html">Cursor</A> &amp;<!1><A HREF="Mouse.html#DOC.77.1">cur</A>)
+<DD><I> Changes the current mouse cursor.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   <!1><A HREF="Cursor.html">Cursor</A>* <B><A HREF="#DOC.77.13">GetCursor</A></B>()
+<DD><I> Returns a pointer to the currently active cursor</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.77.14">Show</A></B>()
+<DD><I> Draws the cursor to the canvas.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.77.15">Hide</A></B>()
+<DD><I> Hides the mouse cursor.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.77.16">Update</A></B>()
+<DD><I> Updates the cursor (which can be animated) and the mouse position</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Cursor.html">Cursor</A>* <B><A HREF="#DOC.77.1">cur</A></B>
+<DD><I> A pointer to the currently selected cursor</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Bitmap.html">Bitmap</A> <B><A HREF="#DOC.77.2">back</A></B>
+<DD><I> The stored background of the cursor</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Point.html">Point</A> <B><A HREF="#DOC.77.3">spritePos</A></B>
+<DD><I> Position of the main cursor sprite</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Point.html">Point</A> <B><A HREF="#DOC.77.4">shadowPos</A></B>
+<DD><I> Position of the cursor shadow</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Point.html">Point</A> <B><A HREF="#DOC.77.5">backPos</A></B>
+<DD><I> Position of the stored background</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="ScreenUpdate.html">ScreenUpdate</A>* <B><A HREF="#DOC.77.6">parent</A></B>
+<DD><I> A pointer to the screen update driver (canvas)</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.77.7">hidden</A></B>
+<DD><I> True when the mouse cursor is hidden, false otherwise</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.77.8">Destroy</A></B>()
+<DD><I> Cleans up when the mouse functionality is no longer needed (ie.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.77.9">UpdateState</A></B>()
+<DD><I> Updates the state of the mouse system.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.77.10">CalculateGeometry</A></B>()
+<DD><I> Calculates the relative positions of the main cursor sprite, its shadow and the background</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+The mouse input handling class.
+The mouse system is quite simple in MASkinG and there's lots of room for
+optimization. The mouse class hold variables for the current mouse position,
+cursor and the background of the cursor. The user is required to hide the
+mouse before every drawing operation and then show it again when they're
+finished. Actually the dialog manager does this already so you don't really
+need to worry about it. In fact you don't need to know this class even exists
+as the dialog manager either does all work for you or provides its own
+interface for doing things like changing the mouse cursor and so on.</BLOCKQUOTE>
+<DL>
+
+<A NAME="cur"></A>
+<A NAME="DOC.77.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Cursor.html">Cursor</A>* cur</B></TT>
+<DD>
+A pointer to the currently selected cursor
+<DL><DT><DD></DL><P>
+<A NAME="back"></A>
+<A NAME="DOC.77.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Bitmap.html">Bitmap</A> back</B></TT>
+<DD>
+The stored background of the cursor
+<DL><DT><DD></DL><P>
+<A NAME="spritePos"></A>
+<A NAME="DOC.77.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Point.html">Point</A> spritePos</B></TT>
+<DD>
+Position of the main cursor sprite
+<DL><DT><DD></DL><P>
+<A NAME="shadowPos"></A>
+<A NAME="DOC.77.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Point.html">Point</A> shadowPos</B></TT>
+<DD>
+Position of the cursor shadow
+<DL><DT><DD></DL><P>
+<A NAME="backPos"></A>
+<A NAME="DOC.77.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Point.html">Point</A> backPos</B></TT>
+<DD>
+Position of the stored background
+<DL><DT><DD></DL><P>
+<A NAME="parent"></A>
+<A NAME="DOC.77.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="ScreenUpdate.html">ScreenUpdate</A>* parent</B></TT>
+<DD>
+A pointer to the screen update driver (canvas)
+<DL><DT><DD></DL><P>
+<A NAME="hidden"></A>
+<A NAME="DOC.77.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool hidden</B></TT>
+<DD>
+True when the mouse cursor is hidden, false otherwise
+<DL><DT><DD></DL><P>
+<A NAME="Destroy"></A>
+<A NAME="DOC.77.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Destroy()</B></TT>
+<DD>
+Cleans up when the mouse functionality is no longer needed (ie. at the end of the program).
+<DL><DT><DD></DL><P>
+<A NAME="UpdateState"></A>
+<A NAME="DOC.77.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void UpdateState()</B></TT>
+<DD>
+Updates the state of the mouse system.
+This includes the position, button states and wheel position. The default
+driver simply mirrors the global Allegro mouse variables (mouse_x, mouse_y,
+mouse_b and mouse_z). If you want to modify the bahaviour of your mouse
+you should derive a new class from Mouse and overload this function so that
+it does whatever you want. For example you might want to invert the left and
+right buttons.
+<DL><DT><DD></DL><P>
+<A NAME="CalculateGeometry"></A>
+<A NAME="DOC.77.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void CalculateGeometry()</B></TT>
+<DD>
+Calculates the relative positions of the main cursor sprite, its shadow and the background
+<DL><DT><DD></DL><P>
+<A NAME="SetParent"></A>
+<A NAME="DOC.77.11"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetParent(<!1><A HREF="ScreenUpdate.html">ScreenUpdate</A>* p)</B></TT>
+<DD>
+Sets the mouse's parent screen zpdate driver.
+This lets the mouse know who to ask to get the canvas bitmap
+where it can draw itself.
+<DL><DT><DD></DL><P>
+<A NAME="SetCursor"></A>
+<A NAME="DOC.77.12"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetCursor(<!1><A HREF="Cursor.html">Cursor</A> &amp;<!1><A HREF="Mouse.html#DOC.77.1">cur</A>)</B></TT>
+<DD>
+Changes the current mouse cursor. First it hides the cursor, then
+makes the switch and the shows the new one.
+<DL><DT><DD></DL><P>
+<A NAME="GetCursor"></A>
+<A NAME="DOC.77.13"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   <!1><A HREF="Cursor.html">Cursor</A>* GetCursor()</B></TT>
+<DD>
+Returns a pointer to the currently active cursor
+<DL><DT><DD></DL><P>
+<A NAME="Show"></A>
+<A NAME="DOC.77.14"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Show()</B></TT>
+<DD>
+Draws the cursor to the canvas. Prior to that it makes a backup of what
+is behind the cursor so it is vital that the mouse has been hidden before
+calling this function.
+<DL><DT><DD></DL><P>
+<A NAME="Hide"></A>
+<A NAME="DOC.77.15"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Hide()</B></TT>
+<DD>
+Hides the mouse cursor. It does so by restoring the previously saved backup
+of the cursor background in place of the cursor.
+<DL><DT><DD></DL><P>
+<A NAME="Update"></A>
+<A NAME="DOC.77.16"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Update()</B></TT>
+<DD>
+Updates the cursor (which can be animated) and the mouse position
+<DL><DT><DD></DL><P>
+<A NAME="pos"></A>
+<A NAME="DOC.77.17"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Point.html">Point</A> pos</B></TT>
+<DD>
+The current position of the mouse cursor on the screen. You should always
+read this value instead of relying directly on mouse_x and mouse_y. You
+should not change this value.
+<DL><DT><DD></DL><P>
+<A NAME="flags"></A>
+<A NAME="DOC.77.18"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int flags</B></TT>
+<DD>
+The state of the mouse buttons. This variable mirrors the Allegro mouse_b
+variable but you should always read this value instead of using mouse_b directly.
+<DL><DT><DD></DL><P>
+<A NAME="z"></A>
+<A NAME="DOC.77.19"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int z</B></TT>
+<DD>
+The current position of the mouse wheel. Always use this value instead of using
+mouse_z directly.
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Mouse.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+</html>

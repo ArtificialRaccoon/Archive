@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/timer-routines/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:41:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Timer routines</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">API</a></h2><ul>
+<li><a href="../using-allegro/index.html" >Using Allegro</a></li><li><a href="../structures-and-types-defined-by-allegro/index.html" >Structures and types defined by Allegro</a></li><li><a href="../unicode-routines/index.html" >Unicode routines</a></li><li><a href="../configuration-routines/index.html" >Configuration routines</a></li><li><a href="../mouse-routines/index.html" >Mouse routines</a></li><li><strong>Timer routines</strong></li><li><a href="../keyboard-routines/index.html" >Keyboard routines</a></li><li><a href="../joystick-routines/index.html" >Joystick routines</a></li><li><a href="../graphics-modes/index.html" >Graphics modes</a></li><li><a href="../bitmap-objects/index.html" >Bitmap objects</a></li><li><a href="../loading-image-files/index.html" >Loading image files</a></li><li><a href="../palette-routines/index.html" >Palette routines</a></li><li><a href="../truecolor-pixel-formats/index.html" >Truecolor pixel formats</a></li><li><a href="../drawing-primitives/index.html" >Drawing primitives</a></li><li><a href="../blitting-and-sprites/index.html" >Blitting and sprites</a></li><li><a href="../rle-sprites/index.html" >RLE sprites</a></li><li><a href="../compiled-sprites/index.html" >Compiled sprites</a></li><li><a href="../fonts/index.html" >Fonts</a></li><li><a href="../text-output/index.html" >Text output</a></li><li><a href="../polygon-rendering/index.html" >Polygon rendering</a></li><li><a href="../transparency-and-patterned-drawing/index.html" >Transparency and patterned drawing</a></li><li><a href="../converting-between-color-formats/index.html" >Converting between color formats</a></li><li><a href="../direct-access-to-video-memory/index.html" >Direct access to video memory</a></li><li><a href="../flic-routines/index.html" >FLIC routines</a></li><li><a href="../sound-init-routines/index.html" >Sound init routines</a></li><li><a href="../mixer-routines/index.html" >Mixer routines</a></li><li><a href="../digital-sample-routines/index.html" >Digital sample routines</a></li><li><a href="../music-routines-(midi)/index.html" >Music routines (MIDI)</a></li><li><a href="../audio-stream-routines/index.html" >Audio stream routines</a></li><li><a href="../recording-routines/index.html" >Recording routines</a></li><li><a href="../file-and-compression-routines/index.html" >File and compression routines</a></li><li><a href="../datafile-routines/index.html" >Datafile routines</a></li><li><a href="../fixed-point-math-routines/index.html" >Fixed point math routines</a></li><li><a href="../3d-math-routines/index.html" >3D math routines</a></li><li><a href="../quaternion-math-routines/index.html" >Quaternion math routines</a></li><li><a href="../gui-routines/index.html" >GUI routines</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>Timer routines</h1>
+
+Allegro can set up several virtual timer functions, all going at different
+speeds.<br /><br />
+
+Under DOS it will constantly reprogram the clock to make sure they are all
+called at the correct times. Because they alter the low level timer chip
+settings, these routines should not be used together with other DOS timer
+functions like the DJGPP uclock() routine. Moreover, the FPU state is not
+preserved across Allegro interrupts so you ought not to use floating point
+or MMX code inside timer interrupt handlers.<br /><br />
+
+Under other platforms, they are usually implemented using threads, which run
+parallel to the main thread. Therefore timer callbacks on such platforms
+will not block the main thread when called, so you may need to use
+appropriate synchronisation devices (eg. mutexes, semaphores, etc.) when
+accessing data that is shared by a callback and the main thread. (Currently
+Allegro does not provide such devices.)
+
+<ul>
+	<li><a href="install_timer.html">install_timer</a> - Installs the Allegro timer interrupt handler.</li>
+	<li><a href="remove_timer.html">remove_timer</a> - Removes the Allegro time handler.</li>
+	<li><a href="install_int.html">install_int</a> - Installs a user timer handler.</li>
+	<li><a href="install_int_ex.html">install_int_ex</a> - Adds or modifies a timer.</li>
+	<li><a href="lock_variable.html">LOCK_VARIABLE</a> - Locks the memory of a variable used by a timer.</li>
+	<li><a href="lock_function.html">LOCK_FUNCTION</a> - Locks the memory of a function used by a timer.</li>
+	<li><a href="end_of_function.html">END_OF_FUNCTION</a> - Locks the code used by a timer.</li>
+	<li><a href="remove_int.html">remove_int</a> - Removes a timers.</li>
+	<li><a href="install_param_int.html">install_param_int</a> - Installs a timer routine with a customizable parameter.</li>
+	<li><a href="install_param_int_ex.html">install_param_int_ex</a> - Adds or modifies a timer with a customizable parameter.</li>
+	<li><a href="remove_param_int.html">remove_param_int</a> - Removes a timer with a customizable parameter.</li>
+	<li><a href="retrace_count.html">retrace_count</a> - Retrace count simulator.</li>
+	<li><a href="rest.html">rest</a> - Waits a specified number of milliseconds or yields CPU.</li>
+	<li><a href="rest_callback.html">rest_callback</a> - Like rest(), but calls the callback during the wait.</li>
+</ul>
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,164</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>77.553059</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/timer-routines/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:44:02 GMT -->
+</html>

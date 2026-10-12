@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/fonts/load_bitmap_font by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:23:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>load_bitmap_font</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Fonts</a></h2><ul>
+<li><a href="register_font_file_type.html" >register_font_file_type</a></li><li><a href="load_font.html" >load_font</a></li><li><a href="destroy_font.html" >destroy_font</a></li><li><a href="make_trans_font.html" >make_trans_font</a></li><li><a href="is_color_font.html" >is_color_font</a></li><li><a href="is_mono_font.html" >is_mono_font</a></li><li><a href="is_compatible_font.html" >is_compatible_font</a></li><li><a href="get_font_ranges.html" >get_font_ranges</a></li><li><a href="get_font_range_begin.html" >get_font_range_begin</a></li><li><a href="get_font_range_end.html" >get_font_range_end</a></li><li><a href="extract_font_range.html" >extract_font_range</a></li><li><a href="transpose_font.html" >transpose_font</a></li><li><a href="merge_fonts.html" >merge_fonts</a></li><li><a href="load_dat_font.html" >load_dat_font</a></li><li><a href="load_bios_font.html" >load_bios_font</a></li><li><a href="load_grx_font.html" >load_grx_font</a></li><li><a href="load_grx_or_bios_font.html" >load_grx_or_bios_font</a></li><li><strong>load_bitmap_font</strong></li><li><a href="grab_font_from_bitmap.html" >grab_font_from_bitmap</a></li><li><a href="load_txt_font.html" >load_txt_font</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>load_bitmap_font</h1>
+
+<div class="shortdesc">
+Grabs a font from a bitmap file.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<a href="../../index.html" target="_blank"><span class="a">FONT</span></a> <span class="k3">*</span><a href="../../index.html" target="_blank"><span class="a">load_bitmap_font</span></a><span class="k2">(</span><span class="k1">const</span> <span class="k1">char</span> <span class="k3">*</span>filename, <a href="../../index.html" target="_blank"><span class="a">RGB</span></a> <span class="k3">*</span>pal, <span class="k1">void</span> <span class="k3">*</span>param<span class="k2">)</span>
+</div>
+
+<div>
+Tries to grab a font from a bitmap. The bitmap can be in any format that
+   load_bitmap understands.<br /><br />
+
+   The size of each character is determined by the layout of the image, which
+   should be a rectangular grid containing all the ASCII characters from
+   space (32) up to the tilde (126). The way the characters are separated
+   depends on the colordepth of the image file:
+<ul><li>
+   paletted (8 bit) image file
+      Use color 0 for the transparent portions of the characters and fill the
+      spaces between each letter with color 255.
+<li>
+   High (15/16 bit) and true (24/32 bit) color image file
+      Use bright pink (maximum red and blue, zero green) for the transparent
+      portions of the characters and fill the spaces between each letter with
+      bright yellow (maximum red and green, zero blue).
+</ul><br /><br />
+
+   Note that in each horizontal row the bounding boxes around the characters
+   should align and have the same height.<br /><br />
+
+   Probably the easiest way to get to grips with how this works is to load up
+   the `demo.dat' file and export the TITLE_FONT into a PCX file. Have a look
+   at the resulting picture in your paint program: that is the format a font
+   should be in.<br /><br />
+
+   Take care with high and true color fonts: Allegro will convert these to the
+   current colordepth when you load the font. If you try to use a font on
+   a bitmap with a different color depth Allegro will do color conversions on
+   the fly, which will be rather slow. For optimal performance you should
+   set the colordepth to the colordepth you want to use before loading any
+   fonts.
+
+</div>
+
+<div class="retval">
+Returns a pointer to the font or NULL on error. Remember that you are
+   responsible for destroying the font when you are finished with it to
+   avoid memory leaks.
+
+</div>
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">register_font_file_type</a></li>
+	<li><a href="../../index.html">load_font</a></li>
+	<li><a href="../../index.html">load_bitmap</a></li>
+	<li><a href="../../index.html">set_color_depth</a></li>
+	<li><a href="../../index.html">grab_font_from_bitmap</a></li>
+</ul>
+</div>
+
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/DungeonMasterRemake">Dungeon Master Remake</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/StarControlTimeWarp">Star Control: TimeWarp</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/NaughtsandCrosses">Naughts and Crosses</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/OpenInvaders">Open Invaders</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,659</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.013560</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/fonts/load_bitmap_font by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:23:00 GMT -->
+</html>

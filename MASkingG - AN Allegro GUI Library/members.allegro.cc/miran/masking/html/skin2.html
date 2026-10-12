@@ -1,0 +1,372 @@
+<html>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/skin2.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:05 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head><title>A guide to making skins</title></head><body>
+<h1><a name="skin2">A guide to making skins</a></h1>
+
+<p>
+<hr><ul><h4>
+<p><b>Elements of a skin</b><br>
+<li><a href="#guidebitmaps">The bitmaps</a>
+<li><a href="#guidepalette">The palette</a>
+<li><a href="#guidecursors">The cursors</a>
+<li><a href="#guidesamples">The samples</a>
+<li><a href="#guidefonts">The fonts</a>
+<li><a href="#guideconfig">The config file</a>
+</h4></ul>
+<p><hr><br>
+
+<p>   
+<b><a name="guidebitmaps">Bitmaps</a></b><br>
+   The bitmap datafile can be any Allegro datafile. It can contain any data you
+   want although it is recommended that you use one data file for your skin and
+   another one for other data (sprites, sounds, music, etc.) The datafile does
+   not have to contain all the bitmaps required by the skin. If some are missing
+   the default ones are generated. The only convention that you have to keep to
+   when creating bitmap datafiles is that your bitmaps have these names:   
+<pre>
+      BOX                    - for a regular group box with title text
+      BOX_SHADDOW            - for a box with a shadow (not commonly used)
+      BUTTON                 - for buttons and winbuttons
+      CHECKBOX               - for a checkbox button
+      CLEAR_BACK             - for the background (can be a desktop wallpaper)
+      COMBO_BUTTON           - the little arrow overlay for the combo box button
+      HSLIDER_BACK           - background for a horizontal slider
+      HSLIDER_GRIP           - the gripper for a horizontal slider
+      ICONEXIT               - the exit icon (for a window)
+      ICONMAX                - the maximize icon
+      ICONMIN                - the minimize icon
+      ICONRESTORE            - the restore icon (replaces ICONMAX in maxmized mode)
+      LIST                   - for items of a list object
+      MENU_BACK              - the background of menus
+      MENU_BUTTON            - for the top of a menu (bar)
+      MENU_ITEM              - for all other menu items
+      PANEL_GROOVE           - a box with a groove around it
+      PANEL_RAISED           - a 3D raised panel
+      PANEL_RIDGE            - a box with a ridge around it
+      PANEL_SUNKEN           - a 3D sunken panel
+      PROGRESSH              - for the progress bar
+      PROGRESSV
+      RADIO                  - for the radio button
+      SCROLL_DOWN            - the down arrows for scrollbars
+      SCROLL_HBACK           - the background,
+      SCROLL_HGRIP             gripper
+      SCROLL_HGRIPOVERLAY      and gripper overlay for horizontal scrollers
+      SCROLL_LEFT            - the left arrows for scrollbars
+      SCROLL_RIGHT           - the right arrows for scrollbars
+      SCROLL_UP              - the up arrows for scrollbars
+      SCROLL_VBACK           - the background,
+      SCROLL_VGRIP             gripper
+      SCROLL_VGRIPOVERLAY      and gripper overlay for vertical scrollers
+      SEPARATORH             - for the seprator
+      SEPARATORV
+      VSLIDER_BACK           - the background and
+      VSLIDER_GRIP             gripper for vertical sliders
+      WINBOTTOM              - the bottom,
+      WINDOW                   the midle (the panel),
+      WINGRIP                  the gripper bar,
+      WINLEFT                  the left,
+      WINRIGHT                 the right and
+      WINTOP                   the top of a window
+      WINTEXT                - the background of the window title
+</pre>
+<p>Most of these bitmaps contain several subbitmaps (usually 4) that are stacked
+   vertically like this:
+<pre>
+      +------------+
+      |   normal   |
+      +------------+
+      |  selected  |
+      +------------+
+      |  disabled  |
+      +------------+
+      |   focused  |
+      +------------+
+ </pre>
+ <p>Each subbitmap corresponds to one of the states a dialog object can be in: normal,
+    selected, disabled and focused (when it has the input focus).
+ <p>There are however some exceptions:
+ <pre>
+       - All the boxes and panels, the wallpaper, the menu background and the
+         window panel only have one subbitmap.
+       - The checkbox and radio button bitmaps have two such stacks one next to
+         another, one for unchecked state and one for checked state.
+       - The menu button bitmap only has two subbitmap, for normal and selected menus.
+       - The menu item has 7 subbitmaps: the first is normal item,
+         then selected item and then the separator; after those are two bitmaps
+         for normal and selected items that have a little arrow and then two more for
+         normal and selected items with a checkmark.
+       - The window frame bitmaps have two subbitmaps, one for when the window
+         has input focus and the other for nonfocused state. The horizontal bitmaps
+         (top, bottom and gripper) are stacked on top of each other and the vertical
+         ones (left and right) are placed next to each other. The first bitmap is
+         focused the second is normal.
+       - The progress bar bitmaps have only 2 subbitmaps, one for the background and
+         one for the bar; for vertical bars subbitmaps are placed next to each other
+       - The separator bitmaps have no subbitmaps.
+       - The vertical slider bitmaps have bitmaps placed next to each other.
+</pre>
+<p>Another thing you should keep in mind is the size of these bitmaps. Most of them
+   are not tiled flat over the surface of a widget. Usually they are divided into
+   3x3 equal smaller tiles which means that the width and height of the bitmap must be
+   a multiple of 3 otherwise there will be inperfections due to round off error. What this
+   means is that for example a button subbitmap has to be either 18x12 or 30x30 or
+   something like that. A 17x11 bitmap for example will not look as you might expect.
+   You can however override this behaviour by setting the TCKX and TCKY properties of
+   the bitmaps (pres Ctrl+P in the Grabber tool to create a property). TCKX and TCKY
+   are the horizontal and vertical thickness of the central area of the bitmap.
+   For example if you have a panel bitmap that is 64x64 pixels large and the borders
+   are all 3 pixels wide you will probably want to set TCKX and TCKY to 58 pixels.
+   This will make sure that the 58x58 area in the centre of the bitmap is going to
+   be tiled across the panel while the 3 pixels at the edges are going to be used
+   for making a border. Alternatively you can set TCKX and TCKY in the ini file
+   (see below). Settings in the ini file have a higher priority than datafile
+   properties. Those will be used only no value is found in the ini file or if it
+   is set to -1.<br>
+   All four (or whatever) subbitmaps in a given bitmap must be equal in size. You cannot
+   have a normal button of one size and a selected  button of another size.
+<p>The best way to start making a skin is to simply rename an existing skin and
+   replace the bitmaps with your own. If you still don't understand how they work
+   just load a skin into the Grabber, export the bitmaps, edit them in your favourite
+   bitmap editor and import them back into the grabber. It's that simple!
+<p>You can use bitmaps of any color depth although 24 bit bitmaps are prefered. The
+   areas of the bitmaps that are bright pink (255,0,255) are treated as
+   transparent.
+
+<p>   
+<b><a name="guidepalette">Palette</a></b><br>
+   Every skin should contain a palette that is used for 8 bit mode. This palette must
+   be named <b>XTRA_PALETTE</b>. The skin bitmaps can be in any color depth but when you
+   use a different bit depth for your program these bitmaps have to be converted. In order
+   for the conversion to be good in 8 bit mode the palette must contain most (if not all)
+   of the colors that are used by the bitmaps.
+
+<p>   
+<b><a name="guidecursors">Cursors</a></b><br>
+   Again like with the bitmaps the cursors too are stored in an Allegro datafile. They
+   can be in any datafile you want although it is recommended that you keep your
+   cursors in a separate file. The names of your cursors must be:
+<pre>
+      MOUSE_ALTERNATIVE         - alternative select
+      MOUSE_CROSSHAIR           - accurate select
+      MOUSE_HOURGLASS           - an hourglass or equivalent
+      MOUSE_MOVE                - for objects that can move
+      MOUSE_NORMAL              - a normal arrow
+      MOUSE_SELECT              - for selecting links and the like
+      MOUSE_SIZE_DIAGONAL1      - for NW-SE resizing
+      MOUSE_SIZE_DIAGONAL2      - for NE-SW resizing
+      MOUSE_SIZE_HORIZONTAL     - for horizontal resizing
+      MOUSE_SIZE_VERTICAL       - for vertical resizing
+      MOUSE_TEXTSELECT          - for selecting text
+      MOUSE_UNAVAILABLE         - for indicating that an object is unavailable
+</pre>
+<p>Note that some of the cursors are actually not used by any dialog object. They are
+   here just for completeness (and for future compatibility) so you can safely
+   ignore them.
+<p>All the bitmaps can be of any size and color depth. The transparent areas should
+   be bright pink.
+<p>Every cusrsor sprite should also set a few extra properties (press Ctrl+P in the
+   Grabber), namely FCSX, FCSY, FRMS and FDUR. FCSX and FCSY describe the focus point
+   of the cursor. The focus point of a mouse cursor is the point that actually
+   represents the position of the mouse. For a standard arrow this is (0, 0) but for
+   most other pointers this is somewhere else. FRMS and FDUR are only relevant for
+   animated cursors and are the number of frames and the duration of one frame in
+   miliseconds. As is the case with the bitmaps, the cursor settings can also be
+   overridden in the ini file (see below).
+
+<p>   
+<b><a name="guidefonts">Fonts</a></b><br>
+   There isn't much to say about fonts. They are stored in disk files in their native
+   formats (as opposed to being packed in a datafile). The formats supported by
+   MASkinG are: monochrome and coloured bitmap fonts (must be either in BMP, PCX, LBM
+   or TGA format), BIOS 8x8 and 16x16 fonts (files must have a FNT extension), GRX
+   fonts (FNT extension), scripted fonts (TXT), true type fonts (TTF), type 1 fonts,
+   open type fonts and a few others (see alfont documentation for details).
+   
+<p>   
+<b><a name="guidesamples">Samples</a></b><br>
+   The samples are just like the bitmaps and cursors stored in a datafile. Their names
+   must be:
+<pre>
+      SAMPLE_ACTIVATE          - used with the MSG_ACTIVATE event
+      SAMPLE_CLOSE             - played when something closes down (like a menu, combo box, etc.)
+      SAMPLE_GOTFOCUS          - played when an object receives input focus
+      SAMPLE_KEY               - currently used only by the edit text object when entering text
+      SAMPLE_LOSTFOCUS         - played when an object looses focus
+      SAMPLE_OPEN              - opposite of SAMPLE_CLOSE
+      SAMPLE_SCROLL            - used with the MSG_SCROLL event
+</pre>
+   The samples can be in any format recognized by Allegro and the Grabber utility.
+
+<p>   
+<b><a name="guideconfig">The config file</a></b><br>
+   The skin configuration file is a regular Allegro configuration file which in
+   turn is a regular text file. The format is the same as with most other .cfg and
+   .ini files you may have come across. There are many sections that start with
+   a section title followed by variable definitions like this:
+<pre>
+      [SECTION]
+      variable1 = 45
+      variable2 = some_text
+      variable3 = true
+      ...
+</pre>
+<p>The MASkinG skin configuration file has the following sections:
+<pre>
+      [SKIN]       - general skin information (title, author, datafiles, etc.)
+      [MOUSE]      - mouse cursor settings
+      [BOX]        - font, font color and other definitions for
+      [BUTTON]       the dialog objects that require additional
+      [HYPER]        information (see bellow)
+      [CHECKBOX]
+      [RADIO]
+      [LIST]
+      [COMBOBOX]
+      [TEXT]
+      [WALLPAPER]
+      [MENU]
+      [WINDOW]
+      [TOOLTIP]
+      [FONT0]       - the definition of fonts
+      [FONT1]
+        ...
+      [FONT7]
+      [COLORS]      - the default colors
+</pre>
+<p>The [SKIN] section has the following definitions:
+<pre>
+      main_data = path_to_bitmaps.dat
+      cursors = path_to_pointers.dat
+      sounds = path_to_sounds.dat
+      dottedRect = { 0 | 1 }         - set to 1 if the objects should have a dotted
+                                       rectangle around them when they have focus
+      focus = { 0 | 1 | 2}           - if 0 focus will follow the mouse, if 1 widgets
+                                       may grab focus else a click is required to move focus
+</pre>
+<p>The dialog objects sections have the following definitions:
+<pre>
+      font1 = n         - the indices into the array of fonts for each state the
+      font2 = n           object can be in: normal, selected, disabled, focused;
+      font3 = n           the indices are zero based (they go from 0 to 7)
+      font4 = n
+      f_col1 = r,g,b    - the primary font colors for the 4 states in "r,g,b"
+      f_col2 = r,g,b      format; the r, g and b must be integers ranging from
+      f_col3 = r,g,b      0 to 255 and they can be separated with commas, semicolons
+      f_col4 = r,g,b      or spaces, e.g: 128,100,212 or 64 134 98 (use -1 for color fonts)
+      s_col1 = r,g,b    - the secondary font colors (the shadow color); this is
+      s_col2 = r,g,b      also a regular r,g,b construct but can also be -1; in this
+      s_col3 = r,g,b      case the shadow color is undefined and unused
+      s_col4 = r,g,b
+</pre>
+<p>Some dialog objects also have other variable definitions specific for them:
+<pre>
+      [WALLPAPER]
+      style = { 0-4 }   - defines how the wallpaper bitmap is blitted to
+                          the screen (0 - centered, 1 - in the top-left corner,
+                          2 - stretched, 3 - tiled, 4 - tiled with TiledBlit())
+
+
+      [BOX]
+      offX = n                   - position of the title text (x coordinate)
+      offY = n                                   -"-          (y coordinate)
+      backColor = r,g,b          - the color to be used for title background
+      alignment = { 0 | 1 | 2 }  - how the title text should be aligned (0 - left,
+                                   1 - right, 2 - centre)
+
+      [COMBOBOX]
+      animationType = n          - animation style (see animator.h for a list of styles)
+      animationLength = n        - animation length in miliseconds
+
+      [BUTTON]
+      animationType = n
+      animationLength = n
+      displacement = n           - text displacement of a selected button in pixels
+      
+      [MENU]
+      height = n                 - default height of a menu item
+      delay = n                  - the menu auto open delay in miliseconds
+      animationType = n
+      animationLength = n
+
+      [WINDOW]
+      textX = n                 - the first three variables are exactly the same as
+      textY = n                   for the box dialog object (see above)
+      alignment = { 0 | 1 | 2 }
+      exitX = n                 - these are the positions of the 3 window icons: exit
+      exitY = n                   maximize and minimize; the coordinates can also
+      maxX = n                    be negative which means that the icons will be placed
+      maxY = n                    relative to the right or bottom edge; coordinates
+      minX = n                    (-30, 5) for example will position the icon 30
+      minY = n                    pixels from the right and 5 pixels from the top
+      animationType = n         - type and length of popup animations
+      animationLength = n
+
+	  [TOOLTIP]
+      backColor = r,g,b         - the background colour of the popup help bubbles
+	  border color = r,g,b      - the border colour of the popup help bubbles
+      animationType = n
+      animationLength = n
+</pre>
+<p>There are 8 font definitions in a skin file and are defined like this:
+<pre>
+      [FONTn]                    - n is a number between 0 and 7
+      size = n                   - the size of the true type font
+      file = 'path_to_font'
+      
+      Note: the path to the font can be absolute (e.g. "e:\my_fonts\arial.ttf") or
+             relative (e.g. "..\..\data\font\arial.ttf"). If the font can't be located
+             then MASkinG will look into a subdirectory called "fonts" of the directory
+             specified in the evironment variable called "WINDIR" which is usually
+             "c:\windows". This allows you to write something like "font=tahoma.ttf" and
+             MASkinG will load "tahoma.ttf" from you "windows\fonts\" directory.
+</pre>
+<p>The default colors are defined as r,g,b triplets:
+<pre>
+      [COLORS]
+      face = r,g,b         - the face color of the objects (usually a shade of gray)
+      fontface = r,g,b     - the normal font color
+      shad1 = r,g,b        - the 2 shadow colors for pseudo 3D effects
+      shad2 = r,g,b
+      disable = r,g,b      - the font color for disabled objects
+      select = r,g,b       - the face color for selected objects
+      deselect = r,g,b     - the normal face color of some objects (buttons)
+      focus = r,g,b        - the font color of the objects
+      back = r,g,b         - the default background color
+      sunken = r,g,b       - the color of the sunken panels interior (used by SList)
+</pre>
+<p>The skin bitmap tiling info can be stored inside the datafile in the form of
+   datafile properties but it is much more convenient to define them in the ini
+   file. This is defined in the TILING section for each bitmap individually.
+   The name of each variable is the name of the bitmap (see above) suffixed with
+   _TCKX for horizontal tiling ino and _TCKY for vertical tiling info.
+<pre>
+      Example:
+     
+      [TILING]
+      BOX_TCKX = 32
+      BOX_TCKY = 25
+       
+      BOX_SHADOW_TCKX = 18
+      BOX_SHADOW_TCKY = 42
+      
+      BUTTON_TCKX = 12
+      BUTTON_TCKY = -1
+	  
+	  ...and so on...
+</pre>
+   Note that these settings will override the same settings defined with datafile properties.
+<p>As for bitmaps, settings can be defined for the cursors too. For cursors there
+   are four values: FCSX, FCSY, FRMS and FDUR (see abobe for their meaning). They
+   will override their equivalent datafile properties as long as they are not -1.
+<p>You don't actually have to specify each and every variables value. If you leave
+   some out the defaults will be used. See the data section of this documentation to
+   see what the default are for each variable.
+<p>You can also add some of your own text into the skin configuration file. Especially
+   the [SKIN] section has a few definitions that aren't actually used but it's nice
+   if they are there. Check out some of the premade skins to see how it's all done.
+   There is also a template.ini file in the skin directory where all the variables
+   are documented.
+
+<p><hr><p><a href="../index.html">Back</a><p></body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/skin2.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:05 GMT -->
+</html>

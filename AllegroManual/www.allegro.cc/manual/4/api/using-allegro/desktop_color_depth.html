@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/using-allegro/desktop_color_depth by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:12:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>desktop_color_depth</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Using Allegro</a></h2><ul>
+<li><a href="install_allegro.html" >install_allegro</a></li><li><a href="allegro_init.html" style="font-weight: bold">allegro_init</a></li><li><a href="allegro_exit.html" style="font-weight: bold">allegro_exit</a></li><li><a href="end_of_main.html" style="font-weight: bold">END_OF_MAIN</a></li><li><a href="allegro_id.html" >allegro_id</a></li><li><a href="allegro_error.html" style="font-weight: bold">allegro_error</a></li><li><a href="allegro_version.html" >ALLEGRO_VERSION</a></li><li><a href="allegro_sub_version.html" >ALLEGRO_SUB_VERSION</a></li><li><a href="allegro_wip_version.html" >ALLEGRO_WIP_VERSION</a></li><li><a href="allegro_version_str.html" >ALLEGRO_VERSION_STR</a></li><li><a href="allegro_date_str.html" >ALLEGRO_DATE_STR</a></li><li><a href="allegro_date.html" >ALLEGRO_DATE</a></li><li><a href="al_id.html" >AL_ID</a></li><li><a href="make_version.html" >MAKE_VERSION</a></li><li><a href="os_type.html" >os_type</a></li><li><a href="os_version.html" >os_version</a></li><li><a href="os_revision.html" >os_revision</a></li><li><a href="os_multitasking.html" >os_multitasking</a></li><li><a href="allegro_message.html" style="font-weight: bold">allegro_message</a></li><li><a href="set_window_title.html" style="font-weight: bold">set_window_title</a></li><li><a href="set_close_button_callback.html" style="font-weight: bold">set_close_button_callback</a></li><li><strong>desktop_color_depth</strong></li><li><a href="get_desktop_resolution.html" >get_desktop_resolution</a></li><li><a href="check_cpu.html" >check_cpu</a></li><li><a href="cpu_vendor.html" >cpu_vendor</a></li><li><a href="cpu_family.html" >cpu_family</a></li><li><a href="cpu_model.html" >cpu_model</a></li><li><a href="cpu_capabilities.html" >cpu_capabilities</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>desktop_color_depth</h1>
+
+<div class="shortdesc">
+Finds out the desktop color depth.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">int</span> <a href="../../index.html" target="_blank"><span class="a">desktop_color_depth</span></a><span class="k2">(</span><span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Finds out the currently selected desktop color depth. You can use this
+   information to make your program use the same color depth as the desktop,
+   which will likely make it run faster because the graphic driver won't be
+   doing unnecessary color conversions behind your back.<br /><br />
+
+   Under some OSes, switching to a full screen graphics mode may automatically
+   change the desktop color depth. You have, therefore, to call this function
+   before setting any graphics mode in order to retrieve the real desktop
+   color depth. Example:
+<pre class="code">      <a href="../../index.html" target="_blank"><span class="a">allegro_init</span></a><span class="k2">(</span><span class="k2">)</span><span class="k2">;</span>
+      ...
+      <span class="k1">if</span> <span class="k2">(</span><span class="k2">(</span>depth <span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">desktop_color_depth</span></a><span class="k2">(</span><span class="k2">)</span><span class="k2">)</span> <span class="k3">!</span><span class="k3">=</span> <span class="n">0</span><span class="k2">)</span> <span class="k2">{</span>
+	 <a href="../../index.html" target="_blank"><span class="a">set_color_depth</span></a><span class="k2">(</span>depth<span class="k2">)</span><span class="k2">;</span>
+      <span class="k2">}</span></pre>
+
+</div>
+
+<div class="retval">
+Returns the color depth or zero on platforms where this information is not
+   available or does not apply.
+
+</div>
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">get_desktop_resolution</a></li>
+	<li><a href="../../index.html">set_color_depth</a></li>
+	<li><a href="../../index.html">set_gfx_mode</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591478">
+		<a href="https://www.allegro.cc/forums/thread/591478">Serious problem</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/673537" style="color: black;">1</a> </span>
+	</li><li id="t-591434">
+		<a href="https://www.allegro.cc/forums/thread/591434">set mouse rate</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/672880" style="color: black;">1</a> </span>
+	</li><li id="t-591247">
+		<a href="https://www.allegro.cc/forums/thread/591247">OpenLayer font loading uses lots of memory</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/669986" style="color: black;">1</a> </span>
+	</li><li id="t-590476">
+		<a href="https://www.allegro.cc/forums/thread/590476">Allegro in Headers</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/656993" style="color: black;">1</a> </span>
+	</li><li id="t-590331">
+		<a href="https://www.allegro.cc/forums/thread/590331">Matching bullet start x,y with point on sprite that gets rotated</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/654295" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/654474" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/654553" style="color: black;">3</a> </span>
+	</li><li id="t-589766">
+		<a href="https://www.allegro.cc/forums/thread/589766">Help with keyboard and graphics.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/645541" style="color: black;">1</a> </span>
+	</li><li id="t-589572">
+		<a href="https://www.allegro.cc/forums/thread/589572">Game of life in allegro</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/642536" style="color: black;">1</a> </span>
+	</li><li id="t-589476">
+		<a href="https://www.allegro.cc/forums/thread/589476">Mouse button code problem - Doing something when clicked.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/640846" style="color: black;">1</a> </span>
+	</li><li id="t-589396">
+		<a href="https://www.allegro.cc/forums/thread/589396">FPS locking is easy - not taking 100% CPU is hard</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/639750" style="color: black;">1</a> </span>
+	</li><li id="t-589249">
+		<a href="https://www.allegro.cc/forums/thread/589249">Strange compile errors - Can&#39;t see anything wrong.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/637577" style="color: black;">1</a> </span>
+	</li><li id="t-588872">
+		<a href="https://www.allegro.cc/forums/thread/588872">I&#39;m new at this!</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/632490" style="color: black;">1</a> </span>
+	</li><li id="t-588532">
+		<a href="https://www.allegro.cc/forums/thread/588532">making a datafile, but it won&#39;t load..?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/627607" style="color: black;">1</a> </span>
+	</li><li id="t-588302">
+		<a href="https://www.allegro.cc/forums/thread/588302">Rope Physics</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/624300" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/624397" style="color: black;">2</a> </span>
+	</li><li id="t-588151">
+		<a href="https://www.allegro.cc/forums/thread/588151">textout problem</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/621892" style="color: black;">1</a> </span>
+	</li><li id="t-588025">
+		<a href="https://www.allegro.cc/forums/thread/588025">MinorHack Returns!</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/623772" style="color: black;">1</a> </span>
+	</li><li id="t-587762">
+		<a href="https://www.allegro.cc/forums/thread/587762">[OL] GeForce FX 5600XT</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/616441" style="color: black;">1</a> </span>
+	</li><li id="t-587326">
+		<a href="https://www.allegro.cc/forums/thread/587326">MinorHack Attack!</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/611554" style="color: black;">1</a> </span>
+	</li><li id="t-587131">
+		<a href="https://www.allegro.cc/forums/thread/587131">Collision detection, Arrays and the state of the union</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/607816" style="color: black;">1</a> </span>
+	</li><li id="t-587014">
+		<a href="https://www.allegro.cc/forums/thread/587014">Weird Sprite Handler</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/606223" style="color: black;">1</a> </span>
+	</li><li id="t-586998">
+		<a href="https://www.allegro.cc/forums/thread/586998">Sprite Rotation</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/606113" style="color: black;">1</a> </span>
+	</li><li id="t-586879">
+		<a href="https://www.allegro.cc/forums/thread/586879">Improper masking</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/604766" style="color: black;">1</a> </span>
+	</li><li id="t-586670">
+		<a href="https://www.allegro.cc/forums/thread/586670">MicroHack</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/602321" style="color: black;">1</a> </span>
+	</li><li id="t-586529">
+		<a href="https://www.allegro.cc/forums/thread/586529">Sudoku</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/601237" style="color: black;">1</a> </span>
+	</li><li id="t-586345">
+		<a href="https://www.allegro.cc/forums/thread/586345">more osx troubles</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/601212" style="color: black;">1</a> </span>
+	</li><li id="t-586279">
+		<a href="https://www.allegro.cc/forums/thread/586279">3D problem, drawing a plane, sprites, camera</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/596388" style="color: black;">1</a> </span>
+	</li><li id="t-585973">
+		<a href="https://www.allegro.cc/forums/thread/585973">help with main menu</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/591919" style="color: black;">1</a> </span>
+	</li><li id="t-585813">
+		<a href="https://www.allegro.cc/forums/thread/585813">The World Cup 2006</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/591728" style="color: black;">1</a> </span>
+	</li><li id="t-585786">
+		<a href="https://www.allegro.cc/forums/thread/585786">4.3 error handling</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/590971" style="color: black;">1</a> </span>
+	</li><li id="t-585599">
+		<a href="https://www.allegro.cc/forums/thread/585599">Determining if mouse is inside the Allegro window (for v4.20)</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/586483" style="color: black;">1</a> </span>
+	</li><li id="t-585090">
+		<a href="https://www.allegro.cc/forums/thread/585090">Unable to create Window</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/585090" style="color: black;">1</a> </span>
+	</li><li id="t-584241">
+		<a href="https://www.allegro.cc/forums/thread/584241">Forward Declaration Problem, among other things...</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/584241" style="color: black;">1</a> </span>
+	</li><li id="t-578007">
+		<a href="https://www.allegro.cc/forums/thread/578007">Problems drawing bitmaps (it just crashes)</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/578007" style="color: black;">1</a> </span>
+	</li><li id="t-575186">
+		<a href="https://www.allegro.cc/forums/thread/575186">problems with my struct? or with my masked blitting?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/575186" style="color: black;">1</a> </span>
+	</li><li id="t-574504">
+		<a href="https://www.allegro.cc/forums/thread/574504">Problem with GDB on Devcpp</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/574504" style="color: black;">1</a> </span>
+	</li><li id="t-562765">
+		<a href="https://www.allegro.cc/forums/thread/562765">Help me out please</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/562770" style="color: black;">1</a> </span>
+	</li><li id="t-561415">
+		<a href="https://www.allegro.cc/forums/thread/561415">Problems displaying Allegro&#39;s global variables</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/561415" style="color: black;">1</a> </span>
+	</li><li id="t-561300">
+		<a href="https://www.allegro.cc/forums/thread/561300">Allegro on Nokia 770</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/561689" style="color: black;">1</a> </span>
+	</li><li id="t-561109">
+		<a href="https://www.allegro.cc/forums/thread/561109">Problems with BITMAP*s</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/561109" style="color: black;">1</a> </span>
+	</li><li id="t-560001">
+		<a href="https://www.allegro.cc/forums/thread/560001">Smooth Animation</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/560232" style="color: black;">1</a> </span>
+	</li><li id="t-556196">
+		<a href="https://www.allegro.cc/forums/thread/556196">mouse problems</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/556203" style="color: black;">1</a> </span>
+	</li><li id="t-552468">
+		<a href="https://www.allegro.cc/forums/thread/552468">blit does not work under wxwidgets</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/552468" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/ImpossibleCastle">Impossible Castle</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/BeatlesFreaks">Beatles Freaks</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/MouseTrap">MouseTrap</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/Aggression">Aggression</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/AreYouLost1">Are You Lost?</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/BarneyHunter">Barney Hunter</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/Bobilly-Wobilly">Bobilly-Wobilly</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/ChromaPlas">ChromaPlas</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/domin">domin</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/DrLovepeace">Dr Lovepeace</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,236</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.024776</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/using-allegro/desktop_color_depth by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:12:10 GMT -->
+</html>

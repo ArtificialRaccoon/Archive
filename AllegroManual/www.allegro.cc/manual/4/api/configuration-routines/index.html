@@ -1,0 +1,519 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/configuration-routines/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:41:16 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Configuration routines</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">API</a></h2><ul>
+<li><a href="../using-allegro/index.html" >Using Allegro</a></li><li><a href="../structures-and-types-defined-by-allegro/index.html" >Structures and types defined by Allegro</a></li><li><a href="../unicode-routines/index.html" >Unicode routines</a></li><li><strong>Configuration routines</strong></li><li><a href="../mouse-routines/index.html" >Mouse routines</a></li><li><a href="../timer-routines/index.html" >Timer routines</a></li><li><a href="../keyboard-routines/index.html" >Keyboard routines</a></li><li><a href="../joystick-routines/index.html" >Joystick routines</a></li><li><a href="../graphics-modes/index.html" >Graphics modes</a></li><li><a href="../bitmap-objects/index.html" >Bitmap objects</a></li><li><a href="../loading-image-files/index.html" >Loading image files</a></li><li><a href="../palette-routines/index.html" >Palette routines</a></li><li><a href="../truecolor-pixel-formats/index.html" >Truecolor pixel formats</a></li><li><a href="../drawing-primitives/index.html" >Drawing primitives</a></li><li><a href="../blitting-and-sprites/index.html" >Blitting and sprites</a></li><li><a href="../rle-sprites/index.html" >RLE sprites</a></li><li><a href="../compiled-sprites/index.html" >Compiled sprites</a></li><li><a href="../fonts/index.html" >Fonts</a></li><li><a href="../text-output/index.html" >Text output</a></li><li><a href="../polygon-rendering/index.html" >Polygon rendering</a></li><li><a href="../transparency-and-patterned-drawing/index.html" >Transparency and patterned drawing</a></li><li><a href="../converting-between-color-formats/index.html" >Converting between color formats</a></li><li><a href="../direct-access-to-video-memory/index.html" >Direct access to video memory</a></li><li><a href="../flic-routines/index.html" >FLIC routines</a></li><li><a href="../sound-init-routines/index.html" >Sound init routines</a></li><li><a href="../mixer-routines/index.html" >Mixer routines</a></li><li><a href="../digital-sample-routines/index.html" >Digital sample routines</a></li><li><a href="../music-routines-(midi)/index.html" >Music routines (MIDI)</a></li><li><a href="../audio-stream-routines/index.html" >Audio stream routines</a></li><li><a href="../recording-routines/index.html" >Recording routines</a></li><li><a href="../file-and-compression-routines/index.html" >File and compression routines</a></li><li><a href="../datafile-routines/index.html" >Datafile routines</a></li><li><a href="../fixed-point-math-routines/index.html" >Fixed point math routines</a></li><li><a href="../3d-math-routines/index.html" >3D math routines</a></li><li><a href="../quaternion-math-routines/index.html" >Quaternion math routines</a></li><li><a href="../gui-routines/index.html" >GUI routines</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>Configuration routines</h1>
+
+Various parts of Allegro, such as the sound routines and the
+load_joystick_data() function, require some configuration information. This
+data is stored in text files as a collection of `variable=value' lines,
+along with comments that begin with a `#' character and continue to the end
+of the line. The configuration file may optionally be divided into sections,
+which begin with a `[sectionname]' line. Each section has a unique
+namespace, to prevent variable name conflicts, but any variables that aren't
+in a section are considered to belong to all the sections simultaneously.<br /><br />
+
+By default the configuration data is read from a file called `allegro.cfg',
+which can be located either in the same directory as the program executable,
+or the directory pointed to by the ALLEGRO environment variable. Under Unix,
+it also checks for `~/allegro.cfg', `~/.allegrorc', `/etc/allegro.cfg', and
+`/etc/allegrorc', in that order; under BeOS only the last two are also
+checked. MacOS X also checks in the Contents/Resources directory of the
+application bundle, if any, before doing the checks above.<br /><br />
+
+If you don't like this approach, you can specify any filename you like, or
+use a block of binary configuration data provided by your program (which
+could for example be loaded from a datafile). You can also extend the paths
+searched for allegro resources with set_allegro_resource_path().<br /><br />
+
+You can store whatever custom information you like in the config file, along
+with the standard variables that are used by Allegro (see below). Allegro
+comes with a setup directory where you can find configuration programs. The
+standalone setup program is likely to be of interest to final users. It
+allows any user to create an `allegro.cfg' file without the need to touch a
+text editor and enter values by hand. It also provides a few basic tests like
+sound playing for soundcard testing. You are welcome to include the setup
+program with your game, either as is or with modified graphics to fit better
+your game.
+
+<ul>
+	<li><a href="set_config_file.html">set_config_file</a> - Sets the configuration file.</li>
+	<li><a href="set_config_data.html">set_config_data</a> - Sets a block of configuration data.</li>
+	<li><a href="override_config_file.html">override_config_file</a> - Specifies a file containing config overrides.</li>
+	<li><a href="override_config_data.html">override_config_data</a> - Specifies a block of data containing config overrides.</li>
+	<li><a href="push_config_state.html">push_config_state</a> - Pushes the current configuration state.</li>
+	<li><a href="pop_config_state.html">pop_config_state</a> - Pops a previously pushed configuration state.</li>
+	<li><a href="flush_config_file.html">flush_config_file</a> - Flushes the current config file to disk.</li>
+	<li><a href="reload_config_texts.html">reload_config_texts</a> - Reloads translated strings returned by get_config_text().</li>
+	<li><a href="hook_config_section.html">hook_config_section</a> - Hooks a configuration file section with custom handlers.</li>
+	<li><a href="config_is_hooked.html">config_is_hooked</a> - Tells if a config section has custom hooks.</li>
+	<li><a href="get_config_string.html">get_config_string</a> - Retrieves a string from the configuration file.</li>
+	<li><a href="get_config_int.html">get_config_int</a> - Retrieves an integer from the configuration file.</li>
+	<li><a href="get_config_hex.html">get_config_hex</a> - Retrieves a hexadecimal value from the configuration file.</li>
+	<li><a href="get_config_float.html">get_config_float</a> - Retrieves a float from the configuration file.</li>
+	<li><a href="get_config_id.html">get_config_id</a> - Retrieves a driver ID from a configuration file.</li>
+	<li><a href="get_config_argv.html">get_config_argv</a> - Reads a token list from the configuration file.</li>
+	<li><a href="get_config_text.html">get_config_text</a> - Returns a string translated to the current language.</li>
+	<li><a href="set_config_string.html">set_config_string</a> - Writes a string in the configuration file.</li>
+	<li><a href="set_config_int.html">set_config_int</a> - Writes an integer in the configuration file.</li>
+	<li><a href="set_config_hex.html">set_config_hex</a> - Writes a hexadecimal integer in the configuration file.</li>
+	<li><a href="set_config_float.html">set_config_float</a> - Writes a float in the configuration file.</li>
+	<li><a href="set_config_id.html">set_config_id</a> - Writes a driver ID in the configuration file.</li>
+	<li><a href="list_config_entries.html">list_config_entries</a> - Lists the names of all entries in a config section</li>
+	<li><a href="list_config_sections.html">list_config_sections</a> - Lists the names of all sections available in the current configuration.</li>
+	<li><a href="free_config_entries.html">free_config_entries</a> - Frees memory allocated for config entry lists.</li>
+</ul>
+<h2>Standard config variables</h2>
+Allegro uses these standard variables from the configuration file:
+
+<ul><li>
+[system]<br>
+   Section containing general purpose variables:
+<ul><li>
+system = x<br>
+   Specifies which system driver to use. This is currently only useful on
+   Linux, for choosing between the XWindows ("XWIN") or console ("LNXC")
+   modes.
+<li>
+keyboard = x<br>
+   Specifies which keyboard layout to use. The parameter is the name of a
+   keyboard mapping file produced by the keyconf utility, and can either be
+   a fully qualified file path or a basename like `us' or `uk'. If the
+   latter, Allegro will look first for a separate config file with that name
+   (eg. `uk.cfg') and then for an object with that name in the `keyboard.dat'
+   file (eg. `UK_CFG'). The config file or `keyboard.dat' file can be stored
+   in the same directory as the program, or in the location pointed to by
+   the ALLEGRO environment variable. Look in the `keyboard.dat' file to see
+   what mappings are currently available.
+<li>
+language = x<br>
+   Specifies which language file to use for error messages and other bits of
+   system text. The parameter is the name of a translation file, and can
+   either be a fully qualified file path or a basename like `en' or `es'. If
+   the latter, Allegro will look first for a separate config file with a
+   name in the form `entext.cfg', and then for an object with that name in
+   the `language.dat' file (eg. `ENTEXT_CFG'). The config file or
+   `language.dat' file can be stored in the same directory as the program, or
+   in the location pointed to by the ALLEGRO environment variable.<br /><br />
+
+   Look in the `language.dat' file to see which mappings are currently
+   available. If there is none for your language, you can create it using the
+   English one as model, and even send it to the Allegro development team to
+   include it in future releases.
+<li>
+disable_screensaver = x<br>
+   Specifies whether to disable the screensaver: 0 to never disable it, 1 to
+   disable it in fullscreen mode only and 2 to always disable it. Default is 1.
+<li>
+menu_opening_delay = x<br>
+   Sets how long the menus take to auto-open. The time is given in
+   milliseconds (default is `300'). Specifying `-1' will disable the
+   auto-opening feature.
+<li>
+XInitThreads = x<br>
+   If this is set to 0, the X11 port will not call XInitThreads. This can have
+   slight performance advantages and was required on some broken X11 servers,
+   but it makes Allegro incompatible with other X11 libraries like Mesa.
+</ul><li>
+[graphics]<br>
+   Section containing graphics configuration information, using the
+   variables:
+<ul><li>
+gfx_card = x<br>
+   Specifies which graphics driver to use when the program requests
+   GFX_AUTODETECT. Multiple possible drivers can be suggested with extra
+   lines in the form `gfx_card1 = x', `gfx_card2 = x', etc, or you can
+   specify different drivers for each mode and color depth with variables in
+   the form `gfx_card_24bpp = x', `gfx_card_640x480x16 = x', etc.
+<li>
+gfx_cardw = x<br>
+   Specifies which graphics driver to use when the program requests
+   GFX_AUTODETECT_WINDOWED. This variable functions exactly like
+   gfx_card in all other respects. If it is not set, Allegro will look
+   for the gfx_card variable.
+<li>
+disable_vsync = x<br>
+   Specifies whether to disable synchronization with the vertical blank when
+   page-flipping (yes or no). Disabling synchronization may increase the
+   frame rate on slow systems, at the expense of introducing flicker on fast
+   systems.
+<li>
+vbeaf_driver = x<br>
+   DOS and Linux only: specifies where to look for the VBE/AF driver
+   (vbeaf.drv). If this variable is not set, Allegro will look in the same
+   directory as the program, and then fall back on the standard locations
+   (`c:\' for DOS, `/usr/local/lib', `/usr/lib', `/lib', and `/' for Linux, or
+   the directory specified with the VBEAF_PATH environment variable).
+<li>
+framebuffer = x<br>
+   Linux only: specifies what device file to use for the fbcon driver. If
+   this variable is not set, Allegro checks the FRAMEBUFFER environment
+   variable, and then defaults to `/dev/fb0'.
+<li>
+force_centering = x<br>
+   Unix/X11 only: specifies whether to force window centering in fullscreen
+   mode when the XWFS driver is used (yes or no). Enabling this setting may
+   cause some artifacts to appear on KDE desktops.
+<li>
+disable_direct_updating = x<br>
+   Windows only: specifies whether to disable direct updating when the
+   GFX_DIRECTX_WIN driver is used in color conversion mode (yes or no).
+   Direct updating can cause artifacts to be left on the desktop when the
+   window is moved or minimized; disabling it results in a significant
+   performance loss.
+</ul><li>
+[mouse]<br>
+   Section containing mouse configuration information, using the variables:
+<ul><li>
+mouse = x<br>
+   Mouse driver type. Available DOS drivers are:
+<pre class="text">
+      MICK - mickey mode driver (normally the best)
+      I33  - int 0x33 callback driver
+      POLL - timer polling (for use under NT)
+</pre>
+   Linux console mouse drivers are:
+<pre class="text">
+      MS   - Microsoft serial mouse
+      IMS  - Microsoft serial mouse with Intellimouse extension
+      LPS2 - PS2 mouse
+      LIPS - PS2 mouse with Intellimouse extension
+      GPMD - GPM repeater data (Mouse Systems protocol)
+      EV   - Event interfaces (EVDEV)</pre>
+<li>
+num_buttons = x<br>
+   Sets the number of mouse buttons viewed by Allegro. You don't normally
+   need to set this variable because Allegro will autodetect it. You can only
+   use it to restrict the set of actual mouse buttons to zero or positive
+   values, negative values will be ignored.
+<li>
+emulate_three = x<br>
+   Sets whether to emulate a third mouse button by detecting chords of the
+   left and right buttons (yes or no). Defaults to no.
+<li>
+mouse_device = x<br>
+   Linux only: specifies the name of the mouse device file (eg.
+   `/dev/mouse').
+<li>
+ev_absolute = x<br>
+   Linux only: specifies the mode for the default EV input:
+      0 - relative mode: pointer position changes if the input moves,
+      1 - absolute mode: pointer position is the input position.
+   If unspecified, the mode is relative.
+   If the device supports several tools (such as a graphic tablet), the
+   default input is the mouse. If the device has only one tool (e.g. a
+   normal mouse) the default input is this tool. All additionnal tools
+   work in absolute mode.
+<li>
+ev_min_x = x<br>
+ev_max_x = x<br>
+ev_min_y = x<br>
+ev_max_y = x<br>
+ev_min_z = x<br>
+ev_max_z = x<br>
+   Linux only: for absolute EV inputs, minimum and maximum value. By default
+   this information is autodetected.  If you want to use only part of a
+   tablet, you need to set the entries for X and Y axis by hand.
+<li>
+ev_abs_to_rel_x = x<br>
+ev_abs_to_rel_y = x<br>
+ev_abs_to_rel_z = x<br>
+   Linux only: scaling factor for tablet mouse speed.  Defaults to 1.
+   This is used only when the input sends absolute events (tablet, joystick,
+   etc.) and the cursor should behave like a mouse.
+   If you are using a mouse on a tablet, you need to set these entries
+   for X and Y axis (try numbers between 1 and 40).
+<li>
+mouse_accel_factor = x<br>
+   Windows only: specifies the mouse acceleration factor. Defaults to 1.
+   Set it to 0 in order to disable mouse acceleration. 2 accelerates twice
+   as much as 1.
+</ul><li>
+[sound]<br>
+   Section containing sound configuration information, using the variables:
+<ul><li>
+digi_card = x<br>
+   Sets the driver to use for playing digital samples.
+<li>
+midi_card = x<br>
+   Sets the driver to use for MIDI music.
+<li>
+digi_input_card = x<br>
+   Sets the driver to use for digital sample input.
+<li>
+midi_input_card = x<br>
+   Sets the driver to use for MIDI data input.
+<li>
+digi_voices = x<br>
+   Specifies the minimum number of voices to reserve for use by the digital
+   sound driver. How many are possible depends on the driver.
+<li>
+midi_voices = x<br>
+   Specifies the minimum number of voices to reserve for use by the MIDI
+   sound driver. How many are possible depends on the driver.
+<li>
+digi_volume = x<br>
+   Sets the volume for digital sample playback, from 0 to 255.
+<li>
+midi_volume = x<br>
+   Sets the volume for midi music playback, from 0 to 255.
+<li>
+quality = x<br>
+   Controls the sound quality vs. performance tradeoff for the sample mixing
+   code. This can be set to any of the values:<pre class="text">
+      0 - fast mixing of 8-bit data into 16-bit buffers
+      1 - true 16-bit mixing (requires a 16-bit stereo soundcard)
+      2 - interpolated 16-bit mixing</pre>
+<li>
+flip_pan = x<br>
+   Toggling this between 0 and 1 reverses the left/right panning of samples,
+   which might be needed because some SB cards get the stereo image the wrong
+   way round.
+<li>
+sound_freq = x<br>
+   DOS, Unix and BeOS: sets the sample frequency. With the SB driver,
+   possible rates are 11906 (any), 16129 (any), 22727 (SB 2.0 and above),
+   and 45454 (only on SB 2.0 or SB16, not the stereo SB Pro driver). On the
+   ESS Audiodrive, possible rates are 11363, 17046, 22729, or 44194. On the
+   Ensoniq Soundscape, possible rates are 11025, 16000, 22050, or 48000. On
+   the Windows Sound System, possible rates are 11025, 22050, 44100, or
+   48000. Don't worry if you set some other number by mistake: Allegro will
+   automatically round it to the closest supported frequency.
+<li>
+sound_bits = x<br>
+   Unix and BeOS: sets the preferred number of bits (8 or 16).
+<li>
+sound_stereo = x<br>
+   Unix and BeOS: selects mono or stereo output (0 or 1).
+<li>
+sound_port = x<br>
+   DOS only: sets the soundcard port address (this is usually 220).
+<li>
+sound_dma = x<br>
+   DOS only: sets the soundcard DMA channel (this is usually 1).
+<li>
+sound_irq = x<br>
+   DOS only: sets the soundcard IRQ number (this is usually 7).
+<li>
+fm_port = x<br>
+   DOS only: sets the port address of the OPL synth (this is usually 388).
+<li>
+mpu_port = x<br>
+   DOS only: sets the port address of the MPU-401 MIDI interface (this is
+   usually 330).
+<li>
+mpu_irq = x<br>
+   DOS only: sets the IRQ for the MPU-401 (this is usually the same as
+   sound_irq).
+<li>
+ibk_file = x<br>
+   DOS only: specifies the name of a .IBK file which will be used to replace
+   the standard Adlib patch set.
+<li>
+ibk_drum_file = x<br>
+   DOS only: specifies the name of a .IBK file which will be used to replace
+   the standard set of Adlib percussion patches.
+<li>
+oss_driver = x<br>
+   Unix only: sets the OSS device driver name. Usually `/dev/dsp' or
+   `/dev/audio', but could be a particular device (e.g. `/dev/dsp2').
+<li>
+oss_numfrags = x<br>
+oss_fragsize = x<br>
+   Unix only: sets number of OSS driver fragments (buffers) and size of each
+   buffer in samples. Buffers are filled with data in the interrupts where
+   interval between subsequent interrupts is not less than 10 ms. If
+   hardware can play all information from buffers faster than 10 ms, then
+   there will be clicks, when hardware have played all data and library has
+   not prepared new data yet. On the other hand, if it takes too long for
+   device driver to play data from all buffers, then there will be delays
+   between action which triggers sound and sound itself.
+<li>
+oss_midi_driver = x<br>
+   Unix only: sets the OSS MIDI device name. Usually `/dev/sequencer'.
+<li>
+oss_mixer_driver = x<br>
+   Unix only: sets the OSS mixer device name. Usually `/dev/mixer'.
+<li>
+esd_server = x<br>
+   Unix only: where to find the ESD (Enlightened Sound Daemon) server.
+<li>
+alsa_card = x<br>
+alsa_pcmdevice = x<br>
+   Unix only: card number and PCM device for the ALSA 0.5 sound driver.
+<li>
+alsa_device = x<br>
+   Unix only: device name for the ALSA 0.9 sound driver. The format is
+   &lt;driver&gt;[:&lt;card&gt;,&lt;device&gt;], for example: `hw:0,1'.
+<li>
+alsa_mixer_device = x<br>
+   Unix only: mixer device name for the ALSA 0.9 sound driver. The
+   default is "default".
+<li>
+alsa_mixer_elem = x<br>
+   Unix only: mixer element name for the ALSA 0.9 driver. The default
+   is PCM.
+<li>
+alsa_numfrags = x<br>
+   Unix only: number of ALSA driver fragments (buffers).
+<li>
+alsa_fragsize = x<br>
+   Unix only: size of each ALSA fragment, in samples.
+<li>
+alsa_rawmidi_card = x<br>
+   Unix only: card number and device for the ALSA 0.5 midi driver.
+<li>
+alsa_rawmidi_device = x<br>
+   Unix only: device for the ALSA 0.5 midi driver or device name for
+   the ALSA 0.9 midi driver (see alsa_device for the format).
+<li>
+jack_client_name = x<br>
+   Sets the name with which Allegro should identify itself to the Jack
+   audio server.
+<li>
+jack_buffer_size = x<br>
+   Forces a buffer size for the transfer buffer from Allegro's mixer
+   to Jack.
+<li>
+be_midi_quality = x<br>
+   BeOS only: system MIDI synthesizer instruments quality. 0 uses low
+   quality 8-bit 11 kHz samples, 1 uses 16-bit 22 kHz samples.
+<li>
+be_midi_freq = x<br>
+   BeOS only: MIDI sample mixing frequency in Hz. Can be 11025, 22050 or
+   44100.
+<li>
+be_midi_interpolation = x<br>
+   BeOS only: specifies the MIDI samples interpolation method. 0 doesn't
+   interpolate, it's fast but has the worst quality; 1 does a fast
+   interpolation with better performances, but it's a bit slower than the
+   previous method; 2 does a linear interpolation between samples, it is the
+   slowest method but gives the best performances.
+<li>
+be_midi_reverb = x<br>
+   BeOS only: reverberation intensity, from 0 to 5. 0 disables it, 5 is the
+   strongest one.
+<li>
+ca_midi_quality = x<br>
+   MacOS X only: CoreAudio MIDI synthesizer rendering quality, from 0 to 127.
+   Higher qualities sound better but increase the CPU work load.
+<li>
+ca_midi_reverb = x<br>
+   MacOS X only: CoreAudio MIDI synthesizer reverberation intensity, from 0
+   to 5. 0 equals to a small room (low reverb), 5 to a plate (high reverb).
+<li>
+patches = x<br>
+   Specifies where to find the sample set for the DIGMID driver. This can
+   either be a Gravis style directory containing a collection of .pat files
+   and a `default.cfg' index, or an Allegro datafile produced by the pat2dat
+   utility. If this variable is not set, Allegro will look either for a
+   `default.cfg' or `patches.dat' file in the same directory as the program,
+   the directory pointed to by the ALLEGRO environment variable, and the
+   standard GUS directory pointed to by the ULTRASND environment variable.
+</ul><li>
+[midimap]<br>
+   If you are using the SB MIDI output or MPU-401 drivers with an external
+   synthesiser that is not General MIDI compatible, you can use the midimap
+   section of the config file to specify a patch mapping table for
+   converting GM patch numbers into whatever bank and program change
+   messages will select the appropriate sound on your synth. This is a real
+   piece of self-indulgence. I have a Yamaha TG500, which has some great
+   sounds but no GM patch set, and I just had to make it work somehow...<br /><br />
+
+   This section consists of a set of lines in the form:
+<ul><li>
+p&lt;n&gt; = bank0 bank1 prog pitch<br>
+   With this statement, n is the GM program change number (1-128), bank0 and
+   bank1 are the two bank change messages to send to your synth (on
+   controllers #0 and #32), prog is the program change message to send to
+   your synth, and pitch is the number of semitones to shift everything that
+   is played with that sound. Setting the bank change numbers to -1 will
+   prevent them from being sent.<br /><br />
+
+   For example, the line:
+<pre class="text">
+      p36 = 0 34 9 12
+</pre>
+   specifies that whenever GM program 36 (which happens to be a fretless
+   bass) is selected, Allegro should send a bank change message #0 with a
+   parameter of 0, a bank change message #32 with a parameter of 34, a
+   program change with a parameter of 9, and then should shift everything up
+   by an octave.
+</ul><li>
+[joystick]<br>
+   Section containing joystick configuration information, using the
+   variables:
+<ul><li>
+joytype = x<br>
+   Specifies which joystick driver to use when the program requests
+   JOY_TYPE_AUTODETECT.
+<li>
+joystick_device = x<br>
+   BeOS and Linux only: specifies the name of the joystick device to be used
+   (as reported in the system joystick preferences under BeOS). The first
+   device found is used by default. If you want to specify the device for
+   each joystick, use variables of the form joystick_device_n, where n is
+   the joystick number.
+<li>
+throttle_axis = x<br>
+   Linux only: sets the axis number the throttle is located at. This
+   variable will be used for every detected joystick. If you want to specify
+   the axis number for each joystick individually, use variables of the form
+   throttle_axis_n, where n is the joystick number.
+</ul></ul>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">set_config_file</a></li>
+	<li><a href="../../index.html">set_config_string</a></li>
+	<li><a href="../../index.html">get_config_string</a></li>
+</ul>
+</div>
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,164</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>77.553469</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/configuration-routines/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:41:27 GMT -->
+</html>

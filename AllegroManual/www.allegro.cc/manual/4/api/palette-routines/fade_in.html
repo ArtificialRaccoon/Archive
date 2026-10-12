@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/palette-routines/fade_in by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:21:16 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>fade_in</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Palette routines</a></h2><ul>
+<li><a href="set_color.html" style="font-weight: bold">set_color</a></li><li><a href="_set_color.html" >_set_color</a></li><li><a href="set_palette.html" style="font-weight: bold">set_palette</a></li><li><a href="set_palette_range.html" >set_palette_range</a></li><li><a href="get_color.html" >get_color</a></li><li><a href="get_palette.html" style="font-weight: bold">get_palette</a></li><li><a href="get_palette_range.html" >get_palette_range</a></li><li><a href="fade_interpolate.html" >fade_interpolate</a></li><li><a href="fade_from_range.html" >fade_from_range</a></li><li><a href="fade_in_range.html" >fade_in_range</a></li><li><a href="fade_out_range.html" >fade_out_range</a></li><li><a href="fade_from.html" >fade_from</a></li><li><strong>fade_in</strong></li><li><a href="fade_out.html" style="font-weight: bold">fade_out</a></li><li><a href="select_palette.html" >select_palette</a></li><li><a href="unselect_palette.html" >unselect_palette</a></li><li><a href="generate_332_palette.html" >generate_332_palette</a></li><li><a href="generate_optimized_palette.html" >generate_optimized_palette</a></li><li><a href="default_palette.html" >default_palette</a></li><li><a href="black_palette.html" style="font-weight: bold">black_palette</a></li><li><a href="desktop_palette.html" >desktop_palette</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>fade_in</h1>
+
+<div class="shortdesc">
+Gradually fades the palette from black.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">void</span> <a href="../../index.html" target="_blank"><span class="a">fade_in</span></a><span class="k2">(</span><span class="k1">const</span> <a href="../../index.html" target="_blank"><span class="a">PALETTE</span></a> p, <span class="k1">int</span> speed<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Fades gradually from a black screen to the specified palette. The speed
+   is from 1 (the slowest) up to 64 (instantaneous).<br /><br />
+
+   Note that this function will block your game while the fade is in effect,
+   and it won't work right visually if you are not in an 8 bit color depth
+   resolution.
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">fade_out</a></li>
+	<li><a href="../../index.html">fade_from</a></li>
+	<li><a href="../../index.html">fade_interpolate</a></li>
+	<li><a href="../../index.html">fade_in_range</a></li>
+</ul>
+</div>
+
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/Cylindrix">Cylindrix</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/AlextheAllegator3">Alex the Allegator 3</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/BarneyHunter">Barney Hunter</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/Glizda">Glizda</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/HolidayHills">Holiday Hills</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/Isthistheend">Is this... the end?</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/POPEM">POP'EM</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/Stickdude">Stickdude!</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/TheLostSwordofArkane">The Lost Sword of Arkane</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/Zombiepox">Zombiepox</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,526</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.009235</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/palette-routines/fade_in by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:21:16 GMT -->
+</html>

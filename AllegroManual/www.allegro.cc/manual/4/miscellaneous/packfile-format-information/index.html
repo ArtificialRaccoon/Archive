@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/miscellaneous/packfile-format-information/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:02:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Packfile format information</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">Miscellaneous</a></h2><ul>
+<li><a href="../reducing-your-executable-size/index.html" >Reducing your executable size</a></li><li><a href="../debugging/index.html" >Debugging</a></li><li><a href="../makefile-targets/index.html" >Makefile targets</a></li><li><a href="../available-allegro-examples/index.html" >Available Allegro examples</a></li><li><a href="../changes-since-previous-versions/index.html" >Changes since previous versions</a></li><li><a href="../contributors--the-hall-of-fame/index.html" >Contributors: The Hall of Fame</a></li><li><a href="../frequently-asked-questions-(faq)/index.html" >Frequently asked questions (FAQ)</a></li><li><a href="../common-mistakes/index.html" >Common mistakes</a></li><li><a href="../help--what-to-do-when-your-allegro-program-doesnt-work/index.html" >Help: what to do when your Allegro program doesn't work</a></li><li><a href="../api-compatibility-information/index.html" >API compatibility information</a></li><li><a href="../abi-compatibility-information/index.html" >ABI compatibility information</a></li><li><a href="../the-allegro-hackers-guide/index.html" >The Allegro hacker's guide</a></li><li><a href="../allegro-const-correctness/index.html" >Allegro `const'-correctness</a></li><li><strong>Packfile format information</strong></li><li><a href="../datafile-format-information/index.html" >Datafile format information</a></li><li><a href="../license-and-disclaimer/index.html" >License and Disclaimer</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>Packfile format information</h1>
+
+<h2>Contents</h2>
+<h2>Introduction and scope</h2>
+This document describes the format of Allegro's packfiles from a
+   decompression point of view. It does not describe how to do the
+   compression (read the source, or ask Google about LZSS).<br /><br />
+
+   file.c says "This compression algorithm is based on the ideas of Lempel
+   and Ziv, with the modifications suggested by Storer and Szymanski.", if
+   that means anything to you.
+
+<h2>Packfile signature</h2>
+All compressed packfiles begin with a four byte signature "slh!" (ASCII),
+   which in hexadecimal is 0x73, 0x6C, 0x68, 0x21 (in that order).<br /><br />
+
+   Another form of packfiles are uncompressed packfiles, which begin with the
+   four byte signature "slh." (ASCII), in hexadecimal 0x73, 0x6C, 0x68, 0x2B.
+   The rest of the file is then completely raw. Uncompressed packfiles will
+   not be discussed further.
+
+<h2>Format and decompression algorithm</h2>
+Decompression requires a ring buffer of 4096 bytes and a ring index (which
+   indexes into the ring buffer). The ring index starts at 4078, assuming
+   0-based indices. New bytes may be stored into in the position in the ring
+   buffer that the index points to. When a byte is stored, the index is
+   incremented by one, wrapping around to zero as necessary.<br /><br />
+
+   Packfiles must be decompressed sequentially. The first byte following the
+   signature in the packfile is the "flags" byte, which determines how the
+   following "tokens" in the file are to be interpreted.<br /><br />
+
+   Bit 1 (the least significant bit) corresponds to the first token following
+   the flags byte. Bit 2 corresponds to the second token, etc. After every
+   eight tokens, there is another flag byte and another eight tokens, and so
+   on, until the end of file.<br /><br />
+
+   If the bit I of the flags byte is set, then token I is a single byte to be
+   sent to the output. In addition, it must put onto the ring buffer and the
+   ring index incremented.<br /><br />
+
+   Otherwise, if bit I of the flags byte is not set, then token I is a two
+   byte sequence containing an index and a length. The index is the first
+   byte OR'd together with the higher 4 bits of the second byte as the higher
+   order bits, thus making a 12-bit unsigned number (0-4095). The length is
+   the lower 4 bits of the second byte, plus 3.
+   In less hand-wavy C syntax:
+<pre class="code">      <a href="http://www.delorie.com/djgpp/doc/libc/libc_470.html" target="_blank">index</a>  <span class="k3">=</span> byte1 <span class="k3">|</span> <span class="k2">(</span><span class="k2">(</span>byte2 <span class="k3">&amp;</span> <span class="n">0xF0</span><span class="k2">)</span> <span class="k3">&lt;</span><span class="k3">&lt;</span> <span class="n">4</span><span class="k2">)</span><span class="k2">;</span>
+      length <span class="k3">=</span> <span class="k2">(</span>byte2 <span class="k3">&amp;</span> <span class="n">0x0F</span><span class="k2">)</span> <span class="k3">+</span> <span class="n">3</span><span class="k2">;</span></pre>
+   Then, "length" number of bytes from the ring buffer, starting at "index",
+   are to be sent to the output. In addition, all these bytes must be put
+   onto the ring buffer, and the ring buffer incremented accordingly.<br /><br />
+
+   Decompression ends at the end of the file. There is no end-of-file
+   marker. If the number of tokens is not a multiple of eight, the unused
+   bits in the latest flags byte are always zero.
+
+<h2>Summary</h2>
+In brief, compressed packfiles take the form:
+<pre class="text">
+      signature -- 4 bytes<br /><br />
+
+      flags     -- 1 byte
+      token 1   -- each token 1 or 2 bytes
+      token 2
+       ...
+      token 8
+      flags
+       ...
+      (repeat flags and tokens 1-8 until EOF)
+</pre>
+
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,201</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.008263</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/miscellaneous/packfile-format-information/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:02:26 GMT -->
+</html>

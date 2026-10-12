@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/datafile-routines/load_datafile by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:26:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>load_datafile</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Datafile routines</a></h2><ul>
+<li><strong>load_datafile</strong></li><li><a href="load_datafile_callback.html" >load_datafile_callback</a></li><li><a href="unload_datafile.html" style="font-weight: bold">unload_datafile</a></li><li><a href="load_datafile_object.html" >load_datafile_object</a></li><li><a href="unload_datafile_object.html" >unload_datafile_object</a></li><li><a href="find_datafile_object.html" >find_datafile_object</a></li><li><a href="create_datafile_index.html" >create_datafile_index</a></li><li><a href="load_datafile_object_indexed.html" >load_datafile_object_indexed</a></li><li><a href="destroy_datafile_index.html" >destroy_datafile_index</a></li><li><a href="get_datafile_property.html" >get_datafile_property</a></li><li><a href="register_datafile_object.html" >register_datafile_object</a></li><li><a href="fixup_datafile.html" >fixup_datafile</a></li><li><a href="dat_id.html" style="font-weight: bold">DAT_ID</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>load_datafile</h1>
+
+<div class="shortdesc">
+Loads a datafile into memory.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<a href="../../index.html" target="_blank"><span class="a">DATAFILE</span></a> <span class="k3">*</span><a href="../../index.html" target="_blank"><span class="a">load_datafile</span></a><span class="k2">(</span><span class="k1">const</span> <span class="k1">char</span> <span class="k3">*</span>filename<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Loads a datafile into memory in one go. If the datafile has been encrypted,
+   you must first call packfile_password() to set the appropriate key. If the
+   datafile contains truecolor graphics, you must set the video mode or call
+   set_color_conversion() before loading it. Example:
+<pre class="code">      <span class="c">/* Load the resources for our game. */</span>
+      <a href="../../index.html" target="_blank"><span class="a">DATAFILE</span></a> <span class="k3">*</span>dat <span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">load_datafile</span></a><span class="k2">(</span><span class="s">"game.dat"</span><span class="k2">)</span><span class="k2">;</span>
+      <span class="k1">if</span> <span class="k2">(</span><span class="k3">!</span>dat<span class="k2">)</span>
+	 abort_on_error<span class="k2">(</span><span class="s">"Couldn't load sound resources!"</span><span class="k2">)</span><span class="k2">;</span>
+      <span class="c">/* Use resources. */</span>
+      ...
+      <span class="c">/* Destroy them when we don't need them any more. */</span>
+      <a href="../../index.html" target="_blank"><span class="a">unload_datafile</span></a><span class="k2">(</span>dat<span class="k2">)</span><span class="k2">;</span></pre>
+
+</div>
+
+<div class="retval">
+Returns a pointer to the DATAFILE, or NULL on error. Remember to free this
+   DATAFILE later to avoid memory leaks.
+
+</div>
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">load_datafile_callback</a></li>
+	<li><a href="../../index.html">unload_datafile</a></li>
+	<li><a href="../../index.html">load_datafile_object</a></li>
+	<li><a href="../../index.html">set_color_conversion</a></li>
+	<li><a href="../../index.html">fixup_datafile</a></li>
+	<li><a href="../../index.html">packfile_password</a></li>
+	<li><a href="../../index.html">find_datafile_object</a></li>
+	<li><a href="../../index.html">register_datafile_object</a></li>
+	<li><a href="../../index.html">Using datafiles</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../index.html">excustom</a></li>
+	<li><a href="../../index.html">exdata</a></li>
+	<li><a href="../../index.html">exexedat</a></li>
+	<li><a href="../../index.html">exgui</a></li>
+	<li><a href="../../index.html">exsprite</a></li>
+	<li><a href="../../index.html">exunicod</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591756">
+		<a href="https://www.allegro.cc/forums/thread/591756">internal files</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/678043" style="color: black;">1</a> </span>
+	</li><li id="t-591568">
+		<a href="https://www.allegro.cc/forums/thread/591568">Displaying fonts</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/674836" style="color: black;">1</a> </span>
+	</li><li id="t-591480">
+		<a href="https://www.allegro.cc/forums/thread/591480">Class not working</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/673562" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/673626" style="color: black;">2</a> </span>
+	</li><li id="t-591456">
+		<a href="https://www.allegro.cc/forums/thread/591456">Drawing instead of falling</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/673368" style="color: black;">1</a> </span>
+	</li><li id="t-591440">
+		<a href="https://www.allegro.cc/forums/thread/591440">Interdependant Headers</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/672984" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/672996" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/672998" style="color: black;">3</a> </span>
+	</li><li id="t-591310">
+		<a href="https://www.allegro.cc/forums/thread/591310">Different Speeds</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/670707" style="color: black;">1</a> </span>
+	</li><li id="t-591065">
+		<a href="https://www.allegro.cc/forums/thread/591065">Problem creating a bitmap, and a class</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/666564" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/666582" style="color: black;">2</a> </span>
+	</li><li id="t-590871">
+		<a href="https://www.allegro.cc/forums/thread/590871">Game Loops</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/663542" style="color: black;">1</a> </span>
+	</li><li id="t-590712">
+		<a href="https://www.allegro.cc/forums/thread/590712">Crazy fast...why?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/660502" style="color: black;">1</a> </span>
+	</li><li id="t-590708">
+		<a href="https://www.allegro.cc/forums/thread/590708">Black screen of DOOM</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/660443" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/660453" style="color: black;">2</a> </span>
+	</li><li id="t-590707">
+		<a href="https://www.allegro.cc/forums/thread/590707">Drawing from a Datafile</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/660429" style="color: black;">1</a> </span>
+	</li><li id="t-590331">
+		<a href="https://www.allegro.cc/forums/thread/590331">Matching bullet start x,y with point on sprite that gets rotated</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/654295" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/654474" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/654553" style="color: black;">3</a> </span>
+	</li><li id="t-590228">
+		<a href="https://www.allegro.cc/forums/thread/590228">invalid conversion from `void*&#39; to &quot;constRGB&quot;</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/653060" style="color: black;">1</a> </span>
+	</li><li id="t-590000">
+		<a href="https://www.allegro.cc/forums/thread/590000">[OpenLayer] Drawing white instead of images</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/648912" style="color: black;">1</a> </span>
+	</li><li id="t-589915">
+		<a href="https://www.allegro.cc/forums/thread/589915">Loading a PNG from a DATAFILE</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/647679" style="color: black;">1</a> </span>
+	</li><li id="t-589650">
+		<a href="https://www.allegro.cc/forums/thread/589650">Finding the end of a datafile</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/643687" style="color: black;">1</a> </span>
+	</li><li id="t-589573">
+		<a href="https://www.allegro.cc/forums/thread/589573">Unloading datafile causes program to crash.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/642548" style="color: black;">1</a> </span>
+	</li><li id="t-589098">
+		<a href="https://www.allegro.cc/forums/thread/589098">Files</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/635578" style="color: black;">1</a> </span>
+	</li><li id="t-588745">
+		<a href="https://www.allegro.cc/forums/thread/588745">access violation-newbie tile map...</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/630444" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/630488" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/630507" style="color: black;">3</a> </span>
+	</li><li id="t-588532">
+		<a href="https://www.allegro.cc/forums/thread/588532">making a datafile, but it won&#39;t load..?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/627607" style="color: black;">1</a> </span>
+	</li><li id="t-588298">
+		<a href="https://www.allegro.cc/forums/thread/588298">Datafile confusion</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/624245" style="color: black;">1</a> </span>
+	</li><li id="t-588090">
+		<a href="https://www.allegro.cc/forums/thread/588090">Background color issue</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/621205" style="color: black;">1</a> </span>
+	</li><li id="t-587866">
+		<a href="https://www.allegro.cc/forums/thread/587866">What is wrong with my struct??</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/617647" style="color: black;">1</a> </span>
+	</li><li id="t-587580">
+		<a href="https://www.allegro.cc/forums/thread/587580">Who can tell me how to show the transparent  sprite?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/613833" style="color: black;">1</a> </span>
+	</li><li id="t-587474">
+		<a href="https://www.allegro.cc/forums/thread/587474">there is something strange i can&#39;t get datafile object&#39;s name....</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/612563" style="color: black;">1</a> </span>
+	</li><li id="t-587012">
+		<a href="https://www.allegro.cc/forums/thread/587012">Help with a small function</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/606205" style="color: black;">1</a> </span>
+	</li><li id="t-586902">
+		<a href="https://www.allegro.cc/forums/thread/586902">Error at end of program</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/605003" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/605009" style="color: black;">2</a> </span>
+	</li><li id="t-586874">
+		<a href="https://www.allegro.cc/forums/thread/586874">WAV in dat file trouble using with allegro</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/604756" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/604782" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/604797" style="color: black;">3</a> <a href="https://www.allegro.cc/forums/post/604823" style="color: black;">4</a> <a href="https://www.allegro.cc/forums/post/604831" style="color: black;">5</a> </span>
+	</li><li id="t-586821">
+		<a href="https://www.allegro.cc/forums/thread/586821">Loading...</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/604248" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/604459" style="color: black;">2</a> </span>
+	</li><li id="t-586675">
+		<a href="https://www.allegro.cc/forums/thread/586675">GHAGH!!! I think my timing function is off.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/602339" style="color: black;">1</a> </span>
+	</li><li id="t-586615">
+		<a href="https://www.allegro.cc/forums/thread/586615">new GUI library for Allegro.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/601423" style="color: black;">1</a> </span>
+	</li><li id="t-586411">
+		<a href="https://www.allegro.cc/forums/thread/586411">problem with packfile_password</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/598216" style="color: black;">1</a> </span>
+	</li><li id="t-586351">
+		<a href="https://www.allegro.cc/forums/thread/586351">masked_blit problem</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/597274" style="color: black;">1</a> </span>
+	</li><li id="t-586066">
+		<a href="https://www.allegro.cc/forums/thread/586066">Animation on background</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/593232" style="color: black;">1</a> </span>
+	</li><li id="t-585911">
+		<a href="https://www.allegro.cc/forums/thread/585911">Slowing down animation</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/590816" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/BoardGames">Board Games</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/PyramidSolitaire">Pyramid Solitaire</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/BeatlesFreaks">Beatles Freaks</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/CariesField">Caries Field</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/ChristmasFun">Christmas Fun</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/DECATHLON">DECATHLON</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/Duel">Duel</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/Escultor">Escultor</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/FlamingSnow">Flaming Snow</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/GWar">GWar</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,905</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.012349</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/datafile-routines/load_datafile by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:26:43 GMT -->
+</html>

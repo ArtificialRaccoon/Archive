@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/platform-specifics/dos-specifics/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:58:19 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>DOS specifics</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">Platform specifics</a></h2><ul>
+<li><strong>DOS specifics</strong></li><li><a href="../windows-specifics/index.html" >Windows specifics</a></li><li><a href="../unix-specifics/index.html" >Unix specifics</a></li><li><a href="../beos-specifics/index.html" >BeOS specifics</a></li><li><a href="../qnx-specifics/index.html" >QNX specifics</a></li><li><a href="../macos-x-specifics/index.html" >MacOS X specifics</a></li><li><a href="../differences-between-platforms/index.html" >Differences between platforms</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>DOS specifics</h1>
+
+There are four Allegro files which you should redistribute along your program.
+These are the files `keyboard.dat', `language.dat', `allegro.cfg' and
+`setup.exe'.<br /><br />
+
+The first two contain internationalisation information for keyboard mappings
+and system messages to show up localised on the user's computer. The
+`setup.exe' program, which comes in Allegro's `setup' directory, is a
+standalone tool which you can graphically customise and even embed into your
+main binary. The user can generate a configuration file with this tool, to
+store special settings or avoid Allegro's autodetection failing on specific
+hardware. Even if you distribute `setup.exe', you are recommended to copy too
+the empty `allegro.cfg' file, in case the setup program itself is unable to
+run and the user has to edit manually the configuration with a text editor.<br /><br />
+
+If you are using get_config_text() in your program to localise text strings,
+merge your xxtext.cfg files with the ones provided by Allegro in the
+`resource' directory before creating `language.dat', and redistribute this
+with your program. This file will contain then both Allegro's system
+messages and the strings of your program.
+
+<ul>
+	<li><a href="joy_type_.html">JOY_TYPE_</a> - Supported DOS joystick drivers.</li>
+	<li><a href="gfx_.html">GFX_</a> - Supported DOS graphic drivers.</li>
+	<li><a href="digi_.html">DIGI_</a> - Supported DOS digital sound drivers.</li>
+	<li><a href="midi_.html">MIDI_</a> - Supported DOS MIDI sound drivers.</li>
+</ul>
+<h2>DOS integration routines</h2>
+<ul>
+	<li><a href="dos-integration-routines/i_love_bill.html">i_love_bill</a> - Tells if Allegro has to used fixed rate timers.</li>
+</ul>
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,181</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>44.178920</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/platform-specifics/dos-specifics/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:58:20 GMT -->
+</html>

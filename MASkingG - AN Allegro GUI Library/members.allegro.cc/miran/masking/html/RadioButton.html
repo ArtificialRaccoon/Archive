@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/RadioButton.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC RadioButton</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">RadioButton</A></H2></H2><BLOCKQUOTE> A radio button is almost identical to a checkbox.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>RadioButton
+- <A HREF="CheckBox.html">CheckBox</A>
+- <A HREF="Button.html">Button</A>
+- <A HREF="Label.html">Label</A>
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.87.7">RadioButton</A></B>()
+<DD><I> default constructor</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.87.8">SetGroup</A></B>(int <!1><A HREF="Color.html#DOC.8.18">g</A>)
+<DD><I> Assings the radio button to the group g.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.87.9">GetGroup</A></B>()
+<DD><I> returns the group id of this button</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.87.10">Setup</A></B>(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, const char* t, int <!1><A HREF="Color.html#DOC.8.18">g</A>)
+<DD><I> Shortcut for Button::Setup() and SetGroup()</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.87.1">group</A></B>
+<DD><I> The ID of the group the radio button belongs to</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.87.2">MsgKey</A></B>()
+<DD><I> Like Button::MsgKey() except that this one doesn't toggle the button but only select it if it isn't already selected and send MSG_RADIO to all the widgets in the dialog</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.87.3">MsgLPress</A></B>()
+<DD><I> Like Button::MsgLPress() except that this one doesn't toggle the button but only select it if it isn't already selected and send MSG_RADIO to all the widgets in the dialog</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.87.4">MsgLRelease</A></B>()
+<DD><I> Like Button::MsgLRelease() except that this one doesn't toggle the button but only select it if it isn't already selected and send MSG_RADIO to all the widgets in the dialog</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.87.5">MsgRadio</A></B>(int <!1><A HREF="Color.html#DOC.8.18">g</A>)
+<DD><I> If the button is in the same group as the widget that sent this message (group g), the button deselects itself</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.87.6">MsgInitSkin</A></B>()
+<DD><I> Initializes the widget with the default radio button bitmap, fonts and font colours from the skin and sets all the flags that define the behaviour of a radio button</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+A radio button is almost identical to a checkbox. The only two differences are that usually a radio
+button uses a sligtly different bitmap (although both widgets use the same format so the bitmaps can be
+exchanged between a RadioButton and a CheckBox) and radio buttons are organized in groups. At any given
+time only one radio button in the group may be selected. Whenever a radio button is toggled it sends a
+MSG_RADIO message to all the widgets in the dialog so they can uncheck themselves. Also a radio button
+cannot deselect iteslf. Only another button from the same group can do this.</BLOCKQUOTE>
+<DL>
+
+<A NAME="group"></A>
+<A NAME="DOC.87.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int group</B></TT>
+<DD>
+The ID of the group the radio button belongs to
+<DL><DT><DD></DL><P>
+<A NAME="MsgKey"></A>
+<A NAME="DOC.87.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgKey()</B></TT>
+<DD>
+Like Button::MsgKey() except that this one doesn't toggle the button but only select
+it if it isn't already selected and send MSG_RADIO to all the widgets in the dialog
+<DL><DT><DD></DL><P>
+<A NAME="MsgLPress"></A>
+<A NAME="DOC.87.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgLPress()</B></TT>
+<DD>
+Like Button::MsgLPress() except that this one doesn't toggle the button but only select
+it if it isn't already selected and send MSG_RADIO to all the widgets in the dialog
+<DL><DT><DD></DL><P>
+<A NAME="MsgLRelease"></A>
+<A NAME="DOC.87.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgLRelease()</B></TT>
+<DD>
+Like Button::MsgLRelease() except that this one doesn't toggle the button but only select
+it if it isn't already selected and send MSG_RADIO to all the widgets in the dialog
+<DL><DT><DD></DL><P>
+<A NAME="MsgRadio"></A>
+<A NAME="DOC.87.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgRadio(int <!1><A HREF="Color.html#DOC.8.18">g</A>)</B></TT>
+<DD>
+If the button is in the same group as the widget that sent this
+message (group g), the button deselects itself
+<DL><DT><DD></DL><P>
+<A NAME="MsgInitSkin"></A>
+<A NAME="DOC.87.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgInitSkin()</B></TT>
+<DD>
+Initializes the widget with the default radio button bitmap, fonts and font colours from
+the skin and sets all the flags that define the behaviour of a radio button
+<DL><DT><DD></DL><P>
+<A NAME="RadioButton"></A>
+<A NAME="DOC.87.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> RadioButton()</B></TT>
+<DD>
+default constructor
+<DL><DT><DD></DL><P>
+<A NAME="SetGroup"></A>
+<A NAME="DOC.87.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetGroup(int <!1><A HREF="Color.html#DOC.8.18">g</A>)</B></TT>
+<DD>
+Assings the radio button to the group g.
+There may be any number of buttons in a group and there may be any number of groups in a
+dialog but they all have to have unique IDs.
+<DL><DT><DD></DL><P>
+<A NAME="GetGroup"></A>
+<A NAME="DOC.87.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int GetGroup()</B></TT>
+<DD>
+returns the group id of this button
+<DL><DT><DD></DL><P>
+<A NAME="Setup"></A>
+<A NAME="DOC.87.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Setup(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, const char* t, int <!1><A HREF="Color.html#DOC.8.18">g</A>)</B></TT>
+<DD>
+Shortcut for Button::Setup() and SetGroup()
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/RadioButton.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+</html>

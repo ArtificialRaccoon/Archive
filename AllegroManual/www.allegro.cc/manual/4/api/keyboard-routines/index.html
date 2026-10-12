@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/keyboard-routines/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:44:02 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Keyboard routines</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">API</a></h2><ul>
+<li><a href="../using-allegro/index.html" >Using Allegro</a></li><li><a href="../structures-and-types-defined-by-allegro/index.html" >Structures and types defined by Allegro</a></li><li><a href="../unicode-routines/index.html" >Unicode routines</a></li><li><a href="../configuration-routines/index.html" >Configuration routines</a></li><li><a href="../mouse-routines/index.html" >Mouse routines</a></li><li><a href="../timer-routines/index.html" >Timer routines</a></li><li><strong>Keyboard routines</strong></li><li><a href="../joystick-routines/index.html" >Joystick routines</a></li><li><a href="../graphics-modes/index.html" >Graphics modes</a></li><li><a href="../bitmap-objects/index.html" >Bitmap objects</a></li><li><a href="../loading-image-files/index.html" >Loading image files</a></li><li><a href="../palette-routines/index.html" >Palette routines</a></li><li><a href="../truecolor-pixel-formats/index.html" >Truecolor pixel formats</a></li><li><a href="../drawing-primitives/index.html" >Drawing primitives</a></li><li><a href="../blitting-and-sprites/index.html" >Blitting and sprites</a></li><li><a href="../rle-sprites/index.html" >RLE sprites</a></li><li><a href="../compiled-sprites/index.html" >Compiled sprites</a></li><li><a href="../fonts/index.html" >Fonts</a></li><li><a href="../text-output/index.html" >Text output</a></li><li><a href="../polygon-rendering/index.html" >Polygon rendering</a></li><li><a href="../transparency-and-patterned-drawing/index.html" >Transparency and patterned drawing</a></li><li><a href="../converting-between-color-formats/index.html" >Converting between color formats</a></li><li><a href="../direct-access-to-video-memory/index.html" >Direct access to video memory</a></li><li><a href="../flic-routines/index.html" >FLIC routines</a></li><li><a href="../sound-init-routines/index.html" >Sound init routines</a></li><li><a href="../mixer-routines/index.html" >Mixer routines</a></li><li><a href="../digital-sample-routines/index.html" >Digital sample routines</a></li><li><a href="../music-routines-(midi)/index.html" >Music routines (MIDI)</a></li><li><a href="../audio-stream-routines/index.html" >Audio stream routines</a></li><li><a href="../recording-routines/index.html" >Recording routines</a></li><li><a href="../file-and-compression-routines/index.html" >File and compression routines</a></li><li><a href="../datafile-routines/index.html" >Datafile routines</a></li><li><a href="../fixed-point-math-routines/index.html" >Fixed point math routines</a></li><li><a href="../3d-math-routines/index.html" >3D math routines</a></li><li><a href="../quaternion-math-routines/index.html" >Quaternion math routines</a></li><li><a href="../gui-routines/index.html" >GUI routines</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>Keyboard routines</h1>
+
+The Allegro keyboard handler provides both buffered input and a set of flags
+storing the current state of each key. Note that it is not possible to
+correctly detect every combination of keys, due to the design of the PC
+keyboard. Up to two or three keys at a time will work fine, but if you press
+more than that the extras are likely to be ignored (exactly which
+combinations are possible seems to vary from one keyboard to another).<br /><br />
+
+On DOS, Allegro requires the user to specify the language of the keyboard
+mapping because it is impossible to obtain this information from the OS,
+otherwise the default US keyboard mapping will be used. Allegro comes with a
+prepackaged `keyboard.dat' file which you can put along with your binary. If
+this file is present, Allegro will be able to extract the keyboard mapping
+information stored there. However, the end user still needs to select which
+keyboard mapping to use. This can be acomplished through the keyboard variable
+of the system section in a standard `allegro.cfg' configuration file. Read
+chapter "Configuration routines" for more information about this.
+
+<ul>
+	<li><a href="install_keyboard.html">install_keyboard</a> - Installs the Allegro keyboard interrupt handler.</li>
+	<li><a href="remove_keyboard.html">remove_keyboard</a> - Removes the Allegro keyboard handler.</li>
+	<li><a href="install_keyboard_hooks.html">install_keyboard_hooks</a> - Installs custom keyboard hooks.</li>
+	<li><a href="poll_keyboard.html">poll_keyboard</a> - Polls the keyboard.</li>
+	<li><a href="keyboard_needs_poll.html">keyboard_needs_poll</a> - Tells if the keyboard needs polling.</li>
+	<li><a href="key.html">key</a> - Array of flags indicating key state.</li>
+	<li><a href="key_shifts.html">key_shifts</a> - Bitmask containing the current state of modifier keys.</li>
+	<li><a href="keypressed.html">keypressed</a> - Tells if there are keypresses waiting in the input buffer.</li>
+	<li><a href="readkey.html">readkey</a> - Returns the next character from the keyboard buffer.</li>
+	<li><a href="ureadkey.html">ureadkey</a> - Returns the next unicode character from the keyboard buffer.</li>
+	<li><a href="scancode_to_ascii.html">scancode_to_ascii</a> - Converts a scancode to an ASCII character.</li>
+	<li><a href="scancode_to_name.html">scancode_to_name</a> - Converts a scancode to a key name.</li>
+	<li><a href="simulate_keypress.html">simulate_keypress</a> - Stuffs a key into the keyboard buffer.</li>
+	<li><a href="simulate_ukeypress.html">simulate_ukeypress</a> - Stuffs an unicode key into the keyboard buffer.</li>
+	<li><a href="keyboard_callback.html">keyboard_callback</a> - User specified keyboard callback handler.</li>
+	<li><a href="keyboard_ucallback.html">keyboard_ucallback</a> - User specified unicode keyboard callback handler.</li>
+	<li><a href="keyboard_lowlevel_callback.html">keyboard_lowlevel_callback</a> - User specified low level keyboard event handler.</li>
+	<li><a href="set_leds.html">set_leds</a> - Sets the state of the keyboard LED indicators.</li>
+	<li><a href="set_keyboard_rate.html">set_keyboard_rate</a> - Sets the keyboard repeat rate.</li>
+	<li><a href="clear_keybuf.html">clear_keybuf</a> - Clears the keyboard buffer.</li>
+	<li><a href="three_finger_flag.html">three_finger_flag</a> - Flag to desactivate the emergency exit key combination.</li>
+	<li><a href="key_led_flag.html">key_led_flag</a> - Flag to prevent the keyboard LEDs from being updated.</li>
+</ul>
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,164</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>76.595975</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/keyboard-routines/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:47:28 GMT -->
+</html>

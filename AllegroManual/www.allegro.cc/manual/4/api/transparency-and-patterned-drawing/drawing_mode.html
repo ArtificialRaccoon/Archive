@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/transparency-and-patterned-drawing/drawing_mode by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:24:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>drawing_mode</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Transparency and patterned drawing</a></h2><ul>
+<li><strong>drawing_mode</strong></li><li><a href="xor_mode.html" >xor_mode</a></li><li><a href="solid_mode.html" style="font-weight: bold">solid_mode</a></li><li><a href="256-color-transparency/color_map.html" style="font-weight: bold">color_map</a></li><li><a href="256-color-transparency/create_trans_table.html" style="font-weight: bold">create_trans_table</a></li><li><a href="256-color-transparency/create_light_table.html" >create_light_table</a></li><li><a href="256-color-transparency/create_color_table.html" >create_color_table</a></li><li><a href="256-color-transparency/create_blender_table.html" >create_blender_table</a></li><li><a href="truecolor-transparency/set_trans_blender.html" style="font-weight: bold">set_trans_blender</a></li><li><a href="truecolor-transparency/set_alpha_blender.html" >set_alpha_blender</a></li><li><a href="truecolor-transparency/set_write_alpha_blender.html" >set_write_alpha_blender</a></li><li><a href="truecolor-transparency/set_add_blender.html" >set_add_blender</a></li><li><a href="truecolor-transparency/set_burn_blender.html" >set_burn_blender</a></li><li><a href="truecolor-transparency/set_color_blender.html" >set_color_blender</a></li><li><a href="truecolor-transparency/set_difference_blender.html" >set_difference_blender</a></li><li><a href="truecolor-transparency/set_dissolve_blender.html" >set_dissolve_blender</a></li><li><a href="truecolor-transparency/set_dodge_blender.html" >set_dodge_blender</a></li><li><a href="truecolor-transparency/set_hue_blender.html" >set_hue_blender</a></li><li><a href="truecolor-transparency/set_invert_blender.html" >set_invert_blender</a></li><li><a href="truecolor-transparency/set_luminance_blender.html" >set_luminance_blender</a></li><li><a href="truecolor-transparency/set_multiply_blender.html" >set_multiply_blender</a></li><li><a href="truecolor-transparency/set_saturation_blender.html" >set_saturation_blender</a></li><li><a href="truecolor-transparency/set_screen_blender.html" >set_screen_blender</a></li><li><a href="truecolor-transparency/set_blender_mode.html" >set_blender_mode</a></li><li><a href="truecolor-transparency/set_blender_mode_ex.html" >set_blender_mode_ex</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>drawing_mode</h1>
+
+<div class="shortdesc">
+Sets the graphics drawing mode.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">void</span> <a href="../../index.html" target="_blank"><span class="a">drawing_mode</span></a><span class="k2">(</span><span class="k1">int</span> mode, <a href="../../index.html" target="_blank"><span class="a">BITMAP</span></a> <span class="k3">*</span>pattern, <span class="k1">int</span> x_anchor, <span class="k1">int</span> y_anchor<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Sets the graphics drawing mode. This only affects the geometric routines
+   like putpixel, lines, rectangles, circles, polygons, floodfill, etc, not
+   the text output, blitting, or sprite drawing functions. The mode should
+   be one of the following constants:
+<pre class="text">
+      DRAW_MODE_SOLID               - the default, solid color
+				      drawing
+      DRAW_MODE_XOR                 - exclusive-or drawing
+      DRAW_MODE_COPY_PATTERN        - multicolored pattern fill
+      DRAW_MODE_SOLID_PATTERN       - single color pattern fill
+      DRAW_MODE_MASKED_PATTERN      - masked pattern fill
+      DRAW_MODE_TRANS               - translucent color blending
+</pre>
+   In DRAW_MODE_SOLID, pixels of the bitmap being drawn onto are simply
+   replaced by those produced by the drawing function.<br /><br />
+
+   In DRAW_MODE_XOR, pixels are written to the bitmap with an exclusive-or
+   operation rather than a simple copy, so drawing the same shape twice will
+   erase it. Because it involves reading as well as writing the bitmap
+   memory, xor drawing is a lot slower than the normal replace mode.<br /><br />
+
+   With the patterned modes, you provide a pattern bitmap which is tiled
+   across the surface of the shape. Allegro stores a pointer to this bitmap
+   rather than copying it, so you must not destroy the bitmap while it is
+   still selected as the pattern. The width and height of the pattern must
+   be powers of two, but they can be different, eg. a 64x16 pattern is fine,
+   but a 17x3 one is not. The pattern is tiled in a grid starting at point
+   (x_anchor, y_anchor). Normally you should just pass zero for these
+   values, which lets you draw several adjacent shapes and have the patterns
+   meet up exactly along the shared edges. Zero alignment may look peculiar
+   if you are moving a patterned shape around the screen, however, because
+   the shape will move but the pattern alignment will not, so in some
+   situations you may wish to alter the anchor position.<br /><br />
+
+   When you select DRAW_MODE_COPY_PATTERN, pixels are simply copied from the
+   pattern bitmap onto the destination bitmap. This allows the use of
+   multicolored patterns, and means that the color you pass to the drawing
+   routine is ignored. This is the fastest of the patterned modes.<br /><br />
+
+   In DRAW_MODE_SOLID_PATTERN, each pixel in the pattern bitmap is compared
+   with the mask color, which is zero in 256-color modes or bright pink for
+   truecolor data (maximum red and blue, zero green). If the pattern pixel
+   is solid, a pixel of the color you passed to the drawing routine is
+   written to the destination bitmap, otherwise a zero is written. The
+   pattern is thus treated as a monochrome bitmask, which lets you use the
+   same pattern to draw different shapes in different colors, but prevents
+   the use of multicolored patterns.<br /><br />
+
+   DRAW_MODE_MASKED_PATTERN is almost the same as DRAW_MODE_SOLID_PATTERN,
+   but the masked pixels are skipped rather than being written as zeros, so
+   the background shows through the gaps.<br /><br />
+
+   In DRAW_MODE_TRANS, the global color_map table or truecolor blender
+   functions are used to overlay pixels on top of the existing image. This
+   must only be used after you have set up the color mapping table (for 256
+   color modes) or blender functions (for truecolor modes). Because it
+   involves reading as well as writing the bitmap memory, translucent
+   drawing is very slow if you draw directly to video RAM, so wherever
+   possible you should use a memory bitmap instead.
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">xor_mode</a></li>
+	<li><a href="../../index.html">solid_mode</a></li>
+	<li><a href="../../index.html">color_map</a></li>
+	<li><a href="../../index.html">set_trans_blender</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../index.html">exalpha</a></li>
+	<li><a href="../../index.html">excolmap</a></li>
+	<li><a href="../../index.html">exjoy</a></li>
+	<li><a href="../../index.html">expat</a></li>
+	<li><a href="../../index.html">extrans</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591856">
+		<a href="https://www.allegro.cc/forums/thread/591856">Additive blended lines with Fblend</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/678927" style="color: black;">1</a> </span>
+	</li><li id="t-591796">
+		<a href="https://www.allegro.cc/forums/thread/591796">8bit bitmap to alpha channel</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/677865" style="color: black;">1</a> </span>
+	</li><li id="t-591381">
+		<a href="https://www.allegro.cc/forums/thread/591381">transparent objects</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/672221" style="color: black;">1</a> </span>
+	</li><li id="t-591116">
+		<a href="https://www.allegro.cc/forums/thread/591116">Image processing and transparency</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/667445" style="color: black;">1</a> </span>
+	</li><li id="t-590630">
+		<a href="https://www.allegro.cc/forums/thread/590630">Dissapearing vector</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/659375" style="color: black;">1</a> </span>
+	</li><li id="t-590613">
+		<a href="https://www.allegro.cc/forums/thread/590613">trans_blender, way too slow</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/659070" style="color: black;">1</a> </span>
+	</li><li id="t-589913">
+		<a href="https://www.allegro.cc/forums/thread/589913">Fading</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/647636" style="color: black;">1</a> </span>
+	</li><li id="t-589770">
+		<a href="https://www.allegro.cc/forums/thread/589770">draw_trans_sprite, Devcpp and optimizations</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/646004" style="color: black;">1</a> </span>
+	</li><li id="t-589550">
+		<a href="https://www.allegro.cc/forums/thread/589550">How to draw an opaque, screen-sized, black rectangle?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/642165" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/642551" style="color: black;">2</a> </span>
+	</li><li id="t-588851">
+		<a href="https://www.allegro.cc/forums/thread/588851">translucent putpixel</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/632057" style="color: black;">1</a> </span>
+	</li><li id="t-588798">
+		<a href="https://www.allegro.cc/forums/thread/588798">fill pattern</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/631247" style="color: black;">1</a> </span>
+	</li><li id="t-587698">
+		<a href="https://www.allegro.cc/forums/thread/587698">in need of some opinions</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/615339" style="color: black;">1</a> </span>
+	</li><li id="t-587395">
+		<a href="https://www.allegro.cc/forums/thread/587395">AllegroGL and translucent textures</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/611388" style="color: black;">1</a> </span>
+	</li><li id="t-587021">
+		<a href="https://www.allegro.cc/forums/thread/587021">Alpha Blending problems</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/606327" style="color: black;">1</a> </span>
+	</li><li id="t-586634">
+		<a href="https://www.allegro.cc/forums/thread/586634">how to set style</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/601757" style="color: black;">1</a> </span>
+	</li><li id="t-580693">
+		<a href="https://www.allegro.cc/forums/thread/580693">create_trans_table</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/580719" style="color: black;">1</a> </span>
+	</li><li id="t-577264">
+		<a href="https://www.allegro.cc/forums/thread/577264">Transparency (blitting)...</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/577282" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/577284" style="color: black;">2</a> </span>
+	</li><li id="t-573948">
+		<a href="https://www.allegro.cc/forums/thread/573948">Translucent Primitives in 32-Bit Mode</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/573962" style="color: black;">1</a> </span>
+	</li><li id="t-572247">
+		<a href="https://www.allegro.cc/forums/thread/572247">screen tinting</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/572533" style="color: black;">1</a> </span>
+	</li><li id="t-564140">
+		<a href="https://www.allegro.cc/forums/thread/564140">Special Effects</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/564199" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/564423" style="color: black;">2</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/FantasticVacation">Fantastic Vacation</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/Sokoban">Sokoban</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/SwingSpace">Swing Space</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/Cylu">Cylu</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/domin">domin</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/DrLovepeace">Dr Lovepeace</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/DrStrange">Dr. Strange</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/Ghoulsandghostremix1">Ghouls and ghost remix</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/Glizda">Glizda</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/Isthistheend">Is this... the end?</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,709</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.009777</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/transparency-and-patterned-drawing/drawing_mode by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:24:08 GMT -->
+</html>

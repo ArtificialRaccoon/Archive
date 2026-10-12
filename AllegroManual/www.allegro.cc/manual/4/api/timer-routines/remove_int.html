@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/timer-routines/remove_int by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:16:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>remove_int</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Timer routines</a></h2><ul>
+<li><a href="install_timer.html" style="font-weight: bold">install_timer</a></li><li><a href="remove_timer.html" >remove_timer</a></li><li><a href="install_int.html" style="font-weight: bold">install_int</a></li><li><a href="install_int_ex.html" style="font-weight: bold">install_int_ex</a></li><li><a href="lock_variable.html" style="font-weight: bold">LOCK_VARIABLE</a></li><li><a href="lock_function.html" style="font-weight: bold">LOCK_FUNCTION</a></li><li><a href="end_of_function.html" style="font-weight: bold">END_OF_FUNCTION</a></li><li><strong>remove_int</strong></li><li><a href="install_param_int.html" >install_param_int</a></li><li><a href="install_param_int_ex.html" >install_param_int_ex</a></li><li><a href="remove_param_int.html" >remove_param_int</a></li><li><a href="retrace_count.html" >retrace_count</a></li><li><a href="rest.html" style="font-weight: bold">rest</a></li><li><a href="rest_callback.html" >rest_callback</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>remove_int</h1>
+
+<div class="shortdesc">
+Removes a timers.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">void</span> <a href="../../index.html" target="_blank"><span class="a">remove_int</span></a><span class="k2">(</span><span class="k1">void</span> <span class="k2">(</span><span class="k3">*</span>proc<span class="k2">)</span><span class="k2">(</span><span class="k2">)</span><span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Removes a function from the list of user interrupt routines. At program
+   termination, allegro_exit() does this automatically.
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">install_int</a></li>
+	<li><a href="../../index.html">install_int_ex</a></li>
+	<li><a href="../../index.html">remove_param_int</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591879">
+		<a href="https://www.allegro.cc/forums/thread/591879">Game completely screwed up.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/678937" style="color: black;">1</a> </span>
+	</li><li id="t-591840">
+		<a href="https://www.allegro.cc/forums/thread/591840">Animation works right in two arrays, but not this one?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/678462" style="color: black;">1</a> </span>
+	</li><li id="t-591672">
+		<a href="https://www.allegro.cc/forums/thread/591672">Can&#39;t get my buffer to work</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/676211" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/676390" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/677061" style="color: black;">3</a> <a href="https://www.allegro.cc/forums/post/677242" style="color: black;">4</a> </span>
+	</li><li id="t-590090">
+		<a href="https://www.allegro.cc/forums/thread/590090">[MinorHack] This Saturday?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/651256" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/651270" style="color: black;">2</a> </span>
+	</li><li id="t-589730">
+		<a href="https://www.allegro.cc/forums/thread/589730">I need a high resolution timer with QPC</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/645029" style="color: black;">1</a> </span>
+	</li><li id="t-587270">
+		<a href="https://www.allegro.cc/forums/thread/587270">Dynamically changing the frequency of the Allegro timers mid-game.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/609686" style="color: black;">1</a> </span>
+	</li><li id="t-587130">
+		<a href="https://www.allegro.cc/forums/thread/587130">Hardware cursor enable / disable.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/607818" style="color: black;">1</a> </span>
+	</li><li id="t-586855">
+		<a href="https://www.allegro.cc/forums/thread/586855">Drawing to the screen uses too much CPU</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/605324" style="color: black;">1</a> </span>
+	</li><li id="t-585958">
+		<a href="https://www.allegro.cc/forums/thread/585958">Allegro Linux slower than Allegro Windows?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/592133" style="color: black;">1</a> </span>
+	</li><li id="t-585866">
+		<a href="https://www.allegro.cc/forums/thread/585866">Increasing the speed of transitioning from one image into another?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/590308" style="color: black;">1</a> </span>
+	</li><li id="t-585599">
+		<a href="https://www.allegro.cc/forums/thread/585599">Determining if mouse is inside the Allegro window (for v4.20)</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/586483" style="color: black;">1</a> </span>
+	</li><li id="t-585140">
+		<a href="https://www.allegro.cc/forums/thread/585140">QPC, GTOD, RDTSC</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/585140" style="color: black;">1</a> </span>
+	</li><li id="t-567938">
+		<a href="https://www.allegro.cc/forums/thread/567938">Two timers, one function</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/568623" style="color: black;">1</a> </span>
+	</li><li id="t-567657">
+		<a href="https://www.allegro.cc/forums/thread/567657">Game failure at return 0; at the end of the main loop</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/567661" style="color: black;">1</a> </span>
+	</li><li id="t-565043">
+		<a href="https://www.allegro.cc/forums/thread/565043">my game uses 90% CPU</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/566066" style="color: black;">1</a> </span>
+	</li><li id="t-557828">
+		<a href="https://www.allegro.cc/forums/thread/557828">mouse flickering: old question, vague answer</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/557872" style="color: black;">1</a> </span>
+	</li><li id="t-554042">
+		<a href="https://www.allegro.cc/forums/thread/554042">[Allegro] Timer Problem</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/554050" style="color: black;">1</a> </span>
+	</li><li id="t-553251">
+		<a href="https://www.allegro.cc/forums/thread/553251">Yielding until an event occurs</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/553253" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/BamboozleMachinae">Bamboozle Machinae</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/BeatlesFreaks">Beatles Freaks</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/Sokoban">Sokoban</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/AllegroMinigameCollection">Allegro Minigame Collection</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/AreYouLost1">Are You Lost?</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/BarneyHunter">Barney Hunter</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/ChromaPlas">ChromaPlas</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/DrLovepeace">Dr Lovepeace</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/DrStrange">Dr. Strange</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/Isthistheend">Is this... the end?</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,402</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.125966</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/timer-routines/remove_int by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:16:13 GMT -->
+</html>

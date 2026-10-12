@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Wallpaper.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC Wallpaper</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">Wallpaper</A></H2></H2><BLOCKQUOTE> Similar to ClearScreen just that Wallpaper doesn't use a solid colour to clear the canvas but a wallpaper bitmap which can be drawn in one of several styles.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>Wallpaper
+- <A HREF="Image.html">Image</A>
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.108.7">Wallpaper</A></B>()
+<DD><I> default constructor</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.108.8">SetStyle</A></B>(<!1><A HREF="Wallpaper.html#DOC.108.1">WallpaperStyle</A> s)
+<DD><I> Sets the wallpaper style to the selected style</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   <!1><A HREF="Wallpaper.html#DOC.108.1">WallpaperStyle</A> <B><A HREF="#DOC.108.9">GetStyle</A></B>()
+<DD><I> return the current wallpaper style</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.108.10">Setup</A></B>(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, int i, <!1><A HREF="Wallpaper.html#DOC.108.1">WallpaperStyle</A> s)
+<DD><I> These Setup() functions are basically just shortcuts for Image::Setup() and SetStyle()</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.108.11">Setup</A></B>(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, const char* file, <!1><A HREF="Wallpaper.html#DOC.108.1">WallpaperStyle</A> s)
+<DD><I> See above</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.108.12">Setup</A></B>(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, const <!1><A HREF="Bitmap.html">Bitmap</A>&amp; <!1><A HREF="Image.html#DOC.67.2">bmp</A>, <!1><A HREF="Wallpaper.html#DOC.108.1">WallpaperStyle</A> s)
+<DD><I> See above</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Public Members</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>enum  <B><A HREF="#DOC.108.1">WallpaperStyle</A></B>
+<DD><I> These are the available wallpaper styles.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Wallpaper.html#DOC.108.1">WallpaperStyle</A> <B><A HREF="#DOC.108.2">style</A></B>
+<DD><I> The actual wallpaper style</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.108.3">MsgStart</A></B>()
+<DD><I> Updates the size of the wallpaper when the dialog starts</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.108.4">MsgInitSkin</A></B>()
+<DD><I> Sets the default skin bitmap, style and background colour</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.108.5">UpdateSize</A></B>()
+<DD><I> Updates the size of the widget to match the size of the parent dialog</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.108.6">Draw</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)
+<DD><I> Draws the wallpaper on the canvas with the selected style</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+Similar to ClearScreen just that Wallpaper doesn't use a solid colour
+to clear the canvas but a wallpaper bitmap which can be drawn in one of several styles.
+Note that Wallpaper can be quite a lot slower than ClearScreen.</BLOCKQUOTE>
+<DL>
+
+<A NAME="WallpaperStyle"></A>
+<A NAME="DOC.108.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>enum  WallpaperStyle</B></TT>
+<DD>
+These are the available wallpaper styles.
+The wallpaper bitmap can be blitted in the centre of
+the dialog's canvas or in its top left corner, it can be stretched over
+the canvas or it can be tiled in one of two ways. The first uses a simple tiling
+function while the other uses a special GUI tile function that only tile the
+central area of the bitmap and uses the edges to create a border around the tiled area.
+In styles that don't cover the entire screen the screen is first cleared to
+the background colour defined by the skin.
+The available wallpaper styles are:
+<PRE>
+      CENTERED     - the wallpaper bitmap is centered on the screen
+      TOPLEFT      - the wallpaper is drawn once in the top left corner of the screen
+      STRETCHED    - the wallpaper is stretched to fit onto the screen
+      TILED        - the wallpaper is tiled across the screen (default)
+      TILED2       - the wallpaper is tiled using a special GUI tile function
+</PRE>
+<DL><DT><DD></DL><P>
+<A NAME="style"></A>
+<A NAME="DOC.108.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Wallpaper.html#DOC.108.1">WallpaperStyle</A> style</B></TT>
+<DD>
+The actual wallpaper style
+<DL><DT><DD></DL><P>
+<A NAME="MsgStart"></A>
+<A NAME="DOC.108.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgStart()</B></TT>
+<DD>
+Updates the size of the wallpaper when the dialog starts
+<DL><DT><DD></DL><P>
+<A NAME="MsgInitSkin"></A>
+<A NAME="DOC.108.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgInitSkin()</B></TT>
+<DD>
+Sets the default skin bitmap, style and background colour
+<DL><DT><DD></DL><P>
+<A NAME="UpdateSize"></A>
+<A NAME="DOC.108.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void UpdateSize()</B></TT>
+<DD>
+Updates the size of the widget to match the size of the parent dialog
+<DL><DT><DD></DL><P>
+<A NAME="Draw"></A>
+<A NAME="DOC.108.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Draw(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)</B></TT>
+<DD>
+Draws the wallpaper on the canvas with the selected style
+<DL><DT><DD></DL><P>
+<A NAME="Wallpaper"></A>
+<A NAME="DOC.108.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> Wallpaper()</B></TT>
+<DD>
+default constructor
+<DL><DT><DD></DL><P>
+<A NAME="SetStyle"></A>
+<A NAME="DOC.108.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetStyle(<!1><A HREF="Wallpaper.html#DOC.108.1">WallpaperStyle</A> s)</B></TT>
+<DD>
+Sets the wallpaper style to the selected style
+<DL><DT><DD></DL><P>
+<A NAME="GetStyle"></A>
+<A NAME="DOC.108.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   <!1><A HREF="Wallpaper.html#DOC.108.1">WallpaperStyle</A> GetStyle()</B></TT>
+<DD>
+return the current wallpaper style
+<DL><DT><DD></DL><P>
+<A NAME="Setup"></A>
+<A NAME="DOC.108.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Setup(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, int i, <!1><A HREF="Wallpaper.html#DOC.108.1">WallpaperStyle</A> s)</B></TT>
+<DD>
+These Setup() functions are basically just shortcuts for Image::Setup() and SetStyle()
+<DL><DT><DD></DL><P>
+<A NAME="Setup"></A>
+<A NAME="DOC.108.11"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Setup(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, const char* file, <!1><A HREF="Wallpaper.html#DOC.108.1">WallpaperStyle</A> s)</B></TT>
+<DD>
+See above
+<DL><DT><DD></DL><P>
+<A NAME="Setup"></A>
+<A NAME="DOC.108.12"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Setup(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, const <!1><A HREF="Bitmap.html">Bitmap</A>&amp; <!1><A HREF="Image.html#DOC.67.2">bmp</A>, <!1><A HREF="Wallpaper.html#DOC.108.1">WallpaperStyle</A> s)</B></TT>
+<DD>
+See above
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Wallpaper.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+</html>

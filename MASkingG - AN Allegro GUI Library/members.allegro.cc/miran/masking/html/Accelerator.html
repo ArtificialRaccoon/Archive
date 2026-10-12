@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Accelerator.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC Accelerator</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">Accelerator</A></H2></H2><BLOCKQUOTE> The accelerator widget.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>Accelerator
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.1.3">Add</A></B>(int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Shortcut.html#DOC.96.2">shifts</A>, int msg)
+<DD><I> Adds a combination of keys the widget should respond to and the the message it should respond with.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>std::vector&lt;KeyCombo&gt;  <B><A HREF="#DOC.1.1">acc</A></B>
+<DD><I> The vector of keyboard combination</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.1.2">MsgXChar</A></B>(int xchar)
+<DD><I> Handles keypresses.</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+The accelerator widget.
+This widget is similar to a Shortcut except it allows you to setup more
+than one keyboard shortcut. When it detects a predefined keyboard
+combination, it will send the message associated with this combination.</BLOCKQUOTE>
+<DL>
+
+<A NAME="acc"></A>
+<A NAME="DOC.1.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>std::vector&lt;KeyCombo&gt;  acc</B></TT>
+<DD>
+The vector of keyboard combination
+<DL><DT><DD></DL><P>
+<A NAME="MsgXChar"></A>
+<A NAME="DOC.1.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool MsgXChar(int xchar)</B></TT>
+<DD>
+Handles keypresses. If it detects a combination of keys defined
+in the accelerator array, it sends the message associated with
+the keyboard combination in question to the parent dialog.
+<DL><DT><DD></DL><P>
+<A NAME="Add"></A>
+<A NAME="DOC.1.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Add(int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Shortcut.html#DOC.96.2">shifts</A>, int msg)</B></TT>
+<DD>
+Adds a combination of keys the widget should respond to and the
+the message it should respond with. <b>Key</b> is an Allegro
+KEY_* constant (as in KEY_A, KEY_F1, KEY_LEFT, etc.) and <b>shifts</b>
+is a combination of key shifts flags such as KB_CTRL_FLAG,
+KB_ALT_FLAG, KB_SHIFT_FLAG, etc. Whenever the widget detects that
+this combination of keys was pressed, it send the message
+<b>msg</b> to the parent dialog.
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Accelerator.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:11 GMT -->
+</html>

@@ -1,0 +1,376 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/datafile-routines/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:54:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Datafile routines</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">API</a></h2><ul>
+<li><a href="../using-allegro/index.html" >Using Allegro</a></li><li><a href="../structures-and-types-defined-by-allegro/index.html" >Structures and types defined by Allegro</a></li><li><a href="../unicode-routines/index.html" >Unicode routines</a></li><li><a href="../configuration-routines/index.html" >Configuration routines</a></li><li><a href="../mouse-routines/index.html" >Mouse routines</a></li><li><a href="../timer-routines/index.html" >Timer routines</a></li><li><a href="../keyboard-routines/index.html" >Keyboard routines</a></li><li><a href="../joystick-routines/index.html" >Joystick routines</a></li><li><a href="../graphics-modes/index.html" >Graphics modes</a></li><li><a href="../bitmap-objects/index.html" >Bitmap objects</a></li><li><a href="../loading-image-files/index.html" >Loading image files</a></li><li><a href="../palette-routines/index.html" >Palette routines</a></li><li><a href="../truecolor-pixel-formats/index.html" >Truecolor pixel formats</a></li><li><a href="../drawing-primitives/index.html" >Drawing primitives</a></li><li><a href="../blitting-and-sprites/index.html" >Blitting and sprites</a></li><li><a href="../rle-sprites/index.html" >RLE sprites</a></li><li><a href="../compiled-sprites/index.html" >Compiled sprites</a></li><li><a href="../fonts/index.html" >Fonts</a></li><li><a href="../text-output/index.html" >Text output</a></li><li><a href="../polygon-rendering/index.html" >Polygon rendering</a></li><li><a href="../transparency-and-patterned-drawing/index.html" >Transparency and patterned drawing</a></li><li><a href="../converting-between-color-formats/index.html" >Converting between color formats</a></li><li><a href="../direct-access-to-video-memory/index.html" >Direct access to video memory</a></li><li><a href="../flic-routines/index.html" >FLIC routines</a></li><li><a href="../sound-init-routines/index.html" >Sound init routines</a></li><li><a href="../mixer-routines/index.html" >Mixer routines</a></li><li><a href="../digital-sample-routines/index.html" >Digital sample routines</a></li><li><a href="../music-routines-(midi)/index.html" >Music routines (MIDI)</a></li><li><a href="../audio-stream-routines/index.html" >Audio stream routines</a></li><li><a href="../recording-routines/index.html" >Recording routines</a></li><li><a href="../file-and-compression-routines/index.html" >File and compression routines</a></li><li><strong>Datafile routines</strong></li><li><a href="../fixed-point-math-routines/index.html" >Fixed point math routines</a></li><li><a href="../3d-math-routines/index.html" >3D math routines</a></li><li><a href="../quaternion-math-routines/index.html" >Quaternion math routines</a></li><li><a href="../gui-routines/index.html" >GUI routines</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>Datafile routines</h1>
+
+Datafiles are created by the grabber utility (see grabber.txt for more
+information), and have a `.dat' extension. They can contain bitmaps, palettes,
+fonts, samples, MIDI music, FLI/FLC animations, and any other binary data that
+you import. You could distribute your bitmaps and samples in a myriad of
+separate files, but packing them in a few `.dat' binaries has a few
+advantages:
+<ul><li>
+   On some platforms loading a single big datafile at once is faster than
+   loading individual resources one by one.
+<li>
+   Instead of several loops for your resources, you can write a single line of
+   code with just a single point of failure to take care of.
+<li>
+   You can potentially reduce the size of your data by enabling compression
+   on your datafiles. Less download time for your end users, less wait during
+   loading screens!
+<li>
+   If you don't need to load the whole datafile at once, you can still enable
+   individual file compression. It is slightly worse than global compression,
+   but it is very fast with loading times because Allegro can easily seek
+   inside the datafile to find a specific object.
+<li>
+   Even without encryption, most end users of your application won't be able
+   to look at or modify the resources for your game. A missing sound file or
+   a modified bitmap could potentially crash the game if you haven't
+   considered this in your loading code!
+<li>
+   It looks much more professional and convenient to distribute levels! For
+   example, if you found a bug in a level of your game, just distribute your
+   new `level4.dat' and tell users to overwrite their old version.
+</ul>
+Allegro allows you to load datafiles once and forget about them. But if you
+have many levels it can be wise to load only the resources required for the
+current level. You can accomplish the later by separating levels in different
+datafiles, or using functions like load_datafile_object() to avoid loading
+everything at once. You can even read directly from a specific datafile object
+with the pack_fopen() function.<br /><br />
+
+On some platforms you can attach datafiles to your binary, potentially
+reducing your game distribution down to a single executable file. Try the
+example exexedat on your platform to see if this is possible. However, this
+is not recommended for big programs: a single update to your code or binary
+data would force end users to download again a potentially big file, no matter
+how small your change is. The same warning goes for the tools dat2s or dat2c,
+which convert datafiles into assembler and C code respectively, prepared to be
+included directly in your binary.<br /><br />
+
+Remember that with Allegro truecolor images can only be loaded after you have
+set a graphics mode. This is true for datafiles too. Load all your data after
+you have set the graphics mode, otherwise the pixel format (RGB or BGR) will
+not be known and the datafile may be converted wrongly. Oh, and read carefully
+the warning of fixup_datafile() if you plan on switching resolutions during
+runtime.<br /><br />
+
+Note: even though Allegro datafiles provide encryption, you should consider
+it weak, so don't plan on hiding there the plans for a Death Star or
+something. Determinate knowledgeable users will be able to rip your resources
+no matter how hard you try to hide them! Use the encryption only as a slight
+deterrent towards unwanted tampering of your data. How to crack an encrypted
+datafile is left as an exercise to the reader, though.<br /><br />
+
+Using datafiles once they are loaded is quite simple: you access the elements
+of the DATAFILE as a normal array. Read below the section "Using datafiles"
+below for several examples on how to access their data.
+
+<ul>
+	<li><a href="load_datafile.html">load_datafile</a> - Loads a datafile into memory.</li>
+	<li><a href="load_datafile_callback.html">load_datafile_callback</a> - Loads a datafile into memory, calling a hook per object.</li>
+	<li><a href="unload_datafile.html">unload_datafile</a> - Frees all the objects in a datafile.</li>
+	<li><a href="load_datafile_object.html">load_datafile_object</a> - Loads a specific object from a datafile.</li>
+	<li><a href="unload_datafile_object.html">unload_datafile_object</a> - Frees an object previously loaded by load_datafile_object().</li>
+	<li><a href="find_datafile_object.html">find_datafile_object</a> - Searches a datafile for an object with a name.</li>
+	<li><a href="create_datafile_index.html">create_datafile_index</a> - Creates an index for a datafile.</li>
+	<li><a href="load_datafile_object_indexed.html">load_datafile_object_indexed</a> - Loads a single object from a datafile index.</li>
+	<li><a href="destroy_datafile_index.html">destroy_datafile_index</a> - Destroys a datafile index.</li>
+	<li><a href="get_datafile_property.html">get_datafile_property</a> - Returns the property string for the object.</li>
+	<li><a href="register_datafile_object.html">register_datafile_object</a> - Registers load/destroy functions for custom object types.</li>
+	<li><a href="fixup_datafile.html">fixup_datafile</a> - Fixes truecolor images in compiled datafiles.</li>
+	<li><a href="dat_id.html">DAT_ID</a> - Makes an ID value from four letters.</li>
+</ul>
+<h2>Using datafiles</h2>
+In order to access the contents of a datafile, you will need to know where
+each object is located. The easiest way to do this is by integer index,
+using an automatically generated header file. With the grabber, type a name
+into the "Header:" field, and the object indexes will be written to this
+file whenever the datafile is saved. With the dat utility, use the '-h'
+option, eg. "dat filename.dat -h filename.h". The header will define C
+preprocessor symbols for each object in the datafile, for example:
+<pre class="code">   <span class="p">#define SOME_DATA                        0        /* DATA */</span>
+   <span class="p">#define SOME_MORE_DATA                   1        /* DATA */</span></pre>
+To prevent name conflicts, you can specify a prefix string for these
+definitions by typing it into the "Prefix:" field in the grabber or using
+the '-p' option to dat.<br /><br />
+
+To load a datafile into memory, call the function:
+<pre class="code">   DATAFILE <span class="k3">*</span><a href="../../index.html" target="_blank"><span class="a">load_datafile</span></a><span class="k2">(</span><span class="k1">char</span> <span class="k3">*</span>filename<span class="k2">)</span><span class="k2">;</span></pre>
+This will load the entire file, returning a pointer to it, or NULL on error.
+When the data is no longer required, the entire thing can be destroyed by
+calling:
+<pre class="code">   <span class="k1">void</span> <a href="../../index.html" target="_blank"><span class="a">unload_datafile</span></a><span class="k2">(</span>DATAFILE <span class="k3">*</span>dat<span class="k2">)</span><span class="k2">;</span></pre>
+When you load a datafile, you will obtain a pointer to an array of DATAFILE
+structures:
+<pre class="code">   <span class="k1">typedef</span> <span class="k1">struct</span> DATAFILE
+   <span class="k2">{</span>
+      <span class="k1">void</span> <span class="k3">*</span>dat<span class="k2">;</span>                    <span class="k3">-</span> pointer to the actual data
+      <span class="k1">int</span> type<span class="k2">;</span>                     <span class="k3">-</span> object type ID
+      <span class="k1">long</span> size<span class="k2">;</span>                    <span class="k3">-</span> size of the data, in bytes
+      DATAFILE_PROPERTY <span class="k3">*</span>prop<span class="k2">;</span>      <span class="k3">-</span> list of object properties
+   <span class="k2">}</span> DATAFILE<span class="k2">;</span></pre><br /><br />
+
+The only really important piece of information here is the `dat' field, which
+points to the contents of the object. What type of data this is will depend
+on the type of object: for bitmaps it will be an Allegro BITMAP structure,
+for RLE sprites an RLE_SPRITE, for fonts a FONT structure, etc. If you are
+programming in C you can pass this pointer directly to the relevant Allegro
+library functions, but if you are using C++ you will need to cast it to the
+appropriate type to prevent the compiler giving a warning.<br /><br />
+
+For example, if you have a datafile called `myfile.dat', which contains a
+bitmap called COOL_PICTURE, and you have used it to produce a header called
+`myfile.h', you could display the bitmap with the code:
+<pre class="code">   <span class="p">#include "myfile.h"</span><br /><br />
+
+   <span class="k1">void</span> show_the_bitmap<span class="k2">(</span><span class="k2">)</span>
+   <span class="k2">{</span>
+      DATAFILE <span class="k3">*</span>dat<span class="k2">;</span>
+      BITMAP <span class="k3">*</span>bmp<span class="k2">;</span><br /><br />
+
+      dat <span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">load_datafile</span></a><span class="k2">(</span><span class="s">"myfile.dat"</span><span class="k2">)</span><span class="k2">;</span>
+      <span class="k1">if</span> <span class="k2">(</span><span class="k3">!</span>dat<span class="k2">)</span> <span class="k2">{</span>
+	 <span class="c">/* report an error! */</span>
+	 <span class="k1">return</span><span class="k2">;</span>
+      <span class="k2">}</span><br /><br />
+
+      bmp <span class="k3">=</span> <span class="k2">(</span>BITMAP <span class="k3">*</span><span class="k2">)</span>dat<span class="k2">[</span>COOL_PICTURE<span class="k2">]</span>.dat<span class="k2">;</span>
+      <a href="../../index.html" target="_blank"><span class="a">blit</span></a><span class="k2">(</span>bmp, <a href="../../index.html" target="_blank"><span class="a">screen</span></a>, <span class="n">0</span>, <span class="n">0</span>, <span class="n">0</span>, <span class="n">0</span>, bmp-&gt;w, bmp-&gt;h<span class="k2">)</span><span class="k2">;</span>
+      <a href="../../index.html" target="_blank"><span class="a">unload_datafile</span></a><span class="k2">(</span>dat<span class="k2">)</span><span class="k2">;</span>
+   <span class="k2">}</span></pre><br /><br />
+
+If a datafile contains nested child datafiles, the header will prefix the
+names of objects in the sub-files with the name of their parent datafile. It
+will also define a count of the number of objects in the child file, which
+may be useful if for example the child datafile contains several bitmaps
+which form a 'run' animation, and you want your code to automatically
+adjust to the number of frames in the datafile.<br /><br />
+
+For example, the following datafile:
+<pre class="text">
+   "FILE" - NESTED_FILE
+	    |- "BMP" - A_BITMAP
+	    |- "FONT" - A_FONT
+   "DATA" - SOME_DATA
+   "DATA" - SOME_MORE_DATA
+</pre>
+Will produce the header:
+<pre class="code">   <span class="p">#define NESTED_FILE                      0        /* FILE */</span><br /><br />
+
+   <span class="p">#define NESTED_FILE_A_BITMAP             0        /* BMP  */</span>
+   <span class="p">#define NESTED_FILE_A_FONT               1        /* FONT */</span>
+   <span class="p">#define NESTED_FILE_COUNT                2</span><br /><br />
+
+   <span class="p">#define SOME_DATA                        1        /* DATA */</span>
+   <span class="p">#define SOME_MORE_DATA                   2        /* DATA */</span></pre>
+The main datafile contains three objects (NESTED_FILE, SOME_DATA, and
+SOME_MORE_DATA) with consecutive indexes, while the child datafile contains
+the two objects A_BITMAP and A_FONT. To access these objects you need to
+reference both the parent and child datafiles, eg:
+<pre class="code">   DATAFILE <span class="k3">*</span>dat <span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">load_datafile</span></a><span class="k2">(</span><span class="s">"whatever.dat"</span><span class="k2">)</span><span class="k2">;</span>
+   DATAFILE <span class="k3">*</span>nested <span class="k3">=</span> <span class="k2">(</span>DATAFILE <span class="k3">*</span><span class="k2">)</span>dat<span class="k2">[</span>NESTED_FILE<span class="k2">]</span>.dat<span class="k2">;</span>
+   FONT <span class="k3">*</span>thefont <span class="k3">=</span> <span class="k2">(</span>FONT <span class="k3">*</span><span class="k2">)</span>nested<span class="k2">[</span>NESTED_FILE_A_FONT<span class="k2">]</span>.dat<span class="k2">;</span></pre>
+If you need to access object property strings from within your program, you
+can use the function:
+<pre class="code">   <span class="k1">char</span> <span class="k3">*</span><a href="../../index.html" target="_blank"><span class="a">get_datafile_property</span></a><span class="k2">(</span>DATAFILE <span class="k3">*</span>dat, <span class="k1">int</span> type<span class="k2">)</span><span class="k2">;</span></pre>
+This will return a pointer to the property string if it can be found, and an
+empty string (not null!) if it does not exist. One possible use of this
+function is to locate objects by name, rather than using the indexes from a
+header file. The datafile array is ended by an object of type DAT_END, so to
+search the datafile dat for the object "my_object" you could use the code:
+<pre class="code">   <span class="k1">const</span> <span class="k1">int</span> name_type <span class="k3">=</span> DAT_ID<span class="k2">(</span><span class="s">'N'</span>,<span class="s">'A'</span>,<span class="s">'M'</span>,<span class="s">'E'</span><span class="k2">)</span><span class="k2">;</span>
+   <span class="k1">for</span> <span class="k2">(</span>i<span class="k3">=</span><span class="n">0</span><span class="k2">;</span> dat<span class="k2">[</span>i<span class="k2">]</span>.type <span class="k3">!</span><span class="k3">=</span> DAT_END<span class="k2">;</span> i<span class="k3">+</span><span class="k3">+</span><span class="k2">)</span> <span class="k2">{</span>
+      <span class="k1">if</span> <span class="k2">(</span><a href="http://www.delorie.com/djgpp/doc/libc/libc_761.html" target="_blank">stricmp</a><span class="k2">(</span><a href="../../index.html" target="_blank"><span class="a">get_datafile_property</span></a><span class="k2">(</span>dat<span class="k3">+</span>i, name_type<span class="k2">)</span>,
+		  <span class="s">"my_object"</span><span class="k2">)</span> <span class="k3">=</span><span class="k3">=</span> <span class="n">0</span><span class="k2">)</span> <span class="k2">{</span>
+	 <span class="c">/* found the object at index i */</span>
+      <span class="k2">}</span>
+   <span class="k2">}</span>
+   <span class="c">/* not found... */</span></pre>
+If you prefer to access objects by name rather than index number, you can
+use the function:
+<pre class="code">   DATAFILE <span class="k3">*</span><a href="../../index.html" target="_blank"><span class="a">find_datafile_object</span></a><span class="k2">(</span>DATAFILE <span class="k3">*</span>dat, <span class="k1">char</span> <span class="k3">*</span>objectname<span class="k2">)</span><span class="k2">;</span></pre>
+This will search an already loaded datafile for an object with the specified
+name, returning a pointer to it, or NULL if the object cannot be found. It
+understands '/' and '#' separators for nested datafile paths.<br /><br />
+
+It is also possible to selectively load individual objects from a datafile,
+with the function:
+<pre class="code">   DATAFILE <span class="k3">*</span><a href="../../index.html" target="_blank"><span class="a">load_datafile_object</span></a><span class="k2">(</span><span class="k1">char</span> <span class="k3">*</span>filename, <span class="k1">char</span> <span class="k3">*</span>objectname<span class="k2">)</span><span class="k2">;</span></pre>
+This searches the datafile for an object with the specified name, so
+obviously it won't work if you strip the name properties out of the file.
+Because this function needs to seek through the data, it will be extremely
+slow if you have saved the file with global compression. If you are planning
+to load objects individually, you should save the file uncompressed or with
+individual compression per-object. Because the returned datafile points to a
+single object rather than an array of objects, you should access it with the
+syntax datafile->dat, rather than datafile[index].dat, and when you are done
+you should free the object with the function:
+<pre class="code">   <span class="k1">void</span> <a href="../../index.html" target="_blank"><span class="a">unload_datafile_object</span></a><span class="k2">(</span>DATAFILE <span class="k3">*</span>dat<span class="k2">)</span><span class="k2">;</span></pre>
+Example:
+<pre class="code">   music_object <span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">load_datafile_object</span></a><span class="k2">(</span><span class="s">"datafile.dat"</span>, <span class="s">"MUSIC"</span><span class="k2">)</span><span class="k2">;</span>
+   <a href="../../index.html" target="_blank"><span class="a">play_midi</span></a><span class="k2">(</span>music_object-&gt;dat<span class="k2">)</span><span class="k2">;</span>
+   ...
+   <a href="../../index.html" target="_blank"><span class="a">unload_datafile_object</span></a><span class="k2">(</span>music_object<span class="k2">)</span><span class="k2">;</span></pre>
+Alternatively, the packfile functions can open and read directly from the
+contents of a datafile object. You do this by calling pack_fopen() with a
+fake filename in the form "filename.dat#object_name". The contents of the
+object can then be read in an identical way to a normal disk file, so any of
+the file access functions in Allegro (eg. load_pcx() and set_config_file())
+can be used to read from datafile objects. Note that you can't write to
+datafiles in this way: the fake file is read only. Also, you should save the
+file uncompressed or with per-object compression if you are planning on
+using this feature. Finally, be aware that the special Allegro object types
+aren't the same format as the files you import the data from, so if for
+example you want to use load_pcx to read an image from a datafile, you
+should import it as a binary data chunk rather than as a BITMAP object.<br /><br />
+
+If you have appended a datafile to the end of your executable with the
+exedat utility, use load_datafile("#") to read the entire thing into memory,
+load_datafile_object("#", "object_name") to load a specific object, and
+pack_fopen("#object_name", F_READ) to read one of the objects directly with
+your own code. Note that unless you use the previous functions to load the
+appended data, the OS will not load it into memory just because you are
+running the program, so you shouldn't have problems attaching datafiles to
+your binary larger than the available system memory.<br /><br />
+
+By default, all graphic objects loaded from a datafile will be converted
+into the current color depth. This conversion may be both lossy and very
+slow, particularly when reducing from truecolor to 256 color formats, so you
+may wish to disable it by calling set_color_conversion(COLORCONV_NONE) or
+set_color_conversion(COLORCONV_PARTIAL) before your call to load_datafile().
+
+<h2>Custom datafile objects</h2>
+Some of the objects in a datafile, for example palettes and FLI animations,
+are simply treated as blocks of binary data, but others are loaded into
+special formats such as bitmap structures or compiled sprites. It is
+possible to extend the datafile system to support your own custom object
+types, eg. map objects for a tile based engine, or level data for a platform
+game. Obviously the grabber has no way of understanding this data, but it
+will allow you to import binary data from external files, so you can grab
+information produced by your own utilities. If you are happy with the data
+being loaded as a simple binary block, that is all you need to do, but if
+you need to load it into a specific structure, read on...<br /><br />
+
+Your custom objects must be given a unique type ID, which is formed from
+four ASCII characters (by convention all uppercase A-Z). If you don't use
+all four characters, the string should be padded with spaces (ASCII 32). You
+should use this ID when creating the objects in the grabber (select
+New/Other and type in the ID string), and in your code you should define an
+identifier for the type, eg:
+<pre class="code">   <span class="p">#define DAT_MAPDATA  DAT_ID('M','A','P','D')</span></pre>
+You then need to write functions for loading and destroying objects of this
+type, in the form:
+<pre class="code">   <span class="k1">void</span> <span class="k3">*</span>load_mapdata<span class="k2">(</span>PACKFILE <span class="k3">*</span>f, <span class="k1">long</span> size<span class="k2">)</span>
+   <span class="k2">{</span>
+      <span class="c">/* Allegro will call this function whenever an object of your custom
+       * type needs to be loaded from a datafile. It will be passed a
+       * pointer to the file from which the data is to be read, and the size
+       * of the object in bytes. It should return a pointer to the loaded
+       * data, which will be stored in the dat field of the datafile object
+       * structure, or NULL if an error occurs. The file will have been
+       * opened as a sub-chunk of the main datafile, so it is safe to read
+       * past the end of the object (if you attempt this, Allegro will
+       * return EOF), and it is also safe to return before reading all the
+       * data in the chunk (if you do this, Allegro will skip any unused
+       * bytes before starting to read the next object). You should _not_
+       * close the file when you are done: this will be handled by the
+       * calling function. To clarify how all this works, here's an example
+       * implementation of a null-terminated string object:
+       */</span><br /><br />
+
+      <span class="p">#define MAX_LEN  256</span><br /><br />
+
+      <span class="k1">char</span> buf<span class="k2">[</span>MAX_LEN<span class="k2">]</span><span class="k2">;</span>
+      <span class="k1">char</span> <span class="k3">*</span>p<span class="k2">;</span>
+      <span class="k1">int</span> i, c<span class="k2">;</span><br /><br />
+
+      <span class="k1">for</span> <span class="k2">(</span>i<span class="k3">=</span><span class="n">0</span><span class="k2">;</span> i<span class="k3">&lt;</span><span class="k2">;</span>MAX_LEN-1<span class="k2">;</span> i<span class="k3">+</span><span class="k3">+</span><span class="k2">)</span> <span class="k2">{</span>
+	 <span class="k1">if</span> <span class="k2">(</span><span class="k2">(</span>c <span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">pack_getc</span></a><span class="k2">(</span>f<span class="k2">)</span><span class="k2">)</span> <span class="k3">=</span><span class="k3">=</span> EOF<span class="k2">)</span>
+	    <span class="k1">break</span><span class="k2">;</span><br /><br />
+
+	 buf<span class="k2">[</span>i<span class="k2">]</span> <span class="k3">=</span> c<span class="k2">;</span>
+      <span class="k2">}</span><br /><br />
+
+      buf<span class="k2">[</span>i<span class="k2">]</span> <span class="k3">=</span> <span class="n">0</span><span class="k2">;</span><br /><br />
+
+      p <span class="k3">=</span> <a href="http://www.delorie.com/djgpp/doc/libc/libc_551.html" target="_blank">malloc</a><span class="k2">(</span>i<span class="k3">+</span><span class="n">1</span><span class="k2">)</span><span class="k2">;</span>
+      <a href="http://www.delorie.com/djgpp/doc/libc/libc_756.html" target="_blank">strcpy</a><span class="k2">(</span>p, buf<span class="k2">)</span><span class="k2">;</span><br /><br />
+
+      <span class="k1">return</span> p<span class="k2">;</span>
+   <span class="k2">}</span><br /><br />
+
+   <span class="k1">void</span> destroy_mapdata<span class="k2">(</span><span class="k1">void</span> <span class="k3">*</span>data<span class="k2">)</span>
+   <span class="k2">{</span>
+      <span class="c">/* Allegro will call this function whenever an object of your custom
+       * type needs to be destroyed. It will be passed a pointer to the
+       * object (as returned by the load function), and should free whatever
+       * memory the object is using. For example, the simple string object
+       * returned by the above loader could be destroyed with the code:
+       */</span><br /><br />
+
+      <span class="k1">if</span> <span class="k2">(</span>data<span class="k2">)</span>
+	 <a href="http://www.delorie.com/djgpp/doc/libc/libc_350.html" target="_blank">free</a><span class="k2">(</span>data<span class="k2">)</span><span class="k2">;</span>
+   <span class="k2">}</span></pre>
+Finally, before you load your datafile you must tell Allegro about the
+custom format, by calling:
+<pre class="code">   <a href="../../index.html" target="_blank"><span class="a">register_datafile_object</span></a><span class="k2">(</span>DAT_MAPDATA, load_mapdata, destroy_mapdata<span class="k2">)</span><span class="k2">;</span></pre>
+It is also possible to integrate support for custom object types directly
+into the grabber and dat utilities, by copying some special files into the
+tools/plugins directory. This can be used to add whole new object types and
+menu commands, or to provide additional import/export routines for the
+existing formats. See `tools/plugins/plugins.txt' for an overview of how to
+write your own grabber plugins.
+
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,180</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.709294</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/datafile-routines/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:54:45 GMT -->
+</html>

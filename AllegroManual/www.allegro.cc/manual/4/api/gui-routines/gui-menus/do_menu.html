@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/gui-routines/gui-menus/do_menu by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:28:41 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>do_menu</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">GUI routines</a></h2><ul>
+<li><a href="../d_clear_proc.html" style="font-weight: bold">d_clear_proc</a></li><li><a href="../d_box_proc.html" style="font-weight: bold">d_box_proc</a></li><li><a href="../d_shadow_box_proc.html" style="font-weight: bold">d_shadow_box_proc</a></li><li><a href="../d_bitmap_proc.html" >d_bitmap_proc</a></li><li><a href="../d_text_proc.html" style="font-weight: bold">d_text_proc</a></li><li><a href="../d_ctext_proc" style="font-weight: bold">d_ctext_proc</a></li><li><a href="../d_rtext_proc.html" >d_rtext_proc</a></li><li><a href="../d_button_proc.html" style="font-weight: bold">d_button_proc</a></li><li><a href="../d_check_proc.html" style="font-weight: bold">d_check_proc</a></li><li><a href="../d_radio_proc.html" style="font-weight: bold">d_radio_proc</a></li><li><a href="../d_icon_proc.html" >d_icon_proc</a></li><li><a href="../d_keyboard_proc.html" >d_keyboard_proc</a></li><li><a href="../d_edit_proc.html" style="font-weight: bold">d_edit_proc</a></li><li><a href="../d_list_proc.html" style="font-weight: bold">d_list_proc</a></li><li><a href="../d_text_list_proc.html" >d_text_list_proc</a></li><li><a href="../d_textbox_proc.html" style="font-weight: bold">d_textbox_proc</a></li><li><a href="../d_slider_proc.html" style="font-weight: bold">d_slider_proc</a></li><li><a href="../d_menu_proc.html" >d_menu_proc</a></li><li><a href="../d_yield_proc.html" style="font-weight: bold">d_yield_proc</a></li><li><a href="../gui-variables/gui_mouse_focus.html" >gui_mouse_focus</a></li><li><a href="../gui-variables/gui_fg_color.html" style="font-weight: bold">gui_fg_color</a></li><li><a href="../gui-variables/gui_bg_color.html" style="font-weight: bold">gui_bg_color</a></li><li><a href="../gui-variables/gui_mg_color.html" style="font-weight: bold">gui_mg_color</a></li><li><a href="../gui-variables/gui_font_baseline.html" >gui_font_baseline</a></li><li><a href="../gui-variables/gui_mouse_x.html" >gui_mouse_x</a></li><li><a href="../gui-variables/gui_mouse_y.html" >gui_mouse_y</a></li><li><a href="../gui-variables/gui_mouse_z.html" >gui_mouse_z</a></li><li><a href="../gui-variables/gui_mouse_b.html" >gui_mouse_b</a></li><li><a href="../gui-font/gui_textout_ex.html" >gui_textout_ex</a></li><li><a href="../gui-font/gui_strlen.html" >gui_strlen</a></li><li><a href="../gui-font/gui_set_screen.html" >gui_set_screen</a></li><li><a href="../gui-font/gui_get_screen.html" >gui_get_screen</a></li><li><a href="../gui-font/position_dialog.html" >position_dialog</a></li><li><a href="../gui-font/centre_dialog.html" style="font-weight: bold">centre_dialog</a></li><li><a href="../gui-font/set_dialog_color.html" style="font-weight: bold">set_dialog_color</a></li><li><a href="../gui-font/find_dialog_focus.html" >find_dialog_focus</a></li><li><a href="../gui-font/offer_focus.html" >offer_focus</a></li><li><a href="../gui-font/object_message.html" style="font-weight: bold">object_message</a></li><li><a href="../gui-font/dialog_message.html" >dialog_message</a></li><li><a href="../gui-font/broadcast_dialog_message.html" >broadcast_dialog_message</a></li><li><a href="../gui-font/do_dialog.html" style="font-weight: bold">do_dialog</a></li><li><a href="../gui-font/popup_dialog.html" style="font-weight: bold">popup_dialog</a></li><li><a href="../gui-font/init_dialog.html" style="font-weight: bold">init_dialog</a></li><li><a href="../gui-font/update_dialog.html" style="font-weight: bold">update_dialog</a></li><li><a href="../gui-font/shutdown_dialog.html" style="font-weight: bold">shutdown_dialog</a></li><li><a href="../gui-font/active_dialog.html" >active_dialog</a></li><li><strong>do_menu</strong></li><li><a href="init_menu.html" >init_menu</a></li><li><a href="update_menu.html" >update_menu</a></li><li><a href="shutdown_menu.html" >shutdown_menu</a></li><li><a href="active_menu.html" >active_menu</a></li><li><a href="gui_menu_draw_menu.html" >gui_menu_draw_menu</a></li><li><a href="gui_menu_draw_menu_item.html" >gui_menu_draw_menu_item</a></li><li><a href="alert.html" style="font-weight: bold">alert</a></li><li><a href="alert3.html" >alert3</a></li><li><a href="file_select_ex.html" style="font-weight: bold">file_select_ex</a></li><li><a href="gfx_mode_select.html" >gfx_mode_select</a></li><li><a href="gfx_mode_select_ex.html" >gfx_mode_select_ex</a></li><li><a href="gfx_mode_select_filter.html" >gfx_mode_select_filter</a></li><li><a href="gui_shadow_box_proc.html" >gui_shadow_box_proc</a></li><li><a href="gui_ctext_proc.html" >gui_ctext_proc</a></li><li><a href="gui_button_proc.html" >gui_button_proc</a></li><li><a href="gui_edit_proc.html" >gui_edit_proc</a></li><li><a href="gui_list_proc.html" >gui_list_proc</a></li><li><a href="gui_text_list_proc.html" >gui_text_list_proc</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>do_menu</h1>
+
+<div class="shortdesc">
+Displays an animates a popup menu.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">int</span> <a href="../../../index.html" target="_blank"><span class="a">do_menu</span></a><span class="k2">(</span><a href="../../../index.html" target="_blank"><span class="a">MENU</span></a> <span class="k3">*</span>menu, <span class="k1">int</span> x, <span class="k1">int</span> y<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Displays and animates a popup menu at the specified screen coordinates
+   (these will be adjusted if the menu does not entirely fit on the screen).
+   Returns the index of the menu item that was selected, or -1 if the menu
+   was cancelled. Note that the return value cannot indicate selection from
+   child menus, so you will have to use the callback functions if you want
+   multi-level menus.
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../../index.html">GUI menus</a></li>
+	<li><a href="../../../index.html">d_menu_proc</a></li>
+	<li><a href="../../../index.html">active_menu</a></li>
+	<li><a href="../../../index.html">gui_menu_draw_menu</a></li>
+	<li><a href="../../../index.html">update_menu</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-556241">
+		<a href="https://www.allegro.cc/forums/thread/556241">help with alegro api</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/556246" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/556255" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/556262" style="color: black;">3</a> <a href="https://www.allegro.cc/forums/post/556268" style="color: black;">4</a> <a href="https://www.allegro.cc/forums/post/556365" style="color: black;">5</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/FlamingSnow">Flaming Snow</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/DrStrange">Dr. Strange</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/Jezzball">Jezzball</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/Ashes">Ashes</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/dlg-agraphicalDIALOGeditor">dlg - a graphical DIALOG editor</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/Hellcarrier">Hellcarrier</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/PongUltra">Pong Ultra</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/StarControlTimeWarp">Star Control: TimeWarp</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/TW-Light">TW-Light</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/PongClone946">Pong Clone #946</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,371,039</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.010556</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/gui-routines/gui-menus/do_menu by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:28:41 GMT -->
+</html>

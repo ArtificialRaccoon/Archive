@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Image.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC Image</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">Image</A></H2></H2><BLOCKQUOTE> Image is a class for putting static bitmaps on the screen.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>Image
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.67.7">Image</A></B>()
+<DD><I> default constructor</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.67.8">~Image</A></B>()
+<DD><I> default destructor</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.67.9">SetBitmap</A></B>(const char* file)
+<DD><I> Sets the images bitmap that is to be drawn.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.67.10">SetBitmap</A></B>(const <!1><A HREF="Bitmap.html">Bitmap</A>&amp; <!1><A HREF="Image.html#DOC.67.2">bmp</A>)
+<DD><I> See SetBitmap (const char *file)</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.67.11">SetBitmap</A></B>(int i)
+<DD><I> See SetBitmap (const char *file)</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Bitmap.html">Bitmap</A>&amp; <B><A HREF="#DOC.67.12">GetBitmap</A></B>()
+<DD><I> Returns the widget's bitmap</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.67.13">SetMasked</A></B>(bool m)
+<DD><I> Pass true if you want the bitmap to be drawn as a sprite, that is if you want transparent areas to be skipped.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.67.14">SetBackgroundColor</A></B>(const <!1><A HREF="Color.html">Color</A>&amp; <!1><A HREF="Image.html#DOC.67.4">bg</A>)
+<DD><I> The color with which the canvas is filled prior to drawing the bitmap.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.67.15">Setup</A></B>(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, int i, bool <!1><A HREF="Image.html#DOC.67.3">masked</A> = false, const <!1><A HREF="Color.html">Color</A>&amp; = -1)
+<DD><I> A shortcut function for Widget::Setup(), SetBitmap(), SetMasked() and SetBackgroundColor()</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.67.16">Setup</A></B>(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, const char* file, bool <!1><A HREF="Image.html#DOC.67.3">masked</A> = false, const <!1><A HREF="Color.html">Color</A>&amp; = -1)
+<DD><I> See above</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.67.17">Setup</A></B>(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, const <!1><A HREF="Bitmap.html">Bitmap</A>&amp; <!1><A HREF="Image.html#DOC.67.2">bmp</A>, bool <!1><A HREF="Image.html#DOC.67.3">masked</A> = false, const <!1><A HREF="Color.html">Color</A>&amp; = -1)
+<DD><I> See above</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.67.1">allocated</A></B>
+<DD><I> Tracks whether the widget has allocated its own memmory for the bitmap or if it just made a pointer</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Bitmap.html">Bitmap</A> <B><A HREF="#DOC.67.2">bmp</A></B>
+<DD><I> The actual bitmap</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.67.3">masked</A></B>
+<DD><I> If true the bitmap is drawn with masked_blit() instead of blit()</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.67.4">bg</A></B>
+<DD><I> The background colour</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.67.5">Draw</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)
+<DD><I> Optionally clears the canvas to the background colour and blits the bitmap onto the canvas either with normal blit() or with masked_blit()</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.67.6">UpdateSize</A></B>()
+<DD><I> Adjusts the size of the widget to match the size of the bitmap</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+Image is a class for putting static bitmaps on the screen.
+It is capable of loading its bitmap from a file on disk or from the skin and it can draw masked
+bitmaps with transparent areas that can optionally be filled with a user selected colour.
+In previous version of MASkinG this widget was called MASBitmap but the name had to be changed
+for obvious reasons.</BLOCKQUOTE>
+<DL>
+
+<A NAME="allocated"></A>
+<A NAME="DOC.67.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool allocated</B></TT>
+<DD>
+Tracks whether the widget has allocated its own memmory for the bitmap or if it just made a pointer
+<DL><DT><DD></DL><P>
+<A NAME="bmp"></A>
+<A NAME="DOC.67.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Bitmap.html">Bitmap</A> bmp</B></TT>
+<DD>
+The actual bitmap
+<DL><DT><DD></DL><P>
+<A NAME="masked"></A>
+<A NAME="DOC.67.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool masked</B></TT>
+<DD>
+If true the bitmap is drawn with masked_blit() instead of blit()
+<DL><DT><DD></DL><P>
+<A NAME="bg"></A>
+<A NAME="DOC.67.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Color.html">Color</A> bg</B></TT>
+<DD>
+The background colour
+<DL><DT><DD></DL><P>
+<A NAME="Draw"></A>
+<A NAME="DOC.67.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Draw(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)</B></TT>
+<DD>
+Optionally clears the canvas to the background colour and blits the bitmap onto the canvas either with normal blit() or with masked_blit()
+<DL><DT><DD></DL><P>
+<A NAME="UpdateSize"></A>
+<A NAME="DOC.67.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void UpdateSize()</B></TT>
+<DD>
+Adjusts the size of the widget to match the size of the bitmap
+<DL><DT><DD></DL><P>
+<A NAME="Image"></A>
+<A NAME="DOC.67.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> Image()</B></TT>
+<DD>
+default constructor
+<DL><DT><DD></DL><P>
+<A NAME="~Image"></A>
+<A NAME="DOC.67.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> ~Image()</B></TT>
+<DD>
+default destructor
+<DL><DT><DD></DL><P>
+<A NAME="SetBitmap"></A>
+<A NAME="DOC.67.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetBitmap(const char* file)</B></TT>
+<DD>
+Sets the images bitmap that is to be drawn. The bitmap can either be loaded from a file (the format must be BMP, PCX, TGA or LBM), copied from an existing bitmap or loaded from the skin bitmap array. Note that the size of the widget is automatically adjusted to the size of the bitmap if the D_AUTOSIZE flag is set which it is unless you explicitly turn it off.
+<DL><DT><DD></DL><P>
+<A NAME="SetBitmap"></A>
+<A NAME="DOC.67.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetBitmap(const <!1><A HREF="Bitmap.html">Bitmap</A>&amp; <!1><A HREF="Image.html#DOC.67.2">bmp</A>)</B></TT>
+<DD>
+See SetBitmap (const char *file)
+<DL><DT><DD></DL><P>
+<A NAME="SetBitmap"></A>
+<A NAME="DOC.67.11"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetBitmap(int i)</B></TT>
+<DD>
+See SetBitmap (const char *file)
+<DL><DT><DD></DL><P>
+<A NAME="GetBitmap"></A>
+<A NAME="DOC.67.12"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Bitmap.html">Bitmap</A>&amp; GetBitmap()</B></TT>
+<DD>
+Returns the widget's bitmap
+<DL><DT><DD></DL><P>
+<A NAME="SetMasked"></A>
+<A NAME="DOC.67.13"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetMasked(bool m)</B></TT>
+<DD>
+Pass true if you want the bitmap to be drawn as a sprite, that is if you want transparent areas to be skipped. Default is false.
+<DL><DT><DD></DL><P>
+<A NAME="SetBackgroundColor"></A>
+<A NAME="DOC.67.14"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetBackgroundColor(const <!1><A HREF="Color.html">Color</A>&amp; <!1><A HREF="Image.html#DOC.67.4">bg</A>)</B></TT>
+<DD>
+The color with which the canvas is filled prior to drawing the bitmap. This is obviously relevant only when masked drawing is turned on or the bitmap is smaller than the widget. Even if masked is on it is not necessary to set a background colour, you should however do that if you plan to dynamically change the widget's bitmap during the execution of the program. The default colour is -1 (i.e. no colour).
+<DL><DT><DD></DL><P>
+<A NAME="Setup"></A>
+<A NAME="DOC.67.15"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Setup(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, int i, bool <!1><A HREF="Image.html#DOC.67.3">masked</A> = false, const <!1><A HREF="Color.html">Color</A>&amp; = -1)</B></TT>
+<DD>
+A shortcut function for Widget::Setup(), SetBitmap(), SetMasked() and SetBackgroundColor()
+<DL><DT><DD></DL><P>
+<A NAME="Setup"></A>
+<A NAME="DOC.67.16"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Setup(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, const char* file, bool <!1><A HREF="Image.html#DOC.67.3">masked</A> = false, const <!1><A HREF="Color.html">Color</A>&amp; = -1)</B></TT>
+<DD>
+See above
+<DL><DT><DD></DL><P>
+<A NAME="Setup"></A>
+<A NAME="DOC.67.17"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Setup(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, const <!1><A HREF="Bitmap.html">Bitmap</A>&amp; <!1><A HREF="Image.html#DOC.67.2">bmp</A>, bool <!1><A HREF="Image.html#DOC.67.3">masked</A> = false, const <!1><A HREF="Color.html">Color</A>&amp; = -1)</B></TT>
+<DD>
+See above
+<DL><DT><DD></DL><P></DL>
+<HR>
+<DL><DT><B>Direct child classes:
+</B><DD><A HREF="Wallpaper.html">Wallpaper</A><BR>
+</DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Image.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+</html>

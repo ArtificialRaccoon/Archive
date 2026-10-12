@@ -1,0 +1,289 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/EditBox.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC EditBox</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">EditBox</A></H2></H2><BLOCKQUOTE> An EditBox is like a label except that the text can be edited.</BLOCKQUOTE>
+<HR>
+
+<H2>Inheritance:</H2>
+<H3>EditBox
+- <A HREF="Label.html">Label</A>
+- <A HREF="Widget.html">Widget</A>
+- <A HREF="Rect.html">Rect</A>
+</H3>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.48.20">Setup</A></B>(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>, int len = -1)
+<DD><I> A shortcut for Widget::Setup() and SetText()</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.48.21">SetText</A></B>(const char* , int = -1)
+<DD><I> Puts text into the edit box.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.48.22">Select</A></B>()
+<DD><I> These two select and deselect the entire text as if it was double clicked</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.48.23">Deselect</A></B>()
+<DD><I> See Select()</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.48.24">ScrollTo</A></B>(int <!1><A HREF="Slider.html#DOC.100.2">offset</A>)
+<DD><I> Sets the cursor at the given offset and scrolls the text if necessary</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.48.25">GetMaxLength</A></B>()
+<DD><I> Returns the maximum number of characters the editbox can hold</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.48.1">maxLength</A></B>
+<DD><I> The size of the text buffer and efectively the maximum number of characters the edit box is able to hold</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.48.2">cursorpos</A></B>
+<DD><I> The position of the text cursor</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.48.3">offsetpos</A></B>
+<DD><I> How far the edit box has scrolled into the string</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.48.4">selStart</A></B>
+<DD><I> These variables help handling the selection of text</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.48.5">Setup</A></B>(const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>, int len)
+<DD><I> A helper function for setting the text.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   int <B><A HREF="#DOC.48.6">DrawText</A></B>(int <!1><A HREF="Slider.html#DOC.100.2">offset</A>, <!1><A HREF="Bitmap.html">Bitmap</A>&amp; <!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)
+<DD><I> Draws as much of the text as it fits on the canvas from the given offset and returns the index of the last character that was drawn</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   int <B><A HREF="#DOC.48.7">FindCursorPos</A></B>()
+<DD><I> Finds the index of the character where the mouse cursor is</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>virtual   void <B><A HREF="#DOC.48.8">UpdateOffset</A></B>()
+<DD><I> Scrolls the text after a key press if necessary</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.48.9">Draw</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)
+<DD><I> Draws the widget onto the canvas</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.48.10">MsgInitSkin</A></B>()
+<DD><I> Initializes the widget with the default skin bitmap, fonts and colours</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.48.11">MsgChar</A></B>(int c)
+<DD><I> These two functions handle keyboard input.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.48.12">MsgUChar</A></B>(int c)
+<DD><I> See MsgChar()</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.48.13">MsgLPress</A></B>()
+<DD><I> This function handles selecting the text and moving the text cursor with the mouse</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.48.14">MsgLRelease</A></B>()
+<DD><I> This function handles selecting the text and moving the text cursor with the mouse</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.48.15">MsgMousemove</A></B>(const <!1><A HREF="Point.html">Point</A> &amp;d)
+<DD><I> This function handles selecting the text and moving the text cursor with the mouse</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.48.16">MsgDClick</A></B>()
+<DD><I> Selects the entire text</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.48.17">MsgGotmouse</A></B>()
+<DD><I> When the edit box gets the mouse it changes the mouse cursor to the text selection cursor</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.48.18">MsgLostmouse</A></B>()
+<DD><I> See MsgGotMouse()</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.48.19">MsgWantfocus</A></B>()
+<DD><I> Returns true</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+An EditBox is like a label except that the text can be edited. It is rendered with a sunken panel
+background into which the text is printed. If there is too much text to fit into the panel it can be
+scrolled. EditBox also allows parts of the text to be selected.</BLOCKQUOTE>
+<DL>
+
+<A NAME="maxLength"></A>
+<A NAME="DOC.48.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int maxLength</B></TT>
+<DD>
+The size of the text buffer and efectively the maximum number of characters the edit box is able to hold
+<DL><DT><DD></DL><P>
+<A NAME="cursorpos"></A>
+<A NAME="DOC.48.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int cursorpos</B></TT>
+<DD>
+The position of the text cursor
+<DL><DT><DD></DL><P>
+<A NAME="offsetpos"></A>
+<A NAME="DOC.48.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int offsetpos</B></TT>
+<DD>
+How far the edit box has scrolled into the string
+<DL><DT><DD></DL><P>
+<A NAME="selStart"></A>
+<A NAME="DOC.48.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int selStart</B></TT>
+<DD>
+These variables help handling the selection of text
+<DL><DT><DD></DL><P>
+<A NAME="Setup"></A>
+<A NAME="DOC.48.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Setup(const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>, int len)</B></TT>
+<DD>
+A helper function for setting the text. Allocates memory if necessary and copies the text over.
+<DL><DT><DD></DL><P>
+<A NAME="DrawText"></A>
+<A NAME="DOC.48.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   int DrawText(int <!1><A HREF="Slider.html#DOC.100.2">offset</A>, <!1><A HREF="Bitmap.html">Bitmap</A>&amp; <!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)</B></TT>
+<DD>
+Draws as much of the text as it fits on the canvas from the given offset and returns the index of the
+last character that was drawn
+<DL><DT><DD></DL><P>
+<A NAME="FindCursorPos"></A>
+<A NAME="DOC.48.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   int FindCursorPos()</B></TT>
+<DD>
+Finds the index of the character where the mouse cursor is
+<DL><DT><DD></DL><P>
+<A NAME="UpdateOffset"></A>
+<A NAME="DOC.48.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void UpdateOffset()</B></TT>
+<DD>
+Scrolls the text after a key press if necessary
+<DL><DT><DD></DL><P>
+<A NAME="Draw"></A>
+<A NAME="DOC.48.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Draw(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="ScreenUpdate.html#DOC.90.1">canvas</A>)</B></TT>
+<DD>
+Draws the widget onto the canvas
+<DL><DT><DD></DL><P>
+<A NAME="MsgInitSkin"></A>
+<A NAME="DOC.48.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgInitSkin()</B></TT>
+<DD>
+Initializes the widget with the default skin bitmap, fonts and colours
+<DL><DT><DD></DL><P>
+<A NAME="MsgChar"></A>
+<A NAME="DOC.48.11"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool MsgChar(int c)</B></TT>
+<DD>
+These two functions handle keyboard input. MsgChar() handles cursor navigation and text management (
+selecting, deleting...) while MsgUChar() handles text input. The cursor may be freely moved with the
+arrow keys and HOME and END. The text can be selected with the same keys if the SHIFT key is pressed
+simultaneously. The text can be deleted with both the DELETE and BACKSPACE keys. When ENTER is pressed
+the EditBox sends a MSG_ACTIVATE message to its parent dialog.
+<DL><DT><DD></DL><P>
+<A NAME="MsgUChar"></A>
+<A NAME="DOC.48.12"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool MsgUChar(int c)</B></TT>
+<DD>
+See MsgChar()
+<DL><DT><DD></DL><P>
+<A NAME="MsgLPress"></A>
+<A NAME="DOC.48.13"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgLPress()</B></TT>
+<DD>
+This function handles selecting the text and moving the text cursor with the mouse
+<DL><DT><DD></DL><P>
+<A NAME="MsgLRelease"></A>
+<A NAME="DOC.48.14"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgLRelease()</B></TT>
+<DD>
+This function handles selecting the text and moving the text cursor with the mouse
+<DL><DT><DD></DL><P>
+<A NAME="MsgMousemove"></A>
+<A NAME="DOC.48.15"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgMousemove(const <!1><A HREF="Point.html">Point</A> &amp;d)</B></TT>
+<DD>
+This function handles selecting the text and moving the text cursor with the mouse
+<DL><DT><DD></DL><P>
+<A NAME="MsgDClick"></A>
+<A NAME="DOC.48.16"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgDClick()</B></TT>
+<DD>
+Selects the entire text
+<DL><DT><DD></DL><P>
+<A NAME="MsgGotmouse"></A>
+<A NAME="DOC.48.17"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgGotmouse()</B></TT>
+<DD>
+When the edit box gets the mouse it changes the mouse cursor to the text selection cursor
+<DL><DT><DD></DL><P>
+<A NAME="MsgLostmouse"></A>
+<A NAME="DOC.48.18"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void MsgLostmouse()</B></TT>
+<DD>
+See MsgGotMouse()
+<DL><DT><DD></DL><P>
+<A NAME="MsgWantfocus"></A>
+<A NAME="DOC.48.19"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool MsgWantfocus()</B></TT>
+<DD>
+Returns true
+<DL><DT><DD></DL><P>
+<A NAME="Setup"></A>
+<A NAME="DOC.48.20"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Setup(int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int <!1><A HREF="Widget.html#DOC.110.2">key</A>, int <!1><A HREF="Widget.html#DOC.110.1">flags</A>, const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>, int len = -1)</B></TT>
+<DD>
+A shortcut for Widget::Setup() and SetText()
+<DL><DT><DD></DL><P>
+<A NAME="SetText"></A>
+<A NAME="DOC.48.21"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void SetText(const char* , int = -1)</B></TT>
+<DD>
+Puts text into the edit box. The second parameter is the maximum number of characters you want the edit
+box to be able to hold. If you pass -1 (or don't pass anything) the maximum length stays the same as it
+was before calling this function. Initially the maximum length of the text is set to 256. If you pass 0
+the maximum length also stays unchanged but if it hasn't been setup yet it is set to the length of the
+passed string (or 256 if the string is empty or NULL).
+<DL><DT><DD></DL><P>
+<A NAME="Select"></A>
+<A NAME="DOC.48.22"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Select()</B></TT>
+<DD>
+These two select and deselect the entire text as if it was double clicked
+<DL><DT><DD></DL><P>
+<A NAME="Deselect"></A>
+<A NAME="DOC.48.23"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void Deselect()</B></TT>
+<DD>
+See Select()
+<DL><DT><DD></DL><P>
+<A NAME="ScrollTo"></A>
+<A NAME="DOC.48.24"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>virtual   void ScrollTo(int <!1><A HREF="Slider.html#DOC.100.2">offset</A>)</B></TT>
+<DD>
+Sets the cursor at the given offset and scrolls the text if necessary
+<DL><DT><DD></DL><P>
+<A NAME="GetMaxLength"></A>
+<A NAME="DOC.48.25"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int GetMaxLength()</B></TT>
+<DD>
+Returns the maximum number of characters the editbox can hold
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/EditBox.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+</html>

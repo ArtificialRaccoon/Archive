@@ -1,0 +1,444 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Font.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC Font</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">Font</A></H2></H2><BLOCKQUOTE> Class for handling fonts.</BLOCKQUOTE>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.52.5">Font</A></B>()
+<DD><I> Default constructor.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.52.6">Font</A></B>(FONT* f)
+<DD><I> Constructor for making a font with an existing FONT.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.52.7">Font</A></B>(ALFONT_FONT* f)
+<DD><I> Constructor for making a font with an existing ALFONT_FONT.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.52.8">Font</A></B>(const char* f)
+<DD><I> Constructor for making a font by loading it from a file.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.52.9">Font</A></B>(const <!1><A HREF="Font.html#DOC.52.9">Font</A>&amp; f)
+<DD><I> Copy constructor</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Font.html">Font</A>&amp; <B><A HREF="#DOC.52.10">Create</A></B>()
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Font.html">Font</A>&amp; <B><A HREF="#DOC.52.11">Create</A></B>(FONT* f)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Font.html">Font</A>&amp; <B><A HREF="#DOC.52.12">Create</A></B>(ALFONT_FONT* f)
+<DD><I> Create a font from either the default font or an existing FONT or ALFONT_FONT.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Font.html">Font</A>&amp; <B><A HREF="#DOC.52.13">operator=</A></B>(FONT* f)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Font.html">Font</A>&amp; <B><A HREF="#DOC.52.14">operator=</A></B>(ALFONT_FONT* f)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Font.html">Font</A>&amp; <B><A HREF="#DOC.52.15">operator=</A></B>(const <!1><A HREF="Font.html">Font</A> &amp;f)
+<DD><I> Assignment operators.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Error.html">Error</A> <B><A HREF="#DOC.52.16">Load</A></B>(const char* f)
+<DD><I> Attempts to load a new font from a disk file.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.52.17">Destroy</A></B>()
+<DD><I> Destroys the font and sets it to the default Allegro 8x8 font</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.52.18">SetSize</A></B>(int <!1><A HREF="Widget.html#DOC.110.70">h</A>)
+<DD><I> Reloads the font with the new size.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.52.19">Textout</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="Image.html#DOC.67.2">bmp</A>, const char* s, const <!1><A HREF="Point.html">Point</A> &amp;p, const <!1><A HREF="Color.html">Color</A> &amp;c, const <!1><A HREF="Color.html">Color</A> &amp;<!1><A HREF="Image.html#DOC.67.4">bg</A>, int align) const 
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.52.20">TextPrintf</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="Image.html#DOC.67.2">bmp</A>, const <!1><A HREF="Point.html">Point</A> &amp;p, const <!1><A HREF="Color.html">Color</A> &amp;c, const <!1><A HREF="Color.html">Color</A> &amp;<!1><A HREF="Image.html#DOC.67.4">bg</A>, int align, const char* format, ...) const 
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.52.21">Textout</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="Image.html#DOC.67.2">bmp</A>, const char* s, int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int c, int <!1><A HREF="Image.html#DOC.67.4">bg</A>, int align) const 
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.52.22">TextPrintf</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="Image.html#DOC.67.2">bmp</A>, int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int c, int <!1><A HREF="Image.html#DOC.67.4">bg</A>, int align, const char* format, ...) const 
+<DD><I> Wrappers for regular Allegro text output functions.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.52.23">GUITextout</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="Image.html#DOC.67.2">bmp</A>, const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>, const <!1><A HREF="Point.html">Point</A> &amp;p, const <!1><A HREF="Color.html">Color</A> &amp;col1, const <!1><A HREF="Color.html">Color</A> &amp;col2, const <!1><A HREF="Color.html">Color</A> &amp;<!1><A HREF="Image.html#DOC.67.4">bg</A>, int align) const 
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.52.24">GUITextout</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="Image.html#DOC.67.2">bmp</A>, const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>, int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int col1, int col2, int <!1><A HREF="Image.html#DOC.67.4">bg</A>, int align) const 
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.52.25">GUITextoutEx</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="Image.html#DOC.67.2">bmp</A>, const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>, const <!1><A HREF="Point.html">Point</A> &amp;p, const <!1><A HREF="Color.html">Color</A> &amp;col1, const <!1><A HREF="Color.html">Color</A> &amp;col2, const <!1><A HREF="Color.html">Color</A> &amp;<!1><A HREF="Image.html#DOC.67.4">bg</A>, int align) const 
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.52.26">GUITextoutEx</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="Image.html#DOC.67.2">bmp</A>, const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>, int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int col1, int col2, int <!1><A HREF="Image.html#DOC.67.4">bg</A>, int align) const 
+<DD><I> Special GUI text output.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.52.27">GUITextLength</A></B>(const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>) const 
+<DD><I> Returns the length of the text as printed with GUITextoutEx()</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.52.28">ColumnPrint</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="Image.html#DOC.67.2">bmp</A>, const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>, int fg, int <!1><A HREF="Image.html#DOC.67.4">bg</A>, int <!1><A HREF="FontInfo.html#DOC.109.1">textMode</A>, int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int hal) const 
+<DD><I> Prints text word-wrapped on a column with a specified width but unspecified height.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.52.29">BoxPrint</A></B>(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="Image.html#DOC.67.2">bmp</A>, const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>, int fg, int <!1><A HREF="Image.html#DOC.67.4">bg</A>, int <!1><A HREF="FontInfo.html#DOC.109.1">textMode</A>, int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int hal, int val) const 
+<DD><I> Prints text word-wrapped in a box with specified width and height.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.52.30">TextHeight</A></B>() const 
+<DD><I> Returns the height of the font</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.52.31">TextLength</A></B>(const char* str) const 
+<DD><I> Returns the length of the string in pixels</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.52.32">IsFixed</A></B>() const 
+<DD><I> Returns true if the font supports several fixed sizes.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.52.33">IsScalable</A></B>() const 
+<DD><I> Returns true if the font is fully scalable.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>const int* <B><A HREF="#DOC.52.34">GetAvailableFixedSizes</A></B>() const 
+<DD><I> Returns an array of the fixed sizes that the font supports</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.52.35">GetNOfAvailableFixedSizes</A></B>() const 
+<DD><I> Returns the number of fixed sizes the font supports</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.52.36">GetSpacing</A></B>() const 
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.52.37">SetSpacing</A></B>(int s)
+<DD><I> Functions for getting and setting the extra spacing between characters.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.52.38">GetWrapPos</A></B>(const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>, int maxwidth, int &amp;preferredwidth) const 
+<DD><I> Number of characters that fit on a line.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.52.39">GetWrapPos</A></B>(const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>, int maxwidth) const 
+<DD><I> Simple wrapper for when you don't need the preferredwidth parameter</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.52.40">SkipWhiteSpace</A></B>(const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>) const 
+<DD><I> Returns number of whitespace at the start of text.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.52.41">CountLines</A></B>(const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>, int maxwidth) const 
+<DD><I> Counts number of lines needed to print text in an area with width = maxwidth.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif><!1><A HREF="Font.html#DOC.52.1">Type</A> <B><A HREF="#DOC.52.2">type</A></B>
+<DD><I> The type of the currently loaded underlying font</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>PALETTE <B><A HREF="#DOC.52.3">pal</A></B>
+<DD><I> The fonts palette.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.52.4">allocated</A></B>
+<DD><I> Did we actually allocate memory or did we just make a pointer?</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Members</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>enum  <B><A HREF="#DOC.52.1">Type</A></B>
+<DD><I> Available font types.</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+Class for handling fonts.
+Font is a wrapper class for two kinds of fonts (might change in the future):
+normal Allegro fonts (struct FONT) and AlFont fonts (struct ALFONT_FONT).
+AlFont is an Allegro addon library which is basically a wrapper for the
+FreeType project. The Font class provides a unified API for loading and
+outputting text with many types of fonts including bitmap, BIOS, GRX,
+truetype, type1 fonts and some other formats. There are also other text
+output functions specifically meant for GUI purposes.</BLOCKQUOTE>
+<DL>
+
+<A NAME="Type"></A>
+<A NAME="DOC.52.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>enum  Type</B></TT>
+<DD>
+Available font types.
+Currently Font has support for two font structures: normal Allegro
+FONT and AlFont's ALFONT_FONT but only one is loaded at any time.
+The Type enum has actually the following values:
+<PRE>
+       ALLEGRO_FONT         - normal Allegro FONT
+       FREETYPE_FONT        - AlFont's ALFONT_FONT
+</PRE>
+<DL><DT><DD></DL><P>
+<A NAME="type"></A>
+<A NAME="DOC.52.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Font.html#DOC.52.1">Type</A> type</B></TT>
+<DD>
+The type of the currently loaded underlying font
+<DL><DT><DD></DL><P>
+<A NAME="pal"></A>
+<A NAME="DOC.52.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>PALETTE pal</B></TT>
+<DD>
+The fonts palette. Only aplicable for non-monochrome bitmap fonts.
+The palette is set automatically on every textprint operation if
+necessary.
+<DL><DT><DD></DL><P>
+<A NAME="allocated"></A>
+<A NAME="DOC.52.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool allocated</B></TT>
+<DD>
+Did we actually allocate memory or did we just make a pointer?
+This variable is set to true if the object allocated memory for
+the font itself. If it did then it will be freed when the object
+is destroyed or a new font is loaded, otherwise the "owner" of the
+underlying data is responsible for freeing it.
+<DL><DT><DD></DL><P>
+<A NAME="Font"></A>
+<A NAME="DOC.52.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> Font()</B></TT>
+<DD>
+Default constructor.
+Creates a new font and initializes it with the default Allegro 8x8 font
+or whatever is curently loaded in <i>font</i>.
+<DL><DT><DD></DL><P>
+<A NAME="Font"></A>
+<A NAME="DOC.52.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> Font(FONT* f)</B></TT>
+<DD>
+Constructor for making a font with an existing FONT.
+Doesn't copy the data, only makes a pointer!
+<DL><DT><DD></DL><P>
+<A NAME="Font"></A>
+<A NAME="DOC.52.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> Font(ALFONT_FONT* f)</B></TT>
+<DD>
+Constructor for making a font with an existing ALFONT_FONT.
+Doesn't copy the data, only makes a pointer!
+<DL><DT><DD></DL><P>
+<A NAME="Font"></A>
+<A NAME="DOC.52.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> Font(const char* f)</B></TT>
+<DD>
+Constructor for making a font by loading it from a file.
+See below for a list of supported formats.
+<DL><DT><DD></DL><P>
+<A NAME="Font"></A>
+<A NAME="DOC.52.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> Font(const <!1><A HREF="Font.html#DOC.52.9">Font</A>&amp; f)</B></TT>
+<DD>
+Copy constructor
+<DL><DT><DD></DL><P>
+<A NAME="Create"></A>
+<A NAME="DOC.52.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Font.html">Font</A>&amp; Create()</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="Create"></A>
+<A NAME="DOC.52.11"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Font.html">Font</A>&amp; Create(FONT* f)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="Create"></A>
+<A NAME="DOC.52.12"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Font.html">Font</A>&amp; Create(ALFONT_FONT* f)</B></TT>
+<DD>
+Create a font from either the default font or an existing FONT or ALFONT_FONT.
+If you create a Font from and existing font, the font data doesn't get copied
+as you might expect but only a pointer is made!
+<DL><DT><DD></DL><P>
+<A NAME="operator="></A>
+<A NAME="DOC.52.13"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Font.html">Font</A>&amp; operator=(FONT* f)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="operator="></A>
+<A NAME="DOC.52.14"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Font.html">Font</A>&amp; operator=(ALFONT_FONT* f)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="operator="></A>
+<A NAME="DOC.52.15"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Font.html">Font</A>&amp; operator=(const <!1><A HREF="Font.html">Font</A> &amp;f)</B></TT>
+<DD>
+Assignment operators.
+These create a font from an existing font by making a pointer (not an actual copy!)
+<DL><DT><DD></DL><P>
+<A NAME="Load"></A>
+<A NAME="DOC.52.16"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B><!1><A HREF="Error.html">Error</A> Load(const char* f)</B></TT>
+<DD>
+Attempts to load a new font from a disk file.
+If unsuccessull it sets itself to the default Allegro 8x8 font. The file can be
+in one of the following formats:
+<PRE>
+      - bitmap font (either BMP, PCX, LBM or TGA)
+      - BIOS 8x8 or 8x16 font (FNT)
+      - GRX font (FNT)
+      - scripted font (TXT)
+      - Impulse Tracker 8x8 font (ITF)
+      - any of the formats supported by AlFont (True Type, Type 1, etc.)
+</PRE>
+<DL><DT><DD></DL><P>
+<A NAME="Destroy"></A>
+<A NAME="DOC.52.17"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Destroy()</B></TT>
+<DD>
+Destroys the font and sets it to the default Allegro 8x8 font
+<DL><DT><DD></DL><P>
+<A NAME="SetSize"></A>
+<A NAME="DOC.52.18"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int SetSize(int <!1><A HREF="Widget.html#DOC.110.70">h</A>)</B></TT>
+<DD>
+Reloads the font with the new size.
+This is only valid for scalable fonts such as truetype or type 1. By
+default these fonts are loaded with the height of 8 pixels.
+<DL><DT><DD></DL><P>
+<A NAME="Textout"></A>
+<A NAME="DOC.52.19"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Textout(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="Image.html#DOC.67.2">bmp</A>, const char* s, const <!1><A HREF="Point.html">Point</A> &amp;p, const <!1><A HREF="Color.html">Color</A> &amp;c, const <!1><A HREF="Color.html">Color</A> &amp;<!1><A HREF="Image.html#DOC.67.4">bg</A>, int align) const </B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="TextPrintf"></A>
+<A NAME="DOC.52.20"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void TextPrintf(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="Image.html#DOC.67.2">bmp</A>, const <!1><A HREF="Point.html">Point</A> &amp;p, const <!1><A HREF="Color.html">Color</A> &amp;c, const <!1><A HREF="Color.html">Color</A> &amp;<!1><A HREF="Image.html#DOC.67.4">bg</A>, int align, const char* format, ...) const </B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="Textout"></A>
+<A NAME="DOC.52.21"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Textout(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="Image.html#DOC.67.2">bmp</A>, const char* s, int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int c, int <!1><A HREF="Image.html#DOC.67.4">bg</A>, int align) const </B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="TextPrintf"></A>
+<A NAME="DOC.52.22"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void TextPrintf(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="Image.html#DOC.67.2">bmp</A>, int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int c, int <!1><A HREF="Image.html#DOC.67.4">bg</A>, int align, const char* format, ...) const </B></TT>
+<DD>
+Wrappers for regular Allegro text output functions.
+They take the same argument list execpt for the font (obviously) and
+the align parameter. Align may be 0 for left alignment 1 for right
+alignment and 2 for centered text.
+<DL><DT><DD></DL><P>
+<A NAME="GUITextout"></A>
+<A NAME="DOC.52.23"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void GUITextout(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="Image.html#DOC.67.2">bmp</A>, const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>, const <!1><A HREF="Point.html">Point</A> &amp;p, const <!1><A HREF="Color.html">Color</A> &amp;col1, const <!1><A HREF="Color.html">Color</A> &amp;col2, const <!1><A HREF="Color.html">Color</A> &amp;<!1><A HREF="Image.html#DOC.67.4">bg</A>, int align) const </B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="GUITextout"></A>
+<A NAME="DOC.52.24"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void GUITextout(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="Image.html#DOC.67.2">bmp</A>, const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>, int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int col1, int col2, int <!1><A HREF="Image.html#DOC.67.4">bg</A>, int align) const </B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="GUITextoutEx"></A>
+<A NAME="DOC.52.25"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int GUITextoutEx(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="Image.html#DOC.67.2">bmp</A>, const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>, const <!1><A HREF="Point.html">Point</A> &amp;p, const <!1><A HREF="Color.html">Color</A> &amp;col1, const <!1><A HREF="Color.html">Color</A> &amp;col2, const <!1><A HREF="Color.html">Color</A> &amp;<!1><A HREF="Image.html#DOC.67.4">bg</A>, int align) const </B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="GUITextoutEx"></A>
+<A NAME="DOC.52.26"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int GUITextoutEx(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="Image.html#DOC.67.2">bmp</A>, const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>, int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int col1, int col2, int <!1><A HREF="Image.html#DOC.67.4">bg</A>, int align) const </B></TT>
+<DD>
+Special GUI text output.
+Same as the normal text output functions except that the second color
+is used as a text shadow. The functions appended with Ex also interpret
+the '&' character as an underscore and render the next character with a
+horizontal line below it and return the length in pixels of actually
+renderd text.
+<DL><DT><DD></DL><P>
+<A NAME="GUITextLength"></A>
+<A NAME="DOC.52.27"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int GUITextLength(const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>) const </B></TT>
+<DD>
+Returns the length of the text as printed with GUITextoutEx()
+<DL><DT><DD></DL><P>
+<A NAME="ColumnPrint"></A>
+<A NAME="DOC.52.28"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void ColumnPrint(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="Image.html#DOC.67.2">bmp</A>, const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>, int fg, int <!1><A HREF="Image.html#DOC.67.4">bg</A>, int <!1><A HREF="FontInfo.html#DOC.109.1">textMode</A>, int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int hal) const </B></TT>
+<DD>
+Prints text word-wrapped on a column with a specified width but unspecified height.
+note: hal = horizontal alignment. Performs horizontal alignment but not vertical.
+<DL><DT><DD></DL><P>
+<A NAME="BoxPrint"></A>
+<A NAME="DOC.52.29"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void BoxPrint(<!1><A HREF="Bitmap.html">Bitmap</A> &amp;<!1><A HREF="Image.html#DOC.67.2">bmp</A>, const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>, int fg, int <!1><A HREF="Image.html#DOC.67.4">bg</A>, int <!1><A HREF="FontInfo.html#DOC.109.1">textMode</A>, int <!1><A HREF="Widget.html#DOC.110.67">x</A>, int <!1><A HREF="Widget.html#DOC.110.68">y</A>, int <!1><A HREF="Widget.html#DOC.110.69">w</A>, int <!1><A HREF="Widget.html#DOC.110.70">h</A>, int hal, int val) const </B></TT>
+<DD>
+Prints text word-wrapped in a box with specified width and height.
+Performs horizontal and vertical alignment.
+<DL><DT><DD></DL><P>
+<A NAME="TextHeight"></A>
+<A NAME="DOC.52.30"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int TextHeight() const </B></TT>
+<DD>
+Returns the height of the font
+<DL><DT><DD></DL><P>
+<A NAME="TextLength"></A>
+<A NAME="DOC.52.31"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int TextLength(const char* str) const </B></TT>
+<DD>
+Returns the length of the string in pixels
+<DL><DT><DD></DL><P>
+<A NAME="IsFixed"></A>
+<A NAME="DOC.52.32"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool IsFixed() const </B></TT>
+<DD>
+Returns true if the font supports several fixed sizes.
+Only a few font formats support this.
+<DL><DT><DD></DL><P>
+<A NAME="IsScalable"></A>
+<A NAME="DOC.52.33"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool IsScalable() const </B></TT>
+<DD>
+Returns true if the font is fully scalable.
+Only true-type fonts, type 1 fonts and some others are scalable.
+<DL><DT><DD></DL><P>
+<A NAME="GetAvailableFixedSizes"></A>
+<A NAME="DOC.52.34"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>const int* GetAvailableFixedSizes() const </B></TT>
+<DD>
+Returns an array of the fixed sizes that the font supports
+<DL><DT><DD></DL><P>
+<A NAME="GetNOfAvailableFixedSizes"></A>
+<A NAME="DOC.52.35"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int GetNOfAvailableFixedSizes() const </B></TT>
+<DD>
+Returns the number of fixed sizes the font supports
+<DL><DT><DD></DL><P>
+<A NAME="GetSpacing"></A>
+<A NAME="DOC.52.36"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int GetSpacing() const </B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="SetSpacing"></A>
+<A NAME="DOC.52.37"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void SetSpacing(int s)</B></TT>
+<DD>
+Functions for getting and setting the extra spacing between characters.
+Only some fonts support this (i.e. the ones that are loaded by AlFont).
+<DL><DT><DD></DL><P>
+<A NAME="GetWrapPos"></A>
+<A NAME="DOC.52.38"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int GetWrapPos(const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>, int maxwidth, int &amp;preferredwidth) const </B></TT>
+<DD>
+Number of characters that fit on a line.
+Returns number of characters of the string text that fit on this line,
+while performing word-wrapping. Maxwidth is the width of this line.
+Preferredwidth is the actual width of that number of characters, so
+you can calculate the remaining space by substracting preferredwidth
+from maxwidth and align the text as you wish. Treats \n characters as
+hard (=forced) line breaks, so even if more characters fit on a line
+it always stops at a \n.
+<DL><DT><DD></DL><P>
+<A NAME="GetWrapPos"></A>
+<A NAME="DOC.52.39"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int GetWrapPos(const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>, int maxwidth) const </B></TT>
+<DD>
+Simple wrapper for when you don't need the preferredwidth parameter
+<DL><DT><DD></DL><P>
+<A NAME="SkipWhiteSpace"></A>
+<A NAME="DOC.52.40"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int SkipWhiteSpace(const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>) const </B></TT>
+<DD>
+Returns number of whitespace at the start of text.
+Doesn't count \0 or \n as whitespace.
+<DL><DT><DD></DL><P>
+<A NAME="CountLines"></A>
+<A NAME="DOC.52.41"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int CountLines(const char* <!1><A HREF="Tooltip.html#DOC.106.6">text</A>, int maxwidth) const </B></TT>
+<DD>
+Counts number of lines needed to print text in an area with width = maxwidth.
+Empty string is 0 lines. Only whitespace is 1 line. Usefull for calculating
+the height of a textbox.
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Font.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+</html>

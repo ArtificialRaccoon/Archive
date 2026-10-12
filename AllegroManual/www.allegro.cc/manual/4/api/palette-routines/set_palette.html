@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/palette-routines/set_palette by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:20:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>set_palette</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Palette routines</a></h2><ul>
+<li><a href="set_color.html" style="font-weight: bold">set_color</a></li><li><a href="_set_color.html" >_set_color</a></li><li><strong>set_palette</strong></li><li><a href="set_palette_range.html" >set_palette_range</a></li><li><a href="get_color.html" >get_color</a></li><li><a href="get_palette.html" style="font-weight: bold">get_palette</a></li><li><a href="get_palette_range.html" >get_palette_range</a></li><li><a href="fade_interpolate.html" >fade_interpolate</a></li><li><a href="fade_from_range.html" >fade_from_range</a></li><li><a href="fade_in_range.html" >fade_in_range</a></li><li><a href="fade_out_range.html" >fade_out_range</a></li><li><a href="fade_from.html" >fade_from</a></li><li><a href="fade_in.html" style="font-weight: bold">fade_in</a></li><li><a href="fade_out.html" style="font-weight: bold">fade_out</a></li><li><a href="select_palette.html" >select_palette</a></li><li><a href="unselect_palette.html" >unselect_palette</a></li><li><a href="generate_332_palette.html" >generate_332_palette</a></li><li><a href="generate_optimized_palette.html" >generate_optimized_palette</a></li><li><a href="default_palette.html" >default_palette</a></li><li><a href="black_palette.html" style="font-weight: bold">black_palette</a></li><li><a href="desktop_palette.html" >desktop_palette</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>set_palette</h1>
+
+<div class="shortdesc">
+Sets the entire palette of 256 colors.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">void</span> <a href="../../index.html" target="_blank"><span class="a">set_palette</span></a><span class="k2">(</span><span class="k1">const</span> <a href="../../index.html" target="_blank"><span class="a">PALETTE</span></a> p<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Sets the entire palette of 256 colors. You should provide an array of 256
+   RGB structures. Unlike set_color(), there is no need to call vsync()
+   before this function. Example:
+<pre class="code">      <a href="../../index.html" target="_blank"><span class="a">BITMAP</span></a> <span class="k3">*</span>bmp<span class="k2">;</span>
+      <a href="../../index.html" target="_blank"><span class="a">PALETTE</span></a> palette<span class="k2">;</span>
+      ...
+      bmp <span class="k3">=</span> <a href="../../index.html" target="_blank"><span class="a">load_bitmap</span></a><span class="k2">(</span>filename, palette<span class="k2">)</span><span class="k2">;</span>
+      <span class="k1">if</span> <span class="k2">(</span><span class="k3">!</span>bmp<span class="k2">)</span>
+	 abort_on_error<span class="k2">(</span><span class="s">"Couldn't load bitmap!"</span><span class="k2">)</span><span class="k2">;</span>
+      <a href="../../index.html" target="_blank"><span class="a">set_palette</span></a><span class="k2">(</span>palette<span class="k2">)</span><span class="k2">;</span></pre>
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">set_gfx_mode</a></li>
+	<li><a href="../../index.html">set_palette_range</a></li>
+	<li><a href="../../index.html">set_color</a></li>
+	<li><a href="../../index.html">get_palette</a></li>
+	<li><a href="../../index.html">select_palette</a></li>
+	<li><a href="../../index.html">palette_color</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../index.html">Available Allegro examples</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591194">
+		<a href="https://www.allegro.cc/forums/thread/591194">Window resizing</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/668970" style="color: black;">1</a> </span>
+	</li><li id="t-591083">
+		<a href="https://www.allegro.cc/forums/thread/591083">Grabber (2 Problems)</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/667034" style="color: black;">1</a> </span>
+	</li><li id="t-590228">
+		<a href="https://www.allegro.cc/forums/thread/590228">invalid conversion from `void*&#39; to &quot;constRGB&quot;</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/653060" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/653062" style="color: black;">2</a> </span>
+	</li><li id="t-589597">
+		<a href="https://www.allegro.cc/forums/thread/589597">Allegro for D</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/646093" style="color: black;">1</a> </span>
+	</li><li id="t-589033">
+		<a href="https://www.allegro.cc/forums/thread/589033">throw bone</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/634466" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/634494" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/634501" style="color: black;">3</a> <a href="https://www.allegro.cc/forums/post/634745" style="color: black;">4</a> </span>
+	</li><li id="t-589032">
+		<a href="https://www.allegro.cc/forums/thread/589032">messages</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/634428" style="color: black;">1</a> </span>
+	</li><li id="t-589017">
+		<a href="https://www.allegro.cc/forums/thread/589017">SIMPLY game with  ALLEGRO</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/634201" style="color: black;">1</a> </span>
+	</li><li id="t-588374">
+		<a href="https://www.allegro.cc/forums/thread/588374">Trouble with tiles and transparency</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/625376" style="color: black;">1</a> </span>
+	</li><li id="t-588090">
+		<a href="https://www.allegro.cc/forums/thread/588090">Background color issue</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/621205" style="color: black;">1</a> </span>
+	</li><li id="t-588019">
+		<a href="https://www.allegro.cc/forums/thread/588019">AllegroFont and MSVC</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/619945" style="color: black;">1</a> </span>
+	</li><li id="t-587448">
+		<a href="https://www.allegro.cc/forums/thread/587448">doubt about load_bitmap(const char *filename, RGB *pal)</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/612151" style="color: black;">1</a> </span>
+	</li><li id="t-585780">
+		<a href="https://www.allegro.cc/forums/thread/585780">Mouse access violation?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/589012" style="color: black;">1</a> </span>
+	</li><li id="t-582672">
+		<a href="https://www.allegro.cc/forums/thread/582672">Black screen</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/582672" style="color: black;">1</a> </span>
+	</li><li id="t-581530">
+		<a href="https://www.allegro.cc/forums/thread/581530">I&#39;m haveing trouble with 256-color bitmaps.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/581538" style="color: black;">1</a> </span>
+	</li><li id="t-580811">
+		<a href="https://www.allegro.cc/forums/thread/580811">Greyscale-Filter is too slow. How to improve performance?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/581224" style="color: black;">1</a> </span>
+	</li><li id="t-580693">
+		<a href="https://www.allegro.cc/forums/thread/580693">create_trans_table</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/580693" style="color: black;">1</a> </span>
+	</li><li id="t-572217">
+		<a href="https://www.allegro.cc/forums/thread/572217">The part enlargement with stretch_blit</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/572276" style="color: black;">1</a> </span>
+	</li><li id="t-554028">
+		<a href="https://www.allegro.cc/forums/thread/554028">Sin &amp; Cos Questions (Amarillion&#39;s tutorial)</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/554028" style="color: black;">1</a> </span>
+	</li><li id="t-551390">
+		<a href="https://www.allegro.cc/forums/thread/551390">win_set_window questions</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/551633" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/PyramidSolitaire">Pyramid Solitaire</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/TeTrist">TeTrist</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/FruitLand">Fruit Land</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/Cylindrix">Cylindrix</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/DECATHLON">DECATHLON</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/Escultor">Escultor</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/GWar">GWar</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/KFixpal">KFixpal</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/Mastermind2">Mastermind</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/PeaceInvaders">Peace Invaders</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,516</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.010489</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/palette-routines/set_palette by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:21:12 GMT -->
+</html>

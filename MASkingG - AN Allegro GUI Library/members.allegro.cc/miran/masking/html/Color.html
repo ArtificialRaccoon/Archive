@@ -1,0 +1,454 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Color.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC Color</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">Color</A></H2></H2><BLOCKQUOTE> Represents an Allegro color.</BLOCKQUOTE>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   <!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.8.30">white</A></B>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   <!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.8.31">black</A></B>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   <!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.8.32">red</A></B>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   <!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.8.33">green</A></B>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   <!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.8.34">blue</A></B>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   <!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.8.35">cyan</A></B>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   <!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.8.36">magenta</A></B>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   <!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.8.37">yellow</A></B>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   <!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.8.38">darkgray</A></B>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   <!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.8.39">gray</A></B>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   <!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.8.40">lightgray</A></B>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   <!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.8.41">orange</A></B>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   <!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.8.42">purple</A></B>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   <!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.8.43">brown</A></B>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   <!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.8.44">maroon</A></B>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   <!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.8.45">darkgreen</A></B>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   <!1><A HREF="Color.html">Color</A> <B><A HREF="#DOC.8.46">darkblue</A></B>
+<DD><I> The most commonly used basic colours.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.8.2">Color</A></B>(int c=-1)
+<DD><I> The default constructor.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.8.3">Color</A></B>(int <!1><A HREF="Color.html#DOC.8.17">r</A>, int <!1><A HREF="Color.html#DOC.8.18">g</A>, int <!1><A HREF="Color.html#DOC.8.19">b</A>)
+<DD><I> The constructor for making a color from RGB components.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.8.4">Color</A></B>(float <!1><A HREF="Widget.html#DOC.110.70">h</A>, float s, float v)
+<DD><I> The constructors for making a color from HSV components.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.8.5">Color</A></B>(int <!1><A HREF="Color.html#DOC.8.17">r</A>, int <!1><A HREF="Color.html#DOC.8.18">g</A>, int <!1><A HREF="Color.html#DOC.8.19">b</A>, int <!1><A HREF="Color.html#DOC.8.20">a</A>)
+<DD><I> The constructor for making a color from RGBA components.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.8.6">Color</A></B>(const char* str)
+<DD><I> The constructor for making a color from a string description.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.8.7">Make</A></B>(int <!1><A HREF="Color.html#DOC.8.17">r</A>, int <!1><A HREF="Color.html#DOC.8.18">g</A>, int <!1><A HREF="Color.html#DOC.8.19">b</A>)
+<DD><I> Makes the color from RGB components</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.8.8">Make</A></B>(int <!1><A HREF="Color.html#DOC.8.17">r</A>, int <!1><A HREF="Color.html#DOC.8.18">g</A>, int <!1><A HREF="Color.html#DOC.8.19">b</A>, int <!1><A HREF="Color.html#DOC.8.20">a</A>)
+<DD><I> Makes the color from RGBA components</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.8.9">Make</A></B>(const char* str)
+<DD><I> Read the color from a string</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.8.10">operator int</A></B>() const 
+<DD><I> Casts the color to an integer value.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.8.11">operator=</A></B>(int c)
+<DD><I> Assignment operator for creating a color from an Allegro color value</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif> <B><A HREF="#DOC.8.12">operator bool</A></B>() const 
+<DD><I> Casts a color to a bool value.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.8.13">operator==</A></B>(const <!1><A HREF="Color.html">Color</A> c)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.8.14">operator!=</A></B>(const <!1><A HREF="Color.html">Color</A> c)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.8.15">operator==</A></B>(int c)
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>bool <B><A HREF="#DOC.8.16">operator!=</A></B>(int c)
+<DD><I> Operators for determining the equality of two colours</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.8.17">r</A></B>() const 
+<DD><I> Returns the colour's R component</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.8.18">g</A></B>() const 
+<DD><I> Returns the colour's G component</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.8.19">b</A></B>() const 
+<DD><I> Returns the colour's B component</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.8.20">a</A></B>() const 
+<DD><I> Returns the colour's A component (alpha)</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.8.21">r</A></B>(int _r)
+<DD><I> Sets the colour's R component</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.8.22">g</A></B>(int _g)
+<DD><I> Sets the colour's G component</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.8.23">b</A></B>(int _b)
+<DD><I> Sets the colour's B component</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.8.24">a</A></B>(int _a)
+<DD><I> Sets the colour's B component</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.8.25">ToHSV</A></B>(float &amp;<!1><A HREF="Widget.html#DOC.110.70">h</A>, float &amp;s, float &amp;v) const 
+<DD><I> Breaks the colour down to HSV component</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.8.26">ToRGB</A></B>(int &amp;<!1><A HREF="Color.html#DOC.8.17">r</A>, int &amp;<!1><A HREF="Color.html#DOC.8.18">g</A>, int &amp;<!1><A HREF="Color.html#DOC.8.19">b</A>) const 
+<DD><I> Breaks the colour down to RGB component</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   void <B><A HREF="#DOC.8.27">RGBToHSV</A></B>(int <!1><A HREF="Color.html#DOC.8.17">r</A>, int <!1><A HREF="Color.html#DOC.8.18">g</A>, int <!1><A HREF="Color.html#DOC.8.19">b</A>, float &amp;<!1><A HREF="Widget.html#DOC.110.70">h</A>, float &amp;s, float &amp;v)
+<DD><I> Converts an RGB representation of a colour to HSV</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   void <B><A HREF="#DOC.8.28">HSVToRGB</A></B>(float <!1><A HREF="Widget.html#DOC.110.70">h</A>, float s, float v, int &amp;<!1><A HREF="Color.html#DOC.8.17">r</A>, int &amp;<!1><A HREF="Color.html#DOC.8.18">g</A>, int &amp;<!1><A HREF="Color.html#DOC.8.19">b</A>)
+<DD><I> Converts an HSV representation of a colour to RGB</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>void <B><A HREF="#DOC.8.29">Colorize</A></B>(const <!1><A HREF="Color.html">Color</A> &amp;c, int alpha)
+<DD><I> Colorizes the color with the given second color and alpha intensity.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   void <B><A HREF="#DOC.8.47">OnColorDepthChange</A></B>()
+<DD><I> Recreates the common colors.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Protected Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>int <B><A HREF="#DOC.8.1">col</A></B>
+<DD><I> The underlying Allegro color value</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+Represents an Allegro color.
+It has methods for building colors out of RGB and HSV components and braking
+them down in those components again. There are unctions for converting
+between the RGB and HSV color spaces and for reading a color from a string.
+Also some of the most comonly used colors are available as static data members.</BLOCKQUOTE>
+<DL>
+
+<A NAME="col"></A>
+<A NAME="DOC.8.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int col</B></TT>
+<DD>
+The underlying Allegro color value
+<DL><DT><DD></DL><P>
+<A NAME="Color"></A>
+<A NAME="DOC.8.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> Color(int c=-1)</B></TT>
+<DD>
+The default constructor.
+The constructor for making a color from an actual Allegro color value.
+<DL><DT><DD></DL><P>
+<A NAME="Color"></A>
+<A NAME="DOC.8.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> Color(int <!1><A HREF="Color.html#DOC.8.17">r</A>, int <!1><A HREF="Color.html#DOC.8.18">g</A>, int <!1><A HREF="Color.html#DOC.8.19">b</A>)</B></TT>
+<DD>
+The constructor for making a color from RGB components.
+All three colours are integers in the range between 0 and 255.
+<DL><DT><DD></DL><P>
+<A NAME="Color"></A>
+<A NAME="DOC.8.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> Color(float <!1><A HREF="Widget.html#DOC.110.70">h</A>, float s, float v)</B></TT>
+<DD>
+The constructors for making a color from HSV components.
+Hue is a value between 0 and 360, while saturation and value are
+between 0 and 1.
+<DL><DT><DD></DL><P>
+<A NAME="Color"></A>
+<A NAME="DOC.8.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> Color(int <!1><A HREF="Color.html#DOC.8.17">r</A>, int <!1><A HREF="Color.html#DOC.8.18">g</A>, int <!1><A HREF="Color.html#DOC.8.19">b</A>, int <!1><A HREF="Color.html#DOC.8.20">a</A>)</B></TT>
+<DD>
+The constructor for making a color from RGBA components.
+A is the alpha component and must be in the range between 0 and 255.
+<DL><DT><DD></DL><P>
+<A NAME="Color"></A>
+<A NAME="DOC.8.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> Color(const char* str)</B></TT>
+<DD>
+The constructor for making a color from a string description.
+The string must contain RGB components separated with commas or
+semicolons or it can be "-1".
+
+<P>Examples of constructing a color:
+<PRE>
+      Color c1(makecol(120, 240, 180));
+      Color c2(120, 240, 180);
+      Color c3(300.0, 140.0, 45.0));
+      Color c4(120, 240, 180, 200);
+      Color c5("120,240,180");
+</PRE>
+<DL><DT><DD></DL><P>
+<A NAME="Make"></A>
+<A NAME="DOC.8.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Make(int <!1><A HREF="Color.html#DOC.8.17">r</A>, int <!1><A HREF="Color.html#DOC.8.18">g</A>, int <!1><A HREF="Color.html#DOC.8.19">b</A>)</B></TT>
+<DD>
+Makes the color from RGB components
+<DL><DT><DD></DL><P>
+<A NAME="Make"></A>
+<A NAME="DOC.8.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Make(int <!1><A HREF="Color.html#DOC.8.17">r</A>, int <!1><A HREF="Color.html#DOC.8.18">g</A>, int <!1><A HREF="Color.html#DOC.8.19">b</A>, int <!1><A HREF="Color.html#DOC.8.20">a</A>)</B></TT>
+<DD>
+Makes the color from RGBA components
+<DL><DT><DD></DL><P>
+<A NAME="Make"></A>
+<A NAME="DOC.8.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Make(const char* str)</B></TT>
+<DD>
+Read the color from a string
+<DL><DT><DD></DL><P>
+<A NAME="operator int"></A>
+<A NAME="DOC.8.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> operator int() const </B></TT>
+<DD>
+Casts the color to an integer value.
+This allows you to use a Color as if it was an int. That means you can
+use objects of type Color in all Allegro functions that normally take
+int as a color parameter.
+
+<P>Examples:
+<PRE>
+      clear_to_color(screen, Color::white);
+      rectfill(screen, 20, 30, 200, 150, Color(123, 234, 100));
+</PRE>
+<DL><DT><DD></DL><P>
+<A NAME="operator="></A>
+<A NAME="DOC.8.11"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void operator=(int c)</B></TT>
+<DD>
+Assignment operator for creating a color from an Allegro color value
+<DL><DT><DD></DL><P>
+<A NAME="operator bool"></A>
+<A NAME="DOC.8.12"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B> operator bool() const </B></TT>
+<DD>
+Casts a color to a bool value.
+True if it's a valid color, false if it isn't (i.e. less than 0).
+
+<P>Note: this doesn't work with 32 bit RGBA colors.
+<DL><DT><DD></DL><P>
+<A NAME="operator=="></A>
+<A NAME="DOC.8.13"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool operator==(const <!1><A HREF="Color.html">Color</A> c)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="operator!="></A>
+<A NAME="DOC.8.14"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool operator!=(const <!1><A HREF="Color.html">Color</A> c)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="operator=="></A>
+<A NAME="DOC.8.15"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool operator==(int c)</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="operator!="></A>
+<A NAME="DOC.8.16"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>bool operator!=(int c)</B></TT>
+<DD>
+Operators for determining the equality of two colours
+<DL><DT><DD></DL><P>
+<A NAME="r"></A>
+<A NAME="DOC.8.17"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int r() const </B></TT>
+<DD>
+Returns the colour's R component
+<DL><DT><DD></DL><P>
+<A NAME="g"></A>
+<A NAME="DOC.8.18"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int g() const </B></TT>
+<DD>
+Returns the colour's G component
+<DL><DT><DD></DL><P>
+<A NAME="b"></A>
+<A NAME="DOC.8.19"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int b() const </B></TT>
+<DD>
+Returns the colour's B component
+<DL><DT><DD></DL><P>
+<A NAME="a"></A>
+<A NAME="DOC.8.20"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>int a() const </B></TT>
+<DD>
+Returns the colour's A component (alpha)
+<DL><DT><DD></DL><P>
+<A NAME="r"></A>
+<A NAME="DOC.8.21"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void r(int _r)</B></TT>
+<DD>
+Sets the colour's R component
+<DL><DT><DD></DL><P>
+<A NAME="g"></A>
+<A NAME="DOC.8.22"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void g(int _g)</B></TT>
+<DD>
+Sets the colour's G component
+<DL><DT><DD></DL><P>
+<A NAME="b"></A>
+<A NAME="DOC.8.23"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void b(int _b)</B></TT>
+<DD>
+Sets the colour's B component
+<DL><DT><DD></DL><P>
+<A NAME="a"></A>
+<A NAME="DOC.8.24"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void a(int _a)</B></TT>
+<DD>
+Sets the colour's B component
+<DL><DT><DD></DL><P>
+<A NAME="ToHSV"></A>
+<A NAME="DOC.8.25"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void ToHSV(float &amp;<!1><A HREF="Widget.html#DOC.110.70">h</A>, float &amp;s, float &amp;v) const </B></TT>
+<DD>
+Breaks the colour down to HSV component
+<DL><DT><DD></DL><P>
+<A NAME="ToRGB"></A>
+<A NAME="DOC.8.26"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void ToRGB(int &amp;<!1><A HREF="Color.html#DOC.8.17">r</A>, int &amp;<!1><A HREF="Color.html#DOC.8.18">g</A>, int &amp;<!1><A HREF="Color.html#DOC.8.19">b</A>) const </B></TT>
+<DD>
+Breaks the colour down to RGB component
+<DL><DT><DD></DL><P>
+<A NAME="RGBToHSV"></A>
+<A NAME="DOC.8.27"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   void RGBToHSV(int <!1><A HREF="Color.html#DOC.8.17">r</A>, int <!1><A HREF="Color.html#DOC.8.18">g</A>, int <!1><A HREF="Color.html#DOC.8.19">b</A>, float &amp;<!1><A HREF="Widget.html#DOC.110.70">h</A>, float &amp;s, float &amp;v)</B></TT>
+<DD>
+Converts an RGB representation of a colour to HSV
+<DL><DT><DD></DL><P>
+<A NAME="HSVToRGB"></A>
+<A NAME="DOC.8.28"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   void HSVToRGB(float <!1><A HREF="Widget.html#DOC.110.70">h</A>, float s, float v, int &amp;<!1><A HREF="Color.html#DOC.8.17">r</A>, int &amp;<!1><A HREF="Color.html#DOC.8.18">g</A>, int &amp;<!1><A HREF="Color.html#DOC.8.19">b</A>)</B></TT>
+<DD>
+Converts an HSV representation of a colour to RGB
+<DL><DT><DD></DL><P>
+<A NAME="Colorize"></A>
+<A NAME="DOC.8.29"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>void Colorize(const <!1><A HREF="Color.html">Color</A> &amp;c, int alpha)</B></TT>
+<DD>
+Colorizes the color with the given second color and alpha intensity.
+Colorizing means that you take one color and shift its hue to the hue of
+a second color while leaving the saturation and lightness the same. Alpha
+intensity in this function is the balance between the source and the target
+colors and is a value between 0 and 255. At 0 the original color is not
+modified at all while at 255 the source color's hue is completely changed
+to the target color's hue.
+<DL><DT><DD></DL><P>
+<A NAME="white"></A>
+<A NAME="DOC.8.30"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   <!1><A HREF="Color.html">Color</A> white</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="black"></A>
+<A NAME="DOC.8.31"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   <!1><A HREF="Color.html">Color</A> black</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="red"></A>
+<A NAME="DOC.8.32"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   <!1><A HREF="Color.html">Color</A> red</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="green"></A>
+<A NAME="DOC.8.33"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   <!1><A HREF="Color.html">Color</A> green</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="blue"></A>
+<A NAME="DOC.8.34"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   <!1><A HREF="Color.html">Color</A> blue</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="cyan"></A>
+<A NAME="DOC.8.35"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   <!1><A HREF="Color.html">Color</A> cyan</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="magenta"></A>
+<A NAME="DOC.8.36"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   <!1><A HREF="Color.html">Color</A> magenta</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="yellow"></A>
+<A NAME="DOC.8.37"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   <!1><A HREF="Color.html">Color</A> yellow</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="darkgray"></A>
+<A NAME="DOC.8.38"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   <!1><A HREF="Color.html">Color</A> darkgray</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="gray"></A>
+<A NAME="DOC.8.39"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   <!1><A HREF="Color.html">Color</A> gray</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="lightgray"></A>
+<A NAME="DOC.8.40"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   <!1><A HREF="Color.html">Color</A> lightgray</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="orange"></A>
+<A NAME="DOC.8.41"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   <!1><A HREF="Color.html">Color</A> orange</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="purple"></A>
+<A NAME="DOC.8.42"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   <!1><A HREF="Color.html">Color</A> purple</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="brown"></A>
+<A NAME="DOC.8.43"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   <!1><A HREF="Color.html">Color</A> brown</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="maroon"></A>
+<A NAME="DOC.8.44"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   <!1><A HREF="Color.html">Color</A> maroon</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="darkgreen"></A>
+<A NAME="DOC.8.45"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   <!1><A HREF="Color.html">Color</A> darkgreen</B></TT>
+<DL><DT><DD></DL><P>
+<A NAME="darkblue"></A>
+<A NAME="DOC.8.46"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   <!1><A HREF="Color.html">Color</A> darkblue</B></TT>
+<DD>
+The most commonly used basic colours.
+Available as public static data members.
+<DL><DT><DD></DL><P>
+<A NAME="OnColorDepthChange"></A>
+<A NAME="DOC.8.47"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   void OnColorDepthChange()</B></TT>
+<DD>
+Recreates the common colors.
+When the color depth has changed the static colours need to be
+recreated because the actual color values are dependant on the
+current color depth. This function is automatically called when
+a color depth change occurs.
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Color.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:12 GMT -->
+</html>

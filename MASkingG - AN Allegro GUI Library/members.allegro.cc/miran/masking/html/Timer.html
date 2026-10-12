@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Timer.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC Timer</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">Timer</A></H2></H2><BLOCKQUOTE> The timer system.</BLOCKQUOTE>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   void <B><A HREF="#DOC.105.1">Lock</A></B>()
+<DD><I> Locks all the static timer functions and variables.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   int <B><A HREF="#DOC.105.2">Check</A></B>()
+<DD><I> Checks if an installed timer has ticked.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   void <B><A HREF="#DOC.105.3">Update</A></B>(int timerID)
+<DD><I> Updates the timer with the passed ID.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   void <B><A HREF="#DOC.105.4">ResetFrameSkip</A></B>()
+<DD><I> Resets the frame skipping counters for all timers.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   int <B><A HREF="#DOC.105.5">Install</A></B>(int <!1><A HREF="Cursor.html#DOC.12.9">interval</A>)
+<DD><I> Attempts to install a timer that will tick at the specified interval.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   int <B><A HREF="#DOC.105.6">InstallEx</A></B>(int bps)
+<DD><I> Attempts to install a timer that will tick at the specified frequency.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   void <B><A HREF="#DOC.105.7">Adjust</A></B>(int timerID, int <!1><A HREF="Cursor.html#DOC.12.9">interval</A>)
+<DD><I> Changes the speed of a timer.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   void <B><A HREF="#DOC.105.8">AdjustEx</A></B>(int timerID, int bps)
+<DD><I> Changes the speed of a timer.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   void <B><A HREF="#DOC.105.9">Kill</A></B>(int timerID)
+<DD><I> Stops a timer with the given ID</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+The timer system.
+The timer class is not really a proper class. It is just a bunch of static
+functions which provide basic timer functionality at a level just slightly
+above the level of the underlaying Allegro timer functions. It can install
+up to 8 separate timers (more than anyone should ever need), it has wrapper
+functions for the Allegro timer functions and a nice little function for
+checking when a timer has ticked.</BLOCKQUOTE>
+<DL>
+
+<A NAME="Lock"></A>
+<A NAME="DOC.105.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   void Lock()</B></TT>
+<DD>
+Locks all the static timer functions and variables. This is necessary
+on some platforms. This should be called at the beginning of the
+program and is called by the InstallMASkinG() function right after
+installing the Allegro timer module.
+<DL><DT><DD></DL><P>
+<A NAME="Check"></A>
+<A NAME="DOC.105.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   int Check()</B></TT>
+<DD>
+Checks if an installed timer has ticked. If it has it returns the
+timer's ID otherwise it returns -1.
+<DL><DT><DD></DL><P>
+<A NAME="Update"></A>
+<A NAME="DOC.105.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   void Update(int timerID)</B></TT>
+<DD>
+Updates the timer with the passed ID.
+It does so by decrementing the appropriate timer variable and should
+be called whenever Check() returns a value other than -1. It should
+be passed the value Check() returns.
+<DL><DT><DD></DL><P>
+<A NAME="ResetFrameSkip"></A>
+<A NAME="DOC.105.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   void ResetFrameSkip()</B></TT>
+<DD>
+Resets the frame skipping counters for all timers.
+Check() among other things also counts how many frames are waiting to
+be processed and if this number goes over a certain threshold (defined
+in the Settings class) it skips frames. This function resets this counter.
+
+<P>Typically the above three functions are used together in the main loop like this:
+<PRE>
+      int timerID = -1;
+      while (!done) {
+         while (timerID = Timer::Check()) {
+			switch (timerID) {
+               case 0:             suppose 0 is the ID of the main logic timer
+                  DoLogic();
+                  break;
+
+<P>               case 1:             supopse 1 is the ID of the timer used to measure FPS
+                  MeasureFPS();
+                  break;
+
+<P>               case 2:
+                  ...
+                  ...
+            }
+
+<P>		    Timer::Update(timerID);
+         }
+
+<P>         Timer::ResetFrameSkip();
+         Render();
+      }
+</PRE>
+The dialog manager does roughly something like this so unless you're not using
+the dialog manager, you don't really need to know about this.
+<DL><DT><DD></DL><P>
+<A NAME="Install"></A>
+<A NAME="DOC.105.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   int Install(int <!1><A HREF="Cursor.html#DOC.12.9">interval</A>)</B></TT>
+<DD>
+Attempts to install a timer that will tick at the specified interval.
+Interval is the time between timer ticks in milisecond. For example if you want
+the timer to tick once per second you would pass 1000 to this function. Returns
+the ID of the installed timer or -1 if it fails to install a timer. You are
+required to remember the ID because you need to know it to be able to detect a
+timer tick and to change and kill the timer.
+<DL><DT><DD></DL><P>
+<A NAME="InstallEx"></A>
+<A NAME="DOC.105.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   int InstallEx(int bps)</B></TT>
+<DD>
+Attempts to install a timer that will tick at the specified frequency.
+Frequency is in beats per second. So if you want a timer that ticks once per
+second you can install it by passing 1 to this function.
+<DL><DT><DD></DL><P>
+<A NAME="Adjust"></A>
+<A NAME="DOC.105.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   void Adjust(int timerID, int <!1><A HREF="Cursor.html#DOC.12.9">interval</A>)</B></TT>
+<DD>
+Changes the speed of a timer. The first parameter should be the ID that was
+returned by the Install() or InstallEx() functions. The second parameter is
+the interval between timer ticks.
+<DL><DT><DD></DL><P>
+<A NAME="AdjustEx"></A>
+<A NAME="DOC.105.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   void AdjustEx(int timerID, int bps)</B></TT>
+<DD>
+Changes the speed of a timer. The first parameter should be the ID that was
+returned by the Install() or InstallEx() functions. The second parameter is
+the desired timer frequency.
+<DL><DT><DD></DL><P>
+<A NAME="Kill"></A>
+<A NAME="DOC.105.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   void Kill(int timerID)</B></TT>
+<DD>
+Stops a timer with the given ID
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Timer.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+</html>

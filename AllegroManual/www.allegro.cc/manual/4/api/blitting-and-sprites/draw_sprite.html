@@ -1,0 +1,245 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/blitting-and-sprites/draw_sprite by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:21:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>draw_sprite</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Blitting and sprites</a></h2><ul>
+<li><a href="blit.html" style="font-weight: bold">blit</a></li><li><a href="stretch_blit.html" style="font-weight: bold">stretch_blit</a></li><li><a href="masked_blit.html" style="font-weight: bold">masked_blit</a></li><li><a href="masked_stretch_blit.html" style="font-weight: bold">masked_stretch_blit</a></li><li><strong>draw_sprite</strong></li><li><a href="stretch_sprite.html" style="font-weight: bold">stretch_sprite</a></li><li><a href="draw_sprite_v_flip.html" >draw_sprite_v_flip</a></li><li><a href="draw_sprite_h_flip.html" style="font-weight: bold">draw_sprite_h_flip</a></li><li><a href="draw_sprite_vh_flip.html" >draw_sprite_vh_flip</a></li><li><a href="draw_trans_sprite.html" style="font-weight: bold">draw_trans_sprite</a></li><li><a href="draw_lit_sprite.html" >draw_lit_sprite</a></li><li><a href="draw_gouraud_sprite.html" >draw_gouraud_sprite</a></li><li><a href="draw_character_ex.html" >draw_character_ex</a></li><li><a href="rotate_sprite.html" style="font-weight: bold">rotate_sprite</a></li><li><a href="rotate_sprite_v_flip.html" >rotate_sprite_v_flip</a></li><li><a href="rotate_scaled_sprite.html" >rotate_scaled_sprite</a></li><li><a href="rotate_scaled_sprite_v_flip.html" >rotate_scaled_sprite_v_flip</a></li><li><a href="pivot_sprite.html" >pivot_sprite</a></li><li><a href="pivot_sprite_v_flip.html" >pivot_sprite_v_flip</a></li><li><a href="pivot_scaled_sprite.html" >pivot_scaled_sprite</a></li><li><a href="pivot_scaled_sprite_v_flip.html" >pivot_scaled_sprite_v_flip</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>draw_sprite</h1>
+
+<div class="shortdesc">
+Draws a copy of the sprite onto the destination bitmap.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">void</span> <a href="../../index.html" target="_blank"><span class="a">draw_sprite</span></a><span class="k2">(</span><a href="../../index.html" target="_blank"><span class="a">BITMAP</span></a> <span class="k3">*</span>bmp, <a href="../../index.html" target="_blank"><span class="a">BITMAP</span></a> <span class="k3">*</span>sprite, <span class="k1">int</span> x, <span class="k1">int</span> y<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Draws a copy of the sprite bitmap onto the destination bitmap at the
+   specified position. This is almost the same as blit(sprite, bmp, 0, 0, x,
+   y, sprite-&gt;w, sprite-&gt;h), but it uses a masked drawing mode where
+   transparent pixels are skipped, so the background image will show through
+   the masked parts of the sprite. Transparent pixels are marked by a zero
+   in 256-color modes or bright pink for truecolor data (maximum red and
+   blue, zero green). Example:
+<pre class="code">      <a href="../../index.html" target="_blank"><span class="a">BITMAP</span></a> <span class="k3">*</span>spaceship<span class="k2">;</span>
+      ...
+      <a href="../../index.html" target="_blank"><span class="a">draw_sprite</span></a><span class="k2">(</span><a href="../../index.html" target="_blank"><span class="a">screen</span></a>, spaceship, x, y<span class="k2">)</span><span class="k2">;</span></pre><br /><br />
+
+   If the GFX_HW_VRAM_BLIT_MASKED bit in the gfx_capabilities flag is set,
+   the current driver supports hardware accelerated sprite drawing when the
+   source image is a video memory bitmap or a sub-bitmap of the screen. This
+   is extremely fast, so when this flag is set it may be worth storing some
+   of your more frequently used sprites in an offscreen portion of the video
+   memory.<br /><br />
+
+   Warning: if the hardware acceleration flag is not set, draw_sprite() will
+   not work correctly when used with a sprite image in system or video
+   memory so the latter must be a memory bitmap.<br /><br />
+
+   Although generally not supporting graphics of mixed color depths, as a
+   special case this function can be used to draw 256-color source images
+   onto truecolor destination bitmaps, so you can use palette effects on
+   specific sprites within a truecolor program.
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">draw_sprite_v_flip</a></li>
+	<li><a href="../../index.html">draw_trans_sprite</a></li>
+	<li><a href="../../index.html">draw_lit_sprite</a></li>
+	<li><a href="../../index.html">draw_gouraud_sprite</a></li>
+	<li><a href="../../index.html">stretch_sprite</a></li>
+	<li><a href="../../index.html">rotate_sprite</a></li>
+	<li><a href="../../index.html">draw_character_ex</a></li>
+	<li><a href="../../index.html">draw_rle_sprite</a></li>
+	<li><a href="../../index.html">draw_compiled_sprite</a></li>
+	<li><a href="../../index.html">masked_blit</a></li>
+	<li><a href="../../index.html">blit</a></li>
+	<li><a href="../../index.html">bitmap_mask_color</a></li>
+</ul>
+</div>
+<div class="ereflist"><span>Examples using this:</span> <ul>
+	<li><a href="../../index.html">exsprite</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591879">
+		<a href="https://www.allegro.cc/forums/thread/591879">Game completely screwed up.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/678937" style="color: black;">1</a> </span>
+	</li><li id="t-591874">
+		<a href="https://www.allegro.cc/forums/thread/591874">Keyboard not responding to Input</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/678913" style="color: black;">1</a> </span>
+	</li><li id="t-591826">
+		<a href="https://www.allegro.cc/forums/thread/591826">Allegro Mouse</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/678323" style="color: black;">1</a> </span>
+	</li><li id="t-591768">
+		<a href="https://www.allegro.cc/forums/thread/591768">help customizing GUI</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/677477" style="color: black;">1</a> </span>
+	</li><li id="t-591691">
+		<a href="https://www.allegro.cc/forums/thread/591691">Another vector+class problem?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/676520" style="color: black;">1</a> </span>
+	</li><li id="t-591659">
+		<a href="https://www.allegro.cc/forums/thread/591659">How to make balls coming from the top?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/676013" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/676021" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/676022" style="color: black;">3</a> <a href="https://www.allegro.cc/forums/post/676025" style="color: black;">4</a> </span>
+	</li><li id="t-591614">
+		<a href="https://www.allegro.cc/forums/thread/591614">Bitmap vector problem</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/675458" style="color: black;">1</a> </span>
+	</li><li id="t-591587">
+		<a href="https://www.allegro.cc/forums/thread/591587">circle - circle collision</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/675258" style="color: black;">1</a> </span>
+	</li><li id="t-591510">
+		<a href="https://www.allegro.cc/forums/thread/591510">Virtual Screen for starters...</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/674014" style="color: black;">1</a> </span>
+	</li><li id="t-591498">
+		<a href="https://www.allegro.cc/forums/thread/591498">Game runs slow on slower computers</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/674369" style="color: black;">1</a> </span>
+	</li><li id="t-591456">
+		<a href="https://www.allegro.cc/forums/thread/591456">Drawing instead of falling</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/673368" style="color: black;">1</a> </span>
+	</li><li id="t-591406">
+		<a href="https://www.allegro.cc/forums/thread/591406">Why can&#39;t I draw sprites to the screen?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/672442" style="color: black;">1</a> </span>
+	</li><li id="t-591364">
+		<a href="https://www.allegro.cc/forums/thread/591364">draw_sprite and crash!</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/671682" style="color: black;">1</a> </span>
+	</li><li id="t-591299">
+		<a href="https://www.allegro.cc/forums/thread/591299">Funky player logic.</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/671048" style="color: black;">1</a> </span>
+	</li><li id="t-591298">
+		<a href="https://www.allegro.cc/forums/thread/591298">Extracting digits from a integer</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/670547" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/670584" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/670593" style="color: black;">3</a> <a href="https://www.allegro.cc/forums/post/670598" style="color: black;">4</a> <a href="https://www.allegro.cc/forums/post/671481" style="color: black;">5</a> </span>
+	</li><li id="t-591243">
+		<a href="https://www.allegro.cc/forums/thread/591243">adding Multithreading pthread.h</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/669609" style="color: black;">1</a> </span>
+	</li><li id="t-591135">
+		<a href="https://www.allegro.cc/forums/thread/591135">Sprite pixelling</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/668093" style="color: black;">1</a> </span>
+	</li><li id="t-591130">
+		<a href="https://www.allegro.cc/forums/thread/591130">Very slow while drawing to screen</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/667615" style="color: black;">1</a> </span>
+	</li><li id="t-591065">
+		<a href="https://www.allegro.cc/forums/thread/591065">Problem creating a bitmap, and a class</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/666582" style="color: black;">1</a> </span>
+	</li><li id="t-591039">
+		<a href="https://www.allegro.cc/forums/thread/591039">STL and BITMAPs</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/666047" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/666053" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/666054" style="color: black;">3</a> </span>
+	</li><li id="t-591024">
+		<a href="https://www.allegro.cc/forums/thread/591024">Allegro GIF Animation Library</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/665817" style="color: black;">1</a> </span>
+	</li><li id="t-590992">
+		<a href="https://www.allegro.cc/forums/thread/590992">Application Hangs When Switching In/Out</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/665211" style="color: black;">1</a> </span>
+	</li><li id="t-590905">
+		<a href="https://www.allegro.cc/forums/thread/590905">vista and fprintf... help needed</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/663910" style="color: black;">1</a> </span>
+	</li><li id="t-590821">
+		<a href="https://www.allegro.cc/forums/thread/590821">Compiles correctly but i get an error report error</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/662470" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/662478" style="color: black;">2</a> </span>
+	</li><li id="t-590690">
+		<a href="https://www.allegro.cc/forums/thread/590690">set_mouse_speed</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/660254" style="color: black;">1</a> </span>
+	</li><li id="t-590686">
+		<a href="https://www.allegro.cc/forums/thread/590686">Problem with keys</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/660169" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/660272" style="color: black;">2</a> <a href="https://www.allegro.cc/forums/post/660933" style="color: black;">3</a> <a href="https://www.allegro.cc/forums/post/660986" style="color: black;">4</a> </span>
+	</li><li id="t-590597">
+		<a href="https://www.allegro.cc/forums/thread/590597">Don&#39;t rewrite your old code</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/659850" style="color: black;">1</a> </span>
+	</li><li id="t-590546">
+		<a href="https://www.allegro.cc/forums/thread/590546">allegro performance problems</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/658429" style="color: black;">1</a> </span>
+	</li><li id="t-590525">
+		<a href="https://www.allegro.cc/forums/thread/590525">Allegro Crash...</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/657708" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/657710" style="color: black;">2</a> </span>
+	</li><li id="t-590428">
+		<a href="https://www.allegro.cc/forums/thread/590428">VRAM sprites scrambled under DOS</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/656150" style="color: black;">1</a> </span>
+	</li><li id="t-590417">
+		<a href="https://www.allegro.cc/forums/thread/590417">PageFlipping and DoubleBuffering Combined Problem</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/655947" style="color: black;">1</a> </span>
+	</li><li id="t-590372">
+		<a href="https://www.allegro.cc/forums/thread/590372">What&#39;s wrong with this code?</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/655052" style="color: black;">1</a> </span>
+	</li><li id="t-590344">
+		<a href="https://www.allegro.cc/forums/thread/590344">mouse flicker problem</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/654477" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/654503" style="color: black;">2</a> </span>
+	</li><li id="t-590331">
+		<a href="https://www.allegro.cc/forums/thread/590331">Matching bullet start x,y with point on sprite that gets rotated</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/654295" style="color: black;">1</a> <a href="https://www.allegro.cc/forums/post/654474" style="color: black;">2</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/BoardGames">Board Games</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/MergeDCC">MergeDCC</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/PyramidSolitaire">Pyramid Solitaire</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/BeatlesFreaks">Beatles Freaks</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/CariesField">Caries Field</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/ChristmasFun">Christmas Fun</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/Duel">Duel</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/FlamingSnow">Flaming Snow</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/GWar">GWar</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/Mahjongg">Mahjongg</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,617</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.011464</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/api/blitting-and-sprites/draw_sprite by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:21:59 GMT -->
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/miscellaneous/reducing-your-executable-size/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:58:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Reducing your executable size</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="../index.html">Miscellaneous</a></h2><ul>
+<li><strong>Reducing your executable size</strong></li><li><a href="../debugging/index.html" >Debugging</a></li><li><a href="../makefile-targets/index.html" >Makefile targets</a></li><li><a href="../available-allegro-examples/index.html" >Available Allegro examples</a></li><li><a href="../changes-since-previous-versions/index.html" >Changes since previous versions</a></li><li><a href="../contributors--the-hall-of-fame/index.html" >Contributors: The Hall of Fame</a></li><li><a href="../frequently-asked-questions-(faq)/index.html" >Frequently asked questions (FAQ)</a></li><li><a href="../common-mistakes/index.html" >Common mistakes</a></li><li><a href="../help--what-to-do-when-your-allegro-program-doesnt-work/index.html" >Help: what to do when your Allegro program doesn't work</a></li><li><a href="../api-compatibility-information/index.html" >API compatibility information</a></li><li><a href="../abi-compatibility-information/index.html" >ABI compatibility information</a></li><li><a href="../the-allegro-hackers-guide/index.html" >The Allegro hacker's guide</a></li><li><a href="../allegro-const-correctness/index.html" >Allegro `const'-correctness</a></li><li><a href="../packfile-format-information/index.html" >Packfile format information</a></li><li><a href="../datafile-format-information/index.html" >Datafile format information</a></li><li><a href="../license-and-disclaimer/index.html" >License and Disclaimer</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>Reducing your executable size</h1>
+
+Some people complain that Allegro produces very large executables. This is
+certainly true: with the DJGPP version, a simple "hello world" program will
+be about 200k, although the per-executable overhead is much less for
+platforms that support dynamic linking. But don't worry, Allegro takes up a
+relatively fixed amount of space, and won't increase as your program gets
+larger. As George Foot so succinctly put it, anyone who is concerned about
+the ratio between library and program code should just get to work and write
+more program code to catch up :-)<br /><br />
+
+Having said that, there are several things you can do to make your programs
+smaller:
+<ul><li>
+For all platforms, you can use an executable compressor called UPX, which
+is available at <a href="http://upx.sourceforge.net/">http://upx.sourceforge.net/</a>. This usually manages a
+compression ratio of about 40%.
+<li>
+When using DJGPP: for starters, read the DJGPP FAQ section 8.14, and take
+note of the -s switch. And don't forget to compile your program with
+optimisation enabled!
+<li>
+If a DOS program is only going to run in a limited number of graphics modes,
+you can specify which graphics drivers you would like to include with the
+code:
+<pre class="code">   BEGIN_GFX_DRIVER_LIST
+      driver1
+      driver2
+      etc...
+   END_GFX_DRIVER_LIST</pre>
+where the driver names are any of the defines:
+<pre class="text">
+   GFX_DRIVER_VBEAF
+   GFX_DRIVER_VGA
+   GFX_DRIVER_MODEX
+   GFX_DRIVER_VESA3
+   GFX_DRIVER_VESA2L
+   GFX_DRIVER_VESA2B
+   GFX_DRIVER_XTENDED
+   GFX_DRIVER_VESA1
+</pre>
+This construct must be included in only one of your C source files. The
+ordering of the names is important, because the autodetection routine works
+down from the top of the list until it finds the first driver that is able
+to support the requested mode. I suggest you stick to the default ordering
+given above, and simply delete whatever entries you aren't going to use.
+<li>
+If your DOS program doesn't need to use all the possible color depths, you
+can specify which pixel formats you want to support with the code:
+<pre class="code">   BEGIN_COLOR_DEPTH_LIST
+      depth1
+      depth2
+      etc...
+   END_COLOR_DEPTH_LIST</pre>
+where the color depth names are any of the defines:
+<pre class="text">
+   COLOR_DEPTH_8
+   COLOR_DEPTH_15
+   COLOR_DEPTH_16
+   COLOR_DEPTH_24
+   COLOR_DEPTH_32
+</pre>
+Removing any of the color depths will save quite a bit of space, with the
+exception of the 15 and 16-bit modes: these share a great deal of code, so
+if you are including one of them, there is no reason not to use both. Be
+warned that if you try to use a color depth which isn't in this list, your
+program will crash horribly!
+<li>
+In the same way as the above, you can specify which DOS sound drivers you
+want to support with the code:
+<pre class="code">   BEGIN_DIGI_DRIVER_LIST
+      driver1
+      driver2
+      etc...
+   END_DIGI_DRIVER_LIST</pre>
+using the digital sound driver defines:
+<pre class="text">
+   DIGI_DRIVER_SOUNDSCAPE
+   DIGI_DRIVER_AUDIODRIVE
+   DIGI_DRIVER_WINSOUNDSYS
+   DIGI_DRIVER_SB
+</pre>
+and for the MIDI music:
+<pre class="code">   BEGIN_MIDI_DRIVER_LIST
+      driver1
+      driver2
+      etc...
+   END_MIDI_DRIVER_LIST</pre>
+using the MIDI driver defines:
+<pre class="text">
+   MIDI_DRIVER_AWE32
+   MIDI_DRIVER_DIGMID
+   MIDI_DRIVER_ADLIB
+   MIDI_DRIVER_MPU
+   MIDI_DRIVER_SB_OUT
+</pre>
+If you are going to use either of these sound driver constructs, you must
+include both.
+<li>
+Likewise for the DOS joystick drivers, you can declare an inclusion list:
+<pre class="code">   BEGIN_JOYSTICK_DRIVER_LIST
+      driver1
+      driver2
+      etc...
+   END_JOYSTICK_DRIVER_LIST</pre>
+using the joystick driver defines:
+<pre class="text">
+   JOYSTICK_DRIVER_WINGWARRIOR
+   JOYSTICK_DRIVER_SIDEWINDER
+   JOYSTICK_DRIVER_GAMEPAD_PRO
+   JOYSTICK_DRIVER_GRIP
+   JOYSTICK_DRIVER_STANDARD
+   JOYSTICK_DRIVER_SNESPAD
+   JOYSTICK_DRIVER_PSXPAD
+   JOYSTICK_DRIVER_N64PAD
+   JOYSTICK_DRIVER_DB9
+   JOYSTICK_DRIVER_TURBOGRAFX
+   JOYSTICK_DRIVER_IFSEGA_ISA
+   JOYSTICK_DRIVER_IFSEGA_PCI
+   JOYSTICK_DRIVER_IFSEGA_PCI_FAST
+</pre>
+The standard driver includes support for the dual joysticks, increased
+numbers of buttons, Flightstick Pro, and Wingman Extreme, because these are
+all quite minor variations on the basic code.
+<li>
+If you are _really_ serious about this size, thing, have a look at the top
+of include/allegro/alconfig.h and you will see the lines:
+<pre class="code">   <span class="p">#define ALLEGRO_COLOR8</span>
+   <span class="p">#define ALLEGRO_COLOR16</span>
+   <span class="p">#define ALLEGRO_COLOR24</span>
+   <span class="p">#define ALLEGRO_COLOR32</span></pre>
+If you comment out any of these definitions and then rebuild the library,
+you will get a version without any support for the absent color depths,
+which will be even smaller than using the DECLARE_COLOR_DEPTH_LIST() macro.
+Removing the ALLEGRO_COLOR16 define will get rid of the support for both 15
+and 16-bit hicolor modes, since these share a lot of the same code.
+</ul>
+Note: the aforementioned methods for removing unused hardware drivers only
+apply to statically linked versions of the library, eg. DOS. On Windows and
+Unix platforms, you can build Allegro as a DLL or shared library, which
+prevents these methods from working, but saves so much space that you
+probably won't care about that. Removing unused color depths from alconfig.h
+will work on any platform, though.<br /><br />
+
+If you are distributing a copy of the setup program along with your game,
+you may be able to get a dramatic size reduction by merging the setup code
+into your main program, so that only one copy of the Allegro routines will
+need to be linked. See setup.txt for details. In the DJGPP version, after
+compressing the executable, this will probably save you about 200k compared
+to having two separate programs for the setup and the game itself.
+
+
+
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,370,186</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.010142</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/miscellaneous/reducing-your-executable-size/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 00:58:36 GMT -->
+</html>

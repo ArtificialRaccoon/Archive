@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<!-- Mirrored from www.allegro.cc/manual/4/miscellaneous/debugging/trace by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:29:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>TRACE</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/global.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../theme/default/css/manual.css" />
+<link rel="stylesheet" type="text/css" media="screen, projection" href="../../../../css/user.css" />
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/prototype.js"></script>
+<script type="text/javascript" src="../../../../../djungxnpq2nug.cloudfront.net/js/general.js"></script>
+<script type="text/javascript" src="../../../../theme/default/js/global.js"></script>
+</head>
+<body>
+
+
+<div id="header">
+<a href="https://www.allegro.cc/"><img style="border: none;" src="../../../../theme/default/image/logo.png" alt="logo" width="293" height="56" width="293" height="56" border="0" /></a>
+</div>
+
+<div id="manual">
+<div id="sidebar">
+<h1><a href="https://www.allegro.cc/manual/4">Allegro Manual</a></h1>
+<h2><a href="index.html">Debugging</a></h2><ul>
+<li><a href="assert.html" style="font-weight: bold">ASSERT</a></li><li><strong>TRACE</strong></li><li><a href="register_assert_handler.html" >register_assert_handler</a></li><li><a href="register_trace_handler.html" >register_trace_handler</a></li><li><a href="al_assert.html" >al_assert</a></li><li><a href="al_trace.html" >al_trace</a></li></ul>
+</div>
+
+<div id="contents">
+<h1>TRACE</h1>
+
+<div class="shortdesc">
+Debugging helper macro to trace messages.
+</div>
+
+<h2>Description</h2>
+
+<div class="syntax">
+<span class="k1">void</span> <a href="../../index.html" target="_blank"><span class="a">TRACE</span></a><span class="k2">(</span><span class="k1">char</span> <span class="k3">*</span>msg, ...<span class="k2">)</span><span class="k2">;</span>
+</div>
+
+<div>
+Debugging helper macro. Normally compiles away to nothing, but if you
+   defined the preprocessor symbol DEBUGMODE before including Allegro headers,
+   it passes the supplied message given in ASCII format to al_trace().
+   Example:
+<pre class="code">      <span class="p">#define DEBUGMODE</span>
+      <span class="p">#include &lt;allegro.h&gt;</span>
+      ...
+      <span class="k1">void</span> my_blitter<span class="k2">(</span><a href="../../index.html" target="_blank"><span class="a">BITMAP</span></a> <span class="k3">*</span>source, <span class="k1">int</span> flags<span class="k2">)</span>
+      <span class="k2">{</span>
+	 <span class="k1">static</span> <span class="k1">int</span> count_call <span class="k3">=</span> <span class="n">0</span><span class="k2">;</span>
+	 <a href="../../index.html" target="_blank"><span class="a">TRACE</span></a><span class="k2">(</span><span class="s">"my_blitter() called %d times.\n"</span>, count_call<span class="k3">+</span><span class="k3">+</span><span class="k2">)</span><span class="k2">;</span>
+         ...
+      <span class="k2">}</span></pre>
+
+</div>
+
+<div class="xreflist"><span>See Also:</span> <ul>
+	<li><a href="../../index.html">al_trace</a></li>
+	<li><a href="../../index.html">ASSERT</a></li>
+	<li><a href="../../index.html">register_trace_handler</a></li>
+</ul>
+</div>
+
+<h2>Related Discussions</h2>
+<small>The following threads each have code containing this keyword:</small>
+<ul style="max-height: 20em; overflow: auto; position: relative;">
+	<li id="t-591447">
+		<a href="https://www.allegro.cc/forums/thread/591447">al_set_debug_file [submitting idea and code]</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/673120" style="color: black;">1</a> </span>
+	</li><li id="t-591243">
+		<a href="https://www.allegro.cc/forums/thread/591243">adding Multithreading pthread.h</a>
+		<span style="font-size: 90%; font-weight: bold; vertical-align: baseline; position: relative; bottom: 0.33em;"><a href="https://www.allegro.cc/forums/post/669783" style="color: black;">1</a> </span>
+	</li></ul>
+<small><b>Note:</b> You can click on the numbers to jump directly to the posts that reference this page.</small>
+
+<h2>Related Projects</h2>
+<small>The following projects include source code containing this keyword:</small>
+<ul style="max-ehgith: 20em; overflow: auto;">
+	<li id="p-0"> 
+		<a href="https://www.allegro.cc/depot/Akilah2006">Akilah! 2006</a>
+	</li><li id="p-1"> 
+		<a href="https://www.allegro.cc/depot/ChromaPlas">ChromaPlas</a>
+	</li><li id="p-2"> 
+		<a href="https://www.allegro.cc/depot/Dodger">Dodger</a>
+	</li><li id="p-3"> 
+		<a href="https://www.allegro.cc/depot/RebelsAndLords">Rebels And Lords</a>
+	</li><li id="p-4"> 
+		<a href="https://www.allegro.cc/depot/Unborn">Unborn</a>
+	</li><li id="p-5"> 
+		<a href="https://www.allegro.cc/depot/Wormlings">Wormlings</a>
+	</li><li id="p-6"> 
+		<a href="https://www.allegro.cc/depot/AllegroSpriteEditor">Allegro Sprite Editor</a>
+	</li><li id="p-7"> 
+		<a href="https://www.allegro.cc/depot/PeaceFighter">PeaceFighter</a>
+	</li><li id="p-8"> 
+		<a href="https://www.allegro.cc/depot/RedPixel2">Red Pixel 2</a>
+	</li><li id="p-9"> 
+		<a href="https://www.allegro.cc/depot/StarControlTimeWarp">Star Control: TimeWarp</a>
+	</li></ul>
+
+
+<br style="clear: left;" />
+
+</div>
+
+
+
+</div>
+<div id="footer"><div style="text-align: center; margin-top: 1em; font-size: 10px;">
+<div style="margin-bottom: 1em">
+	<a href="https://www.allegro.cc/site-index">Site Index</a> | <a href="https://www.allegro.cc/search">Search</a> | <a href="https://www.allegro.cc/">News</a> | <a href="https://www.allegro.cc/forums">Forums</a> | <a href="http://wiki.allegro.cc/">Wiki</a> | <a href="https://www.allegro.cc/members/online">Online Users</a> | <a href="https://www.allegro.cc/source/manual/page">View Source</a>
+</div>
+Copyright &copy;1999-2024, by <a href="https://www.allegro.cc/members/matthew.leverton/">Matthew Leverton</a><br /><br />
+You are visitor #<b>113,769,616</b> since January 1999.<br />
+This page has been viewed <b>4,371,100</b> times since March 2002.
+<br /><br /><font color="#999999">Page generated in <b>0.009271</b> seconds.</font></div>
+</div></body>
+
+<!-- Mirrored from www.allegro.cc/manual/4/miscellaneous/debugging/trace by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Aug 2024 01:30:12 GMT -->
+</html>

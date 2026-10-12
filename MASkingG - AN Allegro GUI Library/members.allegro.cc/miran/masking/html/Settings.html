@@ -1,0 +1,462 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<HTML>
+
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<HEAD>
+   <TITLE>class  MASKING_DLL_DECLSPEC Settings</TITLE>
+   <META NAME="GENERATOR" CONTENT="DOC++ 3.4.10">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<H2>class  MASKING_DLL_DECLSPEC <A HREF="#DOC.DOCU">Settings</A></H2></H2><BLOCKQUOTE> Stores all the settings and preferences for a MASkinG application.</BLOCKQUOTE>
+<HR>
+
+<DL>
+<P><DL>
+<DT><H3>Public Fields</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   char <B><A HREF="#DOC.95.1">skinPath</A></B>[1024]
+<DD><I> Path to the skin file the GUI should use</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   int <B><A HREF="#DOC.95.2">screenWidth</A></B>
+<DD><I> Screen or window width</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   int <B><A HREF="#DOC.95.3">screenHeight</A></B>
+<DD><I> Screen or window height</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   int <B><A HREF="#DOC.95.4">gfxMode</A></B>
+<DD><I> The gfx mode constant.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   bool <B><A HREF="#DOC.95.5">fullscreen</A></B>
+<DD><I> Should the GUI run in fullscreen or windowed?</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   int <B><A HREF="#DOC.95.6">colorDepth</A></B>
+<DD><I> The color depth in fullscreen mode.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   int <B><A HREF="#DOC.95.7">refreshRate</A></B>
+<DD><I> The requested monitor refresh rate in fullscreen mode.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   bool <B><A HREF="#DOC.95.8">useVideoMemory</A></B>
+<DD><I> Should we use hardware acceleration with video bitmaps?</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   bool <B><A HREF="#DOC.95.9">fullDrag</A></B>
+<DD><I> Show window contents while dragging?</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   bool <B><A HREF="#DOC.95.10">fullResize</A></B>
+<DD><I> Show window contents while resizing?</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   int <B><A HREF="#DOC.95.11">logicFrameRate</A></B>
+<DD><I> The frame rate of the GUI logic loop.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   bool <B><A HREF="#DOC.95.12">unlimitedFrameRate</A></B>
+<DD><I> Should the GUI redraw itself as fast as possible or should the redraw frame rate be clipped to the logic frame rate?</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   bool <B><A HREF="#DOC.95.13">showFrameRate</A></B>
+<DD><I> Should we display FPS?</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   bool <B><A HREF="#DOC.95.14">antialiasing</A></B>
+<DD><I> Use antialiasing for text output?</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   bool <B><A HREF="#DOC.95.15">guiSound</A></B>
+<DD><I> Enable/disable GUI sounds</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   int <B><A HREF="#DOC.95.16">soundVolume</A></B>
+<DD><I> Volume of the rollover sounds</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   int <B><A HREF="#DOC.95.17">soundDriver</A></B>
+<DD><I> The sound driver ID.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   int <B><A HREF="#DOC.95.18">midiDriver</A></B>
+<DD><I> The midi driver ID.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   bool <B><A HREF="#DOC.95.19">showMouse</A></B>
+<DD><I> Should the GUI use the mouse or not?</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   bool <B><A HREF="#DOC.95.20">mouseShadow</A></B>
+<DD><I> Should we render the mouse shadow or not?</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   int <B><A HREF="#DOC.95.21">doubleClickDelay</A></B>
+<DD><I> Double click delay in miliseconds</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   int <B><A HREF="#DOC.95.22">mouseSpeed</A></B>
+<DD><I> The speed at which the mouse cursor moves.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   bool <B><A HREF="#DOC.95.23">useKeyboard</A></B>
+<DD><I> Should the GUI handle keyboard input?</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   int <B><A HREF="#DOC.95.24">keyDelay</A></B>
+<DD><I> The keyboard delay in miliseconds.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   int <B><A HREF="#DOC.95.25">keyRepeat</A></B>
+<DD><I> The keyboard repeat rate.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   bool <B><A HREF="#DOC.95.26">useJoystick</A></B>
+<DD><I> Should the GUI use the joystick for simulating keybord input?</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   int <B><A HREF="#DOC.95.27">screenUpdateMethod</A></B>
+<DD><I> Which screen update driver to use?</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   bool <B><A HREF="#DOC.95.28">vsync</A></B>
+<DD><I> Should the driver wait for vsync or not?</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   bool <B><A HREF="#DOC.95.29">yield</A></B>
+<DD><I> Should the GUI yield timeslices when idle?</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   bool <B><A HREF="#DOC.95.30">runInBackground</A></B>
+<DD><I> Should the program keep running while tabbed away?</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   int <B><A HREF="#DOC.95.31">maxFrameSkip</A></B>
+<DD><I> Maximum number of logic frames that are processed before a frame is skipped if the computer is too slow to run the logic at the requested logic frame rate.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   int <B><A HREF="#DOC.95.32">tooltipDelay</A></B>
+<DD><I> The tooltip delay in miliseconds.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   int <B><A HREF="#DOC.95.33">tooltipAutohideDelay</A></B>
+<DD><I> The delay before a tooltip automatically hides itself</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   int <B><A HREF="#DOC.95.34">scrollingSpeed</A></B>
+<DD><I> The scrooling speed of the mouse wheel as number of items scrolled at a time</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   int <B><A HREF="#DOC.95.35">gfxFrameRate</A></B>
+<DD><I> Target graphics frame rate.</I>
+</DL></P>
+
+<P><DL>
+<DT><H3>Public Methods</H3><DD><DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   void <B><A HREF="#DOC.95.36">Load</A></B>(const char* fileName)
+<DD><I> Attempts to load the settings from the given config file.</I>
+<DT>
+<IMG ALT="[more]" BORDER=0 SRC=icon1.gif>static   void <B><A HREF="#DOC.95.37">Save</A></B>()
+<DD><I> Saves all the settings to the file from which they were read</I>
+</DL></P>
+
+</DL>
+
+<A NAME="DOC.DOCU"></A>
+<HR>
+<H2>Documentation</H2>
+<BLOCKQUOTE>
+Stores all the settings and preferences for a MASkinG application.
+It has functions for reading the values from an Allegro config file
+and writing them back. If settings can't be read from the given file, sensible
+default values are provided. All the data and methods are static so this acts
+more as a namespace for various preferences that would otherwise be global.</BLOCKQUOTE>
+<DL>
+
+<A NAME="skinPath"></A>
+<A NAME="DOC.95.1"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   char skinPath[1024]</B></TT>
+<DD>
+Path to the skin file the GUI should use
+<DL><DT><DD></DL><P>
+<A NAME="screenWidth"></A>
+<A NAME="DOC.95.2"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   int screenWidth</B></TT>
+<DD>
+Screen or window width
+<DL><DT><DD></DL><P>
+<A NAME="screenHeight"></A>
+<A NAME="DOC.95.3"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   int screenHeight</B></TT>
+<DD>
+Screen or window height
+<DL><DT><DD></DL><P>
+<A NAME="gfxMode"></A>
+<A NAME="DOC.95.4"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   int gfxMode</B></TT>
+<DD>
+The gfx mode constant.
+This is platform dependant. You should see the allegro.cfg file in the
+Allegro root directory for a list of all available constants for each
+platform. Normally this should be one of the GFX_AUTODETECT constants.
+In that case the fullscreen variable (see below) is used to determine
+whether GFX_AUTODETECT_FULLSCREEN or GFX_AUTODETECT_WINDOWED should be
+used. In any other case this setting overrides the <I>fullscreen</I> flag.
+The default it GFX_AUTODETECT.
+<DL><DT><DD></DL><P>
+<A NAME="fullscreen"></A>
+<A NAME="DOC.95.5"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   bool fullscreen</B></TT>
+<DD>
+Should the GUI run in fullscreen or windowed?
+Set to true if the program should run in fullscreen, to false otherwise.
+This only has effect when <I>gfxMode</I> is set to anything other than
+one of the GFX_AUTODETECT constants, otherwise it is ignored.
+<DL><DT><DD></DL><P>
+<A NAME="colorDepth"></A>
+<A NAME="DOC.95.6"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   int colorDepth</B></TT>
+<DD>
+The color depth in fullscreen mode.
+In windowed modes the desktop color depth is used instead.
+<DL><DT><DD></DL><P>
+<A NAME="refreshRate"></A>
+<A NAME="DOC.95.7"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   int refreshRate</B></TT>
+<DD>
+The requested monitor refresh rate in fullscreen mode.
+Actual refresh rate depends on the current platform and hardware.
+<DL><DT><DD></DL><P>
+<A NAME="useVideoMemory"></A>
+<A NAME="DOC.95.8"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   bool useVideoMemory</B></TT>
+<DD>
+Should we use hardware acceleration with video bitmaps?
+Set to true if you want the GUI to use video memory for holding skin
+data and the screen buffers. This can improve performance significantly
+in some configurations but doesn't always seem to work for some reason.
+
+<P>Note: this is currently disabled!
+<DL><DT><DD></DL><P>
+<A NAME="fullDrag"></A>
+<A NAME="DOC.95.9"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   bool fullDrag</B></TT>
+<DD>
+Show window contents while dragging?
+
+<P>Note: not currently implemented.
+<DL><DT><DD></DL><P>
+<A NAME="fullResize"></A>
+<A NAME="DOC.95.10"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   bool fullResize</B></TT>
+<DD>
+Show window contents while resizing?
+
+<P>Note: not currently implemented.
+<DL><DT><DD></DL><P>
+<A NAME="logicFrameRate"></A>
+<A NAME="DOC.95.11"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   int logicFrameRate</B></TT>
+<DD>
+The frame rate of the GUI logic loop.
+The default is 50 and should do in most cases.
+<DL><DT><DD></DL><P>
+<A NAME="unlimitedFrameRate"></A>
+<A NAME="DOC.95.12"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   bool unlimitedFrameRate</B></TT>
+<DD>
+Should the GUI redraw itself as fast as possible
+or should the redraw frame rate be clipped to the logic frame rate?
+Setting this to true may yield smoother animation on slower computers
+but can hog 100% of the CPU power.
+<DL><DT><DD></DL><P>
+<A NAME="showFrameRate"></A>
+<A NAME="DOC.95.13"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   bool showFrameRate</B></TT>
+<DD>
+Should we display FPS?
+Note that this currently has no meaning to the core of the GUI as the
+GUI itself doesn't print FPS in any way. This can be used by the user
+though to determine whether the fps should be displayed or not.
+<DL><DT><DD></DL><P>
+<A NAME="antialiasing"></A>
+<A NAME="DOC.95.14"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   bool antialiasing</B></TT>
+<DD>
+Use antialiasing for text output?
+Antialiased text looks a lot better than normal text but is also somewhat
+slower especially when drawing to video memory.
+<DL><DT><DD></DL><P>
+<A NAME="guiSound"></A>
+<A NAME="DOC.95.15"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   bool guiSound</B></TT>
+<DD>
+Enable/disable GUI sounds
+<DL><DT><DD></DL><P>
+<A NAME="soundVolume"></A>
+<A NAME="DOC.95.16"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   int soundVolume</B></TT>
+<DD>
+Volume of the rollover sounds
+<DL><DT><DD></DL><P>
+<A NAME="soundDriver"></A>
+<A NAME="DOC.95.17"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   int soundDriver</B></TT>
+<DD>
+The sound driver ID.
+See allegro.cfg in the Allegro direcotry for a list of all possible drivers
+on each platform. Default is DIGI_AUTODETECT.
+<DL><DT><DD></DL><P>
+<A NAME="midiDriver"></A>
+<A NAME="DOC.95.18"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   int midiDriver</B></TT>
+<DD>
+The midi driver ID.
+See allegro.cfg in the Allegro direcotry for a list of all possible drivers
+on each platform. Default is MIDI_AUTODETECT.
+<DL><DT><DD></DL><P>
+<A NAME="showMouse"></A>
+<A NAME="DOC.95.19"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   bool showMouse</B></TT>
+<DD>
+Should the GUI use the mouse or not?
+This doesn't just hide the mouse cursor but disables mouse tracking comepletely.
+But the Allegro mouse module is still installed even if showMouse is false, this
+setting enables you to dynamically turn the mouse on and off during the execution
+of the program.
+<DL><DT><DD></DL><P>
+<A NAME="mouseShadow"></A>
+<A NAME="DOC.95.20"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   bool mouseShadow</B></TT>
+<DD>
+Should we render the mouse shadow or not?
+Generating mouse shadow can take quite a lot of time especially if you use large
+animated cursors (several seconds on slower systems) and drawing them is quite
+slow too, especially on video memory. Mouse shadow are automatically disabled
+in 8 bpp mode.
+<DL><DT><DD></DL><P>
+<A NAME="doubleClickDelay"></A>
+<A NAME="DOC.95.21"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   int doubleClickDelay</B></TT>
+<DD>
+Double click delay in miliseconds
+<DL><DT><DD></DL><P>
+<A NAME="mouseSpeed"></A>
+<A NAME="DOC.95.22"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   int mouseSpeed</B></TT>
+<DD>
+The speed at which the mouse cursor moves.
+Higher values make the cursor move slower. Default is 2.
+
+<P>Note: only seems to work on some platforms.
+<DL><DT><DD></DL><P>
+<A NAME="useKeyboard"></A>
+<A NAME="DOC.95.23"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   bool useKeyboard</B></TT>
+<DD>
+Should the GUI handle keyboard input?
+If turned off joystick input will be turned off too as it is simulated as
+keyboard input.
+<DL><DT><DD></DL><P>
+<A NAME="keyDelay"></A>
+<A NAME="DOC.95.24"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   int keyDelay</B></TT>
+<DD>
+The keyboard delay in miliseconds.
+If set to -1, keyboard delay will not be altered and whatever is the default
+on the currecnt platform will be used.
+<DL><DT><DD></DL><P>
+<A NAME="keyRepeat"></A>
+<A NAME="DOC.95.25"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   int keyRepeat</B></TT>
+<DD>
+The keyboard repeat rate.
+If set to -1, keyboard repeat will not be altered and whatever is the default
+on the currecnt platform will be used.
+<DL><DT><DD></DL><P>
+<A NAME="useJoystick"></A>
+<A NAME="DOC.95.26"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   bool useJoystick</B></TT>
+<DD>
+Should the GUI use the joystick for simulating keybord input?
+<DL><DT><DD></DL><P>
+<A NAME="screenUpdateMethod"></A>
+<A NAME="DOC.95.27"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   int screenUpdateMethod</B></TT>
+<DD>
+Which screen update driver to use?
+Possible options are:
+<PRE>
+      0 - double buffering
+      1 - page flipping
+      2 - triple buffering
+      3 - dirty rectangles system (DRS)
+</PRE>
+<DL><DT><DD></DL><P>
+<A NAME="vsync"></A>
+<A NAME="DOC.95.28"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   bool vsync</B></TT>
+<DD>
+Should the driver wait for vsync or not?
+This only applies to the double buffering driver.
+<DL><DT><DD></DL><P>
+<A NAME="yield"></A>
+<A NAME="DOC.95.29"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   bool yield</B></TT>
+<DD>
+Should the GUI yield timeslices when idle?
+This significantly reduces the CPU usage but also reduces the performance a
+bit. Set to true for normal applications that run in a window and when running
+on a laptop and set to false for games that run in fullscreen and require all
+the CPU power they can get.
+<DL><DT><DD></DL><P>
+<A NAME="runInBackground"></A>
+<A NAME="DOC.95.30"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   bool runInBackground</B></TT>
+<DD>
+Should the program keep running while tabbed away?
+If true the program will try to continue to run even when tabbed away. This is
+done by passing SWITCH_BACKGROUND to set_display_switch_mode() after the
+graphics mode is set. Note that this setting doesn't take effect immediately,
+only when the graphics mode is changed (i.e. when calling InstallMAskinG()  or
+ChangeResolution()). The default is true.
+<DL><DT><DD></DL><P>
+<A NAME="maxFrameSkip"></A>
+<A NAME="DOC.95.31"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   int maxFrameSkip</B></TT>
+<DD>
+Maximum number of logic frames that are processed before a frame is skipped
+if the computer is too slow to run the logic at the requested logic frame rate.
+This is extremely rare as modern CPUs are easily powerfull enough to process even
+the most demanding logic at a very high frame rate and the rendering will be the
+bottleneck but if you run a program with very complex logic on a very slow CPU,
+this variable will make sure that even though all the logic won't be processed at
+the desired frame rate (i.e. time will appear to be stretched and the physics
+won't be accurate), the program will at least run. The value of this variable
+determines how fast frames will be skipped. The lower this value, the smoother
+will the program run as more frames will be skipped. Make this value higher and
+the program will skip less frames but will be choppier on slow CPUs. The optimal
+values are probably around 5-10. The default is 5.
+<DL><DT><DD></DL><P>
+<A NAME="tooltipDelay"></A>
+<A NAME="DOC.95.32"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   int tooltipDelay</B></TT>
+<DD>
+The tooltip delay in miliseconds.
+This is the time the mouse has to be completely still before a tooltip help bubble
+is shown. The default is 200.
+<DL><DT><DD></DL><P>
+<A NAME="tooltipAutohideDelay"></A>
+<A NAME="DOC.95.33"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   int tooltipAutohideDelay</B></TT>
+<DD>
+The delay before a tooltip automatically hides itself
+<DL><DT><DD></DL><P>
+<A NAME="scrollingSpeed"></A>
+<A NAME="DOC.95.34"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   int scrollingSpeed</B></TT>
+<DD>
+The scrooling speed of the mouse wheel as number of items scrolled at a time
+<DL><DT><DD></DL><P>
+<A NAME="gfxFrameRate"></A>
+<A NAME="DOC.95.35"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   int gfxFrameRate</B></TT>
+<DD>
+Target graphics frame rate. If unlimitedFrameRate is set to false, the screen will
+be updated no faster as this setting defines, otherwise it has no effect.
+<DL><DT><DD></DL><P>
+<A NAME="Load"></A>
+<A NAME="DOC.95.36"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   void Load(const char* fileName)</B></TT>
+<DD>
+Attempts to load the settings from the given config file.
+If a value can't be read, the default is used.
+<DL><DT><DD></DL><P>
+<A NAME="Save"></A>
+<A NAME="DOC.95.37"></A>
+<DT><IMG ALT="o" BORDER=0 SRC=icon2.gif><TT><B>static   void Save()</B></TT>
+<DD>
+Saves all the settings to the file from which they were read
+<DL><DT><DD></DL><P></DL>
+
+<HR><DL><DT><B>This class has no child classes.</B></DL>
+
+<DL><DT><DD></DL><P><P><I><A HREF="index.html">Alphabetic index</A></I> <I><A HREF="HIER.html">Hierarchy of classes</A></I></P><HR>
+<html><body>
+<a href="../index.html">Back to front page</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+page generated with <a href="http://docpp.sourceforge.net/">DOC++</a>
+</body>
+<!-- Mirrored from members.allegro.cc/miran/masking/html/Settings.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 01:40:13 GMT -->
+</html>
