@@ -1,0 +1,1 @@
+Just an archive of Allegro documentation, VGA Programming articles, etc.  All of these are available online; I was just worried about the Allegro documentation due to the current state of allegro.cc.  Raise an issue if you think there is a set of documentation you think I should include here.
