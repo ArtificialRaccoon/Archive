@@ -1,0 +1,1710 @@
+
+<html>
+<head>
+<link rel="stylesheet" href="../../static/articles/articles-1.css" type="text/css" />
+
+
+<title>More cool things to do with your pals sin &amp; cos. </title>
+</head>
+<body>
+
+<div id="sticky_wrap">
+<div id="sticky_inside">
+
+<div style="float: right;">Follow me on twitter! <a href="https://twitter.com/mpvaniersel">@mpvaniersel</a></div><div style="clear: both;"></div>
+</div>
+</div>
+
+
+<h1>More cool things to do with your pals 
+sin &amp; cos. </h1>  
+
+<h2>contents</h2>  
+
+<ul> 
+<li><a href="#introduction">introduction</a></li> 
+<li><a href="#cylinder">cylindrical mapping</a></li> 
+<li><a href="#sphere">spherical mapping</a></li> 
+<li><a href="#rotation">a rotating sphere</a></li> 
+<li><a href="#lighting">lighting</a></li> 
+<li><a href="#daynight">day and night</a></li> 
+</ul> <a name="introduction">  
+
+<h2>Introduction</h2>   
+
+<p> Hi, I'm 
+back. Thanks for all the positive comments on my previous 
+article. I really wanted to write some more but I didn't 
+really know what about. But a while ago some talking started 
+on the forums about mapped spheres and this got me excited 
+and in just a couple of hours I whipped up some example 
+programs. Now all I needed to do was write an article. </p> 
+ 
+
+<p> This stuff is going to be a bit more advanced than last 
+time, so if you feel uncomfortable with trigoniometry it 
+might be useful to read my 
+<a href="http://www.pixelate.co.za/issues/5/5/sincos.html">
+previous article in issue 5</a> again, because it covers all the 
+basics. In fact, this article doesn't cover any new theory 
+at all. All of the stuff that is covered in here is also 
+covered in the first lesson, only we are going to put it 
+together in a different way and do something different with 
+it. </p>   
+
+<p> This time there are 6 tested, fully working 
+code examples with this article. You can download them all 
+<a href="../../static/articles/sphere/sphere_examples.zip">here</a>, together with a 
+makefile. Simply unzip them and type "make", it should work. 
+</p>   
+
+<p> So we want to do a mapped sphere. That's really 
+simple. All we need to do is to go through each point of the 
+screen and apply the mathematical formula p = arcsin (-y/r) 
+and q = arcsin (x / (cos (p)*r)) to get the coordinates on 
+the sphere. Of course I don't have to explain how this 
+formula is derived. What is that, I do have to? Guess you 
+didn't read my first article... </p>   
+
+<p> On second 
+thought, I have to slow down a bit here. Let's start by 
+talking about mapping. Not spherical mapping, but mapping in 
+general. I can think of different kinds of mapping, like 
+cylindrical mapping. Or mapping a texture to a three 
+dimensional polygon. In all these cases we want to map a 
+flat, rectangular bitmap to something which is not flat and 
+rectangular. The reason to do this is that if something is 
+flat and rectangular it is also a bit boring. To make it 
+look cooler, we can bend and curve it until it is anything 
+but flat and rectangular. </p>   
+
+<p> Some examples of games 
+that use mapped spheres: Star control 2, xcom (the sphere is 
+actually made up of polygons but the lighting effect is the 
+same as described below). A mapped sphere would do well in 
+any space simulation program. Mapped cylinders are a bit 
+rarer: Mickey Mania makes clever use of it in the tower 
+level and in the Moose pursuit level, and the intro scene of 
+Donkey Kong Country 3 has one (you can tell I'm a nintendo 
+fan, can you?) </p>   
+
+<p> What are we mapping with? We have 
+a destination bitmap (the screen, the bitmap on which the 
+sphere should go) and the source bitmap (the thing that 
+should be mapped onto the sphere). If the source bitmap were 
+a map of the earth, we would make a sphere that looks 
+exactly like the earth seen from space. In between we have 
+to do some transformation and there is where the sine and 
+cosine come in to play. </p>   
+
+<p> Just as with mode 7 and 
+with rotated sprites we have to start with the destination, 
+not the source. We go through all pixels of the destination 
+bitmap and try to figure out which pixel of the source 
+bitmap should go there. This approach has two advantages: we 
+won't skip any pixels, and we won't draw any double pixels. 
+</p>   
+
+<p> But the difficult part is the figuring out part. 
+What we need here is a basic formula that gives us the 
+coordinates (p, q) on the source bitmap given the 
+coordinates (x, y) on the destination bitmap. This formula 
+however, is such a mysterious and complex beast that it 
+takes a 65 page scientific article to write down even a 
+simplified form. So that is completely outside of the 
+coverage of this article. Oh no wait, I remember, I wrote it 
+down a couple of paragraphs ago. Now I only have to explain 
+how it is derived. </p> <a name="cylinder">  
+
+<h2>Cylindrical 
+mapping</h2>  
+
+<p> You know what, let's make it a bit 
+simpler. Let's start with a cylinder instead of a sphere. A 
+cylinder is round too, just a bit less round than a sphere 
+and therefore also a bit simpler. You see, the more things 
+look like a rectangle, the easier they are. A cylinder is 
+halfway between a sphere and a rectangle. </p>   
+
+<p> Let's 
+define coordinates. Take a look at fig 1. We are going to 
+make a cylinder in the way we did it in kindergarten. We 
+take a nice flat piece of paper (the source bitmap) and roll 
+it up. We can stick the ends together with a bit of sticky 
+tape. The bitmap wraps around so that the topright pixel of 
+the source bitmap is right next to the topleft pixel. If the 
+bitmap was 360 pixels wide the horizontal coordinate (p) 
+would be the angle between a point, the 0 point and the axis 
+of the cylinder. The coordinate q is symply the vertical 
+position on the cylinder, 0 being the top. </p>   <img 
+src="../../static/articles/sphere/fig1.gif">  
+
+<p><i><center>figure 1. Here you see the 
+coordinate system (x, y) used to describe the target bitmap 
+and (p,q) for the source bitmap.</center></i></p>   
+
+<p> 
+Suppose we wanted to go from source to destination (like 
+normal people would do). We want to know for each position 
+(p, q) on the cylinder where on the screen it should go. How 
+would we do that? coordinate y is simple. It simply equals 
+q. No problems there. x is more difficult. If the angle p is 
+0, the x coordinate should be the center of the cylinder 
+plus the radius. If p is 90 degrees, the x coordinate should 
+be in the center. If p is 180, it should be the center minus 
+the radius. The function which does exactly that is: the 
+cosine! </p>   
+
+<p> So:<br>
+  
+<code> x = center + radius * cos 
+(p)<br>
+  y = q </code> </p>   
+
+<p> We are still missing the z 
+coordinate here. A cylinder is a three-dimensional object so 
+we can also calculate the z coordinate for each point. The z 
+axis is perpendicular to the screen. When we are going to 
+display the cylinder, we just throw away the z axis. After 
+all bitmaps are 2 dimensional so we don't need the third 
+axis. Note that this is parallel projection, meaning that 
+things don't get smaller if they are farther away. In other 
+words there is no perspective. </p>   
+
+<p> I'll give the 
+formula for the z coordinate anyways. It might come in 
+usefull if we are going to do lighting and rotation and so 
+on. </p>   
+
+<p> 
+<code> x = center + radius * cos (p)<br>
+  y = 
+q<br>
+  z = center + radius * sin (p) </code> </p>   
+
+<p> You 
+see, if we change p, x and z together describe a complete 
+circle. </p>  <img src="../../static/articles/sphere/fig2.gif">  
+
+<p><i><center>figure 2. 
+Here you see how p describes a circle in the x,z 
+surface.</center></i></p>   
+
+<p> With these functions we can 
+calculate the x, y and z of any point on the cylinder. But 
+since we want to work from the destination out, we already 
+know the x and the y! We have to turn these formula's 
+around, like this: </p>   
+
+<p> 
+<code> q = y<br>
+  cos (p) = 
+(center - x) / radius </code> </p>   
+
+<p> We're a bit stuck 
+with the formula for p. How to get rid of the cos(p)? There 
+is a function which does the inverse of the cosine. This is 
+called the arccosine. So our formula's become: </p>   
+
+<p> 
+
+<code> q = y<br>
+  p = arccos ((center - x) / radius) </code> 
+</p>   
+
+<p> There you are! As you see we don't know the z 
+coordinate, but we don't need to know it in order to 
+calculate p and q. </p>   
+
+<p>  
+
+<ul> 
+<li>go through each 
+point x, y</li> 
+<li>calculate q using y</li> 
+<li>calculate p 
+using x</li> 
+<li>look up the pixel at p,q on the source 
+bitmap and put it at x,y on destination bitmap.</li> 
+</ul> 
+</p>   
+
+<p> All we need now is a code example. </p>   
+
+<p> 
+
+<code> /*<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;mapped_cylinder() 
+maps a bitmap onto a cylinder.<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;BITMAP 
+*target = bitmap to display<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;int 
+cx = horizontal position of the center of the cylinder<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;int top = position of the top of the 
+cylinder<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;int r = radius of the 
+cylinder<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;int h = height of the 
+cylinder<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;BITMAP *map = the 
+thing that is going to be mapped onto the cylinder<br>
+ 
+*/<br>
+  void mapped_cylinder (BITMAP *target, int cx, int 
+top, int r, int h, BITMAP *map)<br>
+ 
+{&nbsp;&nbsp;&nbsp;&nbsp; <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;int 
+x, y; // coordinates on the target bitmap <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;int p, q; // coordinates on the 
+source bitmap<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;// for each line:<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;for (y = 0; y < h; y++)<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//q is the 
+same throughout this line. we can calculate it already<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//y has a 
+range from 0..h, and we have to change that into a<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//range from 
+0..map->h<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//so we use 
+this expression:<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q = y * map-
+>h / h;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// for each 
+pixel in the line:<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (x = -
+r; x < r; x++)<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fixed temp; 
+// a temporary variable we use for calculating p<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// right 
+now, x is between -r and r.<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// x must be 
+between 1 and -1 before we can use asin<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// so 
+therefor we divide by r<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp = 
+itofix(x) / r; <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// now we 
+can use the asin() function<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp = 
+fixasin (temp);<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// the 
+result is an angle between -64 and 
+64.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// the next 
+expression changes that to angle between 0..64 and 
+192..255,<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// which is 
+equivalent, because 192 == -64,<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// but 
+postive integers are a bit easier to deal with<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp &= 
+0xFFFFFF;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// the 
+actual p has to cover the whole bitmap <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// so we go 
+from 0..256 to 0..bmp->w<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p = fixtoi 
+(temp) * (map->w-1) / 256;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// now we 
+know p and q. copy a pixel.<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;putpixel 
+(target, x + cx, top + y,<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; getpixel (map, p, q)<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; );<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+  }<br>
+  </code> </p> <img 
+src="../../static/articles/sphere/ss1.gif">  
+
+<p><i><center>figure 3. Output of 
+sphere1.c</center></i></p>    
+
+<p> maybe this line: </p>  
+
+<p> 
+
+<code> q = y * map->h / h; </code> </p>  
+
+<p> puzzles you. 
+You see, I said before, q is equal to y (q = y). This is not 
+exactly true if the target bitmap is not the same size as 
+the source bitmap. Of course we have to take that into 
+account. </p>  
+
+<p> A simple trick to do that is to look at 
+the range of values that you have. We want y to cover the 
+whole vertical range of the cylinder. So y ranges from 0 to 
+h (h is the height of the cylinder). Also, we want q to 
+cover the entire source bitmap. So q ranges from 0 to map->h 
+(the height of the source bitmap). So: </p>  
+
+<p>
+<code>y -> 
+0..h<br>
+ q -> 0..map->h</br></code></p>  
+
+<p>Now the question 
+is: we know y, how to calculate q?</p>  
+
+<p> if we divide y 
+by h, y ranges from 0..1. This is useful because now we can 
+multiply by map->h, and the range is from 0..map->h </p> 
+
+
+<p>
+<code> float temp = y; // temp ranges from 0..h<br>
+ 
+float temp = temp / h; // temp now ranges from 0..1<br>
+  q = 
+temp * map->h // q; ranges from 0..map->h<br>
+  </code> </p> 
+
+
+<p>But if you are using ints, remember to do the 
+multiplication before the division, because then we will 
+have less problems with rounding errors. And note: this 
+trick is also useful if you want to go from degrees to 
+radians.</p>  
+
+<p>
+<code> float degrees = 120; // degrees can 
+range from 0..360<br>
+  float temp = degrees / 360; // temp 
+ranges from 0..1<br>
+  float radians = temp * 2 * PI; // 
+radians ranges from 0..2 * PI<br>
+  fixed allegro_degrees = 
+temp * 256; // allegro_degrees ranges from 0..256 
+</code></p> <a name="sphere">  
+
+<h2>Spherical mapping</h2> 
+
+
+<p> Ok, now on to a sphere. </p>   
+
+<p> Again we'll use p and 
+q to for the coordinates on our source bitmap. We are going 
+to use the same coordinate system that is used for the 
+ultimate sphere, the earth itself. q is the latitude. 0 at 
+the equator, -90 degrees at the north pole and 90 degrees at 
+the south pole. p is the longitude. 0 degrees in London, 150 
+degrees in Sydney and 220 degrees in Los Angeles. You see 
+that the source bitmap will be a bit stretched at the top 
+and the bottom. There is nothing to be done about that. </p> 
+<img src="../../static/articles/sphere/fig3.gif">  
+
+<p><i><center>figure 4. Here you see 
+how the source bitmap is mapped onto the 
+sphere.</center></i></p>   
+
+<p> How do we go from x,y to p,q? 
+Again we'll do it the sane way first and go from p,q to x, 
+y. And let's not forget z this time. x and z kind of rotate 
+with p again, so let's start from this: </p>   
+
+<p> 
+<code> x 
+= center + radius * cos (p)<br>
+  y = q<br>
+  z = center + 
+radius * sin (p) </code> </p>   
+
+<p> Well, it's obviously not 
+correct, because now we get a cylinder again. The y 
+coordinate should also have some sine in it, because it 
+reaches its maximum when q is 90, and when q is over 90 it 
+should go back again. </p>   
+
+<p> 
+<code> x = center + radius 
+* cos (p)<br>
+  y = center + radius * sin (q)<br>
+  z = center 
++ radius * sin (p) </code> </p>   
+
+<p> Well this gives us 
+some kind of 2-way cylinder. The problem is that the circles 
+that x and z form are smaller and smaller if q goes to 90 or 
+-90. Only if q is 0, x and z are just right. Actually we 
+need to scale x and z down a bit. </p> <img src="../../static/articles/sphere/fig4.gif"> 
+
+
+<p><i><center>figure 5. Here you see how p describes a 
+circle in the x,z surface, and how the circles get smaller 
+as q goes more and more towards the poles of the 
+sphere.</center></i></p>   
+
+<p> 
+<code> x = center + radius * 
+cos (p) * scale_factor<br>
+  y = center + radius * sin 
+(q)<br>
+  z = center + radius * sin (p) * scale_factor 
+</code> </p>   
+
+<p> The scale factor should be 0 when q is 90 
+or -90, and 1 when q is 0. </p>   
+
+<p> 
+<code> x = center + 
+radius * cos (p) * cos(q)<br>
+  y = center + radius * sin 
+(q)<br>
+  z = center + radius * sin (p) * cos(q) </code> </p> 
+  
+
+<p> Voilá </p>   
+
+<p> Now inverting these formulae: </p> 
+
+
+<p> 
+<code> sin (q) = ((center - y) / radius)<br>
+  q = arcsin 
+((center - y) / radius) </code> </p>   
+
+<p> that's the 
+easiest one. Now we can calculate q, we can move on to p. 
+</p>   
+
+<p> 
+<code> cos (p) = ((center - x) / (radius * 
+cos(q))<br>
+  p = arccos ((center - x) / (radius * cos(q)) 
+</code> </p>   
+
+<p> If we calculate q first, we can calculate 
+p too with this formula. As you see, again we don't need to 
+know z in order to calculate p and q. </p>   
+
+<p> So the plan 
+is to:  
+
+<ul>  
+<li>go through each point x, y</li> 
+
+<li>calculate q using y</li> 
+<li>calculate p using q and 
+x</li> 
+<li>look up the pixel at p,q on the source bitmap and 
+put it at x,y on destination bitmap.</li> 
+</ul> </p>   
+
+<p> 
+Let's bring these formula's to practice in an example: </p> 
+ 
+
+<p> 
+<code> /*<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;mapped_sphere() 
+maps a bitmap onto a sphere and displays it.<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;BITMAP 
+*target = bitmap to display onto<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;int cx, cy = center of the 
+sphere<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;int r = radius of the 
+sphere<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;BITMAP *map = bitmap to 
+map onto the sphere<br>
+  */<br>
+  void mapped_sphere (BITMAP 
+*target, int cx, int cy, int r, BITMAP *map)<br>
+  {<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;int x, y; // coordinates on the 
+target bitmap <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;int p, q; // 
+coordinates on the source bitmap<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;// for 
+each line<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;for (y = -r; y < r; 
+y++)<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fixed 
+temp_p, temp_q;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fixed 
+q_cos;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// y ranges 
+from -r to r now. <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// for 
+asin() we need a number between -1 and 1.<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// therefor 
+we need to divide by r<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp_q = 
+itofix (y) / r;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// now we 
+can apply the formula<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp_q = 
+fixasin 
+(temp_q);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br 
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// we 
+store the cosine of temp_q, because we will need it a couple 
+of times<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// later 
+on<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q_cos = 
+fixcos (temp_q) * r;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//we can 
+calculate q already<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//temp_q is 
+an angle ranging from -64 to 64<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//q must 
+range from 0 to map->h<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//so we use 
+the following expression:<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q = fixtoi 
+(temp_q + itofix (64)) * (map->h-1) / 128;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// instead 
+of making x go from -r to +r, <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// we skip 
+the parts in the corners that lay outside the sphere<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (x = -
+fixtoi (q_cos) + 1; x < fixtoi(q_cos) - 1; x++)<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; // at the very top of the sphere, q_cos can 
+reach 0<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; // this can create a "division by zero" 
+error<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; // so we need to check that first<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; if (q_cos != 0)<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // if not zero, we can 
+go ahead and apply the formula<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // to calculate p<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; temp_p = fixasin 
+(fixdiv (itofix (x), q_cos));<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; else<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; temp_p = 0;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; //temp_p ranges from -64 to 64 now<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; //again, we change that so we only have 
+positive numbers<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; temp_p &= 0xFFFFFF;<br>
+  <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; // now we can finally calculate p<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; // we change a range from 0..64 - 192..255 
+to<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; // a range from 0..map->w<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; p = fixtoi (temp_p) * (map->w-1) / 256;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; // we know p and q. copy a pixel.<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; putpixel (target, x + cx, y + cy,<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; getpixel (map, p, 
+q));<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+  }<br>
+  </code> </p>  <img 
+src="../../static/articles/sphere/ss2.gif">  
+
+<p><i><center>figure 6. Output of 
+sphere2.c</center></i></p>   
+
+<p> Looks nifty, huh? No? Ok we 
+can do better. Let's make the thing rotate. Not just simply 
+rotate around one axis as the earth does, that's too easy. 
+No we want to have full 3- dimensional rotation, so we can 
+view the earth from any possible camera position. </p> <a name="rotation">  
+
+<h2>A rotating sphere</h2>  
+
+<p> I 
+explained 2-dimensional rotation in my previous article, 
+remember? Now we are going to do exactly the same thing for 
+three dimensions. If we rotate with a degrees around the z 
+axis, we get: </p>   
+
+<p> 
+<code> new_x = x * cos (angle) - y 
+* sin (angle)<br>
+  new_y = x * sin (angle) + y * cos 
+(angle)<br>
+  new_z = z </code> </p>   
+
+<p> well, that's just 
+exactly the same as we did before. The formula's for 
+rotating around the x and y axes is the almost the same, 
+you'll get the idea. We don't really need them either, 
+because allegro has all these things built in. Isn't that 
+just great? You really gotta love allegro. </p>   
+
+<p> Ok so 
+let's get over this again. We have a point (x, y, z) in 
+space, and we want to rotate that around the z-axis with a 
+degrees. The new x, y and z can be calculated with the 
+formula I just gave you, but to do it the allegro way, we'll 
+use this piece of code. </p>   
+
+<p> 
+<code> MATRIX m;<br>
+ 
+fixed a, x, y, z, new_x, new_y, new_z;<br>
+ 
+get_z_rotate_matrix (&m, a);<br>
+  apply_matrix (&m, x, y, z, 
+&new_x, &new_y, &new_z); </code> </p>   
+
+<p> There you have 
+it. Exactly the same thing, but without having to remember 
+any formula's. To rotate around three axes at the same time, 
+we can do it this way: </p>   
+
+<p> 
+<code> get_rotation_matrix 
+(&m, a, b, c);<br>
+  apply_matrix (&m, x, y, z, &new_x, 
+&new_y, &new_z); </code> </p>   
+
+<p> Where a, b and c are the 
+rotation angles around the x, y and z axis respectively. 
+</p>   
+
+<p> As you see we really need the z coordinate this 
+time. A sphere really is 3-dimensional and in order to 
+rotate in 3 dimensions, we really need to know the 
+coordinates in all 3 dimensions. </p>   
+
+<p> So first, how to 
+calculate the z coordinate? Remember the magic property of 
+circles that we used to draw one in the previous article? 
+Each point on a circle has exactly the same distance to the 
+center. We calculate distance with pythagoras theorem, so: 
+</p>   
+
+<p> 
+<code> x^2 + y^2 = radius^2 </code> </p>   
+
+<p> 
+The same goes for a sphere, but in three dimensions. Each 
+point on a sphere has exactly the same distance to the 
+center. We get: </p>   
+
+<p> 
+<code> x^2 + y^2 + z^2 = radius^2 
+</code> </p>   
+
+<p> Remember that we know x and y, because 
+that are the coordinates on the destination bitmap. We also 
+know the radius, so we can use this formula to calculate z. 
+</p>   
+
+<p> 
+<code> z^2 = radius^2 - x^2 - y^2<br>
+  z = 
+sqrt(radius^2 - x^2 - y^2) </code> </p>   
+
+<p> So the plan is 
+to:  
+
+<ul> 
+<li>go through each point x, y</li> 
+<li>calculate 
+z</li> 
+<li>rotate x, y and z to get the new x, y, z.</li> 
+
+<li>throw away the new z</li> 
+<li>use the new x and the new 
+y to calculate p and q</li> 
+<li>look up the pixel at p,q on 
+the source bitmap and put it at x,y on destination 
+bitmap.</li> 
+</ul> </p>   
+
+<p> Let's do some code. </p>   
+
+<p> 
+
+<code> /*<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;get_mapped_sphere_ex() is similar to 
+get_mapped_sphere(), but also takes<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;a rotation matrix as argument to 
+draw a rotated sphere.<br>
+  <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;BITMAP *target = bitmap to display 
+onto<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;int cx, cy = center of the 
+sphere<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;int r = radius of the 
+sphere<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;BITMAP *map = bitmap to 
+map onto the sphere<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;MATRIX 
+*rotmat = rotation matrix<br>
+  */<br>
+  void mapped_sphere_ex 
+(BITMAP *target, int cx, int cy, int r, BITMAP *map,<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;MATRIX *rotmat)<br>
+  {<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;int x, y; // coordinates on the 
+target bitmap<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;int p, q; // 
+coordinates on the source bitmap&nbsp;&nbsp;&nbsp;&nbsp;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;for (y = -r; y < r; y++)<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fixed q_cos 
+= fixcos (- fixasin (itofix (y) / r)) * r;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (x = -
+fixtoi (q_cos) + 1; x < fixtoi(q_cos) - 1; x++)<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; fixed newq_cos, temp_p, temp_q; // some 
+temporary variables<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; fixed newx, newy, newz; // x, y and z after 
+rotation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; fixed z; // z before rotation. we don't have to 
+calculate x and y<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; // calculate z<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; // using pythagoras and the formula for a 
+sphere:<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; // x^2 + y^2 + z^2 = r^2<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; // we know x, y and r<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; z = fixsqrt (r * itofix (r) -<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x * itofix (x) - y * 
+itofix (y));<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; // apply the rotation matrix to x, y, z. <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; // put the result in newx, newy, newz<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; apply_matrix (rotmat, itofix(x), itofix(y), 
+z,<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &newx, &newy, 
+&newz);<br>
+  <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; //just as in sphere2.c, we need to check if 
+q_cos is 0<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; //however, q_cos depends on y, and we just 
+calculated a new y<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; //thus we have to calculate q_cos again.<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; newq_cos = fixcos (temp_q) * r;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; if (newq_cos != 0)<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; {<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // it is possible to 
+use temp_p <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // temp_p = fixasin 
+(fixdiv (itofix (x), q_cos));<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // however, I found I 
+get less rounding errors if I use<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // fixatan2 instead. 
+The principle remains the same.<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; temp_p = fixatan2 
+(fixdiv (newx, newq_cos), fixdiv (newz, 
+newq_cos));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; }<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; else<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; temp_p = 0;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; temp_p &= 0xFFFFFF;<br>
+  <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; p = fixtoi (temp_p) * (map->w-1) / 256;<br>
+ 
+<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; // calculate q<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; temp_q = fixasin (newy / 
+r);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; q = fixtoi (temp_q + itofix (64)) * (map->h-1) 
+/ 128;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; putpixel (target, x + cx, y + cy,<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; getpixel (map, p, 
+q)<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; );<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+  }<br>
+  </code> </p>  <img 
+src="../../static/articles/sphere/ss3.gif">  
+
+<p><i><center>figure 7. Output of 
+sphere3.c</center></i></p>   
+
+<p> Note that in this example I use atan2 to calculate p. 
+The reason is simply that this way there are less rounding 
+errors. The implementations of fixasin and fixacos are less 
+accurate as the parameter approaches 1 or -1. </p> 
+<a name="lighting">  
+
+<h2>Lighting</h2> 
+
+
+<p> When I was in Finland last year, it was pretty cold most 
+of the time. In fact Finland is such a cold country that 
+when the lakes finally melted in May, some people went on 
+and on that it was so early in the year that the lakes 
+melted and that the climate was definitely warming up. But 
+that is besides the matter. The question is, why is Finland 
+such a cold country? </p>   
+
+<p> Because it is way up in the 
+north you say? Duh. What does that have to do with anything? 
+</p>   
+
+<p> The real reason is that the sun is always so low 
+above the horizon. That means that a certain amount of light 
+from the sun falls on a much larger surface (see figure 8). 
+That means that the energy of the sun is distributed over a 
+larger area and therefore it is much colder. </p>  <img 
+src="../../static/articles/sphere/fig5.gif">  
+
+<p><i><center>figure 8. Here you see how 
+the amount of light that falls on a surface depends on the 
+angle of impact of the light. Note how the same amount of 
+light, falling at a steeper angle in (I), projects a smaller 
+surface of light. That means that the same amount of light 
+is distributed over a smaller area. If we know angle "a", we 
+can calculate that surface.</center></i>  
+
+<p>  
+
+<p> In other 
+words, the amount of light on a surface is proportional to 
+the cosine of the normal of the surface with the light 
+source. </p>   
+
+<p> The higher the sun is, the more heat it 
+brings to the surface of the earth. The higher the sun is, 
+the less of the surface has to be heated with the same 
+sunrays. As you can see from figure 8, the power of the sun 
+is proportional to the surface that a certain amount of 
+light falls on. We can calculate this using the surface 
+using the cosine of the angle alpha of the rays of the sun 
+with the normal of the surface of the earth. </p>   
+
+<p> 
+
+<code> light = cos (angle between surface normal and light) 
+</code> </p>   
+
+<p> (The normal is a vector that is 
+perpendicular to the surface. Its an arrow that sits on the 
+surface and points away to outer space) </p>   
+
+<p> We can 
+use this formula to light our sphere. If we know the angle 
+of the light and the normal on each point of the surface of 
+the sphere, we can create a nice lighted sphere. </p>   
+
+<p> 
+Imagine that there is a vector (=arrow) from the center of 
+our sphere to the surface at a certain point. Let's call 
+this point P. P has the coordinates x, y and z. Now think of 
+the normal of the sphere at point P. It is another vector 
+that points from the center of the surface to outer space. 
+You see, both vectors point in the same direction. So the 
+vector from the center to P is in principle the same as the 
+normal at point P. </p>   
+
+<p> Now the direction of the 
+light. We'll assume that we have some weird light source at 
+infinite distance, so the light rays are parallel. This 
+means we can simply use one vector for the light source for 
+each point of the sphere. </p>   
+
+<p> Now we'll need to know 
+the angle between these two vectors. I hear somebody 
+whispering... What does he say? Listen, he says: "look in 
+the first article." D'oh! In the first article it says you 
+can use the cross product to calculate the angle between two 
+vectors. The cross product for three dimensions is: </p> 
+
+
+<p> 
+<code> arccos (angle) = normal_x * light_x + normal_y * 
+light_y + normal_z * light_z </code> </p>   
+
+<p> The 
+arccosine and the cosine negate eachother so we just remove 
+them and we get: </p>   
+
+<p> 
+<code> light = cos (angle)<br>
+ 
+arccos (angle) = normal_x * light_x + normal_y * light_y + 
+normal_z * light_z<br>
+  light = normal_x * light_x + 
+normal_y * light_y + normal_z * light_z </code> </p>   
+
+<p> 
+and this is a number between -1 and 1. If it is negative, it 
+means we are at the night-side of the sphere, so everything 
+from 0 down should be totally dark. </p>   
+
+<p> Our new plan 
+
+
+<ul> 
+<li>go through each point (x, y)</li>  
+<li>calculate 
+z</li>  
+<li>calculate the light factor with the cross 
+product</li>  
+<li>put a lighted pixel at point x, y</li> 
+
+</ul> </p>   
+
+<p> Here is the code: </p>   
+
+<p> 
+<code> /*<br>
+ 
+lit_sphere() draws a plain, solid sphere with lighting.<br>
+ 
+<br>
+  BITMAP *target: bitmap to draw onto<br>
+  int cx, cy: 
+center of the sphere<br>
+  int r: radius of the sphere<br>
+ 
+fixed longitude, latitude: direction of the lightsource<br>
+ 
+*/<br>
+  void lit_sphere (BITMAP *target, int cx, int cy, int 
+r, fixed longitude, fixed latitude)<br>
+  {<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;int x, y;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;// no p and q this time, because 
+there is no source bitmap<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; 
+<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;// calculate the light 
+vector<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;fixed lightx, lighty, 
+lightz;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;lightx = fixmul (fixsin 
+(longitude), fixcos(latitude));<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;lighty = fixsin (latitude);<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;lightz = fixmul (fixcos (longitude), 
+fixcos(latitude));<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;for (y = -r; y < r; y++)<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fixed q_cos 
+= fixcos (- fixasin (itofix (y) / r)) * r;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (x = -
+fixtoi (q_cos) + 1; x < fixtoi(q_cos) - 1; x++)<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; // -64 < angle_p < 64<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; fixed light; // light factor<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; int lighti; // idem, but int instead of 
+fixed<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; fixed xnormal = itofix (x);<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; fixed ynormal = itofix (y);<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; fixed znormal = fixsqrt (r * itofix (r) -<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x * itofix (x) - y * 
+itofix (y));<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; light = dot_product (<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // normal of sphere 
+surface<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xnormal / r, ynormal / 
+r, znormal / r,<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // light source 
+vector<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lightx, lighty, 
+lightz<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; );<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; // if light is negative, we are in the shadow 
+region<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; // so it should be black<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; if (light < 0) light = 
+0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; lighti = fixtoi (light * 255);<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; putpixel (target, x + cx, y + cy,<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; makecol (lighti, 
+lighti, lighti));<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+  }<br>
+  </code> </p>  <img 
+src="../../static/articles/sphere/ss4.gif">  
+
+<p><i><center>figure 9. Output of 
+sphere4.c</center></i></p>   
+
+<p> Let's do that again, but 
+with a texture </p>   
+
+<p> 
+<code> /*<br>
+  mapped_lit_sphere() 
+maps a bitmap onto a sphere and applies lighting at the same 
+time<br>
+  This is essentially mapped_sphere_ex() and 
+lit_sphere() combined. Look at <br>
+  those functions for 
+more comments.<br>
+  <br>
+  BITMAP *target = the bitmap to 
+draw onto<br>
+  int cx, cy = center of the sphere<br>
+  int r 
+= radius of the sphere<br>
+  BITMAP *map = bitmap to map onto 
+the sphere<br>
+  MATRIX *rotmat = rotation of the sphere<br>
+ 
+fixed longitude, latitude = position of the light source, as 
+if it were right above<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;that 
+spot on the earth<br>
+  */<br>
+  void mapped_lit_sphere 
+(BITMAP *target, int cx, int cy, int r, BITMAP *map,<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;MATRIX *rotmat, fixed longitude, 
+fixed latitude)<br>
+  {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;int x, 
+y; // coordinates on target bitmap<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;int p, q; // coordinates on source 
+bitmap<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;// calculate the light vector<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;fixed lightx, lighty, 
+lightz;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;lightx = fixmul (fixsin (longitude), 
+fixcos(latitude));<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;lighty = 
+fixsin (latitude);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;lightz = 
+fixmul (fixcos (longitude), fixcos(latitude));<br>
+  <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;for (y = -r; y < r; y++)<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fixed q_cos 
+= fixcos (- fixasin (itofix (y) / r)) * 
+r;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (x = -
+fixtoi (q_cos) + 1; x < fixtoi(q_cos) - 1; x++)<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; fixed light;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; int lighti, color;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; fixed temp_p, temp_q;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; fixed newx, newy, newz;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; fixed z = ftofix (sqrt((double)(r * r - x * x -
+y * y)));<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; // rotate x, y and 
+z&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; // put the result in newx, newy and newz<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; apply_matrix (rotmat, itofix(x), itofix(y), 
+z,<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &newx, &newy, 
+&newz);<br>
+  <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; // see if we are near the poles<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; temp_q = - fixasin (newy / 
+r);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; if (temp_q != 0)<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; {<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// again, I chose to use 
+fixatan2 instead of <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// temp_p = fixasin 
+(newx)<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// so we'll have less 
+problems with rounding errors.<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp_p = fixatan2 (newx, 
+newz);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; }<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; else<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; temp_p = 0;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; temp_p &= 0xFFFFFF;<br>
+  <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; q = fixtoi (-temp_q + itofix (64)) * (map->h-1) 
+>> 7;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; temp_q = fixcos (temp_q) * r + itofix (1);<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; p = fixtoi (temp_p) * (map->w-1) >> 8;<br>
+ 
+<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; light = dot_product (<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // normal of sphere 
+surface<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; itofix(x) / r, 
+itofix(y) / r, z / r,<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // light source 
+vector<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lightx, lighty, 
+lightz<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; );<br>
+  <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; if (light < 0) light = 0;<br>
+  <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; //lighti = fixtoi (light * 255);<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; lighti = fixtoi ((light << 8) - light);<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; color = getpixel (map, p, q);<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp; putpixel (target, x + cx, y + cy, lit_color 
+(color, lighti));<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+  }<br>
+  </code> </p>  <img 
+src="../../static/articles/sphere/ss5.gif">  
+
+<p><i><center>figure 10. Output of 
+sphere5.c</center></i></p>   
+
+<p> We are nearly at the end of 
+this lesson now. The last example was pretty slow. For the 
+sake of keeping things simple, I didn't apply any 
+optimizations to any of the examples. I managed to optimize 
+the last example so that I can display a lit sphere with a 
+radius of 220 in 32 bit mode at 300 fps on my Ahtlon 1800+. 
+How I did that? I'll deal with that in the next article. 
+</p>   
+
+<p> Here is another example of what you can do with 
+the stuff that is explained in this article. </p> <a name="daynight">  
+
+<h2>Day and Night</h2>  
+
+<p> Last year, 
+when I was in Finland... (No, not again!) The funny thing 
+about the place is that it never gets dark at night in the 
+summer. You can simply sit outside until early in the 
+morning and drink beer and grill sausages and swim in the 
+lake and it simply doesn't grow dark at all. </p>   
+
+<p> This 
+effect occurs because the rotational axis of the earth is 
+tilted, and in the months June and July the northern 
+hemisphere receives more light from the sun than on average. 
+It would be interesting to make a computer simulation of the 
+earth and to see where on earth it is light and dark at a 
+certain time. </p>   
+
+<p> The next example draws a map of the 
+earth in cylindrical projection (cylindrical in the 
+cartography sense). However it calculates for each point on 
+the map where on a sphere it would be and what amount of 
+light it would receive. The effect is a night and day map of 
+the earth. </p>   
+
+<p> 
+<code> /* <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp; lit_projection () draws a bitmap 
+onto another bitmap, but lights each <br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp; individual pixel as if it was on a 
+sphere with a light shining on it from<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp; one direction.<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+  &nbsp;&nbsp;&nbsp;&nbsp; 
+BITMAP *target -> the bitmap to draw onto<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp; BITMAP *map -> the bitmap to 
+draw<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; fixed longitude, latitude 
+-> the position of the lightsource. <br>
+ 
+*/&nbsp;&nbsp;&nbsp;&nbsp; <br>
+  void lit_projection (BITMAP 
+*target, BITMAP *map,<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; fixed 
+longitude, fixed latitude)<br>
+  {<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;int x, y; // coordinates on target 
+bitmap<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;int p, q; // coordinates 
+on source bitmap<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;fixed p_angle, 
+q_angle; // the same, but scaled to a 256 degree circle<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;// the range of p is 0..bmp->w, but 
+the range of p_angle is always 0..255<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;// 
+calculate the light vector<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;fixed lightx, lighty, 
+lightz;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;lightx = fixmul (fixsin (longitude), 
+fixcos(latitude));<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;lighty = 
+fixsin (latitude);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;lightz = 
+fixmul (fixcos (longitude), fixcos(latitude));<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;for (y 
+= 0; y < target->h; y++)<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int q = y * 
+map->h / target->h;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p_angle = 
+((itofix(y) / target->h) * 128) - itofix (64);<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (x = 0; 
+x < target->w; x++)<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;int p = x * map->w / target->w;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;fixed light;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;int color, lighti;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;q_angle = (itofix (x) / target->w * 256);<br>
+ 
+<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;light = dot_product (<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // normal of sphere 
+surface<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fixmul (fixsin 
+(p_angle), fixcos (p_angle)),<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fixsin (p_angle),<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fixmul (fixcos 
+(q_angle), fixcos (p_angle)),<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // light source 
+vector<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lightx, lighty, 
+lightz<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;);<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;if (light < 0) light = 0;<br>
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;lighti = fixtoi (light * 255);<br>
+
+ <br>
+
+ 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;&nbsp;color = getpixel (map, p, q);<br>
+
+ 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;&nbsp;putpixel (target, x, y, lit_color (color, 
+
+lighti));<br>
+
+ 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+
+ 
+
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+
+ } </code>  </p>  <img 
+
+src="../../static/articles/sphere/ss6.gif"> 
+
+
+
+<p><i><center>figure 11. Output of 
+
+sphere6.c</center></i></p>  
+
+
+
+<p> The earth is not flat. It is 
+
+round.... like a pancake! - H. Finkers 
+
+
+
+
+
+
+
+
+
+</body>
+</html>

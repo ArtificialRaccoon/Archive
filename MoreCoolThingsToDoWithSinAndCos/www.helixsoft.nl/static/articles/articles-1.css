@@ -1,0 +1,40 @@
+body {
+
+	background: white;
+	color: black;
+	margin: 10%;
+
+}
+
+a.linkbutton {
+	padding: 5px 20px 5px 20px;
+	border: 1px dashed white;
+	background: #585EA5;
+	color: white;
+	box-shadow: 5px 5px 20px #444444;
+	text-decoration: none;
+	float: left;
+}
+
+a.linkbutton:hover {
+	text-decoration: underline;
+}
+
+/*************************************************
+                 Sticky article header
+************************************************/
+
+div#sticky_wrap {
+  position:fixed;
+  width: 100%;
+	background: white;
+  top: 0px;
+	left: 0px;
+	border-bottom: 1px solid black;
+}
+
+div#sticky_inside {
+	display: inline-block;
+	margin: 10px 10% 10px 10%;
+	width: 80%;
+}
